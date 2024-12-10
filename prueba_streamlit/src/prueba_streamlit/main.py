@@ -5,7 +5,7 @@ import os
 # Asegúrate de agregar la ruta al directorio 'src'
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 import streamlit as st 
-from prueba_streamlit.crew import PruebaStreamlitCrew
+from src.prueba_streamlit.crew import PruebaStreamlitCrew
 
 # This main file is intended to be a way for your to run your
 # crew locally, so refrain from adding necessary logic into this file.
