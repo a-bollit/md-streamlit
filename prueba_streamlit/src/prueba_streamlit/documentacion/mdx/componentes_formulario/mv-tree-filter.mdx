@@ -1,0 +1,427 @@
+Documentación mv-tree-filter
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link filterAppearance
+link filterFloatLabel
+link filterHint
+link filterTitle
+link filterPlaceholder
+link hideItems
+link showItems
+link multiOpen
+link treeFilterItems (datos locales)
+link treeFilterItems (datos importados de JSON local)
+link treeFilterItems (datos importados de JSON externo)
+Eventos:
+
+link hideItems
+link showItems
+link refresh
+Información
+Información del componente mv-tree-filter.
+code
+Este componente sirve para mostrar un listado, en forma de categorías y subcategorías con un buscador que permite filtrar entre todos los elementos.
+
+Al pulsar en un elemento padre, se expandirán los elementos hijo. Al pulsar en un elemento hijo, se abrirá la url que esté configurada para ese elemento.
+
+Ejemplo de uso
+Uso básico del componente mv-tree-filter.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+Array TS
+
+  <mv-tree-filter
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+  
+Buscador
+
+
+
+Elementos contraidos
+filterAppearance
+Apariencia del filtro.
+code
+La propiedad filterAppearance permite definir el aspecto del filtro de búsqueda.
+
+El valor por defecto es 'outline'.
+
+HTML
+Array TS
+
+  <mv-tree-filter
+    filterAppearance="legacy"
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+
+  <mv-tree-filter
+    filterAppearance="standard"
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+
+  <mv-tree-filter
+    filterAppearance="fill"
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+
+  <mv-tree-filter
+    filterAppearance="outline"
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+  
+Con apariencia 'legacy':
+
+Buscador
+
+
+
+Elementos contraidos
+Con apariencia 'standard':
+
+Buscador
+
+
+
+Elementos contraidos
+Con apariencia 'fill':
+
+Buscador
+
+
+
+Elementos contraidos
+Con apariencia 'outline':
+
+Buscador
+
+
+
+Elementos contraidos
+filterFloatLabel
+Comportamiento de la label.
+code
+La propiedad floatLabel permite definir el comportamiento de la label del input de búsqueda.
+
+Si usamos la propiedad floatLabel también tendrá que haber definida una label, mediante la propiedad label.
+
+HTML
+Array TS
+
+  <mv-tree-filter
+    label="Propiedad floatLabel"
+    filterFloatLabel="always"
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+
+  <mv-tree-filter
+    label="Propiedad floatLabel"
+    filterAppearance="legacy"
+    filterFloatLabel="never"
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+
+  <mv-tree-filter
+    label="Propiedad floatLabel"
+    filterFloatLabel="auto"
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+  
+Con floatLabel 'always':
+
+Buscador
+
+
+
+Elementos contraidos
+Con floatLabel 'never':
+
+* El valor 'never' solo aplica cuando la propiedad appearance='legacy'
+
+Buscador
+
+
+
+Elementos contraidos
+Con floatLabel 'auto':
+
+Buscador
+
+
+
+Elementos contraidos
+filterHint
+Título del filtro.
+code
+La propiedad Hint permite definir un hint complementario a filterTitle.
+
+HTML
+Array TS
+
+  <mv-tree-filter
+    [treeFilterItems]='exampleCountries'
+    filterTitle='Buscador médico'
+    filterHint="Hint personalizado">
+  </mv-tree-filter>
+  
+Con Hint 'Hint personalizado':
+
+Buscador médico
+Hint personalizado
+
+
+
+Elementos contraidos
+filterTitle
+Título del filtro.
+code
+La propiedad filterTitle permite definir un título en el input del filtro de búsqueda.
+
+El valor por defecto es Buscador.
+
+HTML
+Array TS
+
+  <mv-tree-filter
+    [treeFilterItems]='exampleCountries'
+    filterTitle='Buscador médico'>
+  </mv-tree-filter>
+  
+Buscador médico
+
+
+
+Elementos contraidos
+filterPlaceholder
+Placeholder del filtro.
+code
+La propiedad filterPlaceholder permite definir el placeholder en el input del filtro de búsqueda.
+
+El valor por defecto es Escriba para buscar....
+
+HTML
+Array TS
+
+  <mv-tree-filter
+    [treeFilterItems]='exampleCountries'
+    filterPlaceholder='Filtra la búsqueda'>
+  </mv-tree-filter>
+  
+Buscador
+
+
+
+Elementos contraidos
+multiOpen
+Título del filtro.
+code
+La propiedad multiOpen define un botón que abre o cierra todos los niveles del tree-filter.
+
+El valor por defecto es true.
+
+HTML
+Array TS
+
+  <!-- ejemplo mostrando el botón -->
+  <mv-tree-filter
+    [treeFilterItems]='exampleCountries'
+    multiOpen=true>
+  </mv-tree-filter>
+
+  <!-- ejemplo ocultando el botón -->
+  <mv-tree-filter
+    [treeFilterItems]='exampleCountries'
+    multiOpen=false>
+  </mv-tree-filter>
+  
+Ejemplo mostrando el botón (multiOpen=true):
+
+Buscador
+
+
+
+Elementos contraidos
+Ejemplo ocultando el botón (multiOpen=false):
+
+Buscador
+
+
+
+Elementos contraidos
+showFilter
+Mostrar o no el filtro de búsqueda.
+code
+La propiedad showFilter permite ocultar el filtro de búsqueda.
+
+El valor por defecto es true.
+
+HTML
+Array TS
+
+  <mv-tree-filter
+    showFilter=true
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+
+  <mv-tree-filter
+    showFilter=false
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+
+  <mv-tree-filter
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+  
+Con showFilter a true:
+
+Buscador
+
+
+
+Elementos contraidos
+Con showFilter a false:
+
+
+
+
+Elementos contraidos
+Sin showFilter (comportamiento por defecto):
+
+Buscador
+
+
+
+Elementos contraidos
+treeFilterItems
+Datos que se mostrarán en el componente.
+code
+La propiedad treeFilterItems define los datos que muestra el componente con sus respectivos niveles y características.
+
+Los datos deben estar definidos como un JSON con los siguientes atributos:
+
+title: título del elemento
+subtitle: subtítulo del elemento
+link: comportamiento al pulsar el elemento
+type: puede tomar los valores url o state dependiendo si queremos navegar a una url externa o a un estado de la app
+uri: url o estado de la app donde queremos navegar
+children: elementos del nivel hijo
+css: Clase css para sobrescribir el estilo de los elementos
+HTML
+TS
+Array TS
+
+  <!-- Ejemplo con JSON definido en el código -->
+  <mv-tree-filter
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+  
+Buscador
+
+
+
+Elementos contraidos
+treeFilterItemsJsonLocal
+treeFilterItems (datos importados de JSON local).
+code
+Ejemplo de la propiedad treeFilterItems pero con datos obtenidos de un archivo JSON local
+
+HTML
+TS
+JSON
+
+  <!-- Ejemplo con archivo JSON local -->
+  <mv-tree-filter
+    [treeFilterItems]='exampleJsonLocal'>
+  </mv-tree-filter>
+  
+Buscador
+Elementos contraidos
+treeFilterItemsJsonExterno
+treeFilterItems (datos importados de JSON externo).
+code
+Ejemplo de la propiedad treeFilterItems pero con datos obtenidos de un archivo JSON externo
+
+HTML
+TS
+JSON
+
+  <!-- Ejemplo con archivo JSON externo -->
+  <mv-tree-filter
+    [treeFilterItems]='exampleJsonExterno'>
+  </mv-tree-filter>
+  
+Buscador
+Elementos contraidos
+hideItems
+Ocultar elementos.
+code
+HTML
+TS
+
+  <mv-tree-filter
+    #mvTreeFilteHideItems
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="hideItemsExample()">
+    hideItems
+  </mv-button>
+  
+Buscador
+
+
+
+Elementos contraidos
+showItems
+Mostrar elementos que estaban ocultos.
+code
+HTML
+TS
+
+  <mv-tree-filter
+    #mvTreeFilterShowItems
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="showItemsExample()">
+    showItems
+  </mv-button>
+  
+Buscador
+
+
+
+Elementos contraidos
+refresh
+Actualiza el array de configuración del componente
+code
+HTML
+TS
+
+  <mv-tree-filter
+  #mvTreeFilterHideItems
+    [treeFilterItems]='exampleCountries'>
+  </mv-tree-filter>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="addColorExample()">
+    Añadir css y refrescar
+  </mv-button>
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="resetColorExample()">
+    Quitar css y refrescar
+  </mv-button>
+  

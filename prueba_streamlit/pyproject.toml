@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "prueba_streamlit"
+version = "0.1.0"
+description = "prueba-streamlit using crewAI"
+authors = ["bollit <tu_correo@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<=3.13"
+crewai = {extras = ["tools"], version= "^0.70.1"}
+python-dotenv = "^1.0.0"
+unstructured = "^0.7.0"
+nltk = "^3.7"
+streamlit = "^1.36.0"
+
+[tool.poetry.scripts]
+prueba_streamlit = "prueba_streamlit.main:run"
+run_crew = "prueba_streamlit.main:run"
+train = "prueba_streamlit.main:train"
+replay = "prueba_streamlit.main:replay"
+test = "prueba_streamlit.main:test"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

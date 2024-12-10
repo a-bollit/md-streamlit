@@ -1,0 +1,47 @@
+Documentación qr-service
+link Información
+Eventos:
+
+link initScan
+Información
+Información del servicio mv-qr-service.
+code
+Este servicio sirve para leer códigos qr desde un dispositivo móvil.
+
+initScan
+Comienza el escaneo.
+code
+initScan(successCallback, errorCallback, properties)
+
+successCallback: función que se ejecutará en caso de lectura correcta
+errorCallback: función que se ejecutará en caso de error
+properties
+preferFrontCamera: mostrar la cámara frontal. Por defecto false
+showFlipCameraButton: mostrar botón de cambio de cámara. Por defecto false
+showTorchButton: mostrar botón de linterna. Por defecto false
+torchOn: linterna activada. Por defecto false. Sólo en Android
+saveHistory: guardar historial de escaneos. Por defecto false. Sólo en Android
+prompt: mensaje a mostrar al usuario. Por defecto ''. Sólo en Android
+resultDisplayDuration: tiempo durante el que mostrar el resultado. Por defecto 0. Sólo en Android
+formats: formatos aceptados. Por defecto 'QR_CODE'
+orientation: orientación ('portrait'|'landscape'). Por defecto 'portrait'. Sólo en Android
+disableAnimations: deshabilitar animaciones. Por defecto true. Sólo en iOS
+disableSuccessBeep: deshabilitar sonido en caso correcto. Por defecto false
+El resultado de las funciones de callback será un objeto con las siguientes datos:
+
+cancelled: 0 o 1 en función de si ha sido cancelado por el usuario o por haber reconocido un código QR
+text: Texto que devuelve el código QR. Puede ser texto plano o una url.
+format: QR_CODE si es un código QR.
+Para ver todas las especificaciones y compatibilidades ver la documentación del plugin: https://github.com/phonegap/phonegap-plugin-barcodescanner
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="initScanExample()">
+    initScan
+  </mv-button>
+  
+Resultado del escaneo:

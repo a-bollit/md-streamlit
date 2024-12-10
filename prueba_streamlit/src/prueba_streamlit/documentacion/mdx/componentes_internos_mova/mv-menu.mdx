@@ -1,0 +1,452 @@
+Documentación menú lateral
+link Información
+link Configuración
+Propiedades:
+
+link appShortName
+link appLongName
+link appDesc
+link position
+link mode
+link modeSmall
+link alwaysOpen
+link logoApp
+link closeOnSelectItem
+Eventos:
+
+link closeLateralMenu
+link openLateralMenu
+link toggleLateralMenu
+link updateLateralMenu
+link modificar elementos del menú al hacer login/logout
+Información
+Información del componente mv-menu.
+code
+Este componente sirve para modelar el menú lateral de la app. Es un componente interno de MOVA y no se puede modificar, aunque se puede configurar como se indica en esta documentación.
+
+Configuración
+Configuración del componente mv-menu.
+code
+Para definir el html de los elementos del menú, hay que hacerlo en el componente de aplicación lateral-menu. Podemos incluir componentes y elementos HTML personalizados. Se recomienda mantener la estructura que se muestra, aunque se puede cambiar y añadir lo que se desee:
+
+lateral-menu.html
+lateral-menu.ts
+lateral-menu.scss
+
+
+  <!-- Sección mova-default INI -->
+  <section class="mova-default">
+
+      <!-- Botón de acceso -->
+      <section class="sidenav-left-login-button"
+          *ngIf="!isLogged">
+          <mv-button-login #hiddenButtonLogin hidden=true></mv-button-login>
+          <mv-button adapt class="login-button" (clickEvent)="doLogin()">Acceder<mv-icon class="login-icon">lock_open</mv-icon></mv-button>
+      </section>
+
+      <!-- Datos del usuario -->
+      <section class="sidenav-left-user-section"
+          *ngIf="isLogged"
+          >
+
+          <section class="username-section">
+
+              <mat-accordion multi>
+                  <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                          <mat-panel-title>
+                              <span class="username truncate">{{ username }}</span>
+                          </mat-panel-title>
+                      </mat-expansion-panel-header>
+
+                      <section class="user-options">
+
+                          <mv-tree-filter
+                              class="sidenav-left-menu"
+                              [treeFilterItems]="treeFilterElementsMenuUser"
+                              showFilter=false
+                              multiOpen=true
+                              (selectItem)="onSelectItem($event)">
+                          </mv-tree-filter>
+
+                          <mv-button-login #hiddenButtonLogout hidden=true></mv-button-login>
+                      </section>
+
+                      <hr>
+
+                  </mat-expansion-panel>
+              </mat-accordion>
+          </section>
+      </section>
+
+      <!-- Menú de opciones lateral -->
+      <mv-tree-filter
+          #mvTreeFilterLateralOptions
+          class="sidenav-left-menu"
+          [treeFilterItems]="treeFilterElementsMenu"
+          showFilter=false
+          multiOpen=true
+          (selectItem)="onSelectItem($event)">
+      </mv-tree-filter>
+
+  </section>
+  <!-- Sección mova-default FIN -->
+  
+Además, el menú lateral de una aplicación MOVA es configurable mediante el archivo config-default-main-container.json, concretamente en la propiedad lateralMenuConfig
+
+config-default-main-container.json
+
+  "lateralMenuConfig": {
+    "appShortName":"MOVA 2",
+    "appLongName":"Framework Mobile & Web",
+    "appDesc":"",
+    "position": "start",
+    "mode": "side",
+    "modeSmall": "over",
+    "alwaysOpen": true,
+    "logoApp": "logo-app.png",
+    "hasBackdrop": false,
+    "hasBackdropSmall": true,
+    "closeOnSelectItem": false
+  }
+  
+appShortName
+Nombre corto de la app.
+code
+La propiedad appShortName permite definir el nombre corto de la app.
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="showAppShortName(true)">
+    Activar appShortName
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="showAppShortName(false)">
+    Resetear appShortName
+  </mv-button>
+  
+appLongName
+Nombre largo de la app.
+code
+La propiedad appLongName permite definir el nombre largo de la app.
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="showAppLongName(true)">
+    Activar appLongName
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="showAppLongName(false)">
+    Resetear appLongName
+  </mv-button>
+  
+appDesc
+Descripción de la app.
+code
+La propiedad appDesc permite definir la descripción de la app.
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="setAlwaysOpen(true)">
+    Cambiar alwaysOpen
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="setAlwaysOpen(false)">
+    Resetear appDesc
+  </mv-button>
+  
+alwaysOpen
+Menú siempre abierto.
+code
+La propiedad alwaysOpen permite establecer la visibilidad del menú:
+
+true: siempre visible excepto en pantallas pequeñas que sí se ocultará para que no ocupe demasiado espacio (a menos que se establezca la propiedad modeSmall: 'side')
+false: el menú estará oculto y para tendremos que abrirlo mediante el botón de la cabecera o el método apropiado
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="setAlwaysOpen(true)">
+    Cambiar alwaysOpen
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="setAlwaysOpen(false)">
+    Resetear appDesc
+  </mv-button>
+  
+closeOnSelectItem
+Cerrar el menú tras click.
+code
+La propiedad closeOnSelectItem permite definir si queremos que el menú se cierre tras pulsar en una opción del mismo:
+
+true: el menú se cerrará tras pulsar en una opción del mismo
+false: el menú no se cerrará tras pulsar en una opción del mismo, permanecerá abierto
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="setCloseOnSelectItem(true)">
+    Cambiar closeOnSelectItem
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="setCloseOnSelectItem(false)">
+    Resetear closeOnSelectItem
+  </mv-button>
+  
+logoApp
+Icono de la app.
+code
+La propiedad logoApp permite definir el icono de la app. La imagen tendrá que estar situada en la carpeta src/assets
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="showLogoApp(true)">
+    Cambiar logoApp
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (click)="showLogoApp(false)">
+    Resetear logoApp
+  </mv-button>
+  
+mode
+Modo de apertura del menú.
+code
+La propiedad mode permite definir el modo de apertura del menú:
+
+side: el menú se sitúa fijo al lado del contenido
+over: el menú se desliza por encima del contenido
+push: el menú desplaza al contenido
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    class="configButton"
+    (clickEvent)="setChangeMode('over')">
+    Mode over
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    class="configButton"
+    (click)="setChangeMode('push')">
+    Mode push
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    class="configButton"
+    (click)="setChangeMode('side')">
+    Mode side (default)
+  </mv-button>
+
+  
+modeSmall
+Modo de apertura del menú en pantallas pequeñas.
+code
+La propiedad mode modeSmall definir el modo de apertura del menú de manera idéntica a la propiedad mode en pantallas pequeñas (<767px):
+
+side: el menú se sitúa fijo al lado del contenido
+over: el menú se desliza por encima del contenido
+push: el menú desplaza al contenido
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    class="configButton"
+    (clickEvent)="setChangeModeSmall('over')">
+    ModeSmall over (default)
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    class="configButton"
+    (click)="setChangeModeSmall('push')">
+    ModeSmall push
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    class="configButton"
+    (click)="setChangeModeSmall('side')">
+    ModeSmall side
+  </mv-button>
+
+  
+position
+Posición del menú.
+code
+La propiedad position permite definir la posición del menú:
+
+start: el menú estará situado a la izquierda
+end: el menú estará situado a la derecha
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="setChangePosition('end')">
+    Cambiar position
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    class="configButton"
+    (click)="setChangePosition('start')">
+    resetear position
+  </mv-button>
+  
+closeLateralMenu
+Cerrar el menú.
+code
+El evento closeLateralMenu permite cerrar el menú programáticamente desde donde se desee. Se lleva a cabo desde el servicio AppService
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="closeLateralMenu()">
+    Cerrar menú lateral
+  </mv-button>
+  
+openLateralMenu
+Abrir el menú.
+code
+El evento openLateralMenu permite abrir el menú programáticamente desde donde se desee. Se lleva a cabo desde el servicio AppService
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="openLateralMenu()">
+    Abrir menú lateral
+  </mv-button>
+  
+toggleLateralMenu
+Cambiar el estado del menú.
+code
+El evento toggleLateralMenu permite cambiar el estado del menú: si estaba abierto lo cerrará y si estaba cerrado lo abrirá. Se lleva a cabo desde el servicio AppService
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="toggleLateralMenu()">
+    Toggle menú lateral
+  </mv-button>
+  
+updateLateralMenu
+Cambiar los elementos del menú.
+code
+El evento updateLateralMenu permite lanzar un evento para actualizar el listado del menú. Se lleva a cabo desde el servicio AppService
+
+HTML
+TS
+MenuTS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="updateLateralMenuExample()">
+    Update menú lateral
+  </mv-button>
+  
+Ejemplo modificación de elementos según login
+Cambiar los elementos del menú lateral al hacer login/logout.
+code
+Ejemplo de login desde el menú lateral. Oculta el o muestra en el menú lateral los botones de login/logout segun si estás o no logueado
+
+lateral-menu-HTML
+lateral-menu-TS
+
+  <!-- Botón de acceso -->
+  <section class="sidenav-left-login-button"
+      *ngIf="!isLogged">
+      <mv-button-login #hiddenButtonLogin hidden=true></mv-button-login>
+      <mv-button adapt class="login-button" (clickEvent)="doLogin()">Acceder<mv-icon class="login-icon">lock_open</mv-icon></mv-button>
+  </section>
+
+  <!-- Datos del usuario -->
+  <section class="sidenav-left-user-section"
+      *ngIf="isLogged"
+      >
+
+      <section class="username-section">
+
+          <mat-accordion multi>
+              <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                      <mat-panel-title>
+                          <span class="username truncate">{{ username }}</span>
+                      </mat-panel-title>
+                  </mat-expansion-panel-header>
+
+                  <section class="user-options">
+
+                      <mv-tree-filter
+                          class="sidenav-left-menu"
+                          [treeFilterItems]="treeFilterElementsMenuUser"
+                          showFilter=false
+                          multiOpen=true
+                          (selectItem)="onSelectItem($event)">
+                      </mv-tree-filter>
+
+                      <mv-button-login #hiddenButtonLogout hidden=true></mv-button-login>
+                  </section>
+
+                  <hr>
+
+              </mat-expansion-panel>
+          </mat-accordion>
+      </section>
+  </section>

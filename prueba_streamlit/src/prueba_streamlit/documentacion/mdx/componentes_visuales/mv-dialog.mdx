@@ -1,0 +1,278 @@
+Documentación mv-dialog
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link acceptAppearance
+link acceptColor
+link acceptText
+link cancelAppearance
+link cancelColor
+link cancelText
+link showAcceptButton
+link showCancelButton
+link showCloseButton
+link successCallback
+link titleWarn
+link titleAccent
+Información
+Información del componente mv-dialog.
+code
+El componente mv-dialog se basa en el componente mat-dialog de Angular Material, al que se le añade funcionalidad y estilos adicionales.
+
+Sirve para mostrar un diálogo que se adapta al dispositivo, con la información deseada.
+
+Ejemplo de uso
+Uso básico del componente mv-dialog.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogExample()">
+    Lanzar diálogo
+  </mv-button>
+  
+Ejemplo de diálogo:
+
+acceptAppearance
+Apariencia del botón aceptar.
+code
+La propiedad acceptAppearance permite definir la apariencia del botón asociado a la acción de aceptar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogAcceptAppearance()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con acceptAppearance = 'fab':
+
+acceptColor
+Color del botón aceptar.
+code
+La propiedad acceptColor permite definir el color del botón asociado a la acción de aceptar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogAcceptColor()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con acceptColor = 'warn':
+
+acceptText
+Texto del botón aceptar.
+code
+La propiedad acceptText permite definir el texto del botón asociado a la acción de aceptar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogAcceptText()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con acceptText = 'Confirmación':
+
+cancelAppearance
+Apariencia del botón cancelar.
+code
+La propiedad cancelAppearance permite definir la apariencia del botón asociado a la acción de cancelar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogCancelAppearance()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con cancelAppearance = 'fab':
+
+cancelColor
+Color del botón cancelar.
+code
+La propiedad cancelColor permite definir el color del botón asociado a la acción de cancelar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogCancelColor()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con cancelColor = 'primary':
+
+cancelText
+Texto del botón cancelar.
+code
+La propiedad cancelText permite definir el texto del botón asociado a la acción de cancelar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogCancelText()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con cancelText = 'Quiero salir':
+
+showAcceptButton
+Mostrar o no el botón aceptar.
+code
+La propiedad showAcceptButton permite mostrar u ocultar el botón de aceptar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowAcceptButtonTrue()">
+    Lanzar diálogo
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowAcceptButtonFalse()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con showAcceptButton a true:
+
+Con showAcceptButton a false:
+
+showCancelButton
+Mostrar o no el botón cancelar.
+code
+La propiedad showCancelButton permite mostrar u ocultar el botón de cancelar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowCancelButtonTrue()">
+    Lanzar diálogo
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowCancelButtonFalse()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con showCancelButton a true:
+
+Con showCancelButton a false:
+
+showCloseButton
+Mostrar o no el botón de cerrar.
+code
+La propiedad showCloseButton permite mostrar u ocultar el botón de cerrar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowCloseButtonTrue()">
+    Lanzar diálogo
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowCloseButtonFalse()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con showCloseButton a true:
+
+Con showCloseButton a false:
+
+successCallback
+Función de callback.
+code
+La propiedad successCallback permite definir la acción a realizar cuando pulsamos algún botón del diálogo.
+
+La función de callback devolverá el resultado de la acción.
+
+Devuelve un objeto con los siguientes parametros, marcando a true el botón que el usuario hubiera marcado
+
+accept: Al hacer click al botón de aceptar
+cancel: Al hacer click al botón de cancelar
+out: Al hacer click fuera del dialogo
+close: Al cerrar el dialogo
+HTML
+TS
+RETURN
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSuccessCallbackExample()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con successCallback:
+
+titleWarn
+Apariencia del título warn.
+code
+La propiedad titleWarn permite definir la apariencia del título en color warn.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleTitleWarnTrue()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con titleWarn a true:
+
+titleAccent
+Apariencia del título warn.
+code
+La propiedad titleAccent permite definir la apariencia del título en color warn.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleTitleAccentTrue()">
+    Lanzar diálogo
+  </mv-button>

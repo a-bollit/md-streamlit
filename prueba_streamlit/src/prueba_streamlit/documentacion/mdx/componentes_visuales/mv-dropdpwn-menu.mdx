@@ -1,0 +1,205 @@
+Documentación mv-dropdown-menu
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link xPosition
+link yPosition
+Eventos:
+
+link openMenu
+link closeMenu
+Información
+Información del componente mv-dropdown-menu.
+code
+El componente mv-dropdown se basa en el componente mat-menu de Angular Material, al que se le añade funcionalidad y estilos adicionales.
+
+Sirve para desplegar un menú contextual en cualquier parte de la pantalla.
+
+Ejemplo de uso
+Uso básico del componente mv-dropdown-menu.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    [matMenuTriggerFor]="menu">
+    Lanzar menú
+  </mv-button>
+
+  <mv-menu #menu="mvMenu">
+    <button mv-menu-item>Item 1</button>
+    <button mv-menu-item>Item 2</button>
+  </mv-menu>
+  
+Ejemplo de menú:
+
+Menús anidados e iconos:
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    [mvMenuTriggerFor]="menuComplex">
+    Lanzar menú
+  </mv-button>
+
+  <mv-menu #menuComplex="mvMenu">
+    <button mv-menu-item [mvMenuTriggerFor]="vertebrados">
+      <mv-icon>pets</mv-icon>
+      <span>Vertebrados</span>
+    </button>
+    <button mv-menu-item [mvMenuTriggerFor]="invertebrados">
+      <mv-icon>bug_reports</mv-icon>
+      <span>Invertebrados</span>
+    </button>
+  </mv-menu>
+
+  <mv-menu #vertebrados="mvMenu">
+    <button mv-menu-item [mvMenuTriggerFor]="peces">Peces</button>
+    <button mv-menu-item>Anfibios</button>
+    <button mv-menu-item>Reptiles</button>
+    <button mv-menu-item>Pájaros</button>
+    <button mv-menu-item>Mamíferos</button>
+  </mv-menu>
+
+  <mv-menu #peces="mvMenu">
+    <button mv-menu-item>Salmón</button>
+    <button mv-menu-item>Trucha</button>
+    <button mv-menu-item>Sardina</button>
+    <button mv-menu-item>Bacalao</button>
+  </mv-menu>
+
+  <mv-menu #invertebrados="mvMenu">
+    <button mv-menu-item>Insectos</button>
+    <button mv-menu-item>Moluscos</button>
+    <button mv-menu-item>Crustáceos</button>
+    <button mv-menu-item>Corales</button>
+    <button mv-menu-item>Arácnidos</button>
+  </mv-menu>
+  
+Ejemplo de menú completo:
+
+xPosition
+Posición horizontal del menú.
+code
+La propiedad xPosition permite definir la posición horizontal donde aparecerá el menú respecto al elemento que lo lanza.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    [mvMenuTriggerFor]="beforeMenu">
+    Lanzar menú (before)
+  </mv-button>
+  <mv-menu #beforeMenu="mvMenu" xPosition="before">
+    <button mv-menu-item>Item 1</button>
+    <button mv-menu-item>Item 2</button>
+  </mv-menu>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    [mvMenuTriggerFor]="beforeMenu">
+    Lanzar menú (after)
+  </mv-button>
+  <mv-menu #afterMenu="mvMenu" xPosition="after">
+    <button mv-menu-item>Item 1</button>
+    <button mv-menu-item>Item 2</button>
+  </mv-menu>
+  
+xPosition:
+
+yPosition
+Posición vertical del menú.
+code
+La propiedad yPosition permite definir la posición horizontal donde aparecerá el menú respecto al elemento que lo lanza.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    [mvMenuTriggerFor]="beforeMenu">
+    Lanzar menú (above)
+  </mv-button>
+  <mv-menu #beforeMenu="mvMenu" yPosition="above">
+    <button mv-menu-item>Item 1</button>
+    <button mv-menu-item>Item 2</button>
+  </mv-menu>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    [mvMenuTriggerFor]="beforeMenu">
+    Lanzar menú (below)
+  </mv-button>
+  <mv-menu #afterMenu="mvMenu" yPosition="below">
+    <button mv-menu-item>Item 1</button>
+    <button mv-menu-item>Item 2</button>
+  </mv-menu>
+  
+yPosition:
+
+openMenu
+Abrir el menú desde el código TS.
+code
+La función openMenu permite abrir el menú desde el código TS.
+
+Aunque se abra el menú por código, hay que definir un elemento lanzador "mvMenuTrigger"
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="openMenuFunctionExample()">
+    Abrir menú
+  </mv-button>
+
+  <div 
+    #menuTriggerOpen="mvMenuTrigger"
+    [mvMenuTriggerFor]="openMenuExample">
+  </div>
+  <mv-menu #openMenuExample="mvMenu">
+    <button mv-menu-item>Item 1</button>
+    <button mv-menu-item>Item 2</button>
+  </mv-menu>
+  
+openMenu:
+
+closeMenu
+Cerrar el menú desde el código TS.
+code
+La función closeMenu permite cerrar el menú desde el código TS.
+
+Aunque se cierre el menú por código, hay que definir un elemento lanzador "mvMenuTrigger"
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="closeMenuFunctionExample()">
+    Abrir menú
+  </mv-button>
+
+  <div
+    #menuTriggerClose="mvMenuTrigger"
+    [mvMenuTriggerFor]="closeMenuExample">
+  </div>
+  <mv-menu #closeMenuExample="mvMenu">
+    <button mv-menu-item>Item 1</button>
+    <button mv-menu-item>Item 2</button>
+  </mv-menu>

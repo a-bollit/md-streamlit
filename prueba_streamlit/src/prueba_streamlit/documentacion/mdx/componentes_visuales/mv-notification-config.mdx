@@ -1,0 +1,47 @@
+Documentación mv-notification-config
+link Información
+link Sonido
+link Topics
+Información
+Información de mv-notification-config.
+code
+El componente mv-notification-config permite acceder a algunos aspectos de configuración de las notificaciones: el sonido y la suscripción a los topics. Es configurable y solo se mostrará en dispositivos móviles.
+
+Se puede ver un ejemplo de uso de este componente en notification-config-view
+
+Sonido
+Sonido de las notificaciones.
+code
+Se puede configurar el componente para que muestre la sección de configuración del sonido de las notificaciones push, de manera que el usuario podrá elegir si quiere recibir notificaciones con o sin sonido.
+
+En dispositivos iOS no se puede cambiar desde la app el sonido de las notificaciones, de manera que la sección mostrará las instrucciones que debe seguir el usuario para poder cambiarlo.
+
+HTML
+TS
+
+  ...
+
+  <mv-notification-config
+    config="sound">
+  </mv-notification-config>
+
+  ...
+  
+Topics
+configuración de topics.
+code
+Se puede configurar el componente para que muestre los topics a los que está suscrito el usuario, pudiendo también suscribirse si no lo está.
+
+Se debe definir un array de objetos. Cada uno deberá tener una propiedad topic obligatoria que debe coincidir con el nombre del topic en cuestión y otra propiedad name opcional que sirve para mostrar un nombre para personalizado para el topic.
+
+HTML
+TS
+
+  ...
+
+  <mv-notification-config
+    [topics]="topics">
+  </mv-notification-config>
+
+  ...
+  

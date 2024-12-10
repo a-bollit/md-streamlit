@@ -1,0 +1,57 @@
+Documentación mv-show-when
+link Información
+Propiedades:
+
+link mvShowWhen
+Información
+Información de la directiva mv-show-when.
+code
+Esta directiva se puede usar en cualquier componente para mostrarlo u ocultarlo según estemos autenticados o no, de manera que un mismo componente se muestre o se oculte dependiendo de si estamos o no logados
+
+Ejemplo de uso
+Uso básico de la directiva mv-show-when.
+code
+A continuación se muestra un ejemplo básico de uso de la directiva.
+
+HTML
+TS
+
+  <mv-button
+    mvShowWhen="login"
+    color="primary">
+    Acceso premium
+  </mv-button>
+
+  <mv-button
+    mvShowWhen="logout"
+    color="secondary">
+    Acceso básico
+  </mv-button>
+  
+El botón 'Acceso premium' se mostrará cuando estemos logados':
+
+El botón 'Acceso básico' se mostrará cuando no estemos logados':
+
+mvShowWhen
+Cuándo mostrar componente.
+code
+La propiedad mvShowWhen permite definir si queremos que se muestre un componente cuando estamos logados o queremos que se muestre cuando no estamos logados.
+
+HTML
+TS
+
+  <mv-button
+    mvShowWhen="login"
+    color="primary">
+    Acceso premium
+  </mv-button>
+
+  <mv-button
+    mvShowWhen="logout"
+    color="secondary">
+    Acceso básico
+  </mv-button>
+  
+El botón 'Acceso premium' se mostrará cuando estemos logados':
+
+El botón 'Acceso básico' se mostrará cuando no estemos logados':

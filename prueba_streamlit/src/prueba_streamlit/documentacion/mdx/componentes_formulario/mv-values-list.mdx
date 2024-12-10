@@ -1,0 +1,1212 @@
+Documentación mv-values-list
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link adapt
+link columnCode
+link columnText
+link data
+link dataSourceLoader
+link defaultSortColumn
+link defaultSortDirection
+link delay
+link dialogSubtitle
+link dialogTitle
+link filter
+link filterTitle
+link filterPlaceholder
+link hideRowTitles
+link hint
+link labelCode
+link labelText
+link loadingDelay
+link Icon
+link iconFontSet
+link pageSize
+link placeholderCode
+link placeholderText
+link required
+link tableColumns
+link validateFirst
+link validateOnType
+link Hide
+Eventos:
+
+link changeEvent
+link getSelected
+Información
+Información del componente mv-values-list.
+code
+Este componente sirve para mostrar u obtener una gran cantidad de información de la manera más sencilla posible. Se pueden cargar datos del servidor o locales. Al abrir el diálogo podremos filtrar entre todos los elementos, paginar, ordenar...
+
+Ejemplo de uso
+Uso básico del componente mv-values-list.
+code
+A continuación se muestra un ejemplo básico de uso del componente con origen de datos en servidor y en local.
+
+La carga de los datos se hace mediante el uso del componente mv-table-responsive. Consulta la documentación para más información.
+
+HTML
+ColumnsTS
+DataTS
+TS
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    #mvValuesListEjemploUso
+
+    [(ngModel)]="valuesList001Model"
+    [dataSourceLoader]="loadDataSource"
+    [tableColumns]="tableColumnsEjemploUso"
+
+    dialogTitle="Ejemplo de uso con dataSourceLoader"
+    dialogSubtitle="Ejemplo con datos cargados"
+    filterTitle="Filtro"
+    filterPlaceholder="Buscar..."
+    placeholderCode="Código"
+    placeholderText="Descripción"
+    hint="Seleccionado"
+    labelCode="Identificador"
+    labelText="Descripción"
+
+    required="true"
+    validateFirst="true"
+    validateOnType="true"
+
+    iconFontSet="fa"
+    icon="fa-address-book"
+    pageSize="8"
+    adapt="true"
+    filter="true"
+    hideRowTitles="false"
+    delay="1500"
+    loadingDelay="3000"
+
+    columnCode="uuid"
+    columnText="nombre_alumno"
+
+    defaultSortColumn="uuid"
+    defaultSortDirection="asc"
+  >
+  </mv-values-list>
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    #mvValuesListEjemploUso2
+
+    [(ngModel)]="valuesList002Model"
+    [data]="dataArray"
+    [tableColumns]="tableColumnsEjemploUso"
+
+    dialogTitle="Ejemplo de uso con array"
+    dialogSubtitle="Ejemplo con datos cargados"
+    filterTitle="Filtro"
+    filterPlaceholder="Buscar..."
+    placeholderCode="Código"
+    placeholderText="Descripción"
+    hint="Seleccionado"
+    labelCode="Identificador"
+    labelText="Descripción"
+
+    required="false"
+    validateFirst="true"
+    validateOnType="true"
+
+    icon="menu_open"
+    pageSize="3"
+    adapt="true"
+    filter="true"
+    hideRowTitles="false"
+    delay="500"
+    loadingDelay="1000"
+
+    columnCode="uuid"
+    columnText="nombre_alumno"
+
+    defaultSortColumn="uuid"
+    defaultSortDirection="desc"
+  >
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+UUID *
+Seleccionado
+Descripción
+Valor de la variable 'valuesList001Model':
+
+getSelected:
+
+Ejemplo con datos obtenidos del cliente (data):
+
+Identificador
+Seleccionado
+Descripción
+Valor de la variable 'valuesList002Model':
+
+getSelected:
+
+adapt
+Ancho del 100%.
+code
+La propiedad adapt permite definir el ancho del componente al 100% del contenedor.
+
+HTML
+
+  <mv-values-list
+    [data]="dataArray"
+    adapt="true">
+  </mv-values-list>
+
+  <mv-values-list
+    [data]="dataArray"
+    adapt="false"
+  ></mv-values-list>
+
+  <mv-values-list
+    [data]="dataArray"
+  ></mv-values-list>
+  
+Con adapt a true:
+
+Código
+Descripción
+Con adapt a false:
+
+Código
+Descripción
+Sin adapt (comportamiento por defecto):
+
+Código
+Descripción
+columnCode
+Atributo del código.
+code
+La propiedad columnCode es obligatoria. Permite definir el atributo del JSON que será usado como código.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    [dataSourceLoader]="loadDataSource"
+    columnCode="nombre_alumno"
+    columnText="apellido_1"
+  ></mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    [data]="dataArray"
+    columnCode="nombre_alumno"
+    columnText="apellido_1"
+  ></mv-values-list>
+  
+Con columnCode='nombre_alumno'
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+columnText
+Atributo de la descripción.
+code
+La propiedad columnText es obligatoria. Permite definir el atributo del JSON que será usado como descripción.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    [dataSourceLoader]="loadDataSource"
+    columnCode="nombre_alumno"
+    columnText="apellido_1"
+  ></mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    [data]="dataArray"
+    columnCode="nombre_alumno"
+    columnText="apellido_1"
+  ></mv-values-list>
+  
+Con columnText='apellido_1'
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+data
+Datos cargados desde cliente.
+code
+La propiedad data permite definir los datos del componente a partir de un array en el cliente.
+
+HTML
+TS
+
+  <mv-values-list
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Código
+Descripción
+dataSourceLoader
+Datos cargados desde servidor.
+code
+La propiedad dataSourceLoader permite cargar los datos desde el servidor. Además de la propiedad, hay que definir lo siguiente:
+
+Un servicio rest que obtenga los datos deseados
+
+Una clase que implemente mvLoadData, que servirá de interfaz entre el servicio y el values-list
+
+En el código asociado al values-list, se debe crear un objeto de la clase LoadData, al que se le debe pasar el servicio que obtiene los datos
+
+Si se quiere definir un paginador no se hará con la propiedad pageSize, sino pasando el parámetro al servicio que obtiene los datos
+
+HTML
+TS
+LOAD DATA
+SERVICE
+
+  <mv-values-list
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Código
+Descripción
+defaultSortColumn
+Columna de ordenación por defecto.
+code
+La propiedad defaultSortColumn permite definir la columna de ordenación por defecto de la tabla de resultados mostrada en la ventana de diálogo.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    defaultSortColumn="apellido_1"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    defaultSortColumn="apellido_1"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+defaultSortColumn='apellido_1'
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+defaultSortDirection
+Dirección de ordenación por defecto.
+code
+La propiedad defaultSortDirection permite definir la dirección ordenación de la tabla de resultados mostrada en la ventana de diálogo.
+
+Si se establece la propiedad defaultSortDirection, obligatoriamente debe estar definida también la propiedad defaultSortColumn
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    defaultSortColumn="apellido_1"
+    defaultSortDirection="desc"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    defaultSortColumn="apellido_1"
+    defaultSortDirection="desc"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+defaultSortDirection='desc'
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+delay
+Retardo antes de realizar la búsqueda.
+code
+La propiedad delay crea un retardo de los milisegundos especificados, antes de realizar la búsqueda.
+
+Este retardo permite al usuario escribir el código evitando realizar con cada pulsación una consulta.
+
+El valor por defecto es 600 milisegundos.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    delay="3000"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    delay="3000"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Datos de servidor
+Retardo de 3000 milisegundos.
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+dialogSubtitle
+Subtítulo del diálogo.
+code
+La propiedad dialogSubtitle permite especificar un subtítulo para el diálogo.
+
+El valor por defecto es Seleccione un elemento de la lista.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    dialogSubtitle="Subtítulo de ejemplo"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    dialogSubtitle="Subtítulo de ejemplo"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+dialogSubtitle='Subtítulo de ejemplo'
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+dialogTitle
+Título del diálogo.
+code
+La propiedad dialogTitle permite especificar un título para el diálogo.
+
+El valor por defecto es Lista de resultados.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    dialogTitle="Titulo de ejemplo"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    dialogTitle="Titulo de ejemplo"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+dialogTitle='Titulo de ejemplo'
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+filter
+Input para filtrar los resultados del diálogo.
+code
+La propiedad filter permite mostrar un input para filtrar los resultados del diálogo.
+
+El valor por defecto es false.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    filter="true"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    filter="true"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en servidor y ocultando el filtro -->
+  <mv-values-list
+    filter="false"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local y ocultando el filtro-->
+  <mv-values-list
+    filter="false"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader) y filter=true:
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data) y filter=true:
+
+Código
+Descripción
+Ejemplo con datos obtenidos del servidor (dataSourceLoader) y filter=false:
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data) y filter=false:
+
+Código
+Descripción
+filterTitle
+Título del input del filtro.
+code
+La propiedad filterTitle permite especificar un título para el filtro del diálogo.
+
+El valor por defecto es Buscador.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    filter="true"
+    filterTitle="Título de ejemplo"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    filter="true"
+    filterTitle="Título de ejemplo"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+filterTitle='Título de ejemplo'
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+filterPlaceholder
+Placeholder del input del filtro.
+code
+La propiedad filterPlaceholder permite especificar un placeholder para el input del filtro del diálogo.
+
+El valor por defecto es Escriba para buscar....
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    filter="true"
+    filterPlaceholder="Placeholder de ejemplo"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    filter="true"
+    filterPlaceholder="Placeholder de ejemplo"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+hideRowTitles
+Ocultar los títulos de las columnas.
+code
+La propiedad hideRowTitles permite ocultar la fila que contiene los títulos de cada columna.
+
+El valor por defecto es false.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    hideRowTitles="true"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    hideRowTitles="true"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+hint
+Mostrar un texto de ayuda
+code
+La propiedad hint permite mostrar un texto a modo de ayuda o explicación debajo del componente.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    hint="Hint de ejemplo"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    hint="Hint de ejemplo"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Hint de ejemplo
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Hint de ejemplo
+Descripción
+labelCode
+Label del código del values-list.
+code
+La propiedad labelCode permite especificar una label del input del código del values-list.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    labelCode="Label ejemplo"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    labelCode="Label ejemplo"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Label ejemplo
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Label ejemplo
+Descripción
+labelText
+Retardo después de la carga de datos del servidor.
+code
+La propiedad labelText permite especificar una label del input del código del values-list.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    labelText="Label ejemplo"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    labelText="Label ejemplo"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Label ejemplo
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Label ejemplo
+loadingDelay
+Retardo después de la carga de datos del servidor.
+code
+La propiedad loadingDelay crea un retardo de los milisegundos especificados, después de la carga de datos del servidor.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    loadingDelay=3000
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    loadingDelay=3000
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Retardo de 3000 milisegundos
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+icon
+Icono a mostrar.
+code
+La propiedad icon permite mostrar un icono en el botón que abre el diálogo.
+
+Los iconos disponibles son los que proporciona Material.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    icon="view_list"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    icon="view_list"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+iconFontSet
+Fuente del icono
+code
+La propiedad iconFontSet permite definir la familia de iconos que queremos usar en el icono del botón, tan solo en caso de querer usar Font Awesome. Si queremos usar los iconos de Material no hay que usar esta propiedad.
+
+HTML
+
+  <mv-values-list
+    [dataSourceLoader]="loadDataSource"
+    iconFontSet="fa"
+    icon="fa-address-book"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  <mv-values-list
+    [data]="dataArray"
+    icon="menu_open"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con icono de font awesome
+
+Código
+Descripción
+Ejemplo con icono de material
+
+Código
+Descripción
+pageSize
+Número de items por página.
+code
+La propiedad pageSize permite definir el número de items por cada página.
+
+Si no se inicializa no hay paginador.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    pageSize=5
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    pageSize=5
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+placeholderCode
+Placeholder del input del código
+code
+La propiedad placeholderCode permite especificar el placeholder del input del código del values-list.
+
+Si no se especifica ningún valor no muestra placeholder
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    placeholderCode="Ejemplo"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    placeholderCode="Ejemplo"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+placeholderText
+Placeholder del input de la descripción
+code
+La propiedad placeholderText permite especificar el placeholder del input de la descripción del values-list.
+
+Si no se especifica ningún valor no muestra placeholder
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    placeholderText="Ejemplo"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    placeholderText="Ejemplo"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+required
+El componente ha de tener un valor obligatoriamente.
+code
+La propiedad required hace el componente obligatorio, es decir, tiene que tener un valor asignado
+
+El valor por defecto es false.
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    required="true"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    required="true"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código *
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código *
+Descripción
+tableColumns
+Títulos de las columnas del diálogo
+code
+La propiedad tableColumns permite especificar los títulos de las columnas de los datos que se muestran en el diálogo.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    [tableColumns]=tableColumnsExample
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    [tableColumns]=tableColumnsExample
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+validateFirst
+Validación inicial del componente.
+code
+La propiedad validateFirst permite validar o no el componente al ser cargado, ya que a lo mejor no queremos que de primeras se marquen como erróneos determinados input o al revés, queremos que nada más cargar la vista se haga la validación
+
+En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo required=true
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    required="true"
+    validateFirst="true"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    required="true"
+    validateFirst="true"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    required="true"
+    validateFirst="false"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    required="true"
+    validateFirst="false"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader) y validateFirst=true:
+
+Código *
+Campo requerido
+Descripción
+Ejemplo con datos obtenidos del cliente (data) y validateFirst=true:
+
+Código *
+Campo requerido
+Descripción
+Ejemplo con datos obtenidos del servidor (dataSourceLoader) y validateFirst=false:
+
+Código *
+Descripción
+Ejemplo con datos obtenidos del cliente (data) y validateFirst=false:
+
+Código *
+Descripción
+validateOnType
+Validación en tiempo real.
+code
+La propiedad validateOnType permite activar la validación del componente en tiempo real, esto es según se va escribiendo.
+
+En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo required=true
+
+HTML
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    required="true"
+    validateOnType="true"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    required="true"
+    validateOnType="true"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    required="true"
+    validateOnType="false"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    required="true"
+    validateOnType="false"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader) y validateOnType = true:
+
+Código *
+Descripción
+Ejemplo con datos obtenidos del cliente (data) y validateOnType = true:
+
+Código *
+Descripción
+Ejemplo con datos obtenidos del servidor (dataSourceLoader) y validateOnType = false:
+
+Código *
+Descripción
+Ejemplo con datos obtenidos del cliente (data) y validateOnType = false:
+
+Código *
+Descripción
+Hide
+Ocultar campos.
+code
+Las propiedades hidecode y hideText sirven para ocultar los componentes de código y de texto
+
+HTML
+
+  <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>)
+  y hideCode = true:</p>
+  <mv-values-list
+    required=true
+    validateOnType=true
+    hideCode=true
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <p>Ejemplo con datos obtenidos del student (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>)
+    y hideText = true:</p>
+  <mv-values-list
+    required=true
+    hideText=true
+    validateOnType=true
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader) y hideCode = true:
+
+Descripción
+Ejemplo con datos obtenidos del cliente (data) y hideText = true:
+
+Código *
+changeEvent
+Evento change.
+code
+El evento changeEvent permite definir una función que se ejecutará cuando cambie el valor del input
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    (changeEvent)="changeEventFunction($event)"
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    (changeEvent)="changeEventFunction($event)"
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Código
+Descripción
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+getSelected
+Objeto seleccionado.
+code
+El evento getSelected permite obtener el objeto seleccionado en la lista del componente
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-values-list
+    #mvValuesListGetSelectedExample
+    [dataSourceLoader]="loadDataSource"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  <mv-button
+    (clickEvent)="getSelectedEvent()"
+    color="primary">
+    Llamar a getSelected()
+  </mv-button>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-values-list
+    #mvValuesListGetSelectedExample2
+    [data]="dataArray"
+    columnCode="uuid"
+    columnText="nombre_alumno">
+  </mv-values-list>
+  <mv-button
+    (clickEvent)="getSelectedEvent()"
+    color="primary">
+    Llamar a getSelected()
+  </mv-button>
+  
+Código
+Descripción
+
+getSelected:
+
+Ejemplo con datos obtenidos del cliente (data):
+
+Código
+Descripción
+
+getSelected:

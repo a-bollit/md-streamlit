@@ -1,0 +1,29 @@
+Documentación mv-landing-view
+link Información
+link Configuración
+Información
+Información general del componente mv-landing-view.
+code
+Este componente se trata de la vista de presentación de la app. Se trata de un componente de aplicación, por tanto es opcional. Se puede mantener el que viene por defecto en la plantilla, se puede modificar o directamente se puede eliminar.
+
+Configuración
+Configuración del componente mv-landing-view.
+code
+Este componente, al ser opcional de aplicación no tiene prácticamente ninguna configuración que el usuario tenga que tener en cuenta.
+
+El único aspecto a considerar es que la vista hacia la que se navega después de landing-view es la que esté definida en la variable mainViewRoute del archivo config-default.json
+
+Si en nuestra aplicación se decide eliminar esta vista (landing-view), habrá que poner en la variable landingViewRoute del archivo config-default.json la misma vista que haya definida en mainViewRoute.
+
+config-default-main-frame.json
+
+  {
+  	"mova": {
+  		...
+  		"landingViewRoute": "/landing-view",
+  		...
+  		"mainViewRoute": "/main-menu",
+      ...
+    },
+    ...
+  }

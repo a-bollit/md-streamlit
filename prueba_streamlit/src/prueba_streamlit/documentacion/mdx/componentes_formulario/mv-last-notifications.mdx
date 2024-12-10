@@ -1,0 +1,203 @@
+Documentación last-notifications
+link Información
+link Ejemplo de uso
+link Template
+Eventos:
+
+link template
+link configuration
+Eventos:
+
+link Update
+link Delete
+link DeleteAll
+Información
+Información del componente mv-last-notifications.
+code
+Este componente sirve para mostrar las últimas notificaciones recibidas al dispositivo. Solo funcionará por tanto, si tenemos habilitadas las notificaciones push para nuestra app.
+
+Ejemplo de uso
+Ejemplo de uso del componente mv-last-notifications
+code
+Ejemplo de uso básico para las notificaciones. Se puede ver accediendo al apartado de notificaciones del menú /last-notifications-view
+
+En el ejemplo se usa un template propio, el uso de eliminar notificaciones y la actualización manual de las notificaciones.
+
+HTML
+Template
+TS
+
+  <!-- Componente del listado de notificaciones -->
+  <mv-last-notifications
+    #notificationComponent
+    [configuration]="configuration"
+    [template]="templateNotification"
+    >
+  </mv-last-notifications>
+  
+Template de notificación
+Template.
+code
+Se usa un ng-template de angular.
+
+Al template se le pasa la siguiente información:
+
+let-date: Fecha de la notificación
+
+let-data: Recibe los datos de la notificación
+
+titulo: Titulo de la notificación
+mensaje: Mensaje de la notificación
+infoApp: Objeto de info
+HTML
+TS
+
+  
+  <!-- Template para cada notificación -->
+  <ng-template #templateNotification let-data="data" let-date="date">
+    <mv-card class="card-code" >
+
+      <div class="contentDate ">
+      Fecha: {{date  | date:'dd/MM/yyyy hh:mm:ss'}}
+      </div>
+
+      <mv-card-header >
+        <mv-card-title
+          class="contentTitle"
+        >
+          <strong>{{data.titulo}}</strong>
+        </mv-card-title>
+        <mv-card-subtitle></mv-card-subtitle>
+      </mv-card-header>
+
+      <div class="row">
+
+        <div class="contentInfo  ">
+
+          <mv-card-content>
+            <ul>
+              <li>{{data.mensaje}}</li>
+            </ul>
+          </mv-card-content>
+        </div>
+
+        <div class="contentActions ">
+
+          <mv-button
+            appearance="raised"
+            color="warn"
+            (click)="deleteNotification($event, data)">
+            <mat-icon>delete</mat-icon>
+          </mv-button>
+          
+          <mv-button
+            appearance="raised"
+            color="primary"
+            (click)="openNotification(data)">
+            <mat-icon>library_books</mat-icon>
+          </mv-button>
+
+        </div>
+          
+      </div>
+    </mv-card>
+  </ng-template>
+
+  
+Update de notificación
+Update.
+code
+Actualiza el listado de notificaciones. En teléfonos se actualiza solo al recibir una notificación. Se le puede pasar un Date() para que descargue las notificaciones desde esa fecha.
+
+HTML
+TS
+
+  
+  <mv-button
+    *ngIf="!isMobileApp"
+    appearance="raised"
+    color="warn"
+    (click)="update()">
+    <mat-icon>update</mat-icon> Actualizar
+  </mv-button>
+
+  
+Delete de notificación
+Delete.
+code
+Metodo para borrar una notificación. Se le debe pasar la notificación (El objeto que se recibe en let-data) que se quiere borrar.
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="warn"
+    (click)="deleteNotification($event, data)">
+    <mat-icon>delete</mat-icon>
+  </mv-button>
+
+  
+DeleteAll de notificación
+DeleteAll.
+code
+Metodo para borrar todas las notificaciones del listado
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="warn"
+    (click)="deleteAll()">
+    <mat-icon>delete</mat-icon> Borrar todas
+  </mv-button>
+
+  
+Configuration
+Configuration.
+code
+Configuración de la petición notificaciones:
+
+limit: Límite de notificaciones
+
+HTML
+TS
+
+  <!-- Componente del listado de notificaciones -->
+  <mv-last-notifications
+    #notificationComponent
+    [configuration]="configuration"
+    [template]="templateNotification"
+    >
+  </mv-last-notifications>
+
+  
+template
+Propiedad del template.
+code
+Propiedad para pasar el template html para las notificaciones
+
+HTML
+TS
+
+  <!-- Componente del listado de notificaciones -->
+  <mv-last-notifications
+    #notificationComponent
+    [configuration]="configuration"
+    [template]="templateNotification"
+    >
+  </mv-last-notifications>
+
+
+  
+  <!-- Template para cada notificación -->
+  <ng-template #templateNotification let-data="data" let-date="date">
+    <mv-card class="card-code" >
+
+      <div class="contentDate ">
+      Fecha: {{date  | date:'dd/MM/yyyy hh:mm:ss'}}
+      </div>
+
+      <mv-card-header >
+        <mv-card-title

@@ -1,0 +1,197 @@
+Consideraciones generales
+El framework MOVA proporciona elementos (como clases y variables CSS) centralizadas para facilitar la estandarización y el desarrollo de las aplicaciones:
+
+link Consideraciones de diseño
+link Clases CSS
+link Mixins CSS
+Consideraciones de diseño
+code
+
+Contenedores de información:
+
+En la medida de lo posible es recomendable encuadrar la información dentro de un contenedor con un ancho menor que el de la pantalla y de un color distinto al color de fondo, para que el usuario visualice más fácilmente la información.
+
+Mostramos como ejemplo este mismo contenedor de documentación:
+
+HTML
+CSS
+
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title><strong>Consejos de diseño</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+
+    ...
+
+    </mv-card-content>
+  </mv-card>
+  
+Componente HTML mv-card - Contenedor basado en Material con título, subtítulo, contenido...
+Clase CSS 'card-code' - Añade estilo al componente.
+Ancho máximo del contenedor - Mediante variable SCSS de MOVA.
+
+Cards:
+
+MOVA proporciona clases para mostrar información importante, de peligro, de aviso...
+
+HTML
+
+  <mv-card
+    class="warning-card">
+    <mv-card-header>
+      <mv-card-title>
+        <strong>Aviso</strong>
+      </mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </mv-card-content>
+  </mv-card>
+
+  <mv-card
+    class="danger-card">
+    <mv-card-header>
+      <mv-card-title>
+        <strong>Peligro</strong>
+      </mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </mv-card-content>
+  </mv-card>
+
+  <mv-card
+    class="success-card">
+    <mv-card-header>
+      <mv-card-title>
+        <strong>Correcto</strong>
+      </mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </mv-card-content>
+  </mv-card>
+
+  <mv-card
+    class="info-card">
+    <mv-card-header>
+      <mv-card-title>
+        <strong>Información</strong>
+      </mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </mv-card-content>
+  </mv-card>
+  
+Aviso
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Peligro
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Correcto
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Información
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+
+Grid 12:
+
+Para distribuir elementos según el tamaño de la pantalla MOVA usa el grid12 de Bootstrap. Ver explicación y ejemplos de uso en layout-responsive
+
+Clases CSS de utilidad
+code
+
+Mostramos a continuación todas las clases CSS que proporciona MOVA a los desarrolladores. . Para usarlas hay que importar los estilos generales de la app:
+
+SCSS
+
+  @import '~@mova/components/_variables.scss';
+
+  // Ya se puede usar cualquier clase, mixin o variable MOVA
+  
+.card-code - Estilo para el componente mv-card como contenedor.
+.fade-in - Animación de entrada a cualquier elemento.
+.display-none - Ocultar cualquier elemento.
+.display-none-xs - Ocultar cualquier elemento cuando el tamaño de la pantalla sea móvil.
+.display-none-sm - Ocultar cualquier elemento cuando el tamaño de la pantalla sea pequeño.
+.display-none-md - Ocultar cualquier elemento cuando el tamaño de la pantalla sea mediano.
+.display-none-lg - Ocultar cualquier elemento cuando el tamaño de la pantalla sea grande.
+.mv-h1 - Estilo para títulos con elementos h1.
+.no-select - Hace que un texto no sea seleccionable.
+.shadow - Crea una sombra en cualquier elemento.
+.text-center - Centrar textos o elementos.
+.truncate - Truncar un texto que no tiene suficiente espacio añadiendo puntos suspensivos.
+.warning-card - Estilos para el componente mv-card en color amarillo (aviso).
+.info-card - Estilos para el componente mv-card en color amarillo (información).
+.success-card - Estilos para el componente mv-card en color amarillo (correcto).
+.danger-card - Estilos para el componente mv-card en color amarillo (fallo o peligro).
+Mixins CSS
+code
+
+Mostramos a continuación todas los mixins CSS que proporciona MOVA a los desarrolladores. . Para usarlos hay que importar los estilos generales de la app:
+
+SCSS
+
+  @import '~@mova/components/_variables.scss';
+
+  // Ya se puede usar cualquier clase, mixin o variable MOVA
+  .examples_includes{
+    // Theme
+    @include icon-size(75px);
+
+    // mv-button
+    @include button-color($primary, $accent);
+
+    // mv-button-login
+    @include icon-color($primary);
+
+    // mv-button-scroll-to-top
+    @include icon-color($primary);
+
+    // mv-checkbox-x
+    @include checkbox-color($primary, $accent);
+
+    // mv-footer-tab
+    @include border-color($primary);
+
+    // mv-input
+    @include input-color($primary)
+    
+    // mv-radio
+    @include radio-color($primary)
+    
+    // mv-table-responsive
+    @include card-format()
+    @include card-inline-format()
+    @include card-inline-truncate-format()
+    
+    // mv-tree-filter-item
+    @include icon-color($primary)
+  }
+  
+@icon-size(tamaño) - Mixin para cambiar correctamente el tamaño de un componente mv-icon.
+@button-color(color) - Mixin para cambiar correctamente el color de un componente mv-button.
+@icon-color(color) - Mixin para cambiar correctamente el color de un componente mv-button-login.
+@icon-color(color) - Mixin para cambiar correctamente el color de un componente mv-button-scroll-to-top.
+@checkbox-color(color) - Mixin para cambiar correctamente el color de un componente mv-checkbox-x.
+@border-color(color) - Mixin para cambiar correctamente el color de un componente mv-footer-tab.
+@input-color(color) - Mixin para cambiar correctamente el color de un componente mv-input.
+@radio-color(color) - Mixin para cambiar correctamente el color de un componente mv-radio.
+@card-format(formato) - Mixin para cambiar correctamente el formato de un componente mv-table-responsive.
+@card-inline-format(formato) - Mixin para cambiar correctamente el formato de un componente mv-table-responsive.
+@card-inline-truncate-format(formato) - Mixin para cambiar correctamente el formato de un componente mv-table-responsive.
+@icon-color(tamaño) - Mixin para cambiar correctamente el color de un componente mv-tree-filter-item.

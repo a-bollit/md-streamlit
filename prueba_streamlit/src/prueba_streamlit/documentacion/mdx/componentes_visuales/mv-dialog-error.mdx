@@ -1,0 +1,435 @@
+Documentación mv-dialog-error
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link acceptAppearance
+link acceptColor
+link acceptText
+link errorText
+link disableClose
+link initAppearance
+link initColor
+link loginAppearance
+link loginColor
+link showAcceptButton
+link showCloseButton
+link showInitButton
+link showLoginButton
+link showDetail
+link successCallback
+link title
+link titleAccent
+link titleWarn
+Información
+Información del componente mv-dialog-error.
+code
+El componente mv-dialog-error se basa en el componente mat-dialog de Angular Material, al que se le añade funcionalidad y estilos adicionales.
+
+Sirve para mostrar un diálogo que se adapta al dispositivo, con el error que se desea mostrar.
+
+Ejemplo de uso
+Uso básico del componente mv-dialog-error.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+
+
+  <p><strong>Ejemplo de diálogo:</strong></p>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogErrorExample()">
+    Lanzar diálogo
+  </mv-button>
+
+  <p><strong>Ejemplo de error no controlado:</strong></p>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="ejemploUsoNoControlado()">
+    Lanzar diálogo
+  </mv-button>
+
+  <p><strong>Ejemplo de error controlado:</strong></p>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="ejemploUsoControlado()">
+    Lanzar diálogo
+  </mv-button>
+  
+Ejemplo de diálogo de error local. Se muestra el dialogo bajo demanda y con una configuración personalizada:
+
+Ejemplo de llamada 404 y 500 sin controlar el error. Se hace una petición http y se muestra el dialogo autáticamente cuando esta falla:
+
+Ejemplo de error de una llamada http capturando el error. Se hace una petición http y no se muestra automáticamente el dialogo cuando falla. Para esta opción, añadir al header de la petición un campo mv-hide-error con valor true. Ver ejemplo en TS:
+
+acceptAppearance
+Apariencia del botón aceptar.
+code
+La propiedad acceptAppearance permite definir la apariencia del botón asociado a la acción de aceptar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogErrorAcceptAppearance()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con acceptAppearance = 'fab':
+
+acceptColor
+Color del botón aceptar.
+code
+La propiedad acceptColor permite definir el color del botón asociado a la acción de aceptar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogErrorAcceptColor()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con acceptColor = 'warn':
+
+acceptText
+Texto del botón aceptar.
+code
+La propiedad acceptText permite definir el texto del botón asociado a la acción de aceptar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogErrorAcceptText()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con acceptText = 'Confirmación':
+
+errorText
+Detalle del error.
+code
+La propiedad errorText permite definir el detalle específico del error, por ejemplo una línea de código o llamada http.
+
+Para que el detalle de errorText esté abierto por defecto, hay que configurar la variable showDetail a true.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogErrorTextAppearance()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con errorText = 'Error en la línea de código 195':
+
+disableClose
+No permitir cerrar el diálogo.
+code
+La propiedad disableClose permite que no se cierre el diálogo al pulsar fuera del contenedor del mismo.
+
+Esto puede servir para errores críticos, que obliguen al usuario a refrescar la app entera por ejemplo.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogDisableClose()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con disableClose = true:
+
+initAppearance
+Apariencia del botón aceptar.
+code
+La propiedad initAppearance permite definir la apariencia del botón asociado a la acción de aceptar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogErrorInitAppearance()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con initAppearance = 'fab':
+
+initColor
+Color del botón de ir a inicio.
+code
+La propiedad initColor permite definir el color del botón asociado a la acción de ir a inicio.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogErrorInitColor()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con initColor = 'warn':
+
+loginAppearance
+Color del botón de login.
+code
+La propiedad loginAppearance permite definir la apariencia del botón asociado a la acción de login.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogErrorLoginAppearance()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con loginAppearance = 'fab':
+
+loginColor
+Color del botón de ir a inicio.
+code
+La propiedad loginColor permite definir el color del botón asociado a la acción de ir a login.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleDialogErrorLoginColor()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con loginColor = 'warn':
+
+showAcceptButton
+Mostrar o no el botón aceptar.
+code
+La propiedad showAcceptButton permite mostrar u ocultar el botón de aceptar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowAcceptButtonTrue()">
+    Lanzar diálogo
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowAcceptButtonFalse()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con showAcceptButton a true:
+
+Con showAcceptButton a false:
+
+showCloseButton
+Mostrar o no el botón de cerrar.
+code
+La propiedad showCloseButton permite mostrar u ocultar el botón de cerrar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowCloseButtonTrue()">
+    Lanzar diálogo
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowCloseButtonFalse()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con showCloseButton a true:
+
+Con showCloseButton a false:
+
+showInitButton
+Mostrar o no el botón de ir a inicio.
+code
+La propiedad showInitButton permite mostrar u ocultar el botón de cerrar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowInitButtonTrue()">
+    Lanzar diálogo
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowInitButtonFalse()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con showInitButton a true:
+
+Con showInitButton a false:
+
+showLoginButton
+Mostrar o no el botón de ir a login.
+code
+La propiedad showLoginButton permite mostrar u ocultar el botón de cerrar.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowLoginButtonTrue()">
+    Lanzar diálogo
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowLoginButtonFalse()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con showLoginButton a true:
+
+Con showLoginButton a false:
+
+showDetail
+Mostrar o no el detalle del error.
+code
+La propiedad showDetail permite mostrar u ocultar la sección del detalle del error errorText.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowDetailTrue()">
+    Lanzar diálogo
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleShowDetailFalse()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con showDetail a true:
+
+Con showDetail a false:
+
+successCallback
+Función de callback.
+code
+La propiedad successCallback permite definir la acción a realizar cuando pulsamos algún botón del diálogo.
+
+La función de callback devolverá el resultado de la acción.
+
+Devuelve un objeto con los siguientes parametros, marcando a true el botón que el usuario hubiera marcado
+
+accept: Al hacer click al botón de aceptar
+close: Al cerrar el dialogo
+out: Al hacer click fuera del dialogo
+login: Al hacer click al botón de login
+init: Al hacer click en el botón de inicio
+HTML
+TS
+RETURN
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSuccessCallbackExample()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con successCallback:
+
+title
+Título del diálogo.
+code
+La propiedad title permite definir la apariencia del título en color warn.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleTitle()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con title = 'Error crítico':
+
+titleAccent
+Apariencia del título warn.
+code
+La propiedad titleAccent permite definir la apariencia del título en color accent.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleTitleAccentTrue()">
+    Lanzar diálogo
+  </mv-button>
+  
+Con titleAccent a true:
+
+titleWarn
+Apariencia del título warn.
+code
+La propiedad titleWarn permite definir la apariencia del título en color warn.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleTitleWarnTrue()">
+    Lanzar diálogo
+  </mv-button>
+  

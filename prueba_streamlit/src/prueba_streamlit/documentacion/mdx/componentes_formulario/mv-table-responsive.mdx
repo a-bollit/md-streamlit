@@ -1,0 +1,1456 @@
+Documentación mv-table-responsive
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link dataSourceLoader
+link data
+link defaultSortColumn
+link defaultSortDirection
+link elementsList
+link excludeTableColumns
+link filter
+link filterTitle
+link filterPlaceholder
+link formatType
+link hideRowTitles
+link loadingDelay
+link pageSize
+link shadow
+link tableColumns
+Eventos:
+
+link selectItem
+Información
+Información del componente mv-table-responsive.
+code
+El componente mv-table-responsive se basa en el componente mat-table de Angular Material, al que se le añade funcionalidad y estilos adicionales.
+
+Ejemplo de uso
+Uso básico del componente mv-table-responsive.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    *ngIf="loadDataSource"
+    [dataSourceLoader]="loadDataSource"
+    [pageSize]="6">
+  </mv-table-responsive>
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    *ngIf="dataStudent"
+    [data]="dataStudent"
+    [pageSize]="6">
+  </mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+data
+Datos cargados desde cliente.
+code
+La propiedad data permite definir los datos del componente a partir de un array en el cliente.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    [data]="dataStudent"
+    ...
+  ></mv-table-responsive>
+  
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+dataSourceLoader
+Datos cargados desde servidor.
+code
+La propiedad dataSourceLoader permite cargar los datos desde el servidor. Además de la propiedad, hay que definir lo siguiente:
+
+Un servicio rest que obtenga los datos deseados
+
+Una clase que implemente mvLoadData, que servirá de interfaz entre el servicio y el values-list
+
+En el código asociado al values-list, se debe crear un objeto de la clase LoadData, al que se le debe pasar el servicio que obtiene los datos
+
+Si se quiere definir un paginador no se hará con la propiedad pageSize, sino pasando el parámetro al servicio que obtiene los datos
+
+HTML
+TS
+LOAD DATA
+SERVICE
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    [dataSourceLoader]="loadDataSource"
+    ...
+  ></mv-table-responsive>
+  
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+defaultSortColumn
+Columna de ordenación por defecto.
+code
+La propiedad defaultSortColumn permite definir la columna de ordenación por defecto de la tabla de resultados mostrada en la ventana de diálogo.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    defaultSortColumn="apellido_1"
+    ...
+  ></mv-table-responsive>
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    defaultSortColumn="apellido_1"
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+1000	ca63f20b-a148-43c2-bb60-91edf335c864	Test	Test	Test	83923202C	2001-01-21T00:00:00	21	0
+1008	70267c88-ee54-4793-953c-d4ceb065fef5	Test	Test	Test	53687164N	2001-01-21T00:00:00	21	0
+1009	562b53e4-6c69-4dac-8a5d-519905cde8d3	Test	Test	Test	41430329S	2001-01-21T00:00:00	21	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+Elementos por página
+6
+1 - 6 de 9
+defaultSortDirection
+Dirección de ordenación por defecto.
+code
+La propiedad defaultSortDirection permite definir la dirección ordenación de la tabla de resultados mostrada en la ventana de diálogo.
+
+Si se establece la propiedad defaultSortDirection, obligatoriamente debe estar definida también la propiedad defaultSortColumn
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    defaultSortDirection="desc"
+    ...
+  ></mv-table-responsive>
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    defaultSortDirection="desc"
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+1000	ca63f20b-a148-43c2-bb60-91edf335c864	Test	Test	Test	83923202C	2001-01-21T00:00:00	21	0
+1008	70267c88-ee54-4793-953c-d4ceb065fef5	Test	Test	Test	53687164N	2001-01-21T00:00:00	21	0
+1009	562b53e4-6c69-4dac-8a5d-519905cde8d3	Test	Test	Test	41430329S	2001-01-21T00:00:00	21	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+Elementos por página
+6
+1 - 6 de 9
+elementsList
+Lista de elementos por página.
+code
+La propiedad elementsList permite definir un desplegable para seleccionar el número de elementos por página que queremos visualizar.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    [elementsList]="elementsListExample"
+    ...
+  ></mv-table-responsive>
+
+  <!--  Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    [elementsList]="elementsListExample"
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6	
+ 
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6	
+ 
+1 - 6 de 9
+excludeTableColumns
+Excluir ciertas columnas.
+code
+La propiedad excludeTableColumns permite excluir las columnas especificadas de manera que no se muestren.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    [excludeTableColumns]="excludeTableColumnsArray"
+    ...
+  ></mv-table-responsive>
+
+  <!--  Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    [excludeTableColumns]="excludeTableColumnsArray"
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+uuid	nombre_alumno	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	00000001R	2001-01-21T00:00:00	22	0
+ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	00000002W	2002-02-22T00:00:00	21	0
+a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	00000003A	2003-03-23T00:00:00	20	0
+de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	00000004G	2004-04-24T00:00:00	19	0
+30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	00000005M	2005-05-25T00:00:00	18	0
+f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	00000006Y	2006-06-26T00:00:00	17	0
+172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	00000007F	2006-07-27T00:00:00	17	0
+cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	00000001R	2001-01-21T00:00:00	22	0
+ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	00000002W	2002-02-22T00:00:00	21	0
+a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	00000003A	2003-03-23T00:00:00	20	0
+de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	00000004G	2004-04-24T00:00:00	19	0
+30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	00000005M	2005-05-25T00:00:00	18	0
+f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	00000006Y	2006-06-26T00:00:00	17	0
+172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+uuid	nombre_alumno	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	52762254R	2001-01-21T00:00:00	21	0
+ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	00000002W	2002-02-22T00:00:00	20	1
+a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	00000003A	2003-03-23T00:00:00	19	1
+de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	00000004G	2004-04-24T00:00:00	18	0
+30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	00000005M	2005-05-25T00:00:00	16	0
+f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+filter
+Input para filtrar los resultados del diálogo.
+code
+La propiedad filter permite mostrar un input para filtrar los resultados del diálogo.
+
+El valor por defecto es false.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    filter=true
+    ...
+  ></mv-table-responsive>
+
+  <!--  Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    filter=true
+    ...
+  ></mv-table-responsive>
+  
+En los ejemplos se filtra por el campo nombre
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Buscador
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+Buscador
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+filterTitle
+Título del input del filtro.
+code
+La propiedad filterTitle permite especificar un título para el filtro del diálogo.
+
+El valor por defecto es Buscador.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    filterTitle='Título de ejemplo'
+    ...
+  ></mv-table-responsive>
+
+  <!--  Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    filterTitle='Título de ejemplo'
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Título de ejemplo
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+Título de ejemplo
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+filterPlaceholder
+Placeholder del input del filtro.
+code
+La propiedad filterPlaceholder permite especificar un placeholder para el input del filtro del diálogo.
+
+El valor por defecto es Escriba para buscar....
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    filterPlaceholder='Placeholder de ejemplo'
+    ...
+  ></mv-table-responsive>
+
+  <!--  Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    filterPlaceholder='Placeholder de ejemplo'
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Buscador
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+Buscador
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+formatType
+Formato visual.
+code
+La propiedad formatType permite especificar el formato visual de los datos.
+
+card: Componente con formato de tarjeta.
+card-responsive: Componente con formato de tarjeta que se adapta de manera responsiva.
+card-inline: Tarjeta en línea, colocada horizontalmente.
+card-inline-responsive: Tarjeta en línea, colocada horizontalmente, con diseño responsivo.
+card-inline-truncate: Tarjeta en línea con texto truncado para que ocupe un espacio limitado.
+card-inline-truncate-responsive: Tarjeta en línea con texto truncado para diseño responsivo.
+HTML
+TS
+
+  <p>Ejemplo con formatType = 'card':</p>
+
+  <mv-table-responsive
+    *ngIf="dataStudent"
+    formatType="card"
+    [data]="dataStudent"
+    [pageSize]="6">
+  </mv-table-responsive>
+
+  <p>Ejemplo con formatType = 'card-responsive':</p>
+
+  <mv-table-responsive
+    *ngIf="dataStudent"
+    formatType="card-responsive"
+    [data]="dataStudent"
+    [pageSize]="6">
+  </mv-table-responsive>
+
+  <p>Ejemplo con formatType = 'card-inline':</p>
+
+  <mv-table-responsive
+    *ngIf="dataStudent"
+    formatType="card-inline"
+    [data]="dataStudent"
+    [pageSize]="6">
+  </mv-table-responsive>
+
+  <p>Ejemplo con formatType = 'card-inline-responsive':</p>
+
+  <mv-table-responsive
+    *ngIf="dataStudent"
+    formatType="card-inline-responsive"
+    [data]="dataStudent"
+    [pageSize]="6">
+  </mv-table-responsive>
+
+  <p>Ejemplo con formatType = 'card-inline-truncate':</p>
+
+  <mv-table-responsive
+    *ngIf="dataStudent"
+    formatType="card-inline-truncate"
+    [data]="dataStudent"
+    [pageSize]="6">
+  </mv-table-responsive>
+
+  <p>Ejemplo con formatType = 'card-inline-truncate-responsive':</p>
+
+  <mv-table-responsive
+    *ngIf="dataStudent"
+    formatType="card-inline-truncate-responsive"
+    [data]="dataStudent"
+    [pageSize]="6">
+  </mv-table-responsive>
+  
+Ejemplo con formatType = 'card':
+
+id
+1
+uuid
+cf4a8327-f969-4415-81fb-c5346befb80c
+nombre_alumno
+Antonio
+apellido_1
+Zabala
+apellido_2
+Zubizarreta
+nif
+52762254R
+fecha_nacimiento
+2001-01-21T00:00:00
+edad
+21
+numero_asignaturas_aprobadas
+0
+id
+2
+uuid
+ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e
+nombre_alumno
+Beatriz
+apellido_1
+Baeza
+apellido_2
+Valverde
+nif
+00000002W
+fecha_nacimiento
+2002-02-22T00:00:00
+edad
+20
+numero_asignaturas_aprobadas
+1
+id
+3
+uuid
+a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9
+nombre_alumno
+Carlos
+apellido_1
+Cuevas
+apellido_2
+Uceda
+nif
+00000003A
+fecha_nacimiento
+2003-03-23T00:00:00
+edad
+19
+numero_asignaturas_aprobadas
+1
+id
+4
+uuid
+de47e95a-8c3e-481c-ab03-635bfae0aab3
+nombre_alumno
+Diana
+apellido_1
+Duarte
+apellido_2
+Taboada
+nif
+00000004G
+fecha_nacimiento
+2004-04-24T00:00:00
+edad
+18
+numero_asignaturas_aprobadas
+0
+id
+5
+uuid
+30d0ba16-433e-47d0-a81f-f9b72690af87
+nombre_alumno
+Eduardo
+apellido_1
+Echebarría
+apellido_2
+Salazar
+nif
+00000005M
+fecha_nacimiento
+2005-05-25T00:00:00
+edad
+16
+numero_asignaturas_aprobadas
+0
+id
+6
+uuid
+f17d05a1-2f53-462d-a161-836f67b6acd1
+nombre_alumno
+Fátima
+apellido_1
+Fernández
+apellido_2
+Ramos
+nif
+00000006Y
+fecha_nacimiento
+2006-06-26T00:00:00
+edad
+15
+numero_asignaturas_aprobadas
+0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo con formatType = 'card-responsive':
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo con formatType = 'card-inline':
+
+id1
+uuidcf4a8327-f969-4415-81fb-c5346befb80c
+nombre_alumnoAntonio
+apellido_1Zabala
+apellido_2Zubizarreta
+nif52762254R
+fecha_nacimiento2001-01-21T00:00:00
+edad21
+numero_asignaturas_aprobadas0
+id2
+uuidff7a6468-6ab5-4d82-8666-f7eacdcfdf3e
+nombre_alumnoBeatriz
+apellido_1Baeza
+apellido_2Valverde
+nif00000002W
+fecha_nacimiento2002-02-22T00:00:00
+edad20
+numero_asignaturas_aprobadas1
+id3
+uuida1ea80b1-7da8-4c5f-88fd-a9de92b98cb9
+nombre_alumnoCarlos
+apellido_1Cuevas
+apellido_2Uceda
+nif00000003A
+fecha_nacimiento2003-03-23T00:00:00
+edad19
+numero_asignaturas_aprobadas1
+id4
+uuidde47e95a-8c3e-481c-ab03-635bfae0aab3
+nombre_alumnoDiana
+apellido_1Duarte
+apellido_2Taboada
+nif00000004G
+fecha_nacimiento2004-04-24T00:00:00
+edad18
+numero_asignaturas_aprobadas0
+id5
+uuid30d0ba16-433e-47d0-a81f-f9b72690af87
+nombre_alumnoEduardo
+apellido_1Echebarría
+apellido_2Salazar
+nif00000005M
+fecha_nacimiento2005-05-25T00:00:00
+edad16
+numero_asignaturas_aprobadas0
+id6
+uuidf17d05a1-2f53-462d-a161-836f67b6acd1
+nombre_alumnoFátima
+apellido_1Fernández
+apellido_2Ramos
+nif00000006Y
+fecha_nacimiento2006-06-26T00:00:00
+edad15
+numero_asignaturas_aprobadas0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo con formatType = 'card-inline-responsive':
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo con formatType = 'card-inline-truncate':
+
+id1
+uuidcf4a8327-f969-4415-81fb-c5346befb80c
+nombre_alumnoAntonio
+apellido_1Zabala
+apellido_2Zubizarreta
+nif52762254R
+fecha_nacimiento2001-01-21T00:00:00
+edad21
+numero_asignaturas_aprobadas0
+id2
+uuidff7a6468-6ab5-4d82-8666-f7eacdcfdf3e
+nombre_alumnoBeatriz
+apellido_1Baeza
+apellido_2Valverde
+nif00000002W
+fecha_nacimiento2002-02-22T00:00:00
+edad20
+numero_asignaturas_aprobadas1
+id3
+uuida1ea80b1-7da8-4c5f-88fd-a9de92b98cb9
+nombre_alumnoCarlos
+apellido_1Cuevas
+apellido_2Uceda
+nif00000003A
+fecha_nacimiento2003-03-23T00:00:00
+edad19
+numero_asignaturas_aprobadas1
+id4
+uuidde47e95a-8c3e-481c-ab03-635bfae0aab3
+nombre_alumnoDiana
+apellido_1Duarte
+apellido_2Taboada
+nif00000004G
+fecha_nacimiento2004-04-24T00:00:00
+edad18
+numero_asignaturas_aprobadas0
+id5
+uuid30d0ba16-433e-47d0-a81f-f9b72690af87
+nombre_alumnoEduardo
+apellido_1Echebarría
+apellido_2Salazar
+nif00000005M
+fecha_nacimiento2005-05-25T00:00:00
+edad16
+numero_asignaturas_aprobadas0
+id6
+uuidf17d05a1-2f53-462d-a161-836f67b6acd1
+nombre_alumnoFátima
+apellido_1Fernández
+apellido_2Ramos
+nif00000006Y
+fecha_nacimiento2006-06-26T00:00:00
+edad15
+numero_asignaturas_aprobadas0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo con formatType = 'card-inline-truncate-responsive':
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+hideRowTitles
+Ocultar los títulos de las columnas.
+code
+La propiedad hideRowTitles permite ocultar la fila que contiene los títulos de cada columna.
+
+El valor por defecto es false.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    hideRowTitles=true
+    ...
+  ></mv-table-responsive>
+
+  <!--  Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    hideRowTitles=true
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+loadingDelay
+Retardo después de la carga de datos del servidor.
+code
+La propiedad loadingDelay crea un retardo de los milisegundos especificados, después de la carga de datos del servidor.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    loadingDelay=10000
+    ...
+  ></mv-table-responsive>
+
+  <!--  Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    loadingDelay=10000
+    ...
+  ></mv-table-responsive>
+  
+Retardo de 10000 milisegundos
+
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+pageSize
+Número de items por página.
+code
+La propiedad pageSize permite definir el número de items por cada página.
+
+Si no se inicializa no hay paginador.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    [pageSize]=9
+    ...
+  ></mv-table-responsive>
+
+  <!--  Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    [pageSize]=9
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+9
+1 - 9 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+1000	ca63f20b-a148-43c2-bb60-91edf335c864	Test	Test	Test	83923202C	2001-01-21T00:00:00	21	0
+1008	70267c88-ee54-4793-953c-d4ceb065fef5	Test	Test	Test	53687164N	2001-01-21T00:00:00	21	0
+1009	562b53e4-6c69-4dac-8a5d-519905cde8d3	Test	Test	Test	41430329S	2001-01-21T00:00:00	21	0
+Elementos por página
+9
+1 - 9 de 9
+shadow
+Mostrar sombra en el componente.
+code
+La propiedad shadow permite mostrar el componente sombreado.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    shadow=true
+    ...
+  ></mv-table-responsive>
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    shadow=true
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo de shadow con datos obtenidos del servidor (dataSourceLoader):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo de shadow con datos obtenidos del cliente (data):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo de shadow con formatType = 'card':
+
+id
+1
+uuid
+cf4a8327-f969-4415-81fb-c5346befb80c
+nombre_alumno
+Antonio
+apellido_1
+Zabala
+apellido_2
+Zubizarreta
+nif
+52762254R
+fecha_nacimiento
+2001-01-21T00:00:00
+edad
+21
+numero_asignaturas_aprobadas
+0
+id
+2
+uuid
+ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e
+nombre_alumno
+Beatriz
+apellido_1
+Baeza
+apellido_2
+Valverde
+nif
+00000002W
+fecha_nacimiento
+2002-02-22T00:00:00
+edad
+20
+numero_asignaturas_aprobadas
+1
+id
+3
+uuid
+a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9
+nombre_alumno
+Carlos
+apellido_1
+Cuevas
+apellido_2
+Uceda
+nif
+00000003A
+fecha_nacimiento
+2003-03-23T00:00:00
+edad
+19
+numero_asignaturas_aprobadas
+1
+id
+4
+uuid
+de47e95a-8c3e-481c-ab03-635bfae0aab3
+nombre_alumno
+Diana
+apellido_1
+Duarte
+apellido_2
+Taboada
+nif
+00000004G
+fecha_nacimiento
+2004-04-24T00:00:00
+edad
+18
+numero_asignaturas_aprobadas
+0
+id
+5
+uuid
+30d0ba16-433e-47d0-a81f-f9b72690af87
+nombre_alumno
+Eduardo
+apellido_1
+Echebarría
+apellido_2
+Salazar
+nif
+00000005M
+fecha_nacimiento
+2005-05-25T00:00:00
+edad
+16
+numero_asignaturas_aprobadas
+0
+id
+6
+uuid
+f17d05a1-2f53-462d-a161-836f67b6acd1
+nombre_alumno
+Fátima
+apellido_1
+Fernández
+apellido_2
+Ramos
+nif
+00000006Y
+fecha_nacimiento
+2006-06-26T00:00:00
+edad
+15
+numero_asignaturas_aprobadas
+0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo de shadow con formatType = 'card-responsive':
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo de shadow con formatType = 'card-inline':
+
+id1
+uuidcf4a8327-f969-4415-81fb-c5346befb80c
+nombre_alumnoAntonio
+apellido_1Zabala
+apellido_2Zubizarreta
+nif52762254R
+fecha_nacimiento2001-01-21T00:00:00
+edad21
+numero_asignaturas_aprobadas0
+id2
+uuidff7a6468-6ab5-4d82-8666-f7eacdcfdf3e
+nombre_alumnoBeatriz
+apellido_1Baeza
+apellido_2Valverde
+nif00000002W
+fecha_nacimiento2002-02-22T00:00:00
+edad20
+numero_asignaturas_aprobadas1
+id3
+uuida1ea80b1-7da8-4c5f-88fd-a9de92b98cb9
+nombre_alumnoCarlos
+apellido_1Cuevas
+apellido_2Uceda
+nif00000003A
+fecha_nacimiento2003-03-23T00:00:00
+edad19
+numero_asignaturas_aprobadas1
+id4
+uuidde47e95a-8c3e-481c-ab03-635bfae0aab3
+nombre_alumnoDiana
+apellido_1Duarte
+apellido_2Taboada
+nif00000004G
+fecha_nacimiento2004-04-24T00:00:00
+edad18
+numero_asignaturas_aprobadas0
+id5
+uuid30d0ba16-433e-47d0-a81f-f9b72690af87
+nombre_alumnoEduardo
+apellido_1Echebarría
+apellido_2Salazar
+nif00000005M
+fecha_nacimiento2005-05-25T00:00:00
+edad16
+numero_asignaturas_aprobadas0
+id6
+uuidf17d05a1-2f53-462d-a161-836f67b6acd1
+nombre_alumnoFátima
+apellido_1Fernández
+apellido_2Ramos
+nif00000006Y
+fecha_nacimiento2006-06-26T00:00:00
+edad15
+numero_asignaturas_aprobadas0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo de shadow con formatType = 'card-inline-responsive':
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo de shadow con formatType = 'card-inline-truncate':
+
+id1
+uuidcf4a8327-f969-4415-81fb-c5346befb80c
+nombre_alumnoAntonio
+apellido_1Zabala
+apellido_2Zubizarreta
+nif52762254R
+fecha_nacimiento2001-01-21T00:00:00
+edad21
+numero_asignaturas_aprobadas0
+id2
+uuidff7a6468-6ab5-4d82-8666-f7eacdcfdf3e
+nombre_alumnoBeatriz
+apellido_1Baeza
+apellido_2Valverde
+nif00000002W
+fecha_nacimiento2002-02-22T00:00:00
+edad20
+numero_asignaturas_aprobadas1
+id3
+uuida1ea80b1-7da8-4c5f-88fd-a9de92b98cb9
+nombre_alumnoCarlos
+apellido_1Cuevas
+apellido_2Uceda
+nif00000003A
+fecha_nacimiento2003-03-23T00:00:00
+edad19
+numero_asignaturas_aprobadas1
+id4
+uuidde47e95a-8c3e-481c-ab03-635bfae0aab3
+nombre_alumnoDiana
+apellido_1Duarte
+apellido_2Taboada
+nif00000004G
+fecha_nacimiento2004-04-24T00:00:00
+edad18
+numero_asignaturas_aprobadas0
+id5
+uuid30d0ba16-433e-47d0-a81f-f9b72690af87
+nombre_alumnoEduardo
+apellido_1Echebarría
+apellido_2Salazar
+nif00000005M
+fecha_nacimiento2005-05-25T00:00:00
+edad16
+numero_asignaturas_aprobadas0
+id6
+uuidf17d05a1-2f53-462d-a161-836f67b6acd1
+nombre_alumnoFátima
+apellido_1Fernández
+apellido_2Ramos
+nif00000006Y
+fecha_nacimiento2006-06-26T00:00:00
+edad15
+numero_asignaturas_aprobadas0
+Elementos por página
+6
+1 - 6 de 9
+Ejemplo de shadow con formatType = 'card-inline-truncate-responsive':
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+tableColumns
+Nombre de las columnas de la tabla.
+code
+La propiedad tableColumns permite cambiar los títulos de las columnas de la tabla.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    [tableColumns]="tableColumnsArray"
+    ...
+  ></mv-table-responsive>
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    [tableColumns]="tableColumnsArray"
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+Id
+Nombre
+Primer apellido	Segundo apellido	Edad	Fecha nacimiento
+1	Antonio	Zabala	Zubizarreta	22	2001-01-21T00:00:00
+2	Beatriz	Baeza	Valverde	21	2002-02-22T00:00:00
+3	Carlos	Cuevas	Uceda	20	2003-03-23T00:00:00
+4	Diana	Duarte	Taboada	19	2004-04-24T00:00:00
+5	Eduardo	Echebarría	Salazar	18	2005-05-25T00:00:00
+6	Fátima	Fernández	Ramos	17	2006-06-26T00:00:00
+7	Gerardo	González	Quevedo	17	2006-07-27T00:00:00
+21	Antonio 2	Zabala	Zubizarreta	22	2001-01-21T00:00:00
+22	Beatriz 2	Baeza	Valverde	21	2002-02-22T00:00:00
+23	Carlos 2	Cuevas	Uceda	20	2003-03-23T00:00:00
+24	Diana 2	Duarte	Taboada	19	2004-04-24T00:00:00
+25	Eduardo 2	Echebarría	Salazar	18	2005-05-25T00:00:00
+26	Fátima 2	Fernández	Ramos	17	2006-06-26T00:00:00
+27	Gerardo 2	González	Quevedo	17	2006-07-27T00:00:00
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+Id
+Nombre
+Primer apellido	Segundo apellido	Edad	Fecha nacimiento
+1	Antonio	Zabala	Zubizarreta	21	2001-01-21T00:00:00
+2	Beatriz	Baeza	Valverde	20	2002-02-22T00:00:00
+3	Carlos	Cuevas	Uceda	19	2003-03-23T00:00:00
+4	Diana	Duarte	Taboada	18	2004-04-24T00:00:00
+5	Eduardo	Echebarría	Salazar	16	2005-05-25T00:00:00
+6	Fátima	Fernández	Ramos	15	2006-06-26T00:00:00
+Elementos por página
+6
+1 - 6 de 9
+selectItem
+Función que se ejecuta al pulsar sobre un elemento.
+code
+La propiedad selectItem permite ejecutar una función de callback al pulsar sobre un elemento del listado.
+
+HTML
+TS
+
+  <!-- Ejemplo con datos en local -->
+  <mv-table-responsive
+    (selectItem)="selectItemFunction($event)"
+    ...
+  ></mv-table-responsive>
+
+  <!-- Ejemplo con datos en servidor -->
+  <mv-table-responsive
+    (selectItem)="selectItemFunction($event)"
+    ...
+  ></mv-table-responsive>
+  
+Ejemplo con datos obtenidos del servidor (dataSourceLoader):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+7	172b9283-da0b-45bc-af27-8f58347c18ee	Gerardo	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+21	cf4a8327-f969-4415-81fb-c5346befb802	Antonio 2	Zabala	Zubizarreta	00000001R	2001-01-21T00:00:00	22	0
+22	ff7a6468-6ab5-4d82-8666-f7eacdcfdf32	Beatriz 2	Baeza	Valverde	00000002W	2002-02-22T00:00:00	21	0
+23	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb2	Carlos 2	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	20	0
+24	de47e95a-8c3e-481c-ab03-635bfae0aab2	Diana 2	Duarte	Taboada	00000004G	2004-04-24T00:00:00	19	0
+25	30d0ba16-433e-47d0-a81f-f9b72690af82	Eduardo 2	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	18	0
+26	f17d05a1-2f53-462d-a161-836f67b6acd2	Fátima 2	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	17	0
+27	172b9283-da0b-45bc-af27-8f58347c18e2	Gerardo 2	González	Quevedo	00000007F	2006-07-27T00:00:00	17	0
+Elementos por página
+6
+1 - 6 de 25
+Ejemplo con datos obtenidos del cliente (data):
+
+id	uuid	nombre_alumno	apellido_1	apellido_2	nif	fecha_nacimiento	edad	numero_asignaturas_aprobadas
+1	cf4a8327-f969-4415-81fb-c5346befb80c	Antonio	Zabala	Zubizarreta	52762254R	2001-01-21T00:00:00	21	0
+2	ff7a6468-6ab5-4d82-8666-f7eacdcfdf3e	Beatriz	Baeza	Valverde	00000002W	2002-02-22T00:00:00	20	1
+3	a1ea80b1-7da8-4c5f-88fd-a9de92b98cb9	Carlos	Cuevas	Uceda	00000003A	2003-03-23T00:00:00	19	1
+4	de47e95a-8c3e-481c-ab03-635bfae0aab3	Diana	Duarte	Taboada	00000004G	2004-04-24T00:00:00	18	0
+5	30d0ba16-433e-47d0-a81f-f9b72690af87	Eduardo	Echebarría	Salazar	00000005M	2005-05-25T00:00:00	16	0
+6	f17d05a1-2f53-462d-a161-836f67b6acd1	Fátima	Fernández	Ramos	00000006Y	2006-06-26T00:00:00	15	0
+Elementos por página
+6
+1 - 6 de 9
+Elemento pulsado:

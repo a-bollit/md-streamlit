@@ -1,0 +1,343 @@
+Documentación mv-recaptcha
+link Información
+link Ejemplo de backend
+Eventos:
+
+link getLastSuccessCaptcha
+link onSuccess
+link onExpired
+link onError
+link reset
+Información
+Información del componente mv-recaptcha.
+code
+Este componente sirve para implementar el servicio de reCaptcha de Google.
+
+Por limitaciones de reCaptcha de Google, este componente se comporta de forma distinta en una Web App que en una aplicación móvil. Esto es debido a que la aplicación móvil usa en su URL el protocolo file:// y esto no lo acepta reCaptcha de Google. En una aplicación móvil el captcha se abre en un navegador embedido y funciona de forma distinta almacenando el captcha en el localStorage.
+
+Debido a lo comentado en el párrafo anterior, deberá estar instalado el plugin inAppBrowser si queremos que funcione el componente en dispositivos móviles
+
+Configuración
+Configuración del componente mv-recaptcha.
+code
+Configuración
+Primero, si no está ya incluído, hay que importar el componente en el archivo mova.module.ts.
+
+También hay que configurar en los archivos de entorno las variables necesarias para el correcto funcionamiento del componente, como se muestra en el código de environment.ts, environment.val.ts y environment.prod.ts.
+
+Las claves del captcha están en la ficha de solicitud de la app que se pide a Arquitectura En el apartado "Claves para uso del Captcha entornos" Si no se ha solicitado estas claves volver a pedir por mantis la ficha de solicitud de app
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  export const environment = {
+    environment: 'DES',
+    mova: {
+      ...
+      recaptchaService: {
+        uriUtilSite: 'https://gestiona3.madrid.org/portalapps/util/recaptcha/',
+        siteKey: '6Lcw6XIUAAAAAPngwupCl2UMhBN2qlcnePJopOi9',
+      },
+      ...
+    },
+    app: {
+      ...
+    },
+  };
+  
+Ejemplo de uso
+Uso básico del componente mv-recaptcha.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+CaptchaService.TS
+
+  <mv-input
+    label="Valor pasado al servicio"
+    [(ngModel)]="exampleValidate.state">
+  </mv-input>
+
+  <mv-recaptcha
+    #captchaExample>
+  </mv-recaptcha>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="captchaValidationExample()">
+    Validar captcha
+  </mv-button>
+
+  <p>Resultado: <strong>{{ exampleValidate.response }}</strong></p>
+  <p>Resultado captcha: <strong>{{ exampleValidate.responseCaptcha }}</strong></p>
+  <p>Valor de entrada: <strong>{{ exampleValidate.state }}</strong></p>
+  <p>Respuesta backend: <strong>{{ exampleValidate.responseBackend | json}}</strong></p>
+  
+Valor pasado al servicio
+
+Resultado: Captcha no realizado
+
+Resultado captcha:
+
+Valor de entrada:
+
+Respuesta backend:
+
+null
+getLastSuccessCaptcha
+Uso básico del componente mv-recaptcha.
+code
+La función getLastSuccessCaptcha sirve para obtener el último valor procesado del captcha, para enviarlo al backend por ejemplo.
+
+HTML
+TS
+
+  <mv-recaptcha
+    #captchaGetSuccessExample>
+  </mv-recaptcha>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="getLastSuccessCaptchaExample()">
+    getLastSuccessCaptcha
+  </mv-button>
+
+  <p>Resultado captcha: <strong>{{ captchaGetSuccessValue }}</strong></p>
+  
+
+Resultado: Captcha no realizado
+
+Resultado captcha:
+
+Valor de entrada:
+
+Respuesta backend:
+
+null
+onSuccess
+Uso básico del componente mv-recaptcha.
+code
+La función onSuccess se ejecuta al validar el captcha
+
+HTML
+TS
+
+  <mv-recaptcha (onSuccess)="successCaptcha($event)">
+
+  
+
+Resultado: Captcha no realizado
+
+Resultado captcha:
+
+Valor de entrada:
+
+Respuesta backend:
+
+null
+onExpired
+Uso básico del componente mv-recaptcha.
+code
+La función onExpired se ejecuta cuando el captcha expira
+
+HTML
+TS
+
+
+  
+
+Resultado: Captcha no realizado
+
+Resultado captcha:
+
+Valor de entrada:
+
+Respuesta backend:
+
+null
+onError
+Uso básico del componente mv-recaptcha.
+code
+La función onError se lanza cuando el captcha da un error o no es válido.
+
+HTML
+TS
+
+  <mv-recaptcha (onError)="errorCaptcha($event)">
+
+  
+
+Resultado: Captcha no realizado
+
+Resultado captcha:
+
+Valor de entrada:
+
+Respuesta backend:
+
+null
+reset
+Reseteo del componente mv-recaptcha.
+code
+La función reset permite resetear el componente tras su uso, ya que si no nos indicará que el captcha ya ha sido usado.
+
+HTML
+TS
+
+  <mv-recaptcha
+    #captchaReset>
+  </mv-recaptcha>
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="resetExample()">
+    reset
+  </mv-button>
+  
+
+Ejemplo backend
+Ejemplo recepción de captcha en el backend.
+code
+A continuación, se muestra un ejemplo de implementación de backend en Java para recibir y validar el valor del captcha.
+
+Java
+
+  package mova.mova_rest_servicios.resources.v1;
+
+  import javax.ws.rs.Path;
+  import javax.ws.rs.core.HttpHeaders;
+  import javax.ws.rs.core.Response;
+
+  import mova.mova_rest_servicios.resources.v1.dto.CaptchaDTO;
+
+  import org.apache.http.HttpHost;
+  import org.apache.http.client.HttpClient;
+  import org.apache.http.impl.client.HttpClientBuilder;
+  import org.apache.http.impl.client.ProxyAuthenticationStrategy;
+  import org.slf4j.Logger;
+  import org.slf4j.LoggerFactory;
+
+  import atlas.core.util.AtlasCommonConfigurationUtils;
+  import atlas.rest.exception.AtlasRestException;
+  import atlas.rest.exception.AtlasRestInfoException;
+
+  import com.mashape.unirest.http.HttpResponse;
+  import com.mashape.unirest.http.JsonNode;
+  import com.mashape.unirest.http.Unirest;
+  import com.mashape.unirest.http.exceptions.UnirestException;
+  import com.mashape.unirest.request.HttpRequest;
+
+  /**
+   * Método de ejemplo en el que un servicio REST comprueba un Captcha de google
+   * El captcha llega en la cabecera http "captcha-google"
+   *
+   * El método dado que es un ejemplo lo unico que hacer es pasar a mayúsculas un
+   * valor de entrada
+   *
+   */
+  @Path("/v1/captcha")
+  public class CaptchaResourceV1Impl implements CaptchaResourceV1 {
+
+      /** Loger de la clase */
+      private static final Logger LOG = LoggerFactory.getLogger(CaptchaResourceV1Impl.class);
+
+      /** Servidor para el proxy - Se coge del common.properties de ATLAS **/
+      private static final String HOST = AtlasCommonConfigurationUtils
+              .getVariableConfiguracion("atlas.proxy.recaptcha.host");
+
+      /** Puerto para el proxy - Se coge del common.properties de ATLAS **/
+      private static final String PORT = AtlasCommonConfigurationUtils
+              .getVariableConfiguracion("atlas.proxy.recaptcha.port");
+
+      /**
+       * Private Key del Captcha. Cada servicio tendrá que tener su private Key
+       * única Esta es un ejemplo que se debe cambiar
+       */
+      private static final String PRIVATE_KEY = AtlasCommonConfigurationUtils
+              .getVariableConfiguracion("google.captcha.clavePrivada");
+
+      /**
+       * Método de ejemplo que antes de hacer su trabajo valida el Captcha
+       */
+      @Override
+      public Response pingCaptchaGoogle(HttpHeaders headers, CaptchaDTO dto) {
+
+          // Valida el Capcha y si da error produce una AtlasRestException
+          // con un código 403 forbiden
+          validaCapchaGoogle(headers);
+
+          try {
+              dto.setValorEntrada(dto.getValorEntrada().toUpperCase());
+              Response response = Response.ok().entity(dto).build();
+              return response;
+          } catch (Exception e) {
+              // Error general del servicio REST
+              String s = "Error en el Servicio Rest pingCaptchaGoogle " + e.getMessage();
+              LOG.error(s, e);
+              throw new AtlasRestException(e, s);
+          }
+      }
+
+      /**
+     * Método para validar el capcha de google El catpcha de google debe venir
+     * en la cabcera "captcha-google"
+     *
+     * @param headers cabeceras htpp de la llamada al REST
+     * @return si el captcha es válido o no
+     */
+     private void validaCapchaGoogle(HttpHeaders headers) {
+
+        // El captcha viene en la cabecera HTTP en la variable captcha-google
+        String captcha = headers.getHeaderString("captcha-google");
+
+        /** Servidor para el proxy - Se coge del common.properties de ATLAS **/
+        private String HOST = AtlasCommonConfigurationUtils
+                .getVariableConfiguracion("atlas.proxy.recaptcha.host");
+
+        /** Puerto para el proxy - Se coge del common.properties de ATLAS **/
+        private String PORT = AtlasCommonConfigurationUtils
+                .getVariableConfiguracion("atlas.proxy.recaptcha.port");
+
+        /**
+         * Private Key del Captcha. Cada servicio tendrá que tener su private Key
+         * única Esta es un ejemplo que se debe cambiar
+         */
+        private static final String PRIVATE_KEY = AtlasCommonConfigurationUtils
+                .getVariableConfiguracion("google.captcha.clavePrivada");
+
+        int codigoRespuestaHTTP = ERROR_COD_RESP_HTTP;
+        ClienteRestConfiguracionGlobal cg = new ClienteRestConfiguracionGlobal()
+                .defaultHeader("accept", "application/json")
+                .defaultProxy("proxyservicios3c.madrid.org", "80",null, null);
+        try {
+            ClienteRest cr = ClienteRestFactory.get("https://www.google.com/recaptcha/api/siteverify")
+                    .queryString("secret", PRIVATE_KEY)
+                    .queryString("response", captcha)
+                    .config(cg).send();
+            codigoRespuestaHTTP = cr.getHttpCode();
+            String jsonString = cr.asString();
+            assertEquals(200, codigoRespuestaHTTP);
+
+            // Recoger la propiedad success de la respuesta de google
+            JsonElement jsonElement = new JsonParser().parse(jsonString);
+            boolean success = jsonElement.getAsJsonObject().get("success").getAsBoolean();
+
+            if (!success) {
+                LOG.info("Resultado del ReCapctha 'no-success': 'error-codes:' "
+                        + jsonElement.getAsJsonObject().getAsJsonArray("error-codes"));
+            }
+
+
+        } catch (ClienteRestException e) {
+            LOG.error("Error: " + e.getMessage());
+            fail("Error al invocar al cliente REST: " + e.getMessage());
+        }
+      }
+
+  }
+  

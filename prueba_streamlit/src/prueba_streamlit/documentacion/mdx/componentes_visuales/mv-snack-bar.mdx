@@ -1,0 +1,257 @@
+Documentación mv-snack-bar
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link actionText
+link afterDismissed
+link duration
+link onAction
+link text
+link type
+link verticalPosition
+link horizontalPosition
+Información
+Información del componente mv-snack-bar.
+code
+Este componente sirve para mostrar un mensaje breve de información, aviso o error en la pantalla durante unos segundos.
+
+Ejemplo de uso
+Uso básico del componente mv-snack-bar.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackBar()">
+    Lanzar snack bar
+  </mv-button>
+  
+Ejemplo de snack bar:
+
+actionText
+Texto del botón.
+code
+La propiedad actionText permite definir el texto del botón del componente.
+
+Si pulsamos el botón, el snack bar se ocultará
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackActionTextExample()">
+    Lanzar snack bar
+  </mv-button>
+  
+Con actionText = 'Deshacer':
+
+afterDismissed
+Acción de callback al desaparecer.
+code
+La propiedad afterDismissed permite definir una función de callback que se ejecutará cuando el componente se oculte.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackAfterDismissedExample()">
+    Lanzar snack bar
+  </mv-button>
+  
+Con afterDismissed:
+
+duration
+Duración del snackBar.
+code
+La propiedad duration permite definir el tiempo en milisegundos que tarde el componente en desaparecer.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackDurationExample(1000)">
+    Lanzar duration 1000ms
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackDurationExample(8000)">
+    Lanzar duration 8000ms
+  </mv-button>
+  
+Con duration = 1000:
+
+Con duration = 8000:
+
+onAction
+Acción de callback al pulsar el botón.
+code
+La propiedad onAction permite definir una función de callback que se ejecutará cuando pulsemos el botón de acción.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackOnActionExample()">
+    Lanzar snack bar
+  </mv-button>
+  
+Con onAction:
+
+text
+Texto del snack bar.
+code
+La propiedad text permite definir el texto del componente.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackTextExample()">
+    Lanzar snack bar
+  </mv-button>
+  
+Con text = 'La acción ha resultado satisfactoria':
+
+type
+Color del snack bar.
+code
+La propiedad type permite definir el color del componente entre info, warning y danger.
+
+El color por defecto es warning.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackType('info')">
+    Lanzar snack info
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackType('warning')">
+    Lanzar snack warn
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackType('danger')">
+    Lanzar snack danger
+  </mv-button>
+  
+Con type = 'info':
+
+Con type = 'warn':
+
+Con type = 'danger':
+
+verticalPosition
+Posición vertical del snack bar.
+code
+La propiedad verticalPosition permite definir la posición vertical donde se mostrará el componente. Los valores aceptados son:
+
+top
+bottom
+El valor por defecto es 'bottom'.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackVerticalPosition('top')">
+    Lanzar snack 'top'
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackVerticalPosition('bottom')">
+    Lanzar snack 'bottom'
+  </mv-button>
+  
+Con verticalPosition = 'top':
+
+Con verticalPosition = 'bottom':
+
+horizontalPosition
+Posición horizontal del snack bar.
+code
+La propiedad horizontalPosition permite definir la posición horizontal donde se mostrará el componente. Los valores aceptados son:
+
+start
+center
+end
+left
+right
+El valor por defecto es 'end'.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackHorizontalPosition('start')">
+    Lanzar snack 'start'
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackHorizontalPosition('center')">
+    Lanzar snack 'center'
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackHorizontalPosition('end')">
+    Lanzar snack 'end'
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackHorizontalPosition('left')">
+    Lanzar snack 'left'
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="exampleSnackHorizontalPosition('right')">
+    Lanzar snack 'right'
+  </mv-button>
+  
+Con horizontalPosition = 'start':
+
+Con horizontalPosition = 'center':
+
+Con horizontalPosition = 'end':
+
+Con horizontalPosition = 'left':
+
+Con horizontalPosition = 'right':

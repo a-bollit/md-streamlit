@@ -1,0 +1,144 @@
+Documentación pocket-card
+link Información
+link Métodos
+link Servicios
+link Generación de pkpass
+Información pocket-card
+Información Pocket card
+code
+Componente "Tarjetero Digital", permite mostrar las imágenes de la tarjeta y su QR, asi como descargar el fichero .PKPass de la tarjeta llamando a un servicio REST que las generan siempre que este servicio REST cumpla con un formato definido de llamada y respuesta.
+
+Ninguno de los métodos del componente funcionara si no se está logueado
+
+card_number: Número de la tarjeta
+expiration_date: Fecha de caducidad de la tarjeta
+dni_nie: Identificador
+card_type: Tipo de tarjeta
+load_on_init: Para cargar al inicio la imagen de la tarjeta
+hide_button_export: Para ocultar el botón de exportar a tarjetero
+hide_button_images: Para ocultar el botón de mostrar tarjeta
+hide_button_qr: Para ocultar el botón de mostrar qr
+hide_button_reload: Para ocultar el botón de recargar
+url_card_images: Para recuperar la imagen de la tarjeta
+url_card_pkpass: Para recuperar el fichero pkpass de la tarjeta
+url_card_qr: Para recuperar el QR de la tarjeta
+token: Token para la llamada a los servicios
+Metodo de uso:
+
+HTML
+TS
+
+  <mv-pocket-card #pocketCard [data]="oDataExample">
+
+  </mv-pocket-card>
+  <mv-button
+    class="btnExamples"
+    color="primary"
+    appearance="raised"
+    (clickEvent)="showQR()">
+    showQR
+  </mv-button>
+  <mv-button
+    class="btnExamples"
+    color="primary"
+    appearance="raised"
+    (clickEvent)="cardImage()">
+    cardImage
+  </mv-button>
+  <mv-button
+    class="btnExamples"
+    color="primary"
+    appearance="raised"
+    (clickEvent)="downloadPKPass()">
+    downloadPKPass
+  </mv-button>
+  <mv-button
+    class="btnExamples"
+    color="primary"
+    appearance="raised"
+    (clickEvent)="reload()">
+    reload
+  </mv-button>
+  
+  <mv-pocket-card #pocketCard [data]="oDataExample">
+
+  
+Imagen de la tarjeta
+Métodos invocables pocket-card
+Pocket card
+code
+Ninguno de los métodos del componente funcionara si no se está logueado
+
+Métodos invocables del componente
+
+ShowQR: para mostrar el QR en el componente
+ShowCardImage: para mostrar la imagen de la tarjeta
+DownloadPass: para descargar la tarjeta a una app compatible
+reload: para recargar el componente
+HTML
+TS
+
+  <mv-pocket-card #pocketCard [data]="oDataExample">
+
+  </mv-pocket-card>
+  
+Estas acciones afectan al componente de ejemplo de uso
+
+Servicios rest para pocket-card
+Pocket card
+code
+Esto aplica a las siguientes llamadas a servicios rest:
+url_card_images
+url_card_pkpass
+url_card_qr
+Ejemplos:
+
+input: Ejemplo del JSON que recibira el servicio Rest por parte del componente
+output: Ejemplo de lo que el servicio rest deberia devolver
+imagenes y qr: Base64
+pkpass: binario del fichero
+Input
+Output
+
+  {
+    "numTarjeta":"28/007789/2014.4",
+    "fcCaducidad":"2022-05-08",
+    "dsDniNie":"11223344A",
+    "tipoTarjeta"="TFI"
+  }
+  
+Ejemplo de generación de pkpass
+Pocket card
+code
+Un fichero con extensión .pkpass es muy similar a un fichero .zip que contiene una estructura de directorios y ficheros.
+
+Más información en la documentación oficial de Apple.
+
+Este fichero debe generarse en el servicio mediante la librería jpasskit, más información en su repositorio git.
+
+La funcionalidad a realizar es la siguiente:
+
+Configurar el objeto pass con los datos necesarios.
+Firmar el pass con el certificado de Apple para dotarlo de la seguridad necesaria.
+Escribir el fichero final con formato .pkpass
+Ejemplo jpasskit
+
+  /*
+
+
+#### Certificados firma pkpass y CA Apple ####
+
+# CA de Apple obtenida de https://www.apple.com/certificateauthority/AppleWWDRCAG3.cer
+cjov.pkpass.apple.url = /usr/aplic_ICM/certificados/key/AppleWWDRCA.cer
+
+# Certificado PKPASS generado por Madrid Digital (detallar procedimiento)
+cjov.pkpass.url = /usr/aplic_ICM/certificados/key/CJOV_PKPASS_prod.p12
+
+# Identificador de la cuenta de Madrid Digital (fijo)
+cjov.pkpass.teamIdentifier=RA47BU2L8D
+
+# BundleId del certificado PKPPASS
+cjov.pkpass.passTypeIdentifier=pass.org.madrid.CJOV.carnetJovenPKPass
+
+# Password  del certificado PKPPASS
+cjov.pkpass.password=xxxx

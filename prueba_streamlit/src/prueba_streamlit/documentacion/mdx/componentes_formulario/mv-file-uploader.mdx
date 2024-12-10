@@ -1,0 +1,628 @@
+Documentación mv-file-uploader
+link Información
+link Configuración
+link Ejemplo de uso
+Propiedades:
+
+link allowedExtensions
+link chunked
+link disabled
+link fileDescription
+link maxConcurrentUploads
+link maxSizeBytes
+link onUploadError
+link onUploadSuccess
+link required
+link requiredHint
+link tokenType
+link showLog
+link storageType
+link validateFirst
+link validateOnType
+Métodos:
+
+link getLastSuccededUploadResponse
+Información
+Información del componente mv-file-uploader.
+code
+Este componente sirve para realizar la subida de archivos al servidor al directorio compartido de los servidores Java. A partir de ese directorio los servicios REST pueden tratar el fichero.
+
+Usa la variable uriUpload para llamar a un servicio REST de subida de ficheros. Este servicio debe ser un recuso de un API del negocio desarrollado normalmente con el Framework JAPI. Para el entorno de desarrollo se usará el recurso /files del japi_rest_ejemplo_alumnos, pero para los entornos de producción en el propio API del negocio se tendrá que hacer un recurso /files igual o similar al del ejemplo cuando se crea un arquetipo con JAPI.
+
+Este recurso siempre debe tener autorización y se implementará normalmente con un Token de WSO2. Para ello, existen las variables uriTokenBase y authorizationHeader, que será el ApiKey de este recurso que podrá tener seguridad client_credentials o password.
+
+Configuración
+Configuración del componente mv-file-uploader.
+code
+Configuración
+Primero, si no está ya incluído, hay que importar el componente en el archivo mova.module.ts.
+
+También hay que configurar en los archivos de entorno las variables necesarias para el correcto funcionamiento del componente, como se muestra en el código de environment.ts, environment.val.ts y environment.prod.ts.
+
+En el environment.ts se muestran los valores de un servicio REST de ejemplo para la plantilla de MOVA. En producción no se debe usar esos valores. Se usarán lo valores del servicio REST de subida de ficheros del negocio. Los valores authorizationHeader, uriUpload y uriTokenBase serán los del servicio de negocio La variable scope es opcional, dependiendo de si el token necesita scope o no para pedirse
+
+mova.module.ts
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  ...
+  import {MvFileUploaderModule} from '@mova/components/file-uploader';
+  ...
+
+  @NgModule({
+    declarations: [
+    ],
+    imports: [
+      ...
+      MvFileUploaderModule,
+      ...
+    ],
+    providers: [
+    ],
+    exports: [
+      ...
+      MvFileUploaderModule,
+      ...
+    ],
+  })
+  export class MovaModule {}
+Ejemplo completo de uso
+Ejemplo de uso del componente mv-file-uploader.
+code
+HTML
+TS
+ServiceTS
+<p><strong>Ejemplo de file-uploader:</strong></p>
+  <mv-file-uploader
+    #mvFileUploaderFirstExample
+    [allowedExtensions]="exampleAllowedExtensions"
+    fileDescription="Suba el archivo de solicitud de Beca para el curso 2021/2022 completo."
+    required=true></mv-file-uploader>
+
+  <p><strong>Obtener respuesta:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="getLastSuccededUploadResponseClick('mvFileUploaderFirstExample')">
+    getLastSuccededUploadResponse()
+  </mv-button>
+
+  <p *ngIf="getExampleResponseFirstJSON"><strong>Respuesta:</strong></p>
+  <p class="response">{{ getExampleResponseFirstJSON | json }}</p>
+
+  <p><strong>Descargar archivo:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="downloadFile('mvFileUploaderFirstExample')">
+    descargar archivo
+  </mv-button>
+
+  <p><strong>Ejemplo de file-uploader con subida por chunks:</strong></p>
+  <mv-file-uploader
+    #mvFileUploaderSecondExample
+    [maxSizeBytes]="maxSizeBytesChunked"
+    fileDescription="Para solicitar su prestación debe adjuntar el modelo 435 de la Tesorería General de la Seguridad Social completo."
+    chunked=true></mv-file-uploader>
+
+  <p><strong>Obtener respuesta:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="getLastSuccededUploadResponseClick('mvFileUploaderSecondExample')">
+    getLastSuccededUploadResponse()
+  </mv-button>
+
+  <p *ngIf="getExampleResponseSecondJSON"><strong>Respuesta:</strong></p>
+  <p class="response">{{ getExampleResponseSecondJSON | json }}</p>
+
+  <p><strong>Descargar archivo:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="downloadFile('mvFileUploaderSecondExample')">
+    descargar archivo
+  </mv-button>
+  
+Ejemplo de file-uploader:
+
+Suba el archivo de solicitud de Beca para el curso 2021/2022 completo.
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: .docx, .pdf
+Obtener respuesta:
+
+
+Descargar archivo:
+
+Ejemplo de file-uploader con subida por chunks:
+
+Para solicitar su prestación debe adjuntar el modelo 435 de la Tesorería General de la Seguridad Social completo.
+
+Tamaño máximo permitido: 300.00 MBExtensiones permitidas: todas
+Obtener respuesta:
+
+
+Descargar archivo:
+
+allowedExtensions
+Extensiones permitidas.
+code
+Esta propiedad sirve para permitir la subida archivos con extensiones concretas. Por defecto, acepta pdf y jpg.
+
+Si seleccionamos un archivo que no cumple con las extensiones definidas, nos saldrá un mensaje de error.
+
+HTML
+TS
+
+  <mv-file-uploader
+    [allowedExtensions]="exampleAllowedExtensions">
+  </mv-file-uploader>
+  
+Ejemplo de allowedExtensions con .docx y .pdf:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: .docx, .pdf
+Ejemplo por defecto (sin allowedExtensions):
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+chunked
+Subir archivo por partes.
+code
+Esta propiedad sirve para poder subir archivos, normalmente grandes, por partes.
+
+HTML
+TS
+
+  <mv-file-uploader
+    chunked=true
+    [maxSizeBytesChunked]="maxSizeBytesChunked">
+  </mv-file-uploader>
+  
+Ejemplo de chunked:
+
+
+Tamaño máximo permitido: 300.00 MBExtensiones permitidas: todas
+disabled
+Deshabilitar el componente.
+code
+Esta propiedad sirve para deshabilitar el componente.
+
+HTML
+TS
+
+  <p><strong>Con disabled a true:</strong></p>
+
+  <mv-file-uploader
+    disabled=true>
+  </mv-file-uploader>
+
+  <p><strong>Con disabled a false:</strong></p>
+
+  <mv-file-uploader
+    disabled=false>
+  </mv-file-uploader>
+
+  <p><strong>Sin disabled (comportamiento por defecto):</strong></p>
+
+  <mv-file-uploader>
+  </mv-file-uploader>
+  
+Con disabled a true:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Con disabled a false:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Sin disabled (comportamiento por defecto):
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+fileDescription
+Texto de descripción.
+code
+Esta propiedad sirve para añadir un texto a modo de descripción.
+
+HTML
+TS
+
+  <p><strong>Con fileDescription:</strong></p>
+
+  <mv-file-uploader
+    fileDescription="Debe adjuntar y subir el documento relleno">
+  </mv-file-uploader>
+
+  <p><strong>Sin fileDescription:</strong></p>
+
+  <mv-file-uploader>
+  </mv-file-uploader>
+
+  
+Con fileDescription:
+
+Debe adjuntar y subir el documento relleno
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Sin fileDescription:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+maxConcurrentUploads
+Número de subidas concurrentes.
+code
+Esta propiedad sirve para especificar el número de subidas de chunks simultáneas.
+
+Como máximo el valor será 10. El valor por defecto es 5.
+
+HTML
+TS
+
+  <p><strong>Con maxConcurrentUploads:</strong></p>
+  <p>Seleccione el número de subidas de chunks simultáneas:</p>
+  <mv-select-x
+    [(ngModel)]="selectMaxConcurrentUploads"
+    [options]="selectOptionsMaxConcurrentUploads">
+  </mv-select-x>
+
+  <mv-file-uploader
+    chunked="true"
+    [maxConcurrentUploads]="selectMaxConcurrentUploads"
+    [maxSizeBytes]="maxSizeBytesChunked">
+  </mv-file-uploader>
+
+  <p><strong>Sin maxConcurrentUploads (comportamiento por defecto, 5):</strong></p>
+
+  <mv-file-uploader
+    chunked="true">
+  </mv-file-uploader>
+  
+Con maxConcurrentUploads:
+
+Seleccione el número de subidas de chunks simultáneas:
+
+ 	
+ 
+
+Tamaño máximo permitido: 300.00 MBExtensiones permitidas: todas
+Sin maxConcurrentUploads (comportamiento por defecto, 5):
+
+
+Tamaño máximo permitido: 300.00 MBExtensiones permitidas: todas
+maxSizeBytes
+Tamaño del archivo.
+code
+Esta propiedad sirve para limitar el tamaño del archivo a subir.
+
+Se debe especificar en bytes.
+
+HTML
+TS
+
+  <p><strong>Con maxConcurrentUploads:</strong></p>
+
+  <mv-select-x
+    [(ngModel)]="selectMaxConcurrentUploads"
+    [options]="selectOptionsMaxConcurrentUploads">
+  </mv-select-x>
+
+  <mv-file-uploader
+    [maxConcurrentUploads]="selectMaxConcurrentUploads">
+  </mv-file-uploader>
+Con maxSizeBytes:
+
+
+Tamaño máximo permitido: 50.00 kBExtensiones permitidas: todas
+Sin maxSizeBytes (comportamiento por defecto, 10MB):
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+onUploadError
+Evento en caso de subida incorrecta.
+code
+Esta propiedad sirve para lanzar una función en caso de una subida incorrecta.
+
+HTML
+TS
+
+  <p><strong>Ejemplo de callback de error:</strong></p>
+
+  <mv-file-uploader
+    (onUploadError)="onErrorCallback()">
+  </mv-file-uploader>
+  
+Ejemplo de callback de error:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+onUploadSuccess
+Evento en caso de subida correcta.
+code
+Esta propiedad sirve para lanzar una función en caso de una subida correcta.
+
+HTML
+TS
+
+  <p><strong>Ejemplo de callback de subida correcta:</strong></p>
+
+  <mv-file-uploader
+    (onUploadSuccess)="onSuccessCallback()">
+  </mv-file-uploader>
+  
+Ejemplo de callback de subida correcta:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+required
+Marcar componente como requerido.
+code
+Esta propiedad sirve para marcar el componente como requerido.
+
+HTML
+TS
+
+  <p><strong>Con required a true:</strong></p>
+
+  <mv-file-uploader
+    required=true>
+  </mv-file-uploader>
+
+  <p><strong>Con required a false:</strong></p>
+
+  <mv-file-uploader
+    required=false>
+  </mv-file-uploader>
+
+  <p><strong>Sin required (comportamiento por defecto):</strong></p>
+
+  <mv-file-uploader>
+  </mv-file-uploader>
+  
+Con required a true:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Con required a false:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Sin required (comportamiento por defecto):
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+requiredHint
+Texto de requerido.
+code
+Esta propiedad sirve para especificar un texto para la propiedad required.
+
+HTML
+TS
+
+  <p><strong>Con required a true:</strong></p>
+
+  <mv-file-uploader
+    required=true>
+  </mv-file-uploader>
+
+  <p><strong>Con required a false:</strong></p>
+
+  <mv-file-uploader
+    required=false>
+  </mv-file-uploader>
+
+  <p><strong>Sin maxSizeBytes (comportamiento por defecto):</strong></p>
+
+  <mv-file-uploader>
+  </mv-file-uploader>
+  
+Con requiredHint:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Sin requiredHint (comportamiento por defecto):
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+tokenType
+Tipo de token.
+code
+Esta propiedad sirve para especificar el tipo de token: 'application' o 'client_credentials'.
+
+HTML
+TS
+
+  <p><strong>Con tokenType 'client_credentials':</strong></p>
+
+  <mv-file-uploader
+    tokenType="client_credentials">
+  </mv-file-uploader>
+
+  <p><strong>Con tokenType 'application':</strong></p>
+
+  <mv-file-uploader
+    tokenType="application">
+  </mv-file-uploader>
+
+  <p><strong>Sin tokenType (comportamiento por defecto, 'client_credentials'):</strong></p>
+
+  <mv-file-uploader></mv-file-uploader>
+  
+Con tokenType 'client_credentials':
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Con tokenType 'application':
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Sin tokenType (comportamiento por defecto, 'client_credentials'):
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+showLog
+Mostrar log.
+code
+Esta propiedad sirve para mostrar o no el log del componente. Este log va mostrando el instante de tiempo en el que se van realizando todo el proceso de subida de los archivos, chunks...
+
+Por defecto el valor es true
+
+HTML
+TS
+
+  <p><strong>Con showLog a true:</strong></p>
+
+  <mv-file-uploader
+    showLog=true>
+  </mv-file-uploader>
+
+  <p><strong>Con showLog a false:</strong></p>
+
+  <mv-file-uploader
+    showLog=false>
+  </mv-file-uploader>
+
+  <p><strong>Sin showLog (comportamiento por defecto, true):</strong></p>
+
+  <mv-file-uploader>
+  </mv-file-uploader>
+  
+Con showLog a true:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Con showLog a false:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Sin showLog (comportamiento por defecto, true):
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+storageType
+Espacio de almacenamiento en el servidor.
+code
+Esta propiedad sirve para especificar el esapcio de almacenamiento en el servidor.
+
+HTML
+TS
+
+  <p><strong>Con storageType 'COMPARTIDO':</strong></p>
+
+  <mv-file-uploader
+    storageType="COMPARTIDO">
+  </mv-file-uploader>
+  
+Con storageType 'COMPARTIDO':
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+validateFirst
+Validación inicial del componente.
+code
+La propiedad validateFirst permite validar o no el componente al ser cargado, ya que a lo mejor no queremos que de primeras se marquen como erróneos determinados input o al revés, queremos que nada más cargar la vista se haga la validación
+
+En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo required=true
+
+HTML
+TS
+
+  <p><strong>Con validateFirst a true:</strong></p>
+
+  <mv-file-uploader
+    required=true
+    validateFirst=true>
+  </mv-file-uploader>
+
+  <p><strong>Con validateFirst a false:</strong></p>
+
+  <mv-file-uploader
+    required=true
+    validateFirst=false>
+  </mv-file-uploader>
+
+  <p><strong>Sin validateFirst (comportamiento por defecto):</strong></p>
+
+  <mv-file-uploader
+    required=true>
+  </mv-file-uploader>
+  
+Con validateFirst a true:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Con validateFirst a false:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Sin validateFirst (comportamiento por defecto):
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+validateOnType
+Validación en tiempo real.
+code
+La propiedad validateOnType permite activar la validación del componente en tiempo real, esto es según se va escribiendo.
+
+En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo required=true
+
+HTML
+TS
+
+  <p><strong>Con validateOnType a true:</strong></p>
+
+  <mv-file-uploader
+    required=true
+    validateOnType=true>
+  </mv-file-uploader>
+
+  <p><strong>Con validateOnType a false:</strong></p>
+
+  <mv-file-uploader
+    required=true
+    validateOnType=false>
+  </mv-file-uploader>
+
+  <p><strong>Sin validateOnType (comportamiento por defecto):</strong></p>
+
+  <mv-file-uploader
+    required=true>
+  </mv-file-uploader>
+  
+Con validateOnType a true:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Con validateOnType a false:
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Sin validateOnType (comportamiento por defecto):
+
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+getLastSuccededUploadResponse
+Respuesta de la subida del archivo.
+code
+Este método sirve para obtener la respuesta del servidor a la subida correcta de nuestro archivo.
+
+HTML
+TS
+
+  <p><strong>Obtener respuesta:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="getLastSuccededUploadResponseClick()">
+    getLastSuccededUploadResponse()
+  </mv-button>
+
+  <p><strong>Respuesta:</strong></p>
+  <p class="response">{{ getLastSuccededUploadResponseJSON | json }}</p>
+  
+
+Tamaño máximo permitido: 10.00 MBExtensiones permitidas: todas
+Obtener respuesta:
+
+

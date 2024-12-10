@@ -1,0 +1,37 @@
+Documentación novedades de la versión
+link Información
+link Configuración
+Información
+Información de novedades de la versión.
+code
+MOVA comprueba en cada arranque las novedades de la versión de la aplicación que está ejecutando.
+
+Cuando se muestren, se guardará en memoria local una marca para no volver a mostrarlas más veces.
+
+Para cambiar el texto de las novedades de una app entrar con las credenciales de nuestra app en https://gestiona3.madrid.org/portalapps/webapps/mova_backend
+
+Configuración
+Configuración de novedades de la versión.
+code
+Se puede configurar mova para mostrar las novedades:
+
+showVersionNewsWeb: mostrar las novedades de la versión en modo webapp.
+showVersionNewsMobile: mostrar las novedades de la versión en modo móvil.
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  export const environment = {
+    mova: {
+      environment: 'DES',
+      ...
+      initView: {
+        ...
+        showVersionNewsWeb: true,
+        showVersionNewsMobile: true
+      },
+      ...
+    },
+    ...
+  };
+  

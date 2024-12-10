@@ -1,0 +1,1255 @@
+Información
+Información del componente mv-input.
+code
+El componente mv-input se basa en el componente mat-input de Angular Material, al que se le añade funcionalidad y estilos adicionales.
+
+Ejemplo de uso
+Uso básico del componente mv-input.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+
+  <mv-input
+    [(ngModel)]="input001Model">
+  </mv-input>
+  
+Input básico:
+
+Valor variable 'input001Model':
+
+maxlength
+Uso de maxlength.
+code
+A continuación se muestra un ejemplo básico de uso de maxlength. Se puede modificar en tiempo de ejecución
+
+HTML
+TS
+
+ <p><strong>Input básico con maxLenght:</strong></p>
+ <mv-input
+   [maxlength]="maxLenght"
+   [(ngModel)]="inputModelMax">
+ </mv-input>
+ <p><strong>Tamaño máximo del input:</strong></p>
+ <mv-input
+   [(ngModel)]="maxLenght">
+ </mv-input>
+  
+Input básico con maxLenght:
+
+Tamaño máximo del input:
+
+5
+adapt
+Ancho del 100%.
+code
+La propiedad adapt permite definir el ancho del componente al 100% del contenedor.
+
+HTML
+TS
+
+  <mv-input
+    adapt=true>
+  </mv-input>
+
+  <mv-input
+    adapt=false>
+  </mv-input>
+
+  <mv-input>
+  </mv-input>
+  
+Con adapt a true:
+
+Con adapt a false:
+
+Sin adapt (comportamiento por defecto):
+
+appearance
+Apariencia del input.
+code
+La propiedad appearance permite definir la apariencia del componente, por defecto outline.
+
+HTML
+TS
+
+  <mv-input
+    appearance="legacy">
+  </mv-input>
+
+  <mv-input
+    appearance="standard">
+  </mv-input>
+
+  <mv-input
+    appearance="fill">
+  </mv-input>
+
+  <mv-input
+    appearance="outline">
+  </mv-input>
+  
+Con apariencia 'legacy':
+
+Con apariencia 'standard':
+
+Con apariencia 'fill':
+
+Con apariencia 'outline':
+
+autocomplete
+Autocompletar.
+code
+La propiedad autocomplete permite que el navegador autocomplete el contenido de un input con valores ya introducidos anteriormente. Por ejemplo, si el navegador tiene almacenado nuestro correo, se podrá autocompletar cualquier input que tenga la propiedad autocomplete con valor "email".
+
+Para ver los valores que acepta la propiedad y tener más información ver la documentación oficial: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+
+HTML
+TS
+
+  <p><strong>Ejemplo autocomplete con valor "email":</strong></p>
+  <form #autocompleteForm="ngForm">
+    <mv-input
+      autocomplete="email">
+    </mv-input>
+  </form>
+
+  <p><strong>Ejemplo autocomplete con valor "given-name":</strong></p>
+  <form #autocompleteForm="ngForm">
+    <mv-input
+      autocomplete="given-name">
+    </mv-input>
+  </form>
+  
+Ejemplo autocomplete con valor "email":
+
+Ejemplo autocomplete con valor "given-name":
+
+delay
+Retardo del input.
+code
+La propiedad delay permite definir un retardo después de escribir en el componente, por defecto su valor es 0ms.
+
+HTML
+TS
+
+  <mv-input
+    (changeEvent)="changeEventFunctionMillis($event)"
+    delay="3000">
+  </mv-input>
+  
+Con delay de 3000 ms:
+
+disabled
+Deshabilitar el input.
+code
+La propiedad disabled permite deshabilitar el componente.
+
+HTML
+TS
+
+  <mv-input
+    disabled=true>
+  </mv-input>
+
+  <mv-input
+    disabled=false>
+  </mv-input>
+
+  <mv-input>
+  </mv-input>
+  
+Con disabled a true:
+
+Con disabled a false:
+
+Sin disabled (comportamiento por defecto):
+
+floatLabel
+Comportamiento de la label.
+code
+La propiedad floatLabel permite definir el comportamiento de la label del componente.
+
+Si usamos la propiedad floatLabel también tendrá que haber definida una label, mediante la propiedad label.
+
+HTML
+TS
+
+  <mv-input
+    label="Propiedad floatLabel"
+    floatLabel="always">
+  </mv-input>
+
+  <mv-input
+    label="Propiedad floatLabel"
+    appearance="legacy"
+    floatLabel="never">
+  </mv-input>
+
+  <mv-input
+    label="Propiedad floatLabel"
+    floatLabel="auto">
+  </mv-input>
+  
+Con floatLabel 'always':
+
+Propiedad floatLabel
+Con floatLabel 'never':
+
+* El valor 'never' solo aplica cuando la propiedad appearance='legacy'
+
+Propiedad floatLabel
+Con floatLabel 'auto':
+
+Propiedad floatLabel
+hint
+Texto explicativo.
+code
+La propiedad hint permite definir un texto debajo del componente.
+
+HTML
+TS
+
+  <mv-input
+    hint="Propiedad hint">
+  </mv-input>
+  
+Con hint 'Propiedad hint':
+
+Propiedad hint
+hintAlign
+Posición del hint.
+code
+La propiedad hintAlign permite establecer la posición del hint al principio o al final del componente.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad hint
+
+HTML
+TS
+
+  <mv-input
+    hintAlign="start"
+    hint="Hint al principio">
+  </mv-input>
+
+  <mv-input
+    hintAlign="end"
+    hint="Hint al final">
+  </mv-input>
+  
+Con hintAlign 'start':
+
+Hint al principio
+Con hintAlign 'end':
+
+Hint al final
+hintType
+Estilo del hint.
+code
+La propiedad hintType permite definir el estilo del hint entre los valores warning, info, danger y success.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad hint
+
+HTML
+TS
+
+  <mv-input
+    hintType="info"
+    hint="Hint info">
+  </mv-input>
+
+  <mv-input
+    hintType="success"
+    hint="Hint success">
+  </mv-input>
+
+  <mv-input
+    hintType="warning"
+    hint="Hint warning">
+  </mv-input>
+
+  <mv-input
+    hintType="danger"
+    hint="Hint danger">
+  </mv-input>
+  
+Con hintType 'info':
+
+Hint info
+Con hintType 'success':
+
+Hint success
+Con hintType 'warning':
+
+Hint warning
+Con hintType 'danger':
+
+Hint danger
+inputmode
+Propiedad inputmode del input de HTML.
+code
+La propiedad inputmode permite definir el teclado que queremos que salga al hacer foco en el input. Es una propiedad nativa del componente HTML input.
+
+Usos útiles del atributo inputmode:
+
+https://css-tricks.com/everything-you-ever-wanted-to-know-about-inputmode
+https://www.twilio.com/blog/html-attributes-two-factor-authentication-autocomplete
+HTML
+TS
+
+  <p><strong>Con inputmode 'decimal':</strong></p>
+  <mv-input
+    inputmode="decimal">
+  </mv-input>
+
+  <p><strong>Con inputmode 'email':</strong></p>
+  <mv-input
+    inputmode="email">
+  </mv-input>
+
+  <p><strong>Con inputmode 'none':</strong></p>
+  <mv-input
+    inputmode="none">
+  </mv-input>
+
+  <p><strong>Con inputmode 'numeric':</strong></p>
+  <mv-input
+    inputmode="numeric">
+  </mv-input>
+
+  <p><strong>Con inputmode 'search':</strong></p>
+  <mv-input
+    inputmode="search">
+  </mv-input>
+
+  <p><strong>Con inputmode 'tel':</strong></p>
+  <mv-input
+    inputmode="tel">
+  </mv-input>
+
+  <p><strong>Con inputmode 'text' (por defecto):</strong></p>
+  <mv-input
+    inputmode="text">
+  </mv-input>
+
+  <p><strong>Con inputmode 'url':</strong></p>
+  <mv-input
+    inputmode="url">
+  </mv-input>
+  
+Con inputmode 'decimal':
+
+Con inputmode 'email':
+
+Con inputmode 'none':
+
+Con inputmode 'numeric':
+
+Con inputmode 'search':
+
+Con inputmode 'tel':
+
+Con inputmode 'text' (por defecto):
+
+Con inputmode 'url':
+
+label
+Label del input.
+code
+La propiedad label permite definir un texto que queda por encima del componente, a modo de título.
+
+HTML
+TS
+
+  <mv-input
+    label="Label del input"
+    appearance="legacy">
+  </mv-input>
+
+  <mv-input
+    label="Label del input"
+    appearance="standard">
+  </mv-input>
+
+  <mv-input
+    label="Label del input"
+    appearance="fill">
+  </mv-input>
+
+  <mv-input
+    label="Label del input"
+    appearance="outline">
+  </mv-input>
+  
+Con label 'Label del input' y apariencia 'legacy':
+
+Label del input
+Con label 'Label del input' y apariencia 'standard':
+
+Label del input
+Con label 'Label del input' y apariencia 'fill':
+
+Label del input
+Con label 'Label del input' y apariencia 'outline':
+
+Label del input
+placeholder
+Placeholder del input.
+code
+La propiedad placeholder permite definir un texto que queda por encima del componente, a modo de título.
+
+HTML
+TS
+
+  <mv-input
+    placeholder="Nombre">
+  </mv-input>
+  
+Con placeholder 'Nombre':
+
+refAutocomplete
+Autocompletar con valores.
+code
+La propiedad refAutocomplete permite definir una serie de valores para autocompletar el contenido del input, permitiendo filtrar si así se desea.
+
+Para definir un input con autocompletado hay que definir un componente mv-input y un mat-autocomplete de Material https://material.angular.io/components/automcomplete/overview
+
+HTML
+TS
+
+  <mv-input
+    label="Label del input"
+    appearance="legacy"
+    matAutocomplete="auto">
+  </mv-input>
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{option.name}}
+    </mat-option>
+  </mat-autocomplete>
+
+  <mv-input
+    [refAutocomplete]="auto2"
+    [formControl]="optionsCtrl">
+  </mv-input>
+
+  <mat-autocomplete #auto2="matAutocomplete">
+    <mat-option
+      *ngFor="let option of filteredOptions | async"
+      [value]="option.name"
+    >
+      {{option.name}}
+    </mat-option>
+  </mat-autocomplete>
+
+  <mv-input
+    [refAutocomplete]="auto5"
+    [formControl]="optionsGroupCtrl">
+  </mv-input>
+
+  <mat-autocomplete #auto5="matAutocomplete">
+    <mat-optgroup
+      *ngFor="let group of filteredGroupOptions | async"
+      [label]="group.index"
+    >
+      <mat-option *ngFor="let name of group.names" [value]="name">
+        {{name}}
+      </mat-option>
+    </mat-optgroup>
+  </mat-autocomplete>
+  
+Con refAutocomplete y sin filtrado:
+
+Con refAutocomplete y filtrado según vamos escribiendo:
+
+Con refAutocomplete y opciones de grupo:
+
+refAutocompleteConnectedTo
+Autocompletar con valores.
+code
+La propiedad refAutocompleteConnectedTo permite definir el comportamiento de la propiedad refAutocomplete en un elemento HTML distinto del input de búsqueda.
+
+HTML
+TS
+
+  <mv-input
+    [refAutocomplete]="auto3"
+    [refAutocompleteConnectedTo]="auto4">
+  </mv-input>
+
+  <mat-autocomplete #auto3="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]="option.name">
+      {{option.name}}
+    </mat-option>
+  </mat-autocomplete>
+
+  <span
+    id="matAutocompleteOrigin"
+    matAutocompleteOrigin
+    #auto4="matAutocompleteOrigin"
+  >
+    <p>refAutocompleteConnectedTo</p>
+  </span>
+  
+Con refAutocompleteConnectedTo en el elemento 'refAutocompleteConnectedTo':
+
+refAutocompleteConnectedTo
+
+required
+Input obligatorio.
+code
+La propiedad required permite definir el input como obligatorio.
+
+HTML
+TS
+
+  <mv-input
+    required=true>
+  </mv-input>
+
+  <mv-input
+    required=false>
+  </mv-input>
+
+  <mv-input>
+  </mv-input>
+  
+Con required a true:
+
+*
+Con required a false:
+
+Sin required (comportamiento por defecto):
+
+requiredHint
+Mensaje del input required.
+code
+La propiedad requiredHint permite definir el mensaje cuando el input es required.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad required
+
+HTML
+TS
+
+  <mv-input
+    requiredHint="Campo obligatorio"
+    required=true>
+  </mv-input>
+  
+Con requiredHint 'Campo obligatorio':
+
+*
+showClear
+Botón para borrar el contenido del input.
+code
+La propiedad showClear permite mostrar el botón para borrar cuando el input tiene contenido.
+
+HTML
+TS
+
+  <mv-input
+    showClear=true>
+  </mv-input>
+
+  <mv-input
+    showClear=false>
+  </mv-input>
+
+  <mv-input>
+  </mv-input>
+  
+Con showClear a true:
+
+Con showClear a false:
+
+Sin showClear (comportamiento por defecto):
+
+showMaxlength
+Indicación de los caracteres restantes para llegar al máximo.
+code
+La propiedad showMaxlength permite mostrar el número de caracteres que hay escritos, así como el máximo de caracteres permitidos.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateMaxlength
+
+HTML
+TS
+
+  <mv-input
+    validateMaxlength=20
+    showMaxlength=true>
+  </mv-input>
+
+  <mv-input
+    validateMaxlength=20
+    showMaxlength=false>
+  </mv-input>
+
+  <mv-input
+    validateMaxlength=20>
+  </mv-input>
+  
+Con showMaxlength a true:
+
+0/20
+Con showMaxlength a false:
+
+Sin showMaxlength (comportamiento por defecto):
+
+showMinlength
+Indicación de los caracteres restantes para llegar al mínimo.
+code
+La propiedad showMinlength permite mostrar el número de caracteres que hay escritos, así como el mínimo de caracteres permitidos.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateMinlength
+
+HTML
+TS
+
+  <mv-input
+    validateMinlength=10
+    showMinlength=true>
+  </mv-input>
+
+  <mv-input
+    validateMinlength=10
+    showMinlength=false>
+  </mv-input>
+
+  <mv-input
+    validateMinlength=10>
+  </mv-input>
+  
+Con showMinlength a true:
+
+undefined
+Con showMinlength a false:
+
+Sin showMinlength (comportamiento por defecto):
+
+showUnlockPass
+Botón para mostrar/ocultar los caracteres de un input type password.
+code
+La propiedad showUnlockPass permite mostrar un botón que permite ocultar o mostrar los caracteres de la contraseña.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad type='password'
+
+HTML
+TS
+
+  <mv-input
+    type="password"
+    showUnlockPass=true>
+  </mv-input>
+
+  <mv-input
+    type="password"
+    showUnlockPass=false>
+  </mv-input>
+
+  <mv-input
+    type="password">
+  </mv-input>
+  
+Con showUnlockPass a true:
+
+Con showUnlockPass a false:
+
+Sin showUnlockPass (comportamiento por defecto):
+
+type
+Propiedad type del input de HTML.
+code
+La propiedad type permite definir la misma propiedad type de HTML. Los type soportados son los que define Material https://material.angular.io/components/input/overview .
+
+HTML
+TS
+
+  <mv-input
+    type="color">
+  </mv-input>
+
+  <mv-input
+    type="date">
+  </mv-input>
+
+  <mv-input
+    type="datetime-local">
+  </mv-input>
+
+  <mv-input
+    type="email">
+  </mv-input>
+
+  <mv-input
+    type="month">
+  </mv-input>
+
+  <mv-input
+    type="number">
+  </mv-input>
+
+  <mv-input
+    type="password">
+  </mv-input>
+
+  <mv-input
+    type="search">
+  </mv-input>
+
+  <mv-input
+    type="tel">
+  </mv-input>
+
+  <mv-input
+    type="text">
+  </mv-input>
+
+  <mv-input
+    type="time">
+  </mv-input>
+
+  <mv-input
+    type="url">
+  </mv-input>
+
+  <mv-input
+    type="week">
+  </mv-input>
+  
+Con type 'color':
+
+
+Con type 'date':
+
+
+dd/mm/aaaa
+Con type 'datetime-local':
+
+
+dd/mm/aaaa --:--
+Con type 'email':
+
+Con type 'month':
+
+
+---------- de ----
+Con type 'number':
+
+Con type 'password':
+
+Con type 'search':
+
+Con type 'tel':
+
+Con type 'text':
+
+Con type 'time':
+
+
+--:--
+Con type 'url':
+
+Con type 'week':
+
+
+Semana --, ----
+validateCustom
+Validación customizada.
+code
+La propiedad validateCustom permite realizar validaciones personalizadas, que deberemos implementar nosotros mismos.
+
+En caso de no cumplir la validación que hayamos definido, el componente se marcará con aspecto de error.
+
+Documentación de Angular sobre validaciones: https://angular.io/guide/form-validation
+
+HTML
+TS
+
+  <mv-input
+    [validateCustom]="myCustomValidation()">
+  </mv-input>
+  
+Con validación personalizada tal que todas las letras sean mayúsculas:
+
+validateCustomHint
+Mensaje de la validación de validateCustom.
+code
+La propiedad validateCustomHint permite definir un mensaje para la propiedad validateCustom
+
+El mensaje por defecto es 'El valor es incorrecto'
+
+HTML
+TS
+
+  <mv-input
+    validateCustomHint="Todas las letras mayúsculas"
+    [validateCustom]="myCustomValidation()">
+  </mv-input>
+  
+Con validateCustomHint 'Todas las letras mayúsculas':
+
+validateEmail
+Validación de email.
+code
+La propiedad validateEmail permite realizar validaciones para input con type 'email'
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad type='email'
+
+HTML
+TS
+
+  <mv-input
+    type="email"
+    validateEmail=true>
+  </mv-input>
+
+  <mv-input
+    type="email"
+    validateEmail=false>
+  </mv-input>
+
+  <mv-input
+    type="email">
+  </mv-input>
+  
+Con validateEmail a true:
+
+Con validateEmail a false:
+
+Sin validateEmail (comportamiento por defecto):
+
+validateEmailHint
+Mensaje de la validación de email.
+code
+La propiedad validateEmailHint permite definir un mensaje para la validación de email
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad type='email' y la propiedad validateEmail=true
+
+HTML
+TS
+
+  <mv-input
+    type="email"
+    validateEmail=true
+    validateEmailHint="Introduce un correo">
+  </mv-input>
+  
+Con validateEmailHint 'Introduce un correo':
+
+validateFirst
+Validación inicial del componente.
+code
+La propiedad validateFirst permite validar o no el componente al ser cargado, ya que a lo mejor no queremos que de primeras se marquen como erróneos determinados input o al revés, queremos que nada más cargar la vista se haga la validación
+
+En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo required=true
+
+HTML
+TS
+
+  <mv-input
+    required=true
+    validateFirst=true>
+  </mv-input>
+
+  <mv-input
+    required=true
+    validateFirst=false>
+  </mv-input>
+
+  <mv-input
+    required=true>
+  </mv-input>
+  
+Con validateFirst a true:
+
+*
+Campo requerido
+Con validateFirst a false:
+
+*
+Sin validateFirst (comportamiento por defecto):
+
+*
+validateMaxlength
+Validación de longitud máxima.
+code
+La propiedad validateMaxlength permite definir una longitud máxima del contenido del input.
+
+HTML
+TS
+
+  <mv-input
+    validateMaxlength="8">
+  </mv-input>
+
+  
+Con validateMaxlength con valor 8:
+
+validateMaxlengthHint
+Mensaje de validación de validateMaxlength.
+code
+La propiedad validateMaxlengthHint permite definir un mensaje personalizado para la propiedad validateMaxlength.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateMaxlength
+
+HTML
+TS
+
+  <mv-input
+    validateMaxlengthHint="demasiado largo"
+    validateMaxlength="10">
+  </mv-input>
+
+  
+Con validateMaxlengthHint 'demasiado largo':
+
+validateMax
+Validación de número máximo.
+code
+La propiedad validateMax permite definir un número máximo del contenido del input.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad type=number
+
+HTML
+TS
+
+  <mv-input
+    type="number"
+    validateMax="65">
+  </mv-input>
+  
+Con validateMax con valor 65:
+
+validateMaxHint
+Mensaje de validación de validateMax.
+code
+La propiedad validateMaxHint permite definir un mensaje personalizado para la propiedad validateMax.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateMax
+
+HTML
+TS
+
+  <mv-input
+    type="number"
+    validateMaxHint="Introduce un número inferior"
+    validateMax="30">
+  </mv-input>
+  
+Con validateMaxHint 'Introduce un número inferior':
+
+validateMin
+Validación de número mínimo.
+code
+La propiedad validateMin permite definir un número mínimo del contenido del input.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad type=number
+
+HTML
+TS
+
+  <mv-input
+    type="number"
+    validateMin="18">
+  </mv-input>
+  
+Con validateMin con valor 18:
+
+validateMinHint
+Mensaje de validación de validateMin.
+code
+La propiedad validateMinHint permite definir un mensaje personalizado para la propiedad validateMin.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateMin
+
+HTML
+TS
+
+  <mv-input
+    type="number"
+    validateMinHint="Introduce un número superior"
+    validateMin="18">
+  </mv-input>
+  
+Con validateMinHint 'Introduce un número superior':
+
+validateMinlength
+Validación de longitud máxima.
+code
+La propiedad validateMinlength permite definir una longitud mínima del contenido del input.
+
+HTML
+TS
+
+  <mv-input
+    validateMinlength="8">
+  </mv-input>
+
+  
+Con validateMinlength con valor 8:
+
+validateMinlengthHint
+Mensaje de validación de validateMinlength.
+code
+La propiedad validateMinlengthHint permite definir un mensaje personalizado para la propiedad validateMinlength.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateMinlength
+
+HTML
+TS
+
+  <mv-input
+    validateMinlengthHint="demasiado corto"
+    validateMinlength="10">
+  </mv-input>
+
+  
+Con validateMinlengthHint 'demasiado corto':
+
+validateNIE
+Validación de NIE.
+code
+La propiedad validateNIE permite validar si el contenido es un NIE.
+
+HTML
+TS
+
+  <mv-input
+    validateNIE=true>
+  </mv-input>
+  
+Con validateNIE:
+
+validateNIEHint
+Mensaje de validación de validateNIE.
+code
+La propiedad validateNIEHint permite definir un mensaje personalizado para la propiedad validateNIE.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateNIE
+
+HTML
+TS
+
+  <mv-input
+    validateNIE=true
+    validateNIEHint="Introduce un NIE correcto">
+  </mv-input>
+  
+Con validateNIEHint 'Introduce un NIE correcto':
+
+validateNIF
+Validación de NIF.
+code
+La propiedad validateNIF permite validar si el contenido es un NIF.
+
+HTML
+TS
+
+  <mv-input
+    validateNIF=true>
+  </mv-input>
+  
+Con validateNIF:
+
+validateNIFHint
+Mensaje de validación de validateNIF.
+code
+La propiedad validateNIFHint permite definir un mensaje personalizado para la propiedad validateNIF.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateNIF
+
+HTML
+TS
+
+  <mv-input
+    validateNIF=true
+    validateNIFHint="Introduce un NIF correcto">
+  </mv-input>
+  
+Con validateNIFHint 'Introduce un NIF correcto':
+
+validateNIFNIEHint
+Mensaje de validación de validateNIE y validateNIF a la vez.
+code
+La propiedad validateNIFNIEHint permite definir un mensaje personalizado para cuando se usen las propiedades validateNIE y validateNIF a la vez. Concretamente, saldrá este mensaje cuando el texto introducido no sea ni un NIE ni un NIF.
+
+Para los casos en los que sea tan solo o el NIF o el NIE lo que sea incorrecto mostrará el mensaje definido en validateNIF o validateNIE, respectivamente.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateNIE y la propiedad validateNIF
+
+HTML
+TS
+
+  <mv-input
+    validateNIE=true
+    validateNIF=true
+    validateNIFNIEHint="Introduce un NIF/NIE correcto">
+  </mv-input>
+  
+Con validateNIFNIEHint 'Introduce un NIF correcto':
+
+validateNotNumberHint
+Validación de valor numérico.
+code
+La propiedad validateNotNumberHint permite validar que el elemento introducido sea numérico.
+
+HTML
+TS
+
+  <mv-input
+    validateOnType=true
+    validateNotNumberHint="No es un número">
+  </mv-input>
+
+  <mv-input
+    validateOnType=true
+    validateNotNumberHint=false>
+  </mv-input>
+
+  <mv-input
+    validateOnType=true>
+  </mv-input>
+  
+Con validateNotNumberHint a true:
+
+Con validateNotNumberHint a false:
+
+Sin validateNotNumberHint (comportamiento por defecto):
+
+validateOnType
+Validación en tiempo real.
+code
+La propiedad validateOnType permite activar la validación del componente en tiempo real, esto es según se va escribiendo.
+
+En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo required=true
+
+HTML
+TS
+
+  <mv-input
+    required=true
+    validateOnType=true>
+  </mv-input>
+
+  <mv-input
+    required=true
+    validateOnType=false>
+  </mv-input>
+
+  <mv-input
+    required=true>
+  </mv-input>
+  
+Con validateOnType a true:
+
+*
+Con validateOnType a false:
+
+*
+Sin validateOnType (comportamiento por defecto):
+
+*
+validateRegex
+Validación de expresión regular.
+code
+La propiedad validateRegex permite validar si el contenido cumple con la expresión regular definida.
+
+HTML
+TS
+
+  <mv-input
+    validateRegex="(d{4})([A-z]{3})">
+  </mv-input>
+  
+Con expresión regular para validar matrículas, validateRegex '(\d{4})([A-z]{3})':
+
+validateRegexHint
+Mensaje de validación de validateRegexHint.
+code
+La propiedad validateRegexHint permite definir un mensaje personalizado para la propiedad validateRegex.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateRegex
+
+HTML
+TS
+
+  <mv-input
+    validateRegexHint="El correo debe ser gmail"
+    validateRegex="([^@]+@gmail.com)">
+  </mv-input>
+  
+Con expresión regular para validar correos de gmail, validateRegex '([^@]+@gmail.com)' y validateRegexHint 'El correo debe ser gmail':
+
+changeEvent
+Evento change.
+code
+El evento changeEvent permite definir una función que se ejecutará cuando cambie el valor del input
+
+HTML
+TS
+
+  <mv-input
+    (changeEvent)="changeEventFunction($event)">
+  </mv-input>
+  
+Con changeEvent:
+
+keyupEvent
+Evento keyup.
+code
+El evento keyupEvent permite definir una función que se ejecutará cuando el usuario deja de teclear
+
+La diferencia con el evento changeEvent es que no se ejecutará la función keyupEvent hasta que el usuario deje de teclear, de manera que si mantiene pulsado de manera continuada un valor del teclado se estará introduciendo muchos caracteres sin que se ejecute la función keyupEvent, sin embargo sí se estaría ejecutando la función changeEvent porque el valor sí está cambiando.
+
+HTML
+TS
+
+  <mv-input
+    (keyupEvent)="keyupEventFunction($event)">
+  </mv-input>
+  
+Con keyupEvent:
+
+focusEvent
+Evento keyup.
+code
+El evento focusEvent permite definir una función que se ejecutará cuando el usuario seleccione el input
+
+HTML
+TS
+
+  <mv-input
+  (focusEvent)="focusEventFunction($event)">
+  </mv-input>
+  
+Con focusEvent:
+
+blurEvent
+Evento keyup.
+code
+El evento blurEvent permite definir una función que se ejecutará cuando el usuario salga del input
+
+HTML
+TS
+
+  <mv-input
+    (blurEvent)="blurEventFunction($event)">
+  </mv-input>
+  
+Con blurEvent:
+
+ariaLabel
+Etiqueta para accesibilidad
+code
+La etiqueta ariaLabel se utiliza para proporcionar una descripción de texto alternativa para elementos que no tienen un texto visible por si mismo y aseguarse que usuarios con lectores de pantalla y otros asistentes de accesibilidad puedan entender el propósito del componente.
+
+HTML
+TS
+
+  <mv-input
+    arialLabel="Tu texto personalizado">
+  </mv-input>
+  

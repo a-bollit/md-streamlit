@@ -1,0 +1,799 @@
+Documentación mv-birthdate
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link adapt
+link appearance
+link delay
+link disabled
+link floatLabel
+link hint
+link hintAlign
+link hintType
+link label
+link panelClass
+link placeholder
+link required
+link requiredHint
+link validateBannedDayArray
+link validateBannedMonthArray
+link validateBannedYearArray
+link validateBannedDayHint
+link validateBannedMonthHint
+link validateBannedYearHint
+link validateFirst
+link validateOnType
+Eventos:
+
+link changeEvent
+link hintToggle
+Información
+Información del componente mv-birthdate.
+code
+Este componente sirve para escoger una fecha con mayor facilidad que un calendario en ciertas ocasiones, como fechas de nacimiento en las que hay que navegar hasta encontrar el año deseado. En este componente el día, el mes y el año se selecciona de forma directa.
+
+Ejemplo de uso
+Uso básico del componente mv-birthdate.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+
+  <mv-birthdate
+    [(ngModel)]="birthdate001Model">
+  </mv-birthdate>
+  
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+Valor de la variable 'birthdate001Model':
+
+adapt
+Ancho del 100%.
+code
+La propiedad adapt permite definir el ancho del componente al 100% del contenedor.
+
+HTML
+TS
+
+  <mv-birthdate
+    adapt=true>
+  </mv-birthdate>
+
+  <mv-birthdate
+    adapt=false>
+  </mv-birthdate>
+
+  <mv-birthdate>
+  </mv-birthdate>
+  
+Con adapt a true:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+Con adapt a false:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+Sin adapt (comportamiento por defecto):
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+appearance
+Apariencia del birthdate.
+code
+La propiedad appearance permite definir la apariencia del componente, por defecto outline.
+
+HTML
+TS
+
+  <mv-birthdate
+    appearance="legacy">
+  </mv-birthdate>
+
+  <mv-birthdate
+    appearance="standard">
+  </mv-birthdate>
+
+  <mv-birthdate
+    appearance="fill">
+  </mv-birthdate>
+
+  <mv-birthdate
+    appearance="outline">
+  </mv-birthdate>
+  
+Con apariencia 'legacy':
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+Con apariencia 'standard':
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+Con apariencia 'fill':
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+Con apariencia 'outline':
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+delay
+Retardo tras pulsación.
+code
+La propiedad delay permite definir un retardo de los eventos tras una pulsación en el componente
+
+El valor por defecto es 0.
+
+HTML
+TS
+
+  <mv-birthdate
+    delay="3000"
+    (changeEvent)=changeFunctionDelay()>
+  </mv-birthdate>
+  
+Delay = 3000:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+disabled
+Deshabilitar el birthdate.
+code
+La propiedad disabled permite deshabilitar el componente
+
+El valor por defecto es false.
+
+También se puede aplicar esta propiedad a opciones concretas del birthdate, debiendo definirlo en el array de opciones
+
+HTML
+TS
+
+  <mv-birthdate
+    disabled=true>
+  </mv-birthdate>
+
+  <mv-birthdate
+    disabled=false>
+  </mv-birthdate>
+
+  <mv-birthdate>
+  </mv-birthdate>
+  
+Con disabled a true:
+
+ Día
+ Mes
+ Año
+Con disabled a false:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+Sin disabled (comportamiento por defecto):
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+floatLabel
+Comportamiento de la label.
+code
+La propiedad floatLabel permite definir el comportamiento de la label del componente.
+
+Si usamos la propiedad floatLabel también tendrá que haber definida una label, mediante la propiedad label.
+
+HTML
+TS
+
+  <mv-birthdate
+    label="Propiedad floatLabel"
+    floatLabel="always">
+  </mv-birthdate>
+
+  <mv-birthdate
+    label="Propiedad floatLabel"
+    appearance="legacy"
+    floatLabel="never">
+  </mv-birthdate>
+
+  <mv-birthdate
+    label="Propiedad floatLabel"
+    floatLabel="auto">
+  </mv-birthdate>
+  
+Con floatLabel 'always':
+
+ 	
+ Propiedad floatLabel
+ 	
+ 
+ 	
+ 
+Con floatLabel 'never':
+
+* El valor 'never' solo aplica cuando la propiedad appearance='legacy'
+
+ 	
+ 
+ 	
+ 
+ 	
+ 
+Con floatLabel 'auto':
+
+ 	
+ Propiedad floatLabel
+ 	
+ 
+ 	
+ 
+hint
+Texto explicativo.
+code
+La propiedad hint permite definir un texto debajo del componente.
+
+HTML
+TS
+
+  <mv-birthdate
+    hint="Propiedad hint">
+  </mv-birthdate>
+  
+Con hint 'Propiedad hint':
+
+ 	
+ Día
+Propiedad hint
+ 	
+ Mes
+ 	
+ Año
+hintAlign
+Posición del hint.
+code
+La propiedad hintAlign permite establecer la posición del hint al principio o al final del componente.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad hint
+
+HTML
+TS
+
+  <mv-birthdate
+    hintAlign="start"
+    hint="Hint al principio">
+  </mv-birthdate>
+
+  <mv-birthdate
+    hintAlign="end"
+    hint="Hint al final">
+  </mv-birthdate>
+  
+Con hintAlign 'start':
+
+ 	
+ Día
+Hint al principio
+ 	
+ Mes
+ 	
+ Año
+Con hintAlign 'end':
+
+ 	
+ Día
+Hint al final
+ 	
+ Mes
+ 	
+ Año
+hintType
+Estilo del hint.
+code
+La propiedad hintType permite definir el estilo del hint entre los valores warning, info, danger y success.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad hint
+
+HTML
+TS
+
+  <mv-birthdate
+    hintType="info"
+    hint="Hint info">
+  </mv-birthdate>
+
+  <mv-birthdate
+    hintType="success"
+    hint="Hint success">
+  </mv-birthdate>
+
+  <mv-birthdate
+    hintType="warning"
+    hint="Hint warning">
+  </mv-birthdate>
+
+  <mv-birthdate
+    hintType="danger"
+    hint="Hint danger">
+  </mv-birthdate>
+  
+Con hintType 'info':
+
+ 	
+ Día
+Hint info
+ 	
+ Mes
+ 	
+ Año
+Con hintType 'success':
+
+ 	
+ Día
+Hint success
+ 	
+ Mes
+ 	
+ Año
+Con hintType 'warning':
+
+ 	
+ Día
+Hint warning
+ 	
+ Mes
+ 	
+ Año
+Con hintType 'danger':
+
+ 	
+ Día
+Hint danger
+ 	
+ Mes
+ 	
+ Año
+label
+Label.
+code
+La propiedad label permite definir una etiqueta para el componente.
+
+HTML
+TS
+
+  <mv-birthdate"
+    label="Label del birthdate">
+  </mv-birthdate>
+  
+Con label 'Label de ejemplo':
+
+ 	
+ Label de ejemplo
+ 	
+ 
+ 	
+ 
+panelClass
+Clase CSS aplicada al panel del birthdate.
+code
+La propiedad panelClass permite definir una clase CSS para el panel del birthdate. Acepta la misma sintaxis que ngClass
+
+HTML
+TS
+CSS
+
+  <mv-birthdate
+    panelClass="myPanelClass">
+  </mv-birthdate>
+  
+panelClass = "myPanelClass":
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+placeholder
+Placeholder del componente.
+code
+La propiedad placeholder permite definir el placeholder para el birthdate.
+
+HTML
+TS
+
+  <mv-birthdate
+    placeholder="Escoge una opción">
+  </mv-birthdate>
+  
+Placeholder = 'Escoge una opción':
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+required
+Componente obligatorio.
+code
+La propiedad required permite definir el componente como obligatorio.
+
+HTML
+TS
+
+  <mv-birthdate
+    validateFirst=true
+    required=true>
+  </mv-birthdate>
+
+  <mv-birthdate
+    validateFirst=true
+    required=false>
+  </mv-birthdate>
+
+  <mv-birthdate
+    validateFirst=true>
+  </mv-birthdate>
+  
+required = true:
+
+ 	
+ Día
+Campo requerido
+ 	
+ Mes
+ 	
+ Año
+required = false:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+Sin required, valor por defecto (false):
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+requiredHint
+Texto relativo a la propiedad required.
+code
+La propiedad requiredHint permite mostrar un mensaje personalizado cuando el componente es obligatorio
+
+HTML
+TS
+
+  <mv-birthdate
+    validateFirst=true
+    required=true
+    requiredHint="Debes rellenar este campo">
+  </mv-birthdate>
+  
+requiredHint = 'Debes rellenar este campo':
+
+ 	
+ Día
+Debes rellenar este campo
+ 	
+ Mes
+ 	
+ Año
+validateBannedDayArray
+Elementos no seleccionables.
+code
+La propiedad validateBannedDayArray permite definir días como no válidos, de manera que si seleccionamos uno de esos días se mostrará el mensaje 'Elemento no seleccionable'
+
+HTML
+TS
+
+  <mv-birthdate
+    [validateBannedDayArray]=validateBannedDayArrayExample>
+  </mv-birthdate>
+  
+validateBannedDayArrayExample = [1, 31]:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+validateBannedMonthArray
+Elementos no seleccionables.
+code
+La propiedad validateBannedMonthArray permite definir elementos como no válidos, de manera que si seleccionamos uno de esos elementos se mostrará el mensaje 'Elemento no seleccionable'
+
+HTML
+TS
+
+  <mv-birthdate
+    [validateBannedMonthArray]=validateBannedMonthArrayExample>
+  </mv-birthdate>
+  
+validateBannedMonthArrayExample = [7, 8]:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+validateBannedYearArray
+Años no seleccionables.
+code
+La propiedad validateBannedYearArray permite definir años como no válidos, de manera que si seleccionamos uno de esos años se mostrará el mensaje 'Elemento no seleccionable'
+
+HTML
+TS
+
+  <mv-birthdate
+    [validateBannedYearArray]=validateBannedYearArrayExample>
+  </mv-birthdate>
+  
+validateBannedYearArrayExample = [2000, 2020]:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+validateBannedDayHint
+Hint de la propiedad validateBannedDayArray.
+code
+La propiedad validateBannedDayHint permite definir un hint personalizado para la propiedad validateBannedDayArray
+
+HTML
+TS
+
+  <mv-birthdate
+    [validateBannedDayArray]=validateBannedDayArrayExample
+    validateBannedDayHint="Elige otro día">
+  </mv-birthdate>
+  
+validateBannedDayHint = 'Elige otro día':
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+validateBannedMonthHint
+Hint de la propiedad validateBannedMonthArray.
+code
+La propiedad validateBannedMonthHint permite definir un hint personalizado para la propiedad validateBannedMonthArray
+
+HTML
+TS
+
+  <mv-birthdate
+    [validateBannedMonthArray]=validateBannedMonthArrayExample
+    validateBannedMonthHint="Elige otro mes">
+  </mv-birthdate>
+  
+validateBannedMonthHint = 'Elige otro mes':
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+validateBannedYearHint
+Hint de la propiedad validateBannedYearArray.
+code
+La propiedad validateBannedYearHint permite definir un hint personalizado para la propiedad validateBannedYearArray
+
+HTML
+TS
+
+  <mv-birthdate
+    [validateBannedYearHint]=validateBannedYearArrayExample
+    validateBannedYearHint="Elige otro año">
+  </mv-birthdate>
+  
+validateBannedYearHint = 'Elige otro año':
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+validateFirst
+Validación al inicio.
+code
+La propiedad validate-first permite decidir si se quiere validar el componente al ser creado
+
+El valor por defecto es true.
+
+HTML
+TS
+
+  <mv-birthdate
+    validateFirst=true
+    required=true>
+  </mv-birthdate>
+
+  <mv-birthdate
+    validateFirst=false
+    required=true>
+  </mv-birthdate>
+
+  <mv-birthdate
+    required=true>
+  </mv-birthdate>
+
+  
+validateFirst = true:
+
+ 	
+ Día
+Campo requerido
+ 	
+ Mes
+ 	
+ Año
+validateFirst = false:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+Sin validateFirst, valor por defecto (true):
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+validateOnType
+Validación del componente en cada cambio.
+code
+La propiedad validateOnType permite validar en cada cambio de estado del componente
+
+El valor por defecto es true.
+
+HTML
+TS
+
+  <mv-birthdate
+    validateOnType=true
+    required=true>
+  </mv-birthdate>
+
+  <mv-birthdate
+    validateOnType=false
+    required=true>
+  </mv-birthdate>
+
+  <mv-birthdate
+    required=true>
+  </mv-birthdate>
+
+  
+validateOnType = true:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+validateOnType = false:
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+Sin validateOnType, valor por defecto (true):
+
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+changeEvent
+Evento change.
+code
+La propiedad changeEvent permite definir una función que se ejecutará al marcar o desmarcar el componente
+
+HTML
+TS
+
+  <mv-birthdate
+    [options]=BirthdateOptions
+    (changeEvent)=changeFunction()>
+  </mv-birthdate>
+
+  
+ 	
+ Día
+ 	
+ Mes
+ 	
+ Año
+hintToggle
+Evento para mostrar/ocultar el hint.
+code
+La propiedad hintToggle es un evento que permite mostrar/ocultar el hint
+
+HTML
+TS
+
+  <mv-birthdate
+    #mvBirthdateHint
+    hint="Hint de prueba">
+  </mv-birthdate>
+
+  <mv-button
+    (clickEvent)="mvBirthdateHint.hintToggle()"
+    color="primary">
+    Mostrar/ocultar hint
+  </mv-button>
+
+  
+ 	
+ Día
+Hint de prueba
+ 	
+ Mes
+ 	
+ Año
+

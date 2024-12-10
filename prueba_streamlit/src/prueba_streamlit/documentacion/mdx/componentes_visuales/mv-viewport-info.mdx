@@ -1,0 +1,65 @@
+Documentación mv-viewport-info
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link positionX
+link positionY
+Información
+Información del componente mv-viewport-info.
+code
+Este componente sirve para mostrar la información del viewport en tiempo real.
+
+Ejemplo de uso
+Ejemplo de uso del componente mv-viewport-info.
+code
+HTML
+
+  <mv-viewport-info
+    *ngIf="showViewport1">
+  </mv-viewport-info>
+  
+Monitor | col-lg | >1200pxcomputer
+positionX
+Posición horizontal.
+code
+La propiedad positionX permite situar horizontalmente el componente.
+
+HTML
+
+  <mv-viewport-info
+    positionX="left"
+    *ngIf="showViewport2">
+  </mv-viewport-info>
+
+  <mv-viewport-info
+    positionX="center"
+    *ngIf="showViewport3">
+  </mv-viewport-info>
+
+  <mv-viewport-info
+    positionX="right"
+    *ngIf="showViewport4">
+  </mv-viewport-info>
+  
+positionY
+Posición vertical.
+code
+La propiedad positionY permite situar verticalmente el componente.
+
+HTML
+
+  <mv-viewport-info
+    positionY="top"
+    *ngIf="showViewport5">
+  </mv-viewport-info>
+
+  <mv-viewport-info
+    positionY="center"
+    *ngIf="showViewport6">
+  </mv-viewport-info>
+
+  <mv-viewport-info
+    positionY="bottom"
+    *ngIf="showViewport7">
+  </mv-viewport-info>

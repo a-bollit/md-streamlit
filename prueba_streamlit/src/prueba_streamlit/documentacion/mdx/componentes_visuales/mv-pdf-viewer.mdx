@@ -1,0 +1,286 @@
+Visualización de pdf
+link Información
+link Configuración
+link Ejemplo de uso
+Propiedades:
+
+link hidePrintButton
+link hideDownloadButton
+link hideLoadButton
+link hideEditButton
+link url (sin cabeceras http)
+link url (con cabeceras http)
+Métodos:
+
+link addConfigParams (search, zoom, page)
+link errorOnLoading (control de errores)
+Información
+Información del componente.
+code
+Este componente es un visor de pdf que se puede usar en web y móvil y que tiene parámetros y metodos de configuración.
+
+El componente funciona de dos formas:
+
+Indicando la url de un pdf estático: url sin cabeceras
+Indicando la url de un servicio REST que devuelva un PDF:
+Esta url que devuelva el PDF deberá ser un recurso GET de un servicio REST desarrollado por el Negocio en un API. Normalmente se usará para implementarlo el Framework JAPI. Podrá tener seguridad de tipo token en la cabecera. Mirar el uso en el apartado url con cabeceras
+
+Con el Framework JAPI hay un ejemplo de recurso llamado /files que implementa la subida y descarga de ficheros en un Servicio REST. Para las pruebas se ha hecho un ejemplo con los recursos de subida y bajada (recurso /files) del ejemplo japi_rest_ejemplo_alumnos del framework JAPI
+
+Configuración
+Configuración del componente.
+code
+Configuración
+Primero, si no está ya incluído, hay que importar el componente en el archivo mova.module.ts.
+
+También hay que configurar en los archivos de entorno las variables necesarias para el correcto funcionamiento del componente, como se muestra en el código de environment.ts, environment.val.ts y environment.prod.ts.
+
+La url del visor (variable uriViewer) se debe dejar con el valor por defecto cuando no vamos a instalar la librería del visor en el dominio de nuestra app.
+
+Si, por el contrario, queremos instalar la libreria del visor en nuestro dominio, entonces debemos cambiar el valor al que corresponda.
+
+mova.module.ts
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  ...
+  import {MvPdfViewerModule} from '@mova/components/pdf-viewer';
+  ...
+
+  @NgModule({
+    declarations: [
+    ],
+    imports: [
+      ...
+      MvPdfViewerModule,
+      ...
+    ],
+    providers: [
+    ],
+    exports: [
+      ...
+      MvPdfViewerModule,
+      ...
+    ],
+  })
+  export class MovaModule {}
+Ejemplo completo de uso
+Ejemplo de uso.
+code
+HTML
+TS
+
+  <mv-input
+    adapt=true
+    label="Url del pdf"
+    [(ngModel)]="pdfSrc">
+  </mv-input>
+
+  <mv-button
+    adapt=true
+    appearance="raised"
+    color="primary"
+    [disabled]="componentUrl == pdfSrcExample"
+    (clickEvent)="changeVisorSrc()">
+    Mostrar pdf
+  </mv-button>
+
+
+
+  <mv-pdf-viewer
+    [url]="componentUrl"
+    hidePrintButton=true
+    >
+  </mv-pdf-viewer>
+  
+https://gestiona3.madrid.org/portalapps/util/pdf_ejemplo/MOVA2_NORMATIVA.pdf
+Url del pdf
+
+hideEditButton
+Ocultar botones de edición.
+code
+El atributo hideEditButton sirve para ocultar los botones de edición del pdf
+
+El valor por defecto es false
+
+HTML
+TS
+
+  <mv-pdf-viewer
+    [url]="componentUrl"
+    hideEditButton=true>
+  </mv-pdf-viewer>
+  
+
+hidePrintButton
+Ocultar botón de impresión.
+code
+El atributo hidePrintButton sirve para ocultar el botón de imprimir el pdf
+
+El valor por defecto es false
+
+HTML
+TS
+
+  <mv-pdf-viewer
+    [url]="componentUrl"
+    hidePrintButton=true>
+  </mv-pdf-viewer>
+  
+
+hideDownloadButton
+Ocultar el botón de descarga.
+code
+El atributo hideDownloadButton sirve para ocultar el botón de descargar el pdf
+
+El valor por defecto es false
+
+HTML
+TS
+
+  <mv-pdf-viewer
+    [url]="componentUrl"
+    hideDownloadButton=true>
+  </mv-pdf-viewer>
+  
+
+hideLoadButton
+Ocultar el botón de carga.
+code
+El atributo hideLoadButton sirve para ocultar el botón de cargar un nuevo pdf
+
+El valor por defecto es false
+
+HTML
+TS
+
+  <mv-pdf-viewer
+    [url]="componentUrl"
+    hideLoadButton=true>
+  </mv-pdf-viewer>
+  
+
+url (sin cabeceras)
+Url del pdf sin cabeceras http.
+code
+El atributo url será una llamada con recurso GET de un servicio REST sin cabeceras en la llamada o la url de un pdf estático.
+
+HTML
+TS
+
+  <mv-pdf-viewer
+    [url]="pdfSrcSignedExample">
+  </mv-pdf-viewer>
+  
+
+url (con cabeceras)
+Url del pdf con cabeceras http.
+code
+El atributo url será una llamada con recurso GET de un servicio REST con cabeceras en la llamada
+
+HTML
+TS
+
+  <p><strong>Ejemplo de visualización de pdf con cabeceras http:</strong></p>
+  <p>1. Subir un pdf</p>
+
+  <mv-file-uploader
+    #mvFileUploaderExample
+    [allowedExtensions]="allowedExtensions"
+    [maxSizeBytes]="maxSizeBytes"
+    fileDescription="Suba un pdf de menos de 100MB para después visualizarlo con el visor de pdf"
+    chunked=true
+    (onUploadSuccess)="onUploadSuccess()"></mv-file-uploader>
+
+  <p>2. Obtenemos un token de autorización y visualizamos el pdf pasando como cabecera el token obtenido:</p>
+  <mv-button
+    *ngIf="showUploader"
+    adapt=true
+    appearance="raised"
+    color="primary"
+    (clickEvent)="changeVisorSrcWithHeaders()">
+    Visualizar pdf
+  </mv-button>
+
+  <mv-pdf-viewer
+    *ngIf="showUploader"
+    [url]="pdfSrcWithHeadersExample">
+  </mv-pdf-viewer>
+  
+Ejemplo de visualización de pdf con cabeceras http:
+
+1. Subir un pdf
+
+Suba un pdf de menos de 100MB para después visualizarlo con el visor de pdf
+
+Tamaño máximo permitido: 100.00 MBExtensiones permitidas: .pdf
+2. Obtenemos un token de autorización y visualizamos el pdf pasando como cabecera el token obtenido:
+
+addConfigParams
+Parámetros con opciones de uso.
+code
+El atributo addConfigParams sirve para usar distintas funcionalidades del visor, como zoom, cambio de página, búsqueda de texto...
+
+HTML
+TS
+
+  <mv-pdf-viewer
+    #mvPdfViewerExample
+    [url]="componentUrl">
+  </mv-pdf-viewer>
+
+  <p>A continuación, se muestran algunos ejemplos de uso de los parámetros de configuración:</p>
+
+  <mv-button
+    adapt=true
+    appearance="raised"
+    color="primary"
+    (clickEvent)="addConfigParamZoomExample()">
+    Poner zoom = 5
+  </mv-button>
+
+  <mv-button
+    adapt=true
+    appearance="raised"
+    color="primary"
+    (clickEvent)="addConfigParamSearchExample()">
+    Buscar palabra 'mova'
+  </mv-button>
+
+  <mv-button
+    adapt=true
+    appearance="raised"
+    color="primary"
+    (clickEvent)="addConfigParamPageExample()">
+    Ir a la página 3
+  </mv-button>
+  
+
+A continuación, se muestra un ejemplo para modificar el zoom del visor:
+
+A continuación, se muestra un ejemplo para ir a una página concreta del pdf:
+
+A continuación, se muestra un ejemplo para buscar una cadena en el pdf:
+
+Se pueden añadir múltiples parámetros de personalización de la búsqueda (por defecto todos son false):
+
+phraseSearch: si está a true permite para buscar frases, no solo palabras.
+caseSensitive: si está a true es sensible a mayúsculas y minúsculas.
+entireWord: si está a true busca solo palabras enteras.
+highlightAll: si está a true marca todas las coincidencias, no solo la siguiente.
+findPrevious: si está a true marca las anteriores coincidencias, no solo las siguientes.
+matchDiacritics: si está a true la búsqueda es sensible a signos de puntuación.
+errorOnLoading
+control de errores.
+code
+El método errorLoading se utilizará para poder controlar los errores cuando el pdf no ha sido cargado
+
+HTML
+TS
+
+  <mv-pdf-viewer
+    (errorOnLoading)="errorDectected($event)"
+    [url]="pdfSrcExampleErroneo"
+  >
+  </mv-pdf-viewer>

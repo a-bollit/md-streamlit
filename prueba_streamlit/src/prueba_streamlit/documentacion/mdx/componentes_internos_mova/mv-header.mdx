@@ -1,0 +1,247 @@
+Documentación cabecera (header)
+link Información
+link Configuración
+Propiedades:
+
+link actionComponents
+link headerTitle
+link headerSubtitle
+link fixed
+link showBackButton
+link showMenuButton
+link type
+Información
+Información del componente mv-header.
+code
+El componente mv-header se basa en el componente mat-toolbar de Angular Material, al que se le añade funcionalidad y estilos adicionales.
+
+Sirve para mostrar y configurar la cabecara de la app.
+
+Configuración
+Configuración del componente mv-header.
+code
+El componente mv-header de una aplicación MOVA es configurable mediante el archivo config-default-main-container.json:, concretamente dentro del objeto headerConfig
+
+JSON
+
+  "headerConfig": {
+    "actionComponents": {
+      "component001": HeaderAction1Component,
+      "component002": HeaderAction2Component,
+      "component003": HeaderAction3Component
+    },
+    "headerTitle": "MOVA 2",
+    "headerSubtitle": "Framework de desarrollo MOVA 2",
+    "fixed": true,
+    "showBackButton": true,
+    "showMenuButton": true,
+    "type": ""
+  }
+  
+Aparte de la configuración inicial del archivo config-default-main-container.json, se pueden definir otros valores para la cabecera en cada componente que sobrescribirá la configuración inicial, como se ve a continuación
+
+actionComponents
+Componentes de acción.
+code
+La propiedad actionComponents permite definir hasta tres componentes de acción en la parte derecha de la cabecera, que tendrán la funcionalidad que defina el usuario.
+
+Componente de acción 1:
+
+HTML
+TS
+
+  <mv-icon
+    class="icon"
+    aria-hidden="false"
+    (click)="showAlert()"
+    aria-label="Face"
+  >
+    face
+  </mv-icon>
+  
+Componente de acción 2:
+
+HTML
+TS
+
+  <mv-icon
+    class="icon"
+    aria-hidden="false"
+    (click)="showAlert()"
+    aria-label="Favorito"
+  >
+    favorite
+  </mv-icon>
+  
+Componente de acción 3:
+
+HTML
+TS
+
+  <mv-icon
+    class="icon"
+    aria-hidden="false"
+    [matMenuTriggerFor]="configMenu"
+    aria-label="Configuración"
+  >
+    settings
+  </mv-icon>
+  <mat-menu #configMenu="matMenu">
+      <button
+        mat-menu-item
+        [matMenuTriggerFor]="vertebrates"
+      >
+        Vertebrates
+      </button>
+      <button
+        mat-menu-item
+        [matMenuTriggerFor]="invertebrates"
+      >
+        Invertebrates
+      </button>
+  </mat-menu>
+
+  <mat-menu #vertebrates="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
+      <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
+      <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
+      <button mat-menu-item>Birds</button>
+      <button mat-menu-item>Mammals</button>
+  </mat-menu>
+
+  <mat-menu #invertebrates="matMenu">
+      <button mat-menu-item>Insects</button>
+      <button mat-menu-item>Molluscs</button>
+      <button mat-menu-item>Crustaceans</button>
+      <button mat-menu-item>Corals</button>
+      <button mat-menu-item>Arachnids</button>
+      <button mat-menu-item>Velvet worms</button>
+      <button mat-menu-item>Horseshoe crabs</button>
+  </mat-menu>
+
+  <mat-menu #fish="matMenu">
+      <button mat-menu-item>Baikal oilfish</button>
+      <button mat-menu-item>Bala shark</button>
+      <button mat-menu-item>Ballan wrasse</button>
+      <button mat-menu-item>Bamboo shark</button>
+      <button mat-menu-item>Banded killifish</button>
+  </mat-menu>
+
+  <mat-menu #amphibians="matMenu">
+      <button mat-menu-item>Sonoran desert toad</button>
+      <button mat-menu-item>Western toad</button>
+      <button mat-menu-item>Arroyo toad</button>
+      <button mat-menu-item>Yosemite toad</button>
+  </mat-menu>
+
+  <mat-menu #reptiles="matMenu">
+      <button mat-menu-item>Banded Day Gecko</button>
+      <button mat-menu-item>Banded Gila Monster</button>
+      <button mat-menu-item>Black Tree Monitor</button>
+      <button mat-menu-item>Blue Spiny Lizard</button>
+      <button mat-menu-item disabled>Velociraptor</button>
+  </mat-menu>
+  
+Inclusión de las acciones en la cabecera:
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="changeActionComponents()">
+    Cambiar actionComponents
+  </mv-button>
+  
+headerTitle
+Título de la cabecera.
+code
+La propiedad headerTitle permite definir el título principal de la cabecera.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="changeHeaderTitle()">
+    Cambiar headerTitle
+  </mv-button>
+  
+headerSubtitle
+Subtítulo de la cabecera.
+code
+La propiedad headerSubtitle permite definir el subtítulo de la cabecera.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="changeHeaderSubtitle()">
+    Cambiar headerSubtitle
+  </mv-button>
+  
+fixed
+Cabecera fija.
+code
+La propiedad fixed permite definir la cabecera fija:
+
+true: la cabecera permanecerá fija y visible independientemente del scroll de la página
+false: la cabecera desaparecerá en cuanto se haga scroll hacia abajo
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="changeHeaderFixed()">
+    Cambiar fixed
+  </mv-button>
+  
+showBackButton
+Mostrar botón de atrás.
+code
+La propiedad showBackButton permite mostrar u ocultar el botón de navegación hacia atrás:
+
+true: se mostrará el botón
+false: se ocultará el botón
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="changeHeaderShowBackButton()">
+    Cambiar showBackButton
+  </mv-button>
+  
+showMenuButton
+Mostrar botón del menú.
+code
+La propiedad showMenuButton permite mostrar u ocultar el botón de abrir/cerrar el menú:
+
+true: se mostrará el botón
+false: se ocultará el botón
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="changeHeaderShowMenuButton()">
+    Cambiar showMenuButton
+  </mv-button>
+  
+type
+Tema de la cabecera.
+code
+La propiedad type permite definir el tema visual de la cabecera:
+
+'white-corporative': la cabecera será blanca y el resto de elementos serán de color corporativo
+El caso por defecto será con la cabecera de color corporativo y el resto de elementos serán de color blanco
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="changeHeaderType()">
+    Cambiar type
+  </mv-button>

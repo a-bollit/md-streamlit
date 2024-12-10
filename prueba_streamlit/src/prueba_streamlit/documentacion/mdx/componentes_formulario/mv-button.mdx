@@ -1,0 +1,591 @@
+El componente mv-button se basa en el componente mat-button de Angular Material, al que se le añade funcionalidad y estilos adicionales.
+
+Ejemplo de uso
+Uso básico del componente mv-button.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+
+  <mv-button>
+    Botón básico
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    color="primary">
+    Acción
+  </mv-button>
+
+  <mv-button
+    size="small"
+    appearance="fab">
+    Fab
+  </mv-button>
+  
+Botón básico:
+
+Botón con color primary y appearance raised:
+
+Botón pequeño y estilo fab:
+
+adapt
+Ancho del 100%.
+code
+La propiedad adapt permite definir el ancho del componente al 100% del contenedor.
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    adapt=true>
+    Con adapt
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    adapt=false>
+    Sin adapt
+  </mv-button>
+
+  <mv-button
+    appearance="raised">
+    Sin adapt
+  </mv-button>
+  
+Con adapt a true:
+
+Con adapt a false:
+
+Sin adapt (comportamiento por defecto):
+
+appearance
+Tipo de botón.
+code
+La propiedad appearance permite definir el tipo de botón.
+
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="icon">
+    icon
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised">
+    raised
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="fab">
+    fab
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="miniFab">
+    miniFab
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="stroked">
+    stroked
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="flat">
+    flat
+  </mv-button>
+  
+appearance icon:
+
+appearance raised:
+
+appearance fab:
+
+appearance miniFab:
+
+appearance stroked:
+
+appearance flat:
+
+color
+Color del botón.
+code
+La propiedad color permite definir el color del botón entre primary, accent, warn, corporative y secondary-001.
+
+HTML
+TS
+
+  <mv-button
+    color="primary">
+    primary
+  </mv-button>
+
+  <mv-button
+    color="accent">
+    accent
+  </mv-button>
+
+  <mv-button
+    color="warn">
+    warn
+  </mv-button>
+
+  <mv-button
+    color="corporative">
+    corporative
+  </mv-button>
+
+  <mv-button
+    color="secondary-001">
+    secondary-001
+  </mv-button>
+  
+Primary:
+
+Accent:
+
+Warn:
+
+Corporative:
+
+Secondary-001:
+
+disabled
+Deshabilitar el botón.
+code
+La propiedad disabled permite deshabilitar el botón además de añadir el estilo característico.
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    disabled=true>
+    Con disabled
+  </mv-button>
+
+  <mv-button
+    appearance="raised"
+    disabled=false>
+    Sin disabled
+  </mv-button>
+
+  <mv-button
+    appearance="raised">
+    Sin disabled
+  </mv-button>
+  
+Con disabled a true:
+
+Con disabled a false:
+
+Sin disabled (comportamiento por defecto):
+
+imgSrc
+Imagen en el botón.
+code
+La propiedad imgSrc permite definir una imagen como fondo del botón.
+
+Es obligatorio definir también la propiedad appearance
+
+HTML
+TS
+
+  <mv-button
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    Mis vacaciones
+  </mv-button>
+
+  <mv-button
+    appearance="fab"
+    imgSrc="/assets/examples/portal-001.png">
+  </mv-button>
+  
+Con imagen combinado con tamaño de botón grande:
+
+Con imagen combinado con tipo fab:
+
+imgSize
+Tamaño de la imagen.
+code
+La propiedad imgSize permite definir el tamaño de la imagen, previamente definida con la propiedad imgSrc.
+
+HTML
+TS
+
+  <mv-button
+    imgSize="auto"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    auto
+  </mv-button>
+
+  <mv-button
+    imgSize="cover"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    cover
+  </mv-button>
+
+  <mv-button
+    imgSize="contain"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    contain
+  </mv-button>
+
+  <mv-button
+    imgSize="initial"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    initial
+  </mv-button>
+
+  <mv-button
+    imgSize="inherit"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    inherit
+  </mv-button>
+
+  <mv-button
+    imgSize="20%"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    20%
+  </mv-button>
+
+  <mv-button
+    imgSize="50%"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    50%
+  </mv-button>
+
+  <mv-button
+    imgSize="90%"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    90%
+  </mv-button>
+
+  <mv-button
+    imgSize="20% 10%"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    20% 10%
+  </mv-button>
+
+  <mv-button
+    imgSize="70% 10%"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    70% 10%
+  </mv-button>
+
+  <mv-button
+    imgSize="10% 20%"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    10% 20%
+  </mv-button>
+
+  <mv-button
+    imgSize="10% 70%"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    10% 70%
+  </mv-button>
+
+  <mv-button
+    imgSize="20px"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    20px
+  </mv-button>
+
+  <mv-button
+    imgSize="50px"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    50px
+  </mv-button>
+
+  <mv-button
+    imgSize="90px"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    90px
+  </mv-button>
+
+  <mv-button
+    imgSize="20px 10px"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    20px 10px
+  </mv-button>
+
+  <mv-button
+    imgSize="70px 10px"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    70px 10px
+  </mv-button>
+
+  <mv-button
+    imgSize="10px 20px"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    10px 20px
+  </mv-button>
+
+  <mv-button
+    imgSize="10px 70px"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    10px 70px
+  </mv-button>
+  
+Auto:
+
+Cover:
+
+Contain:
+
+Initial:
+
+Inherit:
+
+Porcentaje:
+
+% total 
+% ancho % alto 
+Longitud:
+
+px total 
+px ancho px alto 
+imgPosition
+Posición de la imagen.
+code
+La propiedad imgPosition permite definir la posición de la imagen dentro del botón.
+
+HTML
+TS
+
+  <mv-button
+    imgPosition="left top"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    left top
+  </mv-button>
+
+  <mv-button
+    imgPosition="left center"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    left center
+  </mv-button>
+
+  <mv-button
+    imgPosition="left bottom"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    left bottom
+  </mv-button>
+
+  <mv-button
+    imgPosition="right top"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    right top
+  </mv-button>
+
+  <mv-button
+    imgPosition="right center"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    right center
+  </mv-button>
+
+  <mv-button
+    imgPosition="right bottom"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    right bottom
+  </mv-button>
+
+  <mv-button
+    imgPosition="left top"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    left top
+  </mv-button>
+
+  <mv-button
+    imgPosition="left center"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    left center
+  </mv-button>
+
+  <mv-button
+    imgPosition="left bottom"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    left bottom
+  </mv-button>
+  
+top|right|bottom|left:
+
+Posición:
+
+%x %y 
+px x px y 
+Initial:
+
+Inherit:
+
+imgRepeat
+Cómo se repite la imagen, si es necesario.
+code
+La propiedad imgRepeat permite definir con qué patrón se debe repetir la imagen en caso de quedar huecos vacíos.
+
+HTML
+TS
+
+  <mv-button
+    imgSize="20px 20px"
+    imgRepeat="repeat"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    repeat
+  </mv-button>
+
+  <mv-button
+    imgSize="20px 20px"
+    imgRepeat="repeat-x"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    repeat-x
+  </mv-button>
+
+  <mv-button
+    imgSize="20px 20px"
+    imgRepeat="repeat-y"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    repeat-y
+  </mv-button>
+
+  <mv-button
+    imgSize="20px 20px"
+    imgRepeat="no-repeat"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    no repeat
+  </mv-button>
+
+  <mv-button
+    imgSize="20px 20px"
+    imgRepeat="space"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    space
+  </mv-button>
+
+  <mv-button
+    imgSize="20px 20px"
+    imgRepeat="round"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    round
+  </mv-button>
+
+  <mv-button
+    imgSize="20px 20px"
+    imgRepeat="initial"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    initial
+  </mv-button>
+
+  <mv-button
+    imgSize="20px 20px"
+    imgRepeat="inherit"
+    imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+    inherit
+  </mv-button>
+  
+Repeat:
+
+Repeat-x:
+
+Repeat-y:
+
+No-repeat:
+
+Space:
+
+Round:
+
+Initial:
+
+Inherit:
+
+link
+Enlace del botón.
+code
+La propiedad link permite definir un enlace al estado de la app que definamos.
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    link="/maquetacion">
+    Link
+  </mv-button>
+  
+Con link al estado 'layout':
+
+size
+Tamaño del botón.
+code
+La propiedad size permite definir el tamaño del botón.
+
+HTML
+TS
+
+  <mv-button
+    color="primary">
+    Por defecto
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    size="small">
+    Small
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    size="medium">
+    Medium
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    size="big">
+    Big
+  </mv-button>
+  
+Tamaño por defecto:
+
+Small:
+
+Medium:
+
+Big:
+
+clickEvent
+Evento click del botón.
+code
+La propiedad clickEvent permite definir la función que se ejecutará al hacer click en el botón.
+
+HTML
+TS
+
+  <mv-button
+    appearance="raised"
+    color="primary"
+    (clickEvent)="clickFunction()">
+    Función click
+  </mv-button>
+  
+ariaLabel
+Etiqueta para accesibilidad
+code
+La etiqueta ariaLabel se utiliza para proporcionar una descripción de texto alternativa para elementos que no tienen un texto visible por si mismo y aseguarse que usuarios con lectores de pantalla y otros asistentes de accesibilidad puedan entender el propósito del componente.
+
+HTML
+TS
+
+  <mv-button
+    arialLabel="Tu texto personalizado">
+  </mv-button>
+  

@@ -1,0 +1,328 @@
+Documentación app-service
+link Información
+Eventos:
+
+link b64toBlob
+link getFormattedDate
+link getTechnicalModule
+link getRandomString
+link indexOfWithAttr
+link showLoading
+link titleCase
+link windowOpen
+Información
+Información del servicio.
+code
+Este servicio proporciona funcionalidad para el uso de componentes internos de mova, como mostrar el loading, así como funcionalidad adicional que puede ser útil para el desarrollador, como un conversor de base64 a blob, obtención de una cadena aleatoria...
+
+b64toBlob
+Conversor de base64 a blob.
+code
+El evento b64toBlob permite convertir una cadena en base64 a tipo blob.
+
+base64(b64Data, contentType, sliceSize?)
+
+b64Data
+
+información en base64.
+contentType
+
+mimeType del fichero.
+sliceSize
+
+Opcional. Tamaño máximo, por defecto 512MB.
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="b64toBlobExample()">
+    b64toBlob
+  </mv-button>
+
+  <p><strong>Resultado:</strong></p>
+  {{ b64toBlobValue }}
+  
+Obtener módulo técnico por plataforma:
+
+Resultado:
+
+getFormattedDate
+Obtener fecha con formato.
+code
+El evento getFormattedDate permite obtener la fecha actual o una dada con el formato que especifiquemos.
+
+Los formatos aceptados son los que define Angular (https://angular.io/api/common/DatePipe#pre-defined-format-options)
+
+getFormattedDate(format, date)
+
+format
+
+string del formato que queremos para la fecha.
+date
+
+objeto Date de la fecha que queremos formatear. Si no se especifica este atributo devuelve la fecha actual.
+HTML
+TS
+
+  <p><strong>Texto de ejemplo:</strong></p>
+  {{ exampleText }}
+
+  <p><strong>llamada a titleCase:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="codeTitleCaseExample()">
+    titleCaseExample
+  </mv-button>
+  
+Fecha sin formatear:
+
+Wed Nov 06 2024 12:43:16 GMT+0100 (hora estándar de Europa central)
+Formato 'd/M/yy, h:mm a':
+
+Formato 'd MMMM, y, h:mm:ss a z':
+
+Formato 'hh:mm:ss':
+
+Formato 'dd/MM/yyyy':
+
+Fecha formateada:
+
+getTechnicalModule
+Obtener módulo técnico por plataforma.
+code
+El evento getTechnicalModule permite obtener el módulo técnico configurado para la app según la plataforma en la que se esté ejecutando.
+
+Así, si estamos ejecutando la app en modo webapp nos devolverá el módulo técnico configurado para webapp, si estamos en una app Android nos devolverá el módulo técnico configurado para Android, etc.
+
+getTechnicalModule()
+
+HTML
+TS
+
+  <p><strong>Texto de ejemplo:</strong></p>
+  {{ exampleText }}
+
+  <p><strong>llamada a titleCase:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="codeTitleCaseExample()">
+    titleCaseExample
+  </mv-button>
+  
+Módulo técnico configurado para webapp:
+
+MOVA_WEBAPP_PLANTILLA2
+Módulo técnico configurado para Android:
+
+MOVA_ANDROID_PLANTILLA2
+Módulo técnico configurado para iOS:
+
+MOVA_IOS_PLANTILLA2
+Obtener módulo técnico por plataforma:
+
+Resultado:
+
+getRandomString
+Obtener un string aleatorio.
+code
+El evento getRandomString permite obtener el un string aleatorio partiendo de unos parámetros configurables.
+
+getRandomString(length, chars, addTimestamp)
+
+length
+
+longitud del string resultante.
+chars
+
+caracteres que componen el string resultante.
+addTimestamp
+
+añadir timestamp al string resultante.
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="getRandomStringExample()">
+    getRandomString
+  </mv-button>
+
+  <p><strong>Resultado:</strong></p>
+  {{ getRandomStringValue }}
+  
+Obtener un string aleatorio:
+
+Resultado:
+
+indexOfWithAttr
+Índice de objeto JSON.
+code
+El evento indexOfWithAttr permite obtener el indice de un elemento JSON en un array mediante el valor de uno de sus atributos.
+
+indexOfWithAttr(array, attr, value)
+
+array
+
+array en el que buscar
+attr
+
+atributo por el que buscar.
+value
+
+valor por el que buscar.
+HTML
+TS
+
+  <p><strong>Array de ejemplo:</strong></p>
+  {{ arrayExample | json }}
+
+  <p><strong>Buscar por clave 'nombre' y valor 'Clara':</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="codeIndexOfWithAttrExample()">
+    codeIndexOfWithAttrExample
+  </mv-button>
+
+  <p>Índice del elemento:</p>
+  {{ index }}
+  
+Array de ejemplo:
+
+[ { "nombre": "Felipe", "apellidos": "Sanz Martínez" }, { "nombre": "Antonio", "apellidos": "Díaz Suárez" }, { "nombre": "Clara", "apellidos": "Medina Pérez" } ]
+Buscar por clave 'nombre' y valor 'Clara':
+
+Índice del elemento:
+
+-1
+showLoading
+Mostrar/ocultar loading.
+code
+El evento showLoading permite mostrar/ocultar una 'cortina' con un icono de loading.
+
+Hay que tener en cuenta que si se llama varias veces al evento para mostrar el loading, habrá que llamar las mismas veces para ocultarlo, ya que las llamadas para mostrar se van acumulando.
+
+Por defecto el método quita el loading a los 20 segundos, pero, con el parametro opcional de seconds se le puede indicar más o menos tiempo
+
+Se puede establecer un texto que se mostrará debajo del icono de loading con el parametro opcional text. Para establecer un texto por defecto, se configura en el archivo config-default-main-frame.json explicado más abajo
+
+showLoading(show, seconds, text)
+
+show
+
+boolean
+seconds (Opcional)
+
+number
+text (Opcional)
+
+string
+HTML
+TS
+
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="showLoadingExample()">
+    showLoading
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="showLoadingExampleWithoutTimeout()">
+    showLoading sin timeout
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="showLoadingExampleWithLargeTimeout()">
+    showLoading 30 segundos
+  </mv-button>
+
+  
+También se puede configurar si queremos el icono de loading como un spinner (por defecto) o como un icono corporativo con animación:
+
+showLoadingMode
+
+"mova1"/"mova2": "mova1" si queremos el icono corporativo, "mova2" si queremos el spinner
+loadingText
+
+"Cargando..."
+config-default-main-frame.json
+
+  {
+    "generalConfig": {
+      ...
+      "showLoadingMode": "mova2",
+      "showLoadingText": "Cargando..."
+    },
+    ...
+  }
+  
+showLoading por defecto
+
+showLoading timeouts
+
+showLoading text
+
+titleCase
+Texto en CamelCase.
+code
+El evento titleCase permite obtener un texto con la primera letra de cada palabra en mayúsculas (CamelCase).
+
+titleCase(str)
+
+str
+
+texto que queremos tratar.
+HTML
+TS
+
+  <p><strong>Texto de ejemplo:</strong></p>
+  {{ exampleText }}
+
+  <p><strong>llamada a titleCase:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="codeTitleCaseExample()">
+    titleCaseExample
+  </mv-button>
+  
+Texto de ejemplo:
+
+Texto que queremos poner en camel case
+llamada a titleCase:
+
+windowOpen
+Abrir url en nueva ventana.
+code
+El evento windowOpen permite abrir una nueva ventana ejecutando el evento nativo window.open de manera segura, securizando la url.
+
+windowOpen(url, name)
+
+url
+
+url a abrir.
+name
+
+propiedad name de window.open.
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)=windowOpenExample()">
+    windowOpen
+  </mv-button>
+  
+llamada a windowOpen:

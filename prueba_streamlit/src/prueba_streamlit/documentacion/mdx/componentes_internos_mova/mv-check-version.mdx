@@ -1,0 +1,33 @@
+Documentación comprobación de versiones
+link Información
+link Configuración
+Información
+Información de comprobación de versiones.
+code
+MOVA comprueba, cada vez que arranca, si la versión de la aplicación que está ejecutando es distinta a la definida en mova_backend y, en caso de ser menor, muestra un mensaje que típicamente tendrá una enlace a la descarga de la nueva versión
+
+También se comprueba si la versión actual es menor que la versión mínima obligatoria definida en mova_backend, en cuyo caso no nos dejará continuar y deberemos actualizar la app
+
+Para cambiar la versión de una app entrar con las credenciales de nuestra app en https://gestiona3.madrid.org/portalapps/webapps/mova_backend
+
+Configuración
+Configuración de comprobación de versión.
+code
+Se puede configurar mova para que se salte la comprobación de versión:
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  export const environment = {
+    mova: {
+          environment: 'DES',
+      ...
+          initView: {
+              ...
+              skipVersionRequirementsCheck: false,
+          },
+          ...
+      },
+      ...
+  };

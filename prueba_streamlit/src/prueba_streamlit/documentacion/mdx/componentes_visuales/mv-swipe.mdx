@@ -1,0 +1,90 @@
+Ejemplos de uso de Swipe con Hammer.js
+link Información
+link Configuración
+link Swipe
+link Swipe por direcciones
+Información
+Información sobre swipe.
+code
+Hammerjs es una librera para la detección de gestos. Documentación.
+
+Tiene varios gestos distintos, entre ellos:
+
+Pan
+Pinch
+Press
+Rotate
+Swipe
+Tap
+En esta documentación solo expondremos ejemplos del swipe.
+
+Configuración
+Configuración para establecer swipe en la aplicación
+code
+Para configurar esta funcionalidad debemos definir los siguientes elementos:
+
+Crear un archivo ts que implementa la configuración hammer.config.js
+Importar el archivo hammer.js en app.module.ts
+hammer.config.ts
+app.module.ts
+
+  import {HammerGestureConfig} from '@angular/platform-browser';
+  import * as Hammer from 'hammerjs';
+
+
+  export class HammerConfig extends HammerGestureConfig {
+    overrides = {
+      swipe: {
+        direction: Hammer.DIRECTION_ALL,
+      },
+    } as any;
+  }
+  
+Swipe
+Ejemplos de uso de swipe por dirección
+code
+Se muestran un ejemplo completo de swipe Documentación de swipe
+
+Para comprobar el funcionamiento, hacer el swipe dentro del area azul
+
+HTML
+TS
+
+  <div class="ejemplosSwipe">
+    <div
+      class="ejemploSwipe"
+      (swipe)="onSwipe($event)"
+    >
+      <div class="swipeTexto">{{swipeAction}}</div>
+    </div>
+  </div>
+Swipe por dirección
+Ejemplos de uso de swipe por dirección
+code
+Se muestran cuatro ejemplos configurables por separado para cada dirección
+
+Para comprobar el funcionamiento, hacer el swipe que se indica dentro del area azul
+
+HTML
+TS
+
+  <div class="ejemplosSwipe">
+    <div
+      class="ejemploSwipe"
+      (swipeup)="onSwipeUp($event)"
+    >
+      <div class="swipeTexto">Swipe Up</div>
+    </div>
+    <div
+      class="ejemploSwipe"
+      (swipedown)="onSwipeDown($event)"
+    >
+      <div class="swipeTexto">Swipe Down</div>
+    </div>
+    <div
+      class="ejemploSwipe"
+      (swiperight)="onSwipeRight($event)"
+    >
+      <div class="swipeTexto">Swipe Right</div>
+    </div>
+    <div

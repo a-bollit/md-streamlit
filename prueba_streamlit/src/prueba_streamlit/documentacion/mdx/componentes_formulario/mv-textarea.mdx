@@ -1,0 +1,1113 @@
+Documentación mv-textarea
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link adapt
+link appearance
+link autosize
+link delay
+link disabled
+link floatLabel
+link hint
+link hintAlign
+link hintType
+link label
+link maxlength
+link maxRows
+link minRows
+link placeholder
+link refAutocomplete
+link refAutocompleteConnectedTo
+link required
+link requiredHint
+link showClear
+link showMaxlength
+link showUnlockPass
+link type
+link validateCustom
+link validateCustomHint
+link validateEmail
+link validateEmailHint
+link validateFirst
+link validateMaxlength
+link validateMaxlengthHint
+link validateMax
+link validateMaxHint
+link validateMin
+link validateMinHint
+link validateNIE
+link validateNIEHint
+link validateNIF
+link validateNIFHint
+link validateNIFNIEHint
+link validateOnType
+link validateRegex
+link validateRegexHint
+Eventos:
+
+link changeEvent
+link keyupEvent
+Accesibilidad:
+
+link ariaLabel
+Información
+Información del componente mv-textarea.
+code
+El componente mv-textarea se basa en el componente mat-textarea de Angular Material, al que se le añade funcionalidad y estilos adicionales.
+
+Ejemplo de uso
+Uso básico del componente mv-textarea.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+
+  <mv-textarea
+    [(ngModel)]="textArea001Model">
+  </mv-textarea>
+  
+Textarea básico:
+
+Valor de la variable 'textArea001Model':
+
+adapt
+Ancho del 100%.
+code
+La propiedad adapt permite definir el ancho del componente al 100% del contenedor.
+
+HTML
+TS
+
+  <mv-textarea
+    adapt=true>
+  </mv-textarea>
+
+  <mv-textarea
+    adapt=false>
+  </mv-textarea>
+
+  <mv-textarea>
+  </mv-textarea>
+  
+Con adapt a true:
+
+Con adapt a false:
+
+Sin adapt (comportamiento por defecto):
+
+appearance
+Apariencia del textarea.
+code
+La propiedad appearance permite definir la apariencia del componente, por defecto outline.
+
+HTML
+TS
+
+  <mv-textarea
+    appearance="legacy">
+  </mv-textarea>
+
+  <mv-textarea
+    appearance="standard">
+  </mv-textarea>
+
+  <mv-textarea
+    appearance="fill">
+  </mv-textarea>
+
+  <mv-textarea
+    appearance="outline">
+  </mv-textarea>
+  
+Con apariencia 'legacy':
+
+Con apariencia 'standard':
+
+Con apariencia 'fill':
+
+Con apariencia 'outline':
+
+autosize
+Cambiar tamaño del textarea.
+code
+La propiedad autosize permite cambiar el tamaño del componente por el usuario en tiempo de ejecución.
+
+HTML
+TS
+
+  <mv-textarea
+    autosize=true>
+  </mv-textarea>
+
+  <mv-textarea
+    autosize=false>
+  </mv-textarea>
+
+  <mv-textarea>
+  </mv-textarea>
+  
+Con autosize a true:
+
+Con autosize a false:
+
+Sin autosize (comportamiento por defecto):
+
+delay
+Retardo del textarea.
+code
+La propiedad delay permite definir un retardo después de escribir en el componente, por defecto su valor es 0ms.
+
+HTML
+TS
+
+  <mv-textarea
+    (changeEvent)="changeEventFunctionMillis($event)"
+    delay="3000">
+  </mv-textarea>
+  
+Con delay de 3000 ms:
+
+disabled
+Deshabilitar el textarea.
+code
+La propiedad disabled permite deshabilitar el componente.
+
+HTML
+TS
+
+  <mv-textarea
+    disabled=true>
+  </mv-textarea>
+
+  <mv-textarea
+    disabled=false>
+  </mv-textarea>
+
+  <mv-textarea>
+  </mv-textarea>
+  
+Con disabled a true:
+
+Con disabled a false:
+
+Sin disabled (comportamiento por defecto):
+
+floatLabel
+Comportamiento de la label.
+code
+La propiedad floatLabel permite definir el comportamiento de la label del componente.
+
+Si usamos la propiedad floatLabel también tendrá que haber definida una label, mediante la propiedad label.
+
+HTML
+TS
+
+  <mv-textarea
+    label="Propiedad floatLabel"
+    floatLabel="always">
+  </mv-textarea>
+
+  <mv-textarea
+    label="Propiedad floatLabel"
+    floatLabel="never">
+  </mv-textarea>
+
+  <mv-textarea
+    label="Propiedad floatLabel"
+    floatLabel="auto">
+  </mv-textarea>
+  
+Con floatLabel 'always':
+
+Propiedad floatLabel
+Con floatLabel 'never':
+
+Propiedad floatLabel
+Con floatLabel 'auto':
+
+Propiedad floatLabel
+hint
+Texto explicativo.
+code
+La propiedad hint permite definir un texto debajo del componente.
+
+HTML
+TS
+
+  <mv-textarea
+    hint="Propiedad hint">
+  </mv-textarea>
+  
+Con hint 'Propiedad hint':
+
+Propiedad hint
+hintAlign
+Posición del hint.
+code
+La propiedad hintAlign permite establecer la posición del hint al principio o al final del componente.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad hint
+
+HTML
+TS
+
+  <mv-textarea
+    hintAlign="start"
+    hint="Hint al principio">
+  </mv-textarea>
+
+  <mv-textarea
+    hintAlign="end"
+    hint="Hint al final">
+  </mv-textarea>
+  
+Con hintAlign 'start':
+
+Hint al principio
+Con hintAlign 'end':
+
+Hint al final
+hintType
+Estilo del hint.
+code
+La propiedad hintType permite definir el estilo del hint entre los valores warning, info, danger y success.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad hint
+
+HTML
+TS
+
+  <mv-textarea
+    hintType="info"
+    hint="Hint info">
+  </mv-textarea>
+
+  <mv-textarea
+    hintType="success"
+    hint="Hint success">
+  </mv-textarea>
+
+  <mv-textarea
+    hintType="warning"
+    hint="Hint warning">
+  </mv-textarea>
+
+  <mv-textarea
+    hintType="danger"
+    hint="Hint danger">
+  </mv-textarea>
+  
+Con hintType 'info':
+
+Hint info
+Con hintType 'success':
+
+Hint success
+Con hintType 'warning':
+
+Hint warning
+Con hintType 'danger':
+
+Hint danger
+label
+Label del textarea.
+code
+La propiedad label permite definir un texto que queda por encima del componente, a modo de título.
+
+HTML
+TS
+
+  <mv-textarea
+    label="Label del textarea"
+    appearance="legacy">
+  </mv-textarea>
+
+  <mv-textarea
+    label="Label del textarea"
+    appearance="standard">
+  </mv-textarea>
+
+  <mv-textarea
+    label="Label del textarea"
+    appearance="fill">
+  </mv-textarea>
+
+  <mv-textarea
+    label="Label del textarea"
+    appearance="outline">
+  </mv-textarea>
+  
+Con label 'Label del textarea' y apariencia 'legacy':
+
+Label del textarea
+Con label 'Label del textarea' y apariencia 'standard':
+
+Label del textarea
+Con label 'Label del textarea' y apariencia 'fill':
+
+Label del textarea
+Con label 'Label del textarea' y apariencia 'outline':
+
+Label del textarea
+minRows
+Número mínimo de filas.
+code
+La propiedad minRows permite definir el número mínimo de filas que cabrán en el componente sin que aparezca el scroll. Al sobrepasar ese número mínimo de filas, aparecerá el scroll para moverse en el contenido.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad autosize
+
+HTML
+TS
+
+  <mv-textarea
+    minRows="5"
+    autosize=true>
+  </mv-textarea>
+
+  <mv-textarea
+    autosize=true>
+  </mv-textarea>
+  
+Con minRows="5":
+
+Sin minRows (comportamiento por defecto ="2"):
+
+maxlength
+Número máximo de caracteres.
+code
+La propiedad maxLength permite definir el número máximo de caracteres que el componente permite escribir
+
+HTML
+TS
+
+  <mv-textarea
+    maxlength="8">
+  </mv-textarea>
+
+  <mv-textarea>
+  </mv-textarea>
+  
+Con maxlength="8":
+
+Sin maxlength:
+
+maxRows
+Número máximo de filas.
+code
+La propiedad maxRows permite definir el número máximo de filas en las que el componente aumentará automáticamente de tamaño, tanto como ocupen dichas filas. Al sobrepasar ese número máximo de filas, el componente mantendrá el mismo tamaño y se establecerá el scroll para moverse entre el contenido.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad autosize
+
+HTML
+TS
+
+  <mv-textarea
+    maxRows="8"
+    autosize=true>
+  </mv-textarea>
+
+  <mv-textarea
+    autosize=true>
+  </mv-textarea>
+  
+Con maxRows="8":
+
+Sin maxRows (comportamiento por defecto ="5"):
+
+placeholder
+Placeholder del textarea.
+code
+La propiedad placeholder permite definir un texto que queda por encima del componente, a modo de título.
+
+HTML
+TS
+
+  <mv-textarea
+    placeholder="Nombre">
+  </mv-textarea>
+  
+Con placeholder 'Nombre':
+
+refAutocomplete
+Autocompletar con valores.
+code
+La propiedad refAutocomplete permite definir una serie de valores para autocompletar el contenido del textarea según el usuario va escribiendo.
+
+HTML
+TS
+
+  <mv-textarea
+    label="Label del textarea"
+    appearance="legacy"
+    matAutocomplete="auto">
+  </mv-textarea>
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{option.name}}
+    </mat-option>
+  </mat-autocomplete>
+  
+Con refAutocomplete y sin filtrado:
+
+Con refAutocomplete y filtrado según vamos escribiendo:
+
+refAutocompleteConnectedTo
+Autocompletar con valores.
+code
+La propiedad refAutocompleteConnectedTo permite definir el comportamiento de la propiedad refAutocomplete en un elemento HTML distinto del textarea de búsqueda.
+
+HTML
+TS
+
+  <mv-textarea
+    [refAutocomplete]="auto3"
+    [refAutocompleteConnectedTo]="auto4">
+  </mv-textarea>
+
+  <mat-autocomplete #auto3="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]="option.name">
+      {{option.name}}
+    </mat-option>
+  </mat-autocomplete>
+
+  <span
+    id="matAutocompleteOrigin"
+    matAutocompleteOrigin
+    #auto4="matAutocompleteOrigin"
+  >
+    <p>refAutocompleteConnectedTo</p>
+  </span>
+  
+Con refAutocompleteConnectedTo en el elemento 'refAutocompleteConnectedTo':
+
+refAutocompleteConnectedTo
+
+required
+textarea obligatorio.
+code
+La propiedad required permite definir el textarea como obligatorio.
+
+HTML
+TS
+
+  <mv-textarea
+    required=true>
+  </mv-textarea>
+
+  <mv-textarea
+    required=false>
+  </mv-textarea>
+
+  <mv-textarea>
+  </mv-textarea>
+  
+Con required a true:
+
+*
+Con required a false:
+
+Sin required (comportamiento por defecto):
+
+requiredHint
+Mensaje del textarea required.
+code
+La propiedad requiredHint permite definir el mensaje cuando el textarea es required.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad hint
+
+HTML
+TS
+
+  <mv-textarea
+    requiredHint="Campo obligatorio"
+    required=true>
+  </mv-textarea>
+  
+Con requiredHint 'Campo obligatorio':
+
+*
+showClear
+Botón para borrar el contenido del textarea.
+code
+La propiedad showClear permite mostrar el botón para borrar cuando el textarea tiene contenido.
+
+HTML
+TS
+
+  <mv-textarea
+    showClear=true>
+  </mv-textarea>
+
+  <mv-textarea
+    showClear=false>
+  </mv-textarea>
+
+  <mv-textarea>
+  </mv-textarea>
+  
+Con showClear a true:
+
+Con showClear a false:
+
+Sin showClear (comportamiento por defecto):
+
+showMaxlength
+Indicación de los caracteres restantes para llegar al máximo.
+code
+La propiedad showMaxlength permite mostrar el número de caracteres que hay escritos, así como el máximo de caracteres.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateMaxlength
+
+HTML
+TS
+
+  <mv-textarea
+    validateMaxlength=20
+    showMaxlength=true>
+  </mv-textarea>
+
+  <mv-textarea
+    validateMaxlength=20
+    showMaxlength=false>
+  </mv-textarea>
+
+  <mv-textarea
+    validateMaxlength=20>
+  </mv-textarea>
+  
+Con showMaxlength a true:
+
+0/20
+Con showMaxlength a false:
+
+Sin showMaxlength (comportamiento por defecto):
+
+showUnlockPass
+Botón para mostrar/ocultar los caracteres de un textarea type password.
+code
+La propiedad showUnlockPass permite mostrar un botón que permite ocultar o mostrar los caracteres de la contraseña.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad type='password'
+
+HTML
+TS
+
+  <mv-textarea
+    type="password"
+    showUnlockPass=true>
+  </mv-textarea>
+
+  <mv-textarea
+    type="password"
+    showUnlockPass=false>
+  </mv-textarea>
+
+  <mv-textarea
+    type="password">
+  </mv-textarea>
+  
+Con showUnlockPass a true:
+
+Con showUnlockPass a false:
+
+Sin showUnlockPass (comportamiento por defecto):
+
+type
+Propiedad type del textarea de HTML.
+code
+La propiedad type permite definir la misma propiedad type de HTML. Los type soportados son los que define Material https://material.angular.io/components/textarea/overview .
+
+HTML
+TS
+
+  <mv-textarea
+    type="color">
+  </mv-textarea>
+
+  <mv-textarea
+    type="date">
+  </mv-textarea>
+
+  <mv-textarea
+    type="datetime-local">
+  </mv-textarea>
+
+  <mv-textarea
+    type="email">
+  </mv-textarea>
+
+  <mv-textarea
+    type="month">
+  </mv-textarea>
+
+  <mv-textarea
+    type="number">
+  </mv-textarea>
+
+  <mv-textarea
+    type="password">
+  </mv-textarea>
+
+  <mv-textarea
+    type="search">
+  </mv-textarea>
+
+  <mv-textarea
+    type="tel">
+  </mv-textarea>
+
+  <mv-textarea
+    type="text">
+  </mv-textarea>
+
+  <mv-textarea
+    type="time">
+  </mv-textarea>
+
+  <mv-textarea
+    type="url">
+  </mv-textarea>
+
+  <mv-textarea
+    type="week">
+  </mv-textarea>
+  
+Con type 'color':
+
+Con type 'date':
+
+Con type 'datetime-local':
+
+Con type 'email':
+
+Con type 'month':
+
+Con type 'number':
+
+Con type 'password':
+
+Con type 'search':
+
+Con type 'tel':
+
+Con type 'text':
+
+Con type 'time':
+
+Con type 'url':
+
+Con type 'week':
+
+validateCustom
+Validación custom.
+code
+La propiedad validateCustom permite realizar validaciones personalizadas, que deberemos implementar nosotros mismos.
+
+En caso de no cumplir la validación que hayamos definido, el componente se marcará con aspecto de error.
+
+Documentación de Angular sobre validaciones: https://angular.io/guide/form-validation
+
+HTML
+TS
+
+  <mv-input
+    [validateCustom]="myCustomValidation()">
+  </mv-input>
+  
+Con validación personalizada tal que todas las letras sean mayúsculas:
+
+validateCustomHint
+Mensaje de la validación de validateCustom.
+code
+La propiedad validateCustomHint permite definir un mensaje para la propiedad validateCustom
+
+El mensaje por defecto es 'El valor es incorrecto'
+
+HTML
+TS
+
+  <mv-input
+    validateCustomHint="Todas las letras mayúsculas"
+    [validateCustom]="myCustomValidation()">
+  </mv-input>
+  
+Con validateCustomHint 'Todas las letras mayúsculas':
+
+validateEmail
+Validación de email.
+code
+La propiedad validateEmail permite realizar validaciones para textarea con type 'email'
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad type='email'
+
+HTML
+TS
+
+  <mv-textarea
+    type="email"
+    validateEmail=true>
+  </mv-textarea>
+
+  <mv-textarea
+    type="email"
+    validateEmail=false>
+  </mv-textarea>
+
+  <mv-textarea
+    type="email">
+  </mv-textarea>
+  
+Con validateEmail a true:
+
+Con validateEmail a false:
+
+Sin validateEmail (comportamiento por defecto):
+
+validateEmailHint
+Mensaje de la validación de email.
+code
+La propiedad validateEmailHint permite definir un mensaje para la validación de email
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad type='email' y la propiedad validateEmail=true
+
+HTML
+TS
+
+  <mv-textarea
+    type="email"
+    validateEmail=true
+    validateEmailHint="Introduce un correo">
+  </mv-textarea>
+  
+Con validateEmailHint 'Introduce un correo':
+
+validateFirst
+Validación inicial del componente.
+code
+La propiedad validateFirst permite validar o no el componente al ser cargado, ya que a lo mejor no queremos que de primeras se marquen como erróneos determinados textarea o al revés, queremos que nada más cargar la vista se haga la validación
+
+En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo required=true
+
+HTML
+TS
+
+  <mv-textarea
+    required=true
+    validateFirst=true>
+  </mv-textarea>
+
+  <mv-textarea
+    required=true
+    validateFirst=false>
+  </mv-textarea>
+
+  <mv-textarea
+    required=true>
+  </mv-textarea>
+  
+Con validateFirst a true:
+
+*
+Campo requerido
+Con validateFirst a false:
+
+*
+Sin validateFirst (comportamiento por defecto):
+
+*
+validateMaxlength
+Validación de longitud máxima.
+code
+La propiedad validateMaxlength permite definir una longitud máxima del contenido del textarea.
+
+HTML
+TS
+
+  <mv-textarea
+    type="number"
+    validateMaxlength="8">
+  </mv-textarea>
+
+  
+Con validateMaxlength con valor 8:
+
+validateMaxlengthHint
+Mensaje de validación de validateMaxlength.
+code
+La propiedad validateMaxlengthHint permite definir un mensaje personalizado para la propiedad validateMaxlength.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateMaxlength
+
+HTML
+TS
+
+  <mv-textarea
+    type="number"
+    validateMaxHint="Introduce un número inferior"
+    validateMax="30">
+  </mv-textarea>
+
+  
+Con validateMaxlengthHint 'demasiado largo':
+
+validateMax
+Validación de número máximo.
+code
+La propiedad validateMax permite definir un número máximo del contenido del textarea.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad type=number
+
+HTML
+TS
+
+  <mv-textarea
+    type="number"
+    validateMax="65">
+  </mv-textarea>
+  
+Con validateMax con valor 65:
+
+validateMaxHint
+Mensaje de validación de validateMax.
+code
+La propiedad validateMaxHint permite definir un mensaje personalizado para la propiedad validateMax.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateMax
+
+HTML
+TS
+
+  <mv-textarea
+    type="number"
+    validateMaxHint="Introduce un número inferior"
+    validateMax="30">
+  </mv-textarea>
+  
+Con validateMaxHint 'Introduce un número inferior':
+
+validateMin
+Validación de número mínimo.
+code
+La propiedad validateMin permite definir un número mínimo del contenido del textarea.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad type=number
+
+HTML
+TS
+
+  <mv-textarea
+    type="number"
+    validateMin="18">
+  </mv-textarea>
+  
+Con validateMin con valor 18:
+
+validateMinHint
+Mensaje de validación de validateMin.
+code
+La propiedad validateMinHint permite definir un mensaje personalizado para la propiedad validateMin.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateMin
+
+HTML
+TS
+
+  <mv-textarea
+    type="number"
+    validateMinHint="Introduce un número superior"
+    validateMin="18">
+  </mv-textarea>
+  
+Con validateMinHint 'Introduce un número superior':
+
+validateNIE
+Validación de NIE.
+code
+La propiedad validateNIE permite validar si el contenido es un NIE.
+
+HTML
+TS
+
+  <mv-textarea
+    validateNIE=true>
+  </mv-textarea>
+  
+Con validateNIE:
+
+validateNIEHint
+Mensaje de validación de validateNIE.
+code
+La propiedad validateNIEHint permite definir un mensaje personalizado para la propiedad validateNIE.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateNIE
+
+HTML
+TS
+
+  <mv-textarea
+    validateNIE=true
+    validateNIEHint="Introduce un NIE correcto">
+  </mv-textarea>
+  
+Con validateNIEHint 'Introduce un NIE correcto':
+
+validateNIF
+Validación de NIF.
+code
+La propiedad validateNIF permite validar si el contenido es un NIF.
+
+HTML
+TS
+
+  <mv-textarea
+    validateNIF=true>
+  </mv-textarea>
+  
+Con validateNIF:
+
+validateNIFHint
+Mensaje de validación de validateNIF.
+code
+La propiedad validateNIFHint permite definir un mensaje personalizado para la propiedad validateNIF.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateNIF
+
+HTML
+TS
+
+  <mv-textarea
+    validateNIF=true
+    validateNIFHint="Introduce un NIF correcto">
+  </mv-textarea>
+  
+Con validateNIFHint 'Introduce un NIF correcto':
+
+validateNIFNIEHint
+Mensaje de validación de validateNIE y validateNIF a la vez.
+code
+La propiedad validateNIFNIEHint permite definir un mensaje personalizado para cuando se usen las propiedades validateNIE y validateNIF a la vez. Concretamente, saldrá este mensaje cuando el texto introducido no sea ni un NIE ni un NIF.
+
+Para los casos en los que sea tan solo o el NIF o el NIE lo que sea incorrecto mostrará el mensaje definido en validateNIF o validateNIE, respectivamente.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateNIE y la propiedad validateNIF
+
+HTML
+TS
+
+  <mv-textarea
+    validateNIE=true
+    validateNIF=true
+    validateNIFNIEHint="Introduce un NIF/NIE correcto">
+  </mv-textarea>
+  
+Con validateNIFNIEHint 'Introduce un NIF correcto':
+
+validateOnType
+Validación en tiempo real.
+code
+La propiedad validateOnType permite activar la validación del componente en tiempo real, esto es según se va escribiendo.
+
+En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo required=true
+
+HTML
+TS
+
+  <mv-textarea
+    required=true
+    validateOnType=true>
+  </mv-textarea>
+
+  <mv-textarea
+    required=true
+    validateOnType=false>
+  </mv-textarea>
+
+  <mv-textarea
+    required=true>
+  </mv-textarea>
+  
+Con validateOnType a true:
+
+*
+Con validateOnType a false:
+
+*
+Sin validateOnType (comportamiento por defecto):
+
+*
+validateRegex
+Validación de expresión regular.
+code
+La propiedad validateRegex permite validar si el contenido cumple con la expresión regular definida.
+
+HTML
+TS
+
+  <mv-textarea
+    validateRegex="(d{4})([A-z]{3})">
+  </mv-textarea>
+  
+Con expresión regular para validar matrículas, validateRegex '(\d{4})([A-z]{3})':
+
+validateRegexHint
+Mensaje de validación de validateRegexHint.
+code
+La propiedad validateRegexHint permite definir un mensaje personalizado para la propiedad validateRegex.
+
+En caso de usar esta propiedad también tendrá que estar definida la propiedad validateRegex
+
+HTML
+TS
+
+  <mv-textarea
+    validateRegexHint="El correo debe ser gmail"
+    validateRegex="([^@]+@gmail.com)">
+  </mv-textarea>
+  
+Con expresión regular para validar correos de gmail, validateRegex '([^@]+@gmail.com)' y validateRegexHint 'El correo debe ser gmail':
+
+changeEvent
+Evento change.
+code
+El evento changeEvent permite definir una función que se ejecutará cuando cambie el valor del textarea
+
+HTML
+TS
+
+  <mv-textarea
+    (changeEvent)="changeEventFunction($event)">
+  </mv-textarea>
+  
+Con changeEvent:
+
+keyupEvent
+Evento keyup.
+code
+El evento keyupEvent permite definir una función que se ejecutará cuando el usuario deja de teclear
+
+La diferencia con el evento changeEvent es que no se ejecutará la función keyupEvent hasta que el usuario deje de teclear, de manera que si mantiene pulsado de manera continuada un valor del teclado se estará introduciendo muchos caracteres sin que se ejecute la función keyupEvent, sin embargo sí se estaría ejecutando la función changeEvent porque el valor sí está cambiando.
+
+HTML
+TS
+
+  <mv-textarea
+    (keyupEvent)="keyupEventFunction($event)">
+  </mv-textarea>
+  
+Con keyupEvent:
+
+ariaLabel
+Etiqueta para accesibilidad
+code
+La etiqueta ariaLabel se utiliza para proporcionar una descripción de texto alternativa para elementos que no tienen un texto visible por si mismo y aseguarse que usuarios con lectores de pantalla y otros asistentes de accesibilidad puedan entender el propósito del componente.
+
+HTML
+TS
+
+    <mv-textarea
+      arialLabel="Tu texto personalizado">
+    </mv-textarea>
+    

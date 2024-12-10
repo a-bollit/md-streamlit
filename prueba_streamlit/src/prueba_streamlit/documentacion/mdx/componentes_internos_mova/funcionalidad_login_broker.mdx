@@ -1,0 +1,685 @@
+Documentación del componente de login y broker
+link Información general
+link Configuración de la pantalla de login
+link Configuración de vistas protegidas
+link Configuración de acceso con huella o faceId
+Sistemas de autenticación:
+
+link Autologin - información general
+link Autologin - solicitud de alta
+link Autologin - configuración básica
+link Autologin - configuración con OSB
+link Autologin - configuración con WSO2
+link Autologin - uso con certificado
+link Login con usuario y contraseña - configuración básica
+link Login con usuario y contraseña - configuración con OSB
+link Login con usuario y contraseña - configuración con WSO2
+Uso de los token y API keys:
+
+link Acceso al objeto de credenciales
+link Uso de los token OSB
+link Uso de los token WSO2
+link Uso de API keys
+link Uso de APIs con WSO2
+Información
+Información general del login y broker.
+code
+Este componente permite autenticar a un usuario en la aplicación.
+
+Una vez configurado, si se accede a una vista de la app protegida se redirige a la página de login.
+
+Este componente tiene cuatro sistemas de autenticación distintos, que el usuario debe elegir y configurar:
+
+"dametoken" - Usuario y contraseña por el OSB
+"wso2" - Usuario y contraseña por el WSO2
+"autologin" - Autologin y token por OSB
+"autologin-wso2" - Autologin y token por WSO2
+Configuración de la pantalla de login
+Configuración de la pantalla de login y botones.
+code
+Antes de configurar el sistema de autenticación que queramos tendremos que configurar la propia pantalla de login y los botones de autenticación que se mostrarán:
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  {
+    ...
+    loginView: {
+      dametokenSystemEnabled: true,
+      dametokenButtonLabel: 'Usuario y contraseña (osb)',
+      dametokenInfoLabel:
+          'Introduzca su usuario y contraseña de Directorio Activo',
+      fingerprintAuth: true,
+      wso2SystemEnabled: true,
+      wso2ButtonLabel: 'Usuario y contraseña (wso2)',
+      wso2InfoLabel: 'Introduzca su usuario y contraseña de Directorio Activo',
+      autologinSystemEnabled: true,
+      autologinButtonLabel: 'Broker de identidades (osb)',
+      autologinInfoLabel:
+        'Acceda mediante el broker de identidades con'+
+        ' Certificado Digital, Clave PIN o Clave Permanente',
+      autologinWso2SystemEnabled: true,
+      autologinWso2ButtonLabel: 'Broker de identidades (wso2)',
+      autologinWso2InfoLabel:
+        'Acceda mediante el broker de identidades con'+
+        ' Certificado Digital, Clave PIN o Clave Permanente',
+      urlPasswordReset: 'https://gestiona7.madrid.org/usug_micuenta',
+      titleCheckConditions : 'Acepto las condiciones legales',
+      urlBottomText: '¿Aún no te has dado de alta? Regístrate',
+      urlBottomUrl: 'https://www.google.es',
+      urlCornerIcon: 'info',
+      urlCornerUrl: '/ayuda-login-view',
+      placeholder: {
+        user: 'Usuario',
+        password: 'Contraseña',
+      },
+    },
+    ...
+  };
+  
+dametokenSystemEnabled - Variable para definir si queremos mostrar el botón de usuario y contraseña - osb en la vista login-view.
+dametokenButtonLabel - Variable para definir el texto del botón de usuario y contraseña - osb en la vista login-view.
+dametokenInfoLabel - Variable para definir el texto explicativo al elegir el sistema usuario y contraseña - osb en login-view.
+fingerprintAuth - Variable para definir si queremos acceso biométrico.
+wso2SystemEnabled - Variable para definir si queremos mostrar el botón de WSO2 en la vista login-view.
+wso2ButtonLabel - Variable para definir el texto del botón de WSO2 en la vista login-view.
+wso2InfoLabel - Variable para definir el texto explicativo al elegir el sistema WSO2 en login-view.
+autologinSystemEnabled - Variable para definir si queremos mostrar el botón de autologin - osb en la vista login-view.
+autologinButtonLabel - Variable para definir el texto del botón de autologin - osb en la vista login-view.
+autologinInfoLabel - Variable para definir el texto explicativo al elegir el sistema autologin - osb en login-view.
+autologinWso2SystemEnabled - Variable para definir si queremos mostrar el botón de autologin - WSO2 en la vista login-view.
+autologinWso2ButtonLabel - Variable para definir el texto del botón de autologin - WSO2 en la vista login-view.
+autologinWso2InfoLabel - Variable para definir el texto explicativo al elegir el sistema autologin - WSO2 en login-view.
+autologinWso2InfoLabel - Variable para definir el texto explicativo al elegir el sistema autologin - WSO2 en login-view.
+titleCheckConditions - Variable para definir el texto personalizado que aparecerá para aceptar la condiciones legales.
+urlBottomText - Variable para definir el texto del link de la parte baja de la pantalla de login.
+urlBottomUrl - Variables para definir la url del link de la parte baja de la pantalla de login. Permite definir una url externa o el nombre de una ruta de la aplicación.
+urlCornerIcon - Variable para definir el icono de material del link de de la esquina de la pantalla de login.
+urlCornerUrl - Variable para definir la url del link de la esquina superior izquierda de la pantalla de login. Permite url externa o interna de la app. Sirve para crear una página de ayuda referente al login. Si se deja urlCornerUrl en blanco desaparecerá el icono.
+placeholder
+user - Placeholder para el usuario en la pantalla de login
+password - Placeholder para la contraseña en la pantalla de login
+Configuración de vistas seguras
+Configuración de vistas seguras que requieren autenticación.
+code
+Antes de configurar el sistema de autenticación que queramos tendremos también que definir las vistas que queremos proteger con login, de manera que solo se podrá acceder a ellas si estamos logados:
+
+app.module.ts
+
+  const appRoutes: Routes = [
+    ...
+    { path: 'mi-componente-sin-login', component: MiComponenteSinLogin },
+    { path: 'mi-componente-con-login', component: MiComponenteConLogin, canActivate: [AuthGuard] },
+    ...
+  ];
+  
+Acceso con huella o faceId
+Acceso biométrico en login.
+code
+Se puede configurar la aplicación para que, en una app (no en una webapp), y con login mediante usuario y contraseña (no autologin) se puedan recordar las credenciales y acceder por faceId o huella si el dispositivo tiene esa funcionalidad. Hay que especificarlo en los archivos environment.ts, environment.val.ts y environment.prod.ts:
+
+De esta manera nos aparecerá un switch en la pantalla de login que nos permitirá escoger el acceso con huella.
+
+La primera vez que nos loguemos habrá que introducir las credenciales y activar el switch. Si nos deslogamos y nos volvemos a logar ahora ya podremos hacerlo con huella o faceId dependiendo de las características del dispositivo.
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  {
+    ...
+    loginView: {
+      ...
+      fingerprintAuth: true,
+      ...
+    },
+    ...
+  };
+  
+Autologin - información
+Información general del sistema Autologin.
+code
+Este componente permite realizar la autenticación por medio de Autologin, en vez de login con usuario y contraseña. A su vez, Autologin funciona con los sistemas OSB (dametoken) o WSO2, pudiéndose configurar cualquiera de los dos.
+
+Una vez configurado este componente si una aplicación accede a una url segura, en vez de redirigir a la página de login hace una redirección al Autologin de la Comunidad de Madrid.
+
+Una vez en Autologin el usuario tendrá que elegir el IDP con el que quiere identificarse (Certificado, Clave PIN y Clave Permanente con y sin OTP), introducir sus credenciales y si son correctas será redirigido de vuelta a la aplicación. Con la identificación conseguida en Autologin, la app solicitará un token (de OSB o de WSO2) con el que estará autenticado.
+
+Autologin - solicitud de alta
+Solicitud de alta del sistema Autologin.
+code
+Para solicitar el alta en Autologin hay que hacerlo mediante un Mantis a "Arquitectura de Aplicaciones / AUTO - BROKER DE IDENTIDADES" con los siguientes datos:
+
+Módulos técnicos: Los nombres de cada módulo técnico que va a usar Autologin (solo los que realmente se necesitan). Se considera que son los mismos que los definidos en el componente config-default.json en las variables:
+moduloTecnicoIos
+moduloTecnicoAndroid
+moduloTecnicoWebapp
+Servicios: será uno por cada módulo técnico y deberá indicar:
+Nombre del servicio. Deberá coincidir con el módulo técnico en mayúsculas
+Descripción interna del servicio. (Máximo 50 caracteres)
+Display (Máximo 50 caracteres): texto a mostrar en la pantalla de Autologin para esta aplicación.
+Subservicio:  normalmente será "PRIVADO":
+Código de subservicio. (Ejemplo: PRIVADO / PUBLICO / CONSULTA …)
+Descripción interna del subservicio. (Máximo 50 caracteres)
+Display (Máximo 50 caracteres): Texto a mostrar en la pantalla de Autologin para este subservicio. Este campo puede estar a nulo.
+IDP's que se quieren para este servicio/subservicio, que será uno o varios de los siguientes:
+Mock (para pruebas)
+Clave PIN
+Clave Permanente
+Intranet
+Clave Permanente con OTP
+Certificado Digital
+Certificado Digital Hardware
+Forzar autenticación (SI/NO). Si se indica SI no existe single sign on y siempre se pedirá autenticación
+Si se solicita que Autologin marque su variable Forzar Autenticación con valor Si significará que el single-sign-on queda desactivado y se requerirá acceso explícito al usuario siempre que se acceda de nuevo a la aplicación.
+
+Si se solicita que Autologin marque su variable Forzar Autenticación con valor No significará que el single-sign-on queda activado y el usuario podrá acceder a la app directamente sin logarse explícitamente cada vez, es decir, con que se haya logado una vez en ese navegador ya se considera logado. En este caso, será necesario cerrar sesión de forma explícita para anular el efecto del single-sign-on antes de su caducidad.
+
+En la respuesta del Mantis se incluirá la siguiente información para cada entorno:
+
+Servicio
+Subservicio
+Password
+La password para cada módulo técnico se especificará en las siguientes variables de los archivos environment.ts, environment.val.ts y environment.prod.ts:
+
+paramIosPass
+paramAndroidPass
+paramWebappPass
+La password se pondrá de manera distinta, según el entorno, en cada uno de los archivos:
+
+Desarrollo: Se pondra tal cual se ha indicado en el mantis (encriptada) en el archivo environment.ts
+Validación: La indicarán en el mantis en claro y es necesario cifrarla por Paso a Producción. Para ello, hay que abrir un GPAP a Paso a Producción solicitando que se encripte esa password con la semilla de validación. Una vez nos la devuelvan encriptada, ponerla en el archivo environment.val.ts
+Producción: La enviarán en claro por correo al responsable MD y es necesario cifrarla por Paso a Producción. Para ello, hay que abrir un GPAP a Paso a Producción solicitando que se encripte esa password con la semilla de producción. Una vez nos la devuelvan encriptada, ponerla en el archivo environment.prod.ts
+Autologin - configuración básica
+Configuración básica del sistema Autologin.
+code
+Este apartado explica cómo realizar la configuración básica (al margen de usar token de OSB o WSO2) de la aplicación para llamar a Autologin. La configuración se realiza mediante las siguientes variables del archivo de configuración config-default.json:
+
+config-default.json
+
+  {
+    "app": {
+      ...
+      "moduloTecnicoIos": "MOVA_IOS_PLANTILLA",
+      "moduloTecnicoAndroid": "MOVA_ANDROID_PLANTILLA",
+      "moduloTecnicoWebapp": "MOVA_WEBAPP_PLANTILLA",
+      ...
+      }
+  }
+  
+moduloTecnicoIos - Es el nombre del módulo técnico registrado en Autologin para iOS.
+moduloTecnicoAndroid - Es el nombre del módulo técnico registrado en Autologin para Android.
+moduloTecnicoWebApp - Es el nombre del módulo técnico registrado en Autologin para Webapp.
+El sistema Autologin hay que configurarlo mediante las siguientes variables de los archivos de entorno environment.ts, environment.val.ts y environment.prod.ts:
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  export const environment = {
+    ...
+    brokerView: {
+      autoRedirect: true
+    },
+    authenticationService: {
+      ...
+      authenticationSaveLastLoginSystem: true,
+      authenticationSaveInSessionWeb: false,
+      authenticationSaveInSessionMobile: false,
+      ...
+      autologinConfig: {
+        appRedirect: 'org.madrid.MOVA.mova2App',
+        uriBase:'https://desarrollo3.madrid.org/auto_login/acceso.jsf?',
+        uriLogout:'https://desarrollo3.madrid.org/auto_login/logout.jsf?',
+        paramIosSS:'',
+        paramIosPass:'',
+        paramAndroidSS:'',
+        paramAndroidPass:'',
+        paramWebappSS:'',
+        paramWebappPass:'',
+        paramWebappOkUrl:'',
+        paramWebappOkUrlLogout:''
+      },
+  }
+  
+brokerView:
+autoRedirect - Permite activar o desactivar la redirección automática cuando el componente consigue el ticket del Broker de Identidades. Usar solo en entornos de desarrollo.
+authenticationService:
+authenticationSaveLastLoginSystem - Permite definir qué sistema de autenticación aparecerá seleccionado en la pantalla de login en caso de poder escoger varios. Si el valor es true aparecerá seleccionado el último escogido. Si el valor es false aparecerá seleccionado el definido en la variable authenticationDefaultSystem.
+authenticationSaveInSessionWeb - Permite escoger si, en modo web, queremos que las credenciales se almacenen en sessionStorage en vez de localStorage.
+authenticationSaveInSessionMobile - Permite escoger si, en modo móvil, queremos que las credenciales se almacenen en sessionStorage en vez de localStorage.
+autologinConfig:
+appRedirect - Permite definir un identificador de la app, para que a la vuelta del Autologin cuando estamos en una app móvil haga una redirección mediante un deep-link desde la url de vuelta (que tiene el ticket) a la app.
+uriBase - Permite definir la url de login del sistema Autologin.
+uriLogout - Permite definir la url de logout del sistema Autologin.
+paramIosSS - Permite definir el subservicio de la plataforma iOS, el parámetro ss, de la URL de Autologin.
+paramIosPass - Permite definir la contraseña para el servicio de la plataforma iOS, el parámetro pass, con la clave de la app para pasar por la URL de Autologin.
+paramAndroidSS - Permite definir el subservicio de la plataforma Android, el parámetro ss, de la URL de Autologin.
+paramAndroidPass - Permite definir la contraseña para el servicio de la plataforma Android, el parámetro pass, con la clave de la app para pasar por la URL de Autologin.
+paramWebappSS - Permite definir el subservicio de la plataforma Webapp, el parámetro ss, de la URL de Autologin.
+paramWebappPass - Permite definir la contraseña para el servicio de la plataforma Webapp, el parámetro pass, con la clave de la app para pasar por la URL de Autologin.
+paramWebappOkUrl - Permite definir otra URL para pasar al parámetro ok de Autologin, por defecto debe dejarse en blanco y se utilizará el propio estado del componente.
+paramWebappOkUrlLogout - Permite definir otra URL para utilizar a la hora de hacer logout de Autologin, por defecto debe dejarse en blanco y se utilizará el estado actual en el que se encuentre la app a la hora de hacer logout.
+Autologin - configuración con OSB
+Configuración del sistema Autologin con OSB (dametoken).
+code
+Este apartado explica cómo configurar la aplicación para pedir un token de OSB a partir de un ticket de Autologin. La configuración se realiza mediante las siguientes variables de los archivos de entorno environment.ts, environment.val.ts y environment.prod.ts:
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  export const environment = {
+    ...
+    authenticationService: {
+      authenticationDefaultSystem: 'autologin',
+      ...
+      dameTokenConfig: {
+        uriBase: 'https://desesb.madrid.org/fesb_rest_token/v1/token/getToken',
+        uriEliminaToken: 'https://desesb.madrid.org/fesb_rest_token/v1/token/eliminaToken',
+        authenticationSystem: 'IntranetDA',
+        expirationTime: 604800000, // Una semana en milisegundos
+        httpHeaderTokenAuthAlways: true,
+        technicalModules: ['MOVA_MOV_PLANTILLA2'], // ['MOVA_MOV_PLANTILLA2', 'MOVA_MOV_PLANTILLA2', 'MOVA_MOV_PLANTILLA2'],
+        authenticationTechnicalModuleIndex: 0,
+      },
+      autologinConfig: {
+        ...
+        autologinOsb: {
+          uriGetToken: 'https://desesb.madrid.org/fesb_rest_token/v1/token/getTokenAutologin',
+          uriValidaTicket: 'https://desesb.madrid.org/fesb_rest_token/v1/ticket/valida/',
+        },
+      },
+      ...
+    }
+  }
+  
+authenticationService:
+authenticationDefaultSystem - Permite definir el sistema de autenticación. Para usar el sistema Autologin - OSB debe tener el valor 'autologin'.
+dameTokenConfig:
+uriBase - Permite definir la url del servicio dametoken. No se debe tocar.
+uriEliminaToken - Permite definir la url de eliminación de token del servicio dametoken. No se debe tocar.
+authenticationSystem - Permite definir con qué tipo de usuario nos autenticamos en el sistema dametoken. No se debe tocar.
+expirationTime - Permite definir el tiempo de expiración de los token del sistema dametoken en milisegundos. Por defecto duran una semana.
+httpHeaderTokenAuthAlways - En las llamadas http usar siempre la cabecera 'Token-Auth' con el token del módulo técnico de autenticación cuando se está logado mediante token OSB.
+technicalModules - Permite definir el array de módulos técnicos contra los que pedir token con dametoken. Como mínimo deberá tener un elemento pero puede tener varios
+authenticationTechnicalModuleIndex - Permite definir el índice del módulo técnico de autenticación del array technicalModules, por lo general debe ponerse siempre el primero y usar 0
+autologinConfig:
+autologinOsb:
+uriGetToken - Permite definir la url de obtención de un token OSB a partir de un ticket de Autologin.
+uriValidaTicket - Permite definir la url de validación de un ticket de Autologin.
+Autologin - configuración con WSO2
+Configuración del sistema Autologin con WSO2.
+code
+Este apartado explica cómo configurar la aplicación para pedir un token de WSO2 a partir de un ticket de Autologin. La configuración se realiza mediante las siguientes variables de los archivos de entorno environment.ts, environment.val.ts y environment.prod.ts:
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  export const environment = {
+    ...
+    authenticationService: {
+      authenticationDefaultSystem: 'autologin-wso2',
+      ...
+      wso2Config: {
+        uriBase: 'https://apis.val.comunidad.madrid/token',
+        uriRevoke: 'https://apis.val.comunidad.madrid/revoke',
+        ...
+        customDomain: '',
+        customTenant: '',
+        scopes: [
+          ...
+        ],
+      },
+      autologinConfig: {
+        ...
+        autologinWso2: {
+          consumerKeyAutologin: '...',
+          consumerSecretAutologin: '...',
+          uriGetUserData: 'https://apis.val.comunidad.madrid/t/ciudadanos.comunidad.madrid/pdto/oauth2inter/oauth2/userinfo',
+        },
+      },
+      ...
+    }
+  }
+  
+authenticationService:
+authenticationDefaultSystem - Permite definir el sistema de autenticación. Para usar el sistema Autologin - WSO2 debe tener el valor 'autologin-wso2'.
+wso2Config:
+uri - Permite definir la url del servicio WSO2. No se debe tocar.
+customDomain - Permite definir el parámetro domain del API Manager.
+customTenant - Permite definir el parámetro tenant del API Manager.
+scopes - Permite definir un array de 'scopes' para el sistema WSO2. Deben tener la variable active a false.
+autologinConfig:
+autologinWso2:
+consumerKeyAutologin - Permite definir el consumer key que identifica a nuestra aplicación de cara al sistema autologin - WSO2.
+consumerSecretAutologin - Permite definir el consumer secret que identifica a nuestra aplicación de cara al sistema autologin - WSO2.
+uriGetUserData - Permite definir la url de obtención de datos del usuario con el sistema autologin - WSO2.
+Autologin - uso de certificado
+Uso del sistema Autologin con certificado digital.
+code
+Si se va a usar el Broker de identidades y este tiene activa la opción de hacer login con certificado digital, hay que configurarlo de la siguiente manera.
+
+Modificar las variables del app.config:
+
+loginOpenSystemNavigatorBrokerIdentidades con valor true.
+loginAppSystemNavigatorRedirectBrokerIdentidades con el nombre del paquete de nuestra app. (Todo en minúsculas, sin camelcase para separar palabras)
+Cuando nos encontramos en una app móvil el Broker (en su comportamiento por defecto) se abre en un navegador embebido en la propia app. Por seguridad, este navegador no puede acceder a los certificados instalados en el dispositivo y si se intenta identificar con el certificado fallará.
+
+Se puede configurar la app para que el Broker se abra en el navegador del sistema, por ejemplo Chrome, que si puede ver los certificados instalados en el dispositivo.
+
+Esta forma tiene el problema principal de que salimos de la app para, por un periodo de tiempo indeterminado, utilizar el navegador del sistema y luego volver a nuestra app, este último paso se hace mediante un deep-link.
+
+Consecuencias
+Usar el broker con certificado implica las siguientes consecuencias:
+
+Es necesario que todas las navegaciones a URLs externas se hagan con un navegador externo, no usando el embebido. Esto es necesario porque la cookie del Broker de Identidades se crea a nivel de navegador y técnicamente el navegador embebido no es el mismo navegador que Chrome, el navegador del sistema y otro navegador externo.
+Se considera que se usan dos apps distintas, la app de MOVA y la app del navegador externo. Durante este proceso el sistema operativo puede considerar cerrar la app de MOVA, esto implica que al volver no se consiga recuperar la vista en la que estaba el usuario.
+Si se navega a un navegador externo, para volver a la app de MOVA no es suficiente con presionar el botón de atrás. Es necesario que el usuario vuelva a la app por sus propios medios. Esto no pasa cuando se autentica en el Broker de Identidades ya que se redirecciona a una URL que nos permite volver a la app mediante un deep-link.
+Otro problema es que el usuario puede usar el navegador externo que prefiera. La cookie del Broker de identidades solo permanece en el navegador elegido al hacer login. Si se usa un navegador externo para logarse y otro navegador externo diferente para acceder a una URL desde la app la cookie no tendrá efecto.
+La funcionalidad del deep-link depende del plugin cordova-plugin-customurlscheme que debe ser configurado correctamente. Puede encontrar más información en la documentación en doc-deeplinks
+Login con usuario y contraseña - configuración básica
+Configuración básica del login con usuario y contraseña.
+code
+Este apartado explica cómo realizar la configuración básica (al margen de usar token de OSB o WSO2) de la aplicación para realizar el login mediante un usuario y una contraseña. La configuración se realiza mediante las siguientes variables de los archivos de entorno environment.ts, environment.val.ts y environment.prod.ts:
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  export const environment = {
+    ...
+    authenticationService: {
+      ...
+      authenticationSaveLastLoginSystem: true,
+      authenticationSaveInSessionWeb: false,
+      authenticationSaveInSessionMobile: false,
+      ...
+    }
+  }
+  
+authenticationService:
+authenticationSaveLastLoginSystem - Permite definir qué sistema de autenticación aparecerá seleccionado en la pantalla de login en caso de poder escoger varios. Si el valor es true aparecerá seleccionado el último escogido. Si el valor es false aparecerá seleccionado el definido en la variable authenticationDefaultSystem.
+authenticationSaveInSessionWeb - Permite escoger si, en modo web, queremos que las credenciales se almacenen en sessionStorage en vez de localStorage.
+authenticationSaveInSessionMobile - Permite escoger si, en modo móvil, queremos que las credenciales se almacenen en sessionStorage en vez de localStorage.
+OSB - usuario y contraseña
+Configuración de login con OSB (dametoken) con usuario y contraseña.
+code
+Este apartado explica cómo configurar la aplicación para pedir un token de OSB mediante usuario y contraseña. La configuración se realiza mediante las siguientes variables de los archivos de entorno environment.ts, environment.val.ts y environment.prod.ts:
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  export const environment = {
+    ...
+    authenticationService: {
+      authenticationDefaultSystem: 'dameToken',
+      ...
+      dameTokenConfig: {
+        uriBase: 'https://desesb.madrid.org/fesb_rest_token/v1/token/getToken',
+        uriEliminaToken: 'https://desesb.madrid.org/fesb_rest_token/v1/token/eliminaToken',
+        authenticationSystem: 'IntranetDA',
+        expirationTime: 604800000, // Una semana en milisegundos
+        httpHeaderTokenAuthAlways: true,
+        technicalModules: ['MOVA_MOV_PLANTILLA2'], // array de modulos tecnicos
+        authenticationTechnicalModuleIndex: 0,
+      },
+      ...
+    }
+  }
+  
+authenticationDefaultSystem - Permite definir el sistema de autenticación. Para usar el sistema dametoken debe tener el valor 'dameToken'.
+dameTokenConfig:
+uriBase - Permite definir la url del servicio dametoken. No se debe tocar.
+uriEliminaToken - Permite definir la url de eliminación de token del servicio dametoken. No se debe tocar.
+authenticationSystem - Permite definir con qué tipo de usuario nos autenticamos en el sistema dametoken. No se debe tocar.
+expirationTime - Permite definir el tiempo de expiración de los token del sistema dametoken en milisegundos. Por defecto duran una semana.
+httpHeaderTokenAuthAlways - En las llamadas http usar siempre la cabecera 'Token-Auth' con el token del módulo técnico de autenticación cuando se está logado mediante token OSB.
+technicalModules - Permite definir el array de módulos técnicos contra los que pedir token con dametoken. Como mínimo deberá tener un elemento pero puede tener varios
+authenticationTechnicalModuleIndex - Permite definir el índice del módulo técnico de autenticación del array technicalModules, por lo general debe ponerse siempre el primero y usar 0
+WSO2 - usuario y contraseña
+Configuración de login con WSO2 con usuario y contraseña.
+code
+Este apartado explica cómo configurar la aplicación para pedir un token de WSO2 mediante usuario y contraseña. La configuración se realiza mediante las siguientes variables de los archivos de entorno environment.ts, environment.val.ts y environment.prod.ts:
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  export const environment = {
+    ...
+    authenticationService: {
+      authenticationDefaultSystem: 'wso2',
+      ...
+      wso2Config: {
+        uriBase: 'https://apis.val.comunidad.madrid/token',
+        uriRevoke: 'https://apis.val.comunidad.madrid/revoke',
+        consumerKey: '...',
+        consumerSecret: '...',
+        customDomain: '...',
+        customTenant: '...',
+        scopes: [
+          {'scope': 'NXCA_sc_consulta', 'active': false},
+          {'scope': 'NXCA_sc_escritura', 'active': false},
+        ],
+      }
+      ...
+    }
+  }
+  
+authenticationDefaultSystem - Permite definir el sistema de autenticación. Para usar el sistema WSO2 debe tener el valor 'wso2'.
+wso2Config:
+uri - Permite definir la url del servicio WSO2. No se debe tocar.
+consumerKey - Permite definir la clave pública del sistema WSO2 para nuestra app.
+consumerSecret - Permite definir la clave secreta del sistema WSO2 para nuestra app.
+customDomain - Permite definir el parámetro domain del API Manager.
+customTenant - Permite definir el parámetro tenant del API Manager.
+scopes - Permite definir un array de 'scopes' para el sistema WSO2. Deben tener la variable active a false.
+customDomain
+
+La variable customDomain es opcional y, en caso de tener valor, el sistema hará login con la forma <customDomain>/userName. Esta variable es compatible con la variable customTenant.
+
+customTenant
+
+La variable customTenant es opcional y, en caso de tener valor, el sistema hará login con la forma userName@<customTenant>. Esta variable es compatible con la variable customDomain.
+
+Scopes
+
+El funcionamiento de los scopes es el siguiente: especificamos en la variable "scopes" los scopes que queremos que nuestra app mande en la petición de login. Al hacer la petición de login, se mandarán esos scopes junto con el usuario y la contraseña.
+
+Como respuesta a la petición de login, el sistema devolverá para cuál de esos scopes el usuario está autenticado, pudiéndose comprobar en la misma variable "scopes" (para los que estemos autenticados tendrán la variable active a "true" y para los que no estarán a "false").
+
+De esta manera, podemos mostrar u ocultar secciones o funcionalidades de la app según el scope que tenga el usuario en cada momento.
+
+Acceso a credenciales
+Acceso al objeto de credenciales.
+code
+Después de haber realizado el login, podemos acceder al array de credenciales que se encuentra en la memoria local por si queremos mostrar algún dato del usuario o usar el token de autorización:
+
+HTML
+TS
+globalCredentials OSB
+globalCredentials WSO2
+globalCredentials Autologin OSB
+globalCredentials Autologin WSO2
+
+  <p>Objeto con las credenciales de memoria local:</p>
+  <pre *ngIf="globalCredentials"> {{ globalCredentials | json }} </pre>
+  <p *ngIf="!globalCredentials">Debes estar logado para ver el objeto con las credenciales</p>
+Objeto con las credenciales de memoria local:
+
+Debes estar logado para ver el objeto con las credenciales
+
+Uso de los token OSB
+Uso de tokens OSB (dametoken) en llamadas http.
+code
+Inlcuir el token en peticiones http
+
+Si queremos que para todas las peticiones http se incluya el token del módulo técnico para el que estamos logados se hace mediante la variable httpHeaderTokenAuthAlways de los archivos environment.ts, environment.val.ts y environment.prod.ts:
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  {
+    ...
+    authenticationService: {
+      ...
+      dameTokenConfig: {
+        ...
+        httpHeaderTokenAuthAlways: true,
+      },
+    ...
+  };
+  
+interceptorService:
+httpHeaderTokenAuthAlways - En las llamadas http usar siempre la cabecera 'Token-Auth' con el token del módulo técnico de autenticación cuando se está logado mediante token OSB.
+Inlcuir el token de un módulo técnico no habitual en peticiones http
+
+Si queremos que alguna llamada http incluya un token de un módulo técnico para el cual estamos logados que sea distinto del habitual se debe configurar de manera específica:
+
+TS
+
+  import {Injectable} from '@angular/core';
+  import {HttpClient, HttpHeaders} from '@angular/common/http';
+  import {Observable} from 'rxjs';
+
+  ...
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  ...
+
+  dameTokenFunctionTechModuleExample (): Observable<any> {
+    // Ejemplo de llamada http pasando el modulo técnico específico distinto del configurado para el login del cual queremos el Token-Auth
+    const headers = new HttpHeaders()
+    .set('mv-token-auth','MODULO_TECNICO_DISTINTO_DE_LOGIN');
+
+    let requestUrl = '...';
+    return this.http.get<any[]>(requestUrl, {'headers': headers});
+  };
+
+  ...
+
+  dameTokenFunctionExample (): Observable<any> {
+    // Ejemplo de llamada http pasando el modulo técnico de nuestra app (si estamos logados)
+    // Tiene que estar la variable _httpHeaderTokenAuthAlways de environment a true
+
+    let requestUrl = '...';
+    return this.http.get<any[]>(requestUrl);
+  };
+
+  ...
+  
+Uso de los token WSO2
+Uso de token WSO2 en llamadas http.
+code
+Inlcuir el token en peticiones http
+
+Si queremos que una llamada http use los token de acceso y refresco de WSO2 debemos especificarlo de manera explícita en el servicio que haga la llamada http. Si no lo hacemos, dicha llamada http no incluirá las cabeceras propias de WSO2:
+
+TS
+
+  import {Injectable} from '@angular/core';
+  import {HttpClient, HttpHeaders} from '@angular/common/http';
+  import {Observable} from 'rxjs';
+
+  ...
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  ...
+
+  wso2FunctionExample (): Observable<any> {
+    const headers = new HttpHeaders()
+    .set('mv-wso2-token','true');
+
+    let requestUrl = '...';
+    return this.http.get<any[]>(requestUrl, {'headers': headers});
+  };
+
+  ...
+  
+Uso de apiKeys
+Uso de apiKeys en llamadas http.
+code
+Para definir los apiKeys que queramos usar en nuestra app debemos hacerlo en environment.ts, environment.val.ts y environment.prod.ts:
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+
+  export const environment = {
+    ...
+    interceptorService: {
+      ...
+      apiKeys: [
+        {
+          "name": "pruebaKey",
+          "apiKey": "Bearer 636fb144-1077-31a5-abba-7523b3bc1370"
+        }
+      ],
+    },
+  }
+  
+Aparte, debemos especificar de manera explícita en cada petición http el nombre del apiKey que queremos usar:
+
+TS
+
+  import {Injectable} from '@angular/core';
+  import {HttpClient, HttpHeaders} from '@angular/common/http';
+  import {Observable} from 'rxjs';
+
+  ...
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  ...
+
+  apiKeyFunctionExample (): Observable<any> {
+    const headers = new HttpHeaders()
+    .set('mv-api-key','pruebaKey');
+
+    let requestUrl = '...';
+    return this.http.get<any[]>(requestUrl, {'headers': headers});
+  };
+
+  ...
+  
+Uso de APIs WSO2
+Uso de APIs con token de WSO2.
+code
+Lo habitual es que las APIs WSO2 estén desplegadas en el tenant raíz. Si la aplicación tiene login por Autologin con WSO2 las APIs también se publicarán en el tenant de ciudadanos, por lo que para pedir el token de WSO2 se necesitarán otro consumerKey y consumerSecret diferentes.
+
+En consecuencia, en nuestra app debemos definir las urls correspondientes al dominio del tenant raíz y/o del tenant ciudadanos que use nuestra API, y cuando se haga una petición al API se tendrá que tener en cuenta el modo de autenticación usado para cambiar la url del tenant raíz o el tenant de ciudadanos.
+
+A continuación, se muestra un ejemplo de gestión de las urls para una app que pueda obtener el token de WSO2 indistintamente con usuario y contraseña o Autologin.
+
+environment.ts
+environment.val.ts
+environment.prod.ts
+example.service.ts
+
+  export const environment = {
+    mova: {
+      ...
+    },
+    app: {
+      ...
+      studentService: {
+        url: 'https://apis.val.comunidad.madrid/ciencia-tecnologia/japi-alumnos-test/v1',
+        urlAutologin: 'https://apis.val.comunidad.madrid/t/ciudadanos.comunidad.madrid/ciencia-tecnologia/japi-alumnos-test/v1',
+        ...
+      },
+    },
+  };
+  

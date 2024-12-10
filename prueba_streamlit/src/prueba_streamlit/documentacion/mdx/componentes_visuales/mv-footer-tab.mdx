@@ -1,0 +1,384 @@
+Documentación mv-footer-tab
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link barColor
+link color
+link fixed
+link showMenu
+link selectedItem
+link tabItems
+Información
+Información del componente mv-footer-tab.
+code
+El componente mv-footer-tab se basa en el componente mat-tab de Angular Material, al que se le añade funcionalidad y estilos adicionales.
+
+Sirve para organizar la información y secciones de una app
+
+Ejemplo de uso
+Uso básico del componente mv-footer-tab.
+code
+Este componente sirve para poner una barra fija en la parte de abajo de la app movil de hasta 6 iconos que pueden servir de menú o solapas.
+
+Para ver ejemplos más realistas y completos del componente ver en los ejemplos de maquetación
+
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+
+  <mv-footer-tab
+    [tabItems]="arrayTabItems">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+  </mv-footer-tab>
+  
+Ejemplo de footer-tab:
+
+Contenido1
+barColor
+Color del elemento de selección.
+code
+La propiedad barColor permite definir el color de la barra de selección, cuando está seleccionado un elemento. Los colores disponibles son:
+
+primary
+accent
+warn
+corporative
+secondary-001
+secondary-002
+secondary-003
+secondary-004
+secondary-005
+secondary-006
+secondary-007
+secondary-008
+secondary-009
+secondary-010
+secondary-011
+secondary-012
+secondary-white
+secondary-black
+Si no especificamos ningún valor, el color de la barra es negro.
+
+HTML
+TS
+
+  <mv-footer-tab
+    barColor="corporative"
+    [tabItems]="arrayTabItems2">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+  </mv-footer-tab>
+
+  <mv-footer-tab
+    barColor="accent"
+    [tabItems]="arrayTabItems2">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+  </mv-footer-tab>
+
+  <mv-footer-tab
+    barColor="secondary-white"
+    [tabItems]="arrayTabItems2">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+  </mv-footer-tab>
+  
+Con barColor = 'corporative':
+
+Contenido1
+Con barColor = 'accent':
+
+Contenido1
+Con barColor = 'secondary-002':
+
+Contenido1
+color
+Color de los botones.
+code
+La propiedad color permite definir el color de fondo de los botones. Los colores disponibles son:
+
+primary
+accent
+warn
+corporative
+secondary-001
+secondary-002
+secondary-003
+secondary-004
+secondary-005
+secondary-006
+secondary-007
+secondary-008
+secondary-009
+secondary-010
+secondary-011
+secondary-012
+secondary-white
+secondary-black
+Si no especificamos ningún valor, el color de fondo es blanco.
+
+HTML
+TS
+
+  <mv-footer-tab
+    color="corporative"
+    [tabItems]="arrayTabItems2">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+  </mv-footer-tab>
+
+  <mv-footer-tab
+    color="accent"
+    [tabItems]="arrayTabItems2">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+  </mv-footer-tab>
+
+  <mv-footer-tab
+    color="secondary-white"
+    [tabItems]="arrayTabItems2">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+  </mv-footer-tab>
+  
+Con color = 'corporative':
+
+Contenido1
+Con color = 'accent':
+
+Contenido1
+Con color = 'secondary-white':
+
+Contenido1
+fixed
+Botonera fija o relativa al contenedor.
+code
+La propiedad fixed permite definir la posición de la botonera: fija en la pantalla o relativa al contenedor.
+
+Si no especificamos ningún valor, se colocará de forma relativa.
+
+HTML
+TS
+
+  <mv-footer-tab
+    color="primary"
+    fixed="true"
+    [tabItems]="arrayTabItems">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+  </mv-footer-tab>
+
+  <mv-footer-tab
+    color="primary"
+    fixed="false"
+    [tabItems]="arrayTabItems">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+  </mv-footer-tab>
+  
+Con fixed = true:
+
+Con fixed = false:
+
+Contenido1
+selectedItem
+Posición seleccionada.
+code
+La propiedad selectedItem permite seleccionar la vista que queremos mostrar de inicio, así como en cualquier momento cambiar la vista a mostrar cambiando el valor de la variable. También nos permite observar el valor de la vista seleccionada.
+
+Si no especificamos ningún valor, se mostrará la vista correspondiente a la primera posición.
+
+HTML
+TS
+
+  <p><strong>Con selectedItem seleccionado inicialmente a 2:</strong></p>
+
+  <mv-footer-tab
+    color="primary"
+    [(selectedItem)]="selectedItemExample"
+    [tabItems]="arrayTabItems3">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+  </mv-footer-tab>
+
+  <div class="buttons">
+    <mv-button
+      (clickEvent)="selectItem(0)"
+      appearance="raised"
+      color="primary">
+      Seleccionar vista 0
+    </mv-button>
+
+    <mv-button
+      (clickEvent)="selectItem(1)"
+      appearance="raised"
+      color="primary">
+      Seleccionar vista 1
+    </mv-button>
+
+    <mv-button
+      (clickEvent)="selectItem(2)"
+      appearance="raised"
+      color="primary">
+      Seleccionar vista 2
+    </mv-button>
+  </div>
+
+  <div>
+    <strong>Valor de la variable selectedItem: {{ selectedItemExample }}</strong>
+  </div>
+  
+Con selectedItem seleccionado inicialmente a 2:
+
+Contenido3
+Valor de la variable selectedItem: 2
+showMenu
+Menú en el último botón.
+code
+La propiedad showMenu permite definir un menú al final de los botones principales del menú. Aparte de poner la variable showMenu a true también debemos definir el menú en sí como se muestra a continuación:
+
+HTML
+TS
+
+  <mv-footer-tab
+    color="corporative"
+    [tabItems]="arrayTabItems"
+    showMenu="true">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+    <div menu>
+      <button mat-menu-item>Opción 1</button>
+      <button mat-menu-item>Opción 2</button>
+      <button mat-menu-item>Opción 3</button>
+    </div>
+  </mv-footer-tab>
+  
+Con showMenu = true:
+
+Contenido1
+tabItems
+Definición de los botones.
+code
+La propiedad tabItems permite definir los distintos botones de los que se compone el menú. Como máximo se podrán definir 6 elementos más el menú.
+
+Hay que definir por un lado un array con tantas posiciones como botones queramos que tenga el componente. En cada posición del array debemos definir el icono, la familia de iconos y el título del botón:
+
+icon: nombre del icono (de Material o Font Awesome)
+fontSet: 'fa' (si queremos que sea Font Awesome. Material por defecto)
+title: título del botón
+Por otro lado hay que definir el html del contenido que queremos visualizar al pulsar cada botón con las etiquetas 'content1', 'content2'...
+
+HTML
+TS
+
+  <mv-footer-tab
+    color="corporative"
+    [tabItems]="arrayTabItems2">
+
+    <div content1>
+      Contenido1
+    </div>
+    <div content2>
+      Contenido2
+    </div>
+    <div content3>
+      Contenido3
+    </div>
+    <div content4>
+      Contenido3
+    </div>
+    <div content5>
+      Contenido3
+    </div>
+  </mv-footer-tab>

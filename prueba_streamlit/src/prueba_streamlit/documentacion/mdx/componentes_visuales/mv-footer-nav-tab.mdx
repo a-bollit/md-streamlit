@@ -1,0 +1,155 @@
+Documentación mv-footer-nav-tab
+link Información
+link Ejemplo de uso
+Propiedades:
+
+link navBarColor
+link navBarColorBar
+link navBarConfig
+Información
+Información del componente mv-footer-nav-tab.
+code
+Este componente sirve para poner una barra fija de navegación a modo de menú en la parte de abajo de la app.
+
+Ejemplo de uso
+Uso básico del componente mv-footer-nav-tab.
+code
+A continuación se muestra un ejemplo básico de uso del componente.
+
+HTML
+TS
+SCSS
+
+  <section class="view-default-style">
+
+    <!-- Componente -->
+    <mv-card class="card-code">
+      <mv-card-title><strong>Navegación 1</strong></mv-card-title>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      <mv-select-x
+        [(ngModel)]="selectNavBarColor"
+        label="Propiedad navBarColor"
+        [options]="selectColors"
+        (changeEvent)="changeColor()">
+      </mv-select-x>
+
+      <mv-select-x
+        [(ngModel)]="selectNavBarColorBar"
+        label="Propiedad navBarColorBar"
+        [options]="selectColors"
+        (changeEvent)="changeColor()">
+      </mv-select-x>
+
+      <mv-button
+        link="/doc-footer-nav-tab"
+        appearance="raised"
+        color="primary"
+        adapt=true>
+        Volver a la documentación
+      </mv-button>
+
+    </mv-card>
+  </section>
+  
+Ejemplo de footer-nav-tab:
+
+navBarColor
+Color del elemento de selección.
+code
+La propiedad navBarColor permite definir el color de la barra de selección, cuando está seleccionado un elemento. Los colores disponibles son:
+
+primary
+accent
+warn
+corporative
+secondary-001
+secondary-002
+secondary-003
+secondary-004
+secondary-005
+secondary-006
+secondary-007
+secondary-008
+secondary-009
+secondary-010
+secondary-011
+secondary-012
+secondary-white
+secondary-black
+Si no especificamos ningún valor, el color de la barra es negro.
+
+HTML
+TS
+SCSS
+
+  ...
+
+  <!-- Nada que añadir respecto al ejemplo principal -->
+
+  ...
+  
+navBarColorBar
+Color de los botones.
+code
+La propiedad navBarColorBar permite definir el color de fondo de los botones. Los colores disponibles son:
+
+primary
+accent
+warn
+corporative
+secondary-001
+secondary-002
+secondary-003
+secondary-004
+secondary-005
+secondary-006
+secondary-007
+secondary-008
+secondary-009
+secondary-010
+secondary-011
+secondary-012
+secondary-white
+secondary-black
+Si no especificamos ningún valor, el color de fondo es blanco.
+
+HTML
+TS
+SCSS
+
+  ...
+
+  <!-- Nada que añadir respecto al ejemplo principal -->
+
+  ...
+  
+navBarConfig
+Definición de los botones y menú.
+code
+La propiedad navBarConfig permite definir los distintos botones de los que se compone la barra de navegación.
+
+Hay que definir por un lado un array con tantas posiciones como botones queramos que tenga el componente. En cada posición del array debemos definir el icono, el título y la url de navegación:
+
+icon: nombre del icono
+fontSet: 'fa' (si queremos que sea Font Awesome. Material por defecto)
+title: título que se mostrará debajo del icono
+stateUrl: url de navegación
+También se puede definir un botón más a modo de menú, que desplegará un menú contextual con tantas opciones como definamos:
+
+title: título que se mostrará debajo del icono
+stateUrl: url de navegación
+HTML
+TS
+SCSS
+
+  ...
+
+  <!-- Nada que añadir respecto al ejemplo principal -->
+
+  ...
+  

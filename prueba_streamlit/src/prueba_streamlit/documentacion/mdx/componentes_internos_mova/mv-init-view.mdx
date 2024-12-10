@@ -1,0 +1,30 @@
+Documentación mv-init-view
+link Información
+link Configuración
+Información
+Información general del componente mv-init-view.
+code
+Este componente es la vista de entrada a la app. Se trata de un componente MOVA, por tanto no se puede modificar, tan solo configurar como se explica en el apartado siguiente.
+
+Tiene la función de comprobar si existe una nueva versión de la aplicación, para mostrar al usuario la información correspondiente.
+
+Configuración
+Configuración del componente mv-init-view.
+code
+Este componente se puede configurar mediante los archivos environment.ts, environment.val.ts y environment.prod.ts:
+
+environment.ts
+environment.prod.ts
+
+  {
+    ...
+    initView: {
+      autoRedirect: true,
+      skipVersionRequirementsCheck: false,
+    },
+    ...
+  };
+  
+autoRedirect - Variable para definir si queremos que nos redirija automáticamente a la vista correspondiente al hacer el chequeo de nueva versión. Si ponemos valor false, al terminar la comprobación se quedará en la pantalla y tendremos que pulsar en el botón de continuar.
+skipVersionRequirementsCheck - Variable para definir si no queremos que la app haga el chequeo de nueva versión.
+La vista hacia la que se navega después de init-view es la que esté definida en la variable landingViewRoute del archivo config-default.json

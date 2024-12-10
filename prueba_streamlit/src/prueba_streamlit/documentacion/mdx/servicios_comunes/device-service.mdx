@@ -1,0 +1,225 @@
+Documentación device-service
+link Información
+Metodos:
+
+link getMobileInfo
+link getWebInfo
+link isBrowser
+link isMobileApp
+link isAndroid
+link isIOS
+link hasNotchAndroid
+link getNotchSizesAndroid
+Información
+Información del servicio device-service.
+code
+Este servicio proporciona funcionalidad relacionada con las propiedades del dispositivo en el que se ejecuta la app.
+
+getMobileInfo
+Información del dispositivo
+code
+Devuelve información del dispositivo movil.
+
+Valores que devuelve:
+
+cordovaVersion: Versión de cordova
+
+isSimulator: Si está siendo ejecutado en un simulador
+
+model: Modelo del dispositivo
+
+manufacturer: Compañía que manufacturó el dispositivo
+
+serialNumber: Nº de serie del dispositivo
+
+uuid: UUID del dispositivo
+
+platform: Sistema operativo del dispositivo
+
+version: Versión del sistema operativo del dispositivo
+
+HTML
+TS
+
+  <p><strong>Ejemplo:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="loadGetMobileInfo()">
+    loadGetMobileInfo
+  </mv-button>
+  <pre class="jsonExample"> {{mobileInfoResponse | json}}</pre>
+  
+Ejemplo:
+
+ 
+getWebInfo
+Información del navegador.
+code
+Devuelve la información del navegador
+
+Valores que devuelve:
+
+browserCodeName: Contiene el nombre código del navegador
+
+browserEngine: Contiene el número de compilación del navegador
+
+browserName: Contiene un DOMString con el nombre oficial del navegador
+
+browserPlatform: Contiene el nombre de la plataforma del navegador
+
+browserVersionInfo: Contiene la versión del navegador
+
+browserUserAgent: Contiene la cadena del userAgent
+
+isCookieEnabled: Indica si el navegador tiene activadas las cookies
+
+language: Contiene una cadena representando el idioma del navegador
+
+platform: Plataforma del navegador
+
+HTML
+TS
+
+  <p><strong>Ejemplo:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="loadGetWebInfo()">
+    loadGetWebInfo
+  </mv-button>
+ <pre class="jsonExample"> {{webInfoResponse | json}}</pre>
+  
+Ejemplo:
+
+ 
+isBrowser
+Tipo de navegador.
+code
+Devuelve un boolean a True si se está ejecutando en un navegador.
+
+HTML
+TS
+
+  <p><strong>Ejemplo:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="loadIsBrowser()">
+    loadIsBrowser
+  </mv-button>
+  <pre class="jsonExample"> {{isBrowserResponse}} </pre>
+  
+Ejemplo:
+
+  
+isMobileApp
+Indica si es una aplicación movil.
+code
+Devuelve un boolean a true indicando si la aplicación se está ejecutando en un dispositivo móvil. Si devuelve False, se esta ejecutando en un navegador.
+
+isMobileApp()
+
+HTML
+TS
+
+  
+  ...
+  
+  // Almaceno el dato devuelto de deviceService.isMobileApp
+  isMobileAppResponse:any;
+  constructor(
+    private deviceService: DeviceService
+  ) { }
+
+  ...
+
+  /**
+   * Carga de datos de device-service de MobileApp
+   */
+  loadMobileApp() {
+    console.log("Cargando loadMobileApp");
+    this.isMobileAppResponse = this.deviceService.isMobileApp();
+  }
+  
+Ejemplo:
+
+  
+isAndroid
+Tipo de dispositivo.
+code
+Devuelve true si el dispositivo es Android.
+
+HTML
+TS
+
+  <p><strong>Ejemplo:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="loadIsAndroid()">
+    loadIsAndroid
+  </mv-button>
+  <pre class="jsonExample"> {{isAndroidResponse}} </pre>
+  
+Ejemplo:
+
+  
+isIOS
+Tipo de dispositivo.
+code
+Devuelve true si el dispositivo es iOS.
+
+HTML
+TS
+
+  <p><strong>Ejemplo:</strong></p>
+  <mv-button
+    color="primary"
+    appearance="raised"
+    (clickEvent)="loadIsIOS()">
+    loadIsIOS
+  </mv-button>
+  <pre class="jsonExample"> {{isIOSResponse}} </pre>
+  
+Ejemplo:
+
+  
+hasNotchAndroid
+Comprueba si tiene notch en disposivitos Androids.
+code
+Devuelve true si el dispositivo tiene notch.
+
+HTML
+TS
+
+    <p><strong>Ejemplo:</strong></p>
+    <mv-button
+      color="primary"
+      appearance="raised"
+      (clickEvent)="hasNotchAndroid()">
+      hasNotchAndroid
+    </mv-button>
+    <pre class="jsonExample"> {{hasNotchAndroidResponse}} </pre>
+  
+Ejemplo:
+
+  
+getNotchSizesAndroid
+Obtiene las separaciones del notch en disposivitos Androids.
+code
+Devuelve un objeto con las separaciones arriba, abajo, izquierda y derecha.
+
+HTML
+TS
+
+    <p><strong>Ejemplo:</strong></p>
+    <mv-button
+      color="primary"
+      appearance="raised"
+      (clickEvent)="getNotchSizesAndroid()">
+      getNotchSizesAndroid
+    </mv-button>
+    <pre class="jsonExample"> {{getNotchSizesResponse}} </pre>
+  
+Ejemplo:

@@ -1,0 +1,102 @@
+link Textos y tipografía general
+link Textos y tipografía MOVA
+link Colores corporativos
+Textos y tipografía general
+code
+La tipografía principal de MOVA es "Montserrat".
+
+IMPORTANTE
+Si se quiere usar texto en negrita hay que hacerlo usando la etiqueta <strong>, ya que es la adecuada por cuestiones de accesibilidad. En la medida de los posible no usar la etiqueta <b> de html.
+
+Así mismo, no usar la etiqueta <i> de html para mostrar texto en cursiva o destacado. Usar en su defecto la etiqueta <em> por el mismo motivo.
+
+HTML
+
+  <h1>Ejemplo de título principal</h1>
+  <h2>Ejemplo de título secundario</h2>
+  <h3>Ejemplo de título terciario</h3>
+  <p>Ejemplo de párrafo: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+    mollit anim id est laborum.</p>
+  <p>Texto con énfasis: <em>texto a destacar</em></p>
+  <p>Texto en negrita: <strong>texto a destacar</strong></p>
+  
+Ejemplo de título principal
+Ejemplo de título secundario
+Ejemplo de título terciario
+Ejemplo de párrafo: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Texto con énfasis: texto a destacar
+
+Texto en negrita: texto a destacar
+
+Textos y tipografía MOVA
+code
+MOVA proporciona la clase .mv-h1 para los elementos <h1> que añade un borde al elemento.
+
+HTML
+SCSS
+
+  <h1 class="mv-h1 h1-primary">Ejemplo de título principal con estilo mv-h1 y color primary</h1>
+  <h1 class="mv-h1 h1-accent">Ejemplo de título principal con estilo mv-h1 y color accent</h1>
+  <h1 class="mv-h1 h1-warn">Ejemplo de título principal con estilo mv-h1 y color warn</h1>
+  <h1 class="mv-h1 h1-corporative">Ejemplo de título principal con estilo mv-h1 y color corporative</h1>
+  
+Ejemplo de título principal con estilo mv-h1 y color primary
+Ejemplo de título principal con estilo mv-h1 y color accent
+Ejemplo de título principal con estilo mv-h1 y color warn
+Ejemplo de título principal con estilo mv-h1 y color corporative
+Colores corporativos
+code
+
+Colores corporativos disponibles en MOVA como variables css para su uso en las aplicaciones. Para usarlas hay que importar los estilos
+
+SCSS
+
+  @import '~@mova/components/_variables.scss';
+
+  // Ya se puede usar cualquier clase, mixin o variable MOVA
+  
+$primary - Color primario de Material (#000000)
+$accent - Color accent cuando el tema escogido es el rojo (#850d0f)
+$accent - Color accent cuando el tema escogido es el azul (#0b5394)
+$warn - Color warn de Material (#d34e32)
+$corporative - Color corporativo cuando el tema escogido es el rojo (#d10002)
+$corporative - Color corporativo cuando el tema escogido es el azul (#155db3)
+$secondary-001 - Color secundario (#155db3)
+$secondary-002 - Color secundario (#018373)
+$secondary-003 - Color secundario (#567383)
+$secondary-004 - Color secundario (#d10002)
+$secondary-005 - Color secundario (#cc0098)
+$secondary-006 - Color secundario (#9900cc)
+$secondary-007 - Color secundario (#336601)
+$secondary-008 - Color secundario (#560100)
+$secondary-009 - Color secundario (#016666)
+$secondary-010 - Color secundario (#666666)
+$secondary-011 - Color secundario (#666632)
+$secondary-012 - Color secundario (#6734ff)
+$secondary-013 - Color secundario (#e6e6e6)
+$secondary-black - Color negro (#000000)
+$secondary-white - Color blanco (no incluye el borde) (#ffffff)
+$container-max-width-big - Ancho grande para contenedores (1000px).
+$container-max-width-medium - Ancho mediano para contenedores (800px).
+$container-max-width-small - Ancho pequeño para contenedores (600px).
+$text-small - Tamaño de texto pequeño (10pt).
+$media-col-xs-max - Tamaño máximo de móvil para media queries (767px).
+$media-col-sm-min - Tamaño mínimo de pantallas pequeñas para media queries (768px).
+$media-col-sm-max - Tamaño máximo de pantallas pequeñas para media queries (991px).
+$media-col-md-min - Tamaño mínimo de pantallas medianas para media queries (992px).
+$media-col-md-max - Tamaño máximo de pantallas medianas para media queries (1199px).
+$media-col-lg-min - Tamaño mínimo de pantallas grandes para media queries (1200px).
+$z-index-max - Z-index máximo (9999).
+$z-index-005 - Z-index alto (7500).
+$z-index-004 - Z-index medio-ato (5000).
+$z-index-003 - Z-index medio (2500).
+$z-index-002 - Z-index medio-bajo (1000).
+$z-index-001 - Z-index bajo (100).
+En la medida de lo posible es recomendable usar las variables que proporciona MOVA porque está todo desarrollado en base a muchas de estas variables y si usamos otras puede ocasionar comportamientos o aspectos indeseados. Por ejemplo, en caso de necesitar media-queries, se recomienda hacerlo con las variables que MOVA proporciona para ello, porque los componentes están desarrollados en base a esas variables. Otro ejemplo puede ser los z-index, si usamos un z-index con valor al azar podría ocasionar conflictos con otros componentes.
+
+No obstante, se pueden crear todas las variables que sean necesarias para aspectos concretos de nuestra app que MOVA no proporcione. En caso de crearlas es recomendable situarlas en el archivo styles.scss por mantenerlas centralizadas y para un mejor man

@@ -1,0 +1,72 @@
+Documentación theme
+link Información
+link Configuración
+link Ejemplo de uso
+Información
+Información sobre temas visuales.
+code
+En MOVA se pueden configurar temas visuales que cambian el color de algunos elementos (borde, texto...) de los componentes de formulario. Si para alguna aplicación es necesario un nuevo tema se puede solicitar a Arquitectura para añadirlo.
+
+Configuración
+Configuración de temas visuales.
+code
+Se puede configurar mediante la variable componentTheme del archivo config-default-main-frame.json:
+
+config-default-main-frame.json
+
+  {
+    "generalConfig": {
+      ...
+      "componentTheme": 0
+    },
+    ...
+  }
+
+  
+Existen los siguientes temas visuales:
+
+Tema 0: tema en colores neutros, tema por defecto en MOVA
+Tema 1: tema resaltado en verde para los elementos de formulario
+Tema 2: tema resaltado en azul para los elementos de formulario
+Tema 3: tema en colores neutros pero con menor transparencia (más visibles)
+Ejemplo de uso
+Uso de temas visuales.
+code
+A continuación se muestra un ejemplo donde se cambia en tiempo real entre los 4 temas visuales disponibles.
+
+Tema 0 - MOVA	
+ 
+Normal
+Deshabilitado
+Con error
+Nombre
+Primer apellido
+Segundo apellido *
+Campo requerido
+ 	
+ Estaciones
+ Estaciones
+ 	
+ Estaciones *
+Campo requerido
+Discapacidad
+Parado
+Estudiante
+Profesor/a
+Estudiante
+Profesor/a
+Código
+Descripción
+Código
+Descripción
+Código *
+Campo requerido
+Descripción
+Fecha nacimiento
+Fecha nacimiento
+Fecha nacimiento *
+Campo requerido
+Observaciones
+Observaciones
+Observaciones *
+Campo requerido
