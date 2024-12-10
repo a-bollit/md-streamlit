@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 import sys
+import os
+
+# Asegúrate de agregar la ruta al directorio 'src'
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 import streamlit as st 
 from prueba_streamlit.crew import PruebaStreamlitCrew
 
