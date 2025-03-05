@@ -1,0 +1,179 @@
+Documentación local-storage-service
+link Información
+Eventos:
+
+link init
+link setItem
+link getItem
+link clearItem
+Información
+Información del servicio local-storage-service.
+code
+Este servicio sirve de interfaz para acceder al localStorage del navegador. Se puede usar en web y móvil.
+
+init
+Resetear el nodo principal.
+code
+El evento init permite resetear el nodo principal de localStorage donde se almacena la información de MOVA.
+
+init(reset)
+
+reset
+
+true: resetea el nodo principal de localStorage
+false: resetea el nodo principal de localStorage si está creado y lo crea en caso contrario
+HTML
+TS
+
+  <p>
+    <strong>
+      Resetear el nodo principal de mova mediante el evento init:
+    </strong>
+  </p>
+  <mv-button
+    color="primary"
+    (clickEvent)="initEventExample()">
+    init(true)
+  </mv-button>
+
+  <p><strong>Recuperar el nodo de MOVA en localStorage:</strong></p>
+  <mv-button
+    color="primary"
+    (clickEvent)="getItemsExample()">
+    getItems()
+  </mv-button>
+
+  <p><strong>Nodo principal de MOVA en localStorage:</strong></p>
+  <p>{{movaLocalStorageNode | json}}</p>
+  
+Resetear el nodo prinicpal de mova mediante el evento init:
+
+Recuperar el nodo de MOVA en localStorage:
+
+Nodo principal de MOVA en localStorage:
+
+
+setItem
+Almacenar información en localStorage.
+code
+El evento setItem permite almacenar información en el nodo principal de localStorage donde se almacena la información de MOVA.
+
+setItem(key, value, crypt)
+
+key
+
+'string': cadena con la clave del objeto que estamos almacenando
+value
+
+'string': valor que estamos almacenando
+crypt
+
+true: encripta el valor que estamos almacenando
+false: no encripta el valor que estamos almacenando
+HTML
+TS
+
+  <p><strong>Resetear el nodo principal de mova mediante el evento init:</strong></p>
+  <mv-button
+    color="primary"
+    (clickEvent)="initEventExample()">
+    init(true)
+  </mv-button>
+
+  <p><strong>Recuperar el nodo de MOVA en localStorage:</strong></p>
+  <mv-button
+    color="primary"
+    (clickEvent)="getItemsExample()">
+    getItems()
+  </mv-button>
+
+  <p><strong>Nodo principal de MOVA en localStorage:</strong></p>
+  <p>{{movaLocalStorageNode | json}}</p>
+  
+Almacenar en el nodo de MOVA en localStorage el texto de 'lorem ipsum' sin encriptar:
+
+Almacenar en el nodo de MOVA en localStorage el texto de 'lorem ipsum' encriptado:
+
+Recuperar el nodo de MOVA en localStorage:
+
+Nodo principal de MOVA en localStorage:
+
+
+getItem
+Recuperar un objeto concreto de localStorage.
+code
+El evento getItem permite recuperar un objeto concreto del nodo principal de localStorage donde se almacena la información de MOVA.
+
+getItem(key)
+
+key
+
+'string': cadena con la clave del objeto que queremos recuperar
+HTML
+TS
+
+  <p><strong>Almacenamos con clave 'DocLocalStorageServiceExample' en el nodo de MOVA en localStorage:</strong></p>
+  <mv-button
+    color="primary"
+    (clickEvent)="setItemExample('DocLocalStorageServiceExample', false)">
+    setItem('DocLocalStorageServiceExample', 'lorem ipsum...', false)
+  </mv-button>
+
+  <p><strong>Recuperar el objeto de clave 'DocLocalStorageServiceExample' del nodo de MOVA en localStorage:</strong></p>
+  <mv-button
+    color="primary"
+    (clickEvent)="getItem('DocLocalStorageServiceExample')">
+    getItem('DocLocalStorageServiceExample')
+  </mv-button>
+
+  <p><strong>Objeto de clave 'DocLocalStorageServiceExample' del nodo principal de MOVA en localStorage:</strong></p>
+  <p>{{movaLocalStorageNodeKey | json}}</p>
+  
+Almacenamos con clave 'DocLocalStorageServiceExample' en el nodo de MOVA en localStorage:
+
+Recuperar el objeto de clave 'DocLocalStorageServiceExample' del nodo de MOVA en localStorage:
+
+Objeto de clave 'DocLocalStorageServiceExample' del nodo principal de MOVA en localStorage:
+
+
+clearItem
+Eliminar objeto del nodo principal.
+code
+El evento clearItem permite eliminar un objeto del nodo principal de localStorage donde se almacena la información de MOVA.
+
+clearItem(key)
+
+key
+
+'string': cadena con la clave del objeto que queremos eliminar
+HTML
+TS
+
+  <mv-button
+    color="primary"
+    (clickEvent)="setItemExample('DocLocalStorageServiceExample', false)">
+    setItem('DocLocalStorageServiceExample', 'lorem ipsum...', false)
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    (clickEvent)="clearItem('DocLocalStorageServiceExample')">
+    clearItem('DocLocalStorageServiceExample')
+  </mv-button>
+
+  <mv-button
+    color="primary"
+    (clickEvent)="getItemsExample()">
+    getItems()
+  </mv-button>
+
+  <p><strong>Nodo principal de MOVA en localStorage:</strong></p>
+  <p>{{movaLocalStorageNode | json}}</p>
+  
+Almacenar en el nodo de MOVA en localStorage el texto de 'lorem ipsum':
+
+Eliminar el nodo 'DocLocalStorageServiceExample' del nodo de MOVA en localStorage:
+
+Recuperar el nodo de MOVA en localStorage:
+
+Nodo principal de MOVA en localStorage

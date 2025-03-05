@@ -1,0 +1,81 @@
+Documentación de librerías externas
+link Información
+Librerías:
+
+link Rxjs
+link Highlightjs
+link Matomo
+link Hammer-js
+link Moment
+Información
+Información sobre librerías externas.
+code
+MOVA incluye por defecto librerías externas que pueden ser útiles para los desarrolladores. Enumeramos las más relevantes y referenciamos a su documentación oficial.
+
+Rxjs
+Rxjs.
+code
+Rxjs es una librería Javascript para programación reactiva y uso de observables, callbacks y llamadas asíncronas.
+
+Documentación oficial: https://rxjs.dev/
+
+TS
+
+  import {Observable, Subscription, Subject, ...} from 'rxjs';
+
+  ...
+  
+highlightjs
+highlightjs.
+code
+Highlightjs es una librería para mostrar código de una forma estética para una correcta visualización.
+
+Documentación oficial: https://highlightjs.org/
+
+Los import de esta librería se pueden quitar de una aplicación que no muestre código fuente como hace la plantilla de MOVA.
+
+TS
+
+  import xml from 'highlight.js/lib/languages/xml';
+  import scss from 'highlight.js/lib/languages/scss';
+
+  ...
+  
+Matomo
+Matomo.
+code
+Matomo es un analizador de seguimiento para aplicaciones. Con ello se puede realizar trazas sobre el uso de las apps.
+
+Documentación oficial: https://www.npmjs.com/package/ngx-matomo
+
+TS
+
+  import {MatomoTracker} from 'ngx-matomo';
+
+  ...
+  
+Hammer
+Hammer.
+code
+Hammer es una librería para capturar gestos y movimientos en una aplicación.
+
+Documentación oficial: https://hammerjs.github.io/
+
+TS
+
+  import * as Hammer from 'hammerjs';
+
+  ...
+  
+Moment
+Moment.
+code
+Moment es una librería para el manejo de fechas, horas y eventos temporales (tiempos entre fechas, etc)
+
+Documentación oficial: https://momentjs.com/
+
+TS
+
+  import { Moment } from 'moment';
+
+  ...

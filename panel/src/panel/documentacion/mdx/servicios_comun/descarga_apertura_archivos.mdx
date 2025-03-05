@@ -1,0 +1,242 @@
+Documentación de descarga y apertura de archivos
+link Ejemplo HttpRequest (recomendado)
+link Ejemplo XMLHttpRequest
+link Ejemplo de descarga de un fichero .ics o funcionalidad de descarga similar
+Ejemplo de descarga con HttpRequest
+Angular HttpRequest
+code
+Ejemplo de descarga de un fichero usando Angular HttpRequest. Documentación oficial: https://angular.io/api/common/http/HttpRequest.
+
+HTML
+TS
+
+  <p><strong>1. Subir un archivo pdf de ejemplo para descarga y visualización</strong></p>
+  <mv-file-uploader
+    #mvFileUploaderFirstExample
+    [maxSizeBytes]="maxSize"
+    chunked=true
+    [allowedExtensions]="uploaderAllowedExtensions"
+    (onUploadSuccess)="onSuccessCallbackFirstExample()">
+  </mv-file-uploader>
+
+  <p *ngIf="progressValueFirstExample != 0">Estado de la descarga:</p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="progressValueFirstExample != 0">
+      <mat-progress-bar mode="determinate" color="warn" [value]="progressValueFirstExample"></mat-progress-bar>
+      <div id="progress-bar-text">
+        {{ (progressValueFirstExample | number: '1.0-0') + '%' }}
+      </div>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+      <p *ngIf="downloadUrlFirstExample">Url de descarga: {{ downloadUrlFirstExample }}</p>
+    </div>
+  </div>
+
+  <p><strong>2. Visualización del archivo descargado</strong></p>
+
+  <p>Abre el fichero pdf en el visor a partir de una llamada REST</p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <mv-button
+        [disabled]="!getLastSuccededUploadResponseJSONFirstExample"
+        adapt=true
+        chunked=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="openFilePdfViewerHttpRequestButton()">
+        Abrir archivo en visor pdf (app y web)
+      </mv-button>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="showUploader">
+      <mv-pdf-viewer
+        [url]="pdfSrcWithHeadersExample">
+      </mv-pdf-viewer>
+    </div>
+
+    <p>Obtiene el fichero con httpRequest y lo descarga</p>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <mv-button
+        [disabled]="!getLastSuccededUploadResponseJSONFirstExample || platform != ''"
+        adapt=true
+        chunked=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="downloadFileBrowserHttpRequestExampleClick()">
+        Descargar el archivo (solo web)
+      </mv-button>
+    </div>
+
+    <p>Obtiene el fichero con httpRequest y lo abre en el navegador</p>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <mv-button
+        [disabled]="!getLastSuccededUploadResponseJSONFirstExample || platform != ''"
+        adapt=true
+        chunked=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="openFileBrowserHttpRequestExampleClick()">
+        Abrir archivo en el navegador (solo web)
+      </mv-button>
+    </div>
+
+    <p>Obtiene el fichero con httpRequest y lo abre con el plugin</p>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <mv-button
+        [disabled]="!getLastSuccededUploadResponseJSONFirstExample || platform == ''"
+        adapt=true
+        chunked=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="openFilePluginHttpRequestExampleClick()">
+        Abrir archivo con plugin file-opener2 (solo app)
+      </mv-button>
+    </div>
+  </div>
+  
+1. Subir un archivo pdf de ejemplo para descarga y visualización
+
+
+Tamaño máximo permitido: 5.00 MBExtensiones permitidas: .pdf
+2. Visualización del archivo descargado
+
+Abre el fichero pdf en el visor a partir de una llamada REST
+
+Obtiene el fichero con httpRequest y lo descarga
+
+Obtiene el fichero con httpRequest y lo abre en el navegador
+
+Obtiene el fichero con httpRequest y lo abre con el plugin
+
+Ejemplo de descarga de XMLHttpRequest
+XMLHttpRequest
+code
+Ejemplo de descarga de un fichero usando XMLHttpRequest. Documentación oficial: https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest
+
+HTML
+TS
+
+  <p><strong>1. Subir un archivo pdf de ejemplo para descarga y visualización</strong></p>
+  <mv-file-uploader
+    #mvFileUploaderSecondExample
+    [maxSizeBytes]="maxSize"
+    chunked=true
+    [allowedExtensions]="uploaderAllowedExtensions"
+    (onUploadSuccess)="onSuccessCallbackSecondExample()">
+  </mv-file-uploader>
+
+  <p *ngIf="progressValueSecondExample != 0">Estado de la descarga:</p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="progressValueSecondExample != 0">
+      <mat-progress-bar mode="determinate" color="warn" [value]="progressValueSecondExample"></mat-progress-bar>
+      <div id="progress-bar-text">
+        {{ (progressValueSecondExample | number: '1.0-0') + '%' }}
+      </div>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+      <p *ngIf="downloadUrlSecondExample">Url de descarga: {{ downloadUrlSecondExample }}</p>
+    </div>
+  </div>
+
+  <p><strong>2. Visualización del archivo descargado</strong></p>
+
+  <p>Abre el fichero pdf en el visor a partir de una llamada REST</p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <mv-button
+        [disabled]="!getLastSuccededUploadResponseJSONSecondExample"
+        adapt=true
+        chunked=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="openFilePdfViewerXmlButton()">
+        Abrir archivo en visor pdf (app y web)
+      </mv-button>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="showUploader">
+      <mv-pdf-viewer
+        [url]="pdfSrcWithHeadersExample">
+      </mv-pdf-viewer>
+    </div>
+
+    <p>Obtiene el fichero con XMLHttpRequest y lo descarga</p>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <mv-button
+        [disabled]="!getLastSuccededUploadResponseJSONSecondExample || platform != ''"
+        adapt=true
+        chunked=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="downloadFileBrowserXmlExampleClick()">
+        Descargar el archivo (solo web)
+      </mv-button>
+    </div>
+
+    <p>Obtiene el fichero con XMLHttpRequest y lo abre en el navegador</p>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <mv-button
+        [disabled]="!getLastSuccededUploadResponseJSONSecondExample || platform != ''"
+        adapt=true
+        chunked=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="openFileBrowserXmlExampleClick()">
+        Abrir archivo en el navegador (solo web)
+      </mv-button>
+    </div>
+
+    <p>Obtiene el fichero con XMLHttpRequest y lo abre con el plugin</p>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <mv-button
+        [disabled]="!getLastSuccededUploadResponseJSONSecondExample || platform == ''"
+        adapt=true
+        chunked=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="openFilePluginXmlExampleClick()">
+        Abrir archivo con plugin file-opener2 (solo app)
+      </mv-button>
+    </div>
+  </div>
+  
+1. Subir un archivo pdf de ejemplo para descarga y visualización
+
+
+Tamaño máximo permitido: 5.00 MBExtensiones permitidas: .pdf
+2. Visualización del archivo descargado
+
+Abre el fichero pdf en el visor a partir de una llamada REST
+
+Obtiene el fichero con XMLHttpRequest y lo descarga
+
+Obtiene el fichero con XMLHttpRequest y lo abre en el navegador
+
+Obtiene el fichero con XMLHttpRequest y lo abre con el plugin
+
+Ejemplo de descarga de un fichero .ics para copiar y modificar si se quiere implementar una funcionad de descarga similar
+Angular HttpRequest
+code
+Ejemplo de descarga de un fichero .ics para copiar y modificar si se quiere implementar una funcionalidad de descarga similar
+
+
+ ---Notas---
+  - En config xml añadir
+    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">               
+        <application android:usesCleartextTraffic="true"  
+        android:requestLegacyExternalStorage="true" />         
+    </edit-config>
+  - En packages.json
+    Añadir el siguiente plugin:
+      "cordova-plugin-file-opener2": "^3.0.5",
+  - Añadir esta variable si aún no lo está en su fichero .ts
+      declare const cordova: any;
+ 
+HTML
+ServiceTS
+
+   Su implementación de html
