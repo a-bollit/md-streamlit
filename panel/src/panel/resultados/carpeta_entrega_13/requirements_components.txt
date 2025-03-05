@@ -1,0 +1,178 @@
+# Components de Angular 8:
+
+## 1. **Componente AppComponent**
+   - **Funcionalidad**: Componente raíz que actúa como contenedor para todos los demás componentes.
+   - **Datos de entrada**: Ninguno.
+   - **Datos de salida**: Ninguno.
+   - **Dependencias**: Ninguno.
+   - **Descripción**: Este componente servirá como punto de entrada principal para la aplicación. Su propósito principal es proporcionar un contenedor para otros componentes y servicios. Incluirá una barra de navegación y el `<router-outlet>` para gestionar la navegación entre rutas.
+
+## 2. **Componente GeneralComponent**
+   - **Funcionalidad**: Ventana principal para la emisión de notificaciones.
+   - **Datos de entrada**: Ninguno.
+   - **Datos de salida**: Registro de notificaciones.
+   - **Dependencias**: Service: NotificationService.
+   - **Descripción**: Este componente se usará para crear y mostrar notificaciones. Incluirá dos campos de entrada para "Fecha Desde" y "Fecha Hasta", un selector de unidad remitente, y botones para aceptar y cancelar. Incluirá la lógica para validar que las fechas estén correctas y que la unidad remitente esté seleccionada.
+
+## 3. **Componente NotificationsComponent**
+   - **Funcionalidad**: Separador de fichas para la gestión de notificaciones.
+   - **Datos de entrada**: Ninguno.
+   - **Datos de salida**: Ninguno.
+   - **Dependencias**: Service: NotificationService.
+   - **Descripción**: Manejará dos fichas (`PG_CORR` y `PG_NOTE`) que permitirán gestionar notificaciones de correos y telemáticas respectivamente. Los elementos de ambos serán similares, incluyendo tablas para mostrar detalles de los documentos y checkboxes para la selección de documentos.
+
+## 4. **Componente NotificationCorrComponent**
+   - **Funcionalidad**: Gestión de notificaciones de correos.
+   - **Datos de entrada**: Lista de notificaciones.
+   - **Datos de salida**: Lista de notificaciones seleccionadas.
+   - **Dependencias**: Service: NotificationService.
+   - **Descripción**: Dicho componente mostrará una lista de notificaciones pendientes, permitiendo la selección individual a través de checkboxes. Incluirá botones para registrar y enviar notificaciones seleccionadas. Contendrá lógica específica para validar que los documentos pueden ser enviados.
+
+## 5. **Componente NotificationNoteComponent**
+   - **Funcionalidad**: Gestión de notificaciones telemáticas.
+   - **Datos de entrada**: Lista de notificaciones.
+   - **Datos de salida**: Lista de notificaciones seleccionadas.
+   - **Dependencias**: Service: NotificationService.
+   - **Descripción**: Similar al componente de notificaciones de correos pero enfocado en notificaciones telemáticas. Incluirá validaciones adicionales para asegurarse de que todos los anexos están incluidos, que los documentos están firmados y que no hay notificaciones repetidas.
+
+## 6. **Componente DevolComponent**
+   - **Funcionalidad**: Devolución de acuses de recibo.
+   - **Datos de entrada**: Ninguno.
+   - **Datos de salida**: Datos sobre la devolución.
+   - **Dependencias**: Service: DevolService.
+   - **Descripción**: Permite al usuario introducir datos acerca de la devolución de acuses de recibo, incluyendo campos para dirección, código postal y municipio. Incluirá validaciones básicas para asegurarse de que los datos son correctos.
+
+## 7. **Componente ErrorComponent**
+   - **Funcionalidad**: Mostrar información de error.
+   - **Datos de entrada**: Información del error.
+   - **Datos de salida**: Ninguno.
+   - **Dependencias**: Ninguno.
+   - **Descripción**: Componente modal que muestra información detallada sobre cualquier error ocurrido durante la emisión de notificaciones. Permitirá al usuario cerrar la ventana de error y volver a la vista principal.
+
+## 8. **Componente InfoComponent**
+   - **Funcionalidad**: Mostrar información durante la emisión de notificaciones.
+   - **Datos de entrada**: Mensajes informativos.
+   - **Datos de salida**: Ninguno.
+   - **Dependencias**: Ninguno.
+   - **Descripción**: Componente modal que aparecerá durante procesos que tomen tiempo en completarse, mostrando mensajes informativos y solicitando que el usuario espere.
+
+## 9. **Componente SituacionErrorComponent**
+   - **Funcionalidad**: Mostrar errores relacionados con la situación de los documentos.
+   - **Datos de entrada**: Detalles de la situación del error.
+   - **Datos de salida**: Ninguno.
+   - **Dependencias**: Ninguno.
+   - **Descripción**: Similar al ErrorComponent, este componente se enfocará en mostrar información específica sobre errores en la situación de documentos durante el proceso de emisión de notificaciones. Permitirá validar si los documentos están registrados, firmados y guardados.
+
+---
+
+# Vistas y Formularios (asociadas a los componentes):
+
+## 1. **Vista GeneralComponent**
+
+## Propósito
+   Esta vista sirve como la principal para la emisión de notificaciones, permitiendo introducir y validar datos cruciales para las notificaciones.
+
+## Campos
+   - **Unidad Remitente**: Selector de unidades disponibles.
+   - **Fecha Desde y Hasta**: Campos seleccionados de fecha (datepicker) con validaciones de rango y restricción de fechas futuras.
+   - **Botones Aceptar y Cancelar**: Para proceder o cancelar la operación según los valores ingresados.
+
+## Acciones permitidas en esta vista
+Validaciones de introducción de fechas y unidad remitente, botón para proceder con validaciones adicionales y activación de vistas secundarias para gestión de notificaciones.
+
+## Descripción
+   Para los desarrolladores, deben configurar el formulario para validar de campo a campo, y manejar los eventos desencadenados por los botones para cargar las vistas de detalle de notificaciones.
+
+---
+
+## 2. **Vista NotificationCorrComponent**
+## Propósito
+Visualización y gestión de notificaciones de correos, permitiendo la selección, registro y envío de documentos.
+
+## Campos
+   - **Tabla de documentos**: Muestra detalles como Documento, Descripción, Expediente, Interesado.
+   - **Checkboxes**: Permiten seleccionar documentos específicos.
+   - **Botones de Control**: Incluirán "Registrar" y "Enviar".
+
+## Acciones permitidas en esta vista
+Selección de documentos, operaciones sobre documentos seleccionados (registro y envío).
+
+## Descripción
+Para los desarrolladores, la principal consideración es manejar la lógica de selección múltiple de documentos vía checkboxes y el manejo de los botones de control para validar y proceder con el registro/envío.
+
+---
+
+## 3. **Vista NotificationNoteComponent**
+## Propósito
+Administrar las notificaciones telemáticas, con validaciones adicionales como la inclusión de anexos y verificar si las notificaciones ya fueron enviadas.
+
+## Campos
+   - **Tabla de documentos**: Similar a la de correos pero con campos adicionales para anexos y estados de firma.
+   - **Checkboxes**: Para seleccionar documentos para acciones de notificación.
+   - **Botones de Control**: "Marcar Todos", "Desmarcar Todos", "Enviar Notificaciones".
+
+## Acciones permitidas en esta vista
+Selección, marcación o desmarcación masiva, y validación/envío de las notificaciones.
+
+## Descripción
+Los desarrolladores deberán implementar las lógicas de validaciones avanzadas para chequear estados de firma y anexos antes de permitir envíos.
+
+---
+
+## 4. **Vista DevolComponent**
+## Propósito
+Área dedicada a la introducción de datos para la devolución de acuses de recibo, enfocada en centralizar datos necesarios y relevantes.
+
+## Campos
+   - **Unidad Administrativa**: Campo de entrada que utiliza un LOV para la selección.
+   - **Dirección**: Campo de texto para especificar la dirección a devolver.
+   - **Código Postal**: Campo de entrada numérica restringida a 5 dígitos.
+   - **Municipio**: Campo de entrada con LOV para selección de municipio.
+   - **Botones**: "Aceptar" y "Cancelar" para confirmar o rechazar las acciones ingresadas en el formulario.
+
+## Acciones permitidas en esta vista
+Validaciones sobre campos obligatorios y coherencia de datos, confirmación de datos para registro de devoluciones.
+
+## Descripción
+Los desarrolladores asegúrense de validar en cada paso los datos entrando y que estén sincronizados correctamente al modelo de backend.
+
+# Navegación y Enrutamiento (vinculada a los componentes)
+
+## 1. **Rutas principales**
+
+**/general**
+   - **Componente asociado**: GeneralComponent.
+   - **Descripción**: Ruta inicial que presentará al usuario la vista para comenzar la emisión de notificaciones.
+
+**/notifications**
+   - **Componente asociado**: NotificationsComponent.
+   - **Descripción**: Mostrar las opciones de notificaciones disponibles con fichas para correos y telemáticas.
+
+**/notifications/correos**
+   - **Componente asociado**: NotificationCorrComponent.
+   - **Descripción**: Subruta específica dentro de la gestión de notificaciones para dirigir a la vista de notificaciones de correos.
+
+**/notifications/telematic**
+   - **Componente asociado**: NotificationNoteComponent.
+   - **Descripción**: Subruta específica dentro de la gestión de notificaciones para dirigir a la vista de notificaciones telemáticas.
+
+**/devol**
+   - **Componente asociado**: DevolComponent.
+   - **Descripción**: Presentar la vista para la devolución de acuses de recibo con los campos y validaciones pertinentes.
+
+**/error**
+   - **Componente asociado**: ErrorComponent.
+   - **Descripción**: Mostrar información de errores ocurridos durante la emisión de notificaciones.
+
+**/info**
+   - **Componente asociado**: InfoComponent.
+   - **Descripción**: Proporcionar mensajes informativos durante la emisión de notificaciones.
+
+**/situacion-error**
+   - **Componente asociado**: SituacionErrorComponent.
+   - **Descripción**: Interfaz para mostrar errores específicos sobre la situación de los documentos.
+
+---
+
+## Descripción general de la estructura de navegación
+El enrutador de Angular se configurará para definir las rutas mencionadas anteriormente. Los desarrolladores asegurarán la integración del enrutador en AppModule y definirán las protecciones necesarias en rutas sensibles tales como administración de notificaciones, para que solo usuarios autorizados puedan acceder a esas rutas.

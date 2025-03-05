@@ -1,0 +1,20 @@
+<mv-card>
+  <mv-header>
+    <mv-title>{{ label }}</mv-title>
+  </mv-header>
+  <mv-content>
+    <mv-input 
+      [placeholder]="placeholder" 
+      [(ngModel)]="searchText" 
+      (ngModelChange)="onSearchChange($event)">
+    </mv-input>
+    <mv-dropdown>
+      <mv-option 
+        *ngFor="let item of filteredData" 
+        [value]="item" 
+        (click)="onSelectItem(item)">
+        {{ item.name }}
+      </mv-option>
+    </mv-dropdown>
+  </mv-content>
+</mv-card>

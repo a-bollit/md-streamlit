@@ -1,0 +1,30 @@
+<mv-card class="card-devoluciones">
+  <mv-header>
+    <mv-title>Devolver Acuses</mv-title>
+  </mv-header>
+  <mv-content>
+    <form [formGroup]="devolverForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="unidadAdministrativa">Unidad Administrativa</label>
+        <select id="unidadAdministrativa" formControlName="unidadAdministrativa" required>
+          <option value="">Seleccione una unidad</option>
+          <!-- Additional options here -->
+        </select>
+      </div>
+      <div>
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" formControlName="direccion" required />
+      </div>
+      <div>
+        <label for="codigoPostal">Código Postal</label>
+        <input type="text" id="codigoPostal" formControlName="codigoPostal" required />
+      </div>
+      <div>
+        <label for="municipio">Municipio</label>
+        <input type="text" id="municipio" formControlName="municipio" required />
+      </div>
+      <mv-button class="btn-primary" type="submit">Aceptar</mv-button>
+      <mv-button class="btn-secondary" type="button" (click)="onCancel()">Cancelar</mv-button>
+    </form>
+  </mv-content>
+</mv-card>

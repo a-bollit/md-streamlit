@@ -1,0 +1,155 @@
+## Servicios de Angular 8
+
+### 1. **Service NotificationService**
+- **Funcionalidad específica**: Gestión de notificaciones.
+- **Métodos HTTP**: 
+  - `GET` para recuperar notificaciones.
+  - `POST` para crear nuevas notificaciones.
+  - `PUT` para actualizar notificaciones existentes.
+  - `DELETE` para eliminar notificaciones.
+- **Parámetros requeridos y estructura de datos**:
+  - **GET**:
+    - Parámetros: `id`, `filtro`, etc.
+    - Datos enviados: `{ id: string, filtro: any }`
+    - Respuesta: Array de notificaciones en formato JSON.
+  - **POST**:
+    - Parámetros: Datos de la nueva notificación.
+    - Datos enviados: `{ titulo: string, mensaje: string, fecha: Date }`
+    - Respuesta: Notificación creada en formato JSON.
+  - **PUT**:
+    - Parámetros: `id`, Datos actualizados de la notificación.
+    - Datos enviados: `{ id: string, titulo: string, mensaje: string, fecha: Date }`
+    - Respuesta: Notificación actualizada en formato JSON.
+  - **DELETE**:
+    - Parámetros: `id`
+    - Datos enviados: `{ id: string }`
+    - Respuesta: Mensaje de confirmación en formato JSON.
+
+**Descripcion detallada**:
+Este servicio maneja todas las operaciones relacionadas con las notificaciones. Los desarrolladores deberán usar métodos HTTP específicos para recuperar, crear, actualizar y eliminar notificaciones. Por ejemplo, para recuperar una notificación, usarán un método `GET` enviando un parámetro de filtro y recibirán una lista de notificaciones en formato JSON. Para manejar errores y respuestas, se recomienda el uso de operadores RxJS como `catchError` y `map` para procesar las respuestas y manejar los errores de manera adecuada. 
+
+**Bloques de datos de PL/SQL**: GEA_ACURE, NOTIFICACION_TELEMATICA.
+
+### 2. **Service ExpedientService**
+- **Funcionalidad específica**: Gestión de expedientes.
+- **Métodos HTTP**: 
+  - `GET` para obtener expedientes.
+  - `POST` para registrar nuevos expedientes.
+  - `PUT` para actualizar expedientes existentes.
+  - `DELETE` para eliminar expedientes.
+- **Parámetros requeridos y estructura de datos**:
+  - **GET**:
+    - Parámetros: `id`, `filtro`, etc.
+    - Datos enviados: `{ id: string, filtro: any }`
+    - Respuesta: Array de expedientes en formato JSON.
+  - **POST**:
+    - Parámetros: Datos del nuevo expediente.
+    - Datos enviados: `{ titulo: string, descripcion: string, fechaInicio: Date, fechaFin: Date }`
+    - Respuesta: Expediente creado en formato JSON.
+  - **PUT**:
+    - Parámetros: `id`, Datos actualizados del expediente.
+    - Datos enviados: `{ id: string, titulo: string, descripcion: string, fechaInicio: Date, fechaFin: Date }`
+    - Respuesta: Expediente actualizado en formato JSON.
+  - **DELETE**:
+    - Parámetros: `id`
+    - Datos enviados: `{ id: string }`
+    - Respuesta: Mensaje de confirmación en formato JSON.
+
+**Descripcion detallada**:
+Este servicio se encarga de todas las operaciones relacionadas con el manejo de expedientes. Los desarrolladores deberán usar los métodos HTTP para realizar operaciones CRUD sobre los expedientes. Por ejemplo, el método `GET` se utilizará para obtener una lista filtrada de expedientes, mientras que `POST` se usará para registrar nuevos expedientes. Las respuestas serán manejadas a través de operadores RxJS, garantizando un manejo adecuado de los errores y respuestas exitosas. Para cada operación, los desarrolladores deberán especificar los parámetros necesarios y el formato de los datos enviados y recibidos.
+
+**Bloques de datos de PL/SQL**: BL_GENERAL, GEA_ACURE, NOTIFICACION_TELEMATICA.
+
+### 3. **Service DocumentService**
+- **Funcionalidad específica**: Manejo de documentos asociados a notificaciones y expedientes.
+- **Métodos HTTP**:
+  - `GET` para obtener documentos.
+  - `POST` para subir nuevos documentos.
+  - `PUT` para actualizar documentos existentes.
+  - `DELETE` para eliminar documentos.
+- **Parámetros requeridos y estructura de datos**:
+  - **GET**:
+    - Parámetros: `id`, `tipo`, etc.
+    - Datos enviados: `{ id: string, tipo: string }`
+    - Respuesta: Array de documentos en formato JSON.
+  - **POST**:
+    - Parámetros: Datos del nuevo documento.
+    - Datos enviados: `{ nombre: string, tipo: string, contenido: File }`
+    - Respuesta: Documento creado en formato JSON.
+  - **PUT**:
+    - Parámetros: `id`, Datos actualizados del documento.
+    - Datos enviados: `{ id: string, nombre: string, tipo: string, contenido: File }`
+    - Respuesta: Documento actualizado en formato JSON.
+  - **DELETE**:
+    - Parámetros: `id`
+    - Datos enviados: `{ id: string }`
+    - Respuesta: Mensaje de confirmación en formato JSON.
+
+**Descripcion detallada**:
+Este servicio gestiona los documentos asociados a notificaciones y expedientes. Los desarrolladores utilizarán métodos HTTP apropiados para manejar la creación, actualización, obtención y eliminación de documentos. Por ejemplo, el método `POST` se utilizará para subir un nuevo documento, y el método `GET` para obtener una lista de documentos. Todos los métodos manejarán las respuestas y errores utilizando operadores RxJS, asegurando la correcta manipulación de cada respuesta.
+
+**Bloques de datos de PL/SQL**: GEA_ACURE, NOTIFICACION_TELEMATICA.
+
+### 4. **Service UserService**
+- **Funcionalidad específica**: Gestión de usuarios y autenticación.
+- **Métodos HTTP**:
+  - `GET` para obtener información de usuario.
+  - `POST` para autenticación.
+  - `PUT` para actualizar información de usuarios.
+- **Parámetros requeridos y estructura de datos**:
+  - **GET**:
+    - Parámetros: `id`, `filtro`.
+    - Datos enviados: `{ id: string, filtro: any }`
+    - Respuesta: Información de usuario en formato JSON.
+  - **POST**:
+    - Parámetros: Credenciales de usuario.
+    - Datos enviados: `{ usuario: string, contraseña: string }`
+    - Respuesta: Token de autenticación en formato JSON.
+  - **PUT**:
+    - Parámetros: `id`, Datos actualizados de usuario.
+    - Datos enviados: `{ id: string, nombre: string, email: string, telefono: string }`
+    - Respuesta: Información actualizada del usuario en formato JSON.
+
+**Descripcion detallada**:
+Este servicio se encarga de la gestión de usuarios y autenticación. Los desarrolladores deberán utilizar métodos HTTP específicos para autenticar usuarios, obtener detalles del usuario y actualizar la información del usuario. Por ejemplo, el método `POST` se usará para autenticarse, proporcionando credenciales y recibiendo un token de autenticación. Los errores y las respuestas serán manejados adecuadamente mediante operadores RxJS.
+
+**Bloques de datos de PL/SQL**: BL_GENERAL.
+
+### Integración con Backend
+
+- **NotificationService**:
+  - **Endpoints**:
+    - `GET` /api/notificaciones/:id
+    - `POST` /api/notificaciones
+    - `PUT` /api/notificaciones/:id
+    - `DELETE` /api/notificaciones/:id
+
+- **ExpedientService**:
+  - **Endpoints**:
+    - `GET` /api/expedientes/:id
+    - `POST` /api/expedientes
+    - `PUT` /api/expedientes/:id
+    - `DELETE` /api/expedientes/:id
+
+- **DocumentService**:
+  - **Endpoints**:
+    - `GET` /api/documentos/:id
+    - `POST` /api/documentos
+    - `PUT` /api/documentos/:id
+    - `DELETE` /api/documentos/:id
+
+- **UserService**:
+  - **Endpoints**:
+    - `GET` /api/usuarios/:id
+    - `POST` /api/usuarios/authenticate
+    - `PUT` /api/usuarios/:id
+
+**Funcionamiento detallado y guía para desarrolladores**:
+Cada servicio interactúa con diferentes endpoints de la API backend. Los desarrolladores deben asegurarse de que los datos enviados estén en el formato correcto y manejar las respuestas adecuadamente. Esto implica revisar las respuestas del backend en busca de éxito y errores, transformándolas en objetos apropiados para el frontend mediante operadores RxJS.
+
+**Autenticación y Autorización**:
+Muchos servicios requerirán autenticación. Los desarrolladores deben implementar un interceptor para agregar el token de autenticación a las cabeceras de las solicitudes. De esta manera, se garantizará que solo los usuarios autenticados puedan acceder a los recursos protegidos.
+
+---
+
+Esta lista proporciona una descripción completa y detallada de los servicios necesarios así como su integración con el backend para la migración de Oracle Forms a Angular 8. Los desarrolladores pueden usar esta guía para implementar y asegurar la funcionalidad deseada de la aplicación web.

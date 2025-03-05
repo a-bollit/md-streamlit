@@ -1,0 +1,70 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+//Mat-tab 1
+#matTabExample1{
+  .tab-body{
+    min-height: 20rem;
+  }
+  .content{
+    position: relative;
+    min-height: 3rem;
+    padding: 1rem 0.25rem 0.25rem 0.25rem;
+    margin: 0 0 1px 0;
+  }
+  .entrante{
+    background-color: #bd767766;
+  }
+  .saliente{
+    background-color: #768dbd66;
+  }
+  .mensaje{
+    background-color: #b8b3bd66;
+  }
+  .fecha{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 0.85rem;
+  }
+}
+#matTabExample2{
+  //Mat-tab 2
+  .example-small-box, .example-large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  .example-small-box {
+    height: 100px;
+    width: 100px;
+    background-color: #ca5311;
+    color: #ffffff;
+  }
+  .example-large-box {
+    height: 300px;
+    width: 300px;
+    background-color: #f3e7e1;
+  }
+  .example-stretched-tabs {
+    max-width: 800px;
+  }
+}
+#matTabExample3{
+  .mat-card-avatar{
+    background-color: blue;
+  }
+  margin: auto;
+  max-width: 30rem;
+  padding-bottom: 0 !important;
+  .mat-card{
+    margin-bottom: 0 !important;
+  }
+}

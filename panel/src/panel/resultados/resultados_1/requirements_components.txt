@@ -1,0 +1,155 @@
+1. **Component BloqueGeneralComponent**
+    - **Funcionalidad específica**: Gestiona la vista principal de entrada de información general del formulario.
+    - **Inputs**: 
+         - `cdorga_ereg (string)`: Código de la organización específica.
+         - `idorga_ereg (number)`: ID de la organización específica.
+         - `cdunidad (string)`: Código de la unidad.
+         - `dsunidad (string)`: Descripción de la unidad.
+         - `fcdesde (date)`: Fecha de inicio.
+         - `fchasta (date)`: Fecha de fin.
+         - `cddeptno (string)`: Código del departamento.
+         - `cdtexp (string)`: Código del expediente.
+         - `cdnexp (number)`: Número del expediente.
+         - `cddigito (number)`: Dígito del expediente.
+         - `cdaexp (number)`: Año del expediente.
+    - **Outputs**:
+         - `aceptar`: Emite un evento cuando se hace clic en el botón Aceptar.
+         - `cancelar`: Emite un evento cuando se hace clic en el botón Cancelar.
+    - **Dependencias**: 
+        - Dependencia con servicios de validación de expedientes y fechas.
+        - Invocación a componentes secundarios como `LovComponent`.
+    - **Funcionalidad detallada**:
+        La funcionalidad principal de este componente es proporcionar una interfaz para la entrada de datos generales necesarios para emitir notificaciones. Incluye la habilitación de campos de entrada, como fechas (`fcdesde` y `fchasta`), y selecciones de unidades y organizaciones mediante el uso de componentes de lista de valores (LOV). El componente también invoca los servicios de validación al presionar los botones Aceptar y Cancelar, asegurando que todos los datos ingresados sean válidos. Además, presenta mensajes informativos y de error según corresponda.
+
+2. **Component LovComponent**
+    - **Funcionalidad específica**: Proporciona una lista de valores (LOV) para seleccionar unidades y usuarios.
+    - **Inputs**: 
+         - `label (string)`: Etiqueta para el campo de la lista de valores.
+         - `placeholder (string)`: Texto de marcador de posición para el campo de LOV.
+         - `lovData (Array<any>)`: Datos para llenar la lista de valores.
+    - **Outputs**:
+         - `selectValue (any)`: Emite el valor seleccionado de la lista.
+    - **Dependencias**: 
+        - Dependencia con servicio de datos para obtener y actualizar la lista de valores.
+    - **Funcionalidad detallada**:
+        Este componente gestiona una lista de valores desplegable que permite al usuario elegir entre diferentes unidades y valores administrativos. Implementa un campo de búsqueda interactivo que filtra los resultados en tiempo real según el texto ingresado, mejorando la experiencia del usuario y la eficiencia de la selección. 
+
+3. **Component CalendarioComponent**
+    - **Funcionalidad específica**: Muestra un calendario para la selección de fechas.
+    - **Inputs**:
+         - `initialDate (Date)`: Fecha inicial a mostrar en el calendario.
+    - **Outputs**:
+         - `dateSelected (Date)`: Emite la fecha seleccionada por el usuario.
+    - **Dependencias**: 
+        - Dependencia con librerías de calendario y validación de fechas.
+    - **Funcionalidad detallada**:
+        El componente despliega un calendario que permite seleccionar fechas de manera intuitiva. Implementa mecanismos para que los botones asociados, como `fcdesde` y `fchasta`, invoquen el calendario emergente para la selección de fechas, y al aceptar se emita la fecha seleccionada hacia el componente padre.
+
+4. **Component BloqueAcureComponent**
+    - **Funcionalidad específica**: Gestiona la visualización y gestión de notificaciones de correos (GEA_ACURE).
+    - **Inputs**: 
+         - `data (Array<any>)`: Datos de notificaciones de correos a mostrar.
+    - **Outputs**:
+         - `update (any)`: Emite cuando se realiza una actualización en los datos de notificación.
+    - **Dependencias**: 
+        - Dependencia con servicios de datos para CRUD de notificaciones.
+        - Invocación a componentes secundarios como `CheckboxComponent`.
+    - **Funcionalidad detallada**:
+        Muestra una lista de notificaciones con controles de casillas de verificación que permiten marcar las notificaciones para procesamiento. Implementa las funcionalidad de seleccionar todos, deseleccionar todos, y manejar las interacciones del usuario con los datos mostrados, así como lanzar validaciones específicas al momento de la actualización de las notificaciones.
+
+5. **Component CheckboxComponent**
+    - **Funcionalidad específica**: Controla la selección y deselección de varios elementos de forma masiva.
+    - **Inputs**: 
+         - `checked (boolean)`: Estado de la casilla de verificación.
+    - **Outputs**:
+         - `change (boolean)`: Emite el estado cambiado de la casilla de verificación.
+    - **Dependencias**: 
+        - Dependencia con Listado de objetos a seleccionar.
+    - **Funcionalidad detallada**:
+        Facilita la gestión de listas de elementos, permitiendo al usuario seleccionar o deseleccionar todos los ítems de la lista mostrando un icono dinámico que refleja el estado del checkbox actual asociándolo a los elementos seleccionados/desmarcados.
+
+6. **Component BotonComponent**
+    - **Funcionalidad específica**: Renderiza botones con diferentes acciones (Aceptar, Cancelar, Marcar todos, Desmarcar todos).
+    - **Inputs**: 
+         - `label (string)`: Texto del botón.
+         - `type (string)`: Tipo de botón: primario, secundario, etc.
+    - **Outputs**:
+         - `click (event)`: Emite el evento de clic del botón.
+    - **Dependencias**: 
+        - Ninguna específica.
+    - **Funcionalidad detallada**:
+        Un componente reutilizable que puede representar diferentes tipos de botones en el form, cada uno personalizable con diferentes etiquetas y estilos. Incorpora eventos específicos para manejar la interacción del usuario.
+
+---
+
+## Vistas y Formularios
+
+### Vista: Formulario de Entrada General
+- **Propósito**: Facilitar la entrada de información inicial para la emisión de notificaciones.
+- **Campos**:
+    - `Unidad remitente`: Input para seleccionar la unidad.
+    - `Fecha desde`: Input de tipo datepicker para seleccionar la fecha de inicio.
+    - `Fecha hasta`: Input de tipo datepicker para seleccionar la fecha de fin.
+    - `Expediente`: Inputs para códigos del expediente, dígito, número y año.
+    - `Botones`: Incluir `Aceptar`, `Cancelar`, `Seleccionar Unidad`, seleccionar fechas con calendario.
+- **Acciones**:
+    - Validaciones de los campos en los inputs.
+    - Navegación a la siguiente vista si las validaciones son exitosas.
+    - Manejo de errores y mensajes informativos específicos.
+
+### Vista: Notificaciones de Correos
+- **Propósito**: Gestionar y mostrar todas las notificaciones de correos pendientes de ser procesadas.
+- **Campos**:
+    - `Documento`: Input de tipo texto con descripción del documento.
+    - `Descripción`: Campo de texto con descripción detallada del documento.
+    - `Expediente`: Información del expediente relacionado.
+- **Acciones**:
+    - Marcar y desmarcar notificaciones para registrar.
+    - Registrar y enviar documentos seleccionados.
+    - Mostrar resultados de errores en notificaciones.
+
+### Vista: Notificaciones Telemáticas
+- **Propósito**: Gestionar y mostrar todas las notificaciones telemáticas pendientes de ser procesadas.
+- **Campos**:
+    - `Documento`: Campo de texto con identificación del documento.
+    - `Descripción`: Campo de texto con descripción detallada del documento.
+    - `Expediente`, `Interesado`, `PDF`. Inputs asociados.
+- **Acciones**:
+    - Validaciones específicas de los campos y preparación para el envío de notificaciones.
+    - Mecanismo para adjuntar varios anexos y controlar su tamaño.
+    - Funcionalidades de enviar, marcar y actualizar el estado de las notificaciones.
+
+### Vista: Devolución de Acuses de Recibo
+- **Propósito**: Permitir la devolución de acuses de recibo a la organización remitente.
+- **Campos**:
+    - `Consejería u Organismo`: Input de selección de consejería u organismo.
+    - `Unidad Administrativa`: Input de selección.
+    - `Dirección`: Campo de texto mostrando la dirección.
+    - `Código Postal`, `Municipio`. Inputs adicionales.
+- **Acciones**:
+    - Población de campos basada en la unidad remitente seleccionada.
+    - Validación de datos de devolución y mostrar mensajes de error si es necesario.
+
+---
+
+### Navegación y Enrutamiento
+
+1. **Ruta Principal: `/`**
+    - **Componente asociado**: `BloqueGeneralComponent`.
+    - **Funcionalidad**: Define la vista inicial para la entrada de datos de emisión de notificaciones.
+
+2. **Ruta: `/corr`**
+    - **Componente asociado**: `BloqueAcureComponent`.
+    - **Funcionalidad**: Muestra la lista de notificaciones de correos.
+
+3. **Ruta: `/note`**
+    - **Componente asociado**: `BloqueNoteComponent`.
+    - **Funcionalidad**: Gestor de notificaciones telemáticas disponibles para ser enviadas.
+
+4. **Ruta: `/devol`**
+    - **Componente asociado**: `BloqueDevolComponent`.
+    - **Funcionalidad**: Despliega la interfaz para la devolución de acuses de recibo.
+
+Cada ruta está diseñada para integrarse de forma fluida con los componentes mencionados anteriormente en la jerarquía de navegación proporcionada por Angular Router. Asegurando así la correcta integración y la gestión de las notificaciones dentro de la aplicación.
+
+Este conjunto completo de requisitos proporciona una guía exhaustiva para desarrollar la aplicación basada en Angular 8, permitiendo una transición sin problemas desde el Oracle Forms original, preservando toda la funcionalidad esencial y mejorando la experiencia de usuario con componentes interactivos y reutilizables.

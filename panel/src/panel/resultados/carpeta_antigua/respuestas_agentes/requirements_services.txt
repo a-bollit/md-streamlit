@@ -1,0 +1,261 @@
+- **Servicios de Angular 8:**
+  
+  1. **Service ExpedienteService**
+      - **Funcionalidad específica:** Gestión de expedientes.
+      - **Métodos HTTP:** 
+        - `GET /expedientes` - Obtiene la lista de expedientes.
+        - `GET /expedientes/{id}` - Obtiene un expediente específico.
+        - `POST /expedientes` - Crea un nuevo expediente.
+        - `PUT /expedientes/{id}` - Actualiza un expediente existente.
+        - `DELETE /expedientes/{id}` - Elimina un expediente específico.
+      - **Parámetros requeridos y estructura de datos:**
+        - **GET /expedientes:** No requiere parámetros.
+        - **GET /expedientes/{id}:** Requiere el parámetro `id` del expediente a obtener. 
+          ```json
+          {
+            "id": "123"
+          }
+          ```
+        - **POST /expedientes:** Requiere un objeto de expediente para crear uno nuevo.
+          ```json
+          {
+            "cddeptno": "001",
+            "cdtexp": "EXP001",
+            "cdnexp": "001",
+            "cddigito": "1",
+            "cdaexp": "2021",
+            "estado": "ACTIVO"
+          }
+          ```
+        - **PUT /expedientes/{id}:** Requiere el parámetro `id` del expediente a actualizar y un objeto con los datos a actualizar.
+          ```json
+          {
+            "estado": "FINALIZADO"
+          }
+          ```
+        - **DELETE /expedientes/{id}:** Requiere el parámetro `id` del expediente a eliminar.
+          ```json
+          {
+            "id": "123"
+          }
+          ```
+      - **Integración con endpoints del backend:**
+        - `GET /expedientes` - Devuelve una lista de expedientes en formato JSON.
+        - `GET /expedientes/{id}` - Devuelve los detalles de un expediente en formato JSON.
+        - `POST /expedientes` - Crea un expediente y devuelve el expediente creado en formato JSON.
+        - `PUT /expedientes/{id}` - Actualiza un expediente y devuelve los datos actualizados en formato JSON.
+        - `DELETE /expedientes/{id}` - Elimina un expediente y devuelve un estado de confirmación en formato JSON.
+      - **Descripcion muy detallada de su funcionalidad y guia para desarrolladores:**
+        El `ExpedienteService` proporciona CRUD completo para el manejo de expedientes. Para obtener la lista de expedientes, puedes usar el método `getExpedientes()` que realiza una solicitud GET al backend y devuelve un Observable de la lista de expedientes. Para obtener, crear, actualizar o eliminar un expediente específico, usa los métodos `getExpediente(id: string)`, `createExpediente(expediente: any)`, `updateExpediente(id: string, expediente: any)`, y `deleteExpediente(id: string)` respectivamente. Cada uno de estos métodos se encargará de construir correctamente la solicitud HTTP requerida y manejará la transformación de los datos según sea necesario.
+
+  2. **Service NotificacionTelematicaService**
+      - **Funcionalidad específica:** Gestión de notificaciones telemáticas.
+      - **Métodos HTTP:** 
+        - `GET /notificaciones-telematicas` - Obtiene la lista de notificaciones telemáticas.
+        - `GET /notificaciones-telematicas/{id}` - Obtiene una notificación telemática específica.
+        - `POST /notificaciones-telematicas` - Crea una nueva notificación telemática.
+        - `PUT /notificaciones-telematicas/{id}` - Actualiza una notificación telemática existente.
+        - `DELETE /notificaciones-telematicas/{id}` - Elimina una notificación telemática específica.
+      - **Parámetros requeridos y estructura de datos:**
+        - **GET /notificaciones-telematicas:** No requiere parámetros.
+        - **GET /notificaciones-telematicas/{id}:** Requiere el parámetro `id` de la notificación a obtener.
+          ```json
+          {
+            "id": "123"
+          }
+          ```
+        - **POST /notificaciones-telematicas:** Requiere un objeto de notificación para crear una nueva.
+          ```json
+          {
+            "cdUnidad": "001",
+            "expediente": "EXP001",
+            "interesado": "Juan Perez",
+            "estado": "PENDIENTE"
+          }
+          ```
+        - **PUT /notificaciones-telematicas/{id}:** Requiere el parámetro `id` de la notificación a actualizar y un objeto con los datos a actualizar.
+          ```json
+          {
+            "estado": "ENVIADO"
+          }
+          ```
+        - **DELETE /notificaciones-telematicas/{id}:** Requiere el parámetro `id` de la notificación a eliminar.
+          ```json
+          {
+            "id": "123"
+          }
+          ```
+      - **Integración con endpoints del backend:**
+        - `GET /notificaciones-telematicas` - Devuelve una lista de notificaciones telemáticas en formato JSON.
+        - `GET /notificaciones-telematicas/{id}` - Devuelve los detalles de una notificación telemática en formato JSON.
+        - `POST /notificaciones-telematicas` - Crea una notificación telemática y devuelve la notificación creada en formato JSON.
+        - `PUT /notificaciones-telematicas/{id}` - Actualiza una notificación telemática y devuelve los datos actualizados en formato JSON.
+        - `DELETE /notificaciones-telematicas/{id}` - Elimina una notificación telemática y devuelve un estado de confirmación en formato JSON.
+      - **Descripcion muy detallada de su funcionalidad y guia para desarrolladores:**
+        El `NotificacionTelematicaService` proporciona los métodos necesarios para gestionar las notificaciones telemáticas en la aplicación. Utiliza métodos RESTful para realizar operaciones CRUD en las notificaciones telemáticas. Para manejar cualquier interacción con las notificaciones telemáticas, puedes usar los métodos proporcionados: `getNotificacionesTelematicas()`, `getNotificacionTelematica(id: string)`, `createNotificacionTelematica(notificacion: any)`, `updateNotificacionTelematica(id: string, notificacion: any)`, y `deleteNotificacionTelematica(id: string)`. Estos métodos aseguran que todas las interacciones con el backend sean seguras y manejan las transformaciones de datos necesarias.
+
+  3. **Service AnexosService**
+      - **Funcionalidad específica:** Gestión de anexos asociados a documentos.
+      - **Métodos HTTP:** 
+        - `GET /documentos/{id}/anexos` - Obtiene la lista de anexos para un documento específico.
+        - `POST /documentos/{id}/anexos` - Añade un nuevo anexo a un documento.
+        - `DELETE /anexos/{id}` - Elimina un anexo específico.
+      - **Parámetros requeridos y estructura de datos:**
+        - **GET /documentos/{id}/anexos:** Requiere el parámetro `id` del documento para obtener los anexos.
+          ```json
+          {
+            "id": "123"
+          }
+          ```
+        - **POST /documentos/{id}/anexos:** Requiere el parámetro `id` del documento al que se añadirá el anexo y un objeto del anexo.
+          ```json
+          {
+            "descripcion": "Anexo 1",
+            "archivo": "base64encodedfile"
+          }
+          ```
+        - **DELETE /anexos/{id}:** Requiere el parámetro `id` del anexo a eliminar.
+          ```json
+          {
+            "id": "123"
+          }
+          ```
+      - **Integración con endpoints del backend:**
+        - `GET /documentos/{id}/anexos` - Devuelve una lista de anexos en formato JSON.
+        - `POST /documentos/{id}/anexos` - Añade un anexo y devuelve el anexo creado en formato JSON.
+        - `DELETE /anexos/{id}` - Elimina un anexo y devuelve un estado de confirmación en formato JSON.
+      - **Descripcion muy detallada de su funcionalidad y guia para desarrolladores:**
+        El `AnexosService` permite la gestión de anexos asociados a documentos. Para obtener la lista de anexos de un documento, usa el método `getAnexos(documentoId: string)`. Para añadir un nuevo anexo a un documento, usa `createAnexo(documentoId: string, anexo: any)` y para eliminar un anexo, usa `deleteAnexo(anexoId: string)`. Estos métodos aseguran que la relación entre los documentos y sus anexos se mantenga clara y que las operaciones de anexos se realicen de manera segura y eficiente.
+
+  4. **Service UnidadService**
+      - **Funcionalidad específica:** Gestión de unidades administrativas.
+      - **Métodos HTTP:** 
+        - `GET /unidades` - Obtiene la lista de unidades.
+        - `GET /unidades/{id}` - Obtiene una unidad específica.
+        - `POST /unidades` - Crea una nueva unidad.
+        - `PUT /unidades/{id}` - Actualiza una unidad existente.
+        - `DELETE /unidades/{id}` - Elimina una unidad específica.
+      - **Parámetros requeridos y estructura de datos:**
+        - **GET /unidades:** No requiere parámetros.
+        - **GET /unidades/{id}:** Requiere el parámetro `id` de la unidad a obtener.
+          ```json
+          {
+            "id": "123"
+          }
+          ```
+        - **POST /unidades:** Requiere un objeto de unidad para crear una nueva.
+          ```json
+          {
+            "nombre": "Unidad A",
+            "direccion": "Dirección A",
+            "codigoPostal": "08012",
+            "municipio": "Barcelona"
+          }
+          ```
+        - **PUT /unidades/{id}:** Requiere el parámetro `id` de la unidad a actualizar y un objeto con los datos a actualizar.
+          ```json
+          {
+            "nombre": "Unidad B"
+          }
+          ```
+        - **DELETE /unidades/{id}:** Requiere el parámetro `id` de la unidad a eliminar.
+          ```json
+          {
+            "id": "123"
+          }
+          ```
+      - **Integración con endpoints del backend:**
+        - `GET /unidades` - Devuelve una lista de unidades en formato JSON.
+        - `GET /unidades/{id}` - Devuelve los detalles de una unidad en formato JSON.
+        - `POST /unidades` - Crea una unidad y devuelve la unidad creada en formato JSON.
+        - `PUT /unidades/{id}` - Actualiza una unidad y devuelve los datos actualizados en formato JSON.
+        - `DELETE /unidades/{id}` - Elimina una unidad y devuelve un estado de confirmación en formato JSON.
+      - **Descripcion muy detallada de su funcionalidad y guia para desarrolladores:**
+        El `UnidadService` proporciona los métodos necesarios para la gestión completa de las unidades administrativas. Para obtener la lista de unidades, puedes usar `getUnidades()`, para obtener una unidad específica usa `getUnidad(id: string)`, para crear una nueva unidad usa `createUnidad(unidad: any)`, para actualizar una unidad existente usa `updateUnidad(id: string, unidad: any)` y para eliminar una unidad usa `deleteUnidad(id: string)`. Estos métodos aseguran que todas las operaciones relacionadas con las unidades administrativas se manejen correctamente y de manera segura.
+
+  5. **Service MunicipioService**
+      - **Funcionalidad específica:** Gestión de municipios.
+      - **Métodos HTTP:** 
+        - `GET /municipios` - Obtiene la lista de municipios.
+        - `GET /municipios/{id}` - Obtiene un municipio específico.
+      - **Parámetros requeridos y estructura de datos:**
+        - **GET /municipios:** No requiere parámetros.
+        - **GET /municipios/{id}:** Requiere el parámetro `id` del municipio a obtener.
+          ```json
+          {
+            "id": "079"
+          }
+          ```
+      - **Integración con endpoints del backend:**
+        - `GET /municipios` - Devuelve una lista de municipios en formato JSON.
+        - `GET /municipios/{id}` - Devuelve los detalles de un municipio en formato JSON.
+      - **Descripcion muy detallada de su funcionalidad y guia para desarrolladores:**
+        El `MunicipioService` permite gestionar la recuperación de información de municipios. Para obtener la lista de municipios, usa `getMunicipios()`. Para obtener un municipio específico, usa `getMunicipio(id: string)`. Estos métodos ayudarán a manejar la información de municipios de manera eficiente.
+
+- **Integración con Backend:**
+
+  - **ExpedienteService:**
+    - **Endpoints:** 
+      - `GET /expedientes`
+      - `GET /expedientes/{id}`
+      - `POST /expedientes`
+      - `PUT /expedientes/{id}`
+      - `DELETE /expedientes/{id}`
+    - **Datos necesarios:** 
+      - Parámetro `id` para obtener, actualizar o eliminar expedientes específicos.
+      - Cuerpo de la solicitud en formato JSON para crear o actualizar expedientes.
+    - **Manejo de respuestas:** 
+      - En caso de éxito, devuelve los datos del expediente en formato JSON.
+      - En caso de errore, manejar mediante mensajes de respuesta HTTP adecuados, como 404 para no encontrado o 400 para errores de validación.
+
+  - **NotificacionTelematicaService:**
+    - **Endpoints:** 
+      - `GET /notificaciones-telematicas`
+      - `GET /notificaciones-telematicas/{id}`
+      - `POST /notificaciones-telematicas`
+      - `PUT /notificaciones-telematicas/{id}`
+      - `DELETE /notificaciones-telematicas/{id}`
+    - **Datos necesarios:** 
+      - Parámetro `id` para obtener, actualizar o eliminar notificaciones específicas.
+      - Cuerpo de la solicitud en formato JSON para crear o actualizar notificaciones.
+    - **Manejo de respuestas:** 
+      - En caso de éxito, devuelve los datos de la notificación en formato JSON.
+      - En caso de error, manejar mediante mensajes de respuesta HTTP adecuados, como 404 para no encontrado o 400 para errores de validación.
+
+  - **AnexosService:**
+    - **Endpoints:** 
+      - `GET /documentos/{id}/anexos`
+      - `POST /documentos/{id}/anexos`
+      - `DELETE /anexos/{id}`
+    - **Datos necesarios:** 
+      - Parámetro `id` para obtener, añadir o eliminar anexos de un documento específico.
+      - Cuerpo de la solicitud en formato JSON para añadir un anexo.
+    - **Manejo de respuestas:** 
+      - En caso de éxito, devuelve los datos del anexo en formato JSON.
+      - En caso de error, manejar mediante mensajes de respuesta HTTP adecuados, como 404 para no encontrado o 400 para errores de validación.
+
+  - **UnidadService:**
+    - **Endpoints:** 
+      - `GET /unidades`
+      - `GET /unidades/{id}`
+      - `POST /unidades`
+      - `PUT /unidades/{id}`
+      - `DELETE /unidades/{id}`
+    - **Datos necesarios:** 
+      - Parámetro `id` para obtener, actualizar o eliminar unidades específicas.
+      - Cuerpo de la solicitud en formato JSON para crear o actualizar unidades.
+    - **Manejo de respuestas:** 
+      - En caso de éxito, devuelve los datos de la unidad en formato JSON.
+      - En caso de error, manejar mediante mensajes de respuesta HTTP adecuados, como 404 para no encontrado o 400 para errores de validación.
+
+  - **MunicipioService:**
+    - **Endpoints:** 
+      - `GET /municipios`
+      - `GET /municipios/{id}`
+    - **Datos necesarios:** 
+      - Parámetro `id` para obtener los detalles de un municipio específico.
+    - **Manejo de respuestas:** 
+      - En caso de éxito, devuelve los datos del municipio en formato JSON.
+      - En caso de error, manejar mediante mensajes de respuesta HTTP adecuados, como 404 para no encontrado o 400 para errores de validación.
+
+Para cada servicio, asegúrate de manejar adecuadamente las respuestas del backend. Captura y maneja los errores utilizando métodos como `catchError` en los Observables de Angular. Establece también políticas de autentificación y autorización si los endpoints del backend así lo requieren. Los desarrolladores deben incluir encabezados de autenticación en las solicitudes HTTP utilizando `HttpInterceptors` de Angular cuando sea necesario. Esto garantizará que las operaciones de fondo estén seguras y cumplan con todos los requisitos de autenticación y acceso.

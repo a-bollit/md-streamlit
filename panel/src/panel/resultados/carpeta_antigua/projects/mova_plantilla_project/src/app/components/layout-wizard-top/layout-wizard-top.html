@@ -1,0 +1,726 @@
+<section class="view-default-style">
+
+  <!-- Vista del detalle -->
+  <mv-card id="wizardDetail" class="card-code">
+
+    <!-- Vista de la lista de opciones -->
+    <mat-horizontal-stepper id="stepperExample" [linear]="true" #stepper>
+      <!-- paso 1 -->
+      <mat-step>
+        <div>
+          <ng-template matStepLabel>Datos de la convocatoria</ng-template>
+
+          <mv-card class="wizardDetailStep1">
+            <mv-card-title><strong>Datos de la convocatoria</strong></mv-card-title>
+          </mv-card>
+
+          <div class="row">
+
+            <div class="col-xs-12">
+              <mv-values-list
+                labelCode="Cuerpo"
+                adapt=true
+                [data]="dataCuerpo"
+                disabled=true
+                columnCode="id"
+                columnText="nombre"
+                [(ngModel)]="valuesListCuerpo">
+              </mv-values-list>
+            </div>
+
+            <div class="col-xs-12">
+              <mv-values-list
+                labelCode="Especialidad"
+                adapt=true
+                [data]="dataEspecialidad"
+                columnCode="id"
+                columnText="nombre"
+                [(ngModel)]="valuesListEspecialidad">
+              </mv-values-list>
+            </div>
+
+            <div class="col-xs-12">
+              <mv-values-list
+                labelCode="Forma acceso"
+                adapt=true
+                [data]="dataFormaAcceso"
+                columnCode="id"
+                columnText="nombre"
+                [(ngModel)]="valuesListFormaAcceso">
+              </mv-values-list>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+              <mv-checkbox-x
+                labelPosition="after">
+                Reserva de discapacidad
+              </mv-checkbox-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <mv-checkbox-x
+                labelPosition="after">
+                Porcentaje
+              </mv-checkbox-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <mv-input
+                adapt=true>
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12">
+              <mv-textarea
+                adapt=true
+                label="Tipo de adaptación solicitada">
+              </mv-textarea>
+            </div>
+          </div>
+        </div>
+      </mat-step>
+
+      <!-- paso 2 -->
+      <mat-step>
+        <div>
+          <ng-template matStepLabel>Datos del interesado</ng-template>
+
+          <mv-card class="wizardDetailStep2">
+            <mv-card-title><strong>Datos del interesado</strong></mv-card-title>
+          </mv-card>
+
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                label="Nombre">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                label="Primer apellido">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                label="Segundo apellido">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                datepicker=true
+                label="Fecha de nacimiento">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                label="DNI">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-radio
+                [(ngModel)]="radioSexoModel"
+                [options]=radioOptionsSexo>
+              </mv-radio>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                label="Correo">
+              </mv-input>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-select-x
+                adapt=true
+                [options]="selectOptionsProvincias"
+                label="Provincia"
+                (changeEvent)="provChange()"
+                [(ngModel)]="selectModelProv">
+              </mv-select-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-select-x
+                adapt=true
+                [options]="selectOptionsMunicipios"
+                label="Municipio"
+                [(ngModel)]="selectModelMuni">
+              </mv-select-x>
+            </div>
+
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <mv-input
+                adapt=true
+                label="Tipo de vía">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+              <mv-input
+                adapt=true>
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <mv-input
+                adapt=true
+                label="Nombre de la vía">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <mv-input
+                adapt=true
+                label="Dirección">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+              <mv-input
+                adapt=true
+                label="Número">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+              <mv-input
+                adapt=true
+                label="Escalera">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+              <mv-input
+                adapt=true
+                label="Piso">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+              <mv-input
+                adapt=true
+                label="Puerta">
+              </mv-input>
+            </div>
+
+          </div>
+        </div>
+      </mat-step>
+
+      <!-- paso 3 -->
+      <mat-step>
+        <div>
+          <ng-template matStepLabel>Titulación y acceso</ng-template>
+
+          <mv-card class="wizardDetailStep3">
+            <mv-card-title><strong>Titulación y acceso</strong></mv-card-title>
+          </mv-card>
+
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <mv-input
+                adapt=true
+                label="Código">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+              <mv-input
+                adapt=true
+                label="Denominación">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <mv-checkbox-x
+                labelPosition="after">
+                Marcar si actúa como representante
+              </mv-checkbox-x>
+            </div>
+
+          </div>
+        </div>
+      </mat-step>
+
+      <!-- paso 4 -->
+      <mat-step>
+        <div>
+          <ng-template matStepLabel>Datos del representante</ng-template>
+
+          <mv-card class="wizardDetailStep4">
+            <mv-card-title><strong>Datos del representante</strong></mv-card-title>
+          </mv-card>
+
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                label="Nombre">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                label="Primer apellido">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                label="Segundo apellido">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                datepicker=true
+                label="Fecha de nacimiento">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                label="DNI">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-radio
+                [(ngModel)]="radioSexoModel"
+                [options]=radioOptionsSexo>
+              </mv-radio>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-input
+                adapt=true
+                label="Correo">
+              </mv-input>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-select-x
+                adapt=true
+                [options]="selectOptionsProvincias"
+                label="Provincia"
+                (changeEvent)="provChange()"
+                [(ngModel)]="selectModelProv">
+              </mv-select-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-select-x
+                adapt=true
+                [options]="selectOptionsMunicipios"
+                label="Municipio"
+                [(ngModel)]="selectModelMuni">
+              </mv-select-x>
+            </div>
+
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <mv-input
+                adapt=true
+                label="Tipo de vía">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+              <mv-input
+                adapt=true>
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <mv-input
+                adapt=true
+                label="Nombre de la vía">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <mv-input
+                adapt=true
+                label="Dirección">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+              <mv-input
+                adapt=true
+                label="Número">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+              <mv-input
+                adapt=true
+                label="Escalera">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+              <mv-input
+                adapt=true
+                label="Piso">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+              <mv-input
+                adapt=true
+                label="Puerta">
+              </mv-input>
+            </div>
+
+          </div>
+        </div>
+      </mat-step>
+
+      <!-- paso 5 -->
+      <mat-step>
+        <div>
+          <ng-template matStepLabel>Bases de la convocatoria</ng-template>
+
+          <mv-card class="wizardDetailStep5">
+            <mv-card-title><strong>Bases de la convocatoria</strong></mv-card-title>
+          </mv-card>
+
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <p><strong>A</strong></p>
+            </div>
+
+            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+              <mv-input
+                adapt=true
+                label="Cuerpo">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-8 col-md-8 col-lg-8">
+              <mv-input
+                adapt=true>
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+              <mv-input
+                adapt=true
+                label="Especialidad">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-8 col-md-8 col-lg-8">
+              <mv-input
+                adapt=true>
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <p class="titleRadio">Titulación concordante:</p>
+              <mv-radio
+                [options]=radioOptionsTitulacion>
+              </mv-radio>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <p class="titleRadio">Especialidad:</p>
+              <mv-radio
+                [options]=radioOptionsEspecialidad>
+              </mv-radio>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <p><strong>B</strong></p>
+            </div>
+
+            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+              <mv-input
+                adapt=true
+                label="Nacionalidad">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-8 col-md-8 col-lg-8">
+              <mv-input
+                adapt=true>
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <p class="titleRadio">Exento prueba previa de acreditación del conocimiento de castellano:</p>
+              <mv-radio
+                [options]=radioOptionsTitulacion>
+              </mv-radio>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <p><strong>C</strong></p>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <p class="titleRadio">Solicito formar parte de los interinos:</p>
+              <mv-radio
+                [options]=radioOptionsTitulacion>
+              </mv-radio>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <p class="titleRadio">Habilitación lingüística en idiomas extranjeros:</p>
+              <mv-radio
+                [options]=radioOptionsTitulacion>
+              </mv-radio>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <p class="titleRadio">Desea recibir notificaciones por SMS cuando sea citado nominalmente para
+                cubrir puestos en régimen de interinidad:</p>
+              <mv-radio
+                [options]=radioOptionsTitulacion>
+              </mv-radio>
+            </div>
+
+          </div>
+        </div>
+      </mat-step>
+
+      <!-- paso 6 -->
+      <mat-step>
+        <div>
+          <ng-template matStepLabel>Información institucional</ng-template>
+
+          <mv-card class="wizardDetailStep6">
+            <mv-card-title><strong>Información institucional</strong></mv-card-title>
+          </mv-card>
+
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <p><strong>Autorización certificado del Registro de antecedentes penales</strong></p>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <p class="titleRadio">Autorizo consulta:</p>
+              <mv-radio
+                [options]=radioOptionsTitulacion>
+              </mv-radio>
+              <p class="titleRadio">* En caso de no autorizar la consulta, el interesado deberá aportar
+                el certificado en el momento en el que le sea requerido,
+                de conformidad con el anexo VIII de convocatoria.</p>
+            </div>
+
+            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+              <mv-input
+                adapt=true
+                label="Especialidad">
+              </mv-input>
+            </div>
+
+            <div class="col-xs-6 col-sm-8 col-md-8 col-lg-8">
+              <mv-input
+                adapt=true>
+              </mv-input>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-select-x
+                adapt=true
+                [options]="selectOptionsProvincias"
+                label="Provincia de nacimiento"
+                (changeEvent)="provChange()"
+                [(ngModel)]="selectModelProv">
+              </mv-select-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <mv-select-x
+                adapt=true
+                [options]="selectOptionsMunicipios"
+                label="Municipio de nacimiento"
+                [(ngModel)]="selectModelMuni">
+              </mv-select-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <strong>Documentación requerida</strong>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 greyBackground">
+              <mv-checkbox-x
+                labelPosition="end">
+                <strong>Para los NO nacionales: pasaporte / tarjeta de residente comunitario / visado / vínculo de parentesco</strong>
+              </mv-checkbox-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 greyBackground">
+              <mv-checkbox-x
+                labelPosition="end">
+                <strong>Documentación acreditativa del grado de discapacidad expedida por otra CCAA.</strong>
+              </mv-checkbox-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 greyBackground">
+              <mv-checkbox-x
+                labelPosition="end">
+                <strong>Para los NO nacionales: pasaporte/tarjeta de residente comunitario/visado/vínculo de parentesco</strong>
+              </mv-checkbox-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 greyBackground">
+              <mv-checkbox-x
+                labelPosition="end">
+                <strong>En caso de alegar discapacidad, dictamen vinculante de las condiciones físicas, psíquicas o sensoriales.
+                  En el caso de ser expedido por otra CCAA.</strong>
+              </mv-checkbox-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 greyBackground">
+              <mv-checkbox-x
+                labelPosition="end">
+                <strong>Aspirantes turno libre: Certificado médico de adaptación de tiempo y/o medios.</strong>
+              </mv-checkbox-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 greyBackground">
+              <mv-checkbox-x
+                labelPosition="end">
+                <strong>Justificante de pago/exención de tasas.</strong>
+              </mv-checkbox-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 greyBackground">
+              <mv-checkbox-x
+                labelPosition="end">
+                <strong>Titulación exigida en la convocatoria.</strong>
+              </mv-checkbox-x>
+            </div>
+
+          </div>
+        </div>
+      </mat-step>
+
+      <!-- paso 7 -->
+      <mat-step>
+        <div>
+          <ng-template matStepLabel>Protección de datos</ng-template>
+
+          <mv-card class="wizardDetailStep7">
+            <mv-card-title><strong>Protección de datos</strong></mv-card-title>
+          </mv-card>
+
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <p><strong>Protección de datos de carácter personal y confidencialidad de la información</strong></p>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <p>Le informamos que sus datos personales serán tratados con las siguientes finalidades:</p>
+              <ul>
+                <li>Gestión de citas en Atención Primaria</li>
+                <li>Gestión de citas en Atención Hospitalaria</li>
+              </ul>
+
+              <p>Sus datos serán conservados durante los años necesarios para cumplir con la normativa vigente aplicable, entre otras la Ley 41/2002, de 14 de noviembre, básica reguladora autonomía del paciente y de derechos y obligaciones en materia de información y documentación clínica. El Delegado de Protección de Datos (DPD) del Responsable es el "Comité DPD de la Consejería de Sanidad de la Comunidad de Madrid" con dirección en Plaza Carlos Trías Bertrán n°7 (Edif. Sollube) Madrid 28020. La base jurídica que legitima el tratamiento es la prestación de su consentimiento mediante la aceptación de las presentes condiciones, y el uso voluntario de la aplicación. Sus datos no serán cedidos, salvo en los casos obligados por Ley, así como en aquellos casos estrictamente necesarios para el correcto funcionamiento de las diferentes funciones de la aplicación antes descritas. En todo momento podrá revocar el consentimiento prestado, asimismo, podrá ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, en la medida que sean aplicables, a través de comunicación escrita al Responsable del Tratamiento, con domicilio en Plaza Carlos Trías Bertrán, 7, Planta 3 Código Postal 28020, Madrid, concretando su solicitud, junto con su DNI o documento equivalente. Asimismo, le informamos de la posibilidad de presentar una reclamación ante la Agencia Española de Protección de Datos.
+              *Tenga en cuenta que si usted ejerce su derecho de oposición al tratamiento telemático, se bloquearán sus datos en todos los servicios electrónicos del SERMAS y dejará de gozar de las ventajas de las gestiones online o telefónicas, debiendo acudir a su centro para cualquier gestión.</p>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <mv-checkbox-x
+                [(ngModel)]="checkboxCondicionesUso"
+                labelPosition="end">
+                <strong>He leído y acepto las condiciones de uso</strong>
+              </mv-checkbox-x>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <mv-button
+                [disabled]="!checkboxCondicionesUso"
+                (clickEvent)="nextStep()"
+                adapt=true
+                color="accent">
+                <mv-icon>credit_card</mv-icon>
+                Realizar el pago
+              </mv-button>
+            </div>
+
+          </div>
+
+        </div>
+      </mat-step>
+
+      <!-- paso 8 -->
+      <mat-step>
+        <ng-template matStepLabel>Pago realizado correctamente</ng-template>
+
+        <mv-card class="wizardDetailStep8">
+          <mv-card-title><strong>Pago realizado correctamente</strong></mv-card-title>
+        </mv-card>
+
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p><strong>Número de orden:</strong> AR-IMC857-FR5</p>
+            <p><strong>Importe:</strong> 34,85€</p>
+            <p><strong>Número de factura:</strong> 1489239</p>
+
+            Se le enviará a su correo el comprobante
+          </div>
+
+        </div>
+      </mat-step>
+
+      <div class="row buttonGroup">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 buttonGroupLeft">
+          <mv-button
+            *ngIf="activeStep > 1"
+            color="primary"
+            (clickEvent)="prevStep()">
+            <mv-icon>keyboard_arrow_left</mv-icon>
+            Atrás
+          </mv-button>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 buttonGroupRight">
+          <mv-button
+            *ngIf="activeStep < 7"
+            color="primary"
+            (clickEvent)="nextStep()">
+            <mv-icon>keyboard_arrow_right</mv-icon>
+            Siguiente
+          </mv-button>
+        </div>
+      </div>
+
+    </mat-horizontal-stepper>
+
+  </mv-card>
+
+</section>

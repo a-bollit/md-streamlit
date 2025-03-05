@@ -1,0 +1,22 @@
+<mv-header [headerTitle]="'Gestión de Pestañas'" [headerSubtitle]="'Seleccione una pestaña para continuar'" [fixed]="true" [showBackButton]="true" [showMenuButton]="true">
+  <mv-button *ngFor="let tab of tabs" (click)="selectTab(tab)">
+    <mv-icon [name]="tab.icon"></mv-icon>
+    {{ tab.title }}
+  </mv-button>
+</mv-header>
+
+<mv-card>
+  <mv-header>
+    <mv-title>{{ selectedTab.title }}</mv-title>
+  </mv-header>
+  <mv-content>
+    <ng-container *ngIf="selectedTab.title === 'GEA_ACURE'">
+      <!-- Contenido específico para GEA_ACURE -->
+      {{ selectedTab.content }}
+    </ng-container>
+    <ng-container *ngIf="selectedTab.title === 'NOTIFICACION_TELEMATICA'">
+      <!-- Contenido específico para NOTIFICACION_TELEMATICA -->
+      {{ selectedTab.content }}
+    </ng-container>
+  </mv-content>
+</mv-card>

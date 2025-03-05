@@ -1,0 +1,126 @@
+Result from estructura_visual_task: Este formulario de Oracle Forms, denominado EXPECA01, comprende varios componentes visuales, cada uno diseñado para ofrecer diferentes funcionalidades dentro de la aplicación. A continuación se describe detalladamente cada componente visual en términos de sus atributos, relaciones y posiciones, contribuyendo a una mejor comprensión del diseño del formulario y permitiendo su replicación precisa.
+
+## Ventanas
+### W_GENERAL
+La ventana principal del formulario es `W_GENERAL`. Esta ventana tiene propiedades que facilitan su manejo y visualización en la pantalla del usuario.
+- **Tamaño**: 415x133 unidades.
+- **Posición**: (20, 8).
+- **Visibilidad y Comportamiento**: Permite maximizarse, moverse y redimensionarse, aunque la opción de minimizarla está deshabilitada. Es la ventana principal que no se oculta al salir del formulario.
+
+### W_PESTAÑAS
+La ventana `W_PESTAÑAS` gestiona las pestañas de notificaciones.
+- **Tamaño**: 593x314 unidades.
+- **Posición**: (0, 0).
+- **Visibilidad y Comportamiento**: Permite moverse, aunque no puede maximizarse ni minimizarse. Especifica un lienzo primario `CV_PESTAÑAS` que contiene las pestañas.
+
+### W_DEVOL
+La ventana `W_DEVOL` se utiliza para gestionar devoluciones.
+- **Tamaño**: 417x191 unidades.
+- **Posición**: (100, 90).
+- **Visibilidad y Comportamiento**: Similar a `W_GENERAL`, permite moverse, escondiéndose al salir, pero no permite maximizar ni minimizar.
+
+### W_INF
+La ventana modal `W_INF` proporciona información adicional.
+- **Tamaño**: 312x37 unidades.
+- **Posición**: (100, 130).
+- **Visibilidad y Comportamiento**: Modal, no permite moverse ni redimensionarse. Principal para el lienzo `CV_INF`.
+
+### W_ERROR_RESULTADO
+`W_ERROR_RESULTADO` muestra mensajes de error.
+- **Tamaño**: 341x144 unidades.
+- **Posición**: (100, 100).
+- **Visibilidad y Comportamiento**: Desplegable y movilizable, pero no redimensionable.
+
+### W_SITUACION_ERROR
+`W_SITUACION_ERROR` muestra avisos de situación.
+- **Tamaño**: 358x152 unidades.
+- **Posición**: (150, 100).
+- **Visibilidad y Comportamiento**: Comportamiento similar a `W_ERROR_RESULTADO`.
+
+### W_AYUDA
+La ventana `W_AYUDA` proporciona soporte de ayuda.
+- **Tamaño**: 383x137 unidades.
+- **Posición**: (50, 45).
+- **Visibilidad y Comportamiento**: Modal y permite moverse, no redimensionable.
+
+## Lienzos
+### CV_GENERAL
+El lienzo `CV_GENERAL` actúa como el principal y contiene la sección de la unidad remitente y la fecha.
+- **Tamaño**: 415x133 unidades.
+- **Atributos**: `FONDO`, con componentes tipográficos.
+
+### CV_PESTAÑAS
+`CV_PESTAÑAS` es un lienzo tipo separador que organiza las pestañas `PG_CORR` y `PG_NOTE`.
+- **Tamaño**: 592x314.
+- **Componentes**: Muestra gráficos y textos relevantes en cada pestaña.
+
+### CV_DEVOL
+Usado en la ventana de devoluciones.
+- **Tamaño**: 417x191 unidades.
+- **Componentes**: Incluye gráficos y textos para la gestión de devoluciones.
+
+### CV_INF
+Este lienzo muestra mensajes temporalmente.
+- **Tamaño**: 313x38 unidades.
+- **Contenido**: Gráfico de texto que indica la operación en proceso.
+
+### CV_ERROR_RESULTADO
+Lienzo para mostrar errores.
+- **Tamaño**: 341x144 unidades.
+- **Componentes**: Marcos con descripciones de error.
+
+### CV_SITUACION_ERROR
+`CV_SITUACION_ERROR` se utiliza para mostrar avisos importantes al usuario.
+- **Tamaño**: 358x152 unidades.
+- **Componentes**: Marcos con descripciones de error y botones.
+
+### CV_AYUDA
+Muestra el contenido de ayuda.
+- **Tamaño**: 383x136 unidades.
+- **Componentes**: Texto explicativo para asistencia al usuario.
+
+## Pestañas
+### PG_CORR
+Ubicada dentro del lienzo `CV_PESTAÑAS`.
+- **Componentes**: Gráficos y textos sobre notificaciones de correos.
+- **Detalles**: Incluye gráficos alineados a la izquierda con descripciones sobre documentos, expedientes y otros atributos relacionados.
+
+### PG_NOTE
+Otra pestaña dentro de `CV_PESTAÑAS`.
+- **Componentes**: Similar a `PG_CORR` pero enfocada en notificaciones telemáticas.
+- **Detalles**: Integra componentes para gestionar documentos telemáticos, como gráficos para archivos PDF y estado de firmas.
+
+## Bloques y Lógica Visual
+### Bloque B00
+- **Uso**: Gestión interna del formulario.
+- **Componentes Visuales**: Ítems no visibles y campos de control, como `EXISTEN_EXP_AN_FI`.
+
+### Bloque BL_GENERAL
+- **Funcionalidad**: Principal de interacción del usuario.
+- **Componentes**: Ítems de entrada y botones (`CDUNIDAD`, `DSUNIDAD`, `FCDESDE`, `CAL_FCDESDE`, `FCHASTA`, `CAL_FCHASTA`, `CDDEPTNO`, `CDTEXP`, `CDNEXP`, `CDDIGITO`). Se representan visualmente en distintos lugares del lienzo `CV_GENERAL`.
+
+### Otros Bloques
+- **GEA_ACURE**: Para registros y administración interna, contenido en `CV_PESTAÑAS`.
+- **BL_DEVOL**: En `CV_DEVOL`, para gestionar devoluciones.
+- **NOTIFICACION_TELEMATICA**: Maneja las notificaciones telemáticas visibles en `CV_PESTAÑAS`, `PG_NOTE`.
+- **BL_DOC_* y BL_RESULTADO_ERROR**: Control de lógica específica dentro de sus respectivos lienzos y ventanas.
+
+## Visual Attributes
+- **ROJO**: Custodiar textos de avisos cruciales en rojo.
+- **NEGRO**: Atributo estándar para la mayoría de textos.
+- **FONDO & CAMPO_FONDO**: Propiedades que embellecen y organizan visualmente los lienzos y sus componentes.
+
+## Alertas
+### CONFIRMAR
+Alerta de confirmación con dos botones (SI y NO).
+- **Título**: "Confirmar dar de baja registro".
+
+### NOTA
+Alerta de información.
+- **Estilo**: Nota.
+
+### MENSAJE
+Alerta de aviso general.
+- **Título**: "Aviso".
+
+Estos componentes combinados estructuran una interfaz visual rica y funcional. La descripción detallada de ventanas, lienzos, atributos visuales, alertas y menús proporciona una guía clara y precisa para replicar visualmente el formulario EXPECA01 en Oracle Forms.

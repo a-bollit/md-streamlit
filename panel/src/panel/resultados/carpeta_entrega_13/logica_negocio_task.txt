@@ -1,0 +1,202 @@
+Result from logica_negocio_task: ### Análisis de la lógica de negocio en Oracle Forms y su migración a Java Spring Boot
+
+Para replicar correctamente la lógica de negocio identificada en Oracle Forms en el backend de Java Spring Boot, seguiremos una serie de pasos detallados para implementar cada funcionalidad. Esto incluirá la estructura de clases de servicio, métodos necesarios, validaciones, patrones de diseño y buenas prácticas. A continuación, se presenta una guía completa.
+
+#### 1. Estructura de Clases de Servicio
+Organizaremos el código en clases de servicio siguiendo el patrón de diseño "Service Layer". Cada funcionalidad principal de Oracle Forms se traducirá a métodos en las clases de servicio de Spring Boot.
+
+- **Service Classes**: Estas clases representan las operaciones de negocio. Cada bloque y trigger de Oracle Forms se puede mapear a uno o varios métodos de una clase de servicio.
+- **DTO (Data Transfer Objects)**: Usados para transferir datos entre el cliente y el servidor.
+- **Repositories**: Interfaces que interactúan con la base de datos usando Spring Data JPA.
+- **Controllers**: Exponen endpoints RESTful para interactuar con las clases de servicio.
+
+#### 2. Definición de Métodos
+A continuación, se detallan los métodos específicos que se deben implementar en los servicios para replicar la lógica de Oracle Forms.
+
+**Bloque B00**
+
+- **ACEPTAR Button**:
+
+```java
+@Service
+public class ExpedienteService {
+
+    @Autowired
+    private ExpedienteRepository expedienteRepository;
+
+    public void aceptar(SolicitudDTO solicitud) throws BusinessException {
+        validaExpediente(solicitud.getCdtexp());
+        ValidaFechas(solicitud.getFechaDesde(), solicitud.getFechaHasta());
+        
+        // Refresh views and sync data display
+        construirWhereCorr();
+        construirWhereNote();
+    }
+
+    private void validaExpediente(String cdtexp) throws BusinessException {
+        if (!permisoAplicacion(cdtexp)) {
+            throw new BusinessException("Permiso denegado para el expediente " + cdtexp);
+        }
+        if (restriccionesAPL_TEXP(cdtexp)) {
+            throw new BusinessException("Restricciones aplicadas al expediente " + cdtexp);
+        }
+    }
+
+    // Other validation and utility methods...
+}
+```
+
+- **Cancelar Button**:
+
+```java
+public void cancelar() {
+    // Handle form exit without validation
+}
+```
+
+**Bloque BL_GENERAL**
+
+- **CAL_FCDESDE, CAL_FCHASTA Buttons**:
+
+```java
+public void mostrarCalendario(Date fechaInicial) {
+    // Logic to display calendar starting from fechaInicial
+}
+```
+
+- **Key Navigation** (Next Item):
+
+```java
+public void navigateToNextItem() {
+    // Logic to handle navigation to next item
+}
+```
+
+- **LOV_CDUNIDAD Button**:
+
+```java
+public void mostrarLOV() {
+    // Logic to display LOV for cdunidad
+}
+```
+
+**Bloque GEA_ACURE**
+
+- **CB_MARCA Checkbox**:
+
+```java
+public void cambiarEstadoMarca(boolean estado) {
+    // Logic to handle checkbox state change
+}
+```
+
+- **POST-QUERY Trigger**:
+
+```java
+public void postQuery() {
+    // Logic to execute after a record fetch
+}
+```
+
+- **Key Navigation** (Up, Down):
+
+```java
+public void navigateUp() {
+    // Logic for navigating up within the block
+}
+
+public void navigateDown() {
+    // Logic for navigating down within the block
+}
+```
+
+**Bloque NOTIFICACION_TELEMATICA**
+
+- **CB_MARCA Checkbox**:
+
+```java
+public void cambiarEstadoMarcaNT(boolean estado) {
+    // Logic to handle checkbox state change in notification context
+}
+```
+
+- **Key Navigation** (Up, Down):
+
+```java
+public void navigateUpNT() {
+    // Logic for navigating up within notification blocks
+}
+
+public void navigateDownNT() {
+    // Logic for navigating down within notification blocks
+}
+```
+
+- **Post-Query Trigger**:
+
+```java
+public void postQueryNT() {
+    // Logic to execute after a record fetch in notification context
+}
+```
+
+### 3. Validaciones
+Las validaciones son cruciales para asegurar la integridad de los datos y el correcto funcionamiento de la lógica de negocio.
+
+- **Validaciones de Expediente**:
+
+```java
+private void validaExpediente(String cdtexp) throws BusinessException {
+    if (!permisoAplicacion(cdtexp)) {
+        throw new BusinessException("Permiso denegado para el expediente " + cdtexp);
+    }
+    if (restriccionesAPL_TEXP(cdtexp)) {
+        throw new BusinessException("Restricciones aplicadas al expediente " + cdtexp);
+    }
+}
+```
+
+- **Validaciones de Fechas**:
+
+```java
+private void ValidaFechas(LocalDate fechaDesde, LocalDate fechaHasta) throws BusinessException {
+    if (fechaDesde == null || fechaHasta == null) {
+        throw new BusinessException("Las fechas no pueden ser nulas");
+    }
+    if (fechaDesde.isAfter(fechaHasta)) {
+        throw new BusinessException("La fecha desde no puede ser posterior a la fecha hasta");
+    }
+}
+```
+
+### 4. Utilización de Patrones de Diseño
+El uso de patrones de diseño es fundamental para garantizar una arquitectura limpia y escalable:
+
+- **Service Layer Pattern**: Separa la lógica de negocio de la capa de acceso a datos.
+- **Repository Pattern**: Se utiliza para la interacción con la base de datos.
+- **DTOs**: Para transferir datos entre la capa de presentación y la capa de servicio.
+
+### 5. Buenas Prácticas y Arquitectura Limpia
+
+- **Inyección de Dependencias**: Usar Spring’s `@Autowired` para gestionar dependencias.
+- **Manejo de Excepciones**: Crear excepciones personalizadas y un controlador de excepciones global.
+- **Documentación**: Documentar todos los endpoints utilizando Swagger o Springfox.
+- **Validaciones**: Usar Bean Validation (anotaciones `@NotNull`, `@Size`, etc.) para validar DTOs automáticamente.
+
+**Global Exception Handler**:
+
+```java
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ErrorResponse> handleBusinessException(BusinessException ex) {
+        ErrorResponse error = new ErrorResponse(ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    // Other exception handlers...
+}
+```
+
+Con esta estructura y metodología, replicamos la lógica de negocio de Oracle Forms en Java Spring Boot de una manera eficiente, escalable y mantenible. Cada funcionalidad se traduce a una clase de servicio y sus métodos, siguiendo patrones de diseño y buenas prácticas, garantizando una arquitectura limpia y correcta.

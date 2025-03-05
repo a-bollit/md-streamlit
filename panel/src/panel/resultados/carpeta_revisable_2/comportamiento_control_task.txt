@@ -1,0 +1,111 @@
+Result from comportamiento_control_task: ### Detalle de Triggers y Unidades de Programación
+
+#### Triggers:
+
+##### Trigger: `WHEN-BUTTON-PRESSED` en el botón `CAL_FCDESDE`
+- **Evento Asociado**: Presionar el botón de calendario para la fecha "Desde".
+- **Funcionalidad**: Despliega el calendario para seleccionar una fecha y asigna los valores seleccionados de tipo y número de día.
+- **Lógica**:
+  1. Al presionar el botón, se invoca el procedimiento `FCALENDARIO`.
+  2. Inicializa los parámetros `tipo_dia` y `num_dia`.
+  3. Actualiza el campo `FCDESDE` con la fecha seleccionada en el calendario.
+
+##### Trigger: `WHEN-BUTTON-PRESSED` en el botón `CAL_FCHASTA`
+- **Evento Asociado**: Presionar el botón de calendario para la fecha "Hasta".
+- **Funcionalidad**: Similar al trigger de `CAL_FCDESDE` pero para el campo de fecha "Hasta".
+- **Lógica**:
+  1. Al presionar el botón, se invoca el procedimiento `FCALENDARIO`.
+  2. Inicializa los parámetros `tipo_dia` y `num_dia`.
+  3. Actualiza el campo `FCHASTA` con la fecha seleccionada en el calendario.
+
+##### Trigger: `KEY-NEXT-ITEM` en el campo `FCDESDE`
+- **Evento Asociado**: Navegación al siguiente ítem.
+- **Funcionalidad**: Mueve el cursor al campo `FCHASTA`.
+- **Lógica**:
+  1. Al presionar Tab o Enter en el campo `FCDESDE`, se ejecuta `GO_ITEM('BL_GENERAL.fchasta')`, moviendo el foco al siguiente campo.
+
+##### Trigger: `WHEN-BUTTON-PRESSED` en el botón `ACEPTAR`
+- **Evento Asociado**: Presionar el botón "Aceptar".
+- **Funcionalidad**: Realiza validaciones y muestra las vistas apropiadas para la emisión de notificaciones.
+- **Lógica**:
+  1. Verifica que `CDUNIDAD` no esté vacío. Si lo está, muestra un mensaje y posiciona el cursor en `LOV_CDUNIDAD`.
+  2. Invoca los procedimientos `Valida_Expediente` y `Valida_Fechas`.
+  3. Muestra la vista `CV_INF`, mueve el cursor al ítem oculto en el bloque `BL_DOC_CORR` y oculta la vista `CV_PESTAÑAS`.
+  4. Inicializa ciertos valores y ejecuta consultas para mostrar las notificaciones.
+
+##### Trigger: `WHEN-BUTTON-PRESSED` en el botón `CANCELAR`
+- **Evento Asociado**: Presionar el botón "Cancelar".
+- **Funcionalidad**: Cierra la forma actual sin validar los datos.
+- **Lógica**:
+  1. Ejecuta `EXIT_FORM(NO_VALIDATE)` para salir del formulario sin guardar cambios.
+
+##### Trigger: `WHEN-BUTTON-PRESSED` en el botón `REGISTRAR` en el bloque `BL_DOC_CORR`
+- **Evento Asociado**: Presionar el botón "Registrar".
+- **Funcionalidad**: Registra los documentos seleccionados.
+- **Lógica**:
+  1. Verifica que al menos un documento está marcado para registrar.
+  2. Si ya está registrado, informa que ya ha sido registrado.
+  3. Si no está registrado, valida información del interesado antes de proceder.
+  4. Realiza el registro de salida utilizan el procedimiento `registro_salida` y registra al interesado con `Insertar_Interesado`.
+
+##### Trigger: `WHEN-BUTTON-PRESSED` en el botón `ACEPTAR` en el bloque `BL_DEVOL`
+- **Evento Asociado**: Presionar el botón "Aceptar".
+- **Funcionalidad**: Procesa la generación de la lista de notificación y emite las notificaciones.
+- **Lógica**:
+  1. Verifica que los campos `DSCONS` y `DSUNIDAD` no estén vacíos.
+  2. Crea una lista de notificación con `crear_lista_notificacion`.
+  3. Agrega documentos a la lista y actualiza sus estados.
+
+##### Trigger: `WHEN-CHECKBOX-CHANGED` en la casilla `CB_MARCA` en el bloque `GEA_ACURE`
+- **Evento Asociado**: Cambio en la selección del checkbox.
+- **Funcionalidad**: Marca el documento para registrar o enviar, excluyéndolo si no cumple con criterios.
+- **Lógica**:
+  1. Si se selecciona, incrementa el contador de documentos seleccionados.
+  2. Si no se selecciona, decrementa el contador de documentos seleccionados.
+  3. Valida información del interesado y condiciones del documento antes de permitir la selección.
+
+##### Trigger: `POST-QUERY` en el bloque `NOTIFICACION_TELEMATICA`
+- **Evento Asociado**: Después de ejecutar la consulta.
+- **Funcionalidad**: Ajusta y verifica los datos después de la consulta y aplica validaciones especificas del bloque.
+- **Lógica**:
+  1. Obtiene el estado del expediente y lo formatea adecuadamente.
+  2. Verifica si el expediente está finalizado o anulado, y si es así, marca `EXISTEN_EXP_AN_FI`.
+  3. Calcula descripciones y estados relacionados a notificaciones telemáticas.
+
+#### Unidades de Programación:
+
+##### Procedimiento: `VALIDA_FECHAS`
+- **Funcionalidad**: Valida que las fechas `FCDESDE` y `FCHASTA` sean correctas.
+- **Lógica**:
+  - `FCDESDE` no puede ser mayor que la fecha actual.
+  - `FCHASTA` no puede ser mayor que la fecha actual.
+  - `FCHASTA` debe ser mayor o igual a `FCDESDE`.
+
+##### Procedimiento: `VALIDA_EXPEDIENTE`
+- **Funcionalidad**: Valida el estado del expediente.
+- **Lógica**:
+  - Verifica que el expediente no esté finalizado (`FI`) o anulado (`AN`).
+  - Si lo está, muestra un mensaje y detiene el proceso.
+
+##### Procedimiento: `CONSTRUIR_WHERE_NOTE`
+- **Funcionalidad**: Construye la cláusula WHERE para filtrar los registros en el bloque `NOTIFICACION_TELEMATICA`.
+- **Lógica**:
+  - Agrega condiciones de filtrado dependiendo de los valores en `BL_GENERAL` como fechas y unidad.
+  - Excluye notificaciones ya enviadas si `INCLUIR_ENVIADOS` es `N`.
+
+##### Procedimiento: `CONSTRUIR_WHERE_CORR`
+- **Funcionalidad**: Construye la cláusula WHERE para filtrar los registros en el bloque `GEA_ACURE`.
+- **Lógica**:
+  - Similar a `CONSTRUIR_WHERE_NOTE`, adaptado para las condiciones específicas del bloque `GEA_ACURE`.
+
+##### Procedimiento: `FCALENDARIO`
+- **Funcionalidad**: Despliega un calendario para seleccionar una fecha.
+- **Lógica**:
+  - Configura y muestra el calendario, retornando la fecha seleccionada.
+
+##### Procedimiento: `PONER_ROJO`
+- **Funcionalidad**: Cambia el color de los ítems en el bloque `GEA_ACURE` a rojo si `ITIMPRE` es `S`.
+- **Lógica**:
+  - Recorre todos los ítems en el bloque `GEA_ACURE` y aplica la visualización correspondiente dependiendo del estado de `ITIMPRE`.
+
+Todas estas unidades de programación y triggers trabajan en conjunto para asegurar que las operaciones de notificación sean precisas, con integridad de datos y que el flujo de trabajo esté fluido y validado correctamente para el usuario final.

@@ -1,0 +1,209 @@
+You are a senior Java Spring Boot developer with extensive experience in designing and implementing RESTful APIs. You have worked on multiple migration projects from Oracle Forms to modern microservices-based architectures. Your mission is to help other developers understand how to correctly structure controllers and services in Java Spring Boot to replicate Oracle Forms functionality. You offer clear and detailed explanations, along with code examples, to ensure the migration process is as simple and precise as possible. Your objective is to ensure developers can implement robust and scalable solutions.
+
+Your personal goal is to analyze the provided Oracle Forms code and provide a detailed guide on replicating its functionality in Java Spring Boot. You must:
+
+**1. Identify and describe the necessary REST controllers.**
+
+Controllers handle incoming HTTP requests and map them to the appropriate service methods. For this case, we identify controllers to handle operations on `EXPECA01`, `EXISTEN_EXP_AN_FI`, `FALLO`, `BL_GENERAL`, `CDORGA_EREG`, `IDORGA_EREG`, `LOV_CDUNIDAD`, `CDUNIDAD`, `DSUNIDAD`, and other relevant components.
+
+- `ExpedienteController`: To manage operations related to the `Expediente` entity.
+- `NotificacionController`: To manage operations related to telematic notifications.
+- `OrganizacionController`: Handles operations related to organizational units.
+
+**2. Specify the methods in each controller, including routes, input, and output parameters.**
+
+- `ExpedienteController`:
+  ```java
+  @RestController
+  @RequestMapping("/expedientes")
+  public class ExpedienteController {
+      @Autowired
+      private ExpedienteService expedienteService;
+
+      @GetMapping("/{id}")
+      public ResponseEntity<Expediente> getExpedienteById(@PathVariable Long id) {
+          Expediente expediente = expedienteService.getExpedienteById(id);
+          return ResponseEntity.ok(expediente);
+      }
+
+      @GetMapping
+      public ResponseEntity<List<Expediente>> getAllExpedientes() {
+          List<Expediente> expedientes = expedienteService.getAllExpedientes();
+          return ResponseEntity.ok(expedientes);
+      }
+
+      @PostMapping
+      public ResponseEntity<Expediente> createExpediente(@RequestBody Expediente expediente) {
+          Expediente savedExpediente = expedienteService.saveExpediente(expediente);
+          return ResponseEntity.status(HttpStatus.CREATED).body(savedExpediente);
+      }
+
+      @PutMapping("/{id}")
+      public ResponseEntity<Expediente> updateExpediente(@PathVariable Long id, @RequestBody Expediente expediente) {
+          expediente.setId(id);
+          Expediente updatedExpediente = expedienteService.saveExpediente(expediente);
+          return ResponseEntity.ok(updatedExpediente);
+      }
+
+      @DeleteMapping("/{id}")
+      public ResponseEntity<Void> deleteExpediente(@PathVariable Long id) {
+          expedienteService.deleteExpediente(id);
+          return ResponseEntity.noContent().build();
+      }
+  }
+  ```
+
+**Optional parameters:** Can include pagination parameters like `init` and `limit` for `getAllExpedientes`.
+
+- `NotificacionController`:
+  ```java
+  @RestController
+  @RequestMapping("/notificaciones")
+  public class NotificacionController {
+      @Autowired
+      private NotificacionService notificacionService;
+
+      @GetMapping("/{id}")
+      public ResponseEntity<Notificacion> getNotificacionById(@PathVariable Long id) {
+          Notificacion notificacion = notificacionService.getNotificacionById(id);
+          return ResponseEntity.ok(notificacion);
+      }
+
+      @PostMapping
+      public ResponseEntity<Notificacion> createNotificacion(@RequestBody Notificacion notificacion) {
+          Notificacion savedNotificacion = notificacionService.saveNotificacion(notificacion);
+          return ResponseEntity.status(HttpStatus.CREATED).body(savedNotificacion);
+      }
+  }
+  ```
+
+**3. Detail the services that interact with these controllers.**
+
+- **ExpedienteService**:
+  ```java
+  @Service
+  public class ExpedienteService {
+      @Autowired
+      private ExpedienteRepository expedienteRepository;
+
+      public Expediente getExpedienteById(Long id) {
+          return expedienteRepository.findById(id).orElse(null);
+      }
+
+      public List<Expediente> getAllExpedientes() {
+          return expedienteRepository.findAll();
+      }
+
+      public Expediente saveExpediente(Expediente expediente) {
+          return expedienteRepository.save(expediente);
+      }
+
+      public void deleteExpediente(Long id) {
+          expedienteRepository.deleteById(id);
+      }
+  }
+  ```
+
+- **NotificacionService**:
+  ```java
+  @Service
+  public class NotificacionService {
+      @Autowired
+      private NotificacionRepository notificacionRepository;
+
+      public Notificacion getNotificacionById(Long id) {
+          return notificacionRepository.findById(id).orElse(null);
+      }
+
+      public Notificacion saveNotificacion(Notificacion notificacion) {
+          return notificacionRepository.save(notificacion);
+      }
+  }
+  ```
+
+**4. Provide code examples for each part.**
+
+See the snippets provided above for controller and service examples. Additionally, include validation services and repository interfaces:
+
+- **ValidationService**:
+  ```java
+  @Service
+  public class ValidationService {
+      public boolean validateFechas(LocalDate desde, LocalDate hasta) {
+          // Validate the dates
+          return !desde.isAfter(hasta) && !desde.isAfter(LocalDate.now()) && !hasta.isAfter(LocalDate.now());
+      }
+
+      public boolean validateExpediente(String codigoExpediente) {
+          // Custom validation logic
+          return true; // Replace with actual validation
+      }
+  }
+  ```
+
+- **Repository Interfaces**:
+  ```java
+  public interface ExpedienteRepository extends JpaRepository<Expediente, Long> {
+      Optional<Expediente> findByCodigo(String codigo);
+      boolean existsByCodigo(String codigo);
+  }
+
+  public interface NotificacionRepository extends JpaRepository<Notificacion, Long> {
+      // Additional query methods if needed
+  }
+  ```
+
+**5. Explain clearly which databases or entities the controllers and services are linked to.**
+
+Controllers manage entities like `Expediente` and `Notificacion`, which are linked to corresponding database tables. Repositories handle CRUD operations:
+
+- `Expediente`: Linked to the `expedientes` table.
+- `Notificacion`: Linked to the `notificaciones` table.
+
+**6. Include error handling and the proper project structure.**
+
+- **Error Handling**:
+  - Use `@ControllerAdvice` for global exception handling.
+  - Example:
+    ```java
+    @ControllerAdvice
+    public class GlobalExceptionHandler {
+        @ExceptionHandler(ResourceNotFoundException.class)
+        public ResponseEntity<ErrorResponse> handleResourceNotFound(ResourceNotFoundException ex) {
+            ErrorResponse error = new ErrorResponse(ex.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+        }
+    }
+    ```
+
+**7. Separate the contents by the related database or entity for better clarity.**
+
+- **Project Structure**:
+  ```
+  src/
+  ├── main/
+  │   ├── java/
+  │   │   └── com/
+  │   │       └── yourcompany/
+  │   │           ├── controller/
+  │   │           │   ├── ExpedienteController.java
+  │   │           │   └── NotificacionController.java
+  │   │           ├── service/
+  │   │           │   ├── ExpedienteService.java
+  │   │           │   └── NotificacionService.java
+  │   │           ├── model/
+  │   │           │   ├── Expediente.java
+  │   │           │   └── Notificacion.java
+  │   │           ├── repository/
+  │   │           │   ├── ExpedienteRepository.java
+  │   │           │   └── NotificacionRepository.java
+  │   │           └── validation/
+  │   │               └── ValidationService.java
+  │   └── resources/
+  │       └── application.properties
+  └── test/
+  ```
+
+**Conclusion**
+
+This Java Spring Boot implementation captures the essential functionality of the Oracle Forms `EXPECA01` module, providing a robust foundation for handling operations related to `Expediente` and telematic notifications. It ensures developers can easily replicate the Oracle Forms functionality in a modern microservices-based architecture with appropriate service, controller logic, and database interactions.

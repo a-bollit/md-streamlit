@@ -1,0 +1,231 @@
+Result from logica_negocio_task: # Guía Detallada para Implementar la Lógica de Oracle Forms en Servicios de Java Spring Boot
+
+## Estructura de Clases de Servicio
+
+Al migrar la lógica de negocio de Oracle Forms a una aplicación Spring Boot, organizaremos el código utilizando servicios, controladores y repositorios. Aquí se muestra una estructura detallada de las clases de servicio, métodos a implementar, validaciones y recomendaciones de patrones de diseño:
+
+### 1. Clase `FormInitializationService`
+
+**Función:** Gestiona la lógica de inicialización del formulario.
+
+```java
+@Service
+public class FormInitializationService {
+
+    @Autowired
+    private UserProfileService userProfileService;
+
+    @Autowired
+    private GlobalVariablesService globalVariablesService;
+
+    public void initializeForm(String formId) {
+        applyUserProfile(formId);
+        initializeGlobalVariables();
+        hideSpecificViews();
+        assignDefaultValues();
+    }
+
+    private void applyUserProfile(String formId) {
+        userProfileService.applyProfile(formId);
+    }
+
+    private void initializeGlobalVariables() {
+        globalVariablesService.initializeVariables();
+    }
+
+    private void hideSpecificViews() {
+        if (globalVariablesService.isViewCorreosVisible()) {
+            // Hide specific views
+        }
+    }
+
+    private void assignDefaultValues() {
+        // Assign default values to fields
+    }
+}
+```
+
+### 2. Clase `ErrorHandlerService`
+
+**Función:** Gestiona y muestra errores generados durante la ejecución del formulario.
+
+```java
+@Service
+public class ErrorHandlerService {
+
+    public void handleError(Exception ex) {
+        if (ex instanceof SpecificException) {
+            // Ignore specific error
+        } else {
+            executeErrorProcedures(ex);
+        }
+    }
+
+    private void executeErrorProcedures(Exception ex) {
+        // Execute specific procedures to handle other errors
+    }
+}
+```
+
+### 3. Clase `ButtonActionService`
+
+**Función:** Gestiona acciones de botones específicos del formulario.
+
+```java
+@Service
+public class ButtonActionService {
+
+    @Autowired
+    private CalendarService calendarService;
+
+    public void handleLovCdUnidad(String selectedValue) {
+        // Assign selected value to field `CDUNIDAD`
+    }
+
+    public void handleCalFcDesde(LocalDate selectedDate) {
+        // Assign selected date to field `FCDESDE`
+    }
+
+    public void handleCalFcHasta(LocalDate selectedDate) {
+        // Assign selected date to field `FCHASTA`
+    }
+
+    public void handleAceptar(FormData formData) {
+        validateFormData(formData);
+        showOrHideViews(formData);
+    }
+
+    public void handleCancelar() {
+        // Close form without validation
+    }
+
+    private void validateFormData(FormData formData) {
+        // Validate form data
+    }
+
+    private void showOrHideViews(FormData formData) {
+        // Show or hide views based on logic
+    }
+}
+```
+
+### 4. Clase `FieldValidationService`
+
+**Función:** Valida campos específicos en el formulario.
+
+```java
+@Service
+public class FieldValidationService {
+
+    public void validateCdTexp(String cdtExp) {
+        if (StringUtils.isEmpty(cdtExp)) {
+            throw new ValidationException("Field CDTEXP cannot be empty");
+        }
+        // Additional validation logic
+    }
+
+    public void validateFcDesde(LocalDate fcDesde, LocalDate fcHasta) {
+        if (fcDesde.isAfter(LocalDate.now())) {
+            throw new ValidationException("Start date cannot be in the future");
+        }
+        if (fcHasta.isBefore(fcDesde)) {
+            throw new ValidationException("End date cannot be before start date");
+        }
+    }
+
+    public void validateMunicipio(String cdMuni) {
+        // Municipality validation logic
+    }
+}
+```
+
+### 5. Clase `DocumentService`
+
+**Función:** Gestiona lógica relacionada a documentos.
+
+```java
+@Service
+public class DocumentService {
+
+    public void registerDocuments(List<Document> documents) {
+        for (Document doc : documents) {
+            validateDocument(doc);
+            registerDocument(doc);
+        }
+        updateDocumentProperties(documents);
+    }
+
+    public void sendDocuments(List<Document> documents) {
+        for (Document doc : documents) {
+            validateDocument(doc);
+            sendDocument(doc);
+        }
+    }
+
+    private void validateDocument(Document document) {
+        // Document validation logic
+    }
+
+    private void registerDocument(Document document) {
+        // Logic to register document
+    }
+
+    private void sendDocument(Document document) {
+        // Logic to send document
+    }
+
+    private void updateDocumentProperties(List<Document> documents) {
+        // Update document properties in the database
+    }
+}
+```
+
+### 6. Clase `NotificationService`
+
+**Función:** Gestiona notificaciones.
+
+```java
+@Service
+public class NotificationService {
+
+    public void createNotificationList(NotificationDetails details) {
+        validateNotificationDetails(details);
+        // Logic to create notification list and update database
+    }
+
+    public void handleCheckboxChange(Boolean isChecked, Document document) {
+        if (isChecked) {
+            // Logic for checked state
+        } else {
+            // Logic for unchecked state
+        }
+    }
+
+    private void validateNotificationDetails(NotificationDetails details) {
+        // Validation logic for notification details
+    }
+}
+```
+
+## Patrones de Diseño y Buenas Prácticas
+
+### 1. Uso de Servicios
+Separar la lógica de negocio en servicios diferentes según su responsabilidad: inicialización del formulario, manejo de errores, acciones de botones, validaciones de campos y manejo de documentos. Esto facilita el mantenimiento y la escalabilidad del sistema.
+
+### 2. Validaciones y Excepciones
+Aplicar validaciones utilizando servicios dedicados como `FieldValidationService` y manejar excepciones de manera centralizada para asegurar una gestión de errores adecuada.
+
+### 3. Patrones de Diseño Comunes
+- **Singleton:** Utilizar el patrón Singleton para servicios que requieren ser instanciados una sola vez (por defecto, los servicios en Spring son Singletons).
+- **Factory:** Implementar el patrón Factory si se necesita crear objetos complejos o dependientes en tiempo de ejecución.
+- **Template Method:** Usar este patrón para definir el esqueleto de un algoritmo en una operación, diferir algunos pasos a las subclases. Llave para procedimientos de documentos y manejo de formularios.
+
+### 4. Buenas Prácticas
+- **Inyección de Dependencias:** Utilizar la inyección de dependencias de Spring para gestionar las dependencias de manera automática y mejorar la modularidad.
+- **DTOs (Data Transfer Objects):** Utilizar DTOs para transferir datos entre diferentes partes del sistema, especialmente entre la capa de presentación y la capa de servicio.
+- **Transacciones:** Asegurarse de que las operaciones que involucran cambios en la base de datos sean atómicas utilizando transacciones (`@Transactional`).
+- **Pruebas Unitarias:** Implementar pruebas unitarias para cada servicio y método crítico utilizando JUnit y Mockito para asegurar la fiabilidad del código.
+
+## Conclusión
+
+Las clases y servicios descritos aseguran una migración ordenada, limpia y eficiente de la lógica de negocio de Oracle Forms a Spring Boot. Esta estructura facilita el mantenimiento futuro, además de proporcionar una arquitectura escalable y testeable que cumple con las buenas prácticas de desarrollo de software moderno.

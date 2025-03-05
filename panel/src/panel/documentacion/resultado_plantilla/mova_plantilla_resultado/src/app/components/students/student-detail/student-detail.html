@@ -1,0 +1,245 @@
+<section class="view-default-style">
+
+
+  <mv-card *ngIf="formulario" class="card-code">
+    <mv-card-header>
+      <mv-card-title class="nombre">
+        <strong> {{formulario.apellido_1}} {{formulario.apellido_2}}, {{formulario.nombre_alumno}}</strong>
+      </mv-card-title>
+      <mv-card-subtitle><strong></strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content class="row infoAlumno">
+      <div class="imgAlumno col-xs-12 col-sm-12 col-md-12 col-lg-3">
+        <img [src]="this.alumno.image">
+      </div>
+      <div class="datos col-xs-12 col-sm-12 col-md-12 col-lg-9">
+
+        <div class="blockTitle">
+          <mv-icon>account_circle</mv-icon>
+          Datos personales
+        </div>
+        <div class="caja row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+          <div class="campo col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="dato_titulo">
+              <mv-icon>assignment_ind</mv-icon>
+              <span>UUID:</span>
+            </div>
+            <hr class="separador">
+            <mv-input
+              class="dato_alumno"
+              appearance="legacy"
+              adapt="true"
+              [disabled]="!this.EditMode"
+              [(ngModel)]="formulario.uuid">
+            </mv-input>
+          </div>
+
+          <div class="campo col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="dato_titulo">
+              <mv-icon>assignment_ind</mv-icon>
+              <span>NIF:</span>
+            </div>
+            <hr class="separador">
+            <mv-input class="dato_alumno"
+              appearance="legacy"
+              adapt="true"
+              [disabled]="!this.EditMode"
+              [(ngModel)]="formulario.nif">
+            </mv-input>
+          </div>
+
+          <div class="campo col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="dato_titulo">
+              <mv-icon>face</mv-icon>
+              <span>Nombre:</span>
+            </div>
+            <hr class="separador">
+              <mv-input
+                class="dato_alumno"
+                appearance="legacy"
+                adapt="true"
+                [disabled]="!this.EditMode"
+                [(ngModel)]="formulario.nombre_alumno">
+            </mv-input>
+          </div>
+
+          <div class="campo col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="dato_titulo">
+              <mv-icon>description</mv-icon>
+              <span>Primer apellido:</span>
+            </div>
+            <hr class="separador">
+              <mv-input
+                class="dato_alumno"
+                appearance="legacy"
+                adapt="true"
+                [disabled]="!this.EditMode"
+                [(ngModel)]="formulario.apellido_1">
+            </mv-input>
+          </div>
+
+          <div class="campo col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="dato_titulo">
+              <mv-icon>description</mv-icon>
+              <span>Segundo apellido:</span>
+            </div>
+            <hr class="separador">
+              <mv-input
+                class="dato_alumno"
+                appearance="legacy"
+                adapt="true"
+                [disabled]="!this.EditMode"
+                [(ngModel)]="formulario.apellido_2">
+            </mv-input>
+          </div>
+
+          <div class="campo col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="dato_titulo">
+              <mv-icon>description</mv-icon>
+              <span>Edad:</span>
+            </div>
+            <hr class="separador">
+            <mv-input class="dato_alumno"
+                appearance="legacy"
+                adapt="true"
+                [disabled]="!this.EditMode"
+              [(ngModel)]="formulario.edad">
+            </mv-input>
+          </div>
+
+
+          <div class="campo  col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="dato_titulo">
+              <mv-icon>event</mv-icon>
+              <span>Fecha de nacimiento:</span>
+            </div>
+            <hr class="separador">
+              <mv-input
+                class="dato_alumno"
+                type="datetime-local"
+                appearance="legacy"
+                adapt="true"
+                [disabled]="!this.EditMode"
+                [(ngModel)]="formulario.fecha_nacimiento">
+            </mv-input>
+          </div>
+
+          <div class="campo col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="dato_titulo">
+              <mv-icon>assignment</mv-icon>
+              <span>Asignaturas aprobadas:</span>
+            </div>
+            <hr class="separador">
+            <mv-input
+                class="dato_alumno"
+                appearance="legacy"
+                adapt="true"
+                [disabled]="!this.EditMode"
+              [(ngModel)]="formulario.numero_asignaturas_aprobadas">
+            </mv-input>
+          </div>
+        </div>
+
+        <div class="blockTitle">
+          <mv-icon>home</mv-icon>
+          Domicilio
+        </div>
+        <div class="caja row col-xs-12 col-sm-12 col-md-12 col-lg-12"*ngIf="formulario.direccion_alumno">
+
+          <div class="campo col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="dato_titulo">
+              <mv-icon>assignment</mv-icon>
+              <span>Dirección:</span>
+            </div>
+            <hr class="separador">
+            <mv-input
+              class="dato_alumno"
+              appearance="legacy"
+              adapt="true"
+              [disabled]="!this.EditMode"
+              [(ngModel)]="formulario.direccion_alumno.id_direccion">
+            </mv-input>
+          </div>
+
+            <div class="campo col-xs-12 col-sm-6 col-md-6 col-lg-2">
+
+              <div class="dato_titulo">
+                <mv-icon>assignment</mv-icon>
+                <span>Municipio:</span>
+              </div>
+              <hr class="separador">
+              <mv-input
+                class="dato_alumno"
+                appearance="legacy"
+                adapt="true"
+                [disabled]="!this.EditMode"
+                [(ngModel)]="formulario.direccion_alumno.cd_municipio">
+              </mv-input>
+            </div>
+
+            <div class="campo col-xs-12 col-sm-6 col-md-6 col-lg-2">
+              <div class="dato_titulo">
+                <mv-icon>assignment</mv-icon>
+                <span>Número:</span>
+              </div>
+              <hr class="separador">
+              <mv-input
+                class="dato_alumno"
+                appearance="legacy"
+                adapt="true"
+                [disabled]="!this.EditMode"
+                [(ngModel)]="formulario.direccion_alumno.numero">
+              </mv-input>
+            </div>
+
+            <div class="campo col-xs-12 col-sm-6 col-md-6 col-lg-3">
+              <div class="dato_titulo">
+                <mv-icon>assignment</mv-icon>
+                <span>Provincia:</span>
+              </div>
+              <hr class="separador">
+              <mv-input
+                class="dato_alumno"
+                appearance="legacy"
+                adapt="true"
+                [disabled]="!this.EditMode"
+                [(ngModel)]="formulario.direccion_alumno.provincia">
+              </mv-input>
+            </div>
+        </div>
+
+        <div *ngIf="!formulario.direccion_alumno">
+          <mv-card class="warning-card">
+            <p>No tiene dirección.</p>
+          </mv-card>
+        </div>
+      </div>
+
+    </mv-card-content>
+  </mv-card>
+
+  <mv-card *ngIf="formulario" class="card-code">
+  <mv-card-header>
+    <mv-card-title class="titulo">
+      <mv-icon>school</mv-icon>
+      <strong> Asignaturas</strong>
+    </mv-card-title>
+  </mv-card-header>
+
+  <mv-card-content>
+    <div class="asignaturas">
+      <mv-table-responsive
+        class="tabla_asignaturas"
+        *ngIf="formulario.asignaturas"
+        [data]="formulario.asignaturas"
+        [excludeTableColumns]="excludeColumns"
+        [tableColumns]="nameColumns"
+        [pageSize]="6">
+      </mv-table-responsive>
+    </div>
+  </mv-card-content>
+  </mv-card>
+
+</section>

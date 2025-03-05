@@ -1,0 +1,33 @@
+<mv-card class="notification-details-card">
+  <mv-header>
+    <mv-title>Detalles de la Notificación</mv-title>
+    <mv-icon class="material-icons close-icon" (click)="closeDetails()">close</mv-icon>
+  </mv-header>
+  <mv-content>
+    <form [formGroup]="notificationForm">
+      <div class="form-group">
+        <label for="documentNumber">Número de Documento:</label>
+        <input id="documentNumber" formControlName="documentNumber" readonly>
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea id="description" formControlName="description" readonly></textarea>
+      </div>
+      <div class="form-group">
+        <label for="sentDate">Fecha de Envío:</label>
+        <input id="sentDate" formControlName="sentDate" readonly>
+      </div>
+      <div class="form-group">
+        <label for="sender">Remitente:</label>
+        <input id="sender" formControlName="sender" readonly>
+      </div>
+      <div class="form-group">
+        <label for="status">Estado:</label>
+        <input id="status" formControlName="status" readonly>
+      </div>
+    </form>
+    <div class="actions">
+      <mv-button class="close-button" (click)="closeDetails()">Cerrar</mv-button>
+    </div>
+  </mv-content>
+</mv-card>

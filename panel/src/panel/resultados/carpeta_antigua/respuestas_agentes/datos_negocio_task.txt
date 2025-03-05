@@ -1,0 +1,179 @@
+Result from datos_negocio_task: The Oracle Forms module "EXPECA01" is designed to handle the issuance of both mail and telematic notifications with complex data structures and business logic. Here is a detailed description of the data blocks, fields, LOVs, record groups, and business rules.
+
+## Data Blocks and Fields
+
+### Block: B00
+- **EXISTEN_EXP_AN_FI**: A character field with a width of 68 and a maximum length of 1.
+- **FALLO**: A hidden, non-database, character field used for displaying messages.
+
+### Block: BL_GENERAL
+Handles general information about notifications.
+
+- **CDORGA_EREG**: Character (max 16), essential for storing organizational code.
+- **IDORGA_EREG**: Character (max 12), essential for storing organizational identification.
+- **LOV_CDUNIDAD**: A button field, used to trigger the list of units.
+- **CDUNIDAD**: Character (max 5), specifies the unit code.
+- **DSUNIDAD**: Character (max 150), specifies the description for the unit.
+- **FCDESDE**: Date, format mask `dd-mm-rrrr`, specifies the starting date.
+- **CAL_FCDESDE**: A button to trigger a calendar for `FCDESDE`.
+- **FCHASTA**: Date, format mask `dd-mm-rrrr`, specifies the end date.
+- **CAL_FCHASTA**: A button to trigger a calendar for `FCHASTA`.
+- **CDDEPTNO**: Character (max 2), specifies the department number.
+- **CDTEXP**: Character (max 4), specifies the type of expedition.
+- **CDNEXP**: Number (max 5), specifies the expedition number.
+- **CDDIGITO**: Number (max 1), specifies the digit.
+- **CDAEXP**: Number (max 4), specifies another expedition attribute.
+- **INCLUIR_ENVIADOS**: Checkbox, with a checked value of 'S' and unchecked value of 'N'.
+- **ACEPTAR**: Button, triggers the acceptance and validation of input data.
+- **CANCELAR**: Button, exits the form without validation.
+- **OFICIOS_CORR**: Checkbox for printing associated official documents.
+- **AYUDA**: Button, navigates to the help section.
+- **CERRAR**: Button, closes the form.
+
+### Block: GEA_ACURE
+Handles records regarding notifications for general documents.
+
+- **CODARCHIVO_PDF**: Number (max 12), for the PDF file code.
+- **CDDOCUM**: Character (max 11), primary key, specifies the document code.
+- **CB_MARCA**: Checkbox for marking document processing status.
+- **DOCUMENTO**: Character (max 14), specifies the document name.
+- **DSDOCUM**: Character (max 70), specifies the document description.
+- **EXPEDIENTE**: Character (max 50), specifies the expedition associated with the document.
+- **INTERESADO**: Character (max 70), specifies the interested party.
+- **IT_OFICIO_PDF**: Checkbox for indicating if the document is a PDF.
+- **IT_FIRMADO**: Checkbox for indicating if the document is signed.
+- **IT_REGISTRADO**: Checkbox for indicating if the document is registered.
+- **FCEMISION**: Date, specifies the emission date.
+- **FCREAL**: Date, specifies the actual date of some event related to the document.
+- **ITIMPRE**: Checkbox to indicate whether the document is printed.
+- **NUMRELACION**: Number (max 7), specifies some related number.
+- **CDDEPTNO**: Character (max 2), specifies the department code.
+- **CDTEXP**: Character (max 4), specifies the type of expedition.
+- **CDNEXP**: Number (max 5), specifies the expedition number.
+- **CDDIGITO**: Number (max 1), specifies the digit.
+- **CDAEXP**: Number (max 4), specifies another expedition attribute.
+- **CDINTERESADO**: Character (max 9), non-database, stores interested party code.
+- **CDINTERESADO_OLD**: Character (max 9), stores the old interested party code.
+- **CDSUBINT**: Character (max 2), non-database, stores sub interested party code.
+- **CDSUBINT_OLD**: Character (max 2), stores the old sub interested party code.
+- **DSNOMBRE**: Character (max 30), stores the interested party's name.
+- **DSAPELLIDO1**: Character (max 25), stores the first surname of the interested party.
+- **DSAPELLIDO2**: Character (max 25), stores the second surname of the interested party.
+- **DSRAZONSOC**: Character (max 80), stores the business name of the interested party.
+- **CDPAIS**: Character (max 3), non-database, stores the country code.
+- **CDPROV**: Character (max 2), non-database, stores the province code.
+- **CDMUNI**: Character (max 3), non-database, stores the municipality code.
+- **DSDIRECCION**: Character (max 80), stores the address.
+- **DSDIRECCION1**: Character (max 150), stores the extended address part 1.
+- **DSDIRECCION2**: Character (max 150), stores the extended address part 2.
+- **CDPOSTAL**: Character (max 5), stores the postal code.
+- **DSTELEFONO**: Character (max 13), stores the phone number.
+- **DSFAX**: Character (max 13), stores the fax number.
+- **CLAVE2**: Character (max 30), used for additional data.
+- **CONTENIDO2**: Character (max 50), used for additional data content.
+
+### Block: BL_DOC_CORR
+Handles the document corrections for the general documents.
+
+- **OCULTO**: Character (max 1), hidden field used for temporary storage.
+- **REGISTRAR**: Button, triggers document registration.
+- **ACEPTAR**: Button, triggers document sending.
+- **MARCAR**: Button, marks all documents for processing.
+- **DESMARCAR**: Button, unmarks all documents for processing.
+- **DOCSEL**: Number (max 4), keeps count of selected documents.
+- **DSRESULTADO**: Character (max 5000), holds processing result messages.
+
+### Block: BL_DEVOL
+Handles the fields used for returns.
+
+- **CDDEPTNO**: Character (max 2), stores the department number.
+- **DSCONS**: Character (max 80), stores the name of the department.
+- **LOV_CONSEJ**: Button to trigger the LOV for choosing departments.
+- **CDUNIDAD**: Character (max 15), stores the unit number.
+- **IDORGA**: Character (max 12), stores the organization code.
+- **DSUNIDAD**: Character (max 80), stores the name of the unit.
+- **LOV_UNIDAD**: Button to trigger the LOV for choosing units.
+- **DSDIR1**: Character (max 80), stores address line 1.
+- **DSDIR2**: Character (max 80), stores address line 2.
+- **CDPOSTAL**: Character (max 5), stores the postal code.
+- **CDPROV**: Character (max 2), stores the province code.
+- **CDMUNI**: Character (max 3), stores the municipality code.
+- **LOV_MUNI**: Button to trigger the LOV for choosing municipalities.
+- **DSMUNI**: Character (max 50), stores municipality name.
+- **CANCELAR**: Button, cancels the action.
+- **ACEPTAR**: Button, confirms the return data and processes further.
+
+### Block: NOTIFICACION_TELEMATICA
+Handles the telematic notifications.
+
+- **DOCUMENTO**: Character (max 14), specifies the document's name.
+- **DSDOCUM**: Character (max 70), specifies the document's description.
+- **EXPEDIENTE**: Character (max 50), specifies the expedition the document is associated with.
+- **INTERESADO**: Character (max 70), specifies the interested party.
+- **FCCREA**: Date, specifies the creation date of the document.
+- **ANEXOS_NOTE**: Number, specifies the number of annexes.
+- **IT_FIRMADO**: Checkbox indicating whether the document is signed.
+- **IT_REGISTRADO**: Checkbox indicating whether the document is registered.
+- **IMDOCUMENTO**: Image item, used to display icons for document actions.
+- **RESULTADO**: Image item, used to display status icons.
+- **CB_MARCA**: Checkbox for marking document processing status.
+- **CDPROCEDIMIENTO**: Character (max 11), non-database, procedural code reference.
+- **IT_CDPROC_OK**: Number, used for procedural code validation.
+- **IDALTA**: Character (max 8), specifies the document's high ID.
+- **SITUACION_ERROR_BD**: Image item, used to highlight database-saving issues.
+- **SITUACION_ERROR_DUE**: Image item, used for highlighting DUE errors.
+- **SITUACION_ERROR_REGSAL**: Image item, used to highlight registration issues.
+- **SITUACION_ERROR_FIRMA**: Image item, used to highlight signing issues.
+- **SITUACION_REENVIO**: Character, specifies whether the document needs resending.
+- **CODARCHIVO_PDF**: Number, stores the PDF file's code.
+
+### Block: BL_DOC_NOTE
+Handles the actions on the telematic notification document.
+
+- **ACEPTAR**: Button, initiates the sending of telematic notifications.
+- **MARCAR**: Button, marks all telematic documents for processing.
+- **DESMARCAR**: Button, unmarks all telematic documents.
+- **DOCSEL**: Number, keeps count of selected telematic documents.
+- **OCULTO**: Character (max 1), hidden field.
+
+### Block: BL_RESULTADO_ERROR
+Contains the hidden fields for dealing with errors in notification processing.
+
+- **OCULTO**: Character (max 1), hidden field used for temporary storage.
+- **B_SALIR**: Button, closes the error handling form.
+
+### Block: BL_SITUACION_ERROR
+Displays any issues with the notification documents that need addressing.
+
+- **OCULTO**: Character (max 1), hidden field used for temporary storage.
+- **SITUACION_ERROR_BD**: Image item for highlighting storing issues in the database.
+- **DES_SITUACION_ERROR_BD**: Character (max 100), description of database storing issues.
+- **B_BD**: Button to edit and store the document in the database.
+- **DES_SITUACION_ERROR_REGSAL**: Character (max 100), description of registration issues.
+- **SITUACION_ERROR_REGSAL**: Image item, used for highlighting registering issues.
+- **DES_SITUACION_ERROR_FIRMA**: Character (max 100), description of signing issues.
+- **SITUACION_ERROR_FIRMA**: Image item, used for highlighting signing issues.
+- **B_SALIR**: Button, exits the current error handling session.
+
+## List of Values (LOVs)
+1. **LOV_UNIDAD**: Provides a list of units from the record group **RG_UNIDAD**.
+2. **LOV_UNIDAD_DEVOL**: Provides a list of units for return actions from **RG_UNIDAD_DEVOL**.
+3. **LOV_CONSEJ**: Provides a list of departments from **RG_CONSEJ**.
+4. **LOV_MUNI**: Provides a list of municipalities from **RG_MUNI**.
+
+## Record Groups
+1. **RG_UNIDAD**: Query selecting distinct units and their descriptions for the current user's organization.
+2. **RG_UNIDAD_DEVOL**: Query to select the distinct units associated with a department for returns.
+3. **RG_CONSEJ**: Query to retrieve department names and their descriptions.
+4. **RG_MUNI**: Query to retrieve municipalities within a specific province.
+
+## Business Logic and Validations
+- **EXISTEN_EXP_AN_FI** checks if there are finalized or annulled expeditions.
+- **Total Documents Processing**: Checks document selection status (`CB_MARCA`) and ensures compliance with business rules.
+- **Date Validation**: Ensures dates (`FCDESDE`, `FCHASTA`) are within acceptable ranges and logical constraints.
+- **Unit and Organizational Codes**: Enforce proper selection and validation through LOVs.
+- **Signature and Registration Check**: Ensures documents are correctly signed and registered before issuance.
+- **Telematic Notifications**: Segregates logic for handling and sending notifications, verifying annexes, and checking statuses.
+- **Error Handling**: Marking and providing feedback for any issues during processing, saving in the database, signing, or sending notifications.
+
+This detailed description outlines the essential structure and business logic within the EXPECA01 form in Oracle Forms, enabling accurate replication of its data handling and rules.

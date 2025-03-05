@@ -1,0 +1,31 @@
+<mv-card>
+  <mv-header>
+    <mv-title>Gestión de Notificaciones Telemáticas</mv-title>
+  </mv-header>
+  <mv-content>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Detalles</th>
+          <th>Anexos</th>
+          <th>Firmados</th>
+          <th>Registrados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let notificacion of notificacionesTelematicas">
+          <td>{{ notificacion.id }}</td>
+          <td>{{ notificacion.detalles }}</td>
+          <td>{{ notificacion.anexos }}</td>
+          <td>{{ notificacion.firmados }}</td>
+          <td>{{ notificacion.registrados }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <mv-button color="primary" (click)="marcarTodos()">Marcar Todos</mv-button>
+      <mv-button color="warn" (click)="desmarcarTodos()">Desmarcar Todos</mv-button>
+    </div>
+  </mv-content>
+</mv-card>

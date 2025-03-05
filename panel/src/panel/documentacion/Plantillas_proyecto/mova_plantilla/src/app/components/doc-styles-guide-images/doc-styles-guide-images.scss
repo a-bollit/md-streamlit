@@ -1,0 +1,11 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+img{
+  cursor: pointer;
+  max-height: 10rem;
+}

@@ -1,0 +1,25 @@
+<mv-card>
+  <mv-header [headerTitle]="'Notificaciones de Correos'"
+             [headerSubtitle]="'Gestión de notificaciones'"
+             [fixed]="true"
+             [showBackButton]="true"
+             [showMenuButton]="false">
+  </mv-header>
+  
+  <form>
+    <div>
+      <label>
+        <input type="checkbox" (click)="toggleSelectAll()" [checked]="allSelected"> Seleccionar/Deseleccionar todos
+      </label>
+    </div>
+    
+    <div *ngFor="let notification of data">
+      <label>
+        <mv-checkbox [(ngModel)]="notification.selected"></mv-checkbox> {{ notification.descripcion }}
+      </label>
+    </div>
+    
+    <mv-button (click)="updateNotifications()">Actualizar Notificaciones</mv-button>
+  </form>
+  
+</mv-card>

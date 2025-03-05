@@ -1,0 +1,696 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación menú lateral</strong></mv-card-title>
+
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='appShortName.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> appShortName
+      </a></li>
+      <li><a class="nostyle" (click)='appLongName.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> appLongName
+      </a></li>
+      <li><a class="nostyle" (click)='appDesc.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> appDesc
+      </a></li>
+      <li><a class="nostyle" (click)='position.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> position
+      </a></li>
+      <li><a class="nostyle" (click)='mode.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> mode
+      </a></li>
+      <li><a class="nostyle" (click)='modeSmall.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> modeSmall
+      </a></li>
+      <li><a class="nostyle" (click)='alwaysOpen.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> alwaysOpen
+      </a></li>
+      <li><a class="nostyle" (click)='logoApp.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> logoApp
+      </a></li>
+      <li><a class="nostyle" (click)='closeOnSelectItem.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> closeOnSelectItem
+      </a></li>
+    </ol>
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='closeLateralMenu.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> closeLateralMenu
+      </a></li>
+      <li><a class="nostyle" (click)='openLateralMenu.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> openLateralMenu
+      </a></li>
+      <li><a class="nostyle" (click)='toggleLateralMenu.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> toggleLateralMenu
+      </a></li>
+      <li><a class="nostyle" (click)='updateLateralMenu.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> updateLateralMenu
+      </a></li>
+      <li><a class="nostyle" (click)='loginLogoutUpdateExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> modificar elementos del menú al hacer login/logout
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-menu</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente sirve para modelar el menú lateral de la app. Es un componente interno de MOVA y no se puede modificar, aunque se puede configurar
+      como se indica en esta documentación.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración del componente <strong>mv-menu</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Para definir el html de los elementos del menú, hay que hacerlo en el componente de aplicación
+        <strong>lateral-menu</strong>. Podemos incluir componentes y elementos HTML personalizados. Se recomienda mantener la estructura
+        que se muestra, aunque se puede cambiar y añadir lo que se desee:</p>
+      <mv-tab-group>
+        <mv-tab label="lateral-menu.html">
+          <pre><code [highlight]="codeLateralMenuExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="lateral-menu.ts">
+          <pre><code [highlight]="codeLateralMenuExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="lateral-menu.scss">
+          <pre><code [highlight]="codeLateralMenuExampleSCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Además, el menú lateral de una aplicación MOVA es configurable mediante el archivo
+        <strong>config-default-main-container.json</strong>, concretamente en la propiedad lateralMenuConfig</p>
+
+      <mv-tab-group>
+        <mv-tab label="config-default-main-container.json">
+          <pre><code [highlight]="codeUseExampleJSON"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- appShortName -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #appShortName><strong>appShortName</strong></mv-card-title>
+      <mv-card-subtitle>Nombre corto de la app.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad appShortName permite definir el nombre corto de la app.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAppShortNameExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAppShortNameExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (click)="showAppShortName(true)">
+        Activar appShortName
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (click)="showAppShortName(false)">
+        Resetear appShortName
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- appLongName -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #appLongName><strong>appLongName</strong></mv-card-title>
+      <mv-card-subtitle>Nombre largo de la app.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad appLongName permite definir el nombre largo de la app.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAppLongNameExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAppLongNameExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (clickEvent)="showAppLongName(true)">
+        Activar appLongName
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (click)="showAppLongName(false)">
+        Resetear appLongName
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- appDesc -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #appDesc><strong>appDesc</strong></mv-card-title>
+      <mv-card-subtitle>Descripción de la app.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad appDesc permite definir la descripción de la app.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAppDescExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAppDescExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (clickEvent)="showAppDesc(true)">
+        Activar appDesc
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (click)="showAppDesc(false)">
+        Resetear appDesc
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- alwaysOpen -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #alwaysOpen><strong>alwaysOpen</strong></mv-card-title>
+      <mv-card-subtitle>Menú siempre abierto.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad alwaysOpen permite establecer la visibilidad del menú:
+      <ul>
+        <li>true: siempre visible excepto en pantallas pequeñas que sí se ocultará para que no ocupe demasiado espacio
+          (a menos que se establezca la propiedad modeSmall: 'side')</li>
+        <li>false: el menú estará oculto y para tendremos que abrirlo mediante el botón de la cabecera o el método apropiado</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAlwaysOpenExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAlwaysOpenExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (clickEvent)="setAlwaysOpen(true)">
+        alwaysOpen = true
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (click)="setAlwaysOpen(false)">
+        alwaysOpen = false
+      </mv-button>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- closeOnSelectItem -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #closeOnSelectItem><strong>closeOnSelectItem</strong></mv-card-title>
+      <mv-card-subtitle>Cerrar el menú tras click.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad closeOnSelectItem permite definir si queremos que el menú se cierre tras pulsar
+        en una opción del mismo:</p>
+      <ul>
+        <li>true: el menú se cerrará tras pulsar en una opción del mismo</li>
+        <li>false: el menú no se cerrará tras pulsar en una opción del mismo, permanecerá abierto</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeCloseOnSelectItemExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeCloseOnSelectItemExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (clickEvent)="setCloseOnSelectItem(true)">
+        closeOnSelectItem = true
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (click)="setCloseOnSelectItem(false)">
+        closeOnSelectItem = false
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- logoApp -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #logoApp><strong>logoApp</strong></mv-card-title>
+      <mv-card-subtitle>Icono de la app.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad logoApp permite definir el icono de la app. La imagen tendrá que estar situada en la carpeta
+      src/assets</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLogoAppExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLogoAppExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (clickEvent)="showLogoApp(true)">
+        Cambiar logoApp
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        class="configButton"
+        color="primary"
+        (click)="showLogoApp(false)">
+        Resetear logoApp
+      </mv-button>
+
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- mode -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #mode><strong>mode</strong></mv-card-title>
+      <mv-card-subtitle>Modo de apertura del menú.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad mode permite definir el modo de apertura del menú:</p>
+      <ul>
+        <li>side: el menú se sitúa fijo al lado del contenido</li>
+        <li>over: el menú se desliza por encima del contenido</li>
+        <li>push: el menú desplaza al contenido</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeModeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeModeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        class="configButton"
+        (click)="setChangeMode('side')">
+        Mode side (default)
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        class="configButton"
+        (clickEvent)="setChangeMode('over')">
+        Mode over
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        class="configButton"
+        (click)="setChangeMode('push')">
+        Mode push
+      </mv-button>
+
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- modeSmall -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #modeSmall><strong>modeSmall</strong></mv-card-title>
+      <mv-card-subtitle>Modo de apertura del menú en pantallas pequeñas.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad mode modeSmall definir el modo de apertura del menú de manera idéntica a la propiedad
+      mode en pantallas pequeñas (<767px): </p>
+      <ul>
+        <li>side: el menú se sitúa fijo al lado del contenido</li>
+        <li>over: el menú se desliza por encima del contenido</li>
+        <li>push: el menú desplaza al contenido</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeModeSmallExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeModeSmallExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        class="configButton"
+        (click)="setChangeModeSmall('side')">
+        ModeSmall side
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        class="configButton"
+        (clickEvent)="setChangeModeSmall('over')">
+        ModeSmall over (default)
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        class="configButton"
+        (click)="setChangeModeSmall('push')">
+        ModeSmall push
+      </mv-button>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- position -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #position><strong>position</strong></mv-card-title>
+      <mv-card-subtitle>Posición del menú.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad position permite definir la posición del menú: </p>
+      <ul>
+        <li>start: el menú estará situado a la izquierda</li>
+        <li>end: el menú estará situado a la derecha</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codePositionExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codePositionExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        class="configButton"
+        (click)="setChangePosition('start')">
+        position = 'start'
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (clickEvent)="setChangePosition('end')">
+        position = 'end'
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!--
+  *
+  * Eventos
+  *
+  -->
+
+  <!-- closeLateralMenu -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #closeLateralMenu><strong>closeLateralMenu</strong></mv-card-title>
+      <mv-card-subtitle>Cerrar el menú.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento closeLateralMenu permite cerrar el menú programáticamente desde donde se desee.
+      Se lleva a cabo desde el servicio AppService</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeCloseLateralMenuHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeCloseLateralMenuTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (clickEvent)="closeLateralMenuExample()">
+        Cerrar menú lateral
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- openLateralMenu -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #openLateralMenu><strong>openLateralMenu</strong></mv-card-title>
+      <mv-card-subtitle>Abrir el menú.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento openLateralMenu permite abrir el menú programáticamente desde donde se desee.
+      Se lleva a cabo desde el servicio AppService</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeOpenLateralMenuHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeOpenLateralMenuTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (clickEvent)="openLateralMenuExample()">
+        Abrir menú lateral
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- toggleLateralMenu -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #toggleLateralMenu><strong>toggleLateralMenu</strong></mv-card-title>
+      <mv-card-subtitle>Cambiar el estado del menú.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento toggleLateralMenu permite cambiar el estado del menú: si estaba abierto lo cerrará y si estaba
+        cerrado lo abrirá. Se lleva a cabo desde el servicio AppService</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeToggleLateralMenuHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeToggleLateralMenuTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (clickEvent)="toggleLateralMenuExample()">
+        Toggle menú lateral
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- updateLateralMenu -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #updateLateralMenu><strong>updateLateralMenu</strong></mv-card-title>
+      <mv-card-subtitle>Cambiar los elementos del menú.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento updateLateralMenu permite lanzar un evento para actualizar el listado del menú. Se lleva a cabo desde el servicio AppService</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUpdateLateralMenuHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUpdateLateralMenuCallTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="MenuTS">
+          <pre><code [highlight]="codeUpdateLateralMenuTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (clickEvent)="updateLateralMenuExample(true)">
+        Cargar datos al menú lateral
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        class="configButton"
+        (click)="updateLateralMenuExample(false)">
+        resetear menú lateral
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- loginLogoutUpdateExample -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #loginLogoutUpdateExample><strong>Ejemplo modificación de elementos según login</strong></mv-card-title>
+      <mv-card-subtitle>Cambiar los elementos del menú lateral al hacer login/logout.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Ejemplo de login desde el menú lateral. Oculta el o muestra en el menú lateral los botones de login/logout
+         segun si estás o no logueado</p>
+
+      <mv-tab-group>
+        <mv-tab label="lateral-menu-HTML">
+          <pre><code [highlight]="codeLoginLogoutHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="lateral-menu-TS">
+          <pre><code [highlight]="codeLoginLogoutTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

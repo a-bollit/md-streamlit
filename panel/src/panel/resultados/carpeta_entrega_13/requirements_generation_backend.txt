@@ -1,0 +1,178 @@
+Result from requirements_generation_backend: ### Summary and Technical Requirements for Backend Implementation for Oracle Forms EXPECA01
+
+#### Entities and Database Tables
+
+1. **Entity: Clients**
+   - **Table Name: CL_CLIENTES**
+   - **Attributes:**
+     - `uuid` (VARCHAR(36), PRIMARY KEY)
+     - `nombre` (VARCHAR(50), NOT NULL)
+     - `edad` (INT, NOT NULL)
+     - `fecha_nacimiento` (DATE, NOT NULL)
+     - `fecha_hora_alta` (TIMESTAMP, NOT NULL)
+     - `tipo_cliente` (CHAR(1), NOT NULL, CHECK ['N', 'A'])
+     - `baja` (BOOLEAN, NOT NULL)
+   - **Relationships and Foreign Keys:**
+     - No direct relationships with other tables in this model.
+   - **Computed Fields:**
+     - None defined for this entity.
+
+2. **Entity: Expedientes (Case Files)**
+   - **Table Name: CL_EXPEDIENTES**
+   - **Attributes:**
+     - `uuid` (VARCHAR(36), PRIMARY KEY)
+     - `titulo` (VARCHAR(100), NOT NULL)
+     - `num_paginas` (INT, NOT NULL)
+     - `fecha_creacion` (DATE, NOT NULL)
+     - `ultima_revision` (DATE, NOT NULL)
+   - **Relationships and Foreign Keys:**
+     - No direct relationships with other tables in this model.
+   - **Computed Fields:**
+     - None defined for this entity.
+
+#### CRUD API Endpoints and HTTP Methods
+
+1. **Clients Management**
+   - **GET**: Retrieve a list of clients
+     - **URI**: `/clientes`
+     - **Description**: Fetches a paginated list of clients.
+     - **Input Parameters**: `init` (start of pagination), `limit` (limit of results)
+     - **Response Example**:
+     ```json
+     {
+       "result": { "status": true, "http_code": 206, "trace_id": "12345abcde" },
+       "metadata": {
+         "paging": {
+           "init": 15, "limit": 5, "num_page": 3, "total": 35, "total_pages": 7,
+           "links": {
+             "self": {"href": "/clientes?$init=15&amp;$limit=5"},
+             "previous": {"href": "/clientes?$init=10&amp;$limit=5"},
+             "next": {"href": "/clientes?$init=20&amp;$limit=5"},
+             "first": {"href": "/clientes?$init=0&amp;$limit=5"},
+             "last": {"href": "/clientes?$init=30&amp;$limit=5"}
+           }
+         }
+       },
+       "data": {
+         "clientes": [
+           {"uuid": "59909623-0b85-46e2-a5f4-ca81e81e3464", "nombre": "Juan", "edad": 40, "fecha_nacimiento": "1980-05-20", "fecha_hora_alta": "2020-03-15T23:55:33+01:00", "tipo_cliente": "N", "baja": false},
+           {"uuid": "ba3192f5-7ddf-4fdd-ac4e-97c206a13018", "nombre": "Pepe", "edad": 35, "fecha_nacimiento": "1985-05-20", "fecha_hora_alta": "2020-04-16T23:55:33+01:00", "tipo_cliente": "A", "baja": false}
+         ]
+       }
+     }
+     ```
+   - **POST**: Add a new client
+     - **URI**: `/clientes`
+     - **Request Body Example**:
+     ```json
+     {
+       "nombre": "Juan",
+       "edad": 30,
+       "fecha_nacimiento": "1991-03-25",
+       "fecha_hora_alta": "2021-07-16T23:55:33+01:00",
+       "tipo_cliente": "N",
+       "baja": false
+     }
+     ```
+     - **Response Example**:
+     ```json
+     {
+       "result": {"status": true, "http_code": 201, "trace_id": "12345abcde"},
+       "data": {"uuid": "ba3192f5-7ddf-4fdd-ac4e-97c206a13018", "nombre": "Juan"}
+     }
+     ```
+
+2. **Expedientes Management**
+   - **GET**: Retrieve a list of expedientes
+     - **URI**: `/expedientes`
+     - **Description**: Fetches a paginated list of expedientes.
+     - **Input Parameters**: `init` (start of pagination), `limit` (limit of results)
+     - **Response Example**:
+     ```json
+     {
+       "result": { "status": true, "http_code": 206, "trace_id": "12345abcde" },
+       "metadata": {
+         "paging": {
+           "init": 15, "limit": 5, "num_page": 3, "total": 35, "total_pages": 7,
+           "links": {
+             "self": {"href": "/expedientes?$init=15&amp;$limit=5"},
+             "previous": {"href": "/expedientes?$init=10&amp;$limit=5"},
+             "next": {"href": "/expedientes?$init=20&amp;$limit=5"},
+             "first": {"href": "/expedientes?$init=0&amp;$limit=5"},
+             "last": {"href": "/expedientes?$init=30&amp;$limit=5"}
+           }
+         }
+       },
+       "data": {
+         "expedientes": [
+           {"uuid": "b87a432c-7459-49e8-b9d5-b5dcb31c0cbb", "titulo": "Expediente 1", "num_paginas": 10, "fecha_creacion": "1990-07-04", "ultima_revision": "2021-03-21"},
+           {"uuid": "d2387b5d-ab2f-4d33-924e-c6772a1e74af", "titulo": "Expediente 2", "num_paginas": 20, "fecha_creacion": "1999-12-24", "ultima_revision": "2021-01-03"}
+         ]
+       }
+     }
+     ```
+   - **POST**: Add a new expediente
+     - **URI**: `/expedientes`
+     - **Request Body Example**:
+     ```json
+     {
+       "titulo": "Expediente 1",
+       "num_paginas": 10,
+       "fecha_creacion": "1990-07-04",
+       "ultima_revision": "2021-03-21"
+     }
+     ```
+     - **Response Example**:
+     ```json
+     {
+       "result": { "status": true, "http_code": 200, "trace_id": "12345abcde" },
+       "data": {
+         "uuid": "b87a432c-7459-49e8-b9d5-b5dcb31c0cbb",
+         "titulo": "Expediente 1",
+         "num_paginas": 10,
+         "fecha_creacion": "1990-07-04",
+         "ultima_revision": "2021-03-21"
+       }
+     }
+     ```
+
+#### File Uploads and Downloads
+- **POST**: Upload expediente file
+  - **URI**: `/expedientes/{uuid}/ficheros`
+  - **Request Body Example**:
+  ```json
+  {
+    "fichero": "RWplbXBsbyBkZSBmaWNoZXJvIGVuIEJhc2U2NA=="
+  }
+  ```
+  - **Response Example**:
+  ```json
+  {
+    "result": { "status": true, "http_code": 200, "trace_id": "12345abcde" },
+    "data": {
+      "uuid": "b87a432c-7459-49e8-b9d5-b5dcb31c0cbb",
+      "titulo": "Expediente 1",
+      "num_paginas": 10,
+      "fecha_creacion": "1990-07-04",
+      "ultima_revision": "2021-03-21"
+    }
+  }
+  ```
+
+#### Technical and Functional Backend Requirements
+
+1. **Client Management Category**
+   - **CRUD Functionality**: Implement endpoints for managing clients, including creating, reading (with pagination), updating, and deleting.
+   - **Validations**: Ensure valid inputs (e.g., positive age, not future birth date).
+
+2. **Case Files Management Category**
+   - **CRUD Functionality**: Implement endpoints for managing case files, with options for uploading and downloading files in Base64 format.
+   - **Version Control and Validations**: Implement logic for handling case file versions and validating uploaded files.
+
+3. **Additional Services**
+   - **Advanced Pagination**: Complete support for pagination, filters, and sorting in list requests for clients and case files.
+   - **Advanced Search**: Endpoint for performing searches by different criteria (e.g., client name, case file creation dates).
+
+#### Developer Notes
+
+The backend implementation must be carried out with Java Spring Boot, ensuring all specified standards in data models, services, and endpoints are met. Validations and business logic should be implemented in appropriate services, and API responses must adhere to the specified JSON format.

@@ -1,0 +1,154 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación estadísticas de uso - matomo (piwik)</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='solicitud.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Solicitud
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='portal.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Portal de consulta
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información y ejemplo de uso.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Con Matomo (piwik) se pueden registrar eventos como pulsaciones en botones, por ejemplo.
+        A continuación, se muestra un ejemplo en el que se registrará en matomo la pulsación del siguiente botón:</p>
+
+      <p>Documentación de Matomo:
+      <a
+        rel="noopener noreferrer"
+        href="https://www.npmjs.com/package/ngx-matomo"
+        target="_blank">
+        https://www.npmjs.com/package/ngx-matomo
+      </a>
+      </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de registro del evento de pulsación del botón:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleMatomoExample()">
+        Registrar pulsación
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Solicitud -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #solicitud><strong>Solicitud</strong></mv-card-title>
+      <mv-card-subtitle>Solicitud de piwik para nuestra app.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Para poder usar Matomo (piwik) en nuestra app hay que solicitarlo de la siguiente manera:</p>
+      <ul>
+        <li>Se solicitará un código Piwik al Área de Administración y Difusión Electrónica a través de Remedy como:
+          TAREAS INTERNAS > SISTEMAS DE INFORMACIÓN > MADRID.ORG > ESTADISTICASWEB, escaladas al grupo GC.MADRID.ORG</li>
+        <li>MOVA registra automáticamente los eventos de navegación (cada vez que se cambia de página o vista en la aplicación).
+          También se pueden registrar eventos personalizados como pulsar un botón o cualquier otra acción de forma manual</li>
+        <li>El responsable de la aplicación de Madrid Digital podrá tener un usuario al portal de estadísticas en el que verá los datos de su aplicación</li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración en la app.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Una vez tengamos el identificador para nuestra app, ya podremos cambiarlo en MOVA, en el archivo config-default.json:</p>
+
+      <mv-tab-group>
+        <mv-tab label="config-default.json">
+          <pre><code [highlight]="codeConfigDefaultExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Portal de consulta -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #portal><strong>Portal de consulta</strong></mv-card-title>
+      <mv-card-subtitle>Portal de consulta de piwik.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Para poder consultar las estadísticas de uso de la aplicación se hará desde <a rel="noopener noreferrer" href="http://estadisticas.madrid.org/piwik/" target="_blank">http://estadisticas.madrid.org/piwik/</a></p>
+
+      <p>El responsable de la aplicación de Madrid Digital podrá tener un usuario a este portal de estadísticas en el que ver los datos de su aplicación como:</p>
+      <ul>
+        <li>Número de visitantes a la aplicación</li>
+        <li>Número de visitas por página de la aplicación</li>
+        <li>Tipos de dispositivos y sistema operativo de los dispositivos de los visitantes</li>
+        <li>...</li>
+      </ul>
+
+      <img
+        class="estadisticas-img"
+        src="assets/examples/estadisticas-piwik.png"
+        alt="Estadísticas piwik"
+        >
+
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

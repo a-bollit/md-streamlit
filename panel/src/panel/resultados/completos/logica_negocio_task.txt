@@ -1,0 +1,212 @@
+Result from logica_negocio_task: ### Guía detallada para implementar la lógica de negocio `EXPECA01` en Java Spring Boot
+
+A continuación, se detalla cómo estructurar las clases de servicio de Java Spring Boot, qué métodos crear, qué validaciones aplicar y cómo manejar la lógica compleja, basándonos en el módulo Oracle Forms descrito.
+
+### Estructura de clases
+
+#### 1. Servicio Principal
+
+Crear una clase de servicio principal llamada `NotificationService`. Esta clase gestionará la lógica relacionada con las notificaciones y delegará tareas específicas a otros componentes o servicios según sea necesario. Aquí se describen los componentes y funcionalidades principales.
+
+```java
+@Service
+public class NotificationService {
+    
+    @Autowired
+    private NotificationRepository notificationRepository;
+    
+    @Autowired
+    private ExpeditionService expeditionService;
+
+    @Autowired
+    private DocumentService documentService;
+
+    // Otros servicios y componentes necesarios
+    //...
+}
+```
+
+### Métodos y Validaciones
+
+1. **Método para manejo de LOV_CDUNIDAD**
+
+```java
+public List<Unidad> getAllUnidades() {
+    return unidadRepository.findAll();
+}
+```
+
+2. **Navegación de Items por Teclado**
+
+```java
+// Métodos para navegación entre items
+public void navigateToNextItem(String currentItem) {
+    switch (currentItem) {
+        case "FCDESDE":
+            // Navegar al siguiente item
+            break;
+        case "FCHASTA":
+            // Navegar al siguiente item
+            break;
+        case "CDDEPTNO":
+            // Navegar al siguiente item
+            break;
+        // Otros casos...
+    }
+}
+```
+
+3. **Validar CDTEXP**
+
+```java
+public void validateCDTEXP(String cdtexp) {
+    if (cdtexp != null && !cdtexp.isEmpty()) {
+        if ("S".equals(restriccionesAplTexp(cdtexp))) {
+            if (!permisosAplicacion(cdtexp)) {
+                throw new ValidationException("Permission Denied");
+            }
+        }
+    }
+}
+
+private String restriccionesAplTexp(String cdtexp) {
+    // Lógica para verificar restricciones
+    return "S"; // Placeholder
+}
+
+private boolean permisosAplicacion(String cdtexp) {
+    // Lógica para verificar permisos
+    return true; // Placeholder
+}
+```
+
+4. **Validar y Procesar ACEPTAR**
+
+```java
+public void handleAceptar(NotificationRequest request) {
+    if (request.getCdunidad() == null) {
+        throw new ValidationException("CDUNIDAD is required");
+    }
+
+    validateExpediente(request.getExpediente());
+    validateFechas(request.getFcdesde(), request.getFchasta());
+
+    // Navegar y ejecutar queries
+    // ...
+
+    if (!notificationExists(request)) {
+        throw new EntityNotFoundException("Notification not found");
+    }
+}
+
+private void validateExpediente(String expediente) {
+    String status = expeditionService.getExpedienteStatus(expediente);
+    if ("FI".equals(status) || "AN".equals(status)) {
+        throw new ValidationException("Invalid expedition status");
+    }
+}
+
+private void validateFechas(LocalDate fcdesde, LocalDate fchasta) {
+    if (fcdesde.isAfter(fchasta)) {
+        throw new ValidationException("Invalid date range");
+    }
+}
+
+private boolean notificationExists(NotificationRequest request) {
+    // Lógica para verificar si la notificación existe
+    return true; // Placeholder
+}
+```
+
+5. **Procesar CANCELAR**
+
+```java
+public void handleCancelar() {
+    // Lógica para cerrar el formulario o cancelar la operación
+}
+```
+
+6. **Manejo de Actividades Post-Consulta**
+
+```java
+public void postQuery(String expediente) {
+    String status = expeditionService.getExpedienteStatus(expediente);
+
+    if ("FI".equals(status) || "AN".equals(status)) {
+        throw new ValidationException("Invalid expedition status");
+    }
+
+    // Establecer valores en campos
+    // ...
+}
+```
+
+7. **Registro y Envío de Documentos**
+
+```java
+public void registerDocuments(List<Document> documents) {
+    for (Document doc : documents) {
+        if (!doc.isRegistered()) {
+            documentService.registerDocument(doc);
+        }
+    }
+}
+
+public void sendDocuments(List<Document> documents) {
+    for (Document doc : documents) {
+        if (doc.isRegistered()) {
+            documentService.sendDocument(doc);
+        } else {
+            throw new ValidationException("Document not registered");
+        }
+    }
+}
+```
+
+8. **Validar Municipio**
+
+```java
+public void validateMunicipio(String cdmuni) {
+    if (!municipioService.isValidMunicipio(cdmuni)) {
+        throw new ValidationException("Invalid municipality code");
+    }
+}
+```
+
+### Estrategias de Diseño y Buenas Prácticas
+
+1. **Uso de Repositorios y Servicios**
+
+Separar la lógica de negocio en servicios específicos (e.g., `DocumentService`, `ExpeditionService`, `MunicipioService`) y utilizar repositorios para comunicación con la base de datos.
+
+2. **Uso de DTOs y Validaciones**
+
+Definir DTOs (Data Transfer Objects) para manejar datos de entrada y salida. Utilizar anotaciones de validación de Spring (`@NotNull`, `@Size`, etc.) en estos DTOs para validar datos a nivel de entrada.
+
+3. **Patrón de Delegación**
+
+Delegar tareas específicas a funciones privadas dentro del servicio principal o a otros servicios según corresponda, para mantener el código modular y fácil de mantener.
+
+4. **Manejo de Excepciones**
+
+Crear una clase global de manejo de excepciones (`@ControllerAdvice`) para capturar y manejar excepciones personalizadas (`ValidationException`, `EntityNotFoundException`, etc.) ofreciendo mensajes significativos a los usuarios.
+
+### Ejemplo de Repositorio y Entidad
+
+```java
+@Entity
+public class Unidad {
+    @Id
+    private Long id;
+    private String nombre;
+    // Otros campos...
+}
+
+@Repository
+public interface UnidadRepository extends JpaRepository<Unidad, Long> {
+}
+```
+
+### Conclusion
+
+Esta guía proporciona una estructura clara y detallada sobre cómo migrar la lógica de negocio de Oracle Forms a un servicio en Java Spring Boot. Se enfatiza el uso de patrones de diseño y buenas prácticas de desarrollo para garantizar que la nueva implementación sea escalable, testeable y mantenible. Al seguir estos pasos y recomendaciones, se puede replicar con precisión la funcionalidad existente en una arquitectura moderna de Spring Boot.

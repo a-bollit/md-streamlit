@@ -1,0 +1,95 @@
+Result from datos_negocio_task: La estructura de datos y la lógica de negocio del formulario Oracle Forms EXPECA01 se presentan de la siguiente manera:
+
+### Bloques de Datos
+
+#### Bloque B00
+- **EXISTEN_EXP_AN_FI:** Campo de texto de tipo Char, sin relación con la base de datos ni permite consulta o actualización.
+  - Atributos: `Width=68`, `MaximumLength=1`, `Height=14`.
+
+- **FALLO:** Campo de texto de tipo Char, sin relación con la base de datos, oculto y no permite consulta ni actualización.
+  - Atributos: `Width=83`, `MaximumLength=1`, `Height=1`, `Visible=false`, `Enabled=true`.
+
+#### Bloque BL_GENERAL
+- **CDORGA_EREG:** Campo de texto, invisible, asociado a la base de datos.
+  - Atributos: `Width=70`, `MaximumLength=16`, `XPosition=168`, `YPosition=29`.
+
+- **IDORGA_EREG:** Campo de texto, invisible, asociado a la base de datos.
+  - Atributos: `Width=70`, `MaximumLength=12`, `XPosition=168`, `YPosition=29`.
+
+- **LOV_CDUNIDAD:** Botón icono que invoca un LOV. Permite consultar unidades administrativas.
+  - Atributos: `Width=18`, `XPosition=96`, `YPosition=14`.
+
+- **CDUNIDAD:** Campo de texto mostrado, pero no asociado a la base de datos.
+  - Atributos: `Width=47`, `MaximumLength=5`, `XPosition=117`, `YPosition=15`.
+
+- **DSUNIDAD:** Campo de texto mostrable, utilizado para descripción de la unidad y es de sólo lectura.
+  - Atributos: `Width=239`, `MaximumLength=150`, `XPosition=166`, `YPosition=15`.
+
+- **FCDESDE:** Campo de texto de tipo Date, permite la entrada de la fecha desde, con formato `dd-mm-yyyy` y limita la entrada de contenido.
+  - Atributos: `Width=57`, `MaximumLength=10`, `XPosition=95`, `YPosition=38`.
+
+- **CAL_FCDESDE:** Botón icono que invoca un calendario.
+  - Atributos: `Width=18`, `XPosition=156`, `YPosition=37`.
+
+- **FCHASTA:** Campo de texto de tipo Date, permite la entrada de la fecha hasta, con formato `dd-mm-yyyy` y limita la entrada de contenido.
+  - Atributos: `Width=57`, `MaximumLength=10`, `XPosition=221`, `YPosition=38`.
+
+- **CAL_FCHASTA:** Botón icono que invoca un calendario.
+  - Atributos: `Width=18`, `XPosition=282`, `YPosition=37`.
+
+- **CDDEPTNO:** Campo de texto, utilizado para ingresar el número de departamento.
+  - Atributos: `Width=17`, `MaximumLength=2`, `XPosition=95`, `YPosition=61`.
+
+- **CDTEXP:** Campo de texto de tipo Char, utilizado para ingresar código de expediente.
+  - Atributos: `Width=36`, `MaximumLength=4`, `XPosition=117`, `YPosition=61`.
+
+- **CDNEXP:** Campo de texto de tipo Number, utilizado para ingresar el número de expediente.
+  - Atributos: `Width=37`, `MaximumLength=5`, `XPosition=158`, `YPosition=61`.
+
+- **CDDIGITO:** Campo de texto de tipo Number, ingreso dígito del expediente.
+  - Atributos: `Width=14`, `MaximumLength=1`, `XPosition=199`, `YPosition=61`.
+
+- **CDAEXP:** Campo de texto de tipo Number, ingreso del año del expediente.
+  - Atributos: `Width=33`, `MaximumLength=4`, `XPosition=218`, `YPosition=61`.
+
+- **INCLUIR_ENVIADOS:** Casilla de verificación que determina si se incluyen enviados.
+  - Atributos: `Width=110`, `MaximumLength=1`, `XPosition=95`, `YPosition=82`.
+
+- **ACEPTAR:** Botón que ejecuta validaciones y comandos de negocio.
+  - Atributos: `Width=80`, `XPosition=214`, `YPosition=110`.
+
+- **CANCELAR:** Botón para cancelar la operación.
+  - Atributos: `Width=80`, `XPosition=114`, `YPosition=110`.
+
+- **OFICIOS_CORR:** Casilla de verificación para imprimir oficios relacionados.
+  - Atributos: `Width=110`, `MaximumLength=1`, `XPosition=31`, `YPosition=237`.
+
+- **AYUDA:** Botón para mostrar ayuda.
+  - Atributos: `Width=18`, `XPosition=322`, `YPosition=37`.
+
+- **CERRAR:** Botón para cerrar vista de ayuda.
+  - Atributos: `Width=76`, `XPosition=140`, `YPosition=111`.
+
+### Listas de Valores (LOVs)
+- **LOV_UNIDAD:** Muestra unidades administrativas. Relacionado con `BL_GENERAL.CDUNIDAD`.
+- **LOV_UNIDAD_DEVOL:** Similar a `LOV_UNIDAD`, pero específico para unidades devolutivas.
+- **LOV_CONSEJ:** Muestra consejerías u organismos.
+- **LOV_MUNI:** Muestra municipios de Madrid.
+
+### Grupos de Registros
+- **RG_UNIDAD:** Consulta que provee datos para `LOV_UNIDAD`.
+- **RG_UNIDAD_DEVOL:** Consulta para devolver datos de unidades.
+- **RG_CONSEJ:** Consulta organismos y consejerías.
+- **RG_MUNI:** Consulta los municipios de Madrid.
+
+### Relaciones y Lógica de Negocio
+- **Validaciones y Dependencias de Fechas:** Procedimientos `Valida_Fechas` y `Valida_Expediente` aseguran que las fechas ingresadas sean válidas y que los expedientes no estén anulados o finalizados antes de permitir notificaciones.
+  
+- **Proceso de Notificación y Envío:** Procedimientos `Construir_Where_Corr`, `Construir_Where_Note` y `ULTIMA_NOTIFICACION` construyen condiciones WHERE dinámicamente para filtrar registros relevantes en los procesos de notificación de correos y telemáticas.
+
+- **Registro y Visualización de Errores:** Procedimientos `COMPROBAR_SELECCION` y `PONER_ROJO` determinan y marcan visualmente los errores en la interface, proporcionando seguimiento y depuración de errores efectivos.
+
+### Operaciones CRUD
+- **CRUD en Tablas de Base de Datos:** Los bloques GEA_ACURE y NOTIFICACION_TELEMATICA están configurados para insertar, actualizar y eliminar documentos en la base de datos dentro de las restricciones y validaciones implementadas en los triggers WHEN-VALIDATE-ITEM y POST-QUERY.
+
+Este análisis detallado proporciona una estructura clara y lógica del formulario que permite a los desarrolladores replicar el comportamiento y estructura de datos del formulario en Oracle Forms EXPECA01 sin necesidad de detallar la interfaz visual o los triggers.

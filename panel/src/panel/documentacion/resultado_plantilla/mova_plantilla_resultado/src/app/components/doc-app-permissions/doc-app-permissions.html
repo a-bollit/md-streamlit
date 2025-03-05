@@ -1,0 +1,77 @@
+<section class="view-default-style">
+
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Permisos de aplicación</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div *ngFor="let example of examples">
+      <a class="nostyle" (click)='scrollTo(example.id)'>
+        <mv-icon>link</mv-icon> {{example.titulo}}
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- info -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Permisos de aplicación</strong></mv-card-title>
+      <mv-card-subtitle>Android e iOs</mv-card-subtitle>
+    </mv-card-header>
+    <mv-card-content>
+      <p>
+        En este apartado se mostraran los permisos de aplicaciones nativas para Android e iOs que 
+        <strong>se pueden eliminar de la aplicación en caso de que no se vayan a usar</strong>
+        Para poder mejorar el rendimiento de la aplicación, se mostrara donde están las
+         configuraciones para poder añadir o quitar estoy plugins nativos.
+      </p>
+      <p>
+        si se ha generado el proyecto de Android anteriormente, hay que
+        <strong>borrar la carpeta de plugins</strong>. Se mostraran también 
+        donde están todos los apartados para poder eliminar todo rastro del 
+        plugin, ya que si cordova encuentra algún rastro, añadirá la librería 
+        de nuevo al proyecto.
+      </p>
+    </mv-card-content>
+  </mv-card>
+
+
+  <!-- cam -->
+  <mv-card class="card-code" *ngFor="let example of examples">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title [attr.id]="example.id"><strong>{{example.titulo}}</strong></mv-card-title>
+      <mv-card-subtitle>{{example.subtitulo}}</mv-card-subtitle>
+    </mv-card-header>
+    <mv-card-content>
+
+      <div [innerHTML]="example.descripcion"></div>
+      <p><strong>{{example.tabTitle}}</strong></p>
+      <mv-tab-group>
+
+        <mv-tab label="config.xml" *ngIf="example.config !== ''">
+          <pre><code [highlight]="example.config"></code></pre>
+        </mv-tab>
+        <mv-tab label="package.json" *ngIf="example.package !== ''">
+          <pre><code [highlight]="example.package"></code></pre>
+        </mv-tab>
+        <mv-tab label="Android" *ngIf="example.Android !== ''">
+          <pre><code [highlight]="example.Android"></code></pre>
+        </mv-tab>
+        <mv-tab label="iOs" *ngIf="example.iOs !== ''">
+          <pre><code [highlight]="example.iOs"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>

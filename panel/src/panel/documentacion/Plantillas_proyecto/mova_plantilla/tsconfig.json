@@ -1,0 +1,66 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es5", // Si pone es2015 hay que cambiarlo para que genere bien el MIME type para os scripts JavaScript. https://github.com/angular/angular/issues/30835#issuecomment-523018246
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      // node_modules
+      "@angular/animations/*": ["../../node_modules/@angular/animations/*"],
+      "@angular/animations": ["../../node_modules/@angular/animations"],
+      "@angular/common/*": ["../../node_modules/@angular/common/*"],
+      "@angular/common": ["../../node_modules/@angular/common"],
+      "@angular/compiler/*": ["../../node_modules/@angular/compiler/*"],
+      "@angular/compiler": ["../../node_modules/@angular/compiler"],
+      "@angular/core/*": ["../../node_modules/@angular/core/*"],
+      "@angular/core": ["../../node_modules/@angular/core"],
+      "@angular/forms/*": ["../../node_modules/@angular/forms/*"],
+      "@angular/forms": ["../../node_modules/@angular/forms"],
+      "@angular/http/*": ["../../node_modules/@angular/http/*"],
+      "@angular/http": ["../../node_modules/@angular/http"],
+      "@angular/platform-browser/*": ["../../node_modules/@angular/platform-browser/*"],
+      "@angular/platform-browser": ["../../node_modules/@angular/platform-browser"],
+      "@angular/platform-browser-dynamic/*": ["../../node_modules/@angular/platform-browser-dynamic/*"],
+      "@angular/platform-browser-dynamic": ["../../node_modules/@angular/platform-browser-dynamic"],
+      "@angular/router/*": ["../../node_modules/@angular/router/*"],
+      "@angular/router": ["../../node_modules/@angular/router"],
+      // dist
+      "@angular/cdk/*": ["../../dist/packages/cdk/*"],
+      "@angular/cdk": ["../../dist/packages/cdk"],
+      "@angular/material/*": ["../../dist/packages/material/*"],
+      "@angular/material": ["../../dist/packages/material"],
+      "@angular/material-experimental/*": ["../../dist/packages/material-experimental/*"],
+      "@angular/material-experimental": ["../../dist/packages/material-experimental"],
+      "@angular/cdk-experimental/*": ["../../dist/packages/cdk-experimental/*"],
+      "@angular/cdk-experimental": ["../../dist/packages/cdk-experimental"],
+      "@angular/material-moment-adapter": ["../../dist/packages/material-moment-adapter"],
+      "@angular/material-examples": ["../../dist/packages/material-examples"],
+      // mova
+      "@mova/components/*": ["../../dist/packages/mova/*"],
+      "@mova/components": ["../../dist/packages/mova"],
+      // app
+      "@app/*": ["src/app/*"],
+      "@environments/*": ["src/environments/*"]
+    }
+  }
+}

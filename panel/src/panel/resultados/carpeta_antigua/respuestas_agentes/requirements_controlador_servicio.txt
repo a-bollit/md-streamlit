@@ -1,0 +1,598 @@
+---
+
+# Migrating from Oracle Forms to Java Spring Boot
+
+## Overview
+This guide walks through the steps to migrate Oracle Forms functionalities to a Java Spring Boot application. By following this guide, developers will implement robust and scalable RESTful APIs, reproduce Oracle Forms' business logic, and ensure data integrity and consistency in a modern architecture.
+
+### Project Structure
+
+We'll use the following structure for our Spring Boot project:
+
+```plaintext
+src/main/java/
+└── com
+    └── example
+        ├── controller
+        ├── service
+        ├── model
+        ├── repository
+        └── exception
+src/main/resources/
+    ├── application.properties
+    └── static
+        └── javascripts
+```
+
+## Entities and Models
+
+### 1. EREG_LISTNOTI Entity
+
+#### Model Class
+
+```java
+@Entity
+@Table(name = "EREG_LISTNOTI")
+public class EregListnoti {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long nmlistnoti;
+    private Integer nmejercicio;
+    private LocalDate fccrea;
+    private String cdaplicacion;
+    private Long idunidad;
+    private LocalDate fcdesde;
+    private LocalDate fchasta;
+    private String cdestado;
+    private LocalDate fcestado;
+    private String cdusrmod;
+    private LocalDate fcfecmod;
+    private String dscons_devol;
+    private String dsunidad_devol;
+    private String dsdir1_devol;
+    private String dsdir2_devol;
+    private String cdpostal_devol;
+    private String cdmuni_devol;
+    private String cdtiponoti;
+
+    // Getters and setters
+}
+```
+
+#### Repository Interface
+
+```java
+@Repository
+public interface EregListnotiRepository extends JpaRepository<EregListnoti, Long> {
+}
+```
+
+### 2. EREG_NOTIFICACION Entity
+
+#### Model Class
+
+```java
+@Entity
+@Table(name = "EREG_NOTIFICACION")
+public class EregNotificacion {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idnotificacion;
+    private Long nmlistnoti;
+    private Integer nmejercicio;
+    private String cdrefdocum;
+    private String dsobjeto;
+    private String cddocident;
+    private String dsnombre;
+    private String dsapellido1;
+    private String dsapellido2;
+    private String dsrazonsoc;
+    private String cdpais;
+    private String cdprov;
+    private String cdmuni;
+    private String dsdireccion;
+    private String dsdireccion_exten;
+    private String cdpostal;
+    private String dstelefono;
+    private String dstelefmovil;
+    private String dsfax;
+    private String dsemail;
+    private String dsdireccion1;
+    private String dsdireccion2;
+    private String dslin_info1;
+    private String dslin_info2;
+    private String dslin_info3;
+    private String dslin_info4;
+    private String dslin_info5;
+    private String dsdevolvera;
+    private LocalDate fcreimpresion;
+    private String cdestado1;
+    private LocalDate fcestado1;
+    private String cdestado2;
+    private LocalDate fcestado2;
+    private String nmbocm;
+    private LocalDate fcpubbocm;
+    private String cdusrmod;
+    private LocalDate fcfecmod;
+    private String cddocident_rep;
+    private String dsnombre_rep;
+    private String dsapellido1_rep;
+    private String dsapellido2_rep;
+    private String dsrazonsoc_rep;
+    private String dsexpediente;
+
+    // Getters and setters
+}
+```
+
+#### Repository Interface
+
+```java
+@Repository
+public interface EregNotificacionRepository extends JpaRepository<EregNotificacion, Long> {
+}
+```
+
+## Services and Business Logic
+
+### FormInitializationService
+
+```java
+@Service
+public class FormInitializationService {
+
+    @Autowired
+    private GlobalVariableService globalVariableService;
+
+    public void initializeForm(Settings settings, User user) {
+        if (globalVariableService.getVariable("cddeptno_ereg") == null) {
+            throw new UserInfoNotLoadedException("User information is not loaded in the registry");
+        }
+
+        globalVariableService.setInitialValues(user, settings);
+        handleTabVisibility(globalVariableService.getVariable("gead_vercorreos"));
+    }
+
+    private void handleTabVisibility(Boolean showTabs) {
+        if (showTabs) {
+            // Show tabs logic
+        } else {
+            // Hide tabs logic
+        }
+    }
+}
+```
+
+### NavigationService
+
+```java
+@Service
+public class NavigationService {
+
+    public void navigateToNextItem() {
+        // Logic to navigate to the next item
+    }
+
+    public void navigateToPreviousItem() {
+        // Logic to navigate to the previous item
+    }
+}
+```
+
+### ErrorHandlingService
+
+```java
+@Service
+public class ErrorHandlingService {
+
+    public void handleError(CustomError error) {
+        // Specific error handling logic for error code 40010
+        if (error.getCode() == 40010) {
+            throw new ValidationException("Error Code 40010");
+        }
+
+        // General error handling logic
+        controlError();
+    }
+
+    private void controlError() {
+        // Custom error handling procedure
+    }
+}
+```
+
+### TabPageChangeService
+
+```java
+@Service
+public class TabPageChangeService {
+
+    public void onTabPageChange(String tabId) {
+        switch (tabId) {
+            case "PG_CORR":
+                navigateToBlock("GEA_ACURE");
+                break;
+            case "PG_NOTE":
+                navigateToBlock("NOTIFICACION_TELEMATICA");
+                break;
+            default:
+                throw new UnsupportedOperationException("Tab not supported");
+        }
+    }
+
+    private void navigateToBlock(String blockName) {
+        // Logic to navigate to the specified block
+    }
+}
+```
+
+### NotificationService
+
+```java
+@Service
+public class NotificationService {
+
+    @Autowired
+    private EregNotificacionRepository notificacionRepository;
+
+    public void acceptNotification(Notification notification) {
+        validateNotification(notification);
+        populateNotificationCanvas(notification);
+        handleNotificationQueries(notification);
+    }
+
+    private void validateNotification(Notification notification) {
+        if (notification.getMandatoryField() == null) {
+            throw new MandatoryFieldException("Mandatory field is not completed");
+        }
+        // Additional validation logic
+    }
+
+    private void populateNotificationCanvas(Notification notification) {
+        // Logic to populate canvas with notification data
+    }
+
+    private void handleNotificationQueries(Notification notification) {
+        String whereClause = buildWhereClause(notification);
+        List<NotificationResult> results = notificacionRepository.findByWhereClause(whereClause);
+        updateNotificationStatus(results);
+    }
+
+    private String buildWhereClause(Notification notification) {
+        return "WHERE condition";
+    }
+
+    private void updateNotificationStatus(List<NotificationResult> results) {
+        // Logic to update notification status based on query results
+    }
+}
+```
+
+### DateValidationService
+
+```java
+@Service
+public class DateValidationService {
+
+    public void validateDates(LocalDate fromDate, LocalDate toDate) {
+        LocalDate currentDate = LocalDate.now();
+        if (fromDate.isAfter(currentDate) || toDate.isAfter(currentDate)) {
+            throw new InvalidDateException("Dates cannot be greater than the current date");
+        }
+        if (fromDate.isAfter(toDate)) {
+            throw new InvalidDateException("From date cannot be after the To date");
+        }
+    }
+}
+```
+
+### DocumentProcessingService
+
+```java
+@Service
+public class DocumentProcessingService {
+
+    public void registerDocument(Document document) {
+        validateDocument(document);
+        document.setStatus("Registered");
+        // Further registration logic
+    }
+
+    public void acceptDocument(Document document) {
+        validateDocument(document);
+        document.setStatus("Accepted");
+        // Further acceptance logic
+    }
+
+    public void markDocument(Document document) {
+        document.setMarked(true);
+        // Further marking logic
+    }
+
+    public void unmarkDocument(Document document) {
+        document.setMarked(false);
+        // Further unmarking logic
+    }
+
+    private void validateDocument(Document document) {
+        if (document == null) {
+            throw new DocumentValidationException("Document is null");
+        }
+        // Additional validation logic
+    }
+}
+```
+
+### GlobalVariableService
+
+```java
+@Service
+public class GlobalVariableService {
+
+    private Map<String, Object> globalVariables = new HashMap<>();
+
+    public Object getVariable(String key) {
+        return globalVariables.get(key);
+    }
+
+    public void setVariable(String key, Object value) {
+        globalVariables.put(key, value);
+    }
+
+    public void setInitialValues(User user, Settings settings) {
+        // Logic to set initial values for global variables based on user and settings
+    }
+}
+```
+
+## REST Controllers
+
+### NotificationController
+
+```java
+@RestController
+@RequestMapping("/api/notifications")
+public class NotificationController {
+
+    @Autowired
+    private NotificationService notificationService;
+
+    @Autowired
+    private DateValidationService dateValidationService;
+
+    @PostMapping("/accept")
+    public ResponseEntity<String> acceptNotification(@RequestBody Notification notification) {
+        notificationService.acceptNotification(notification);
+        return ResponseEntity.ok("Notification Accepted");
+    }
+
+    @PostMapping("/validate-dates")
+    public ResponseEntity<String> validateDates(@RequestParam("fromDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
+                                                @RequestParam("toDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate) {
+        dateValidationService.validateDates(fromDate, toDate);
+        return ResponseEntity.ok("Dates Validated");
+    }
+}
+```
+
+### EregListnotiController
+
+```java
+@RestController
+@RequestMapping("/api/ereg-listnoti")
+public class EregListnotiController {
+
+    @Autowired
+    private EregListnotiRepository erlistnotiRepository;
+
+    @GetMapping
+    public List<EregListnoti> getAllListnotis() {
+        return erlistnotiRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public EregListnoti getListnotiById(@PathVariable Long id) {
+        return erlistnotiRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Listnoti not found"));
+    }
+
+    @PostMapping
+    public EregListnoti createListnoti(@RequestBody EregListnoti listnoti) {
+        return erlistnotiRepository.save(listnoti);
+    }
+
+    @PutMapping("/{id}")
+    public EregListnoti updateListnoti(@PathVariable Long id, @RequestBody EregListnoti listnotiDetails) {
+        EregListnoti listnoti = erlistnotiRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Listnoti not found"));
+        // Update listnoti fields here
+        return erlistnotiRepository.save(listnoti);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteListnoti(@PathVariable Long id) {
+        EregListnoti listnoti = erlistnotiRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Listnoti not found"));
+        erlistnotiRepository.delete(listnoti);
+        return ResponseEntity.noContent().build();
+    }
+}
+```
+
+### EregNotificacionController
+
+```java
+@RestController
+@RequestMapping("/api/ereg-notificacion")
+public class EregNotificacionController {
+
+    @Autowired
+    private EregNotificacionRepository notificacionRepository;
+
+    @GetMapping
+    public List<EregNotificacion> getAllNotificaciones() {
+        return notificacionRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public EregNotificacion getNotificacionById(@PathVariable Long id) {
+        return notificacionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Notificacion not found"));
+    }
+
+    @PostMapping
+    public EregNotificacion createNotificacion(@RequestBody EregNotificacion notificacion) {
+        return notificacionRepository.save(notificacion);
+    }
+
+    @PutMapping("/{id}")
+    public EregNotificacion updateNotificacion(@PathVariable Long id, @RequestBody EregNotificacion notificacionDetails) {
+        EregNotificacion notificacion = notificacionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Notificacion not found"));
+        // Update notificacion fields here
+        return notificacionRepository.save(notificacion);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteNotificacion(@PathVariable Long id) {
+        EregNotificacion notificacion = notificacionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Notificacion not found"));
+        notificacionRepository.delete(notificacion);
+        return ResponseEntity.noContent().build();
+    }
+}
+```
+
+## Exception Handling and Error Management
+
+### Custom Exceptions
+
+```java
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) {
+        super(message);
+    }
+}
+
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class ValidationException extends RuntimeException {
+    public ValidationException(String message) {
+        super(message);
+    }
+}
+
+public class UserInfoNotLoadedException extends RuntimeException {
+    public UserInfoNotLoadedException(String message) {
+        super(message);
+    }
+}
+```
+
+### Global Exception Handler
+
+```java
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<String> handleValidationException(ValidationException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(UserInfoNotLoadedException.class)
+    public ResponseEntity<String> handleUserInfoNotLoadedException(UserInfoNotLoadedException ex) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleGenericException(Exception ex) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred: " + ex.getMessage());
+    }
+}
+```
+
+## Data Transfer Objects (DTOs)
+
+### NotificationDTO
+
+```java
+public class NotificationDTO {
+    private Long idnotificacion;
+    private Long nmlistnoti;
+    private Integer nmejercicio;
+    private String cdrefdocum;
+    private String dsobjeto;
+    private String cddocident;
+    private String dsnombre;
+    private String dsapellido1;
+    private String dsapellido2;
+    private String dsrazonsoc;
+    private String cdpais;
+    private String cdprov;
+    private String cdmuni;
+    private String dsdireccion;
+    private String dsdireccion_exten;
+    private String cdpostal;
+    private String dstelefono;
+    private String dstelefmovil;
+    private String dsfax;
+    private String dsemail;
+    private String dsdireccion1;
+    private String dsdireccion2;
+    private String dslin_info1;
+    private String dslin_info2;
+    private String dslin_info3;
+    private String dslin_info4;
+    private String dslin_info5;
+    private String dsdevolvera;
+    private LocalDate fcreimpresion;
+    private String cdestado1;
+    private LocalDate fcestado1;
+    private String cdestado2;
+    private LocalDate fcestado2;
+    private String nmbocm;
+    private LocalDate fcpubbocm;
+    private String cdusrmod;
+    private LocalDate fcfecmod;
+    private String cddocident_rep;
+    private String dsnombre_rep;
+    private String dsapellido1_rep;
+    private String dsapellido2_rep;
+    private String dsrazonsoc_rep;
+    private String dsexpediente;
+
+    // Getters and Setters
+}
+```
+
+### EregListnotiDTO
+
+```java
+public class EregListnotiDTO {
+    private Long nmlistnoti;
+    private Integer nmejercicio;
+    private LocalDate fccrea;
+    private String cdaplicacion;
+    private Long idunidad;
+    private LocalDate fcdesde;
+    private LocalDate fchasta;
+    private String cdestado;
+    private LocalDate fcestado;
+    private String cdusrmod;
+    private LocalDate fcfecmod;
+    private String dscons_devol;
+    private String dsunidad_devol;
+    private String dsdir1_devol;
+    private String dsdir2_devol;
+    private String cdpostal_devol;
+    private String cdmuni_devol;
+    private String cdtiponoti;
+
+    // Getters and Setters
+}
+```
+
+### Summary
+By implementing this structure, we will be able to migrate Oracle Forms functionalities to a modern, scalable, and maintainable Java Spring Boot application. The services ensure that each piece of business logic is encapsulated, the controllers handle HTTP requests, and the DTOs manage data transfer between layers. Error handling and validation are managed centrally to ensure consistency and reliability across the application.
+
+---

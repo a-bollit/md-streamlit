@@ -1,0 +1,281 @@
+Result from logica_negocio_task: Para replicar la lógica del sistema identificada en Oracle Forms al backend de Java Spring Boot, proporciono una guía detallada con la estructura de las clases de servicio, métodos a implementar, validaciones necesarias, ejemplos de código y sugerencias de patrones de diseño. A continuación, se describe cómo estructurar las clases de servicio para garantizar una implementación eficiente y mantenible.
+
+### 1. Crear el Proyecto Spring Boot
+
+Inicia un nuevo proyecto Spring Boot utilizando Spring Initializr o tu IDE preferido. Agrega las dependencias necesarias como `Spring Web`, `Spring Data JPA`, `Spring Boot DevTools`, etc.
+
+### 2. Configurar JPA y Conexión a la Base de Datos
+
+Configura el archivo `application.properties` para conectar tu aplicación a la base de datos Oracle. Ejemplo:
+```properties
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+spring.datasource.username=username
+spring.datasource.password=password
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+### 3. Definir las Entidades JPA
+
+Crea las entidades JPA para representar las tablas de tu base de datos. Ejemplo:
+```java
+@Entity
+@Table(name = "BL_GENERAL")
+public class General {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String cdunidad;
+    private Date fcdesde;
+    private Date fchasta;
+    private String cddeptno;
+    private String cdtexp;
+    // getters y setters
+}
+
+@Entity
+@Table(name = "GEA_ACURE")
+public class Acure {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String itregistrado;
+    private String interesadoNombre;
+    private String interesadoApellidos;
+    private String interesadoRazonSocial;
+    // getters y setters
+}
+```
+
+### 4. Repositorios JPA
+
+Define interfaces de repositorios para interactuar con la base de datos.
+```java
+public interface GeneralRepository extends JpaRepository<General, Long> {}
+public interface AcureRepository extends JpaRepository<Acure, Long> {}
+```
+
+### 5. Servicios
+
+Implementa la lógica de negocio en las clases de servicio. 
+
+#### Servicio para Validar Fechas y Ejecutar Procedimientos
+
+```java
+@Service
+public class ValidationService {
+
+    @Autowired
+    private GeneralRepository generalRepository;
+
+    public void validaFechas(Date fcdesde, Date fchasta) {
+        if (fcdesde.after(new Date())) {
+            throw new IllegalArgumentException("Fecha desde no puede ser mayor que hoy.");
+        }
+        if (fchasta.before(fcdesde)) {
+            throw new IllegalArgumentException("Fecha hasta no puede ser menor que fecha desde.");
+        }
+        // Más validaciones si es necesario
+    }
+
+    public void validaExpediente(String expediente) {
+        Optional<General> gen = generalRepository.findById(expediente);
+        if (!gen.isPresent()) {
+            throw new IllegalArgumentException("Expediente no encontrado.");
+        }
+        // Validar estado del expediente
+        String estado = getExpedienteEstado(expediente);
+        if ("anulado".equalsIgnoreCase(estado) || "finalizado".equalsIgnoreCase(estado)) {
+            throw new IllegalArgumentException("Expediente anulado o finalizado.");
+        }
+    }
+
+    private String getExpedienteEstado(String expediente) {
+        // Implementar lógica para obtener el estado del expediente
+        return "estado";
+    }
+}
+```
+
+### 6. Controladores
+
+Define controladores REST para manejar las solicitudes HTTP.
+
+#### Controlador para Manejar Solicitudes del Formulario
+
+```java
+@RestController
+@RequestMapping("/api/general")
+public class GeneralController {
+
+    @Autowired
+    private ValidationService validationService;
+
+    @PostMapping("/validate")
+    public ResponseEntity<?> validateForm(@RequestBody GeneralForm form) {
+        try {
+            validationService.validaFechas(form.getFcdesde(), form.getFchasta());
+            validationService.validaExpediente(form.getCdunidad());
+            return ResponseEntity.ok("Validación exitosa");
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+}
+```
+
+### 7. Manejo de Listas y Calendarios
+
+Para manejar las listas de valores (LOVs) y calendario, podemos utilizar servicios y controladores adicionales.
+
+#### Servicio para Listas de Valores
+
+```java
+@Service
+public class LOVService {
+
+    @Autowired
+    private GeneralRepository generalRepository;
+
+    public List<General> getLOVUnidad() {
+        return generalRepository.findAll();
+    }
+
+    public Date obtenerFechaDeCalendario() {
+        // Implementar lógica para obtener la fecha de un calendario
+        return new Date();
+    }
+}
+```
+
+#### Controlador de Listas de Valores y Calendario
+
+```java
+@RestController
+@RequestMapping("/api/lov")
+public class LOVController {
+
+    @Autowired
+    private LOVService lovService;
+
+    @GetMapping("/unidad")
+    public ResponseEntity<List<General>> listarUnidades() {
+        return ResponseEntity.ok(lovService.getLOVUnidad());
+    }
+
+    @GetMapping("/calendario")
+    public ResponseEntity<Date> obtenerFechaCalendario() {
+        return ResponseEntity.ok(lovService.obtenerFechaDeCalendario());
+    }
+}
+```
+
+### 8. Validaciones en Checkboxes y Eventos POST-QUERY
+
+Implementa métodos para manejar validaciones y eventos similares a los triggers de Oracle Forms.
+
+#### Servicio para Validar Checkboxes
+
+```java
+@Service
+public class CheckboxValidationService {
+
+    public void validarMarcado(Acure acure) {
+        if (acure.getItregistrado().equals("Y")) {
+            throw new IllegalArgumentException("Registro ya registrado.");
+        }
+        if (acure.getInteresadoNombre() == null || 
+            acure.getInteresadoApellidos() == null || 
+            acure.getInteresadoRazonSocial() == null) {
+            throw new IllegalArgumentException("Información del interesado incompleta.");
+        }
+    }
+}
+```
+
+#### Controlador para Validaciones de Checkboxes
+
+```java
+@RestController
+@RequestMapping("/api/acure")
+public class AcureController {
+
+    @Autowired
+    private CheckboxValidationService checkboxValidationService;
+    @Autowired
+    private AcureRepository acureRepository;
+
+    @PostMapping("/validate-checkbox")
+    public ResponseEntity<?> validarCheckbox(@RequestBody Acure acure) {
+        try {
+            checkboxValidationService.validarMarcado(acure);
+            acureRepository.save(acure);
+            return ResponseEntity.ok("Validación de Checkbox exitosa");
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+}
+```
+
+### 9. Valida la Última Notificación y Colorear Campos
+
+#### Servicio para Última Notificación y Colorear
+
+```java
+@Service
+public class NotificationService {
+
+    public Date obtenerUltimaNotificacion(Long expedienteId) {
+        // Implementar lógica para obtener la última notificación
+        return new Date();
+    }
+    
+    public void colorearCampos(Acure acure) {
+        if ("S".equals(acure.getItregistrado())) {
+            // Implementar lógica para colorear en rojo
+            acure.setColor("RED");
+        } else {
+            // Restaurar color
+            acure.setColor("DEFAULT");
+        }
+    }
+}
+```
+
+### 10. Ejemplos de Código
+
+```java
+// Validar Fechas
+validationService.validaFechas(form.getFcdesde(), form.getFchasta());
+
+// Validar Expedientes
+validationService.validaExpediente(form.getCdunidad());
+
+// Obtener Lista LOV
+List<General> unidades = lovService.getLOVUnidad();
+
+// Validar Checkbox
+checkboxValidationService.validarMarcado(acure);
+
+// Obtener Última Notificación
+Date ultimaNotificacion = notificationService.obtenerUltimaNotificacion(expedienteId);
+
+// Colorear Campos
+notificationService.colorearCampos(acure);
+```
+
+### Patrones de Diseño y Buenas Prácticas
+
+1. **Patrón de Repositorio**: Para la interacción con la base de datos.
+2. **Patrón de Servicio**: Para encapsular la lógica de negocio.
+3. **Patrón de Controlador**: Para manejar las solicitudes HTTP.
+4. **Validaciones Preventivas**: Asegúrate de validar las entradas antes de proceder.
+5. **Inyección de Dependencias**: Utiliza Spring para gestionar las dependencias de tus clases.
+
+### Conclusión
+
+Implementando la lógica basada en triggers y procedimientos de Oracle Forms en un sistema moderno con Spring Boot, aseguramos una aplicación escalable, mantenible y eficiente. La estructura clara de servicios, controladores y repositorios facilita el mantenimiento y la evolución futura del sistema, garantizando la precisión y robustez de la lógica de negocio migrada.
+
+Este detalle cubre las transformaciones necesarias para los triggers y procedimientos descritos en el contexto del formulario `EXPECA01`, permitiendo replicar y extender la lógica de negocio en un entorno moderno de aplicaciones web.

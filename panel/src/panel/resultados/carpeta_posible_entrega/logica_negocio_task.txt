@@ -1,0 +1,280 @@
+Result from logica_negocio_task: Para migrar la funcionalidad del formulario Oracle Forms `EXPECA01` a una aplicación moderna con Java Spring Boot, se debe seguir una estructura detallada en la creación de clases de servicio que repliquen la lógica de negocio. A continuación, se proporciona una guía detallada para implementar esta lógica en las clases de servicio de Java Spring Boot, incluyendo la estructura de las clases, los métodos a implementar, las validaciones necesarias, ejemplos de código y sugerencias de patrones de diseño para garantizar una implementación eficiente y mantenible.
+
+### 1. Estructura del Proyecto Spring Boot
+
+#### Paquetes
+
+```plaintext
+src
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── yourcompany
+│   │           ├── controller
+│   │           ├── service
+│   │           ├── repository
+│   │           ├── model
+│   │           └── dto
+│   └── resources
+│       └── application.yml
+```
+
+### 2. Clases de Servicio
+
+#### Servicio para Validaciones Generales `ValidationService`
+
+```java
+package com.yourcompany.service;
+
+import java.time.LocalDate;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yourcompany.repository.ExpedienteRepository;
+import com.yourcompany.model.Expediente;
+
+@Service
+public class ValidationService {
+
+    @Autowired
+    private ExpedienteRepository expedienteRepository;
+
+    public boolean validateFechas(LocalDate desde, LocalDate hasta) {
+        return !desde.isAfter(hasta) && !desde.isAfter(LocalDate.now()) && !hasta.isAfter(LocalDate.now());
+    }
+
+    public boolean validateExpediente(String codigoExpediente) {
+        Optional<Expediente> expediente = expedienteRepository.findByCodigo(codigoExpediente);
+        if (expediente.isPresent()) {
+            return !expediente.get().isFinalizado() && !expediente.get().isAnulado();
+        }
+        return false;
+    }
+    
+    // Otras validaciones específicas
+}
+```
+
+#### Servicio para Expedientes `ExpedienteService`
+
+```java
+package com.yourcompany.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yourcompany.model.Expediente;
+import com.yourcompany.repository.ExpedienteRepository;
+
+@Service
+public class ExpedienteService {
+
+    @Autowired
+    private ExpedienteRepository expedienteRepository;
+
+    public Optional<Expediente> getExpedienteById(Long id) {
+        return expedienteRepository.findById(id);
+    }
+
+    public List<Expediente> getAllExpedientes() {
+        return expedienteRepository.findAll();
+    }
+
+    public Expediente saveExpediente(Expediente expediente) {
+        return expedienteRepository.save(expediente);
+    }
+
+    public void deleteExpediente(Long id) {
+        expedienteRepository.deleteById(id);
+    }
+    
+    public boolean existsExpedienteByCodigo(String codigo) {
+        return expedienteRepository.existsByCodigo(codigo);
+    }
+    
+    // Otros métodos específicos del dominio de Expedientes
+}
+```
+
+### 3. Repositorios
+
+#### Repositorio de Expedientes `ExpedienteRepository`
+
+```java
+package com.yourcompany.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.yourcompany.model.Expediente;
+
+public interface ExpedienteRepository extends JpaRepository<Expediente, Long> {
+    Optional<Expediente> findByCodigo(String codigo);
+    boolean existsByCodigo(String codigo);
+}
+```
+
+### 4. Modelos
+
+#### Modelo de Expediente `Expediente`
+
+```java
+package com.yourcompany.model;
+
+import java.time.LocalDate;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Expediente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String codigo;
+    private String titulo;
+    private LocalDate fechaCreacion;
+    private LocalDate ultimaRevision;
+    private boolean finalizado;
+    private boolean anulado;
+    private int numPaginas;
+
+    // Getters y setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    // Otros getters y setters
+}
+```
+
+### 5. Controladores
+
+#### Controlador de Expedientes `ExpedienteController`
+
+```java
+package com.yourcompany.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.yourcompany.model.Expediente;
+import com.yourcompany.service.ExpedienteService;
+import com.yourcompany.service.ValidationService;
+
+@RestController
+@RequestMapping("/expedientes")
+public class ExpedienteController {
+
+    @Autowired
+    private ExpedienteService expedienteService;
+
+    @Autowired
+    private ValidationService validationService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Expediente> getExpedienteById(@PathVariable Long id) {
+        return expedienteService.getExpedienteById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public List<Expediente> getAllExpedientes() {
+        return expedienteService.getAllExpedientes();
+    }
+
+    @PostMapping
+    public ResponseEntity<Expediente> createExpediente(@RequestBody Expediente expediente) {
+        if (!validationService.validateExpediente(expediente.getCodigo())) {
+            return ResponseEntity.badRequest().build();
+        }
+        Expediente savedExpediente = expedienteService.saveExpediente(expediente);
+        return ResponseEntity.ok(savedExpediente);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Expediente> updateExpediente(@PathVariable Long id, @RequestBody Expediente expediente) {
+        if (!expedienteService.getExpedienteById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        expediente.setId(id);
+        Expediente updatedExpediente = expedienteService.saveExpediente(expediente);
+        return ResponseEntity.ok(updatedExpediente);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteExpediente(@PathVariable Long id) {
+        if (!expedienteService.getExpedienteById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        expedienteService.deleteExpediente(id);
+        return ResponseEntity.ok().build();
+    }
+}
+```
+
+### 6. Patrón de Diseño y Buenas Prácticas
+
+#### Patrón de Diseño
+
+- **Service Locator Pattern**: Para la inyección de dependencias.
+- **Factory Pattern** y **Builder Pattern**: Para la creación de objetos complejos, como validación de diferentes tipos de expedientes.
+
+#### Buenas Prácticas
+
+- **Separation of Concerns (SoC)**: Mantener la separación clara entre controladores, servicios y repositorios.
+- **Single Responsibility Principle (SRP)**: Asegurar que cada clase tenga una sola responsabilidad.
+- **DRY (Don't Repeat Yourself)**: Evitar la duplicación de lógica en diferentes partes del sistema.
+- **Validaciones en Servicios**: Realizar validaciones en clases de servicios para mantener a los controladores simples y enfocarlos en la lógica de enrutamiento.
+- **Manejo de Errores Centralizado**: Implementar una clase de controlador de asesoramiento para el manejo de excepciones para manejar todas las excepciones desde un lugar centralizado.
+- **Documentación y Comentarios**: Asegurarse de que toda la API esté bien documentada, utilizando anotaciones Swagger para la documentación automática si es necesario.
+
+### 7. Validaciones y Lógica Compleja
+
+- **Validaciones de Fecha (Validación de rango de fechas)**
+```java
+public boolean validateFechas(LocalDate desde, LocalDate hasta) {
+    return !desde.isAfter(hasta) && !desde.isAfter(LocalDate.now()) && !hasta.isAfter(LocalDate.now());
+}
+```
+- **Validación de Expediente**
+```java
+public boolean validateExpediente(String codigoExpediente) {
+    Optional<Expediente> expediente = expedienteRepository.findByCodigo(codigoExpediente);
+    if (expediente.isPresent()) {
+        return !expediente.get().isFinalizado() && !expediente.get().isAnulado();
+    }
+    return false;
+}
+```
+
+### Conclusión
+
+La implementación de la lógica de negocio y control de Oracle Forms `EXPECA01` en un entorno moderno de Java Spring Boot se centra en la creación de una estructura bien definida, utilizando servicios para separar la lógica de negocio y validación, y asegurando una arquitectura escalable y mantenible mediante patrones de diseño y buenas prácticas. Siguiendo estas guías e implementaciones detalladas, se puede replicar con precisión la funcionalidad del formulario original de Oracle Forms en una aplicación Spring Boot eficiente y moderna.

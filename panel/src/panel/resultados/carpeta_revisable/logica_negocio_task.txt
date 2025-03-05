@@ -1,0 +1,227 @@
+Result from logica_negocio_task: Guía detallada para implementar la lógica de negocio identificada en Oracle Forms en clases de servicio de Java Spring Boot:
+
+### Introducción
+Para migrar la lógica de negocio desde Oracle Forms a una aplicación backend en Spring Boot, se debe realizar un análisis detallado de cada uno de los triggers y su lógica asociada. Posteriormente se deben replicar estas funcionalidades utilizando controladores, servicios y repositorios en Spring Boot, aplicando las mejores prácticas de desarrollo y patrones de diseño.
+
+### Estructura del Proyecto
+1. **Controladores (Controllers)**
+   - Gestiona las solicitudes HTTP entrantes y delega la lógica de negocio a los servicios.
+   
+2. **Servicios (Services)**
+   - Contiene la lógica de negocio de la aplicación, que en este caso se extraerá de los triggers de Oracle Forms.
+   
+3. **Repositorios (Repositories)**
+   - Gestiona la interacción con la base de datos.
+
+4. **Entidades (Entities)**
+   - Representa las tablas de la base de datos.
+
+### Ejemplo de Implementación
+
+#### 1. Controlador
+```java
+@RestController
+@RequestMapping("/clientes")
+public class ClienteController {
+
+    @Autowired
+    private ClienteService clienteService;
+
+    @GetMapping
+    public ResponseEntity<List<ClienteDTO>> getAllClientes() {
+        return ResponseEntity.ok(clienteService.getAllClientes());
+    }
+
+    @PostMapping
+    public ResponseEntity<ClienteDTO> createCliente(@RequestBody ClienteDTO clienteDTO) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteService.createCliente(clienteDTO));
+    }
+
+    @PutMapping("/{uuid}")
+    public ResponseEntity<ClienteDTO> updateCliente(@PathVariable String uuid, @RequestBody ClienteDTO clienteDTO) {
+        return ResponseEntity.ok(clienteService.updateCliente(uuid, clienteDTO));
+    }
+
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity<Void> deleteCliente(@PathVariable String uuid) {
+        clienteService.deleteCliente(uuid);
+        return ResponseEntity.noContent().build();
+    }
+
+}
+```
+
+#### 2. Servicio
+```java
+@Service
+public class ClienteService {
+
+    @Autowired
+    private ClienteRepository clienteRepository;
+
+    public List<ClienteDTO> getAllClientes() {
+        List<Cliente> clientes = clienteRepository.findAll();
+        return clientes.stream().map(cliente -> convertToDTO(cliente)).collect(Collectors.toList());
+    }
+
+    public ClienteDTO createCliente(ClienteDTO clienteDTO) {
+        Cliente cliente = new Cliente();
+        cliente.setNombre(clienteDTO.getNombre());
+        cliente.setFechaNacimiento(clienteDTO.getFechaNacimiento());
+        cliente.setTipoCliente(clienteDTO.getTipoCliente());
+        cliente.setFechaHoraAlta(LocalDateTime.now());
+        clienteRepository.save(cliente);
+        return convertToDTO(cliente);
+    }
+
+    public ClienteDTO updateCliente(String uuid, ClienteDTO clienteDTO) {
+        Cliente cliente = clienteRepository.findById(UUID.fromString(uuid))
+            .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
+        cliente.setNombre(clienteDTO.getNombre());
+        cliente.setFechaNacimiento(clienteDTO.getFechaNacimiento());
+        cliente.setTipoCliente(clienteDTO.getTipoCliente());
+        clienteRepository.save(cliente);
+        return convertToDTO(cliente);
+    }
+
+    public void deleteCliente(String uuid) {
+        Cliente cliente = clienteRepository.findById(UUID.fromString(uuid))
+            .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
+        clienteRepository.delete(cliente);
+    }
+
+    private ClienteDTO convertToDTO(Cliente cliente) {
+        ClienteDTO dto = new ClienteDTO();
+        dto.setUuid(cliente.getUuid().toString());
+        dto.setNombre(cliente.getNombre());
+        dto.setFechaNacimiento(cliente.getFechaNacimiento());
+        dto.setTipoCliente(cliente.getTipoCliente());
+        dto.setFechaHoraAlta(cliente.getFechaHoraAlta());
+        dto.setEdad(Period.between(cliente.getFechaNacimiento(), LocalDate.now()).getYears());
+        return dto;
+    }
+
+}
+```
+
+#### 3. Repositorio
+```java
+@Repository
+public interface ClienteRepository extends JpaRepository<Cliente, UUID> {
+}
+```
+
+#### 4. Entidad
+```java
+@Entity
+public class Cliente {
+
+    @Id
+    @GeneratedValue
+    private UUID uuid;
+
+    @Column(nullable = false, length = 50)
+    private String nombre;
+
+    private LocalDate fechaNacimiento;
+
+    @Column(nullable = false, length = 1)
+    private String tipoCliente;
+
+    private LocalDateTime fechaHoraAlta;
+
+    private Boolean baja = false;
+
+    // Getters and Setters
+
+}
+```
+
+#### 5. DTO
+```java
+public class ClienteDTO {
+
+    private String uuid;
+    private String nombre;
+    private LocalDate fechaNacimiento;
+    private String tipoCliente;
+    private LocalDateTime fechaHoraAlta;
+    private Integer edad;
+    private Boolean baja;
+
+    // Getters and Setters
+
+}
+```
+
+### Implementación de Triggers Específicos
+
+#### WHEN-BUTTON-PRESSED (LOV_CDUNIDAD)
+```java
+@RestController
+@RequestMapping("/units")
+public class UnitController {
+
+    @GetMapping("/lov")
+    public ResponseEntity<List<UnitDTO>> getUnitLov() {
+        // Simulate retrieving the list of values and updating the CDUNIDAD field
+        List<UnitDTO> units = unitService.getUnitLov();
+        return ResponseEntity.ok(units);
+    }
+
+}
+```
+
+#### KEY-NEXT-ITEM (FCDESDE)
+```java
+@ControllerAdvice
+public class NavigationAdvice {
+
+    @ModelAttribute
+    public void addAttribute(Model model) {
+        // Assuming FCDESDE and FCHASTA are part of the client form
+        model.addAttribute("fdsede", ""); // Placeholder for the form field
+        model.addAttribute("fchasta", ""); // Placeholder for the form field
+    }
+
+}
+```
+
+### Validaciones
+Spring Boot permite utilizar el módulo de validación Hibernate Validator sobre las propiedades de las clases entidad. Aquí aplicamos algunas validaciones comunes:
+```java
+public class ClienteDTO {
+    
+    @NotNull
+    @Size(min = 1, max = 50)
+    private String nombre;
+    
+    @NotNull
+    @Past
+    private LocalDate fechaNacimiento;
+
+    @NotNull
+    @Pattern(regexp = "^[NSA]$")
+    private String tipoCliente;
+    
+    // other fields, getters and setters
+}
+```
+### Patrones de Diseño y Buenas Prácticas
+1. **Patrón DTO (Data Transfer Object)**:
+   - Para encapsular los datos que se transfieren entre las capas de la aplicación, facilitando la segregación y validación.
+   
+2. **Patrón Service**:
+   - Para separar la lógica del negocio de la lógica del controlador, facilitando el testing y mantenimiento.
+   
+3. **Patrón Repository**:
+   - Para abstraer la lógica de acceso a datos y activar el desacoplamiento de la capa de persistencia.
+
+4. **Validations**:
+   - Usar anotaciones de validación en DTOs: `@NotNull`, `@Size`, `@Pattern`, `@Past`, etc.
+
+5. **Manejo de Excepciones**:
+   - Utilizar una clase de manejo centralizado de excepciones para mantener las respuestas consistentes.
+
+### Conclusión
+Este es un ejemplo básico para demostrar cómo estructurar la lógica de negocio y funcionalidad de triggers y eventos desde Oracle Forms a una aplicación moderna de Spring Boot. A medida que se realice la migración real, todos los métodos y servicios específicos deben implementarse y adaptarse según las necesidades detalladas de cada caso. Para una implementación completa, siempre validar y testear los componentes para asegurar que la funcionalidad replicada sea correcta y robusta.

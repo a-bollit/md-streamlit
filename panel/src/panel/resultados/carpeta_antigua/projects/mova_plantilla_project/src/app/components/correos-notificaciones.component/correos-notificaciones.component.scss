@@ -1,0 +1,17 @@
+.notificaciones-card {
+  margin: 20px;
+}
+
+.acciones {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-primary {
+  @include button-color(#007bff); // Color azul
+}
+
+.btn-secondary {
+  @include button-color(#6c757d); // Color gris
+}

@@ -1,0 +1,243 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Ejemplo de solapas</strong></mv-card-title>
+
+    <p>Esto es un ejemplo de uso de tabs o solapas para mostrar al desarrollador las posibilidades de MOVA, aunque
+    no se trata de un componente MOVA como tal sino de Angular Material:
+    <a href="https://material.angular.io/components/tabs/overview" target="_blank" rel="noopener noreferrer">
+      <strong>https://material.angular.io/components/tabs/overview</strong>
+    </a>
+    </p>
+    <p>Esto tan solo son ejemplos, pudiendo adaptarse o modificarse al gusto del desarrollador.</p>
+
+    <p>Ejemplo tabs con iconos:</p>
+
+    <!-- mat-tab 1 -->
+    <mv-tab-group id="matTabExample1">
+
+      <mv-tab>
+        <ng-template mat-tab-label>
+          <mv-icon>info</mv-icon> Info
+        </ng-template>
+        <div class="tab-body">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </div>
+      </mv-tab>
+
+      <mv-tab>
+        <ng-template mat-tab-label>
+          <mv-icon>phone</mv-icon> Llamadas
+        </ng-template>
+        <div class="tab-body">
+          <div class="entrante content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+          <div class="entrante content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+          <div class="saliente content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+          <div class="entrante content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+          <div class="saliente content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+          <div class="saliente content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+        </div>
+      </mv-tab>
+
+      <mv-tab>
+        <ng-template mat-tab-label>
+          <mv-icon>email</mv-icon> Mensajes
+        </ng-template>
+        <div class="tab-body">
+          <div class="mensaje content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llámame cuando puedas. Es urgente
+            </div>
+          </div>
+          <div class="mensaje content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              El evento será a las 13:00h del día 14/03. Confírmame tu asistencia.
+            </div>
+          </div>
+        </div>
+      </mv-tab>
+
+    </mv-tab-group>
+
+    <br><br>
+
+    <p>Ejemplo tabs con altura dinámica:</p>
+
+    <!-- mat-tab 2 -->
+    <mv-tab-group id="matTabExample2" dynamicHeight>
+      <mv-tab label="Tab corto">
+        <div class="example-small-box mat-elevation-z4">
+          <div class="oferta1">
+            <mv-icon>attach_money</mv-icon>
+            <mv-icon>attach_money</mv-icon>
+            <h3>¡Oferta!</h3>
+          </div>
+        </div>
+      </mv-tab>
+      <mv-tab label="Tab largo">
+        <div class="example-large-box mat-elevation-z4">
+          <div class="oferta2">
+            <p>Aprovecha tu oferta:</p>
+            <p>3x2 en todos los artículos, sólo 48h</p>
+            <p>Condiciones:</p>
+            <ul>
+              <li>Solo productos de marca X e Y</li>
+              <li>Hay que usar la tarjeta de compra</li>
+              <li>Solo stock</li>
+            </ul>
+          </div>
+        </div>
+      </mv-tab>
+    </mv-tab-group>
+
+    <br><br>
+
+    <p>Ejemplo tabs con mv-card dentro:</p>
+
+    <!-- mat-tab 3 -->
+    <mv-tab-group id="matTabExample3" mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+
+      <mv-tab label="Básico">
+        <mv-card>
+          <mv-card-header>
+            <div mv-card-avatar class="header-image"></div>
+            <mv-card-title>Cuando no necesitas lo máximo</mv-card-title>
+            <mv-card-subtitle>60€</mv-card-subtitle>
+          </mv-card-header>
+          <img 
+            mv-card-image 
+            src="assets/examples/example-basico.jpg"
+            alt="Imagen ejemplo">
+          <mv-card-content>
+            <p>El plan básico incluye:</p>
+
+            <ul>
+              <li>Asistencia online 3 veces al mes</li>
+              <li>Capacidad 1GB</li>
+              <li>5 sitios web</li>
+            </ul>
+
+          </mv-card-content>
+        </mv-card>
+      </mv-tab>
+
+      <mv-tab label="Completo">
+        <mv-card>
+          <mv-card-header>
+            <div mv-card-avatar class="header-image"></div>
+            <mv-card-title>Plan intermedio</mv-card-title>
+            <mv-card-subtitle>99€</mv-card-subtitle>
+          </mv-card-header>
+          <img 
+            mv-card-image 
+            src="assets/examples/example-completo.jpg"
+            alt="Imagen ejemplo">
+          <mv-card-content>
+            <p>El plan básico incluye:</p>
+
+            <ul>
+              <li>Asistencia online 50 veces al mes</li>
+              <li>Capacidad 10GB</li>
+              <li>50 sitios web</li>
+            </ul>
+
+          </mv-card-content>
+        </mv-card>
+      </mv-tab>
+
+      <mv-tab label="Profesional">
+        <mv-card>
+          <mv-card-header>
+            <div mv-card-avatar class="header-image"></div>
+            <mv-card-title>Pack completo</mv-card-title>
+            <mv-card-subtitle>119€</mv-card-subtitle>
+          </mv-card-header>
+          <img
+            mv-card-image 
+            src="assets/examples/example-profesional.jpg"
+            alt="Imagen ejemplo">
+          <mv-card-content>
+            <p>El plan profesional incluye:</p>
+
+            <ul>
+              <li>Asistencia ilimitada</li>
+              <li>Capacidad 100GB</li>
+              <li>Sitios web ilimitados</li>
+            </ul>
+
+          </mv-card-content>
+        </mv-card>
+      </mv-tab>
+
+    </mv-tab-group>
+
+  </mv-card>
+
+</section>

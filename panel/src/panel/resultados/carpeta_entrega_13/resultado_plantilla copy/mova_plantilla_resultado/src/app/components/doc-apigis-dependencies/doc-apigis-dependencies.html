@@ -1,0 +1,38 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Dependencias del API GIS</strong></mv-card-title>
+    <p>El API GIS está preparada para para poder integrar diversas librerías GIS. Por ese motivo, es responsabilidad del
+      integrador incluir dichas librerías y sus dependencias dentro de las aplicaciones que usen el API GIS.
+      De esta forma, se evita incluir librerías muy pesadas que no vayan a emplearse.</p>
+    <br>
+    <mv-card class="warning-card">
+      <mv-card-header>
+        <mv-card-title>
+          <strong>IMPORTANTE</strong>
+        </mv-card-title>
+      </mv-card-header>
+
+      <mv-card-content>
+        <p>Actualmente el API GIS solo permite la integración de OpenLayers (v. 7.1.0).</p>
+      </mv-card-content>
+    </mv-card>
+
+    <p>Para poder emplear OpenLayers dentro del API GIS, el integrador deberá instalar (si así lo requiere su
+      aplicación) las siguientes dependencias: </p>
+    <ul>
+      <li><strong>ol</strong> &#60;<i>versión 7.1.0</i> &#62;. Para su instalación, deberá situarse en el directorio del
+        proyecto y con la consola ejecutar "npm install ol@7.1.0".</li>
+      <li><strong>ol-mapbox-style</strong> &#60;<i>versión 9.2.2</i> &#62;. Para su instalación, deberá situarse en el
+        directorio del proyecto y con la consola ejecutar "npm install ol-mapbox-style@9.2.2".</li>
+      <li><strong>own-geostyler-openlayers-parser</strong>. Para su instalación,
+        deberá situarse en el directorio del proyecto y con la consola ejecutar "npm install
+        http://e_jpb71@gitlab.madrid.org/GIS_open/GIS_DIFUSION.git#own-geostyler-openlayers-parser".</li>
+    </ul>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

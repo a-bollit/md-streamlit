@@ -1,0 +1,59 @@
+<mv-card class="card-code">
+  <mv-header>
+    <mv-title>Devolución de Envío</mv-title>
+  </mv-header>
+
+  <mv-content>
+    <form [formGroup]="devolucionForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="unidad">Unidad</label>
+        <lov-unidad-component id="unidad" formControlName="unidad"></lov-unidad-component>
+        <div *ngIf="devolucionForm.get('unidad').invalid && devolucionForm.get('unidad').touched" class="invalid-feedback">
+          Unidad es requerida.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="municipio">Municipio</label>
+        <lov-municipio-component id="municipio" formControlName="municipio"></lov-municipio-component>
+        <div *ngIf="devolucionForm.get('municipio').invalid && devolucionForm.get('municipio').touched" class="invalid-feedback">
+          Municipio es requerido.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <input id="direccion" type="text" formControlName="direccion" class="input-text">
+        <div *ngIf="devolucionForm.get('direccion').invalid && devolucionForm.get('direccion').touched" class="invalid-feedback">
+          Dirección es requerida y debe tener mínimo 10 caracteres.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="fechaDesde">Fecha Desde</label>
+        <input id="fechaDesde" type="date" formControlName="fechaDesde" class="input-date">
+        <mv-icon name="calendar_today" (click)="onCalendarClick('fechaDesde')"></mv-icon>
+        <div *ngIf="devolucionForm.get('fechaDesde').invalid && devolucionForm.get('fechaDesde').touched" class="invalid-feedback">
+          Fecha desde es requerida.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="fechaHasta">Fecha Hasta</label>
+        <input id="fechaHasta" type="date" formControlName="fechaHasta" class="input-date">
+        <mv-icon name="calendar_today" (click)="onCalendarClick('fechaHasta')"></mv-icon>
+        <div *ngIf="devolucionForm.get('fechaHasta').invalid && devolucionForm.get('fechaHasta').touched" class="invalid-feedback">
+          Fecha hasta es requerida.
+        </div>
+        <div *ngIf="devolucionForm.errors?.dateInvalid" class="invalid-feedback">
+          Fecha hasta no puede ser menor que fecha desde.
+        </div>
+      </div>
+
+      <div class="form-buttons">
+        <mv-button type="submit" [disabled]="devolucionForm.invalid">Aceptar</mv-button>
+        <mv-button type="button" (click)="devolucionForm.reset()">Cancelar</mv-button>
+      </div>
+    </form>
+  </mv-content>
+</mv-card>

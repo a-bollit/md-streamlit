@@ -1,0 +1,179 @@
+Result from estructura_visual_task: Este formulario de Oracle Forms, denominado "EXPECA01", contiene diversas ventanas, lienzos, bloques de datos, alertas, menús y atributos visuales que configuran su interfaz gráfica. A continuación, se proporciona una descripción detallada de cada uno de estos componentes para entender su disposición y cómo se relacionan entre sí.
+
+## Ventanas
+
+### Ventana Principal: W_GENERAL
+- **Título**: "Emisión de Notificaciones"
+- **Dimensiones**: 415 de ancho por 133 de alto.
+- **Posición**: (x: 20, y: 8)
+- **Primario**: Canvas `CV_GENERAL`.
+- **Estilo**: Documento
+- **Atributos Visuales**: `FONDO`, sin barras de desplazamiento horizontales ni verticales, no permite maximización ni minimización, redimensionamiento no permitido.
+- **Comportamiento**: Visible y modal no establecido, permite mover la ventana, se oculta al salir.
+
+### Ventana de Pestañas: W_PESTAÑAS
+- **Título**: "Emisión de Notificaciones"
+- **Dimensiones**: 593 de ancho por 314 de alto.
+- **Posición**: (0, 0)
+- **Primario**: Canvas `CV_PESTAÑAS`.
+- **Estilo**: Documento
+- **Atributos Visuales**: `FONDO`, sin barras de desplazamiento horizontales, permitiendo mover, sin opción de maximización o minimización.
+- **Comportamiento**: Se oculta al salir, modal no establecido, redimensionamiento no permitido.
+
+### Ventana de Devolución: W_DEVOL
+- **Título**: "Devolver Acuses de Recibo a:"
+- **Dimensiones**: 417 de ancho por 191 de alto.
+- **Posición**: (x: 100, y: 90)
+- **Primario**: Canvas `CV_DEVOL`.
+- **Estilo**: Documento
+- **Atributos Visuales**: `FONDO`, sin barras de desplazamiento, ni opciones de maximización o minimización, permite mover.
+- **Comportamiento**: Redimensionamiento no permitido, se oculta al salir.
+
+### Ventana de Información: W_INF
+- **Título**: "Información"
+- **Dimensiones**: 312 de ancho por 37 de alto.
+- **Posición**: (x: 100, y: 130)
+- **Primario**: Canvas `CV_INF`.
+- **Estilo**: Documento
+- **Atributos Visuales**: `FONDO`, sin barras de desplazamiento, no permite mover, redimensionar ni maximizar/minimizar.
+- **Comportamiento**: Modal verdadero, se oculta al salir.
+
+### Ventana de Errores: W_ERROR_RESULTADO
+- **Título**: "Emisión de Notificaciones"
+- **Dimensiones**: 341 de ancho por 144 de alto.
+- **Posición**: (x: 100, y: 100)
+- **Primario**: Canvas `CV_ERROR_RESULTADO`.
+- **Estilo**: Documento
+- **Atributos Visuales**: `DEFAULT`, sin barras de desplazamiento, permite mover.
+- **Comportamiento**: Se oculta al salir, sin opciones de redimensionamiento, maximización o minimización.
+
+### Ventana de Situación de Error: W_SITUACION_ERROR
+- **Título**: "Emisión de Notificaciones"
+- **Dimensiones**: 358 de ancho por 152 de alto.
+- **Posición**: (x: 150, y: 100)
+- **Primario**: Canvas `CV_SITUACION_ERROR`.
+- **Estilo**: Documento
+- **Atributos Visuales**: `DEFAULT`, sin barras de desplazamiento, permite mover.
+- **Comportamiento**: Se oculta al salir, sin opciones de redimensionamiento, maximización o minimización.
+
+### Ventana de Ayuda: W_AYUDA
+- **Título**: "Ayuda"
+- **Dimensiones**: 383 de ancho por 137 de alto.
+- **Posición**: (x: 50, y: 45)
+- **Primario**: Canvas `CV_AYUDA`.
+- **Estilo**: Documento
+- **Atributos Visuales**: `FONDO`, sin barras de desplazamiento, permite mover.
+- **Comportamiento**: Modal verdadero, se oculta al salir, sin opciones de redimensionamiento, maximización o minimización.
+
+## Lienzos
+
+### Canvas Principal: CV_GENERAL
+- **Dimensiones**: 415 de ancho por 133 de alto.
+- **Relacionado con**: Ventana `W_GENERAL`.
+- **Atributos Visuales**: `FONDO`
+- **Elementos**: Incluye gráficos y texto, con fondo gris, coordenadas específicas y textos descriptivos. Formato de "Unidad remitente", "Fecha desde", "hasta", "Expediente".
+
+### Canvas de Pestañas: CV_PESTAÑAS
+- **Tipo**: Separador
+- **Dimensiones**: 592 de ancho por 314 de alto.
+- **Relacionado con**: Ventana `W_PESTAÑAS`.
+- **Atributos Visuales**: `FONDO`
+- **Sub-Canvases**: Dos páginas de pestañas ("Notificaciones de Correos" y "Notificaciones Telemáticas"), cada una con gráficos y texto. 
+
+### Canvas de Devoluciones: CV_DEVOL
+- **Dimensiones**: 417 de ancho por 191 de alto.
+- **Relacionado con**: Ventana `W_DEVOL`.
+- **Atributos Visuales**: `FONDO`
+- **Elementos**: Incluye gráficos y texto de fondo gris y atributos para "Unidad Administrativa", "Consejería u Organismo", "Dirección", "Código Postal", y "Municipio".
+
+### Canvas de Información: CV_INF
+- **Dimensiones**: 313 de ancho por 38 de alto.
+- **Relacionado con**: Ventana `W_INF`.
+- **Atributos Visuales**: `FONDO`
+- **Elementos**: Mensaje de espera centrado con fondo gris y texto rojo, indicando esperar ya que la operación puede tardar algunos segundos.
+
+### Canvas de Resultados de Error: CV_ERROR_RESULTADO
+- **Dimensiones**: 341 de ancho por 144 de alto.
+- **Relacionado con**: Ventana `W_ERROR_RESULTADO`.
+- **Atributos Visuales**: `FONDO`
+- **Elementos**: Cuadro de marco con texto "Errores" en azul claro.
+
+### Canvas de Situación de Error: CV_SITUACION_ERROR
+- **Dimensiones**: 358 de ancho por 152 de alto.
+- **Relacionado con**: Ventana `W_SITUACION_ERROR`.
+- **Atributos Visuales**: `FONDO`
+- **Elementos**: Gráficos relacionados con la situación del error en color gris claro.
+
+### Canvas de Ayuda: CV_AYUDA
+- **Dimensiones**: 383 de ancho por 136 de alto.
+- **Relacionado con**: Ventana `W_AYUDA`.
+- **Atributos Visuales**: `FONDO`
+- **Elementos**: Mensaje centrado sobre criterios de búsqueda en fondo gris y texto negro.
+
+## Atributos Visuales
+- **REG_ACT_AMARILLO**: Color de fondo con código `r100g100b50`.
+- **NEGRO**: Fuente Arial, tamaño 900, color negro.
+- **ROJO**: Fuente Arial, tamaño 900, color rojo.
+- **CAMPO_FONDO**: Herencia de `EXPE_OBJ_DISEÑO` con valor de columna `CAMPO_FONDO`.
+- **FONDO**: Herencia de `EXPE_OBJ_DISEÑO` con valor de columna `FONDO`.
+- **BOTON**: Herencia de `EXPE_OBJ_DISEÑO` con valor de columna `BOTON`.
+- **AYUDA**: Fondo gris, fuente Arial tamaño 800 con color verde azulado.
+- **FONDO_CAMPO_VISUAL**: Herencia de `EXPE_OBJ_DISEÑO` con valor de columna `FONDO_CAMPO_VISUAL`.
+
+## Alertas
+
+### Alerta CONFIRMAR
+- **Botón1**: "SI"
+- **Botón2**: "NO"
+- **Título**: "Confirmar dar de baja registro"
+- **Estilo**: Atención
+- **Atributos Visuales**: `FONDO`
+
+### Alerta NOTA
+- **Título**: N/D
+- **Estilo**: Nota
+- **Atributos Visuales**: `FONDO`
+
+### Alerta MENSAJE
+- **Título**: "Aviso"
+- **Estilo**: N/D
+- **Atributos Visuales**: `FONDO`
+
+## Menús
+- **Modulo de Menú**: `DEFAULT&SMARTBAR`
+- **Funcionalidad**: Determina la estructura de navegación del formulario y acciones disponibles para el usuario.
+
+## Relación de Lienzos con Bloques de Datos
+
+### Bloque BL_GENERAL
+El lienzo `CV_GENERAL` está vinculado con este bloque. Aquí encontramos diversos elementos como:
+
+- `CDORGA_EREG`, `IDORGA_EREG`: Campos de texto asociados a la "Unidad remitente" y su código.
+- `LOV_CDUNIDAD`, `CDUNIDAD`, `DSUNIDAD`: Botones y campos de texto para seleccionar y mostrar información de unidades.
+- `FCDESDE`, `CAL_FCDESDE`, `FCHASTA`, `CAL_FCHASTA`: Campos de texto y botones para la selección de fechas.
+- `CDDEPTNO` hasta `CDAEXP`: Campos de texto para mostrar información de expedientes.
+- `INCLUIR_ENVIADOS`, `ACEPTAR`, `CANCELAR`: Casilla de control y botones de acciones del bloque.
+
+### Bloque GEA_ACURE
+El lienzo `CV_PESTAÑAS` muestra registros en formato tabular con los siguientes elementos:
+
+- `DOCUMENTO`, `DSDOCUM`, `DSAPELLIDO1`: Campos de texto para mostrar detalles del documento y el interesado.
+- `CB_MARCA`: Casilla de control para seleccionar registros.
+- `IT_OFICIO_PDF`, `IT_FIRMADO`, `IT_REGISTRADO`: Indicadores de estado del documento.
+
+### Bloque NOTIFICACION_TELEMATICA
+También en `CV_PESTAÑAS`, este bloque tiene elementos como:
+
+- `DOCUMENTO`, `DSDOCUM`, `DSAPELLIDO1`: Similares a `GEA_ACURE`, con datos específicos de notificaciones telemáticas.
+- `CB_MARCA`: Similar, para selección de registros.
+
+### Bloque BL_DEVOL
+El lienzo `CV_DEVOL` presenta elementos que permiten seleccionar datos de unidades para devoluciones:
+
+- `CDDEPTNO`, `CDUNIDAD`: Campos de texto para seleccionar departamento y unidad.
+- `LOV_UNIDAD`, `LOV_CONSEJ`, `LOV_MUNI`: Botones que abren listas de selección para cada campo.
+- `CANCELAR`, `ACEPTAR`: Botones para confirmar acciones de devolución.
+
+## Conclusión
+
+Esta descripción ofrece una vista detallada y comprensible sobre los componentes visuales del formulario, sus atributos, y cómo están interrelacionados. Esta guía ayuda a cualquier desarrollador a replicar la interfaz visual con precisión, asegurando que cada detalle gráfico se configure correctamente según las especificaciones proporcionadas.

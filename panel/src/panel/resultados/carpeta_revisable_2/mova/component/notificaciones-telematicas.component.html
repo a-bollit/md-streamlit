@@ -1,0 +1,38 @@
+<mv-card class="card-code">
+    <mv-header
+        [headerTitle]="'Notificaciones Telemáticas'"
+        [headerSubtitle]="'Administrar y enviar notificaciones telemáticas'"
+        [fixed]="true"
+        [showBackButton]="true"
+        [showMenuButton]="true"
+        [type]="''">
+    </mv-header>
+
+    <div class="list-container">
+        <table>
+            <thead>
+                <tr>
+                    <th><mv-checkbox (click)="toggleAllSelection()" [checked]="allSelected"></mv-checkbox></th>
+                    <th>Descripción</th>
+                    <th>Interesados</th>
+                    <th>Fecha de creación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let notificacion of notificaciones">
+                    <td>
+                        <mv-checkbox (click)="toggleSelection(notificacion)" [checked]="selectedNotificaciones.includes(notificacion)"></mv-checkbox>
+                    </td>
+                    <td>{{ notificacion.descripcion }}</td>
+                    <td>{{ notificacion.interesados }}</td>
+                    <td>{{ notificacion.fechaCreacion | date:'short' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="actions">
+            <mv-button (click)="toggleAllSelection()">{{ allSelected ? 'Desmarcar Todos' : 'Marcar Todos' }}</mv-button>
+            <mv-button (click)="enviarSeleccionadas()">Enviar Seleccionadas</mv-button>
+        </div>
+    </div>
+</mv-card>

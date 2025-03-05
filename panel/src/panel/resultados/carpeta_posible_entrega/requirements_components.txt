@@ -1,0 +1,193 @@
+Para migrar la aplicación EXPECA01 de Oracle Forms a una arquitectura basada en Angular 8, se describen a continuación los componentes necesarios que deben ser implementados en el directorio `/components` de acuerdo con la plantilla del proyecto existente y las especificaciones detalladas proporcionadas.
+
+## Componentes de Angular 8
+
+### 1. **Component GeneralComponent**
+
+**Funcionalidad:** Este componente será el contenedor principal donde se gestionará la emisión de notificaciones. Incluye las entradas para unidad remitente y fechas, y botones para aceptar y cancelar operaciones.
+
+**Input:** Ninguno.
+
+**Output:** 
+- `onAceptar`: Evento emitido al presionar el botón aceptar.
+- `onCancelar`: Evento emitido al presionar el botón cancelar.
+
+**Dependencias:**
+- Servicio `NotificationService` para manejar la lógica de negocio.
+- Componentes secundarios reutilizables como `DatePickerComponent` y `DropdownComponent`.
+
+**Funcionalidad y Guía para Desarrolladores:**
+Este componente debe contener formularios reactivos (`FormGroup`) para manejar la entrada de datos como unidad remitente y fechas (`fcdesde` y `fchasta`). También debe incluir la lógica para emitir eventos de aceptación y cancelación, realizando previamente validaciones de fechas. Se despliega dentro de una ventana modal o sección principal del sistema.
+
+### 2. **Component NotificationTabsComponent**
+
+**Funcionalidad:** Contiene las dos pestañas principales para manejar notificaciones: `PG_CORR` y `PG_NOTE`.
+
+**Input:** 
+- `selectedTab`: Indica la pestaña seleccionada (String).
+
+**Output:**
+- `tabChanged`: Evento emitido al cambiar de pestaña.
+
+**Dependencias:**
+- Componentes `NotificationTelematicaComponent` y `NotificationCorreosComponent`.
+
+**Funcionalidad y Guía para Desarrolladores:**
+Este componente gestiona la navegación entre pestañas utilizando el componente de Angular Material `MatTabGroup`. Además, debe captar el evento de cambio de pestaña y emitirlo al componente padre. Implementa lógica de activación basada en el atributo `selectedTab`.
+
+### 3. **Component NotificationTelematicaComponent**
+
+**Funcionalidad:** Maneja la interacción y presentación de las notificaciones telemáticas. 
+
+**Input:**
+- `notifications`: Lista de notificaciones telemáticas (array de objetos).
+
+**Output:**
+- `updateNotification`: Evento emitido al actualizar una notificación.
+
+**Dependencias:**
+- Servicio `TelematicaService` para consultar, actualizar y filtrar notificaciones.
+- Componentes `NotificationDetailsComponent` y `NotificationActionsComponent`.
+
+**Funcionalidad y Guía para Desarrolladores:**
+Debe incluir una grilla (`MatTable`) para mostrar las notificaciones con características como descripción, expediente y estado. Las filas de la tabla tendrán acciones para ver detalles, actualizar o marcar notificaciones. Implemente lógica de filtrado y paginación mediante directivas propias.
+
+### 4. **Component NotificationCorreosComponent**
+
+**Funcionalidad:** Similar a `NotificationTelematicaComponent`, maneja las notificaciones de correos.
+
+**Input:**
+- `notifications`: Lista de notificaciones de correos (array de objetos).
+
+**Output:**
+- `updateCorreo`: Evento emitido al actualizar una notificación.
+
+**Dependencias:**
+- Servicio `CorreoService` para operaciones CRUD en notificaciones de correos.
+- Componentes `NotificationDetailsComponent` y `NotificationActionsComponent`.
+
+**Funcionalidad y Guía para Desarrolladores:**
+Incluir una tabla para las notificaciones correos, con columnas correspondientes y acciones de CRUD. Utilizar formularios reactivos para la edición de cada notificación. Incorporar validaciones según las reglas de negocio especificadas.
+
+### 5. **Component NotificationDetailsComponent**
+
+**Funcionalidad:** Presenta los detalles de una notificación seleccionada.
+
+**Input:**
+- `notification`: Objeto con los detalles de la notificación.
+
+**Output:**
+- `onClose`: Evento emitido al cerrar el detalle.
+
+**Dependencias:**
+- Form handling para mostrar y validar detalles de notificación.
+
+**Funcionalidad y Guía para Desarrolladores:**
+Este componente se visualiza como un modal o sección expandida. Incluye todos los campos de detalles como fechas, remitente, documento, etc. Utiliza directivas de validación para asegurar que los datos mostrados sean consistentes y válidos, como la validación de fechas y estados.
+
+### 6. **Component NotificationActionsComponent**
+
+**Funcionalidad:** Contiene botones y acciones para cada notificación en las tablas.
+
+**Input:**
+- `notification`: Objeto de notificación individual.
+
+**Output:**
+- `onUpdate`: Evento emitido al actualizar alguna acción en la notificación.
+- `onDelete`: Evento emitido al borrar una notificación.
+
+**Funcionalidad y Guía para Desarrolladores:**
+Este componente se incrusta en cada fila de la tabla de notificaciones. Maneja acciones como edición y eliminación mediante botones de control. Las acciones se emiten al componente padre para actualizar el estado global.
+
+## Vistas y Formularios
+
+### Vistas Relacionadas con GeneralComponent
+#### Vista General
+**Propósito:** Contiene el formulario principal de entrada para la emisión de notificaciones.
+
+**Campos:**
+- Unidad Remitente (`DropdownComponent`).
+- Fecha Desde (`DatePickerComponent`).
+- Fecha Hasta (`DatePickerComponent`).
+
+**Acciones Permitidas:**
+- Botón Aceptar: Ejecuta validaciones y emite eventos.
+- Botón Cancelar: Desactiva el formulario y emite cancelación.
+
+**Guía para Desarrolladores:**
+La vista utiliza un formulario reactivo para manejar el estado y las validaciones. Asegúrese de que las fechas ingresadas no sean mayores a la fecha actual y que la fecha de `hasta` no sea menor a la de `desde`.
+
+### Vistas Relacionadas con NotificationTabsComponent
+#### Vista Tabs
+**Propósito:** Gestiona la navegación entre `PG_CORR` y `PG_NOTE`.
+
+**Campos:**
+- Pestañas de navegación (`MatTabGroup`).
+
+**Acciones Permitidas:**
+- Al cambiar de pestaña, se emite un evento que modifica el componente activo.
+
+**Guía para Desarrolladores:**
+Utilice el componente `MatTabGroup` de Angular Material. Vincular las pestañas a los componentes correspondientes y manejar el cambio de selección a través de eventos.
+
+### Vistas Relacionadas con NotificationTelematicaComponent y NotificationCorreosComponent
+#### Vista Notificaciones
+**Propósito:** Muestra y permite la gestión de notificaciones telemáticas y de correos.
+
+**Campos:**
+- Tabla de Notificaciones (`MatTable`).
+- Filtros para búsqueda.
+
+**Acciones Permitidas:**
+- Ver detalles, editar, eliminar y filtrar notificaciones.
+- Botón de acciones para cada fila (ver más).
+
+**Guía para Desarrolladores:**
+Asigne columnas dinámicamente y maneje acciones de fila a través de eventos y servicios. Incorpore formulaciones adecuadas para elementos de búsqueda y paginación en tablas.
+
+### Vistas Relacionadas con NotificationDetailsComponent
+#### Vista Detalles
+**Propósito:** Proveer una ventana modal o sección que presenta detalles completos y editables de una notificación.
+
+**Campos:**
+- Campos de detalles como número de documento, descripción, fechas, remitente, y estado.
+
+**Acciones Permitidas:**
+- Botón para cerrar la vista de detalles.
+
+**Guía para Desarrolladores:**
+Importe `MatDialog` para gestionar el modal y sus eventos. Utilice formularios reactivos y validaciones correspondientes para los campos de entrada.
+
+## Navegación y Enrutamiento
+
+### Rutas Necesarias
+
+#### General Route
+**Path:** `'/general'`
+**Componente Asociado:** `GeneralComponent`.
+
+**Funcionalidad y Guía para Desarrolladores:**
+La ruta principal que carga el componente `GeneralComponent`. Configurar mediante el módulo de enrutamiento de Angular (`RouterModule`). 
+
+#### Notification Tabs Route
+**Path:** `'/notification'`
+**Componente Asociado:** `NotificationTabsComponent`.
+
+**Funcionalidad y Guía para Desarrolladores:**
+Gestión de las rutas que redirigen a las pestañas `PG_CORR` y `PG_NOTE`, cargando dinámicamente los respectivos componentes de correos y telemáticas.
+
+#### Notification Details Route
+**Path:** `'/notification/:id/details'`
+**Componente Asociado:** `NotificationDetailsComponent`.
+
+**Funcionalidad y Guía para Desarrolladores:**
+Ruta para cargar los detalles de una notificación específica. Utiliza parámetros de ruta para identificar la notificación y carga los datos correspondientes mediante servicios.
+
+#### Error Routes
+**Path:** `'/error'`
+**Componente Asociado:** `ErrorComponent`.
+
+**Funcionalidad y Guía para Desarrolladores:**
+Muestra la ventana de error (`W_ERROR_RESULTADO`). Toda excepción o error en la aplicación redirige a esta ruta, proporcionando una interfaz consistente de manejo de errores.
+
+Siguiendo estos lineamientos, los desarrolladores pueden replicar la funcionalidad y el diseño del formulario original EXPECA01 de Oracle Forms en una estructura moderna basada en Angular 8, asegurando una integración coherente y eficiente en el proyecto existente.

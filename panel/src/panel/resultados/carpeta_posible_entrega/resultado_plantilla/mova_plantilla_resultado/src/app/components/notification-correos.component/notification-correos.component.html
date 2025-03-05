@@ -1,0 +1,96 @@
+<mv-header
+  [headerTitle]="'Notificaciones de Correos'"
+  [headerSubtitle]="'Gestión de notificaciones de correos electrónicos'"
+  [fixed]="true"
+  [showBackButton]="true"
+  [showMenuButton]="true"
+  [type]="'white-corporative'">
+</mv-header>
+
+<div class="notification-correos-container">
+  <form [formGroup]="notificationForm" (ngSubmit)="saveNotification()">
+    <mv-card>
+      <mv-content>
+        <div class="form-group">
+          <label for="asunto">Asunto</label>
+          <input id="asunto" formControlName="asunto" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" formControlName="mensaje" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="fechaEnvio">Fecha de Envío</label>
+          <input id="fechaEnvio" formControlName="fechaEnvio" type="date" class="form-control" />
+        </div>
+        <div class="actions">
+          <mv-button 
+            [color]="'primary'"
+            [appearance]="'raised'"
+            [size]="'medium'"
+            type="submit">
+            Guardar
+          </mv-button>
+          <mv-button 
+            [color]="'warn'"
+            [appearance]="'flat'"
+            [size]="'medium'"
+            type="button"
+            (click)="notificationForm.reset()">
+            Cancelar
+          </mv-button>
+        </div>
+      </mv-content>
+    </mv-card>
+  </form>
+
+  <table mat-table [dataSource]="notifications" class="mat-elevation-z8">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let notification">{{notification.id}}</td>
+    </ng-container>
+
+    <!-- Asunto Column -->
+    <ng-container matColumnDef="asunto">
+      <th mat-header-cell *matHeaderCellDef>Asunto</th>
+      <td mat-cell *matCellDef="let notification">{{notification.asunto}}</td>
+    </ng-container>
+
+    <!-- Mensaje Column -->
+    <ng-container matColumnDef="mensaje">
+      <th mat-header-cell *matHeaderCellDef>Mensaje</th>
+      <td mat-cell *matCellDef="let notification">{{notification.mensaje}}</td>
+    </ng-container>
+
+    <!-- Fecha de Envio Column -->
+    <ng-container matColumnDef="fechaEnvio">
+      <th mat-header-cell *matHeaderCellDef>Fecha de Envío</th>
+      <td mat-cell *matCellDef="let notification">{{notification.fechaEnvio | date}}</td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let notification">
+        <mv-button 
+          [color]="'primary'"
+          [appearance]="'raised'"
+          [size]="'small'"
+          (click)="editNotification(notification)">
+          Editar
+        </mv-button>
+        <mv-button 
+          [color]="'warn'"
+          [appearance]="'flat'"
+          [size]="'small'"
+          (click)="deleteNotification(notification.id)">
+          Eliminar
+        </mv-button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'asunto', 'mensaje', 'fechaEnvio', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'asunto', 'mensaje', 'fechaEnvio', 'actions'];"></tr>
+  </table>
+</div>

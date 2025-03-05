@@ -1,0 +1,26 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+::ng-deep.myPanelClass{
+  background: #b8b8da;
+}
+
+// Ejemplo para editar el estilo del select
+// :host {
+//   ::ng-deep {
+//     /* Border */
+//     mv-select-x[disabled="true"] > .mat-form-field-appearance-outline .mat-form-field-outline {
+//         color: rgb(245, 245, 245);
+//         background: rgb(245, 245, 245);
+//         background: linear-gradient(0deg, rgba(245, 245, 245,0.21332282913165268) 44%, rgba(0,212,255,0) 84%);
+//     }
+//     /* Font color */
+//     input.mat-input-element {
+//       color: rgb(245, 245, 245);
+//     }
+//   }
+// }

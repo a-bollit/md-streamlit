@@ -1,0 +1,242 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de apigis.Utils</strong></mv-card-title>
+
+    <p>apigis.Utils contiene métodos estáticos de utilidad para trabajar con el API GIS.</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='metodos.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Métodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodos><strong>Métodos</strong></mv-card-title>
+      <mv-card-subtitle>Métodos de apigis.Utils.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se muestran a continuación los métodos estáticos disponibles en esta clase:</p>
+      <p><em><strong>dissolveTurf(featureCollection, options = &#123;&#125;)</strong></em></p>
+      <p>Simplifica los elementos de una featureCollection formada por entidades poligonales. La simplificación puede realizarse para todas las geometrías o en aquellas features que comparten una propiedad en común. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>featureCollection</strong> &#60;<i>object</i> &#62; Colección de features en formato GeoJSON. Ejemplo: &#123;"type":"FeatureCollection","features":[&#123;"type":"Feature","properties":&#123;"population":200&#125;,"geometry":&#123;"type":"Point","coordinates":[-112.0372,46.608058]&#125;&#125;]&#125;..</li>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones. Puede contener: </li>
+        <ul>
+          <li><strong>propertyName</strong> &#60;<i>string</i> &#62; Propiedad para realizar la disolución.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>reprojectGeojson(geojson, crsFrom, crsTo)</strong></em></p>
+      <p>Reproyecta un geojson en un crs específico a otro. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>geojson</strong> &#60;<i>object</i> &#62; Línea en formato geojson.</li>
+        <li><strong>crsFrom</strong> &#60;<i>string</i> &#62; Nombre del CRS origen. Ej: 'EPSG:3857'.</li>
+        <li><strong>crsTo</strong> &#60;<i>string</i> &#62; Nombre del CRS destino. Ej: 'EPSG:4326'.</li>
+      </ul>
+      <br>
+      <p><em><strong>geometries2MultiGeometry(geometries, properties=null)</strong></em></p>
+      <p>Convierte un array de geometrias en una multigeometria. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>geometries</strong> &#60;<i>object</i> &#62; Array de geometrias todas del mismo tipo, aunque puede haber geometrias polygon y multipolygon, o linestring y multiLineString o point y multipoint.</li>
+        <li><strong> properties=null</strong> &#60;<i>string</i> &#62; Propiedades asociadas a la multigeometria.</li>
+      </ul>
+      <br>
+      <p><em><strong>insertVertexInLine(line, vertex, index) </strong></em></p>
+      <p>Permite insertar un nuevo vértice en una línea. Al utilizar la librería de TURF solo se puede trabajar con coordenadas en WGS84 (geográficas). Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>line</strong> &#60;<i>object</i> &#62;  Línea en formato geojson.</li>
+        <li><strong>vertex</strong> &#60;<i>object</i> &#62; Nuevo vértice en formato geojson.</li>
+        <li><strong>index</strong> &#60;<i>number</i> &#62; Índice donde se insertará el nuevo vértice. Si no se indica se insertará al final de la línea.</li>
+      </ul>
+      <br>
+      <p><em><strong>getLengthLine(line, units = 'kilometers')</strong></em></p>
+      <p>Obtiene la longitud de una línea o multilínea. Al utilizar la librería de TURF solo se puede trabajar con coordenadas en WGS84 (geográficas). Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>line</strong> &#60;<i>object</i> &#62; Línea en formato geojson.</li>
+        <li><strong>units = 'kilometers'</strong> &#60;<i>string</i> &#62;Unidad de medida del resultado [degrees, radians, miles, or kilometers].</li>
+      </ul>
+      <br>
+      <p><em><strong>getArea(polygon)</strong></em></p>
+      <p>Obtiene el área de un polígono. Al utilizar la librería de TURF solo se puede trabajar con coordenadas en WGS84 (geográficas). Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>polygon</strong> &#60;<i>object</i> &#62; Polígono en formato geojson.</li>
+      </ul>
+      <br>
+      <p><em><strong>getFirstPointInLine(line) </strong></em></p>
+      <p>Obtiene la primera coordenada de una línea. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>line</strong> &#60;<i>object</i> &#62;  Línea en formato geojson.</li>
+      </ul>
+      <br>
+      <p><em><strong>getLAstPointInLine(line) </strong></em></p>
+      <p>Obtiene la última coordenada de una línea. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>line</strong> &#60;<i>object</i> &#62; Línea en formato geojson.</li>
+      </ul>
+      <br>
+      <p><em><strong>distanceTurf(from, to, units = 'kilometers')</strong></em></p>
+      <p>Calcula la distancia entre 2 puntos. Al utilizar la librería de TURF solo se puede trabajar con coordenadas en WGS84 (geográficas). Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>from</strong> &#60;<i>object</i> &#62; Punto 1.</li>
+        <li><strong>to</strong> &#60;<i>object</i> &#62; Punto 2.</li>
+        <li><strong>units</strong> &#60;<i>object</i> &#62; Unidades [degrees, radians, miles, kilometers].</li>
+      </ul>
+      <br>
+      <p><em><strong>bufferTurf(feature, projection, tolerance = 0, units = 'meters')</strong></em></p>
+      <p>Permite ejecutar un buffer sobre la feature pasada como parámetro. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>feature</strong> &#60;<i>object</i> &#62; Feature.</li>
+        <li><strong>projection</strong> &#60;<i>object</i> &#62; Proyección CRS del mapa.</li>
+        <li><strong>tolerance = 0</strong> &#60;<i>object</i> &#62; Radio de tolerancia para ejecutar el buffer.</li>
+        <li><strong>units</strong> &#60;<i>number</i> &#62; Unidades de la tolerancia.</li>
+      </ul>
+      <br>
+      <p><em><strong>withinTurf(featuresSet, feature, projection)</strong></em></p>
+      <p>Obtiene las features cuyas geometrías contienen a otra. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>featuresSet</strong> &#60;<i>object</i> &#62;Colección de features sobre las que ejecutar la acción.</li>
+        <li><strong>feature</strong> &#60;<i>object</i> &#62; Feature que se utilizará como base.</li>
+        <li><strong>projection = 0</strong> &#60;<i>object</i> &#62; Proyección CRS del mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>containsTurf(featuresSet, feature, projection)</strong></em></p>
+      <p>Obtiene las features cuyas geometrías están contenidas dentro de otra. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>featuresSet</strong> &#60;<i>object</i> &#62;Colección de features sobre las que ejecutar la acción.</li>
+        <li><strong>feature</strong> &#60;<i>object</i> &#62; Feature que se utilizará como base.</li>
+        <li><strong>projection = 0</strong> &#60;<i>object</i> &#62; Proyección CRS del mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>containsAllTurf(feature, features, projection)</strong></em></p>
+      <p>Comprueba si una geometria esta contenida en alguna otra de las geometrias de un array.Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>feature</strong> &#60;<i>object</i> &#62; Feature (contenedor) con la geometria en formato GeoJSON que contiene al resto de geometrías. Siempre debe ser un polígono.</li>
+        <li><strong>featuresSet</strong> &#60;<i>object[]</i> &#62;Array de features con las geometrias en GeoJSON.</li>
+        <li><strong>projection = 0</strong> &#60;<i>object</i> &#62; Proyección CRS del mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>buildLine(points)</strong></em></p>
+      <p>Construye una línea a partir de una lista de puntos en formato geojson. Al utilizar la librería de TURF solo se puede trabajar con coordenadas en WGS84 (geográficas). Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>points</strong> &#60;<i>object[]</i> &#62;Lista de puntos en formato geojson.</li>
+      </ul>
+      <br>
+      <p><em><strong>colorToString(color)</strong></em></p>
+      <p>Convierte un color en string. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>color</strong> &#60;<i>string</i> &#62;Color.</li>
+      </ul>
+      <br>
+      <p><em><strong>wktToGeoJSON(wkt)</strong></em></p>
+      <p>Convierte un WKT en objeto GeoJSON. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>wkt</strong> &#60;<i>string</i> &#62;WKT.</li>
+      </ul>
+      <br>
+      <p><em><strong>geojsonToWkt(geojson)</strong></em></p>
+      <p>Convierte un objeto GeoJSON en WKT. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>geojson</strong> &#60;<i>string</i> &#62;Geojson.</li>
+      </ul>
+      <br>
+      <p><em><strong>addToGeometryCollection(geojson, geometryCollectionFeature)</strong></em></p>
+      <p>Añade una Feature dentro de una GeometryCollection. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>geojson</strong> &#60;<i>object</i> &#62;Geojson.</li>
+        <li><strong>geometryCollectionFeature</strong> &#60;<i>object</i> &#62;Geojson con 'GeometryCollection'.</li>
+      </ul>
+      <br>
+      <p><em><strong>project(firstProjection, secondProjection, coordinates)</strong></em></p>
+      <p>Permite proyectar una coordenada de una proyección a otra. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>firstProjection</strong> &#60;<i>string</i> &#62; Projección de origen de la coordenada. Si no se especifica el parámetro secondProjection, firstProjection pasará a ser la proyección de destino tomando como proyección de origen WGS84. Se puede especificar el valor del EPSG, o la definicíón de la proyección..</li>
+        <li><strong>secondProjection</strong> &#60;<i>string</i> &#62; Projección de destino de la coordenada. Si no se especifica este parámetro la proyección de origen se tomará como WGS84. Se puede especificar el valor del EPSG, o la definicíón de la proyección.</li>
+        <li><strong>coordinates</strong> &#60;<i>number[]</i> &#62; Coordenadas a transformar.</li>
+      </ul>
+      <br>
+      <p><em><strong>createParallelLine(options)</strong></em></p>
+      <p>Genera una línea paralela a la línea pasada por parámetro. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones. Puede contener: </li>
+        <ul>
+          <li><strong>geojson</strong> &#60;<i>object</i> &#62; GeoJSON de la línea.</li>
+          <li><strong>offset</strong> &#60;<i>string</i> &#62; Offset de distancia de la paralela.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>getTree(layers, path = "", validation_function)</strong></em></p>
+      <p> Devuelve el árbol de capas desde una ruta o si no se pasa el árbol entero.Sus argumentos son:</p>
+      <ul>
+        <li><strong>layers</strong> &#60;<i>object[]</i> &#62;Lista de capas. Puede pasarse una lista de objetos tipo 'Layer' del propio API o una lista de objetos de configuración de capas.</li>
+          <li><strong>path = ""</strong> &#60;<i>string</i> &#62; Ruta del árbol.</li>
+          <li><strong>validation_function</strong> &#60;<i>Function</i> &#62; Función de validacion para no tener en cuenta las capas que no cumplan con dicha validación.</li>
+      </ul>
+      <br>
+      <p><em><strong>kmlToGeoJSON(kml)</strong></em></p>
+      <p>Convierte un objeto KML en Geojson. Sus argumentos son:</p>
+      <ul>
+        <li><strong>kml</strong> &#60;<i>object</i> &#62;Contenido del KML.</li>
+      </ul>
+      <br>
+      <p><em><strong>csvToGeoJSON(&#123;csv, latfield = 'latitud', lonfield = 'longitud', delimiter = ',', callback &#125;)</strong></em></p>
+      <p>Convierte un objeto csv en Geojson. Sus argumentos son:</p>
+      <ul>
+        <li><strong>params</strong> &#60;<i>object</i> &#62; Parámetros de configuración. Puede contener:</li>
+        <ul>
+          <li><strong>csv</strong> &#60;<i>string</i> &#62; Contenido del CSV.</li>
+          <li><strong>callback</strong> &#60;<i>string</i> &#62; Función de callback con el posible error y la respuesta en GeoJSON.</li>
+          <li><strong>latfield</strong> &#60;<i>string</i> &#62; Nombre de la columna con la latitud. Por defecto, 'latitud'.</li>
+          <li><strong>lonfield</strong> &#60;<i>string</i> &#62; Nombre de la columna con la latitud. Por defecto, 'longitud'.</li>
+          <li><strong>delimiter</strong> &#60;<i>string</i> &#62; Tipo de delimintador. Por defecto, ','</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>getCenter(geometry, precision = 1.0)</strong></em></p>
+      <p>Dada una geometría de tipo polígono devuelve el centro visual de la misma. Sus argumentos son:</p>
+      <ul>
+        <li><strong>geometry</strong> &#60;<i>object</i> &#62; Geometría en formato GeoJSON.</li>
+        <li><strong>precision</strong> &#60;<i>number</i> &#62; Precisión.</li>
+      </ul>
+      <br>
+      <p><em><strong>getExtent(geometries)</strong></em></p>
+      <p>Dada una lista de geometrías devuelve el bounding box que engloba a todas. Sus argumentos son:</p>
+      <ul>
+        <li><strong>geometries</strong> &#60;<i>object[]</i> &#62; Geometrías en formato GeoJSON.</li>
+      </ul>
+      <br>
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

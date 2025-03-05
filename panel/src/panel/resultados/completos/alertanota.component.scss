@@ -1,0 +1,17 @@
+.alerta-nota-card {
+  @include card-style;
+  margin: 20px;
+  padding: 20px;
+
+  mv-header {
+    margin-bottom: 15px;
+  }
+
+  mv-content {
+    p {
+      font-size: 16px;
+      line-height: 1.5em;
+      color: #333;
+    }
+  }
+}

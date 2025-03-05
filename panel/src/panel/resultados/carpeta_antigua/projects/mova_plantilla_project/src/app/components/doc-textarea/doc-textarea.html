@@ -1,0 +1,1973 @@
+<section class="view-default-style">
+
+    <!-- Componente -->
+    <mv-card class="card-code">
+        <mv-card-title><strong>Documentación mv-textarea</strong></mv-card-title>
+
+        <!-- Índice de la documentación -->
+        <div>
+            <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+                <mv-icon>link</mv-icon> Información
+            </a>
+        </div>
+        <div>
+            <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+                <mv-icon>link</mv-icon> Ejemplo de uso
+            </a>
+        </div>
+        <p>Propiedades:</p>
+        <ol class="ol-code">
+            <li>
+                <a class="nostyle" (click)='adapt.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> adapt
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='appearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> appearance
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='autosize.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> autosize
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='delay.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> delay
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='disabled.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> disabled
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='floatLabel.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> floatLabel
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='hint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> hint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='hintAlign.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> hintAlign
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='hintType.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> hintType
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='label.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> label
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='maxLength.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> maxlength
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='maxRows.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> maxRows
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='minRows.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> minRows
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='placeholder.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> placeholder
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='refAutocomplete.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> refAutocomplete
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='refAutocompleteConnectedTo.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> refAutocompleteConnectedTo
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='required.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> required
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='requiredHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> requiredHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showClear.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showClear
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showMaxlength.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showMaxlength
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showUnlockPass.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showUnlockPass
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='type.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> type
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateCustom.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateCustom
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateCustomHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateCustomHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateEmail.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateEmail
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateEmailHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateEmailHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateFirst.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateFirst
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMaxlength.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMaxlength
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMaxlengthHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMaxlengthHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMax.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMax
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMaxHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMaxHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMin.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMin
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMinHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMinHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNIE.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNIE
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNIEHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNIEHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNIF.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNIF
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNIFHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNIFHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNIFNIEHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNIFNIEHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateOnType.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateOnType
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateRegex.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateRegex
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateRegexHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateRegexHint
+                </a>
+            </li>
+        </ol>
+        <p>Eventos:</p>
+        <ol class="ol-code">
+            <li>
+                <a class="nostyle" (click)='changeEvent.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> changeEvent
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='keyupEvent.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> keyupEvent
+                </a>
+            </li>
+        </ol>
+
+
+
+        <p>Accesibilidad:</p>
+        <ol class="ol-code">
+            <li>
+                <a class="nostyle" (click)='ariaLabel.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> ariaLabel
+                </a>
+            </li>
+        </ol>
+
+
+
+    </mv-card>
+
+    <!-- Información -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #info><strong>Información</strong></mv-card-title>
+            <mv-card-subtitle>Información del componente <strong>mv-textarea</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>El componente mv-textarea se basa en el componente mat-textarea de Angular Material, al que se le añade funcionalidad y estilos adicionales.</p>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- Ejemplo de uso -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+            <mv-card-subtitle>Uso básico del componente <strong>mv-textarea</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeUseExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Textarea básico:</strong></p>
+
+            <mv-textarea [(ngModel)]="textArea001Model">
+            </mv-textarea>
+
+            <p><strong>Valor de la variable 'textArea001Model': {{textArea001Model}}</strong></p>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- adapt -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #adapt><strong>adapt</strong></mv-card-title>
+            <mv-card-subtitle>Ancho del 100%.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad adapt permite definir el ancho del componente al 100% del contenedor.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAdaptExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAdaptExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con adapt a true:</strong></p>
+
+            <mv-textarea adapt=true>
+            </mv-textarea>
+
+            <p><strong>Con adapt a false:</strong></p>
+
+            <mv-textarea adapt=false>
+            </mv-textarea>
+
+            <p><strong>Sin adapt (comportamiento por defecto):</strong></p>
+
+            <mv-textarea>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- appearance -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #appearance><strong>appearance</strong></mv-card-title>
+            <mv-card-subtitle>Apariencia del textarea.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad appearance permite definir la apariencia del componente, por defecto outline.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAppearanceExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAppearanceExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con apariencia 'legacy':</strong></p>
+
+            <mv-textarea appearance="legacy">
+            </mv-textarea>
+
+            <p><strong>Con apariencia 'standard':</strong></p>
+
+            <mv-textarea appearance="standard">
+            </mv-textarea>
+
+            <p><strong>Con apariencia 'fill':</strong></p>
+
+            <mv-textarea appearance="fill">
+            </mv-textarea>
+
+            <p><strong>Con apariencia 'outline':</strong></p>
+
+            <mv-textarea appearance="outline">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- autosize -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #autosize><strong>autosize</strong></mv-card-title>
+            <mv-card-subtitle>Cambiar tamaño del textarea.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad autosize permite cambiar el tamaño del componente por el usuario en tiempo de ejecución.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAutosizeExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAutosizeExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con autosize a true:</strong></p>
+
+            <mv-textarea autosize=true>
+            </mv-textarea>
+
+            <p><strong>Con autosize a false:</strong></p>
+
+            <mv-textarea autosize=false>
+            </mv-textarea>
+
+            <p><strong>Sin autosize (comportamiento por defecto):</strong></p>
+
+            <mv-textarea>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- delay -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #delay><strong>delay</strong></mv-card-title>
+            <mv-card-subtitle>Retardo del textarea.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad delay permite definir un retardo después de escribir en el componente, por defecto su valor es 0ms.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeDelayExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeDelayExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con delay de 3000 ms:</strong></p>
+
+            <mv-textarea (changeEvent)="changeEventFunctionMillis($event)" delay="3000">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- disabled -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #disabled><strong>disabled</strong></mv-card-title>
+            <mv-card-subtitle>Deshabilitar el textarea.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad disabled permite deshabilitar el componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeDisabledExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeDisabledExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con disabled a true:</strong></p>
+
+            <mv-textarea disabled=true>
+                Con disabled
+            </mv-textarea>
+
+            <p><strong>Con disabled a false:</strong></p>
+
+            <mv-textarea disabled=false>
+                Sin disabled
+            </mv-textarea>
+
+            <p><strong>Sin disabled (comportamiento por defecto):</strong></p>
+
+            <mv-textarea>
+                Sin disabled
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- floatLabel -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #floatLabel><strong>floatLabel</strong></mv-card-title>
+            <mv-card-subtitle>Comportamiento de la label.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad floatLabel permite definir el comportamiento de la label del componente.</p>
+            <p>Si usamos la propiedad floatLabel también tendrá que haber definida una label, mediante la propiedad <strong>label</strong>.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeFloatLabelExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeFloatLabelExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con floatLabel 'always':</strong></p>
+
+            <mv-textarea label="Propiedad floatLabel" floatLabel="always">
+            </mv-textarea>
+
+            <p><strong>Con floatLabel 'never':</strong></p>
+
+            <mv-textarea label="Propiedad floatLabel" floatLabel="never">
+            </mv-textarea>
+
+            <p><strong>Con floatLabel 'auto':</strong></p>
+
+            <mv-textarea label="Propiedad floatLabel" floatLabel="auto">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- hint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #hint><strong>hint</strong></mv-card-title>
+            <mv-card-subtitle>Texto explicativo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad hint permite definir un texto debajo del componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con hint 'Propiedad hint':</strong></p>
+
+            <mv-textarea hint="Propiedad hint">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- hintAlign -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #hintAlign><strong>hintAlign</strong></mv-card-title>
+            <mv-card-subtitle>Posición del hint.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad hintAlign permite establecer la posición del hint al principio o al final del componente.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>hint</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeHintAlignExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeHintAlignExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con hintAlign 'start':</strong></p>
+
+            <mv-textarea hintAlign="start" hint="Hint al principio">
+            </mv-textarea>
+
+            <p><strong>Con hintAlign 'end':</strong></p>
+
+            <mv-textarea hintAlign="end" hint="Hint al final">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- hintType -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #hintType><strong>hintType</strong></mv-card-title>
+            <mv-card-subtitle>Estilo del hint.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad hintType permite definir el estilo del hint entre los valores warning, info, danger y success. </p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>hint</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeHintTypeExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeHintTypeExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con hintType 'info':</strong></p>
+
+            <mv-textarea hintType="info" hint="Hint info">
+            </mv-textarea>
+
+            <p><strong>Con hintType 'success':</strong></p>
+
+            <mv-textarea hintType="success" hint="Hint success">
+            </mv-textarea>
+            <p><strong>Con hintType 'warning':</strong></p>
+
+            <mv-textarea hintType="warning" hint="Hint warning">
+            </mv-textarea>
+            <p><strong>Con hintType 'danger':</strong></p>
+
+            <mv-textarea hintType="danger" hint="Hint danger">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- label -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #label><strong>label</strong></mv-card-title>
+            <mv-card-subtitle>Label del textarea.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad label permite definir un texto que queda por encima del componente, a modo de título. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeLabelExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeLabelExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con label 'Label del textarea' y apariencia 'legacy':</strong></p>
+
+            <mv-textarea label="Label del textarea" appearance="legacy">
+            </mv-textarea>
+
+            <p><strong>Con label 'Label del textarea' y apariencia 'standard':</strong></p>
+
+            <mv-textarea label="Label del textarea" appearance="standard">
+            </mv-textarea>
+
+            <p><strong>Con label 'Label del textarea' y apariencia 'fill':</strong></p>
+
+            <mv-textarea label="Label del textarea" appearance="fill">
+            </mv-textarea>
+
+            <p><strong>Con label 'Label del textarea' y apariencia 'outline':</strong></p>
+
+            <mv-textarea label="Label del textarea" appearance="outline">
+            </mv-textarea>
+
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- minRows -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #minRows><strong>minRows</strong></mv-card-title>
+            <mv-card-subtitle>Número mínimo de filas.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad minRows permite definir el número mínimo de filas que cabrán en el componente sin que aparezca el scroll. Al sobrepasar ese número mínimo de filas, aparecerá el scroll para moverse en el contenido. </p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>autosize</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeMinRowsExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeMinRowsExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con minRows="5":</strong></p>
+
+            <mv-textarea minRows="5" autosize=true>
+            </mv-textarea>
+
+            <p><strong>Sin minRows (comportamiento por defecto ="2"):</strong></p>
+
+            <mv-textarea autosize=true>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- maxLength -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #maxLength><strong>maxlength</strong></mv-card-title>
+            <mv-card-subtitle>Número máximo de caracteres.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad maxLength permite definir el número máximo de caracteres que el componente permite escribir</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeMaxLengthExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeMaxLengthExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con maxlength="8":</strong></p>
+
+            <mv-textarea maxlength="8">
+            </mv-textarea>
+
+            <p><strong>Sin maxlength:</strong></p>
+
+            <mv-textarea>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- maxRows -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #maxRows><strong>maxRows</strong></mv-card-title>
+            <mv-card-subtitle>Número máximo de filas.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad maxRows permite definir el número máximo de filas en las que el componente aumentará automáticamente de tamaño, tanto como ocupen dichas filas. Al sobrepasar ese número máximo de filas, el componente mantendrá el mismo tamaño
+                y se establecerá el scroll para moverse entre el contenido. </p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>autosize</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeMaxRowsExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeMaxRowsExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con maxRows="8":</strong></p>
+
+            <mv-textarea maxRows="8" autosize=true>
+            </mv-textarea>
+
+            <p><strong>Sin maxRows (comportamiento por defecto ="5"):</strong></p>
+
+            <mv-textarea autosize=true>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- placeholder -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #placeholder><strong>placeholder</strong></mv-card-title>
+            <mv-card-subtitle>Placeholder del textarea.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad placeholder permite definir un texto que queda por encima del componente, a modo de título. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codePlaceholderExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codePlaceholderExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con placeholder 'Nombre':</strong></p>
+
+            <mv-textarea placeholder="Nombre">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- refAutocomplete -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #refAutocomplete><strong>refAutocomplete</strong></mv-card-title>
+            <mv-card-subtitle>Autocompletar con valores.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad refAutocomplete permite definir una serie de valores para autocompletar el contenido del textarea según el usuario va escribiendo. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeRefAutocompleteExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeRefAutocompleteExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con refAutocomplete y sin filtrado:</strong></p>
+
+            <mv-textarea [refAutocomplete]="auto1">
+            </mv-textarea>
+
+            <mat-autocomplete #auto1="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option.name">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+
+            <p><strong>Con refAutocomplete y filtrado según vamos escribiendo:</strong></p>
+
+            <mv-textarea [refAutocomplete]="auto2" [formControl]="optionsCtrl">
+            </mv-textarea>
+
+            <mat-autocomplete #auto2="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- refAutocompleteConnectedTo -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #refAutocompleteConnectedTo><strong>refAutocompleteConnectedTo</strong></mv-card-title>
+            <mv-card-subtitle>Autocompletar con valores.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad refAutocompleteConnectedTo permite definir el comportamiento de la propiedad
+                <strong>refAutocomplete</strong> en un elemento HTML distinto del textarea de búsqueda. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeRefAutocompleteConnectedToExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeRefAutocompleteConnectedToExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con refAutocompleteConnectedTo en el elemento 'refAutocompleteConnectedTo':</strong></p>
+
+            <mv-textarea [refAutocomplete]="auto3" [refAutocompleteConnectedTo]="auto4">
+            </mv-textarea>
+
+            <mat-autocomplete #auto3="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option.name">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+
+            <span id="matAutocompleteOrigin" matAutocompleteOrigin #auto4="matAutocompleteOrigin">
+        <p>refAutocompleteConnectedTo</p>
+      </span>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- required -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #required><strong>required</strong></mv-card-title>
+            <mv-card-subtitle>textarea obligatorio.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad required permite definir el textarea como obligatorio. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeRequiredExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeRequiredExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con required a true:</strong></p>
+
+            <mv-textarea required=true>
+            </mv-textarea>
+
+            <p><strong>Con required a false:</strong></p>
+
+            <mv-textarea required=false>
+            </mv-textarea>
+
+            <p><strong>Sin required (comportamiento por defecto):</strong></p>
+
+            <mv-textarea>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- requiredHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #requiredHint><strong>requiredHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje del textarea required.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad requiredHint permite definir el mensaje cuando el textarea es required. </p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>hint</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeRequiredHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeRequiredHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con requiredHint 'Campo obligatorio':</strong></p>
+
+            <mv-textarea requiredHint="Campo obligatorio" required=true>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showClear -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showClear><strong>showClear</strong></mv-card-title>
+            <mv-card-subtitle>Botón para borrar el contenido del textarea.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showClear permite mostrar el botón para borrar cuando el textarea tiene contenido. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowClearExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowClearExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showClear a true:</strong></p>
+
+            <mv-textarea showClear=true>
+            </mv-textarea>
+
+            <p><strong>Con showClear a false:</strong></p>
+
+            <mv-textarea showClear=false>
+            </mv-textarea>
+
+            <p><strong>Sin showClear (comportamiento por defecto):</strong></p>
+
+            <mv-textarea>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showMaxlength -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showMaxlength><strong>showMaxlength</strong></mv-card-title>
+            <mv-card-subtitle>Indicación de los caracteres restantes para llegar al máximo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showMaxlength permite mostrar el número de caracteres que hay escritos, así como el máximo de caracteres.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateMaxlength</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowMaxlengthExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowMaxlengthExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showMaxlength a true:</strong></p>
+
+            <mv-textarea validateMaxlength=20 showMaxlength=true>
+            </mv-textarea>
+
+            <p><strong>Con showMaxlength a false:</strong></p>
+
+            <mv-textarea validateMaxlength=20 showMaxlength=false>
+            </mv-textarea>
+
+            <p><strong>Sin showMaxlength (comportamiento por defecto):</strong></p>
+
+            <mv-textarea validateMaxlength=20>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showUnlockPass -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showUnlockPass><strong>showUnlockPass</strong></mv-card-title>
+            <mv-card-subtitle>Botón para mostrar/ocultar los caracteres de un textarea type password.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showUnlockPass permite mostrar un botón que permite ocultar o mostrar los caracteres de la contraseña.
+            </p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>type='password'</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowUnlockPassExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowUnlockPassExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showUnlockPass a true:</strong></p>
+
+            <mv-textarea type="password" showUnlockPass=true>
+            </mv-textarea>
+
+            <p><strong>Con showUnlockPass a false:</strong></p>
+
+            <mv-textarea type="password" showUnlockPass=false>
+            </mv-textarea>
+
+            <p><strong>Sin showUnlockPass (comportamiento por defecto):</strong></p>
+
+            <mv-textarea type="password">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- type -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #type><strong>type</strong></mv-card-title>
+            <mv-card-subtitle>Propiedad type del textarea de HTML.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad type permite definir la misma propiedad type de HTML. Los type soportados son los que define Material
+                <strong>
+          <a href="https://material.angular.io/components/textarea/overview">
+            https://material.angular.io/components/textarea/overview
+          </a>
+        </strong>.
+            </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeTypeExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeTypeExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con type 'color':</strong></p>
+
+            <mv-textarea type="color">
+            </mv-textarea>
+
+            <p><strong>Con type 'date':</strong></p>
+
+            <mv-textarea type="date">
+            </mv-textarea>
+
+            <p><strong>Con type 'datetime-local':</strong></p>
+
+            <mv-textarea type="datetime-local">
+            </mv-textarea>
+
+            <p><strong>Con type 'email':</strong></p>
+
+            <mv-textarea type="email">
+            </mv-textarea>
+
+            <p><strong>Con type 'month':</strong></p>
+
+            <mv-textarea type="month">
+            </mv-textarea>
+
+            <p><strong>Con type 'number':</strong></p>
+
+            <mv-textarea type="number">
+            </mv-textarea>
+
+            <p><strong>Con type 'password':</strong></p>
+
+            <mv-textarea type="password">
+            </mv-textarea>
+
+            <p><strong>Con type 'search':</strong></p>
+
+            <mv-textarea type="search">
+            </mv-textarea>
+
+            <p><strong>Con type 'tel':</strong></p>
+
+            <mv-textarea type="tel">
+            </mv-textarea>
+
+            <p><strong>Con type 'text':</strong></p>
+
+            <mv-textarea type="text">
+            </mv-textarea>
+
+            <p><strong>Con type 'time':</strong></p>
+
+            <mv-textarea type="time">
+            </mv-textarea>
+
+            <p><strong>Con type 'url':</strong></p>
+
+            <mv-textarea type="url">
+            </mv-textarea>
+
+            <p><strong>Con type 'week':</strong></p>
+
+            <mv-textarea type="week">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateCustom -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateCustom><strong>validateCustom</strong></mv-card-title>
+            <mv-card-subtitle>Validación custom.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateCustom permite realizar validaciones personalizadas, que deberemos implementar nosotros mismos.</p>
+            <p>En caso de no cumplir la validación que hayamos definido, el componente se marcará con aspecto de error.</p>
+            <p>Documentación de Angular sobre validaciones:
+                <a href="https://angular.io/guide/form-validation" type="_blank"><strong>https://angular.io/guide/form-validation</strong></a></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeCustomValidateExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeCustomValidateExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validación personalizada tal que todas las letras sean mayúsculas:</strong></p>
+
+            <mv-textarea [validateCustom]="myCustomValidation()">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateCustomHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateCustomHint><strong>validateCustomHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de la validación de validateCustom.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateCustomHint permite definir un mensaje para la propiedad validateCustom</p>
+            <p>El mensaje por defecto es 'El valor es incorrecto'</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateCustomHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateCustomHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateCustomHint 'Todas las letras mayúsculas':</strong></p>
+
+            <mv-textarea validateCustomHint="Todas las letras mayúsculas" [validateCustom]="myCustomValidation()">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateEmail -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateEmail><strong>validateEmail</strong></mv-card-title>
+            <mv-card-subtitle>Validación de email.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateEmail permite realizar validaciones para textarea con type 'email'</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>type='email'</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateEmailExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateEmailExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateEmail a true:</strong></p>
+
+            <mv-textarea type="email" validateEmail=true>
+            </mv-textarea>
+
+            <p><strong>Con validateEmail a false:</strong></p>
+
+            <mv-textarea type="email" validateEmail=false>
+            </mv-textarea>
+
+            <p><strong>Sin validateEmail (comportamiento por defecto):</strong></p>
+
+            <mv-textarea type="email">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateEmailHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateEmailHint><strong>validateEmailHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de la validación de email.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateEmailHint permite definir un mensaje para la validación de email</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>type='email'</strong> y la propiedad <strong>validateEmail=true</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateEmailHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateEmailHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateEmailHint 'Introduce un correo':</strong></p>
+
+            <mv-textarea type="email" validateEmail=true validateEmailHint="Introduce un correo">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateFirst -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateFirst><strong>validateFirst</strong></mv-card-title>
+            <mv-card-subtitle>Validación inicial del componente.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateFirst permite validar o no el componente al ser cargado, ya que a lo mejor no queremos que de primeras se marquen como erróneos determinados textarea o al revés, queremos que nada más cargar la vista se haga la validación</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo <strong>required=true</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateFirstExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateFirstExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateFirst a true:</strong></p>
+
+            <mv-textarea required=true validateFirst=true>
+            </mv-textarea>
+
+            <p><strong>Con validateFirst a false:</strong></p>
+
+            <mv-textarea required=true validateFirst=false>
+            </mv-textarea>
+
+            <p><strong>Sin validateFirst (comportamiento por defecto):</strong></p>
+
+            <mv-textarea required=true>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMaxlength -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMaxlength><strong>validateMaxlength</strong></mv-card-title>
+            <mv-card-subtitle>Validación de longitud máxima.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMaxlength permite definir una longitud máxima del contenido del textarea.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMaxlengthExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMaxlengthExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMaxlength con valor 8:</strong></p>
+
+            <mv-textarea validateMaxlength="8">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMaxlengthHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMaxlengthHint><strong>validateMaxlengthHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateMaxlength.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMaxlengthHint permite definir un mensaje personalizado para la propiedad validateMaxlength.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateMaxlength</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMaxlengthHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMaxlengthHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMaxlengthHint 'demasiado largo':</strong></p>
+
+            <mv-textarea validateMaxlengthHint="demasiado largo" validateMaxlength="10">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMax -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMax><strong>validateMax</strong></mv-card-title>
+            <mv-card-subtitle>Validación de número máximo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMax permite definir un número máximo del contenido del textarea.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>type=number</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMaxExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMaxExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMax con valor 65:</strong></p>
+
+            <mv-textarea type="number" validateMax="65">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMaxHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMaxHint><strong>validateMaxHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateMax.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMaxHint permite definir un mensaje personalizado para la propiedad validateMax.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateMax</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMaxHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMaxHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMaxHint 'Introduce un número inferior':</strong></p>
+
+            <mv-textarea type="number" validateMaxHint="Introduce un número inferior" validateMax="30">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMin -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMin><strong>validateMin</strong></mv-card-title>
+            <mv-card-subtitle>Validación de número mínimo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMin permite definir un número mínimo del contenido del textarea.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>type=number</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMinExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMinExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMin con valor 18:</strong></p>
+
+            <mv-textarea type="number" validateMin="18">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMinHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMinHint><strong>validateMinHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateMin.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMinHint permite definir un mensaje personalizado para la propiedad validateMin.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateMin</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMinHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMinHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMinHint 'Introduce un número superior':</strong></p>
+
+            <mv-textarea type="number" validateMinHint="Introduce un número superior" validateMin="18">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNIE -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNIE><strong>validateNIE</strong></mv-card-title>
+            <mv-card-subtitle>Validación de NIE.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNIE permite validar si el contenido es un NIE.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNIEExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNIEExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNIE:</strong></p>
+
+            <mv-textarea validateNIE=true>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNIEHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNIEHint><strong>validateNIEHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateNIE.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNIEHint permite definir un mensaje personalizado para la propiedad validateNIE.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateNIE</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNIEHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNIEHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNIEHint 'Introduce un NIE correcto':</strong></p>
+
+            <mv-textarea validateNIE=true validateNIEHint="Introduce un NIE correcto">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNIF -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNIF><strong>validateNIF</strong></mv-card-title>
+            <mv-card-subtitle>Validación de NIF.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNIF permite validar si el contenido es un NIF.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNIFExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNIFExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNIF:</strong></p>
+
+            <mv-textarea validateNIF=true>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNIFHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNIFHint><strong>validateNIFHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateNIF.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNIFHint permite definir un mensaje personalizado para la propiedad validateNIF.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateNIF</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNIFHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNIFHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNIFHint 'Introduce un NIF correcto':</strong></p>
+
+            <mv-textarea validateNIF=true validateNIFHint="Introduce un NIF correcto">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNIFNIEHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNIFNIEHint><strong>validateNIFNIEHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateNIE y validateNIF a la vez.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNIFNIEHint permite definir un mensaje personalizado para cuando se usen las propiedades validateNIE y validateNIF a la vez. Concretamente, saldrá este mensaje cuando el texto introducido no sea ni un NIE ni un NIF.</p>
+            <p>Para los casos en los que sea tan solo o el NIF o el NIE lo que sea incorrecto mostrará el mensaje definido en
+                <strong>validateNIF</strong> o <strong>validateNIE</strong>, respectivamente.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateNIE</strong> y la propiedad <strong>validateNIF</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNIFNIEHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNIFNIEHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNIFNIEHint 'Introduce un NIF correcto':</strong></p>
+
+            <mv-textarea validateNIE=true validateNIF=true validateNIFNIEHint="Introduce un NIF/NIE correcto">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateOnType -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateOnType><strong>validateOnType</strong></mv-card-title>
+            <mv-card-subtitle>Validación en tiempo real.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateOnType permite activar la validación del componente en tiempo real, esto es según se va escribiendo.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo <strong>required=true</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateOnTypeExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateOnTypeExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateOnType a true:</strong></p>
+
+            <mv-textarea required=true validateOnType=true>
+            </mv-textarea>
+
+            <p><strong>Con validateOnType a false:</strong></p>
+
+            <mv-textarea required=true validateOnType=false>
+            </mv-textarea>
+
+            <p><strong>Sin validateOnType (comportamiento por defecto):</strong></p>
+
+            <mv-textarea required=true>
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateRegex -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateRegex><strong>validateRegex</strong></mv-card-title>
+            <mv-card-subtitle>Validación de expresión regular.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateRegex permite validar si el contenido cumple con la expresión regular definida.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateRegexExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateRegexExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con expresión regular para validar matrículas, validateRegex '(\d{{'{'}}4{{'}'}})([A-z]{{'{'}}3{{'}'}})':</strong></p>
+
+            <mv-textarea validateRegex="(\d{4})([A-z]{3})">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateRegexHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateRegexHint><strong>validateRegexHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateRegexHint.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateRegexHint permite definir un mensaje personalizado para la propiedad validateRegex.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateRegex</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateRegexHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateRegexHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con expresión regular para validar correos de gmail, validateRegex '([^@]+@gmail.com)'
+        y validateRegexHint 'El correo debe ser gmail':</strong></p>
+
+            <mv-textarea validateRegexHint="El correo debe ser gmail" validateRegex="([^@]+@gmail.com)">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- changeEvent -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #changeEvent><strong>changeEvent</strong></mv-card-title>
+            <mv-card-subtitle>Evento change.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>El evento changeEvent permite definir una función que se ejecutará cuando cambie el valor del textarea</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeChangeEventExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeChangeEventExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con changeEvent:</strong></p>
+
+            <mv-textarea (changeEvent)="changeEventFunction($event)">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- keyupEvent -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #keyupEvent><strong>keyupEvent</strong></mv-card-title>
+            <mv-card-subtitle>Evento keyup.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>El evento keyupEvent permite definir una función que se ejecutará cuando el usuario deja de teclear</p>
+            <p>La diferencia con el evento <strong>changeEvent</strong> es que no se ejecutará la función keyupEvent hasta que el usuario deje de teclear, de manera que si mantiene pulsado de manera continuada un valor del teclado se estará introduciendo
+                muchos caracteres sin que se ejecute la función keyupEvent, sin embargo sí se estaría ejecutando la función changeEvent porque el valor sí está cambiando.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeKeyupEventExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeKeyupEventExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con keyupEvent:</strong></p>
+
+            <mv-textarea (keyupEvent)="keyupEventFunction($event)">
+            </mv-textarea>
+
+        </mv-card-content>
+    </mv-card>
+
+
+    <!-- ariaLabel -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #ariaLabel><strong>ariaLabel</strong></mv-card-title>
+            <mv-card-subtitle>Etiqueta para accesibilidad</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La etiqueta ariaLabel se utiliza para proporcionar una descripción de texto alternativa para elementos que no tienen un texto visible por si mismo y aseguarse que usuarios con lectores de pantalla y otros asistentes de accesibilidad puedan
+                entender el propósito del componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="ariaLabelHtml"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="ariaLabelTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+        </mv-card-content>
+    </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

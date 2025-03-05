@@ -1,0 +1,161 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Iconos</strong></mv-card-title>
+
+    <p>El framework MOVA acepta las siguientes familias de iconos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='material.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Material Icons
+      </a></li>
+      <li><a class="nostyle" (click)='fontawesome.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Font Awesome
+      </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- material -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #material><strong>Material Icons</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <br>
+
+      <p>La lista de iconos disponibles de Material se puede consultar en
+        <a
+          rel="noopener noreferrer"
+          href="https://material.io/resources/icons/?style=baseline"
+          target="_blank">
+          https://material.io/resources/icons/?style=baseline
+        </a>
+      </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseMaterialExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Ejemplos de iconos de Material:</p>
+
+      <div class="list">
+        <div class="list-elem">
+          <mv-icon>warning</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>assignment</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>book</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>bookmark</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>build</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>done</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>backup</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>explore</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>fingerprint</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>info</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>label</mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon>lock_open</mv-icon>
+        </div>
+      </div>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- fontawesome -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #fontawesome><strong>Font Awesome</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <br>
+
+      <p>La lista de iconos disponibles de Font Awesome se puede consultar en
+        <a
+          rel="noopener noreferrer"
+          href="https://fontawesome.com/icons?d=gallery&m=free"
+          target="_blank">
+          https://fontawesome.com/icons?d=gallery&m=free
+        </a>
+      </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseFontawesomeExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Ejemplos de iconos de Font Awesome:</p>
+
+      <div class="list">
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-home"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-adjust"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-address-book"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-angry"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-book"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-angle-left"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-backspace"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-basketball-ball"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-bell"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-check"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-chart-bar"></mv-icon>
+        </div>
+        <div class="list-elem">
+          <mv-icon fontSet="fa" fontIcon="fa-calendar"></mv-icon>
+        </div>
+      </div>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

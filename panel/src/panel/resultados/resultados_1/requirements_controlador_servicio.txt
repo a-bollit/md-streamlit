@@ -1,0 +1,341 @@
+## Migración de Oracle Forms a Spring Boot: Guía Detallada
+
+En este documento, se proporciona una guía detallada sobre cómo migrar las funcionalidades del formulario de Oracle Forms "EXPECA01" a una aplicación basada en Spring Boot. El enfoque principal será la recreación de los elementos clave, incluyendo controladores RESTful, servicios, DTOs, y el manejo de errores.
+
+### 1. Controladores REST Necesarios
+
+#### Controlador para `GEA_ACURE`
+
+```java
+@RestController
+@RequestMapping("/api/gea_acure")
+public class GeaAcureController {
+
+    @Autowired
+    private GeaAcureService geaAcureService;
+
+    @GetMapping
+    public ResponseEntity<List<GeaAcureDto>> getAllGeaAcures() {
+        return ResponseEntity.ok(geaAcureService.findAll());
+    }
+
+    @GetMapping("/{cddocum}")
+    public ResponseEntity<GeaAcureDto> getGeaAcureById(@PathVariable String cddocum) {
+        return ResponseEntity.ok(geaAcureService.findById(cddocum));
+    }
+
+    @PostMapping
+    public ResponseEntity<GeaAcureDto> createGeaAcure(@RequestBody GeaAcureDto geaAcureDto) {
+        return ResponseEntity.ok(geaAcureService.save(geaAcureDto));
+    }
+
+    @PutMapping("/{cddocum}")
+    public ResponseEntity<GeaAcureDto> updateGeaAcure(@PathVariable String cddocum, @RequestBody GeaAcureDto geaAcureDto) {
+        return ResponseEntity.ok(geaAcureService.update(cddocum, geaAcureDto));
+    }
+
+    @DeleteMapping("/{cddocum}")
+    public ResponseEntity<Void> deleteGeaAcure(@PathVariable String cddocum) {
+        geaAcureService.delete(cddocum);
+        return ResponseEntity.noContent().build();
+    }
+}
+```
+
+#### Controlador para `NOTIFICACION_TELEMATICA`
+
+```java
+@RestController
+@RequestMapping("/api/notificacion_telematica")
+public class NotificacionTelematicaController {
+
+    @Autowired
+    private NotificacionTelematicaService notificacionTelematicaService;
+
+    @GetMapping
+    public ResponseEntity<List<NotificacionTelematicaDto>> getAllNotificaciones() {
+        return ResponseEntity.ok(notificacionTelematicaService.findAll());
+    }
+
+    @GetMapping("/{cddocum}")
+    public ResponseEntity<NotificacionTelematicaDto> getNotificacionById(@PathVariable String cddocum) {
+        return ResponseEntity.ok(notificacionTelematicaService.findById(cddocum));
+    }
+
+    @PostMapping
+    public ResponseEntity<NotificacionTelematicaDto> createNotificacion(@RequestBody NotificacionTelematicaDto notificacionDto) {
+        return ResponseEntity.ok(notificacionTelematicaService.save(notificacionDto));
+    }
+
+    @PutMapping("/{cddocum}")
+    public ResponseEntity<NotificacionTelematicaDto> updateNotificacion(@PathVariable String cddocum, @RequestBody NotificacionTelematicaDto notificacionDto) {
+        return ResponseEntity.ok(notificacionTelematicaService.update(cddocum, notificacionDto));
+    }
+
+    @DeleteMapping("/{cddocum}")
+    public ResponseEntity<Void> deleteNotificacion(@PathVariable String cddocum) {
+        notificacionTelematicaService.delete(cddocum);
+        return ResponseEntity.noContent().build();
+    }
+}
+```
+
+### 2. Servicios Necesarios
+
+#### Servicio para `GEA_ACURE`
+
+```java
+@Service
+public class GeaAcureService {
+
+    @Autowired
+    private GeaAcureRepository geaAcureRepository;
+
+    @Autowired
+    private GeaAcureMapper geaAcureMapper;
+
+    public List<GeaAcureDto> findAll() {
+        return geaAcureMapper.toDtoList(geaAcureRepository.findAll());
+    }
+
+    public GeaAcureDto findById(String cddocum) {
+        GeaAcure geaAcure = geaAcureRepository.findById(cddocum)
+                .orElseThrow(() -> new ResourceNotFoundException("GeaAcure not found for this id :: " + cddocum));
+        return geaAcureMapper.toDto(geaAcure);
+    }
+
+    public GeaAcureDto save(GeaAcureDto geaAcureDto) {
+        GeaAcure geaAcure = geaAcureMapper.toEntity(geaAcureDto);
+        return geaAcureMapper.toDto(geaAcureRepository.save(geaAcure));
+    }
+
+    public GeaAcureDto update(String cddocum, GeaAcureDto geaAcureDto) {
+        if(!geaAcureRepository.existsById(cddocum)) {
+            throw new ResourceNotFoundException("GeaAcure not found for this id :: " + cddocum);
+        }
+        GeaAcure geaAcure = geaAcureMapper.toEntity(geaAcureDto);
+        return geaAcureMapper.toDto(geaAcureRepository.save(geaAcure));
+    }
+
+    public void delete(String cddocum) {
+        if(!geaAcureRepository.existsById(cddocum)) {
+            throw new ResourceNotFoundException("GeaAcure not found for this id :: " + cddocum);
+        }
+        geaAcureRepository.deleteById(cddocum);
+    }
+}
+```
+
+#### Servicio para `NOTIFICACION_TELEMATICA`
+
+```java
+@Service
+public class NotificacionTelematicaService {
+
+    @Autowired
+    private NotificacionTelematicaRepository notificacionTelematicaRepository;
+
+    @Autowired
+    private NotificacionTelematicaMapper notificacionTelematicaMapper;
+
+    public List<NotificacionTelematicaDto> findAll() {
+        return notificacionTelematicaMapper.toDtoList(notificacionTelematicaRepository.findAll());
+    }
+
+    public NotificacionTelematicaDto findById(String cddocum) {
+        NotificacionTelematica notificacion = notificacionTelematicaRepository.findById(cddocum)
+                .orElseThrow(() -> new ResourceNotFoundException("Notificacion not found for this id :: " + cddocum));
+        return notificacionTelematicaMapper.toDto(notificacion);
+    }
+
+    public NotificacionTelematicaDto save(NotificacionTelematicaDto notificacionDto) {
+        NotificacionTelematica notificacion = notificacionTelematicaMapper.toEntity(notificacionDto);
+        return notificacionTelematicaMapper.toDto(notificacionTelematicaRepository.save(notificacion));
+    }
+
+    public NotificacionTelematicaDto update(String cddocum, NotificacionTelematicaDto notificacionDto) {
+        if(!notificacionTelematicaRepository.existsById(cddocum)) {
+            throw new ResourceNotFoundException("Notificacion not found for this id :: " + cddocum);
+        }
+        NotificacionTelematica notificacion = notificacionTelematicaMapper.toEntity(notificacionDto);
+        return notificacionTelematicaMapper.toDto(notificacionTelematicaRepository.save(notificacion));
+    }
+
+    public void delete(String cddocum) {
+        if(!notificacionTelematicaRepository.existsById(cddocum)) {
+            throw new ResourceNotFoundException("Notificacion not found for this id :: " + cddocum);
+        }
+        notificacionTelematicaRepository.deleteById(cddocum);
+    }
+}
+```
+
+### 3. Definición de DTOs
+
+#### DTO para `GEA_ACURE`
+
+```java
+public class GeaAcureDto {
+    private String cddocum;
+    private String cbMarca;
+    private String documento;
+    private String dsdocum;
+    private String expediente;
+    private String interesado;
+    private String itOficioPdf;
+    private String itFirmado;
+    private String itRegistrado;
+    private Date fcEmision;
+    private Date fcReal;
+    private String itimpre;
+    private Integer numRelacion;
+    private String cdDeptno;
+    private String cdTexp;
+    private Integer cdNexp;
+    private Integer cdDigito;
+    private Integer cdAexp;
+    private String cdInteresado;
+    private String cdInteresadoOld;
+    private String cdSubInt;
+    private String cdSubIntOld;
+    private String dsNombre;
+    private String dsApellido1;
+    private String dsApellido2;
+    private String dsRazonSoc;
+    private String cdPais;
+    private String cdProv;
+    private String cdMuni;
+    private String dsDireccion;
+    private String dsDireccion1;
+    private String dsDireccion2;
+    private String cdPostal;
+    private String dsTelefono;
+    private String dsFax;
+    private String clave2;
+    private String contenido2;
+    // getters and setters
+}
+```
+
+#### DTO para `NOTIFICACION_TELEMATICA`
+
+```java
+public class NotificacionTelematicaDto {
+    private String cddocum;
+    private String documento;
+    private String dsdocum;
+    private String expediente;
+    private String interesado;
+    private Date fcCrea;
+    private Integer anexosNote;
+    private String itFirmado;
+    private String itRegistrado;
+    private String imDocumento;
+    private String cdProcedimiento;
+    private String itCdProcOk;
+    private String cdDeptno;
+    private Integer cdNexp;
+    private Integer cdDigito;
+    private Integer cdAexp;
+    private String cdTexp;
+    private String idAlta;
+    private String dsdocum1;
+    private String dsdocum2;
+    private String cdParticular;
+    private String resultado;
+    private String situacion;
+    private String cbMarca;
+    private String cdSubPart;
+    private String dsNombre;
+    private String dsApellido1;
+    private String dsApellido2;
+    private String dsRazonSoc;
+    private String dsDireccion1;
+    private String cdOfi;
+    private String dsOfi;
+    private String resultadoError;
+    private String situacionErrorBd;
+    private String situacionErrorDue;
+    private String situacionErrorRegSal;
+    private String situacionErrorFirma;
+    private String situacionReenvio;
+    private Integer codArchivoPdf;
+    private String claveExterna;
+    private Integer cdEstadoNotificacion;
+    // getters and setters
+}
+```
+
+### 4. Repositorios JPA
+
+#### Repositorio para `GEA_ACURE`
+
+```java
+@Repository
+public interface GeaAcureRepository extends JpaRepository<GeaAcure, String> {
+}
+```
+
+#### Repositorio para `NOTIFICACION_TELEMATICA`
+
+```java
+@Repository
+public interface NotificacionTelematicaRepository extends JpaRepository<NotificacionTelematica, String> {
+}
+```
+
+### 5. Manejadores de Errores
+
+Implementar un manejador global de excepciones para capturar y responder adecuadamente a los errores.
+
+```java
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<?> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> globalExceptionHandler(Exception ex, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+### 6. Estructura del Proyecto
+
+```plaintext
+src/main/java
+|-- com/example/project
+|   |-- controller
+|   |   |-- GeaAcureController.java
+|   |   |-- NotificacionTelematicaController.java
+|   |-- dto
+|   |   |-- GeaAcureDto.java
+|   |   |-- NotificacionTelematicaDto.java
+|   |-- entity
+|   |   |-- GeaAcure.java
+|   |   |-- NotificacionTelematica.java
+|   |-- exception
+|   |   |-- ResourceNotFoundException.java
+|   |-- repository
+|   |   |-- GeaAcureRepository.java
+|   |   |-- NotificacionTelematicaRepository.java
+|   |-- service
+|   |   |-- GeaAcureService.java
+|   |   |-- NotificacionTelematicaService.java
+|   |   |-- ValidationService.java
+|   |-- ProjectApplication.java
+|-- resources
+|   |-- application.properties
+```
+
+### Conclusión
+
+La migración de Oracle Forms a un entorno moderno basado en Spring Boot implica la creación de entidades, repositorios, servicios y controladores REST para manejar las operaciones CRUD y la lógica de negocio. Esta guía proporciona una base sólida sobre cómo replicar y extender la funcionalidad del sistema existente en un enfoque más modular y escalable.
+
+Este enfoque asegura una transición suave y mantenimiento eficiente en el futuro, aprovechando las ventajas de Java Spring Boot incluyendo su robustez, flexibilidad y escalabilidad.

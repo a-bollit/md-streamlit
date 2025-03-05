@@ -1,0 +1,29 @@
+mv-card {
+  @include card-shadow(2);
+  margin: 1rem;
+  padding: 1rem;
+}
+
+mv-header {
+  background-color: #f8f9fa;
+  padding: 0.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+mv-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+mv-content {
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+mv-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  border-top: 1px solid #dee2e6;
+}

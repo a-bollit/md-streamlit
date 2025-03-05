@@ -1,0 +1,90 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Ejemplo de tablas</strong></mv-card-title>
+
+		<p>El framework incorpora un componente para mostrar tablas con distintas configuraciones y formas
+      de visualización.</p>
+    <p>Para ver las opciones con todo detalle, dirigirse a la documentación del componente:
+      <strong><a target="_blank" href="#/doc-table-responsive">doc-table-responsive</a></strong></p>
+
+  </mv-card>
+
+  <!-- sin formato -->
+  <mv-card class="card-code">
+    <mv-card-content>
+
+      <p><strong>Ejemplo sin formato:</strong></p>
+      <p>Se mostrará siempre en modo tabla, y si la pantalla es más pequeña que la tabla deberemos hacer scroll horizontal
+      para visualizar todos las columnas.</p>
+
+      <mv-table-responsive
+        [tableColumns]="tableColumns"
+        *ngIf="data"
+        [data]="data"
+        [pageSize]="3">
+      </mv-table-responsive>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- card-responsive -->
+  <mv-card class="card-code">
+    <mv-card-content>
+
+      <p><strong>Ejemplo con formato 'card-responsive':</strong></p>
+      <p>Se mostrará en modo tabla excepto si el tamaño de la pantalla es pequeño, que pasará a mostrarse en modo card,
+        que consiste en tantas 'tarjetas' como filas de datos haya:</p>
+
+      <mv-table-responsive
+        [tableColumns]="tableColumns"
+        formatType="card-responsive"
+        *ngIf="data"
+        [data]="data"
+        [pageSize]="3">
+      </mv-table-responsive>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- card-inline-responsive -->
+  <mv-card class="card-code">
+    <mv-card-content>
+
+      <p><strong>Ejemplo con formato 'card-inline-responsive':</strong></p>
+      <p>Se mostrará en modo tabla, y si la pantalla es más pequeña que la tabla deberemos se mostrará en modo
+      card-inline, que es en modo 'tarjeta' con una sola línea para el título y el dato.</p>
+
+      <mv-table-responsive
+        [tableColumns]="tableColumns"
+        formatType="card-inline-responsive"
+        *ngIf="data"
+        [data]="data"
+        [pageSize]="3">
+      </mv-table-responsive>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- card-inline-truncate-responsive -->
+  <mv-card class="card-code">
+    <mv-card-content>
+
+      <p><strong>Ejemplo con formato 'card-inline-truncate-responsive':</strong></p>
+      <p>Se mostrará en modo tabla, y si la pantalla es más pequeña que la tabla deberemos se mostrará en modo
+      card-inline-truncate, que es en modo 'tarjeta' con una sola línea para el título y el dato, truncando el
+        valor si supera el ancho del contenedor</p>
+
+      <mv-table-responsive
+        [tableColumns]="tableColumns"
+        formatType="card-inline-truncate-responsive"
+        *ngIf="data"
+        [data]="data"
+        [pageSize]="3">
+      </mv-table-responsive>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>

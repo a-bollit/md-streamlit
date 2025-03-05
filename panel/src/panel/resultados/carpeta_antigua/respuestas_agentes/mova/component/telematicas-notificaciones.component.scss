@@ -1,0 +1,30 @@
+@import '~@mova/components/_variables.scss';
+
+.mv-card {
+  @include card-format;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  mv-button {
+    @include button-color(primary);
+  }
+
+  mv-button[color="warn"] {
+    @include button-color(warn);
+  }
+}

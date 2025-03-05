@@ -1,0 +1,64 @@
+Result from estructura_visual_task: La estructura del formulario Oracle Forms definido en el código XML proporcionado tiene varios componentes visuales que contribuyen a la interfaz de usuario. A continuación se describen en detalle estos componentes, incluyendo sus atributos visuales y cómo se relacionan con los bloques de datos.
+
+### Ventanas
+**W_GENERAL:** Esta ventana tiene un tamaño de 415 puntos de ancho por 133 puntos de alto, y su posición está fijada en coordenadas (20, 8). Tiene un estilo de ventana de documento y no permite maximizar o minimizar. Esta ventana muestra el lienzo `CV_GENERAL`.
+
+**W_PESTAÑAS:** Con un tamaño de 593 puntos de ancho por 314 puntos de alto, esta ventana se ubica en las coordenadas (0, 0) y tampoco se puede maximizar o minimizar. Su lienzo principal es `CV_PESTAÑAS`, que actúa como un separador de pestañas.
+
+**W_DEVOL:** Esta ventana mide 417 puntos de ancho por 191 de alto y su posición es (100, 90). Al igual que las anteriores, no permite maximizar, minimizar ni redimensionar. Su lienzo principal es `CV_DEVOL`.
+
+**W_INF:** Una ventana modal con un tamaño de 312 puntos de ancho por 37 de alto, posicionada en (100, 130). Está destinada a mostrar información al usuario y utiliza el lienzo `CV_INF`.
+
+**W_ERROR_RESULTADO:** Similar en estilos a las anteriores, esta ventana mide 341 puntos de ancho por 144 de alto y sus coordenadas son (100, 100). Muestra el lienzo `CV_ERROR_RESULTADO`.
+
+**W_SITUACION_ERROR:** También es una ventana modal, de 358 puntos de ancho por 152 de alto, ubicada en (150, 100). Su propósito es mostrar avisos y utiliza el lienzo `CV_SITUACION_ERROR`.
+
+**W_AYUDA:** Por último, esta ventana de ayuda mide 383 puntos de ancho por 137 puntos de alto, y su posición es (50, 45). Es modal y usa el lienzo `CV_AYUDA`.
+
+### Lienzos
+**CV_GENERAL:** Este lienzo muestra diversos elementos gráficos y textos importantes para la generalización del formulario. Su tamaño es de 415 puntos de ancho por 133 de alto, coincidiendo con `W_GENERAL`. Aquí se incluyen etiquetas como "Unidad remitente", "Fecha desde", "Expediente", entre otros.
+
+**CV_PESTAÑAS:** Un lienzo de tipo separador que permite gestionar diferentes pestañas de información. Tiene un tamaño de 592 puntos de ancho por 314 de alto. Posee dos pestañas, `PG_CORR` y `PG_NOTE`.
+
+**CV_DEVOL:** Con 417 puntos de ancho por 191 de alto, este lienzo se usa para gestionar devoluciones. Contiene marcos y gráficos que indican etiquetas como "Unidad Administrativa" y "Consejería u Organismo".
+
+**CV_INF:** Un lienzo simple utilizado para mostrar un mensaje de espera al usuario. Mide 313 puntos de ancho por 38 de alto.
+
+**CV_ERROR_RESULTADO:** Este lienzo, de 341 puntos de ancho por 144 de alto, se usa para mostrar errores durante la emisión de notificaciones.
+
+**CV_SITUACION_ERROR:** Un lienzo de 358 puntos de ancho por 152 de alto que se utiliza para mostrar avisos sobre la situación de errores en la emisión de notificaciones.
+
+**CV_AYUDA:** Utilizado para mostrar ayuda al usuario, este lienzo mide 383 puntos de ancho por 136 de alto.
+
+### Alertas
+**CONFIRMAR:** Es una alerta visual de estilo `Atención`, que solicita confirmación al usuario para dar de baja un registro. Cuenta con botones "SI" y "NO", y utiliza el atributo visual `FONDO`. Su título es "Confirmar dar de baja registro".
+
+**NOTA:** Una alerta de estilo `Nota` que puede mostrar mensajes informativos sin botones específicos. Usa el atributo visual `FONDO`.
+
+**MENSAJE:** Define una alerta de `Aviso`, probablemente para notificaciones importantes. Su atributo visual es `FONDO`.
+
+### Menús
+El formulario usa el menú `DEFAULT&SMARTBAR` que proporciona una barra de herramientas estándar con opciones comunes para la navegación y gestión de registros.
+
+### Bloques de Datos
+**B00:** Este bloque no está asociado a la base de datos y tiene una sola fila visible. Sus elementos no son visibles, y están relacionados con la funcionalidad de fondo del formulario. Implementa triggers para cambiar colores de fondo del item actual.
+
+**BL_GENERAL:** Bloque principal del formulario, no basado en la base de datos. Contiene varios items, como `CDORGA_EREG`, `FCDESDE`, `FCHASTA`, etc. Estos items están configurados para manejar la lógica de negocios y condiciones de validación desde la interfaz de usuario.
+
+### Visual Attributes
+**ROJO:** Define el color de texto como rojo, usado normalmente para resaltar errores o advertencias.
+
+**NEGRO:** Atributo visual básico con texto en color negro.
+
+**CAMPO_FONDO:** Asigna un fondo blanco a ciertos elementos de texto en los bloques.
+
+**FONDO:** Atributo visual genérico para el fondo de varios elementos.
+
+**BOTON:** Estilo visual usado para botones, con colores y tamaños específicos.
+
+**FONDO_CAMPO_VISUAL:** Usado para lovs (Lista de Valores), proporciona un fondo visual distinto a estos elementos.
+
+### Conclusión
+El formulario está diseñado con varias ventanas y lienzos que permiten una organización clara y sencilla de la información, enfocándose en la gestión de notificaciones. Las ventanas son no modales, salvo algunas excepciones, y cada una maneja su propio set de atributos visuales y gráficos que complementan la navegación del usuario. Las alertas están bien definidas para acciones de confirmación y avisos generales, mientras que los menús facilitan el acceso a funcionalidades comunes.
+
+Esta descripción detallada de los componentes visuales y su disposición permite replicar con precisión la interfaz de usuario del formulario Oracle Forms descrito.

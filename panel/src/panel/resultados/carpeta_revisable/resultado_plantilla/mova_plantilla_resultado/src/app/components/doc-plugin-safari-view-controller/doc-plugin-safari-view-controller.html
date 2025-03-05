@@ -1,0 +1,89 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title>
+      <strong>Documentación cordova-plugin-x-safari-view-controller</strong>
+    </mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información y ejemplo de uso.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este plugin sirve para abrir una vista web del dispositivo. </p>
+      <p>La documentación completa está en
+        <strong>
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.npmjs.com/package/cordova-plugin-safariviewcontroller"
+          >
+            https://www.npmjs.com/package/cordova-plugin-safariviewcontroller
+          </a>
+        </strong>
+      </p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplo de uso.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>A continuación se muestra un ejemplo de uso: </p>
+      <ul>
+        <li>Si estamos en una webapp, se abrirá con el método windowOpen de appService</li>
+        <li>Si estamos en un móvil, se abrirá con el plugin safariviewcontroller</li>
+      </ul>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="pluginExample()">
+        Lanzar ejemplo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

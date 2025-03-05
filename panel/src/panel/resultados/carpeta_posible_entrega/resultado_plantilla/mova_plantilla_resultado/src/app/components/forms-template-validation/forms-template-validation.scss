@@ -1,0 +1,13 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+.center{
+  margin: 3rem auto 0 auto;
+  .app-cliente-detail-buttons-button{
+    margin: 0 0.75rem 0 0.75rem;
+  }
+}

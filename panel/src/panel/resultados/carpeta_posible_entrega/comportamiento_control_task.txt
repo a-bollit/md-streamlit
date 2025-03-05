@@ -1,0 +1,102 @@
+Result from comportamiento_control_task: ## Análisis del Formulario Oracle Forms EXPECA01
+
+### Introducción
+A continuación, se presenta un informe detallado que describe la lógica de comportamiento, control y validaciones del formulario Oracle Forms `EXPECA01`. Este análisis se centra en la comprensión exhaustiva de los triggers, unidades de programación, cálculos realizados y cómo interactúan con otros elementos del formulario. Este desglose detallado permite replicar la lógica de comportamiento y control con precisión.
+
+### Bloques de Datos y Su Funcionalidad
+
+#### 1. Bloque B00
+El objetivo principal del bloque `B00` es manejar la lógica interna y el control del formulario. Este bloque actúa como soporte de validaciones y propiedades visuales fundamentales.
+
+**Triggers y Funcionalidades Asociadas:**
+- **PRE-TEXT-ITEM**: Este trigger se dispara antes de que un campo de texto reciba el foco, cambiando el color de fondo del campo actual.
+- **POST-TEXT-ITEM**: Este trigger se activa después de que un campo de texto haya sido deseleccionado, devolviendo el color de fondo del campo a su estado original.
+
+**Campos dentro del Bloque B00:**
+- `EXISTEN_EXP_AN_FI`: Variable de control que almacena valores lógicos internos.
+- `FALLO`: Campo de control utilizado para verificar errores dentro de los procedimientos de validación.
+
+#### 2. Bloque BL_GENERAL
+El bloque `BL_GENERAL` contiene la mayoría de los campos en los que los usuarios interactúan directamente. Este bloque maneja varias entradas relacionadas con la administración de registros y expedientes.
+
+**Principales Triggers y su Logica:**
+- **WHEN-BUTTON-PRESSED en `LOV_CDUNIDAD`**:
+  - **Funcionalidad**: Al presionar el botón, se despliega una lista de valores que permite seleccionar unidades administrativas.
+- **KEY-NEXT-ITEM en `FCDESDE` y `FCHASTA`**:
+  - **Funcionalidad**: Redirige el control al siguiente campo en el flujo lógico, garantizando que las fechas sean ingresadas de manera secuencial y lógicas.
+- **WHEN-VALIDATE-ITEM en `CDTEXP`**:
+  - **Funcionalidad**: Realiza validaciones específicas para verificar la validez del campo, incluyendo validaciones de permisos y existencias.
+
+**Otros Campos:**
+- `CDORGA_EREG`: Campo texto relacionado con la organización.
+- `ACEPTAR`:
+  - Ejecuta validaciones centrales mediante llamadas a los procedimientos `Valida_Expediente` y `Valida_Fechas`.
+  - Muestra la vista correspondiente (probablemente CV_INF) y establece el estado de determinados registros.
+  - Inicia la construcción de consultas para distintos bloques y ejecuta sus respectivas consultas.
+- `CANCELAR`:
+  - **Funcionalidad**: Cancelar cualquier operación y cerrar el formulario.
+  - **Trigger**: WHEN-BUTTON-PRESSED.
+
+#### 3. Bloque GEA_ACURE
+El bloque `GEA_ACURE` está destinado a manejar registros asociados a la base de datos, así como validar y presentar la información necesaria en la interfaz de usuario durante la búsqueda y actualización de documentos.
+
+**Triggers Clave:**
+- **POST-QUERY**: 
+  - Realiza validaciones complejas sobre el estado de los expedientes, invocando funciones como `f_estado_expediente` para determinar si un expediente está finalizado o anulado.
+  - Ajusta el formato de visualización del expediente y direcciones de notificación si son necesarios.
+  - Determina visibilidad y estado de campos según permisos y datos disponibles.
+
+**Campos Relevantes:**
+- `CODARCHIVO_PDF`: Identificador de archivo PDF.
+- `CDDOCUM`: Campo texto para el código del documento.
+- `CB_MARCA`: Casilla de verificación para marcar registros específicos que necesitan alguna operación.
+
+#### 4. Bloque BL_DEVOL
+El bloque `BL_DEVOL` se utiliza para gestionar las devoluciones de documentos y las interacciones relacionadas.
+
+**Funciones Clave en Triggers**:
+- **WHEN-VALIDATE-ITEM en `CDMUNI`**:
+  - Valida el código de municipio mediante la llamada al procedimiento `Valida_Municipio`.
+- **WHEN-BUTTON-PRESSED en `LOV_CONSEJ`**:
+  - Despliega una lista de valores de consejería u organismos, permitiendo al usuario seleccionar los valores apropiados para `dscons`.
+
+**Campos:**
+- `DSCONS`: Campo texto para la descripción de la consejería.
+- `CANCELAR` y `ACEPTAR`: Botones que confirman o cancelan la operación y esconden la ventana de devoluciones.
+
+#### 5. Bloque NOTIFICACION_TELEMATICA
+El bloque `NOTIFICACION_TELEMATICA` está diseñado para manejar la lógica de envío y recepción de notificaciones telemáticas.
+
+**Triggers Importantes:**
+- **POST-QUERY**:
+  - Determina si la notificación debe ser presentada según el estado del expediente.
+  - Utiliza funciones de procedimiento para obtener y validar la dirección de notificación del interesado.
+- **WHEN-IMAGE-PRESSED en `RESULTADO`**:
+  - Muestra información detallada sobre el estado de la notificación a través de la ventana de `Resultado`.
+- **WHEN-CHECKBOX-CHANGED en `CB_MARCA`**:
+  - Realiza múltiples validaciones para asegurarse de que todos los requisitos están cumplidos antes de permitir el marcado de la notificación.
+
+**Campos Asociados y Funcionalidades**:
+- `DOCUMENTO`: Campo texto que contiene la referencia de documentos para notificaciones.
+- `FCCREA`: Campo tipo fecha que indica la fecha de creación de la notificación.
+- `IMDOCUMENTO`: Imagen utilizada para indicar el estado de la notificación.
+
+### Procedimientos y Funciones
+
+**Valida_Fechas**:
+- **Funcionalidad**: Verifica que las fechas ingresadas no sean mayores a la fecha actual y que el rango de fechas sea válido.
+
+**Valida_Expediente**:
+- **Funcionalidad**: Comprueba que el expediente no esté finalizado o anulado antes de proceder con la notificación.
+
+**Construir_Where_Note y Construir_Where_Corr**:
+- **Funcionalidad**: Construyen la cláusula WHERE para las consultas SQL utilizadas en los bloques `NOTIFICACION_TELEMATICA` y `GEA_ACURE` respectivamente.
+
+**Validaciones de Municipio**:
+- **Funcionalidad**: Mediante el procedimiento `Valida_Municipio`, verifica la existencia y validez del código de municipio ingresado.
+
+### Conclusiones
+
+El formulario `EXPECA01` en Oracle Forms está cuidadosamente estructurado con múltiples bloques de datos, cada uno con su lógica de validación y procedimientos específicos. Las interacciones entre triggers, unidades de programación y visualizaciones permiten asegurar que las operaciones realizadas sean validadas y consistentes, proporcionando robustez y precisión en el manejo de información crítica para la administración de expedientes y notificaciones telemáticas.
+
+Esta descripción detallada ofrece la base necesaria para replicar de manera precisa la lógica y el comportamiento del formulario Oracle Forms `EXPECA01`, cumpliendo con los requisitos de validación y control necesarios en un entorno empresarial complejo.

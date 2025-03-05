@@ -1,0 +1,76 @@
+@import '~@mova/components/_variables.scss';
+
+:host {
+  display: block;
+  padding: 1rem;
+
+  mv-header {
+    background-color: $primary-color;
+    color: $header-text-color;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  mv-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  
+    mv-tab {
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      background-color: $tab-background;
+      border-radius: 0.5rem;
+      color: $tab-color;
+
+      &.active {
+        background-color: $tab-active-background;
+        color: $tab-active-color;
+      }
+
+      &:hover {
+        background-color: $tab-hover-background;
+        color: $tab-hover-color;
+      }
+    }
+  }
+
+  mv-content {
+    mv-table-responsive {
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        thead {
+          background-color: $table-header-background;
+          color: $table-header-color;
+
+          th {
+            padding: 0.5rem;
+          }
+        }
+
+        tbody {
+          tr {
+            &:nth-child(even) {
+              background-color: $table-row-even-background;
+            }
+
+            &:nth-child(odd) {
+              background-color: $table-row-odd-background;
+            }
+
+            td {
+              padding: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  mv-footer {
+    margin-top: 1rem;
+  }
+}

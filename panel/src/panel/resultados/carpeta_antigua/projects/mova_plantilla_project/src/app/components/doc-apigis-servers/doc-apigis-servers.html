@@ -1,0 +1,187 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Herencia de servidores</strong></mv-card-title>
+
+    <p>La clase apigis.Layers y apigis.Map permiten la herencia de servidores para aumentar la funcionalidad de los
+      elementos.
+    </p>
+    <p>En esta página se muestra la forma en la que se puede emplear la herencia de servidores.
+    </p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='layer.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Uso de herencia de servidores en objetos de tipo apigis.Layer
+        </a></li>
+      <li><a class="nostyle" (click)='map.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> so de herencia de servidores en objetos de tipo apigis.Map
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Layer -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #layer><strong>Uso de herencia de servidores en objetos de tipo apigis.Layer</strong>
+      </mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Cuando se genera un objeto de tipo apigis.Layer tal y como se explica en la
+        <a routerLink="/doc-apigis-layer" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Documentación
+            de apigis.Layer</strong></a>
+        se pueden crear objetos con la propiedad <strong>inheritedclass</strong>. Esta propiedad permite definiar la
+        clase de la que heredará dinámicamente la capa y
+        debe coincidir con alguna de los disponibles actualmente ([Geoserver, Catastro]).
+      </p>
+      <h3>Geoserver</h3>
+      <p>Cuando inheritedclass es igual a <strong>Geoserver</strong> (<em>new ApiLayer(&#123;...inheritedclass:
+          'Geoserver', ...&#125;)</em>),
+        la capa heredará los siguientes métodos:</p>
+      <p><em><strong>identifyServer(url, geometry, identifyParams, geometryColumn)</strong></em></p>
+      <p>Permite ejecutar una consulta de identificación mediante ECQL. Sus argumentos son: </p>
+      <ul>
+        <li><strong>url</strong> &#60;<i>string</i> &#62; URL del servicio.</li>
+        <li><strong>geometry</strong> &#60;<i>object</i> &#62;Geometría en geojson sobre la que ejecutar la
+          identificación.</li>
+        <li><strong>identifyParams</strong> &#60;<i>object</i> &#62; Parámetros de identificación. Puede contener las
+          propiedades: </li>
+        <ul>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+          <li><strong>caseSensitive</strong> &#60;<i>boolean</i> &#62; Determina si el filtro es case sensitive o case
+            unsensitive. Por defecto es true (distingue entre mayúsculas y minúsculas).</li>
+        </ul>
+        <li><strong>geometryColumn</strong> &#60;<i>string</i> &#62; Columna de tipo geometría para la capa a la sobre
+          la que se realizará la identificación</li>
+      </ul>
+      <br>
+      <p><em><strong>getQueryFilter(paramsFilter, geometryFilter, geometryColumn, caseSensitive = true)</strong></em>
+      </p>
+      <p>Permite recuperar la consulta en base a los parámetros de filtrado. Sus argumentos son: </p>
+      <ul>
+        <li><strong>paramsFilter</strong> &#60;<i>apigis.Filter</i> &#62;Objeto de filtrado. El objeto tendrá
+          propiedades que harán referencia a las diferentes expresiones de la consulta.</li>
+        <li><strong>geometryFilter</strong> &#60;<i>number[]</i> &#62;Extensión a tener en cuenta en el filtrado.</li>
+        <li><strong>geometryColumn</strong> &#60;<i>string</i> &#62; Nombre del campo geometría..</li>
+        <li><strong>caseSensitive</strong> &#60;<i>boolean</i> &#62; Determina si el filtro es case sensitive o case
+          unsensitive. Por defecto es true (distingue entre mayúsculas y minúsculas).</li>
+      </ul>
+      <br>
+      <p><em><strong>findServer(url, filterObj, findParams, geometryColumn)</strong></em></p>
+      <p>Permite ejecutar una consulta de búsqueda en el servidor mediante ECQL. Sus argumentos son: </p>
+      <ul>
+        <li><strong>url</strong> &#60;<i>string</i> &#62; URL del servicio.</li>
+        <li><strong>filterObj</strong> &#60;<i>apigis.Filter</i> &#62; Objeto de filtrado. El objeto tendrá propiedades
+          que harán referencia a las diferentes expresiones de la consulta.</li>
+        <li><strong>findParams</strong> &#60;<i>object</i> &#62; Parámetros de identificación. Puede contener las
+          propiedades: </li>
+        <ul>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+          <li><strong>caseSensitive</strong> &#60;<i>boolean</i> &#62; Determina si el filtro es case sensitive o case
+            unsensitive. Por defecto es true (distingue entre mayúsculas y minúsculas).</li>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+          <li><strong>caseSensitive</strong> &#60;<i>boolean</i> &#62; Define si la búsqueda es sensible a mayúsculas o
+            no.</li>
+          <li><strong>pageNumber</strong> &#60;<i>number</i> &#62; Permite definir el número de página de la búsqueda a
+            devolver.</li>
+          <li><strong>pageSize</strong> &#60;<i>number</i> &#62; Permite definir el número de resultados a recibir de la
+            búsqueda.</li>
+          <li><strong>properties</strong> &#60;<i>string[]</i> &#62; Propiedades a devolver en la búsqueda.</li>
+          <li><strong>sortBy</strong> &#60;<i>object</i> &#62; Parámetros de ordenación de la búsqueda. Debe contener:
+          </li>
+          <ul>
+            <li><strong>field</strong> &#60;<i>string</i> &#62; Nombre de la columna para ordenar los resultados.</li>
+            <li><strong>order</strong> &#60;<i>'A' | 'D'</i> &#62; Tipo de ordenación. A para ascendente y D para
+              descendente.</li>
+          </ul>
+        </ul>
+        <li><strong>geometryColumn</strong> &#60;<i>string</i> &#62; Columna de tipo geometría para la capa a la sobre
+          la que se realizará la búsqueda.</li>
+      </ul>
+      <br>
+      <h3>Catastro</h3>
+      <p>Cuando inheritedclass es igual a <strong>Catastro</strong> (<em>new ApiLayer(&#123;...inheritedclass:
+          'Catastro', ...&#125;)</em>),
+        la capa heredará los siguientes métodos:</p>
+      <p><em><strong>getFeatureInfoServer(feature, identifyParams = &#123;&#125;)</strong></em></p>
+      <p>Devuelve el servicio de capabilities del servidor de impresión. Sus argumentos son: </p>
+      <ul>
+        <li><strong>feature</strong> &#60;<i>string</i> &#62; Geometría en geojson sobre la que ejecutar la
+          identificación.</li>
+        <li><strong>identifyParams</strong> &#60;<i>object</i> &#62; Parámetros de identificación. Estos pueden ser:
+        </li>
+        <ul>
+          <li><strong>url</strong> &#60;<i>string</i> &#62; Url del servicio.</li>
+          <li><strong>username</strong> &#60;<i>string</i> &#62; Usuario de acceso a la identificación.</li>
+          <li><strong>password</strong> &#60;<i>string</i> &#62; Contraseña de acceso a la identificación.</li>
+        </ul>
+      </ul>
+      <br>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Map -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #map><strong>Uso de herencia de servidores en objetos de tipo apigis.Map</strong>
+      </mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Cuando se genera un objeto de tipo apigis.Map tal y como se explica en la
+        <a routerLink="/doc-apigis-map" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Documentación
+            de apigis.Map</strong></a>
+        se pueden crear objetos con la propiedad <strong>inheritedclass</strong>. Esta propiedad permite definiar la
+        clase de la que heredará dinámicamente la capa y
+        debe coincidir con alguna de los disponibles actualmente ([MapFish]).
+      </p>
+      <h3>Mapfish</h3>
+      <p>Cuando inheritedclass es igual a <strong>Mapfish</strong> (<em>new ApiMap(&#123;...inheritedclass:
+          'Mapfish', ...&#125;)</em>),
+        la capa heredará los siguientes métodos:</p>
+      <p><em><strong>getPrintCapabilities(url, template)</strong></em></p>
+      <p>Devuelve el servicio de capabilities del servidor de impresión. Sus argumentos son: </p>
+      <ul>
+        <li><strong>url</strong> &#60;<i>string</i> &#62; URL del servicio.</li>
+        <li><strong>sting</strong> &#60;<i>object</i> &#62;Plantilla.</li>
+      </ul>
+      <br>
+      <p><em><strong>exportMapServer(params)</strong></em></p>
+      <p>Función que lanza la exportación de los mapas cuando la duración es menor de 20 segundos. Si no retorna la url
+        de descarga. Sus argumentos son: </p>
+      <ul>
+        <li><strong>params</strong> &#60;<i>string</i> &#62; Parámetros de entrada. Puede contener: </li>
+        <ul>
+          <li><strong>hostUrl</strong> &#60;<i>object</i> &#62; Url del host del servicio de impresión de MapFish.</li>
+          <li><strong>printUrl</strong> &#60;<i>string</i> &#62; Url del servicio de impresión de MapFish.</li>
+          <li><strong>template</strong> &#60;<i>string</i> &#62; Nombre de la plantilla.</li>
+          <li><strong>layout</strong> &#60;<i>string</i> &#62; Nombre del diseño.</li>
+          <li><strong>attributes</strong> &#60;<i>object</i> &#62; Atributos configurables para la impresión.</li>
+          <li><strong>exclude</strong> &#60;<i>string[]</i> &#62; Conjunto de títulos de capas que no quieran
+            imprimirse.</li>
+          <li><strong>reportName</strong> &#60;<i>string</i> &#62; Nombre del mapa impreso.</li>
+          <li><strong>format</strong> &#60;<i>string</i> &#62;F ormato de impresión.</li>
+          <li><strong>dpi</strong> &#60;<i>number</i> &#62; DPIs para la impresión</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>async checkJob(hostUrl, urlStatus)</strong></em></p>
+      <p>Comprueba el estado de la descarga. Sus argumentos son: </p>
+      <ul>
+        <li><strong>hostUrl</strong> &#60;<i>string</i> &#62; Url del host del servicio de impresión.</li>
+        <li><strong>urlStatus</strong> &#60;<i>string</i> &#62; Url de consulta de estatus de job del servicio de
+          impresión.</li>
+      </ul>
+      <br>
+    </mv-card-content>
+  </mv-card>
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

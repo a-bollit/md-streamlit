@@ -1,0 +1,86 @@
+<section class="view-default-style">
+  <!-- Boton para actualizar las notificaciones -->
+  <div  class="notificationsBtn">
+    
+    <mv-button
+      appearance="raised"
+      color="warn"
+      (click)="deleteAll()">
+      <mat-icon>delete</mat-icon> Borrar todas
+    </mv-button>
+
+    <mv-button
+      *ngIf="!isMobileApp"
+      appearance="raised"
+      color="warn"
+      (click)="update()">
+      <mat-icon>update</mat-icon> Actualizar
+    </mv-button>
+      
+      <mv-input
+      adapt=false
+      appearance="legacy"
+      label="Dispositivo debug"
+      [(ngModel)]="dispositivoDebug"
+      placeholder="debug">
+    </mv-input>
+
+    <div class="break"></div> 
+     <p>Este div amarillo esta solo para pruebas, en la plantilla se puede eliminar</p>
+
+  </div>
+  <!-- Componente del listado de notificaciones -->
+  <mv-last-notifications
+    #notificationComponent
+    [configuration]="configuration"
+    [template]="templateNotification"
+    >
+  </mv-last-notifications>
+
+  <!-- Template para cada notificación -->
+  <ng-template #templateNotification let-data="data" let-date="date">
+    <mv-card class="card-code-notification" >
+
+      <div class="contentDate ">
+      Fecha: {{date}}
+      </div>
+
+      <mv-card-header >
+        <mv-card-title class="contentTitle"><strong>{{data.titulo}}</strong></mv-card-title>
+        <mv-card-subtitle></mv-card-subtitle>
+      </mv-card-header>
+
+      <div class="row">
+
+        <div class="contentInfo  ">
+
+          <mv-card-content>
+            <ul class="mensaje">
+              <li>{{data.mensaje}}</li>
+            </ul>
+          </mv-card-content>
+        </div>
+
+        <div class="contentActions ">
+
+          <mv-button
+            appearance="raised"
+            color="warn"
+            (click)="deleteNotification($event, data)">
+            <mat-icon>delete</mat-icon>
+          </mv-button>
+          
+          <mv-button
+            appearance="raised"
+            color="primary"
+            (click)="openNotification(data)">
+            <mat-icon>library_books</mat-icon>
+          </mv-button>
+
+        </div>
+          
+      </div>
+    </mv-card>
+  </ng-template>
+
+</section>

@@ -1,0 +1,452 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-snack-bar</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='actionText.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> actionText
+      </a></li>
+      <li><a class="nostyle" (click)='afterDismissed.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> afterDismissed
+      </a></li>
+      <li><a class="nostyle" (click)='duration.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> duration
+      </a></li>
+      <li><a class="nostyle" (click)='onAction.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> onAction
+      </a></li>
+      <li><a class="nostyle" (click)='text.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> text
+      </a></li>
+      <li><a class="nostyle" (click)='type.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> type
+      </a></li>
+      <li><a class="nostyle" (click)='verticalPosition.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> verticalPosition
+      </a></li>
+      <li><a class="nostyle" (click)='horizontalPosition.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> horizontalPosition
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-snack-bar</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente sirve para mostrar un mensaje breve de información, aviso o error  en la pantalla durante unos segundos.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-snack-bar</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de snack bar:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackBar()">
+        Lanzar snack bar
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- actionText -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #actionText><strong>actionText</strong></mv-card-title>
+      <mv-card-subtitle>Texto del botón.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad actionText permite definir el texto del botón del componente.</p>
+      <p>Si pulsamos el botón, el snack bar se ocultará</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeActionTextExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeActionTextExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con actionText = 'Deshacer':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackActionTextExample()">
+        Lanzar snack bar
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- afterDismissed -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #afterDismissed><strong>afterDismissed</strong></mv-card-title>
+      <mv-card-subtitle>Acción de callback al desaparecer.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad afterDismissed permite definir una función de callback que se ejecutará cuando el componente se oculte.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAfterDismissedExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAfterDismissedExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con afterDismissed:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackAfterDismissedExample()">
+        Lanzar snack bar
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- duration -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #duration><strong>duration</strong></mv-card-title>
+      <mv-card-subtitle>Duración del snackBar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad duration permite definir el tiempo en milisegundos que tarde el componente en desaparecer.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDurationExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDurationExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con duration = 1000:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackDurationExample(1000)">
+        Lanzar duration 1000ms
+      </mv-button>
+
+      <p><strong>Con duration = 8000:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackDurationExample(8000)">
+        Lanzar duration 8000ms
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- onAction -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #onAction><strong>onAction</strong></mv-card-title>
+      <mv-card-subtitle>Acción de callback al pulsar el botón.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad onAction permite definir una función de callback que se ejecutará cuando pulsemos el botón de acción.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeOnActionExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeOnActionExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con onAction:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackOnActionExample()">
+        Lanzar snack bar
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- text -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #text><strong>text</strong></mv-card-title>
+      <mv-card-subtitle>Texto del snack bar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad text permite definir el texto del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTextExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTextExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con text = 'La acción ha resultado satisfactoria':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackTextExample()">
+        Lanzar snack bar
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- type -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #type><strong>type</strong></mv-card-title>
+      <mv-card-subtitle>Color del snack bar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad type permite definir el color del componente entre info, warning y danger.</p>
+      <p>El color por defecto es warning.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTypeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTypeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con type = 'info':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackType('info')">
+        Lanzar snack info
+      </mv-button>
+
+      <p><strong>Con type = 'warn':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackType('warning')">
+        Lanzar snack warn
+      </mv-button>
+
+      <p><strong>Con type = 'danger':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackType('danger')">
+        Lanzar snack danger
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- verticalPosition -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #verticalPosition><strong>verticalPosition</strong></mv-card-title>
+      <mv-card-subtitle>Posición vertical del snack bar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad verticalPosition permite definir la posición vertical donde se mostrará el componente. Los valores aceptados son:</p>
+      <ul>
+        <li>top</li>
+        <li>bottom</li>
+      </ul>
+      <p>El valor por defecto es 'bottom'.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeVerticalPositionExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeVerticalPositionExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con verticalPosition = 'top':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackVerticalPosition('top')">
+        Lanzar snack 'top'
+      </mv-button>
+
+      <p><strong>Con verticalPosition = 'bottom':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackVerticalPosition('bottom')">
+        Lanzar snack 'bottom'
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- horizontalPosition -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #horizontalPosition><strong>horizontalPosition</strong></mv-card-title>
+      <mv-card-subtitle>Posición horizontal del snack bar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad horizontalPosition permite definir la posición horizontal donde se mostrará el componente. Los valores aceptados son:</p>
+      <ul>
+        <li>start</li>
+        <li>center</li>
+        <li>end</li>
+        <li>left</li>
+        <li>right</li>
+      </ul>
+      <p>El valor por defecto es 'end'.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHorizontalPositionExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHorizontalPositionExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con horizontalPosition = 'start':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackHorizontalPosition('start')">
+        Lanzar snack 'start'
+      </mv-button>
+
+      <p><strong>Con horizontalPosition = 'center':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackHorizontalPosition('center')">
+        Lanzar snack 'center'
+      </mv-button>
+
+      <p><strong>Con horizontalPosition = 'end':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackHorizontalPosition('end')">
+        Lanzar snack 'end'
+      </mv-button>
+
+      <p><strong>Con horizontalPosition = 'left':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackHorizontalPosition('left')">
+        Lanzar snack 'left'
+      </mv-button>
+
+      <p><strong>Con horizontalPosition = 'right':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSnackHorizontalPosition('right')">
+        Lanzar snack 'right'
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

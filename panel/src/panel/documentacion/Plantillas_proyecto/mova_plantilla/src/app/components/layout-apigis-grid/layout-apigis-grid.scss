@@ -1,0 +1,19 @@
+@import "~src/styles";
+
+#container-apigis-grid {
+  width: 100%;
+  height: calc(100% - 144px);
+}
+.title {
+  margin: 10px 0 0 10px;
+}
+.radioBtn {
+  margin-left: 10px;
+}
+.container-selector {
+  height: 80px;
+  width: 100%;
+  background-color: white;
+  flex-direction: column;
+  display: flex;
+}

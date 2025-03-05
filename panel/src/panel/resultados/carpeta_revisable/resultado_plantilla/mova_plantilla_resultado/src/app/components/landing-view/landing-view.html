@@ -1,0 +1,99 @@
+<mv-star></mv-star>
+<div class="external-container-landing-view">
+  <div class="container-landing-view">
+    <div id="title">Comunidad de Madrid</div>
+    <div id="subtitle">
+      <img id="subtitle-img" src="assets/logo-app.png" alt="Logo">
+      <div id="subtitle-text">Plantilla de ejemplo</div>
+    </div>
+
+    <div id="main">
+      <p>Presentación al ciudadano de la aplicación explicando brevemente las funcionalidades de la aplicación.
+        Se pueden añadir alguna imagen o simplemente un texto html</p>
+      <img
+        src="assets/examples/madrid-towers.jpg"
+        alt="Ejemplo imagen">
+
+    </div>
+
+    <div class="text-center">
+      <p class="info-text">
+        Para acceder debe autenticarse con los medios disponibles en la Comunidad de Madrid
+      </p>
+    </div>
+
+    <p class="info-text">En esta plantilla existen dos usuarios de prueba:</p>
+    <ul>
+      <li class="info-text">Para login con usuario y password usar movatest / movatest</li>
+      <li class="info-text">Para login con WSO2 usar movausu1 / movausu1</li>
+    </ul>
+
+    <div class="text-center">
+      <p class="info-text auth">Clave PIN | Certificado Digital o DNI electrónico | Clave Permanente</p>
+
+      <mv-button
+        (clickEvent)="goToHome()"
+        appearance="raised"
+        color="primary">
+        <mv-icon>exit_to_app</mv-icon>
+        Acceder
+      </mv-button>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer-landing-view-hack">
+  <div class="footer-landing-view">
+
+    <ul>
+      <li>
+        <a
+          routerLink="/device-view">
+            V.{{ appVersion }}
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="openUrlOnExternalbrowserClick('urlContacta')">
+            Contacta
+          <mv-icon>open_in_new</mv-icon>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="openUrlOnExternalbrowserClick('urlAvisoLegal')">
+            Aviso legal
+          <mv-icon>open_in_new</mv-icon>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="doOnClickConditions()">
+            Condiciones de acceso
+        </a>
+      </li><br>
+      <li>
+        <a routerLink="/data-protection-view">
+          <div class="largeText">
+            Protección de datos
+          </div>
+          <div class="shortText">
+            Inf. Prot. Datos
+          </div>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/data-accessibility-statement">
+            Accesibilidad
+        </a>
+      </li>
+    </ul>
+
+    <a class="link-portales-madrid" (click)="openUrlOnExternalbrowserClick('urlPortales')">
+  		Todos los portales de la Comunidad de Madrid
+      <mv-icon>open_in_new</mv-icon>
+  	</a>
+
+  </div>
+</div>

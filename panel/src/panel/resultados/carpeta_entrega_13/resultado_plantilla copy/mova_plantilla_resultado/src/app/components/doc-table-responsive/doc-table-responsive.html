@@ -1,0 +1,935 @@
+<!-- Componente -->
+<mv-card class="card-code">
+  <mv-card-title><strong>Documentación mv-table-responsive</strong></mv-card-title>
+
+  <!-- Índice de la documentación -->
+  <div>
+    <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> Información
+    </a>
+  </div>
+  <div>
+    <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> Ejemplo de uso
+    </a>
+  </div>
+  <p>Propiedades:</p>
+  <ol class="ol-code">
+    <li><a class="nostyle" (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> dataSourceLoader
+    </a></li>
+    <li><a class="nostyle" (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> data
+    </a></li>
+    <li><a class="nostyle" (click)='defaultSortColumn.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> defaultSortColumn
+    </a></li>
+    <li><a class="nostyle" (click)='defaultSortDirection.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> defaultSortDirection
+    </a></li>
+    <li><a class="nostyle" (click)='elementsList.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> elementsList
+    </a></li>
+    <li><a class="nostyle" (click)='excludeTableColumns.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> excludeTableColumns
+    </a></li>
+    <li><a class="nostyle" (click)='filter.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> filter
+    </a></li>
+    <li><a class="nostyle" (click)='filterTitle.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> filterTitle
+    </a></li>
+    <li><a class="nostyle" (click)='filterPlaceholder.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> filterPlaceholder
+    </a></li>
+    <li><a class="nostyle" (click)='formatType.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> formatType
+    </a></li>
+    <li><a class="nostyle" (click)='hideRowTitles.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> hideRowTitles
+    </a></li>
+    <li><a class="nostyle" (click)='loadingDelay.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> loadingDelay
+    </a></li>
+    <li><a class="nostyle" (click)='pageSize.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> pageSize
+    </a></li>
+    <li><a class="nostyle" (click)='shadow.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> shadow
+    </a></li>
+    <li><a class="nostyle" (click)='tableColumns.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> tableColumns
+    </a></li>
+  </ol>
+  <p>Eventos:</p>
+  <ol class="ol-code">
+    <li><a class="nostyle" (click)='selectItem.scrollIntoView({behavior: "smooth",block: "start"})'>
+      <mv-icon>link</mv-icon> selectItem
+    </a></li>
+  </ol>
+
+</mv-card>
+
+<!-- Información -->
+<mv-card class="card-code">
+
+  <mv-card-header>
+    <div mv-card-avatar><mv-icon>code</mv-icon></div>
+    <mv-card-title #info><strong>Información</strong></mv-card-title>
+    <mv-card-subtitle>Información del componente <strong>mv-table-responsive</strong>.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>El componente mv-table-responsive se basa en el componente mat-table de Angular Material, al que se le añade funcionalidad y estilos adicionales.</p>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- Ejemplo de uso -->
+<mv-card class="card-code">
+
+  <mv-card-header>
+    <div mv-card-avatar><mv-icon>code</mv-icon></div>
+    <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+    <mv-card-subtitle>Uso básico del componente <strong>mv-table-responsive</strong>.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeUseExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- data -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar><mv-icon>code</mv-icon></div>
+    <mv-card-title #data><strong>data</strong></mv-card-title>
+    <mv-card-subtitle>Datos cargados desde cliente.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad data permite definir los datos del componente a partir de un array en el cliente.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeDataExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeDataExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- dataSourceLoader -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar><mv-icon>code</mv-icon></div>
+    <mv-card-title #dataSourceLoader><strong>dataSourceLoader</strong></mv-card-title>
+    <mv-card-subtitle>Datos cargados desde servidor.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad dataSourceLoader permite cargar los datos desde el servidor. Además de la propiedad,
+      hay que definir lo siguiente:</p>
+
+    <ul>
+      <li><p>Un servicio rest que obtenga los datos deseados</p></li>
+      <li><p>Una clase que implemente mvLoadData, que servirá de interfaz entre el servicio y el values-list</p></li>
+      <li><p>En el código asociado al values-list, se debe crear un objeto de la clase LoadData,
+        al que se le debe pasar el servicio que obtiene los datos</p></li>
+      <li><p>Si se quiere definir un paginador no se hará con la propiedad pageSize, sino pasando el parámetro al servicio
+        que obtiene los datos</p></li>
+    </ul>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeDataSourceLoaderExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeDataSourceLoaderExampleTS"></code></pre>
+      </mv-tab>
+      <mv-tab label="LOAD DATA">
+        <pre><code [highlight]="codeDataSourceLoaderExampleLoadData"></code></pre>
+      </mv-tab>
+      <mv-tab label="SERVICE">
+        <pre><code [highlight]="codeDataSourceLoaderExampleService"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <mv-table-responsive
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- defaultSortColumn -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar><mv-icon>code</mv-icon></div>
+    <mv-card-title #defaultSortColumn><strong>defaultSortColumn</strong></mv-card-title>
+    <mv-card-subtitle>Columna de ordenación por defecto.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad defaultSortColumn permite definir la columna de ordenación por defecto de la tabla de resultados mostrada en la ventana de diálogo.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeDefaultSortColumnExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeDefaultSortColumnExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      defaultSortColumn="apellido_1"
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      defaultSortColumn="apellido_1"
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- defaultSortDirection -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar><mv-icon>code</mv-icon></div>
+    <mv-card-title #defaultSortDirection><strong>defaultSortDirection</strong></mv-card-title>
+    <mv-card-subtitle>Dirección de ordenación por defecto.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad defaultSortDirection permite definir la dirección ordenación de la tabla de resultados mostrada en la ventana de diálogo.</p>
+    <p>Si se establece la propiedad defaultSortDirection, obligatoriamente debe estar definida también la propiedad defaultSortColumn</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeDefaultSortDirectionExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeDefaultSortDirectionExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      defaultSortDirection="desc"
+      defaultSortColumn="apellido_1"
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      defaultSortDirection="desc"
+      defaultSortColumn="apellido_1"
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- elementsList -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar><mv-icon>code</mv-icon></div>
+    <mv-card-title #elementsList><strong>elementsList</strong></mv-card-title>
+    <mv-card-subtitle>Lista de elementos por página.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad elementsList permite definir un desplegable para seleccionar el número de elementos por página que queremos visualizar.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeElementsListExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeElementsListExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      *ngIf="loadDataSource"
+      [elementsList]="elementsListExample"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      [elementsList]="elementsListExample"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- excludeTableColumns -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar><mv-icon>code</mv-icon></div>
+    <mv-card-title #excludeTableColumns><strong>excludeTableColumns</strong></mv-card-title>
+    <mv-card-subtitle>Excluir ciertas columnas.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad excludeTableColumns permite excluir las columnas especificadas de manera que no se muestren.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeExcludeTableColumnsExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeExcludeTableColumnsExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      [excludeTableColumns]="excludeTableColumnsArray"
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      [excludeTableColumns]="excludeTableColumnsArray"
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- filter -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar>
+      <mv-icon>code</mv-icon>
+    </div>
+    <mv-card-title #filter><strong>filter</strong></mv-card-title>
+    <mv-card-subtitle>Input para filtrar los resultados del diálogo.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad filter permite mostrar un input para filtrar los resultados del diálogo.</p>
+    <p>El valor por defecto es <strong>false</strong>.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeFilterExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeFilterExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>En los ejemplos se filtra por el campo nombre</p>
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      filter=true
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      filter=true
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- filterTitle -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar>
+      <mv-icon>code</mv-icon>
+    </div>
+    <mv-card-title #filterTitle><strong>filterTitle</strong></mv-card-title>
+    <mv-card-subtitle>Título del input del filtro.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad filterTitle permite especificar un título para el filtro del diálogo.</p>
+    <p>El valor por defecto es <strong>Buscador</strong>.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeFilterTitleExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeFilterTitleExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      filterTitle="Título de ejemplo"
+      filter=true
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      filterTitle="Título de ejemplo"
+      filter=true
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- filterPlaceholder -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar>
+      <mv-icon>code</mv-icon>
+    </div>
+    <mv-card-title #filterPlaceholder><strong>filterPlaceholder</strong></mv-card-title>
+    <mv-card-subtitle>Placeholder del input del filtro.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad filterPlaceholder permite especificar un placeholder para el input del filtro del diálogo.</p>
+    <p>El valor por defecto es <strong>Escriba para buscar...</strong>.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeFilterPlaceholderExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeFilterPlaceholderExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      filterPlaceholder="Placeholder de ejemplo"
+      filter=true
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      filterPlaceholder="Placeholder de ejemplo"
+      filter=true
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- formatType -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar>
+      <mv-icon>code</mv-icon>
+    </div>
+    <mv-card-title #formatType><strong>formatType</strong></mv-card-title>
+    <mv-card-subtitle>Formato visual.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad formatType permite especificar el formato visual de los datos.</p>
+
+    <ul>
+      <li><strong>card:</strong> Componente con formato de tarjeta.</li>
+      <li><strong>card-responsive:</strong> Componente con formato de tarjeta que se adapta de manera responsiva.</li>
+      <li><strong>card-inline:</strong> Tarjeta en línea, colocada horizontalmente.</li>
+      <li><strong>card-inline-responsive:</strong> Tarjeta en línea, colocada horizontalmente, con diseño responsivo.</li>
+      <li><strong>card-inline-truncate:</strong> Tarjeta en línea con texto truncado para que ocupe un espacio limitado.</li>
+      <li><strong>card-inline-truncate-responsive:</strong> Tarjeta en línea con texto truncado para diseño responsivo.</li>
+    </ul>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeFormatTypeExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeFormatTypeExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con formatType = 'card':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con formatType = 'card-responsive':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card-responsive"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con formatType = 'card-inline':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card-inline"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con formatType = 'card-inline-responsive':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card-inline-responsive"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con formatType = 'card-inline-truncate':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card-inline-truncate"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con formatType = 'card-inline-truncate-responsive':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card-inline-truncate-responsive"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- hideRowTitles -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar>
+      <mv-icon>code</mv-icon>
+    </div>
+    <mv-card-title #hideRowTitles><strong>hideRowTitles</strong></mv-card-title>
+    <mv-card-subtitle>Ocultar los títulos de las columnas.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad hideRowTitles permite ocultar la fila que contiene los títulos de cada columna.</p>
+    <p>El valor por defecto es <strong>false</strong>.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeHideRowTitlesExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeHideRowTitlesExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      hideRowTitles=true
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      hideRowTitles=true
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- loadingDelay -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar>
+      <mv-icon>code</mv-icon>
+    </div>
+    <mv-card-title #loadingDelay><strong>loadingDelay</strong></mv-card-title>
+    <mv-card-subtitle>Retardo después de la carga de datos del servidor.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad loadingDelay crea un retardo de los milisegundos especificados, después de la carga
+      de datos del servidor.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeLoadingDelayExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeLoadingDelayExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Retardo de 10000 milisegundos</p>
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      loadingDelay=10000
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      loadingDelay=10000
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- pageSize -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar>
+      <mv-icon>code</mv-icon>
+    </div>
+    <mv-card-title #pageSize><strong>pageSize</strong></mv-card-title>
+    <mv-card-subtitle>Número de items por página.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad pageSize permite definir el número de items por cada página.</p>
+    <p>Si no se inicializa no hay paginador.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codePageSizeExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codePageSizeExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      [pageSize]=9
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource">
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      [pageSize]=9
+      *ngIf="dataStudent"
+      [data]="dataStudent">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- shadow -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar>
+      <mv-icon>code</mv-icon>
+    </div>
+    <mv-card-title #shadow><strong>shadow</strong></mv-card-title>
+    <mv-card-subtitle>Mostrar sombra en el componente.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad shadow permite mostrar el componente sombreado.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeShadowExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeShadowExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo de shadow con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      [pageSize]="6"
+      shadow=true
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource">
+    </mv-table-responsive>
+
+    <p>Ejemplo de shadow con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      [pageSize]="6"
+      shadow=true
+      *ngIf="dataStudent"
+      [data]="dataStudent">
+    </mv-table-responsive>
+
+    <p>Ejemplo de shadow con formatType = 'card':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card"
+      shadow=true
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo de shadow con formatType = 'card-responsive':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card-responsive"
+      shadow=true
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo de shadow con formatType = 'card-inline':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card-inline"
+      shadow=true
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo de shadow con formatType = 'card-inline-responsive':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card-inline-responsive"
+      shadow=true
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo de shadow con formatType = 'card-inline-truncate':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card-inline-truncate"
+      shadow=true
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+    <p>Ejemplo de shadow con formatType = 'card-inline-truncate-responsive':</p>
+
+    <mv-table-responsive
+      *ngIf="dataStudent"
+      formatType="card-inline-truncate-responsive"
+      shadow=true
+      [data]="dataStudent"
+      [pageSize]="6">
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- tableColumns -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar>
+      <mv-icon>code</mv-icon>
+    </div>
+    <mv-card-title #tableColumns><strong>tableColumns</strong></mv-card-title>
+    <mv-card-subtitle>Nombre de las columnas de la tabla.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad tableColumns permite cambiar los títulos de las columnas de la tabla.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeTableColumnsExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeTableColumnsExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      [tableColumns]="tableColumnsArray"
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]=6>
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      [tableColumns]="tableColumnsArray"
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]=6>
+    </mv-table-responsive>
+
+  </mv-card-content>
+</mv-card>
+
+<!-- selectItem -->
+<mv-card class="card-code">
+  <mv-card-header>
+    <div mv-card-avatar>
+      <mv-icon>code</mv-icon>
+    </div>
+    <mv-card-title #selectItem><strong>selectItem</strong></mv-card-title>
+    <mv-card-subtitle>Función que se ejecuta al pulsar sobre un elemento.</mv-card-subtitle>
+  </mv-card-header>
+
+  <mv-card-content>
+
+    <p>La propiedad selectItem permite ejecutar una función de callback al pulsar sobre un elemento del listado.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeSelectItemExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="TS">
+        <pre><code [highlight]="codeSelectItemExampleTS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <p>Ejemplo con datos obtenidos del servidor (<a (click)='dataSourceLoader.scrollIntoView({behavior: "smooth",block: "start"})'>dataSourceLoader</a>):</p>
+
+    <mv-table-responsive
+      (selectItem)="selectItemFunction($event)"
+      *ngIf="loadDataSource"
+      [dataSourceLoader]="loadDataSource"
+      [pageSize]=6>
+    </mv-table-responsive>
+
+    <p>Ejemplo con datos obtenidos del cliente (<a (click)='data.scrollIntoView({behavior: "smooth",block: "start"})'>data</a>):</p>
+
+    <mv-table-responsive
+      (selectItem)="selectItemFunction($event)"
+      *ngIf="dataStudent"
+      [data]="dataStudent"
+      [pageSize]=6>
+    </mv-table-responsive>
+
+    <p>Elemento pulsado: {{selectedItem | json}}</p>
+
+  </mv-card-content>
+</mv-card>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

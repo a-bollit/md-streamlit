@@ -1,0 +1,16 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+.list{
+  .list-elem{
+    display: inline-block;
+    margin: 0 3rem 0 0;
+  }
+  mv-icon{
+    font-size: 3rem;
+  }
+}

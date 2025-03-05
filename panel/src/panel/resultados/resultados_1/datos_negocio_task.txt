@@ -1,0 +1,266 @@
+Result from datos_negocio_task: # Informe Detallado de la Estructura de Datos y Lógica de Negocio del Formulario Oracle Forms: EXPECA01
+
+## Descripción General
+Este informe detalla la estructura de datos y la lógica de negocio del formulario Oracle Forms "EXPECA01", incluyendo bloques de datos, campos, listas de valores (LOVs), grupos de registros y sus relaciones. La descripción está enfocada en permitir la replicación precisa de la estructura y lógica de los datos sin incluir detalles de la interfaz visual o triggers.
+
+## Bloques de Datos
+
+### 1. Bloque **B00**
+- **Naturaleza**: Bloque independiente (no basado en tabla de base de datos).
+- **Registros Mostrados**: 1.
+- **Campos**: 
+  - `EXISTEN_EXP_AN_FI`: Campo de tipo texto, longitud máxima 1.
+  - `FALLO`: Campo de tipo texto, longitud máxima 1, varios atributos como color de fondo, justificativo, y otros.
+
+### 2. Bloque **BL_GENERAL**
+- **Naturaleza**: No basado en tabla de base de datos, utilizado para gestión de entrada de información general del formulario.
+- **Registros Mostrados**: 1.
+- **Campos**:
+  - `CDORGA_EREG`: Campo de tipo texto, longitud máxima 16.
+  - `IDORGA_EREG`: Campo de tipo texto, longitud máxima 12.
+  - `LOV_CDUNIDAD`: Botón asociado a lista de valores.
+  - `CDUNIDAD`: Campo de tipo texto, longitud máxima 5.
+  - `DSUNIDAD`: Campo de tipo texto, longitud máxima 150.
+  - `FCDESDE`: Campo de tipo fecha, longitud máxima 10.
+  - `CAL_FCDESDE`: Botón asociado a un trigger que llama a un calendario.
+  - `FCHASTA`: Campo de tipo fecha, longitud máxima 10.
+  - `CAL_FCHASTA`: Botón asociado a un trigger que llama a un calendario.
+  - `CDDEPTNO`: Campo de tipo texto, longitud máxima 2.
+  - `CDTEXP`: Campo de tipo texto, longitud máxima 4.
+  - `CDNEXP`: Campo de tipo número, longitud máxima 5.
+  - `CDDIGITO`: Campo de tipo número, longitud máxima 1.
+  - `CDAEXP`: Campo de tipo número, longitud máxima 4.
+  - `INCLUIR_ENVIADOS`: Casilla de verificación (checkbox) que por defecto está en 'N'.
+  - `ACEPTAR`: Botón asociado a validaciones y cambios de bloque.
+  - `CANCELAR`: Botón para salir del formulario sin validar.
+
+### 3. Bloque **GEA_ACURE**
+- **Naturaleza**: Basado en la tabla `GEA_ACURE`.
+- **Registros Mostrados**: 14.
+- **Campos**:
+  - `CODARCHIVO_PDF`: Campo de tipo número, longitud máxima 12.
+  - `CDDOCUM`: Campo de tipo texto, longitud máxima 11, clave primaria.
+  - `CB_MARCA`: Casilla de verificación.
+  - `DOCUMENTO`: Campo de tipo texto, longitud máxima 14.
+  - `DSDOCUM`: Campo de tipo texto, longitud máxima 70.
+  - `EXPEDIENTE`: Campo de tipo texto, longitud máxima 50.
+  - `INTERESADO`: Campo de tipo texto, longitud máxima 70.
+  - `IT_OFICIO_PDF`: Casilla de verificación.
+  - `IT_FIRMADO`: Casilla de verificación.
+  - `IT_REGISTRADO`: Casilla de verificación.
+  - `FCEMISION`: Campo de tipo fecha.
+  - `FCREAL`: Campo de tipo fecha.
+  - `ITIMPRE`: Campo de tipo texto, longitud máxima 1.
+  - `NUMRELACION`: Campo de tipo número, longitud máxima 7.
+  - `CDDEPTNO`: Campo de tipo texto, longitud máxima 2.
+  - `CDTEXP`: Campo de tipo texto, longitud máxima 4.
+  - `CDNEXP`: Campo de tipo número, longitud máxima 5.
+  - `CDDIGITO`: Campo de tipo número, longitud máxima 1.
+  - `CDAEXP`: Campo de tipo número, longitud máxima 4.
+  - `CDINTERESADO`: Campo de tipo texto, longitud máxima 9.
+  - `CDINTERESADO_OLD`: Campo de tipo texto, longitud máxima 9.
+  - `CDSUBINT`: Campo de tipo texto, longitud máxima 2.
+  - `CDSUBINT_OLD`: Campo de tipo texto, longitud máxima 2.
+  - `DSNOMBRE`: Campo de tipo texto, longitud máxima 30.
+  - `DSAPELLIDO1`: Campo de tipo texto, longitud máxima 25.
+  - `DSAPELLIDO2`: Campo de tipo texto, longitud máxima 25.
+  - `DSRAZONSOC`: Campo de tipo texto, longitud máxima 80.
+  - `CDPAIS`: Campo de tipo texto, longitud máxima 3.
+  - `CDPROV`: Campo de tipo texto, longitud máxima 2.
+  - `CDMUNI`: Campo de tipo texto, longitud máxima 3.
+  - `DSDIRECCION`: Campo de tipo texto, longitud máxima 80.
+  - `DSDIRECCION1`: Campo de tipo texto, longitud máxima 150.
+  - `DSDIRECCION2`: Campo de tipo texto, longitud máxima 150.
+  - `CDPOSTAL`: Campo de tipo texto, longitud máxima 5.
+  - `DSTELEFONO`: Campo de tipo texto, longitud máxima 13.
+  - `DSFAX`: Campo de tipo texto, longitud máxima 13.
+  - `CLAVE2`: Campo de tipo texto, longitud máxima 30.
+  - `CONTENIDO2`: Campo de tipo texto, longitud máxima 50.
+
+### 4. Bloque **BL_DEVOL**
+- **Naturaleza**: No basado en tabla de base de datos.
+- **Registros Mostrados**: 1.
+- **Campos**:
+  - `CDDEPTNO`: Campo de tipo texto, longitud máxima 2.
+  - `DSCONS`: Campo de tipo texto, longitud máxima 80.
+  - `LOV_CONSEJ`: Botón asociado a lista de valores.
+  - `CDUNIDAD`: Campo de tipo texto, longitud máxima 15.
+  - `IDORGA`: Campo de tipo texto, longitud máxima 12.
+  - `DSUNIDAD`: Campo de tipo texto, longitud máxima 80.
+  - `LOV_UNIDAD`: Botón asociado a lista de valores.
+  - `DSDIR1`: Campo de tipo texto, longitud máxima 80.
+  - `DSDIR2`: Campo de tipo texto, longitud máxima 80.
+  - `CDPOSTAL`: Campo de tipo texto, longitud máxima 5.
+  - `CDPROV`: Campo de tipo texto, longitud máxima 2.
+  - `CDMUNI`: Campo de tipo texto, longitud máxima 3.
+  - `LOV_MUNI`: Botón asociado a lista de valores.
+  - `DSMUNI`: Campo de tipo texto, longitud máxima 50.
+  - `CANCELAR`: Botón para cancelar la operación.
+  - `ACEPTAR`: Botón para aceptar la operación.
+
+### 5. Bloque **NOTIFICACION_TELEMATICA**
+- **Naturaleza**: Basado en las tablas `GIMPREDOCU` y `GDOCUMENTO`.
+- **Registros Mostrados**: 14.
+- **Campos**:
+  - `DOCUMENTO`: Campo de tipo texto, longitud máxima 14.
+  - `DSDOCUM`: Campo de tipo texto, longitud máxima 70.
+  - `EXPEDIENTE`: Campo de tipo texto, longitud máxima 50.
+  - `INTERESADO`: Campo de tipo texto, longitud máxima 80.
+  - `IT_FIRMADO`: Casilla de verificación.
+  - `IT_REGISTRADO`: Casilla de verificación.
+  - `ANEXOS_NOTE`: Campo de tipo número, longitud máxima 2.
+  - `IMDOCUMENTO`: Imagen asociada a un trigger para mostrar anexos.
+  - `CDPROCEDIMIENTO`: Campo de tipo texto, longitud máxima 11.
+  - `IT_CDPROC_OK`: Campo de tipo texto, longitud máxima 1.
+  - `CDDOCUM`: Campo de tipo texto, longitud máxima 11, clave primaria.
+  - `CDDEPTNO`: Campo de tipo texto, longitud máxima 2.
+  - `CDNEXP`: Campo de tipo número, longitud máxima 5.
+  - `CDDIGITO`: Campo de tipo número, longitud máxima 1.
+  - `CDAEXP`: Campo de tipo número, longitud máxima 4.
+  - `CDTEXP`: Campo de tipo texto, longitud máxima 4.
+  - `IDALTA`: Campo de tipo texto, longitud máxima 8.
+  - `DSDOCUM1`: Campo de tipo texto, longitud máxima 35.
+  - `DSDOCUM2`: Campo de tipo texto, longitud máxima 35.
+  - `CDPARTICULAR`: Campo de tipo texto, longitud máxima 9.
+  - `RESULTADO`: Imagen asociada a mostrar errores.
+  - `SITUACION`: Imagen asociada a mostrar situación.
+  - `CDSUBPART`: Campo de tipo texto, longitud máxima 2.
+  - `DSNOMBRE`: Campo de tipo texto, longitud máxima 30.
+  - `DSAPELLIDO1`: Campo de tipo texto, longitud máxima 25.
+  - `DSAPELLIDO2`: Campo de tipo texto, longitud máxima 25.
+  - `CDOFI`: Campo de tipo texto, longitud máxima 8.
+  - `RESULTADO_ERROR`: Campo de tipo texto, longitud máxima 500.
+  - `SITUACION_ERROR_BD`: Campo de tipo texto, longitud máxima 10.
+  - `SITUACION_ERROR_DUE`: Campo de tipo texto, longitud máxima 10.
+  - `SITUACION_ERROR_REGSAL`: Campo de tipo texto, longitud máxima 10.
+  - `SITUACION_ERROR_FIRMA`: Campo de tipo texto, longitud máxima 10.
+  - `SITUACION_REENVIO`: Campo de tipo texto, longitud máxima 10.
+  - `CODARCHIVO_PDF`: Campo de tipo número, longitud máxima 12.
+  - `CLAVE_EXTERNA`: Campo de tipo texto, longitud máxima 50.
+  - `CDESTADO_NOTIFICACION`: Campo de tipo texto, longitud máxima 10.
+
+### 6. Bloque **BL_DOC_CORR**
+- **Naturaleza**: No basado en tabla de base de datos.
+- **Registros Mostrados**: 1.
+- **Campos**:
+  - `ACEPTAR`: Botón para enviar notificaciones.
+  - `MARCAR`: Botón para marcar todos los documentos.
+  - `DESMARCAR`: Botón para desmarcar todos los documentos.
+  - `DOCSEL`: Campo de tipo número, longitud máxima 4.
+  - `OCULTO`: Campo de tipo texto, longitud máxima 1.
+
+### 7. Bloque **BL_DOC_NOTE**
+- **Naturaleza**: No basado en tabla de base de datos.
+- **Registros Mostrados**: 1.
+- **Campos**:
+  - `ACEPTAR`: Botón para enviar notificaciones telemáticas.
+  - `MARCAR`: Botón para marcar todos los documentos telemáticos.
+  - `DESMARCAR`: Botón para desmarcar todos los documentos telemáticos.
+  - `DOCSEL`: Campo de tipo número, longitud máxima 4.
+  - `OCULTO`: Campo de tipo texto, longitud máxima 1.
+
+## Listas de Valores (LOVs) 
+
+### **LOV_UNIDAD**
+- **Ubicación**: Utilizada en el campo `LOV_CDUNIDAD` del bloque `BL_GENERAL`.
+- **Consulta Asociada**: `RG_UNIDAD`.
+- **Columnas**:
+  - `CDUNIDAD_GESTOR` -> Retorna valor a `BL_GENERAL.CDUNIDAD`.
+  - `DSUNIDAD_EREG` -> Retorna valor a `BL_GENERAL.DSUNIDAD`.
+  - `IDORGA_EREG` -> Retorna valor a `BL_GENERAL.IDORGA_EREG`.
+  - `CDORGA_EREG` -> Retorna valor a `BL_GENERAL.CDORGA_EREG`.
+
+### **LOV_UNIDAD_DEVOL**
+- **Ubicación**: Utilizada en el campo `LOV_UNIDAD` del bloque `BL_DEVOL`.
+- **Consulta Asociada**: `RG_UNIDAD_DEVOL`.
+- **Columnas**:
+  - `CDUNIDAD` -> Retorna valor a `BL_DEVOL.CDUNIDAD`.
+  - `DSUNIDAD` -> Retorna valor a `BL_DEVOL.DSUNIDAD`.
+  - `IDORGA` -> Retorna valor a `BL_DEVOL.IDORGA`.
+  - `DSDIR1` -> Retorna valor a `BL_DEVOL.DSDIR1`.
+  - `DSDIR2` -> Retorna valor a `BL_DEVOL.DSDIR2`.
+  - `CDPOSTAL` -> Retorna valor a `BL_DEVOL.CDPOSTAL`.
+  - `CDMUNI` -> Retorna valor a `BL_DEVOL.CDMUNI`.
+
+### **LOV_CONSEJ**
+- **Ubicación**: Utilizada en el campo `LOV_CONSEJ` del bloque `BL_DEVOL`.
+- **Consulta Asociada**: `RG_CONSEJ`.
+- **Columnas**:
+  - `CDDEPTNO` -> Retorna valor a `BL_DEVOL.CDDEPTNO`.
+  - `DSEXTEN` -> Retorna valor a `BL_DEVOL.DSCONS`.
+
+### **LOV_MUNI**
+- **Ubicación**: Utilizada en el campo `LOV_MUNI` del bloque `BL_DEVOL`.
+- **Consulta Asociada**: `RG_MUNI`.
+- **Columnas**:
+  - `CDMUNI` -> Retorna valor a `BL_DEVOL.CDMUNI`.
+  - `DSMUNI` -> Retorna valor a `BL_DEVOL.DSMUNI`.
+
+## Grupos de Registro
+
+### **RG_UNIDAD**
+- **Consulta**: `select unidad, dsunidad_s, cdunidad_gestor, idorga_ereg, ...`
+- **Columnas**:
+  - `UNIDAD`: Tipo Character, Máxima Longitud 22.
+  - `DSUNIDAD_S`: Tipo Character, Máxima Longitud 121.
+  - `CDUNIDAD_GESTOR`: Tipo Character, Máxima Longitud 5.
+  - `IDORGA_EREG`: Tipo Number, Máxima Longitud 23.
+  - `CDORGA_EREG`: Tipo Character, Máxima Longitud 16.
+  - `DSUNIDAD_EREG`: Tipo Character, Máxima Longitud 100.
+  - `CDORDEN_EREG`: Tipo Character, Máxima Longitud 23.
+
+### **RG_UNIDAD_DEVOL**
+- **Consulta**: `select substr(cdorga, 3) CDUNIDAD, ...`
+- **Columnas**:
+  - `CDUNIDAD`: Tipo Character, Máxima Longitud 14.
+  - `DSUNIDAD_S`: Tipo Character, Máxima Longitud 121.
+  - `DSUNIDAD`: Tipo Character, Máxima Longitud 100.
+  - `IDORGA`: Tipo Number, Máxima Longitud 23.
+  - `DSDIR1`: Tipo Character, Máxima Longitud 80.
+  - `DSDIR2`: Tipo Character, Máxima Longitud 21.
+  - `CDPOSTAL`: Tipo Character, Máxima Longitud 5.
+  - `CDMUNI`: Tipo Character, Máxima Longitud 3.
+
+### **RG_CONSEJ**
+- **Consulta**: `select cddeptno, dsexten ...`
+- **Columnas**:
+  - `CDDEPTNO`: Tipo Character, Máxima Longitud 2.
+  - `DSEXTEN`: Tipo Character, Máxima Longitud 40.
+
+### **RG_MUNI**
+- **Consulta**: `select cdmuni, dsmuni ...`
+- **Columnas**:
+  - `CDMUNI`: Tipo Character, Máxima Longitud 3.
+  - `DSMUNI`: Tipo Character, Máxima Longitud 50.
+
+## Validaciones y Dependencias
+Cada bloque de datos cuenta con múltiples campos que poseen validaciones y dependencias específicas, a continuación una descripción de algunas de las más importantes:
+
+### Validaciones en **BL_GENERAL**:
+- El campo `CDTEXP` contiene un trigger `WHEN-VALIDATE-ITEM` que realiza la validación del tipo de expediente, verificando permisos de la aplicación actual.
+- El campo `FCDESDE` tiene un trigger `KEY-NEXT-ITEM` que navega al siguiente campo `FCHASTA`.
+- El campo `FCHASTA` tiene un trigger `KEY-NEXT-ITEM` que navega al siguiente campo `CDDEPTNO`.
+- El campo `ACEPTAR` cuenta con importantes validaciones y lógica de negocio para procesar la emisión de notificaciones. Realiza la validación del expediente y fechas antes de proceder.
+
+### Validaciones en **GEA_ACURE**:
+- El campo `CB_MARCA` tiene un trigger `WHEN-CHECKBOX-CHANGED` que valora condicionalmente si se puede marcar la casilla basada en el estado del registro y la información del interesado.
+- El trigger `POST-QUERY` del bloque valida el estado de los expedientes asociados, marcando el campo `EXISTEN_EXP_AN_FI` en el bloque `B00` si encuentra expedientes anulados o finalizados.
+
+### Validaciones en **NOTIFICACION_TELEMATICA**:
+- El trigger `POST-QUERY` realiza múltiples validaciones y obtiene datos necesarios para preparar la notificación telemática, incluyendo la validación del estado del expediente.
+- El campo `CB_MARCA` tiene un trigger `WHEN-CHECKBOX-CHANGED` que realiza múltiples validaciones incluyendo la verificación de anexos, firma del documento, y estado de registro de salida antes de permitir marcar la casilla.
+
+## Reglas de Negocio y Operaciones CRUD
+Las operaciones CRUD y otras reglas de negocio son gestionadas con procedimientos y funciones definidas en el formulario.
+
+### Operaciones CRUD:
+- **CREATE/UPDATE**:
+  - Varias funciones y procedimientos se encargan de validar y actualizar registros, por ejemplo, `INSERTAR_INTERESADO`, `REGISTRO_SALIDA`.
+- **READ**:
+  - Usan queries SQL en los triggers POST-QUERY y durante la validación.
+- **DELETE**:
+  - Usualmente la eliminación se controla mediante flags y validaciones antes de permitir la acción.
+
+### Reglas de Negocio:
+- Validaciones de fechas para evitar inconsistencias.
+- Autorizaciones basadas en perfiles y permisos específicos de la aplicación.

@@ -1,0 +1,353 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación device-service</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <p>Metodos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='getMobileInfo.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> getMobileInfo
+      </a></li>
+      <li><a class="nostyle" (click)='getWebInfo.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> getWebInfo
+      </a></li>
+      <li><a class="nostyle" (click)='isBrowser.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> isBrowser
+      </a></li>
+      <li><a class="nostyle" (click)='isMobileApp.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> isMobileApp
+      </a></li>
+      <li><a class="nostyle" (click)='isAndroid.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> isAndroid
+      </a></li>
+      <li><a class="nostyle" (click)='isIOS.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> isIOS
+      </a></li>
+
+      <li>
+        <a class="nostyle" (click)='hasNotchAndroidSection.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> hasNotchAndroid
+        </a>
+      </li>
+      
+      <li>
+        <a class="nostyle" (click)='notchSizesAndroid.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> getNotchSizesAndroid
+        </a>
+      </li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del servicio <strong>device-service</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este servicio proporciona funcionalidad relacionada con las propiedades del dispositivo en el que se ejecuta la app.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getMobileInfo -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #getMobileInfo><strong>getMobileInfo</strong></mv-card-title>
+      <mv-card-subtitle>Información del dispositivo</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Devuelve información del dispositivo movil.</p>
+
+      <p>Valores que devuelve:</p>
+      <ol class="ol-code">
+        <li><p><strong>cordovaVersion:</strong> Versión de cordova</p></li>
+        <li><p><strong>isSimulator:</strong> Si está siendo ejecutado en un simulador</p></li>
+        <li><p><strong>model:</strong> Modelo del dispositivo</p></li>
+        <li><p><strong>manufacturer:</strong> Compañía que manufacturó el dispositivo</p></li>
+        <li><p><strong>serialNumber:</strong> Nº de serie del dispositivo</p></li>
+        <li><p><strong>uuid:</strong> UUID del dispositivo</p></li>
+        <li><p><strong>platform:</strong> Sistema operativo del dispositivo</p></li>
+        <li><p><strong>version:</strong> Versión del sistema operativo del dispositivo</p></li>
+      </ol>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="getMobileInfoExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="getMobileInfoExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="loadGetMobileInfo()">
+        loadGetMobileInfo
+      </mv-button>
+      <pre class="jsonExample"> {{mobileInfoResponse | json}}</pre>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getWebInfo -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #getWebInfo><strong>getWebInfo</strong></mv-card-title>
+      <mv-card-subtitle>Información del navegador.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Devuelve la información del navegador</p>
+
+      <p>Valores que devuelve:</p>
+      <ol class="ol-code">
+        <li><p><strong>browserCodeName:</strong> Contiene el nombre código del navegador</p></li>
+        <li><p><strong>browserEngine:</strong> Contiene el número de compilación del navegador</p></li>
+        <li><p><strong>browserName:</strong> Contiene un DOMString con el nombre oficial del navegador</p></li>
+        <li><p><strong>browserPlatform:</strong> Contiene el nombre de la plataforma del navegador</p></li>
+        <li><p><strong>browserVersionInfo:</strong> Contiene la versión del navegador</p></li>
+        <li><p><strong>browserUserAgent:</strong> Contiene la cadena del userAgent</p></li>
+        <li><p><strong>isCookieEnabled:</strong> Indica si el navegador tiene activadas las cookies</p></li>
+        <li><p><strong>language:</strong> Contiene una cadena representando el idioma del navegador</p></li>
+        <li><p><strong>platform:</strong> Plataforma del navegador</p></li>
+      </ol>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="getWebInfoExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="getWebInfoExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+
+      <p><strong>Ejemplo:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="loadGetWebInfo()">
+        loadGetWebInfo
+      </mv-button>
+     <pre class="jsonExample"> {{webInfoResponse | json}}</pre>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- isBrowser -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #isBrowser><strong>isBrowser</strong></mv-card-title>
+      <mv-card-subtitle>Tipo de navegador.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Devuelve un boolean a True si se está ejecutando en un navegador.
+      </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="isBrowserExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="isBrowserExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+
+      <p><strong>Ejemplo:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="loadIsBrowser()">
+        loadIsBrowser
+      </mv-button>
+      <pre class="jsonExample"> {{isBrowserResponse}} </pre>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- isMobileApp -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #isMobileApp><strong>isMobileApp</strong></mv-card-title>
+      <mv-card-subtitle>Indica si es una aplicación movil.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Devuelve un boolean a true indicando si la aplicación se está ejecutando en un dispositivo móvil.
+        Si devuelve False, se esta ejecutando en un navegador.
+      </p>
+
+      <p><em>isMobileApp()</em></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="isMobileAppExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="isMobileAppExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="loadMobileApp()">
+        loadMobileApp
+      </mv-button>
+      <pre class="jsonExample"> {{isMobileAppResponse}} </pre>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- isAndroid -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #isAndroid><strong>isAndroid</strong></mv-card-title>
+      <mv-card-subtitle>Tipo de dispositivo.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Devuelve true si el dispositivo es Android.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="isAndroidExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="isAndroidExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="loadIsAndroid()">
+        loadIsAndroid
+      </mv-button>
+      <pre class="jsonExample"> {{isAndroidResponse}} </pre>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- isIOS -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #isIOS><strong>isIOS</strong></mv-card-title>
+      <mv-card-subtitle>Tipo de dispositivo.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Devuelve true si el dispositivo es iOS.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="isIOSExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="isIOSExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Ejemplo:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="loadIsIOS()">
+        loadIsIOS
+      </mv-button>
+      <pre class="jsonExample"> {{isIOSResponse}} </pre>
+    </mv-card-content>
+  </mv-card>
+
+
+  <!-- hasNotchAndroid -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #hasNotchAndroidSection><strong>hasNotchAndroid</strong></mv-card-title>
+      <mv-card-subtitle>Comprueba si tiene notch en disposivitos Androids.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Devuelve true si el dispositivo tiene notch.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="hasNotchAndroidExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="hasNotchAndroidExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Ejemplo:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="hasNotchAndroid()">
+        hasNotchAndroid
+      </mv-button>
+      <pre class="jsonExample"> {{hasNotchAndroidResponse}} </pre>
+    </mv-card-content>
+  </mv-card>
+
+
+  <!-- getNotchSizes -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #notchSizesAndroid><strong>getNotchSizesAndroid</strong></mv-card-title>
+      <mv-card-subtitle>Obtiene las separaciones del notch en disposivitos Androids.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Devuelve un objeto con las separaciones arriba, abajo, izquierda y derecha.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="getNotchSizesExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="getNotchSizesExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Ejemplo:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getNotchSizesAndroid()">
+        getNotchSizesAndroid
+      </mv-button>
+      <pre class="jsonExample"> {{getNotchSizesResponse}} </pre>
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

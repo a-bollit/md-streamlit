@@ -1,0 +1,114 @@
+Result from datos_negocio_task: The provided Oracle Forms module "EXPECA01" is a form used to manage notifications, particularly for the issuance and management of both telematic and postal notifications. The form is designed with multiple blocks, items, and LOVs to facilitate data entry, validation, and queries. Below is a detailed description of the data structure and business logic implemented in the form.
+
+### Data Blocks
+The form contains several data blocks, each serving a specific purpose. Here are the detailed descriptions of the primary blocks along with their fields, attributes, validations, and dependencies:
+
+#### 1. Block: B00
+- **Fields**:
+  - `EXISTEN_EXP_AN_FI`: Char, length 1, width 68, height 14. Used for checking if there are finalized or canceled records.
+  - `FALLO`: Char, length 1, with several properties such as BackColor, enabled status, etc. Concealed for data protection and handles error reporting.
+
+#### 2. Block: BL_GENERAL
+- **Fields**:
+  - `CDORGA_EREG`, `IDORGA_EREG`, `CDUNIDAD`, `DSUNIDAD`: Text elements with varying lengths and positions to capture organizational unit details.
+  - `FCDESDE`, `FCHASTA`: Date fields with width 57, length 10, and format mask `dd-mm-rrrr`. These fields have triggers that navigate to the next item.
+  - `CAL_FCDESDE`, `CAL_FCHASTA`: Button items for calendar functionality.
+  - `CDDEPTNO`, `CDTEXP`, `CDNEXP`, `CDDIGITO`, `CDAEXP`: Text items to capture department, expedition type, expedient number, etc.
+  - `INCLUIR_ENVIADOS`: Checkbox element to include sent items.
+  - `ACEPTAR`, `CANCELAR`: Button items for accepting or canceling operations.
+
+- **Validations and Business Logic**:
+  - `CDTEXP` has a When-Validate-Item trigger for checking application permissions.
+  - `ACEPTAR` button has a When-Button-Pressed trigger with extensive validation logic, including date validation and error handling.
+
+#### 3. Block: GEA_ACURE
+- **Fields**:
+  - Contains multiple fields such as `CODARCHIVO_PDF`, `CDDOCUM`, `CB_MARCA`, `DOCUMENTO`, `DSDOCUM`, `EXPEDIENTE`, `INTERESADO`, `FCEMISION`, `FCREAL`.
+- **Business Logic**:
+  - `POST-QUERY` trigger to validate the state of the expedition and fetch related details.
+  - `KEY-UP` and `KEY-DOWN` triggers manage block navigation.
+
+#### 4. Block: BL_DOC_CORR
+- **Fields**:
+  - `OCULTO`, `REGISTRAR`, `ACEPTAR`, `MARCAR`, `DESMARCAR`, `DOCSEL`, `DSRESULTADO`.
+  - These items are mainly used for managing document selection, marking, sending, and validation results.
+- **Business Logic**:
+  - `REGISTRAR` When-Button-Pressed trigger handles document registration.
+  - `ACEPTAR` When-Button-Pressed trigger manages the sending process, including validation and error handling.
+
+#### 5. Block: BL_DEVOL
+- **Fields**:
+  - `CDDEPTNO`, `DSCONS`, `LOV_CONSEJ`, `CDUNIDAD`, `IDORGA`, `DSUNIDAD`, `LOV_UNIDAD`, `DSDIR1`, `DSDIR2`, `CDPOSTAL`, `CDPROV`, `CDMUNI`, `DSMUNI`, `CANCELAR`, `ACEPTAR`.
+- **Business Logic**:
+  - `ACEPTAR` button handles the acceptance process with validation and document inclusion in the notification list.
+  - When-Validate-Item trigger on `CDMUNI` to validate municipality details.
+
+#### 6. Block: NOTIFICACION_TELEMATICA
+- **Fields**:
+  - `DOCUMENTO`, `DSDOCUM`, `EXPEDIENTE`, `INTERESADO`, `FCCREA`, `ANEXOS_NOTE`, `IT_FIRMADO`, `IT_REGISTRADO`, `IMDOCUMENTO`, `CDPROCEDIMIENTO`, `IT_CDPROC_OK`, `CDDOCUM`, `CDDEPTNO`, `CDNEXP`, `CDDIGITO`, `CDAEXP`, `CDTEXP`.
+- **Business Logic**:
+  - `POST-QUERY` trigger to calculate annexes, validate interested parties, and check document status.
+  - `KEY-UP` and `KEY-DOWN` triggers for record navigation.
+
+#### 7. Block: BL_DOC_NOTE
+- **Fields**:
+  - `ACEPTAR`, `MARCAR`, `DESMARCAR`, `DOCSEL`, `OCULTO`.
+  - Items to handle notification dispatch, marking, and selection statuses.
+- **Business Logic**:
+  - `ACEPTAR` When-Button-Pressed trigger orchestrates the notification sending process, handling errors and inclusions in the notification list.
+
+### Lists of Values (LOVs)
+Each LOV defined in the form is used to facilitate the selection of records from the database with specific mappings:
+
+#### 1. LOV_UNIDAD
+- **Columns**: `UNIDAD`, `DSUNIDAD_S`, `CDUNIDAD_GESTOR`, `IDORGA_EREG`, `CDORGA_EREG`.
+- **Mappings**: Maps to `BL_GENERAL`.
+
+#### 2. LOV_UNIDAD_DEVOL
+- **Columns**: `CDUNIDAD`, `DSUNIDAD_S`, `DSUNIDAD`, `IDORGA`, `DSDIR1`, `DSDIR2`, `CDPOSTAL`, `CDMUNI`.
+- **Mappings**: Maps to `BL_DEVOL`.
+
+#### 3. LOV_CONSEJ
+- **Columns**: `CDDEPTNO`, `DSEXTEN`.
+- **Mappings**: Used in `BL_DEVOL`.
+
+#### 4. LOV_MUNI
+- **Columns**: `CDMUNI`, `DSMUNI`.
+- **Mappings**: Maps to `BL_DEVOL`.
+
+### Record Groups
+These groups form the basis for the LOVs and are defined by SQL queries:
+
+#### 1. RG_UNIDAD
+- **Query**: Retrieves unit details based on organizational hierarchy and filters by `cdorden_ereg`.
+
+#### 2. RG_UNIDAD_DEVOL
+- **Query**: Selects unit details specific for returns, filtered by `cddeptno`.
+
+#### 3. RG_CONSEJ
+- **Query**: Retrieves a list of counseling departments or organizations.
+
+#### 4. RG_MUNI
+- **Query**: Retrieves municipalities from a specific province in Spain.
+
+### Program Units
+Several program units are defined to encapsulate business logic and reusable procedures:
+
+#### 1. Validations
+  - `Valida_Fechas`: Validates date fields for correct input.
+  - `Valida_Municipio`: Ensures the municipality code corresponds to a valid municipality.
+
+#### 2. Building Where Clauses
+  - `Construir_Where_Note`: Constructs where clause for filtering telematic notifications.
+  - `Construir_Where_Corr`: Builds where clause for filtering postal notifications.
+
+#### 3. Miscellaneous
+  - `Poner_Rojo`: Applies visual attributes to items based on conditions.
+  - `Ultima_Notificacion`: Determines the last notification sent for a particular document.
+  - `Calcular_Numero_Anexos`: Calculates the number of annexes associated with a document.
+
+### Business Rules
+- The form enforces several business rules through program units, validations, and triggers. These include ensuring documents are not finalized before notifying, proper date validations, managing document states, and ensuring correct data mappings through LOVs and record groups.
+
+### Conclusion
+This detailed description provides a comprehensive understanding of the data structure and the business logic of the Oracle Forms module "EXPECA01." The form has intricate data handling and validation processes to ensure smooth functionality for managing notifications.

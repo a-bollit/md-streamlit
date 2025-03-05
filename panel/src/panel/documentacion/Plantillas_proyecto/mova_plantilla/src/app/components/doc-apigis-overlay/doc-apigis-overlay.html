@@ -1,0 +1,194 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de Capas Operacionales (typeLayer: Vector, subtypeLayer: Vector)</strong>
+    </mv-card-title>
+    <p> A continuación, se muestra la manera en la que podemos contruír una capa de este tipo y los métodos propios
+      disponibles
+      para este tipo de objetos.</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='considerations.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon>Consideraciones generales sobre Capas Operacionales
+        </a></li>
+      <li><a class="nostyle" (click)='metodos.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Consideraciones generales -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #considerations><strong>Consideraciones generales sobre Capas Operacionales</strong>
+      </mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Las Capas Operaciones son un tipo especial de capas que se emplean para representar dibujados, resultados de
+        búsquedas, identificaciones...
+      </p>
+      <p>Este tipo de capas no se suelen generar con el contructor como el resto de capas, sino que se suelen añadir
+        directamente al mapa en el que deseamos emplearlas con la función
+        <strong>addOverlayLayer()</strong> tal y como se explica en la <a routerLink="/doc-apigis-map"
+          routerLinkActive="active" ariaCurrentWhenActive="page">documentación general sobre apigis.Map</a>.
+      </p>
+
+      <mv-card class="warning-card">
+        <mv-card-header>
+          <mv-card-title>
+            <strong>IMPORTANTE</strong>
+          </mv-card-title>
+        </mv-card-header>
+
+        <mv-card-content>
+          <p>Para poder visualizar una capa, deberá estar contenida dentro de un objeto de tipo <a
+              routerLink="/doc-apigis-map" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Map</a>.
+          </p>
+          <p>Así mismo, un objeto de tipo apigis.Map deberá estar contenido dentro de un objeto de tipo <a
+              routerLink="/doc-apigis-viewer" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Viewer</a>.
+          </p>
+        </mv-card-content>
+      </mv-card>
+
+      <br>
+      <p>Se puede consultar información más detallada y ejemplos sobre el uso de apigis.Layer en el documento de Arquitectura sobre el API GIS.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Métodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodos><strong>Métodos</strong></mv-card-title>
+      <mv-card-subtitle>Métodos comunes a todas las capas cuyo mapType: 'OL', typeLayer: 'Vector' y subtypeLayer:
+        'Overlay'.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>
+      </p>
+      <p>Se muestran a continuación los métodos comunes a todas las capas operaciones de tipo apigis.Layer
+        cuyo mapType: 'OL', typeLayer: 'Vector' y subtypeLayer: 'Overlay':</p>
+
+      <br>
+
+      <p><em><strong>setSymbology(sld)</strong></em></p>
+      <p>Permite establecer una simbología a la capa mediante el paso de un SLD. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>apigis.SimpleMarkerSymbol | apigis.SimpleFillSymbol | apigis.SimpleLineSymbol
+            | apigis.SimpleMarkerSymbol[] | apigis.SimpleFillSymbol[] | apigis.SimpleLineSymbol[] | Function</i>
+          &#62; Valor de la simbología a establecer. </li>
+      </ul>
+      <br>
+      <p><em><strong>identify(featureGeoJSON, identifyParams = &#123;&#125;)</strong></em></p>
+      <p>Permite ejecutar una consulta de identificación en cliente (navegador). Sus argumentos son: </p>
+      <ul>
+        <li><strong>featureGeoJSON</strong> &#60;<i>string</i> &#62; Feature en geojson sobre la que ejecutar la
+          identificación.</li>
+        <li><strong>identifyParams</strong> &#60;<i>object</i> &#62; Parámetros de identificación. Estos pueden ser:
+        </li>
+        <ul>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+          <li><strong>tolerance</strong> &#60;<i>number</i> &#62; Tolerancia en píxeles.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>find(filterObj)</strong></em></p>
+      <p>Ejecuta una búsqueda sobre el servicio en cliente (navegador). Sus argumentos son: </p>
+      <ul>
+        <li><strong>filterObj</strong> &#60;<i>apigis.Filter</i> &#62;Filtro. El objeto tendrá propiedades que harán
+          referencia a las diferentes expresiones de la consulta.</li>
+      </ul>
+      <br>
+
+      <p><em><strong>addFeatures(featuresGeoJSON, symbology, color)</strong></em></p>
+      <p>Permite añadir features a la capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>featuresGeoJSON</strong> &#60;<i>string | string[]</i> &#62;Colección de features a añadir. Acepta una feature, una colección de features o un array de features, todo ello  en formato  GeoJSON.</li>
+        <li><strong>symbology</strong> &#60;<i>apigis.SimpleMarkerSymbol | apigis.SimpleFillSymbol | apigis.SimpleLineSymbol
+          | apigis.SimpleMarkerSymbol[] | apigis.SimpleFillSymbol[] | apigis.SimpleLineSymbol[] | Function</i> &#62; Valor de la simbología a establecer a las features. En su defecto aplica la simbología de la capa.</li>
+        <li><strong>color</strong> &#60;<i>string | number[]</i> &#62; Color a aplicar a las features.</li>
+      </ul>
+      <br>
+      <p><em><strong>rotateFeatures(featuresIds, angle = 0, group = false)</strong></em></p>
+      <p>Permite rotar features de manera individual o grupal. Sus argumentos son: </p>
+      <ul>
+        <li><strong>featuresIds</strong> &#60;<i>string[]</i> &#62;Identificadores de las features que desean rotar.</li>
+        <li><strong>angle = 0</strong> &#60;<i>number</i> &#62; Grados de rotación.</li>
+        <li><strong>group = false</strong> &#60;<i>boolean</i> &#62;ndica si la rotación se efecturá de manera grupal o individual.</li>
+      </ul>
+      <br>
+      <p><em><strong>addBuffer(geojsonObject, distance = 0.1, callback)</strong></em></p>
+      <p>Permite añadir una geometría de buffer a la capa, a partir de una feature. Sus argumentos son: </p>
+      <ul>
+        <li><strong>geojsonObject</strong> &#60;<i>string</i> &#62; Feature en formato GeoJSON.</li>
+        <li><strong>distance = 0.1</strong> &#60;<i>number</i> &#62; Extensión del buffer./li>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>getFeatures()</strong></em></p>
+      <p>Recupera las features de la capa.</p>
+      <br>
+      <p><em><strong>getFeatureById(id)</strong></em></p>
+      <p>Recupera la feature con el ID especificado en la capa.</p>
+      <br>
+      <p><em><strong>clear()</strong></em></p>
+      <p>Limpia la capa de features.</p>
+      <br>
+      <p><em><strong>removeFeature(id)</strong></em></p>
+      <p>Elimina la feature con el ID especificado en la capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>string</strong> &#60;<i>id</i> &#62; Identificador de la feature.</li>
+      </ul>
+      <br>
+      <p><em><strong>moveLayer(indexTo)</strong></em></p>
+      <p>Cambia la posición de la capa dentro del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>indexTo</strong> &#60;<i>number</i> &#62; Nuevo índice en el mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setCoordinatesToFeature(idFeature, coordinates)</strong></em></p>
+      <p>Configura una nueva coordenada a una feature de la capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>idFeature</strong> &#60;<i>string</i> &#62; Identificador de la feature.</li>
+        <li><strong>coordinates</strong> &#60;<i>number[]</i> &#62; Nueva coordenada.</li>
+      </ul>
+      <br>
+      <p><em><strong>translateOnClick(callback)</strong></em></p>
+      <p>Permite activar el evento de traslación en la capa para mover features. La acción se desencadena con un clic sobre la feature. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>translateAllFeatures(callback)</strong></em></p>
+      <p>Permite activar el evento de traslación de todas las features de la capa. La acción se desencadena con un clic sobre la feature. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>translateFeatures(callback)</strong></em></p>
+      <p>Permite activar el evento de traslación de las features especificadas como parámetro. Sus argumentos son: </p>
+      <ul>
+        <li><strong>featuresIds</strong> &#60;<i>string[]</i> &#62; Identificadores de las features a trasladar.</li>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>refresh()</strong></em></p>
+      <p>Refresca la capa.</p>
+      <br>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

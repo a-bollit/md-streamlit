@@ -1,0 +1,276 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de descarga y apertura de archivos</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='httprequest.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo HttpRequest (recomendado)
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='xhr.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo XMLHttpRequest
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='ics.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de descarga de un fichero .ics o funcionalidad de descarga similar
+      </a>
+    </div>
+  </mv-card>
+
+  <!-- httprequest -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #httprequest><strong>Ejemplo de descarga con HttpRequest</strong></mv-card-title>
+      <mv-card-subtitle>Angular HttpRequest</mv-card-subtitle>
+    </mv-card-header>
+
+
+    <mv-card-content>
+      <p>Ejemplo de descarga de un fichero usando Angular HttpRequest.
+        Documentación oficial: <a href="https://angular.io/api/common/http/HttpRequest"><strong>https://angular.io/api/common/http/HttpRequest</strong></a>.
+      </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="metodoDeUsoHttpRequestHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="metodoDeUsoHttpRequestTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>1. Subir un archivo pdf de ejemplo para descarga y visualización</strong></p>
+      <mv-file-uploader
+        #mvFileUploaderFirstExample
+        [maxSizeBytes]="maxSize"
+        chunked=true
+        [allowedExtensions]="uploaderAllowedExtensions"
+        (onUploadSuccess)="onSuccessCallbackFirstExample()">
+      </mv-file-uploader>
+
+      <p *ngIf="progressValueFirstExample != 0">Estado de la descarga:</p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="progressValueFirstExample != 0">
+          <mat-progress-bar mode="determinate" color="warn" [value]="progressValueFirstExample"></mat-progress-bar>
+          <div id="progress-bar-text">
+            {{ (progressValueFirstExample | number: '1.0-0') + '%' }}
+          </div>
+        </div>
+
+        <div
+          class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+          <p *ngIf="downloadUrlFirstExample">Url de descarga: {{ downloadUrlFirstExample }}</p>
+        </div>
+      </div>
+
+      <p><strong>2. Visualización del archivo descargado</strong></p>
+
+      <p>Abre el fichero pdf en el visor a partir de una llamada REST</p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <mv-button
+            [disabled]="!getLastSuccededUploadResponseJSONFirstExample"
+            adapt=true
+            chunked=true
+            appearance="raised"
+            color="primary"
+            (clickEvent)="openFilePdfViewerHttpRequestButton()">
+            Abrir archivo en visor pdf (app y web)
+          </mv-button>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="showUploader">
+          <mv-pdf-viewer
+            [url]="pdfSrcWithHeadersExample">
+          </mv-pdf-viewer>
+        </div>
+
+        <p>Obtiene el fichero con httpRequest y lo descarga</p>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <mv-button
+            [disabled]="!getLastSuccededUploadResponseJSONFirstExample || platform != ''"
+            adapt=true
+            chunked=true
+            appearance="raised"
+            color="primary"
+            (clickEvent)="downloadFileBrowserHttpRequestExampleClick()">
+            Descargar el archivo (solo web)
+          </mv-button>
+        </div>
+
+        <p>Obtiene el fichero con httpRequest y lo abre en el navegador</p>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <mv-button
+            [disabled]="!getLastSuccededUploadResponseJSONFirstExample || platform != ''"
+            adapt=true
+            chunked=true
+            appearance="raised"
+            color="primary"
+            (clickEvent)="openFileBrowserHttpRequestExampleClick()">
+            Abrir archivo en el navegador (solo web)
+          </mv-button>
+        </div>
+
+        <p>Obtiene el fichero con httpRequest y lo abre con el plugin</p>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <mv-button
+            [disabled]="!getLastSuccededUploadResponseJSONFirstExample || platform == ''"
+            adapt=true
+            chunked=true
+            appearance="raised"
+            color="primary"
+            (clickEvent)="openFilePluginHttpRequestExampleClick()">
+            Abrir archivo con plugin file-opener2 (solo app)
+          </mv-button>
+        </div>
+      </div>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- xhr -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #xhr><strong>Ejemplo de descarga de XMLHttpRequest</strong></mv-card-title>
+      <mv-card-subtitle>XMLHttpRequest</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Ejemplo de descarga de un fichero usando XMLHttpRequest. Documentación oficial:
+        <a href="https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest"><strong>https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest</strong></a>
+      </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="metodoDeUsoXmlHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="metodoDeUsoXmlTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>1. Subir un archivo pdf de ejemplo para descarga y visualización</strong></p>
+      <mv-file-uploader
+        #mvFileUploaderSecondExample
+        [maxSizeBytes]="maxSize"
+        chunked=true
+        [allowedExtensions]="uploaderAllowedExtensions"
+        (onUploadSuccess)="onSuccessCallbackSecondExample()">
+      </mv-file-uploader>
+
+      <p *ngIf="progressValueSecondExample != 0">Estado de la descarga:</p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="progressValueSecondExample != 0">
+          <mat-progress-bar mode="determinate" color="warn" [value]="progressValueSecondExample"></mat-progress-bar>
+          <div id="progress-bar-text">
+            {{ (progressValueSecondExample | number: '1.0-0') + '%' }}
+          </div>
+        </div>
+
+        <div
+          class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+          <p *ngIf="downloadUrlSecondExample">Url de descarga: {{ downloadUrlSecondExample }}</p>
+        </div>
+      </div>
+
+      <p><strong>2. Visualización del archivo descargado</strong></p>
+
+      <p>Abre el fichero pdf en el visor a partir de una llamada REST</p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <mv-button
+            [disabled]="!getLastSuccededUploadResponseJSONSecondExample"
+            adapt=true
+            chunked=true
+            appearance="raised"
+            color="primary"
+            (clickEvent)="openFilePdfViewerXmlButton()">
+            Abrir archivo en visor pdf (app y web)
+          </mv-button>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="showUploader">
+          <mv-pdf-viewer
+            [url]="pdfSrcWithHeadersExample">
+          </mv-pdf-viewer>
+        </div>
+
+        <p>Obtiene el fichero con XMLHttpRequest y lo descarga</p>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <mv-button
+            [disabled]="!getLastSuccededUploadResponseJSONSecondExample || platform != ''"
+            adapt=true
+            chunked=true
+            appearance="raised"
+            color="primary"
+            (clickEvent)="downloadFileBrowserXmlExampleClick()">
+            Descargar el archivo (solo web)
+          </mv-button>
+        </div>
+
+        <p>Obtiene el fichero con XMLHttpRequest y lo abre en el navegador</p>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <mv-button
+            [disabled]="!getLastSuccededUploadResponseJSONSecondExample || platform != ''"
+            adapt=true
+            chunked=true
+            appearance="raised"
+            color="primary"
+            (clickEvent)="openFileBrowserXmlExampleClick()">
+            Abrir archivo en el navegador (solo web)
+          </mv-button>
+        </div>
+
+        <p>Obtiene el fichero con XMLHttpRequest y lo abre con el plugin</p>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <mv-button
+            [disabled]="!getLastSuccededUploadResponseJSONSecondExample || platform == ''"
+            adapt=true
+            chunked=true
+            appearance="raised"
+            color="primary"
+            (clickEvent)="openFilePluginXmlExampleClick()">
+            Abrir archivo con plugin file-opener2 (solo app)
+          </mv-button>
+        </div>
+      </div>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Descarga .ics -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #ics><strong>Ejemplo de descarga de un fichero .ics para copiar y modificar si se quiere implementar una funcionad de descarga similar</strong></mv-card-title>
+      <mv-card-subtitle>Angular HttpRequest</mv-card-subtitle>
+    </mv-card-header>
+
+
+    <mv-card-content>
+      <p>Ejemplo de descarga de un fichero .ics para copiar y modificar si se quiere implementar una funcionalidad de descarga similar</p>
+      <pre><code [highlight]="notasHTML"></code></pre>
+        
+
+      
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="botonDescarga"></code></pre>
+        </mv-tab>
+        <mv-tab label="ServiceTS">
+          <pre><code [highlight]="metodoDescargaIcs"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+    </mv-card-content>
+  </mv-card>
+
+
+
+</section>

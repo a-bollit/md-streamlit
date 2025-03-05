@@ -1,0 +1,96 @@
+@import '~@mova/components/_variables.scss';
+.card-code {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: $container-max-width-big;
+}
+
+.alumno-card {
+    cursor: pointer;
+    margin-bottom: 0;
+    .header-image {
+        background-size: cover;
+    }
+    .body-image {
+        img {
+            width: 50%;
+            margin: 1rem auto 1rem auto;
+        }
+    }
+    .alumno-titulo-dato {
+        strong {
+            vertical-align: super;
+        }
+    }
+    .alumno-dato {
+        margin: 0 0 0.75rem 0;
+    }
+}
+
+.filter {
+    background-color: white;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    .image_bck {
+        background-image: url('~src/assets/alumnos.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 250px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+    }
+    .image_bck p {
+        color: $secondary-white;
+        font-size: 3em;
+        margin: 1em;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+}
+
+.filtro-inicial {
+    padding: 12px;
+    .container-input {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - 75px);
+    }
+    .container-button {
+        display: inline-block;
+        width: 75px;
+    }
+}
+
+.container-chip {
+    margin: 0 0 1rem 0;
+}
+
+.filtro-secundario {
+    padding: 10px;
+    gap: 10px;
+    .mat-expansion-panel-header .mat-expansion-panel-header-title {
+        color: $secondary-010;
+    }
+    .mat-expansion-panel-content {
+        align-items: center;
+    }
+}
+
+.filtro-secundario>.mat-expansion-panel-header {
+    min-height: 17px;
+}
+
+.alumnos-content {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .row {
+        width: 100%;
+    }
+    .loadMoreBtn {
+        display: block;
+    }
+}

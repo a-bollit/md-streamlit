@@ -1,0 +1,228 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Plugins y permisos</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información sobre los plugins de mova.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p><strong>Eliminar los plugins innecesarios</strong></p>
+
+      <p>MOVA viene por defecto con una serie de plugins que pueden no ser necesarios para el cometido de nuestra aplicación.
+        Así, lo óptimo sería eliminar los que no sean necesarios para que la aplicación no pida sus correspondientes permisos y el código sea más liviano</p>
+        <ul>
+        <li><strong>cordova-plugin-androidx</strong>
+        <p>No se puede eliminar porque se usa internamente en MOVA</p>
+        <p>
+          <a href="https://www.npmjs.com/package/cordova-plugin-androidx">
+            https://www.npmjs.com/package/cordova-plugin-androidx
+          </a>
+        </p>
+        <p>Versión del plugin: <strong>2.0.0</strong></p>
+        </li>
+
+        <li><strong>cordova-plugin-androidx-adapter</strong>
+        <p>No se puede eliminar porque se usa internamente en MOVA</p>
+        <p>
+          <a href="https://www.npmjs.com/package/cordova-plugin-androidx-adapter">
+            https://www.npmjs.com/package/cordova-plugin-androidx-adapter
+          </a>
+        </p>
+        <p>Versión del plugin: <strong>1.1.1</strong></p>
+        </li>
+
+        <li><strong>cordova-plugin-camera</strong>
+        <p>Si no se usa el componente mvQrScanner y la aplicación no usa la cámara eliminar este plugin</p>
+        <p>
+          <a href="https://www.npmjs.com/package/cordova-plugin-camera">
+            https://www.npmjs.com/package/cordova-plugin-camera
+          </a>
+        </p>
+        <p>Versión del plugin: <strong>4.1.0</strong></p>
+        <p class="permission">Este plugin pide permiso de escritura en almacenamiento exterior (android.permission.WRITE_EXTERNAL_STORAGE)</p>
+        <p class="permission">Este plugin pide permiso de lectura en almacenamiento exterior (android.permission.READ_EXTERNAL_STORAGE)</p>
+        <p class="permission">Este plugin pide permiso de uso de la cámara (android.permission.CAMERA)</p>
+        <p class="permission">Este plugin pide permiso de uso de la cámara (iOS Camera)</p>
+        <p class="permission">Este plugin pide permiso de uso de la galería (iOS PhotoLibrary)</p>
+        <p class="permission">Este plugin pide permiso de localización (iOS Location)</p>
+        <p class="permission">Este plugin pide permiso de escritura en la galería (iOS PhotoLibraryWrite)</p>
+        </li>
+
+
+
+        <li><strong>cordova-plugin-console</strong>
+        <p>No se puede eliminar porque se usa internamente en MOVA</p>
+        <p>
+          <a href="https://www.npmjs.com/package/cordova-plugin-console">
+            https://www.npmjs.com/package/cordova-plugin-console
+          </a>
+        </p>
+        <p>Versión del plugin: <strong>1.1.0</strong></p>
+        </li>
+
+    		<li><strong>cordova-plugin-customurlscheme</strong>
+    		<p>Este plugin se puede eliminar en caso de que no se use el broker con deep link o cualquier funcionalidad que use deep link</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/cordova-plugin-customurlscheme">
+    				https://www.npmjs.com/package/cordova-plugin-customurlscheme
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>4.4.0</strong></p>
+    		</li>
+
+    		<li><strong>cordova-plugin-device</strong>
+    		<p>No se puede eliminar porque se usa internamente en MOVA</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/cordova-plugin-device">
+    				https://www.npmjs.com/package/cordova-plugin-device
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>2.0.3</strong></p>
+    		</li>
+
+    		<li><strong>cordova-plugin-file</strong>
+    		<p>Si no se usa la funcionalidad de pocket-card y no se usa la funcionalidad de cordova-plugin-file en la aplicación eliminar este plugin</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/cordova-plugin-file">
+    				https://www.npmjs.com/package/cordova-plugin-file
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>6.0.2</strong></p>
+    		<p class="permission">Este plugin pide permiso de escritura en almacenamiento exterior (android.permission.WRITE_EXTERNAL_STORAGE)</p>
+    		<p class="permission">Este plugin pide permiso de lectura en almacenamiento exterior (android.permission.READ_EXTERNAL_STORAGE)</p>
+    		</li>
+
+    		<li><strong>cordova-plugin-file-transfer</strong>
+    		<p>Si no se usa la funcionalidad de pocket-card eliminar este plugin</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/cordova-plugin-transfer">
+    				https://www.npmjs.com/package/cordova-plugin-transfer
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>1.7.1</strong></p>
+    		<p class="dependency">Este plugin depende de cordova-plugin-file</p>
+    		<p class="permission">Este plugin pide permiso de escritura en almacenamiento exterior (android.permission.WRITE_EXTERNAL_STORAGE)</p>
+    		</li>
+
+    		<li><strong>cordova-plugin-network-information</strong>
+    		<p>No se puede eliminar porque se usa internamente en MOVA</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/cordova-plugin-network-information">
+    				https://www.npmjs.com/package/cordova-plugin-network-information
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>2.0.2</strong></p>
+    		<p class="permission">Este plugin pide permiso para acceder al estado de internet (android.permission.ACCESS_NETWORK_STATE)</p>
+    		</li>
+
+    		<li><strong>cordova-plugin-safariviewcontroller</strong>
+    		<p>No se puede eliminar porque se usa internamente en MOVA</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/cordova-plugin-safariviewcontroller">
+    				https://www.npmjs.com/package/cordova-plugin-safariviewcontroller
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>1.6.0</strong></p>
+    		</li>
+
+    		<li><strong>cordova-plugin-splashscreen</strong>
+    		<p>No se puede eliminar porque se usa internamente en MOVA</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/cordova-plugin-splashscreen">
+    				https://www.npmjs.com/package/cordova-plugin-splashscreen
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>6.0.0</strong></p>
+    		</li>
+
+    		<li><strong>cordova-plugin-statusbar</strong>
+    		<p>No se puede eliminar porque se usa internamente en MOVA</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/cordova-plugin-statusbar">
+    				https://www.npmjs.com/package/cordova-plugin-statusbar
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>2.4.3</strong></p>
+    		</li>
+
+    		<li><strong>cordova-plugin-whitelist</strong>
+    		<p>No se puede eliminar porque se usa internamente en MOVA</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/cordova-plugin-whitelist">
+    				https://www.npmjs.com/package/cordova-plugin-whitelist
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>1.3.4</strong></p>
+    		</li>
+
+        <li><strong>cordova-support-google-services</strong>
+        <p>No se puede eliminar porque es necesario para phonegap-plugin-push</p>
+        <p>
+          <a href="https://www.npmjs.com/package/cordova-support-google-services">
+            https://www.npmjs.com/package/cordova-support-google-services
+          </a>
+        </p>
+        <p>Versión del plugin: <strong>1.3.2</strong></p>
+        </li>
+
+        <li><strong>cordova.plugins.diagnostic</strong>
+    		<p>No se puede eliminar porque se usa internamente en mova</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/phonegap-plugin-push">
+    				https://www.npmjs.com/package/phonegap-plugin-push
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>6.0.2</strong></p>
+    		</li>
+
+
+        <li><strong>phonegap-plugin-multidex</strong>
+    		<p>No se puede eliminar porque es necesario para phonegap-plugin-push</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/phonegap-plugin-multidex">
+    				https://www.npmjs.com/package/phonegap-plugin-multidex
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>1.0.0</strong></p>
+    		</li>
+
+    		<li><strong>phonegap-plugin-push</strong>
+    		<p>Si no se usan notificaciones push eliminar este plugin</p>
+    		<p>
+    			<a href="https://www.npmjs.com/package/phonegap-plugin-push">
+    				https://www.npmjs.com/package/phonegap-plugin-push
+    			</a>
+    		</p>
+    		<p>Versión del plugin: <strong>2.3.0</strong></p>
+    		<p class="dependency">Este plugin depende de cordova-support-google-services</p>
+    		<p class="dependency">Este plugin depende de phonegap-plugin-multidex</p>
+    		<p class="permission">Este plugin pide permiso para abrir conexiones (android.permission.INTERNET)</p>
+    		<p class="permission">Este plugin pide permiso para acceder al estado de la conexión (android.permission.ACCESS_NETWORK_STATE)</p>
+    		<p class="permission">Este plugin pide permiso para mantener la pantalla sin bloquear (android.permission.WAKE_LOCK)</p>
+    		<p class="permission">Este plugin pide permiso para usar el flash (android.permission.VIBRATE)</p>
+    		</li>
+		</ul>
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

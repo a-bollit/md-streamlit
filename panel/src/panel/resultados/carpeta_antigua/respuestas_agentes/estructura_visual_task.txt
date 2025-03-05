@@ -1,0 +1,81 @@
+Result from estructura_visual_task: El formulario EXPECA01 en Oracle Forms presenta una estructura compleja y específica destinada a permitir la emisión de notificaciones tanto de correos como telemáticas. Esta descripción se enfoca en los aspectos visuales del formulario, describiendo cada componente detalladamente para que un desarrollador pueda replicar la interfaz visual con precisión.
+
+## Ventanas
+
+### W_GENERAL
+La ventana **W_GENERAL** tiene un tamaño de 415 puntos de ancho y 133 puntos de alto. Se ubica en las coordenadas (20, 8) en la pantalla. Esta ventana no se maximiza, ni minimiza, pero permite el mover y redimensionar. Su lienzo principal es **CV_GENERAL**.
+
+### W_PESTAÑAS
+La ventana **W_PESTAÑAS** tiene un tamaño de 593 puntos de ancho y 314 puntos de alto, posicionada en (0, 0). Esta ventana es no modal con su lienzo **CV_PESTAÑAS** como principal. 
+
+### W_DEVOL
+La ventana **W_DEVOL** mide 417 puntos de ancho y 191 puntos de alto (coordenadas: 100, 90). Su lienzo principal es **CV_DEVOL** y está configurada para no maximizarse.
+
+### W_INF
+El tamaño de la ventana **W_INF** es de 312 puntos de ancho y 37 puntos de alto, y se localiza en (100, 130) en la pantalla. Esta ventana es modal y no permite maximizar ni minimizar, teniendo a **CV_INF** como lienzo principal.
+
+### W_ERROR_RESULTADO
+Esta ventana tiene una dimensión de 341x144 puntos, su lienzo principal es **CV_ERROR_RESULTADO**, ubicada en (100, 100). 
+
+### W_SITUACION_ERROR
+Con un tamaño de 358x152, W_SITUACION_ERROR tiene en **CV_SITUACION_ERROR** su lienzo principal. Ubicada a (150, 100).
+
+### W_AYUDA
+La ventana **W_AYUDA**, que mide 383x137 puntos (50, 45), tiene la funcionalidad de ser modal con el lienzo **CV_AYUDA**.
+
+## Lienzos
+
+### CV_GENERAL
+El lienzo principal **CV_GENERAL** mide 415 puntos de ancho y 133 puntos de alto, utiliza el atributo visual **FONDO** y contiene elementos diseñados para filtros y acciones principales. Incluye:
+- **Unidad remitente**: Etiqueta con texto: "Unidad remitente:".
+- **Fechas**: Gráficos para "fecha desde" y "hasta".
+- **Expediente**: Etiquetas delimitando las partes del expediente.
+
+### CV_PESTAÑAS
+Este lienzo de tipo separador cuenta con un tamaño de 592x314 puntos. Se divide en dos pestañas:
+- **PG_CORR**: Enfocada en notificaciones de correos, desplegando un marco titulado "Envío de Notificaciones de Correos". Contiene elementos de texto y gráficos que etiquetan información relevante: Documento, Descripción, Interesado entre otros.
+- **PG_NOTE**: Dedicada a las notificaciones telemáticas con un marco titulado "Envío de Notificaciones Telemáticas". Contiene gráficos similares a PG_CORR.
+
+### CV_DEVOL
+En **CV_DEVOL** se encuentran los controles para devolver acuses de recibo. Tiene un tamaño de 417x191 puntos, con un marco denominado "Devolver Acuses de Recibo a". Incluye etiquetas para:
+- **Consejería u Organismo**: Indica la unidad administrativa y dirección.
+- **Código Postal y Municipio.**
+
+### CV_INF
+Mide 313x38 puntos e indica el estado de operación: "Por favor espere... Esta operación puede tardar algunos segundos."
+
+### CV_ERROR_RESULTADO
+Lienzo para mensajes de error, mide 341x144 puntos. Título "Errores".
+
+### CV_SITUACION_ERROR
+Indicador de situación de errores, tamaño 358x152 puntos con un marco titulado "Avisos".
+
+### CV_AYUDA
+Un lienzo de 383x136 puntos con el texto informativo: "CRITERIOS DE BUSQUEDA DEL CAMPO FECHA."
+
+## Alertas
+- **CONFIRMAR**: Alerta con dos botones ("SI", "NO") y el título "Confirmar dar de baja registro".
+- **NOTA**: Alerta tipo nota, sin botones.
+- **MENSAJE**: Alerta de aviso, sin botones pero con el título "Aviso".
+
+## Menu
+**DEFAULT&SMARTBAR** es el menú por defecto, integrando elementos estándar de navegación y acciones de Oracle Forms.
+
+## Atributos Visuales
+- **ROJO**: Elementos que deben destacar en rojo, p.ej., errores.
+- **NEGRO**: Elementos comunes en negro.
+- **CAMPO_FONDO**: Fondo para campos de ingreso de datos, usualmente grisáceo.
+- **FONDO**: Atributo visual general, aplicado al fondo de varios lienzos.
+
+## Triggers
+Se activan en varios puntos para validar las entradas de los usuarios y garantizar la consistencia de datos visuales como:
+- Cuando se inicia el formulario.
+- Al cambiar de pestaña.
+
+## Program Units
+Procedimientos y funciones que se utilizan para operaciones como:
+- Validar números de anexos.
+- Comprobar estados de expedientes.
+- Aplicar componentes visuales con estilos especificados.
+
+Esta detallada descripción de los componentes visuales proporciona suficiente información para replicar la interfaz del formulario "EXPECA01". La integración de lienzos, ventanas y atributos asegura que todos los elementos se presenten coherentemente, permitiendo un desarrollo fiel al diseño original.

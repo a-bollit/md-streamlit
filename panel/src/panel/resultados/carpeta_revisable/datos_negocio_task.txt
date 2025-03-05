@@ -1,0 +1,202 @@
+Result from datos_negocio_task: ### Bloques de Datos y Estructura
+
+#### Bloque: B00
+Este bloque es un bloque genérico utilizado principalmente para almacenar ítems utilizados en validaciones y lógica interna del formulario. No está relacionado con ninguna tabla de base de datos.
+
+- **EXISTEN_EXP_AN_FI**: 
+  - Tipo: Char.
+  - Longitud Máxima: 1.
+  - Descripción: Campo oculto utilizado para controlar la existencia de registros de expedientes anulados o finalizados.
+
+- **FALLO**: 
+  - Tipo: Char.
+  - Longitud Máxima: 1.
+  - Descripción: Campo oculto utilizado para capturar errores o fallos durante la ejecución de los procesos.
+  - Atributos: `Visible=false`, `InsertAllowed=false`, `UpdateAllowed=false`.
+
+#### Bloque: BL_GENERAL
+Este bloque contiene los campos y la lógica principal para gestionar la información relacionada con las unidades, fechas y expedientes.
+
+- **CDORGA_EREG**: 
+  - Tipo: Elemento de Texto.
+  - Longitud Máxima: 16.
+  - Descripción: Código de la unidad organizativa en el registro.
+  - Atributos: `Visible=false`, `DatabaseItem=false`.
+
+- **IDORGA_EREG**: 
+  - Tipo: Elemento de Texto.
+  - Longitud Máxima: 12.
+  - Descripción: ID de la unidad organizativa en el registro.
+  - Atributos: `Visible=false`, `DatabaseItem=false`.
+
+- **LOV_CDUNIDAD**: 
+  - Tipo: Botón.
+  - Descripción: Botón para lanzar la lista de valores de unidades administrativas.
+  - Evento: `WHEN-BUTTON-PRESSED`.
+
+- **CDUNIDAD**: 
+  - Tipo: Elemento Mostrado.
+  - Longitud Máxima: 5.
+  - Descripción: Código de la unidad administrativa.
+  - Atributos: `DatabaseItem=false`.
+
+- **DSUNIDAD**: 
+  - Tipo: Elemento Mostrado.
+  - Longitud Máxima: 150.
+  - Descripción: Descripción de la unidad administrativa.
+  - Atributos: `Visible=true`, `DatabaseItem=false`.
+
+- **FCDESDE**: 
+  - Tipo: Date.
+  - Longitud Máxima: 10.
+  - Formato: `dd-mm-rrrr`.
+  - Descripción: Fecha desde para las consultas.
+  - Eventos: `KEY-NEXT-ITEM`.
+
+- **CAL_FCDESDE**: 
+  - Tipo: Botón.
+  - Descripción: Botón para mostrar el calendario y seleccionar fecha.
+  - Evento: `WHEN-BUTTON-PRESSED`.
+
+- **FCHASTA**: 
+  - Tipo: Date.
+  - Longitud Máxima: 10.
+  - Formato: `dd-mm-rrrr`.
+  - Descripción: Fecha hasta para las consultas.
+  - Eventos: `KEY-NEXT-ITEM`.
+
+- **CAL_FCHASTA**: 
+  - Tipo: Botón.
+  - Descripción: Botón para mostrar el calendario y seleccionar fecha.
+  - Evento: `WHEN-BUTTON-PRESSED`.
+
+- **CDDEPTNO**: 
+  - Tipo: Char.
+  - Longitud Máxima: 2.
+  - Descripción: Código del departamento.
+  - Atributos: `DatabaseItem=false`.
+
+- **CDTEXP**: 
+  - Tipo: Char.
+  - Longitud Máxima: 4.
+  - Descripción: Código del tipo de expediente.
+  - Eventos: `WHEN-VALIDATE-ITEM`.
+
+- **CDNEXP**: 
+  - Tipo: Number.
+  - Longitud Máxima: 5.
+  - Formato: `00009`.
+  - Descripción: Número del expediente.
+  - Atributos: `DatabaseItem=false`.
+
+- **CDDIGITO**: 
+  - Tipo: Number.
+  - Longitud Máxima: 1.
+  - Descripción: Dígito del expediente.
+  - Atributos: `DatabaseItem=false`.
+
+- **CDAEXP**: 
+  - Tipo: Number.
+  - Longitud Máxima: 4.
+  - Descripción: Año del expediente.
+  - Atributos: `DatabaseItem=false`.
+
+- **INCLUIR_ENVIADOS**: 
+  - Tipo: Casilla de Control.
+  - Valores: `S` (Sí), `N` (No).
+  - Descripción: Indicador para incluir o no los registros enviados en las consultas.
+  - Atributos: `DatabaseItem=false`.
+
+- **ACEPTAR**: 
+  - Tipo: Botón.
+  - Descripción: Botón para aceptar y procesar la información ingresada.
+  - Evento: `WHEN-BUTTON-PRESSED`.
+
+- **CANCELAR**: 
+  - Tipo: Botón.
+  - Descripción: Botón para cancelar la operación actual.
+  - Evento: `WHEN-BUTTON-PRESSED`.
+
+#### Bloque: GEA_ACURE
+Este bloque contiene la información relacionada con los documentos y notificaciones asociadas a las unidades enviadas.
+
+- **CODARCHIVO_PDF**: 
+  - Tipo: Number.
+  - Longitud Máxima: 12.
+  - Descripción: Código del archivo PDF asociado al documento.
+  - Atributos: `DatabaseItem=false`.
+
+- **CDDOCUM**: 
+  - Tipo: Char.
+  - Longitud Máxima: 11.
+  - Descripción: Código del documento.
+  - Atributos: `DatabaseItem=true`, `PrimaryKey=true`.
+
+- **CB_MARCA**: 
+  - Tipo: Casilla de Control.
+  - Valores: `S` (Sí), `N` (No).
+  - Descripción: Casilla de selección del documento.
+  - Evento: `WHEN-CHECKBOX-CHANGED`.
+
+- **DOCUMENTO**: 
+  - Tipo: Char.
+  - Longitud Máxima: 14.
+  - Descripción: Descripción breve del documento.
+  - Atributos: `DatabaseItem=false`.
+
+- **DSDOCUM**: 
+  - Tipo: Char.
+  - Longitud Máxima: 70.
+  - Descripción: Descripción detallada del documento.
+  - Atributos: `DatabaseItem=false`.
+
+- **EXPEDIENTE**: 
+  - Tipo: Char.
+  - Longitud Máxima: 50.
+  - Descripción: Información del expediente asociado.
+  - Atributos: `DatabaseItem=false`.
+
+- **INTERESADO**: 
+  - Tipo: Char.
+  - Longitud Máxima: 70.
+  - Descripción: Nombre del interesado en el documento.
+  - Atributos: `DatabaseItem=false`.
+
+- **IT_OFICIO_PDF**: 
+  - Tipo: Char.
+  - Longitud Máxima: 1.
+  - Valores: `S`, `N`.
+  - Descripción: Indicador de si el documento tiene un oficio PDF.
+  - Atributos: `DatabaseItem=false`.
+
+- **IT_FIRMADO**: 
+  - Tipo: Char.
+  - Longitud Máxima: 1.
+  - Valores: `S`, `N`.
+  - Descripción: Indicador de si el documento está firmado.
+  - Atributos: `DatabaseItem=false`.
+
+- **IT_REGISTRADO**: 
+  - Tipo: Char.
+  - Longitud Máxima: 1.
+  - Valores: `S`, `N`.
+  - Descripción: Indicador de si el documento está registrado.
+  - Atributos: `DatabaseItem=false`.
+
+- **FCEMISION**: 
+  - Tipo: Date.
+  - Longitud Máxima: 10.
+  - Formato: `DD-MM-RRRR`.
+  - Descripción: Fecha de emisión del documento.
+  - Atributos: `DatabaseItem=true`.
+
+- **FCREAL**: 
+  - Tipo: Date.
+  - Longitud Máxima: 10.
+  - Formato: `DD-MM-RRRR`.
+  - Descripción: Fecha real del documento.
+  - Atributos: `DatabaseItem=true`, `Visible=false`.
+
+- **ITIMPRE**: 
+  - Tipo: Char.
+  - Longitud Má

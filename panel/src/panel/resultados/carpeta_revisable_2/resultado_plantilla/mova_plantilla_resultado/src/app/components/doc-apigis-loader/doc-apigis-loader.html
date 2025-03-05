@@ -1,0 +1,51 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de apigis.Loader</strong></mv-card-title>
+
+    <p>La clase apigis.Loader permite generar uno o varios visores junto con mapas, capas y simbologías mediante un objeto JSON.
+    </p>
+    <p>En esta página se muestra la forma en la que podemos usar apigis.Loader.
+    </p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='constructor.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Constructor apigis.Loader
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Constructor -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #constructor><strong>Constructor apigis.Loader</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se puede generar directamente uno o varios visores junto con mapas, capas y simboogía mediante la clase <strong>Constructor apigis.Loader</strong>.
+      </p>
+      <p><em>new ApiLoader(config, headerSecurty = false, config_functions = &#123;&#125;, custom_options = &#91;&#93;, create_viewers = true)</em></p>
+      <ul>
+        <li><strong>config</strong> &#60;<i>object</i> &#62; Configuracion para generar la visualización de Viewer y Mapa. Puede contener las propiedades: </li>
+        <ul>
+          <li><strong>viewers</strong> &#60;<i>object</i> &#62; Objeto contiene la configuración para los visores.</li>
+          <li><strong>maps</strong> &#60;<i>object</i> &#62; Objeto contiene la configuración para los mapas.</li>
+          <li><strong>layers</strong> &#60;<i>object</i> &#62; Objeto contiene la configuración para las capas.</li>
+          <li><strong>symbols</strong> &#60;<i>object</i> &#62; Objeto contiene la configuración para la simbología.</li>
+        </ul>
+        <li><strong>headerSecurty = false</strong> &#60;<i>boolean</i> &#62; Cabecera de seguridad si es necesaria para los SLDs.</li>
+        <li><strong>config_functions</strong> &#60;<i>object</i> &#62; Objeto con las funciones a aplicar.</li>
+        <li><strong>custom_options</strong> &#60;<i>[]</i> &#62; Custom options a anadir a las props de cada objeto.</li>
+        <li><strong>create_viewers</strong> &#60;<i>boolean</i> &#62; Indica si el constructor tiene que crear los viewer.</li>
+      </ul>
+      <br>
+      <p>Se puede consultar información más detallada y ejemplos sobre el uso de apigis.Loader en el documento de Arquitectura sobre el API GIS.</p>
+    </mv-card-content>
+  </mv-card>
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

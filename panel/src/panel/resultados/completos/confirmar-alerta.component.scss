@@ -1,0 +1,14 @@
+.content {
+  text-align: center;
+  padding: 20px;
+
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+  }
+}

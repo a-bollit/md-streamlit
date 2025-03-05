@@ -1,0 +1,30 @@
+@import "~src/styles";
+
+.main-container {
+  height: calc(100% - 64px);
+  background-color: white;
+  .row {
+    height: 100%;
+    .toc-container {
+      display: flex;
+      flex-direction: column;
+      margin: 2%;
+      .checkbox {
+        height: 30px;
+      }
+    }
+    #container-apigis-toc {
+      height: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: $media-col-sm-max) {
+  .toc-mobile {
+    height: 30vh;
+    overflow: auto;
+  }
+  .map-mobile {
+    height: 70vh;
+  }
+}

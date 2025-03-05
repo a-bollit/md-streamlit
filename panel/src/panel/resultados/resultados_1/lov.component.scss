@@ -1,0 +1,36 @@
+@import '~@mova/components/_variables.scss';
+
+:host {
+  display: block;
+  margin: 10px 0;
+}
+
+mv-card {
+  margin: 10px 0;
+}
+
+mv-header {
+  background-color: $mova-primary;
+  color: $white;
+}
+
+mv-content {
+  padding: 10px;
+}
+
+mv-input {
+  margin-bottom: 10px;
+}
+
+mv-dropdown {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+mv-option {
+  cursor: pointer;
+  padding: 5px;
+  &:hover {
+    background-color: $mova-light;
+  }
+}

@@ -1,0 +1,14 @@
+@import '~@mova/components/_variables.scss';
+
+.prueba{
+  color: white;
+}
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+.buttonMargin{
+  margin: 0 1rem 0.5rem 0;
+}

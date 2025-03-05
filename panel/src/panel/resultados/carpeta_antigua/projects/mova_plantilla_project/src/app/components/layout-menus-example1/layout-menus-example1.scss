@@ -1,0 +1,51 @@
+.card-type-1{
+  width: calc(100% - 40px);
+  min-height: 10rem;
+  min-width: 5rem;
+  color: #fff;
+  ::ng-deep.mat-card-title{
+    color: #fff;
+    font-size: 1.25rem;
+    position: relative;
+  }
+  .mat-card-subtitle{
+    color: #fff;
+    position: relative;
+  }
+}
+.row{
+  margin: auto;
+  width: 50%;
+}
+.gradient{
+  width: 100%;
+  border-radius: 4px;
+  position: absolute;
+  opacity: 0.75;
+  min-height: 5rem;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: none;
+  background-image: linear-gradient(to right, rgba(86, 115, 131, 0.8), rgba(86, 115, 131, 0.2));
+}
+.image1{
+  background:url('~src/assets/examples/calendario_pixabay.jpg');
+  background-size: cover;
+}
+.image2{
+  background:url('~src/assets/examples/logoGPAP.png');
+  background-size: cover;
+}
+.image3{
+  background:url('~src/assets/examples/servers_2.jpg');
+  background-size: cover;
+}
+.image4{
+  background:url('~src/assets/examples/database2.jpg');
+  background-size: cover;
+}
+.image5{
+  background:url('~src/assets/examples/firmacontrato.jpg');
+  background-size: cover;
+}

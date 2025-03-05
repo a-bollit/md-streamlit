@@ -1,0 +1,382 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Diseño responsive</strong></mv-card-title>
+
+		<p>El framework incorpora el sistema de grid-12 que facilita maquetar de una forma sencilla
+      el contenido que se muestra en las vistas.</p>
+		<p>Lista de ejemplos responsive:</p>
+		<ul>
+			<li><a (click)='appMaquetacionResponsiveEjemploBotonera.scrollIntoView({behavior: "smooth",block: "start"})'>Botonera</a></li>
+			<li><a (click)='appMaquetacionResponsiveEjemploFichas.scrollIntoView({behavior: "smooth",block: "start"})'>Fichas</a></li>
+			<li><a (click)='appMaquetacionResponsiveEjemploMediaQueries.scrollIntoView({behavior: "smooth",block: "start"})'>Media queries</a></li>
+		</ul>
+
+  </mv-card>
+
+  <!-- botonera -->
+  <mv-card class="ejemploEsquemaResponsiveXs">
+		<p>Ejemplo para entender como decidir el reparto de la información según el sistema del grid de 12 columnas:</p>
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          <strong>col-xs-12</strong> col-sm-6 col-md-3 col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          <strong>col-xs-12</strong> col-sm-6 col-md-3 col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          <strong>col-xs-12</strong> col-sm-6 col-md-3 col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          <strong>col-xs-12</strong> col-sm-6 col-md-3 col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          <strong>col-xs-12</strong> col-sm-6 col-md-3 col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          <strong>col-xs-12</strong> col-sm-6 col-md-3 col-lg-2
+        </div>
+      </div>
+		</div>
+	</mv-card>
+
+  <mv-card class="ejemploEsquemaResponsiveSm">
+		<p>Ejemplo para entender como decidir el reparto de la información según el sistema del grid de 12 columnas:</p>
+    <div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 <strong>col-sm-6</strong> col-md-3 col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 <strong>col-sm-6</strong> col-md-3 col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 <strong>col-sm-6</strong> col-md-3 col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 <strong>col-sm-6</strong> col-md-3 col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 <strong>col-sm-6</strong> col-md-3 col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 <strong>col-sm-6</strong> col-md-3 col-lg-2
+        </div>
+      </div>
+		</div>
+	</mv-card>
+
+  <mv-card class="ejemploEsquemaResponsiveMd">
+		<p>Ejemplo para entender como decidir el reparto de la información según el sistema del grid de 12 columnas:</p>
+    <div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 <strong>col-md-3</strong> col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 <strong>col-md-3</strong> col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 <strong>col-md-3</strong> col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 <strong>col-md-3</strong> col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 <strong>col-md-3</strong> col-lg-2
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 <strong>col-md-3</strong> col-lg-2
+        </div>
+      </div>
+		</div>
+	</mv-card>
+
+  <mv-card class="ejemploEsquemaResponsiveLg">
+		<p>Ejemplo para entender como decidir el reparto de la información según el sistema del grid de 12 columnas:</p>
+    <div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 col-md-3 <strong>col-lg-2</strong>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 col-md-3 <strong>col-lg-2</strong>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 col-md-3 <strong>col-lg-2</strong>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 col-md-3 <strong>col-lg-2</strong>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 col-md-3 <strong>col-lg-2</strong>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="colour">
+          col-xs-12 col-sm-6 col-md-3 <strong>col-lg-2</strong>
+        </div>
+      </div>
+		</div>
+	</mv-card>
+
+  <!-- botonera -->
+  <mv-card #appMaquetacionResponsiveEjemploBotonera>
+    <p>A continuación se muestra la implementación de una botonera de la que se desconoce el tamaño que puede tener,
+      por ejemplo una lista de apps.</p>
+
+    <p>En este caso, para los dispositivos móviles más pequeños se mostrará un máximo de 3 apps por fila,
+      para los dispositivos móviles de tamaño mediano se mostrará un máximo de 4 apps por fila,
+      para los dispositivos móviles o de escritorio grandes se mostrará un máximo de 6 apps por fila y
+      finalmente para los dispositivos de cualquier tipo más grandes un máximo de 12 apps por fila</p>
+
+    <div class="mobile">
+      <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color1">
+            <mv-icon>android</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color2">
+            <mv-icon>camera_alt</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color4">
+            <mv-icon>room</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color3">
+            <mv-icon>explore</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color4">
+            <mv-icon>computer</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color3">
+            <mv-icon>credit_card</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color2">
+            <mv-icon>build</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color5">
+            <mv-icon>airplay</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color1">
+            <mv-icon>alarm</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color3">
+            <mv-icon>cloud</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color1">
+            <mv-icon>email</mv-icon>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="app-responsive color4">
+            <mv-icon>headset</mv-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mv-card>
+
+  <!-- fichas -->
+  <mv-card #appMaquetacionResponsiveEjemploFichas>
+    <p>A continuación se mestra la implementación de un lista de fichas: </p>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <mv-card class="example-card">
+          <mv-card-header>
+            <mv-card-title>Vegetal</mv-card-title>
+            <mv-card-subtitle>Para los que se cuidan</mv-card-subtitle>
+          </mv-card-header>
+          <img mv-card-image src="assets/examples/example-responsive-1.jpg"
+          alt="Imagen de ejemplo">
+          <mv-card-content>
+            <p>
+              Menú compuesto de vegetales, fruta y semillas.
+            </p>
+            <a href=""><strong>www.restaurante-madrid.com/vegetal</strong></a>
+          </mv-card-content>
+          <mv-card-actions>
+            <mv-button
+              appearance="raised"
+              color="primary">Reservar
+            </mv-button>
+            <mv-button
+              appearance="raised">Compartir
+            </mv-button>
+          </mv-card-actions>
+        </mv-card>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <mv-card class="example-card">
+          <mv-card-header>
+            <mv-card-title>Marisco</mv-card-title>
+            <mv-card-subtitle>Para amantes del mar</mv-card-subtitle>
+          </mv-card-header>
+          <img mv-card-image src="assets/examples/example-responsive-2.jpg"
+          alt="Imagen de ejemplo">
+          <mv-card-content>
+            <p>
+              Menú compuesto de gambas, mejillones y langosta.
+            </p>
+            <a href=""><strong>www.restaurante-madrid.com/marisco</strong></a>
+          </mv-card-content>
+          <mv-card-actions>
+            <mv-button
+              appearance="raised"
+              color="primary">Reservar
+            </mv-button>
+            <mv-button
+              appearance="raised">Compartir
+            </mv-button>
+          </mv-card-actions>
+        </mv-card>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <mv-card class="example-card">
+          <mv-card-header>
+            <mv-card-title>Desayuno</mv-card-title>
+            <mv-card-subtitle>Para los más dulces</mv-card-subtitle>
+          </mv-card-header>
+          <img mv-card-image src="assets/examples/example-responsive-3.jpg"
+          alt="Imagen de ejemplo">
+          <mv-card-content>
+            <p>
+              Desayuno compuesto de café, zumo y bollería.
+            </p>
+            <a href=""><strong>www.restaurante-madrid.com/desayuno</strong></a>
+          </mv-card-content>
+          <mv-card-actions>
+            <mv-button
+              appearance="raised"
+              color="primary">Reservar
+            </mv-button>
+            <mv-button
+              appearance="raised">Compartir
+            </mv-button>
+          </mv-card-actions>
+        </mv-card>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <mv-card class="example-card">
+          <mv-card-header>
+            <mv-card-title>Mediterráneo</mv-card-title>
+            <mv-card-subtitle>Para los tradicionales</mv-card-subtitle>
+          </mv-card-header>
+          <img mv-card-image src="assets/examples/example-responsive-4.jpg"
+          alt="Imagen de ejemplo">
+          <mv-card-content>
+            <p>
+              Menú con los mejores ingredientes de la tierra.
+            </p>
+            <a href=""><strong>www.restaurante-madrid.com/mediterraneo</strong></a>
+          </mv-card-content>
+          <mv-card-actions>
+            <mv-button
+              appearance="raised"
+              color="primary">Reservar
+            </mv-button>
+            <mv-button
+              appearance="raised">Compartir
+            </mv-button>
+          </mv-card-actions>
+        </mv-card>
+      </div>
+    </div>
+  </mv-card>
+
+  <!-- media queries -->
+  <mv-card #appMaquetacionResponsiveEjemploMediaQueries>
+
+    <p>A continuación se muestra la implementación de unos elementos que se muestran de forma
+      diferente dependiendo del tamaño del viewport del dispositivo, mediante media queries.</p>
+
+    <p>Las reglas CSS básicas para definir media queries son las siguientes:</p>
+
+    <mv-tab-group>
+      <mv-tab label="CSS">
+        <pre><code [highlight]="codeGridExampleCSS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <div class="ejemploEsquemaResponsiveLg">
+      <strong>Soy grande (lg)</strong>
+    </div>
+
+    <div class="ejemploEsquemaResponsiveMd">
+      <strong>Soy mediano (md)</strong>
+    </div>
+
+    <div class="ejemploEsquemaResponsiveSm">
+      <strong>Soy pequeño (sm)</strong>
+    </div>
+
+    <div class="ejemploEsquemaResponsiveXs">
+      <strong>Soy muy pequeño (xs)</strong>
+    </div>
+
+  </mv-card>
+
+</section>

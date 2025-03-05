@@ -1,0 +1,45 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Estilo socio sanitario (azul)</strong></mv-card-title>
+
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>En MOVA se puede elegir el tema visual socio sanitario, que se corresponde con los elementos en azul en vez del rojo corporativo.
+      Para configurarlo:</p>
+      <ul>
+        <li><p>Escoger 1 (rojo) o 2 (azul) en la variable style del archivo <strong><a target="_blank" href="#/doc-config-default-main-frame">config-default-main-frame.json</a></strong></p></li>
+        <li><p>Escoger uno u otro tema (eliminando o comentando el que no queramos) en la variable CSS del archivo styles.scss</p></li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="config-default-main-frame.json">
+          <pre><code [highlight]="codeThemeExampleJSON"></code></pre>
+        </mv-tab>
+        <mv-tab label="styles.scss">
+          <pre><code [highlight]="codeThemeExampleCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

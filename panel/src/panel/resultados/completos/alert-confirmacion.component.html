@@ -1,0 +1,12 @@
+<mv-card>
+  <mv-header>
+    <mv-title>{{ titulo }}</mv-title>
+  </mv-header>
+  <div class="alert-content">
+    <p [ngClass]="tipo">{{ mensaje }}</p>
+    <div class="buttons">
+      <mv-button (click)="onConfirm()">SI</mv-button>
+      <mv-button (click)="onCancel()">NO</mv-button>
+    </div>
+  </div>
+</mv-card>

@@ -1,0 +1,276 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación theme</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='configuracion.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información sobre temas visuales.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>En MOVA se pueden configurar temas visuales que cambian el color de algunos elementos (borde, texto...) de los componentes de formulario. Si para alguna aplicación
+      es necesario un nuevo tema se puede solicitar a Arquitectura para añadirlo.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #configuracion><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración de temas visuales.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Se puede configurar mediante la variable componentTheme del archivo config-default-main-frame.json:</p>
+
+      <mv-tab-group>
+        <mv-tab label="config-default-main-frame.json">
+          <pre><code [highlight]="codeConfigJSON"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Existen los siguientes temas visuales:</p>
+      <ul>
+        <li>Tema 0: tema en colores neutros, tema por defecto en MOVA</li>
+        <li>Tema 1: tema resaltado en verde para los elementos de formulario</li>
+        <li>Tema 2: tema resaltado en azul para los elementos de formulario</li>
+        <li>Tema 3: tema en colores neutros pero con menor transparencia (más visibles)</li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Uso de temas visuales.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>A continuación se muestra un ejemplo donde se cambia en tiempo real entre los 4 temas visuales disponibles.</p>
+      <mv-select-x
+        adapt=true
+        [(ngModel)]="selectThemeModel"
+        [options]="selectOptionsThemes"
+        (changeEvent)="changeFunction()">
+      </mv-select-x>
+
+      <div class="component-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <strong>Normal</strong>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <strong>Deshabilitado</strong>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <strong>Con error</strong>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-input
+              [(ngModel)]="inputModelExample"
+              label="Nombre">
+            </mv-input>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-input
+              [(ngModel)]="inputModelExample"
+              label="Primer apellido"
+              disabled=true>
+            </mv-input>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-input
+              [(ngModel)]="inputModelExample"
+              label="Segundo apellido"
+              required=true
+              validateFirst=true>
+            </mv-input>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-select-x
+              [(ngModel)]="selectModelExample"
+              label="Estaciones"
+              [options]="selectOptionsExample">
+            </mv-select-x>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-select-x
+              [(ngModel)]="selectModelExample"
+              label="Estaciones"
+              disabled=true
+              [options]="selectOptionsExample">
+            </mv-select-x>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-select-x
+              [(ngModel)]="selectModelExample"
+              label="Estaciones"
+              required=true
+              validateFirst=true
+              [options]="selectOptionsExample">
+            </mv-select-x>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-checkbox-x
+              [(ngModel)]="checkModelExample">
+              Discapacidad
+            </mv-checkbox-x>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-checkbox-x
+              [(ngModel)]="checkModelExample"
+              disabled=true>
+              Parado
+            </mv-checkbox-x>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-radio
+              [(ngModel)]="radioModelExample"
+              [options]=radioOptions>
+            </mv-radio>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-radio
+              [(ngModel)]="radioModelExample"
+              disabled=true
+              [options]=radioOptions>
+            </mv-radio>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <mv-values-list
+              [(ngModel)]="valuesListModelExample"
+              columnCode="id"
+              columnText="nombre_alumno"
+              [data]="dataArray">
+            </mv-values-list>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <mv-values-list
+              [(ngModel)]="valuesListModelExample"
+              columnCode="id"
+              columnText="nombre_alumno"
+              disabled=true
+              [data]="dataArray">
+            </mv-values-list>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <mv-values-list
+              [(ngModel)]="valuesListModelExample"
+              columnCode="id"
+              columnText="nombre_alumno"
+              required=true
+              validateFirst=true
+              [data]="dataArray">
+            </mv-values-list>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-input
+              [(ngModel)]="datepickerModelExample"
+              label="Fecha nacimiento"
+              datepicker=true>
+            </mv-input>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-input
+              [(ngModel)]="datepickerModelExample"
+              label="Fecha nacimiento"
+              disabled=true
+              datepicker=true>
+            </mv-input>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-input
+              [(ngModel)]="datepickerModelExample"
+              label="Fecha nacimiento"
+              required=true
+              validateFirst=true
+              datepicker=true>
+            </mv-input>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-textarea
+              [(ngModel)]="textareaModelExample"
+              label="Observaciones">
+            </mv-textarea>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-textarea
+              [(ngModel)]="textareaModelExample"
+              label="Observaciones"
+              disabled=true>
+            </mv-textarea>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <mv-textarea
+              [(ngModel)]="textareaModelExample"
+              label="Observaciones"
+              required=true
+              validateFirst=true>
+            </mv-textarea>
+          </div>
+        </div>
+      </div>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

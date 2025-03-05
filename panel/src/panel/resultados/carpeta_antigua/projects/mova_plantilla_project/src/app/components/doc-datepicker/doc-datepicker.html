@@ -1,0 +1,1255 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-datepicker</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='adapt.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> adapt
+      </a></li>
+      <li><a class="nostyle" (click)='appearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> appearance
+      </a></li>
+      <li><a class="nostyle" (click)='customIcon.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> customIcon
+      </a></li>
+      <li><a class="nostyle" (click)='dateClass.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> dateClass
+      </a></li>
+      <li><a class="nostyle" (click)='datepicker.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> datepicker
+      </a></li>
+      <li><a class="nostyle" (click)='datepickerFilter.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> datepickerFilter
+      </a></li>
+      <li><a class="nostyle" (click)='delay.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> delay
+      </a></li>
+      <li><a class="nostyle" (click)='disabled.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> disabled
+      </a></li>
+      <li><a class="nostyle" (click)='disabledDatepickerToggle.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> disabledDatepickerToggle
+      </a></li>
+      <li><a class="nostyle" (click)='disabledDatepickerInput.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> disabledDatepickerInput
+      </a></li>
+      <li><a class="nostyle" (click)='hint.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> hint
+      </a></li>
+      <li><a class="nostyle" (click)='hintAlign.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> hintAlign
+      </a></li>
+      <li><a class="nostyle" (click)='hintType.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> hintType
+      </a></li>
+      <li><a class="nostyle" (click)='label.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> label
+      </a></li>
+      <li><a class="nostyle" (click)='max.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> max
+      </a></li>
+      <li><a class="nostyle" (click)='min.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> min
+      </a></li>
+      <li><a class="nostyle" (click)='placeholder.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> placeholder
+      </a></li>
+      <li><a class="nostyle" (click)='required.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> required
+      </a></li>
+      <li><a class="nostyle" (click)='startAt.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> startAt
+      </a></li>
+      <li><a class="nostyle" (click)='startView.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> startView
+      </a></li>
+      <li><a class="nostyle" (click)='touchUi.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> touchUi
+      </a></li>
+      <li><a class="nostyle" (click)='validateFirst.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> validateFirst
+      </a></li>
+      <li><a class="nostyle" (click)='validateOnType.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> validateOnType
+      </a></li>
+    </ol>
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='changeEvent.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> changeEvent
+      </a></li>
+      <li><a class="nostyle" (click)='keyupEvent.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> keyupEvent
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-datepicker</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El componente mv-datepicker se basa en los componentes mat-input y mat-datepicker de Angular Material, a los que se les añade funcionalidad y estilos adicionales.</p>
+      <p>Sirve para poder escoger una fecha en el calendario que se despliega.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-datepicker</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Datepicker básico:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        [(ngModel)]="datepicker001Model">
+      </mv-input>
+
+    <p><strong>Valor variable 'datepicker001Model'</strong>: {{datepicker001Model}}</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- adapt -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #adapt><strong>adapt</strong></mv-card-title>
+      <mv-card-subtitle>Ancho del 100%.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad adapt permite definir el ancho del componente al 100% del contenedor.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAdaptExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAdaptExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con adapt a true:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        adapt=true>
+      </mv-input>
+
+      <p><strong>Con adapt a false:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        adapt=false>
+      </mv-input>
+
+      <p><strong>Sin adapt (comportamiento por defecto):</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true>
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- appearance -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #appearance><strong>appearance</strong></mv-card-title>
+      <mv-card-subtitle>Apariencia del input.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad appearance permite definir la apariencia del componente, por defecto outline.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAppearanceExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAppearanceExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con apariencia 'legacy':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        appearance="legacy">
+      </mv-input>
+
+      <p><strong>Con apariencia 'standard':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        appearance="standard">
+      </mv-input>
+
+      <p><strong>Con apariencia 'fill':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        appearance="fill">
+      </mv-input>
+
+      <p><strong>Con apariencia 'outline':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        appearance="outline">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- customIcon -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #customIcon><strong>customIcon</strong></mv-card-title>
+      <mv-card-subtitle>Icono del botón.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad customIcon permite definir el icono del botón de abrir el calendario.
+        Los iconos son los de Material
+        <strong>
+          <a href="https://material.io/resources/icons">
+            https://material.io/resources/icons
+          </a>
+        </strong>.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeCustomIconExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeCustomIconExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Icono 'favorite':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        customIcon="favorite">
+      </mv-input>
+
+      <p><strong>Icono 'flight_takeoff':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        customIcon="flight_takeoff">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- dateClass -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #dateClass><strong>dateClass</strong></mv-card-title>
+      <mv-card-subtitle>CSS aplicable a fechas.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad dateClass permite aplicar una clase CSS a unas fechas determinadas.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDateClassExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDateClassExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="CSS">
+          <pre><code [highlight]="codeDateClassExampleCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con una clase personalizada para resaltar en naranja los días 1 y 20 de cada mes:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        [dateClass]="customDateClass">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- datepicker -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #datepicker><strong>datepicker</strong></mv-card-title>
+      <mv-card-subtitle>Establecer un input como datepicker.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad datepicker permite definir un mv-input como datepicker.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDatepickerExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDatepickerExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con datepicker = true:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true>
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- datepickerFilter -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #datepickerFilter><strong>datepickerFilter</strong></mv-card-title>
+      <mv-card-subtitle>Filtro a aplicar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad datepickerFilter permite aplicar un filtro a las fechas.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDatepickerFilterExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDatepickerFilterExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Filtro para poder elegir solamente lunes, miércoles y viernes:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        [datepickerFilter]="myCustomFilter">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- delay -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #delay><strong>delay</strong></mv-card-title>
+      <mv-card-subtitle>Retardo del componente.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad delay permite definir un retardo después de escribir en el componente, por defecto
+      su valor es 0ms.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDelayExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDelayExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con delay de 3000 ms:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        (changeEvent)="changeEventFunctionMillis($event)"
+        delay="3000">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- disabled -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #disabled><strong>disabled</strong></mv-card-title>
+      <mv-card-subtitle>Deshabilitar el input.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad disabled permite deshabilitar el componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDisabledExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDisabledExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con disabled a true:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        disabled=true>
+      </mv-input>
+
+      <p><strong>Con disabled a false:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        disabled=false>
+      </mv-input>
+
+      <p><strong>Sin disabled (comportamiento por defecto):</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true>
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- disabledDatepickerToggle -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #disabledDatepickerToggle><strong>disabledDatepickerToggle</strong></mv-card-title>
+      <mv-card-subtitle>Deshabilitar el botón de abrir el calendario.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad disabledDatepickerToggle permite deshabilitar el botón de abrir el calendario.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDisabledDatepickerToggleExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDisabledDatepickerToggleExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con disabledDatepickerToggle a true:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        disabledDatepickerToggle=true>
+      </mv-input>
+
+      <p><strong>Con disabledDatepickerToggle a false:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        disabledDatepickerToggle=false>
+      </mv-input>
+
+      <p><strong>Sin disabledDatepickerToggle (comportamiento por defecto):</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true>
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- disabledDatepickerInput -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #disabledDatepickerInput><strong>disabledDatepickerInput</strong></mv-card-title>
+      <mv-card-subtitle>Deshabilitar el input.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad disabledDatepickerInput permite deshabilitar el input del datepicker.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDisabledDatepickerInputExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDisabledDatepickerInputExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con disabledDatepickerInput a true:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        disabledDatepickerInput=true>
+      </mv-input>
+
+      <p><strong>Con disabledDatepickerInput a false:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        disabledDatepickerInput=false>
+      </mv-input>
+
+      <p><strong>Sin disabledDatepickerInput (comportamiento por defecto):</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true>
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- hint -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #hint><strong>hint</strong></mv-card-title>
+      <mv-card-subtitle>Texto explicativo.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad hint permite definir un texto debajo del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHintExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHintExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con hint 'Propiedad hint':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        hint="Propiedad hint">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- hintAlign -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #hintAlign><strong>hintAlign</strong></mv-card-title>
+      <mv-card-subtitle>Posición del hint.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad hintAlign permite establecer la posición del hint al principio o al final del componente.</p>
+      <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>hint</strong></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHintAlignExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHintAlignExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con hintAlign 'start':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        hintAlign="start"
+        hint="Hint al principio">
+      </mv-input>
+
+      <p><strong>Con hintAlign 'end':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        hintAlign="end"
+        hint="Hint al final">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- hintType -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #hintType><strong>hintType</strong></mv-card-title>
+      <mv-card-subtitle>Estilo del hint.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad hintType permite definir el estilo del hint entre los valores warning, info, danger y success. </p>
+      <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>hint</strong></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHintTypeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHintTypeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con hintType 'info':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        hintType="info"
+        hint="Hint info">
+      </mv-input>
+
+      <p><strong>Con hintType 'success':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        hintType="success"
+        hint="Hint success">
+      </mv-input>
+      <p><strong>Con hintType 'warning':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        hintType="warning"
+        hint="Hint warning">
+      </mv-input>
+      <p><strong>Con hintType 'danger':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        hintType="danger"
+        hint="Hint danger">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- label -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #label><strong>label</strong></mv-card-title>
+      <mv-card-subtitle>Label del input.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad label permite definir un texto que queda por encima del componente, a modo de título. </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLabelExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLabelExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con label 'Label del input' y apariencia 'legacy':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        label="Label del input"
+        appearance="legacy">
+      </mv-input>
+
+      <p><strong>Con label 'Label del input' y apariencia 'standard':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        label="Label del input"
+        appearance="standard">
+      </mv-input>
+
+      <p><strong>Con label 'Label del input' y apariencia 'fill':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        label="Label del input"
+        appearance="fill">
+      </mv-input>
+
+      <p><strong>Con label 'Label del input' y apariencia 'outline':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        label="Label del input"
+        appearance="outline">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- max -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #max><strong>max</strong></mv-card-title>
+      <mv-card-subtitle>Fecha máxima.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad max permite definir la fecha máxima seleccionable. </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeMaxExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeMaxExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con max a 31 de agosto del año actual:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        [max]="maxDate">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- min -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #min><strong>min</strong></mv-card-title>
+      <mv-card-subtitle>Fecha mínima.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad min permite definir la fecha mínima seleccionable. </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeMinExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeMinExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con min a 15 de julio del año actual:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        [min]="minDate">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- placeholder -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #placeholder><strong>placeholder</strong></mv-card-title>
+      <mv-card-subtitle>Placeholder del input.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad placeholder permite definir un texto que queda por encima del componente, a modo de título. </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codePlaceholderExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codePlaceholderExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con placeholder 'Fecha inicio':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        placeholder="Fecha inicio">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- required -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #required><strong>required</strong></mv-card-title>
+      <mv-card-subtitle>Datepicker obligatorio.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad required permite definir el input como obligatorio. </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeRequiredExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeRequiredExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con required a true:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        required=true>
+      </mv-input>
+
+      <p><strong>Con required a false:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        required=false>
+      </mv-input>
+
+      <p><strong>Sin required (comportamiento por defecto):</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true>
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- requiredHint -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #requiredHint><strong>requiredHint</strong></mv-card-title>
+      <mv-card-subtitle>Mensaje del input required.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad requiredHint permite definir el mensaje cuando el input es required. </p>
+      <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>required</strong></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeRequiredHintExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeRequiredHintExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con requiredHint 'Campo obligatorio':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        requiredHint="Campo obligatorio"
+        required=true>
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- startAt -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #startAt><strong>startAt</strong></mv-card-title>
+      <mv-card-subtitle>Fecha de inicio.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad startAt permite definir la fecha en la que empieza el datepicker. </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeStartAtExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeStartAtExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con startAt a 1 de septiembre del año actual:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        [startAt]="startAtDate">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- startView -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #startView><strong>startView</strong></mv-card-title>
+      <mv-card-subtitle>Vista de día/mes/año.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad startView permite definir qué queremos ver cuando se abre el calendario:
+        los días del mes, los meses del año o los años. </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeStartViewExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeStartViewExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con startView 'month':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        startView="month">
+      </mv-input>
+
+      <p><strong>Con startView 'year':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        startView="year">
+      </mv-input>
+
+      <p><strong>Con startView 'multi-year':</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        startView="multi-year">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- touchUi -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #touchUi><strong>touchUi</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar el datepicker como vista touch.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad touchUi permite mostrar el datepicker con vista más amigable y grande si el tamaño de la pantalla
+        lo permite. </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTouchUiExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTouchUiExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con touchUi a true:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        touchUi=true>
+      </mv-input>
+
+      <p><strong>Con touchUi a false:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        touchUi=false>
+      </mv-input>
+
+      <p><strong>Sin touchUi (comportamiento por defecto):</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true>
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- validateFirst -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #validateFirst><strong>validateFirst</strong></mv-card-title>
+      <mv-card-subtitle>Validación inicial del componente.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad validateFirst permite validar o no el componente al ser cargado, ya que a lo mejor no queremos
+        que de primeras se marquen como erróneos determinados datepicker o al revés, queremos que nada más cargar la vista
+        se haga la validación</p>
+      <p>En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como
+         por ejemplo <strong>required=true</strong></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeValidateFirstExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeValidateFirstExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con validateFirst a true:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        required=true
+        validateFirst=true>
+      </mv-input>
+
+      <p><strong>Con validateFirst a false:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        required=true
+        validateFirst=false>
+      </mv-input>
+
+      <p><strong>Sin validateFirst (comportamiento por defecto):</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        required=true>
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- validateOnType -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #validateOnType><strong>validateOnType</strong></mv-card-title>
+      <mv-card-subtitle>Validación en tiempo real.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad validateOnType permite activar la validación del componente en tiempo real, esto es según se
+        va escribiendo.</p>
+      <p>En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como
+         por ejemplo <strong>required=true</strong></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeValidateOnTypeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeValidateOnTypeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con validateOnType a true:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        required=true
+        validateOnType=true>
+      </mv-input>
+
+      <p><strong>Con validateOnType a false:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        required=true
+        validateOnType=false>
+      </mv-input>
+
+      <p><strong>Sin validateOnType (comportamiento por defecto):</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        required=true>
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- changeEvent -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #changeEvent><strong>changeEvent</strong></mv-card-title>
+      <mv-card-subtitle>Evento change.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento changeEvent permite definir una función que se ejecutará cuando cambie el valor del input</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeChangeEventExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeChangeEventExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con changeEvent:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        (changeEvent)="changeEventFunction($event)">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- keyupEvent -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #keyupEvent><strong>keyupEvent</strong></mv-card-title>
+      <mv-card-subtitle>Evento keyup.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento keyupEvent permite definir una función que se ejecutará cuando el usuario
+      deja de teclear</p>
+      <p>La diferencia con el evento <strong>changeEvent</strong> es que no se ejecutará la función keyupEvent
+      hasta que el usuario deje de teclear, de manera que si mantiene pulsado de manera continuada un valor del teclado
+      se estará introduciendo muchos caracteres sin que se ejecute la función keyupEvent, sin embargo sí se estaría
+      ejecutando la función changeEvent porque el valor sí está cambiando.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeKeyupEventExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeKeyupEventExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con keyupEvent:</strong></p>
+
+      <mv-input
+        label="Fecha"
+        datepicker=true
+        (keyupEvent)="keyupEventFunction($event)">
+      </mv-input>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

@@ -1,0 +1,362 @@
+<section class="view-default-style">
+
+  <mv-card class="card-code">
+    <mv-card-title><strong>Formulario reactivo sin validación en tiempo real</strong></mv-card-title>
+
+    <p>Para ver la diferencia entre formularios reactive y template, ver la documentación al respecto:
+    <a href="https://angular.io/guide/forms-overview" rel="noopener noreferrer" target="_blank">https://angular.io/guide/forms-overview</a></p>
+
+    <!-- mensaje de aviso -->
+    <mv-card
+      class="warning-card">
+      <mv-card-header>
+        <mv-card-title>
+          <strong>AVISO</strong>
+        </mv-card-title>
+      </mv-card-header>
+
+      <mv-card-content>
+        <p>Todos los campos se han creado como ejemplos de validación y no almacenarán su valor en el servidor.</p>
+      </mv-card-content>
+    </mv-card>
+
+    <div>
+      * Campos obligatorios
+    </div>
+
+    <br>
+
+    <form
+      [formGroup]="clientForm"
+      (ngSubmit)="mvRadioSexo.doValidate() && mvCheckCondiciones.doValidate() && mvCheckNotif.doValidate()
+        && mvBirthdateFcNacimiento.doValidate() && mvValuesListCentro.doValidate() && mvFileUploaderArchivo.doValidate() && onSubmit()">
+
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="Nombre"
+            adapt=true
+            required=true
+            requiredHint="El nombre es obligatorio"
+            validateOnType=false
+            validateFirst=false
+            label="Nombre"
+            placeholder="Nombre"
+            formControlName="nombre">
+          </mv-input>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="Primer apellido"
+            adapt=true
+            required=true
+            requiredHint="El primer apellido es obligatorio"
+            validateOnType=false
+            validateFirst=false
+            label="Primer apellido"
+            placeholder="Primer apellido"
+            formControlName="apellido1">
+          </mv-input>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="Segundo apellido"
+            adapt=true
+            hint="La longitud mínima del segundo apellido es 7"
+            hintType="warn"
+            validateOnType=false
+            validateFirst=false
+            validateMinlength="7"
+            label="Segundo apellido"
+            placeholder="Segundo apellido"
+            formControlName="apellido2">
+          </mv-input>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="Dirección"
+            adapt=true
+            hint="La longitud máxima de la dirección es 30"
+            hintType="info"
+            label="Dirección"
+            validateOnType=false
+            validateFirst=false
+            validateMaxlength=30
+            placeholder="Dirección"
+            formControlName="direccion">
+          </mv-input>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-birthdate
+            #mvBirthdateFcNacimiento
+            ariaLabel="Fecha de nacimiento"
+            adapt=true
+            label="Fª nacimiento"
+            required=true
+            validateOnType=false
+            validateFirst=false
+            formControlName="fcNacimiento">
+          </mv-birthdate>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="DNI"
+            adapt=true
+            label="DNI"
+            validateRegex="[0-9]{8}[trwagmyfpdxbnjzsqvhlcketTRWAGMYFPDXBNJZSQVHLCKET]$"
+            validateRegexHint="El formato no es correcto"
+            validateOnType=false
+            validateFirst=false
+            placeholder="DNI"
+            formControlName="dni">
+          </mv-input>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="Correo electrónico"
+            adapt=true
+            label="Correo electrónico"
+            validateOnType=false
+            validateFirst=false
+            validateEmail=true
+            validateEmailHint="Introduce un correo válido"
+            placeholder="Correo electrónico"
+            formControlName="correo">
+          </mv-input>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="Teléfono"
+            type="number"
+            adapt=true
+            validateOnType=false
+            validateFirst=false
+            label="Teléfono"
+            placeholder="Teléfono"
+            formControlName="telefono">
+          </mv-input>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="Edad"
+            type="number"
+            adapt=true
+            label="Edad"
+            validateMin=1
+            validateMinHint="Edad mínima sobrepasada"
+            validateMax=99
+            validateMaxHint="Edad máxima sobrepasada"
+            validateOnType=false
+            validateFirst=false
+            placeholder="Edad entre 1 y 99 años"
+            formControlName="edad">
+          </mv-input>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="Edad del tutor legal"
+            type="number"
+            adapt=true
+            label="Edad tutor legal"
+            validateMin=1
+            validateMinHint="Edad mínima sobrepasada"
+            validateMax=99
+            validateMaxHint="Edad máxima sobrepasada"
+            validateOnType=false
+            validateFirst=false
+            placeholder="Edad 15 años mayor que el campo 'Edad'"
+            formControlName="edadTutor">
+          </mv-input>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-select-x
+            ariaLabel="Estado civil"
+            adapt=true
+            label="Estado civil"
+            [options]="selectOptionsEstadoCivil"
+            required=true
+            requiredHint="Indica tu estado civil"
+            validateOnType=false
+            validateFirst=false
+            formControlName="estadoCivil">
+          </mv-select-x>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="Fecha de primer uso"
+            type="date"
+            adapt=true
+            label="Fecha de primer uso"
+            required=true
+            requiredHint="La fecha de primer uso es obligatoria"
+            validateOnType=false
+            validateFirst=false
+            placeholder="Fecha de primer uso"
+            formControlName="fcPrimerUso">
+          </mv-input>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-input
+            ariaLabel="Fecha de alta"
+            datepicker=true
+            adapt=true
+            label="Fecha de alta"
+            required=true
+            requiredHint="La fecha de alta es obligatoria"
+            validateOnType=false
+            validateFirst=false
+            placeholder="Fecha de alta"
+            formControlName="fcAlta">
+          </mv-input>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <mv-values-list
+            #mvValuesListCentro
+            ariaLabel="Centro más cercano"
+            label="Centro más cercano"
+            required=true
+            requiredHint="El centro es obligatorio"
+            validateOnType=false
+            validateFirst=false
+            [data]="centros"
+            adapt=true
+            columnCode="id"
+            columnText="nombre"
+            [tableColumns]="centrosTableColumns"
+            formControlName="centro">
+          </mv-values-list>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-12">
+          <mv-textarea
+            ariaLabel="Observaciones"
+            formControlName="observaciones"
+            label="Observaciones"
+            validateOnType=false
+            validateFirst=false
+            required=true
+            requiredHint="Las observaciones son obligatorias"
+            placeholder="Observaciones..."
+            adapt=true>
+          </mv-textarea>
+        </div>
+
+        <div class="col-xs-12 col-sm-12">
+          <mv-file-uploader
+            #mvFileUploaderArchivo
+            fileDescription="Suba el archivo de solicitud de Beca para el curso 2021/2022 completo."
+            required=true
+            formControlName="archivo"
+            validateFirst=false
+            validateOnType=false
+            apiKey="M0c1TXBJWmJlbjVCQlZpT3RWT2x6am00YVRzYTpWYkpEdklmZjNQUzdaWkhUQTBsVVlaZERUeGth"
+            uploadFileUrl="https://apis.val.comunidad.madrid/ciencia-tecnologia/japi-alumnos-test/v1/files">
+          </mv-file-uploader>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+          <mv-radio
+            ariaLabel="Sexo"
+            #mvRadioSexo
+            formControlName="radioSexo"
+            required=true
+            validateOnType=false
+            validateFirst=false
+            [options]=radioOptionsSexo
+            alignHorizontal=true>
+          </mv-radio>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+          <mv-checkbox-x
+            ariaLabel="Condiciones legales"
+            #mvCheckCondiciones
+            required=true
+            requiredHint="Lea y acepte las condiciones"
+            validateOnType=false
+            validateFirst=false
+            formControlName="checkCondiciones">
+            Condiciones legales
+          </mv-checkbox-x>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+          <mv-checkbox-x
+            ariaLabel="Notificaciones activadas"
+            #mvCheckNotif
+            validateOnType=false
+            validateFirst=false
+            [(indeterminate)]="notifCheck"
+            formControlName="checkNotificaciones">
+            Notificaciones activadas
+          </mv-checkbox-x>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-12">
+          <mv-card
+  					class="danger-card"
+  					*ngIf="showMessageDanger">
+  					<div [innerHTML]="message"></div>
+  				</mv-card>
+
+  				<mv-card
+  					class="success-card"
+  					*ngIf="showMessageSuccess">
+            <div [innerHTML]="message"></div>
+  				</mv-card>
+        </div>
+
+        <div class="center">
+          <mv-button
+            ariaLabel="Botón de limpiar campos"
+    				class="app-cliente-detail-buttons-button"
+    				(clickEvent)="clientForm.reset()"
+            color="primary"
+    				appearance="fab">
+            <mv-icon>clear</mv-icon>
+    			</mv-button>
+
+    			<mv-button
+            ariaLabel="Botón de guardar"
+    				class="app-cliente-detail-buttons-button"
+            type="submit"
+            color="primary"
+    				appearance="fab">
+            <mv-icon>save</mv-icon>
+    			</mv-button>
+
+        </div>
+
+      </div>
+
+    </form>
+
+  </mv-card>
+
+</section>

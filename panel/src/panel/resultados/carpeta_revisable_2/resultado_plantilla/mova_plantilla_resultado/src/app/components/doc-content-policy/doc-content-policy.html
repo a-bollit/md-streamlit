@@ -1,0 +1,170 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación política de contenido</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='Publicacion.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Publicación en producción
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='compatibilidad.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Compatibilidad
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      En MOVA (archivo index.html) hay definida una etiqueta meta para implementar la cabecera Content-Security-Policy, que ayuda a reducir los riesgos de sufrir ataques XSS definiendo qué archivos permitimos descargar
+
+      <mv-tab-group>
+        <mv-tab label="index.html">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Hay varios tipos de contenido que se pueden definir. Cada tipo de contenido tendrá sus reglas. Para MOVA se ha definido de la siguiente manera:</p>
+      <ul>
+        <li><strong>default-src</strong> - política por defecto a la hora de descargar contenido (si no especificamos nada para script-src, por ejemplo, tomará los valores de default-src).</li>
+        <ul>
+          <li><strong>'self'</strong> - descargar contenido que esté en el dominio de la app</li>
+        </ul>
+        <li><strong>script-src</strong> - política para descarga de archivos JavaScript.</li>
+        <ul>
+          <li><strong>'self'</strong> - descargar JavaScript que esté en el dominio de la app</li>
+          <li><strong>'unsafe-inline</strong>' - descargar JavaScript que esté en línea en el html de la app. Necesario por dos secciones de código en index.html</li>
+          <li><strong>https://*.madrid.org</strong> - descargar JavaScript que esté en cualquier sitio de .madrid.org. Necesario para el visor de mapas</li>
+          <li><strong>https://*.comunidad.madrid</strong> - descargar JavaScript que esté en cualquier sitio de .comunidad.madrid.</li>
+          <li><strong>https://www.google.com/recaptcha/</strong> - descargar JavaScript que esté en dicha url. Necesario para la funcionalidad de recaptcha</li>
+          <li><strong>https://www.gstatic.com/recaptcha/</strong> - descargar JavaScript que esté en dicha url. Necesario para la funcionalidad de recaptcha</li>
+        </ul>
+        <li><strong>style-src</strong> - política para descarga de archivos CSS.</li>
+        <ul>
+          <li><strong>'self'</strong> - descargar CSS que esté en el dominio de la app</li>
+          <li><strong>'unsafe-inline'</strong> - descargar CSS que esté en línea en el html de la app. Necesario para algunas directivas.</li>
+        </ul>
+        <li><strong>img-src</strong> - política para descarga de imágenes.</li>
+        <ul>
+          <li><strong>'self'</strong> - descargar imágenes que estén en el dominio de la app</li>
+          <li><strong>https://*.madrid.org</strong> - descargar imágenes que estén en el dominio https://*.madrid.org. Se especifica porque es probable que a veces sean necesarias imágenes de este dominio.</li>
+          <li><strong>https://*.comunidad.madrid</strong> - descargar imágenes que esté en el dominio https://*.comunidad.madrid.</li>
+          <li><strong>blob:</strong> - descargar imágenes con formato blob:. Específico para la visualización de imágenes en el componente mv-pocket-card</li>
+          <li><strong>data:</strong> - descargar imágenes con formato data:. Específico para la visualización de imágenes en el componente mv-pocket-card</li>
+        </ul>
+        <li><strong>font-src</strong> - política para descarga de fuentes.</li>
+        <ul>
+          <li><strong>'self'</strong> - descargar fuentes que esté en el dominio de la app</li>
+        </ul>
+        <li><strong>connect-src</strong> - política para conexiones XMLHttpRequest, WebSocket y EventSource.</li>
+        <ul>
+          <li><strong>'self'</strong> - conexiones a elementos que estén en el dominio de la app</li>
+          <li><strong>https://*.madrid.org</strong> - conexiones a elementos que estén en el dominio madrid.org</li>
+          <li><strong>https://*.comunidad.madrid</strong> - conexiones a elementos que estén en el dominio https://*.comunidad.madrid.</li>
+          <li><strong>http://localhost:*</strong> - conexiones a localhost. Necesario para el desarrollo de la app</li>
+          <li><strong>ws://localhost:*</strong> - conexiones a localhost. Necesario para el desarrollo de la app</li>
+        </ul>
+        <li><strong>child-src</strong> - política para el uso de elementos &lt;frame> e &lt;iframe>.</li>
+        <ul>
+          <li><strong>https://*.madrid.org</strong> - uso de frames. Necesario para el visor de mapas</li>
+          <li><strong>https://*.comunidad.madrid</strong> - uso de frames que estén en el dominio https://*.comunidad.madrid.</li>
+          <li><strong>https://www.google.com/</strong> - uso de frames. Necesario para la funcionalidad de recaptcha</li>
+        </ul>
+        <li><strong>worker-src</strong> - política para el uso de service worker.</li>
+        <ul>
+          <li><strong>'self'</strong> - conexiones a elementos que estén en el dominio de la app</li>
+          <li><strong>https://*.madrid.org</strong> - conexiones a elementos que estén en el dominio madrid.org</li>
+          <li><strong>https://*.comunidad.madrid</strong> - conexiones a elementos que estén en el dominio https://*.comunidad.madrid.</li>
+          <li><strong>http://localhost:*</strong> - conexiones a localhost. Necesario para el desarrollo de la app</li>
+          <li><strong>ws://localhost:*</strong> - conexiones a localhost. Necesario para el desarrollo de la app</li>
+        </ul>
+      </ul>
+
+      <p>En caso de llamar a un recurso que esté prohibido por esta etiqueta &lt;meta>, el navegador bloqueará la llamada</p>
+
+      <p>La documentación completa puede verse en https://content-security-policy.com/</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Publicación -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #Publicacion><strong>Publicación</strong></mv-card-title>
+      <mv-card-subtitle>Publicación en producción.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p> Cuando se vaya a pasar la aplicación a <strong>producción</strong> se deberán eliminar de el <strong>&lt; meta http-equiv="Content-Security-Policy" &gt;</strong>
+        todas las referencias a <strong>http://localhost</strong> </p>
+
+    </mv-card-content>
+
+  </mv-card>
+
+  <!-- Compatibilidad -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #compatibilidad><strong>Compatibilidad</strong></mv-card-title>
+      <mv-card-subtitle>Compatibilidad entre navegadores.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <caption>Compatibilidades</caption>
+
+        <ng-container matColumnDef="Chrome">
+          <th mat-header-cell *matHeaderCellDef  scope="col"> Chrome </th>
+          <td mat-cell *matCellDef="let element"> {{element['Chrome']}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Firefox">
+          <th mat-header-cell *matHeaderCellDef  scope="col"> Firefox </th>
+          <td mat-cell *matCellDef="let element"> {{element['Firefox']}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Safari">
+          <th mat-header-cell *matHeaderCellDef  scope="col"> Safari </th>
+          <td mat-cell *matCellDef="let element"> {{element['Safari']}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Edge">
+          <th mat-header-cell *matHeaderCellDef  scope="col"> Edge </th>
+          <td mat-cell *matCellDef="let element"> {{element['Edge']}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Internet Explorer">
+          <th mat-header-cell *matHeaderCellDef  scope="col"> Internet Explorer </th>
+          <td mat-cell *matCellDef="let element"> {{element['Internet Explorer']}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mv-card-content>
+
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

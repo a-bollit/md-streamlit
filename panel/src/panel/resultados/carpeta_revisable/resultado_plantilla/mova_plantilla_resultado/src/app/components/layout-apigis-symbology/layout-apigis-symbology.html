@@ -1,0 +1,26 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 symbology-mobile">
+      <div class="symbology-container">
+          <!-- <span class="span">{{ getScale() }}</span> -->
+          <mv-button appearance="raised" color="primary" adapt=true (clickEvent)="zoomToLayer()">
+            Centrar en capa
+          </mv-button>
+          <mv-button appearance="raised" color="primary" adapt=true (clickEvent)="handleLabels()">
+          {{labeled ? 'Desetiquetar capa' : 'Etiquetar capa'}}
+          </mv-button>
+          <span class="span">Transparencia</span>
+          <mat-slider thumbLabel tickInterval="1" step="0.1" min="0" max="1" aria-label="units" [(ngModel)]="transparency" (change)="changeTransparency(transparency)"></mat-slider>
+          <span class="span">Color de relleno</span>
+          <mv-input showClear=false type="color" [(ngModel)]="fillColor" adapt="true" (changeEvent)="changeVectorSymbology()"></mv-input>
+          <span class="span">Grosor de borde</span>
+          <mat-slider thumbLabel tickInterval="1" step="1" min="1" max="10" aria-label="units" [(ngModel)]="strokeWidth" (change)="changeVectorSymbology()"></mat-slider>
+          <span class="span">Color de borde</span>
+          <mv-input showClear=false type="color" [(ngModel)]="strokeColor" adapt="true" (changeEvent)="changeVectorSymbology()"></mv-input>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-9 map-mobile">
+      <div id="container-apigis-symbology"></div>
+    </div>
+  </div>
+</div>

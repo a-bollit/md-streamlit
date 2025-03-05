@@ -1,0 +1,36 @@
+<mv-card>
+  <mv-header [headerTitle]="'Entrada de Información General'"
+             [headerSubtitle]="'Formulario de entrada para emisión de notificaciones'"
+             [fixed]="true"
+             [showBackButton]="true"
+             [showMenuButton]="true">
+  </mv-header>
+  <mv-content>
+    <form [formGroup]="generalForm">
+      <div class="form-group">
+        <label for="cdunidad">Unidad remitente</label>
+        <input id="cdunidad" type="text" formControlName="cdunidad" placeholder="Código Unidad">
+        <input id="dsunidad" type="text" formControlName="dsunidad" placeholder="Descripción Unidad">
+      </div>
+      <div class="form-group">
+        <label for="fcdesde">Fecha desde</label>
+        <input id="fcdesde" type="date" formControlName="fcdesde">
+      </div>
+      <div class="form-group">
+        <label for="fchasta">Fecha hasta</label>
+        <input id="fchasta" type="date" formControlName="fchasta">
+      </div>
+      <div class="form-group">
+        <label for="expedientes">Expediente</label>
+        <input id="cdtexp" type="text" formControlName="cdtexp" placeholder="Código Expediente">
+        <input id="cdnexp" type="number" formControlName="cdnexp" placeholder="Número Expediente">
+        <input id="cddigito" type="number" formControlName="cddigito" placeholder="Dígito">
+        <input id="cdaexp" type="number" formControlName="cdaexp" placeholder="Año">
+      </div>
+      <div class="buttons">
+        <mv-button color="primary" [disabled]="!generalForm.valid" (click)="onAceptar()">Aceptar</mv-button>
+        <mv-button color="warn" (click)="onCancelar()">Cancelar</mv-button>
+      </div>
+    </form>
+  </mv-content>
+</mv-card>

@@ -1,0 +1,33 @@
+version: '3'  
+  
+services:  
+  panel_madrid_digital:  
+    image: panel_md_image
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '2.0'
+#          memory: 2G
+#        reservations:
+#          cpus: '1.0'
+#          memory: 1G  
+    restart: unless-stopped  
+    build:  
+      context: .         # Contexto de construcción para el backend  
+      dockerfile: Dockerfile # Asegúrate de que el nombre del Dockerfile esté en minúsculas  
+    container_name: panel_md_container # Nombre del contenedor del backend 
+    ports:  
+      - "8046:8046" # Mapea el puerto 5006 del contenedor al puerto 5006 del host 
+    env_file:
+      - .env  
+    volumes:  
+      - .:/app # Mapea el directorio actual al directorio /app dentro del contenedor  
+    environment:  
+      - PYTHONUNBUFFERED=1  
+      - PYTHONDONTWRITEBYTECODE=1  
+networks:  
+  hostip:  
+    external: true 
+
+
+

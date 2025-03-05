@@ -1,0 +1,120 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de apigis.Geocoder</strong></mv-card-title>
+
+    <p>La geocodificación es el proceso de transformar una descripción de una ubicación en una ubicación de la superficie de la Tierra.
+      El API GIS permite integrar la clase apigis.Geocoder para integrar el Geocoder de CartoCiudad o de OpenStreetsMap relizar procesos de geocodificación directa e inversa.
+    </p>
+    <p>En esta página se muestra la forma en la que podemos construír un objeto de este tipo y los métodos disponibles para trabajar con él.
+    </p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='constructor.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Constructor apigis.Geocoder
+        </a></li>
+      <li><a class="nostyle" (click)='metodosCarto.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos Geocoder de Cortociudad
+        </a></li>
+      <li><a class="nostyle" (click)='metodosOSM.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos Geocoder de Nominatim (OpenStreetsMap)
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Map -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #constructor><strong>Constructor apigis.Geocoder</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se puede instanciar un geocoder mediante la clase <strong>apigis.Geocoder</strong>.
+      </p>
+      <p><em>new ApiGeocoder(type)</em></p>
+      <ul>
+        <li><strong>type</strong> &#60;<i>object</i> &#62; Objeto con el tipo de provider ['Cartociudad','OSMNominatim'].</li>
+      </ul>
+      <br>
+      <p>Se puede consultar información más detallada y ejemplos sobre el uso de apigis.Geocoder en el documento de Arquitectura sobre el API GIS.</p>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Métodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodosCarto><strong>Métodos Geocoder de Cortociudad</strong></mv-card-title>
+      <mv-card-subtitle>Métodos disponibles en el Geocoder de Cortociudad (type: 'Cartociudad').
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>
+      </p>
+      <p>Se muestran a continuación los métodos disponibles para trabajar con un objeto de tipo apigis.Geocoder de Cortociudad (type: 'Cartociudad'):</p>
+
+      <p><em><strong>candidates(parameters)</strong></em></p>
+      <p>Geolocaliza tanto direcciones urbanas como localizaciones definidas por puntos kilométricos (PKs) asociados a carreteras. Sus argumentos son:</p>
+      <ul>
+        <li><strong>parameters</strong> &#60;<i>object</i> &#62; Parámetros del servicio. Los parámetros disponibles son los proporcionados por el propio servicio de Cartociudad para el servicio REST 'candidates'. Se pueden consultar en
+          <a href="http://www.cartociudad.es/recursos/Documentacion_tecnica/CARTOCIUDAD_ServiciosWeb.pdf" target="_blank">http://www.cartociudad.es/recursos/Documentacion_tecnica/CARTOCIUDAD_ServiciosWeb.pdf</a></li>
+      </ul>
+      <br>
+      <p><em><strong>find(parameters)</strong></em></p>
+      <p>Geolocaliza una entidad y obteniene sus coordenadas geográficas. Sus argumentos son: </p>
+      <ul>
+        <li><strong>parameters</strong> &#60;<i>object</i> &#62; Parámetros del servicio. Los parámetros disponibles son los proporcionados por el propio servicio de Cartociudad para el servicio REST 'find'. Se pueden consultar en
+          <a href="http://www.cartociudad.es/recursos/Documentacion_tecnica/CARTOCIUDAD_ServiciosWeb.pdf" target="_blank">http://www.cartociudad.es/recursos/Documentacion_tecnica/CARTOCIUDAD_ServiciosWeb.pdf</a></li>
+      </ul>
+      <br>
+      <p><em><strong>reverse(parameters)</strong></em></p>
+      <p>Calcula una dirección a partir de un par de coordenadas geográficas introducido en el sistema de referencia ETRS89. Sus argumentos son: </p>
+      <ul>
+        <li><strong>parameters</strong> &#60;<i>object</i> &#62; Parámetros del servicio. Los parámetros disponibles son los proporcionados por el propio servicio de Cartociudad para el servicio REST 'reverse'. Se pueden consultar en
+          <a href="http://www.cartociudad.es/recursos/Documentacion_tecnica/CARTOCIUDAD_ServiciosWeb.pdf" target="_blank">http://www.cartociudad.es/recursos/Documentacion_tecnica/CARTOCIUDAD_ServiciosWeb.pdf</a></li>
+      </ul>
+      <br>
+    </mv-card-content>
+  </mv-card>
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodosOSM><strong>Métodos Geocoder de Nominatim (OpenStreetsMap)</strong></mv-card-title>
+      <mv-card-subtitle>Métodos disponibles en el Geocoder de Nominatim, que usa OpenStreetMap (type: 'OSMNominatim').
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>
+      </p>
+      <p>Se muestran a continuación los métodos disponibles para trabajar con un objeto de tipo apigis.Geocoder de Nominatim, que usa OpenStreetMap (type: 'OSMNominatim'):</p>
+
+      <p><em><strong>candidates(parameters)</strong></em></p>
+      <p>Geolocaliza tanto direcciones urbanas como localizaciones definidas por puntos kilométricos (PKs) asociados a carreteras. Sus argumentos son:</p>
+      <ul>
+        <li><strong>parameters</strong> &#60;<i>object</i> &#62; Parámetros del servicio. Los parámetros disponibles son los proporcionados por el propio servicio de OSM para el servicio REST ‘candidates’. Se pueden consultar en
+          <a href="https://nominatim.org/release-docs/develop/api" target="_blank">https://nominatim.org/release-docs/develop/api</a></li>
+      </ul>
+      <br>
+      <p><em><strong>reverse(parameters)</strong></em></p>
+      <p>Calcula una dirección a partir de un par de coordenadas geográficas introducido en el sistema de referencia ETRS89. Sus argumentos son: </p>
+      <ul>
+        <li><strong>parameters</strong> &#60;<i>object</i> &#62; Parámetros del servicio. Los parámetros disponibles son los proporcionados por el propio servicio de OSM para el servicio REST ‘reverse’. Se pueden consultar en
+          <a href="https://nominatim.org/release-docs/develop/api" target="_blank">https://nominatim.org/release-docs/develop/api</a></li>
+      </ul>
+      <br>
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

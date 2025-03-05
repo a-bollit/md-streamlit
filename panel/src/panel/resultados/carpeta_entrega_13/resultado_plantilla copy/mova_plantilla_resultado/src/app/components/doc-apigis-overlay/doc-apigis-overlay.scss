@@ -1,0 +1,11 @@
+@import "~src/styles";
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+#doc-apigis-overlay-container {
+  width: 100%;
+  height: 200px;
+}

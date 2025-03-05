@@ -1,0 +1,249 @@
+Result from comportamiento_control_task: # Descripción de la Lógica de Comportamiento y Control del Formulario Oracle Forms basado en el Código Proporcionado
+
+## Triggers
+
+### 1. WHEN-NEW-FORM-INSTANCE
+- **Funcionalidad:** Inicializa el formulario al abrirse.
+- **Eventos Asociados:** Se desencadena al abrir el formulario.
+- **Cálculos y Validaciones:**
+  - Aplica perfil de usuario según el formulario actual.
+  - Inicializa variables globales relacionadas con identificación de la unidad.
+  - Oculta vistas y ventanas específicas según parámetros globales.
+  - Asigna valores por defecto a diversos campos basados en variables globales.
+- **Interacción con Elementos:**
+  - Oculta las vistas 'CV_PESTAÑAS' y 'W_PESTAÑAS' si la variable global `gead_vercorreos` está definida como 'N'.
+  - Asigna valores a los campos `cdunidad`, `dsunidad`, `cdorga_ereg`, `idorga_ereg`, `cddeptno`, y `cdaexp` en el bloque `BL_GENERAL`.
+
+### 2. ON-ERROR
+- **Funcionalidad:** Gestiona y muestra errores generados durante la ejecución del formulario.
+- **Eventos Asociados:** Se desencadena cuando ocurre un error.
+- **Validaciones y Cálculos:**
+  - Ignora el error `FRM-40010`.
+  - Ejecuta los procedimientos `PROC_ERRORES` y `CONTROL_ERROR` para gestionar otros errores.
+- **Interacción con Elementos:** No interactúa directamente con campos o bloques específicos.
+
+### 3. WHEN-BUTTON-PRESSED (LOV_CDUNIDAD en BL_GENERAL)
+- **Funcionalidad:** Muestra una lista de valores (LOV) para seleccionar la unidad administrativa.
+- **Eventos Asociados:** Se desencadena al presionar el botón asociado.
+- **Interacción con Elementos:** Asocia el resultado de la LOV con el campo `CDUNIDAD` en el bloque `BL_GENERAL`.
+
+### 4. WHEN-BUTTON-PRESSED (CAL_FCDESDE en BL_GENERAL)
+- **Funcionalidad:** Muestra un calendario para seleccionar la fecha de inicio.
+- **Eventos Asociados:** Se desencadena al presionar el botón asociado.
+- **Cálculos:**
+  - Llama a la función `FCALENDARIO` para mostrar un calendario y asigna la fecha seleccionada al campo `FCDESDE`.
+- **Interacción con Elementos:** Actualiza el campo `FCDESDE` en el bloque `BL_GENERAL`.
+
+### 5. WHEN-BUTTON-PRESSED (CAL_FCHASTA en BL_GENERAL)
+- **Funcionalidad:** Muestra un calendario para seleccionar la fecha de finalización.
+- **Eventos Asociados:** Se desencadena al presionar el botón asociado.
+- **Cálculos:**
+  - Llama a la función `FCALENDARIO` para mostrar un calendario y asigna la fecha seleccionada al campo `FCHASTA`.
+- **Interacción con Elementos:** Actualiza el campo `FCHASTA` en el bloque `BL_GENERAL`.
+
+### 6. WHEN-VALIDATE-ITEM (CDTEXP en BL_GENERAL)
+- **Funcionalidad:** Valida el tipo de expediente introducido.
+- **Eventos Asociados:** Se desencadena al validar el campo `CDTEXP`.
+- **Validaciones y Cálculos:**
+  - Verifica si el campo `CDTEXP` no está vacío.
+  - Comprueba restricciones de aplicación y permisos mediante las funciones `Restricciones_APL_TEXP` y `Permisos_Aplicacion`.
+- **Interacción con Elementos:** Valida y actualiza permisos en base al `GLOBAL.cod_aplicacion`.
+
+### 7. KEY-NEXT-ITEM (FCDESDE y FCHASTA en BL_GENERAL)
+- **Funcionalidad:** Navega al siguiente ítem en el formulario.
+- **Eventos Asociados:** Se desencadena al presionar la tecla de navegación (tabulador).
+- **Cálculos:**
+  - Mueve el foco al siguiente campo en el bloque.
+- **Interacción con Elementos:** Cambia el foco al campo `FCHASTA` desde `FCDESDE` y al campo `CDDEPTNO` desde `FCHASTA`.
+
+### 8. WHEN-BUTTON-PRESSED (ACEPTAR en BL_GENERAL)
+- **Funcionalidad:** Valida los datos y prepara el formulario para mostrar la vista de documentos.
+- **Eventos Asociados:** Se desencadena al presionar el botón `ACEPTAR`.
+- **Cálculos y Validaciones:**
+  - Verifica que el campo `CDUNIDAD` no esté vacío, mostrando un mensaje en caso contrario.
+  - Llama a los procedimientos `Valida_Expediente` y `Valida_Fechas` para validar el expediente y las fechas.
+  - Muestra y oculta vistas según el valor de `GLOBAL.gead_vercorreos` y otros parámetros.
+- **Interacción con Elementos:** 
+  - Actualiza el ítem `existen_exp_an_fi` en el bloque `B00`.
+  - Realiza consultas y actualiza bloques `GEA_ACURE` y `NOTIFICACION_TELEMATICA`.
+
+### 9. WHEN-BUTTON-PRESSED (CANCELAR en BL_GENERAL)
+- **Funcionalidad:** Cierra el formulario sin validar.
+- **Eventos Asociados:** Se desencadena al presionar el botón `CANCELAR`.
+- **Interacción con Elementos:** Cierra el formulario.
+
+### 10. WHEN-BUTTON-PRESSED (REGISTRAR en BL_DOC_CORR)
+- **Funcionalidad:** Registra los documentos seleccionados para notificación.
+- **Eventos Asociados:** Se desencadena al presionar el botón `REGISTRAR`.
+- **Cálculos y Validaciones:**
+  - Verifica que haya documentos seleccionados.
+  - Itera sobre cada documento marcado para registrar, validando y registrando cada uno.
+  - Inserta interesados asociados a los documentos y realiza las validaciones necesarias.
+- **Interacción con Elementos:**
+  - Actualiza las propiedades de los documentos en los bloques `GEA_ACURE` y `BL_DOC_CORR`.
+
+### 11. WHEN-BUTTON-PRESSED (ACEPTAR en BL_DOC_CORR)
+- **Funcionalidad:** Envía los documentos seleccionados.
+- **Eventos Asociados:** Se desencadena al presionar el botón `ACEPTAR`.
+- **Cálculos y Validaciones:**
+  - Verifica que haya documentos seleccionados para enviar.
+  - Itera sobre cada documento marcado para enviar, validando y enviando cada uno.
+- **Interacción con Elementos:**
+  - Actualiza las propiedades de los documentos en el bloque `BL_DEVOL`.
+
+### 12. WHEN-BUTTON-PRESSED (MARCAR en BL_DOC_CORR)
+- **Funcionalidad:** Marca todos los documentos para ser seleccionados.
+- **Eventos Asociados:** Se desencadena al presionar el botón `MARCAR`.
+- **Cálculos y Validaciones:**
+  - Itera sobre cada registro del bloque `GEA_ACURE`, marcando aquellos que cumplan con las condiciones.
+- **Interacción con Elementos:** Actualiza el estado del checkbox `CB_MARCA` de cada documento en el bloque `GEA_ACURE`.
+
+### 13. WHEN-BUTTON-PRESSED (DESMARCAR en BL_DOC_CORR)
+- **Funcionalidad:** Desmarca todos los documentos.
+- **Eventos Asociados:** Se desencadena al presionar el botón `DESMARCAR`.
+- **Cálculos y Validaciones:**
+  - Itera sobre cada registro del bloque `GEA_ACURE`, desmarcando todos los documentos.
+- **Interacción con Elementos:** Actualiza el estado del checkbox `CB_MARCA` de cada documento en el bloque `GEA_ACURE`.
+
+### 14. WHEN-VALIDATE-ITEM (CDMUNI en BL_DEVOL)
+- **Funcionalidad:** Valida el municipio introducido.
+- **Eventos Asociados:** Se desencadena al validar el campo `CDMUNI`.
+- **Cálculos y Validaciones:**
+  - Valida que el municipio existe y actualiza el campo `DSMUNI` con su descripción.
+- **Interacción con Elementos:** Actualiza el campo `DSMUNI` en el bloque `BL_DEVOL`.
+
+### 15. WHEN-BUTTON-PRESSED (ACEPTAR en BL_DEVOL)
+- **Funcionalidad:** Crea la lista de notificación y marca los documentos seleccionados como preparados para devolución.
+- **Eventos Asociados:** Se desencadena al presionar el botón `ACEPTAR`.
+- **Cálculos y Validaciones:**
+  - Verifica que los campos `dscons` y `dsunidad` no estén vacíos.
+  - Crea la lista de notificación, incluyendo los documentos seleccionados.
+  - Actualiza la base de datos con los cambios.
+- **Interacción con Elementos:**
+  - Actualiza los bloques `GEA_ACURE`, `BL_DEVOL` y `BL_DOC_CORR`.
+
+### 16. WHEN-BUTTON-PRESSED (CANCELAR en BL_DEVOL)
+- **Funcionalidad:** Cancela la operación de devolución y regresa al formulario principal.
+- **Eventos Asociados:** Se desencadena al presionar el botón `CANCELAR`.
+- **Interacción con Elementos:** Cierra las vistas y ventanas asociadas.
+
+### 17. KEY-UP (GLOBAL)
+- **Funcionalidad:** Controla la navegación entre registros en los bloques.
+- **Eventos Asociados:** Se desencadena al presionar la tecla de dirección hacia arriba.
+- **Cálculos:**
+  - Navega al registro anterior, mostrando un mensaje si ya se encuentra en el primer registro.
+- **Interacción con Elementos:** Navega entre los registros en los bloques `GEA_ACURE` y `NOTIFICACION_TELEMATICA`.
+
+### 18. KEY-DOWN (GLOBAL)
+- **Funcionalidad:** Controla la navegación entre registros en los bloques.
+- **Eventos Asociados:** Se desencadena al presionar la tecla de dirección hacia abajo.
+- **Cálculos:**
+  - Navega al siguiente registro, mostrando un mensaje si ya se encuentra en el último registro.
+- **Interacción con Elementos:** Navega entre los registros en los bloques `GEA_ACURE` y `NOTIFICACION_TELEMATICA`.
+
+### 19. WHEN-IMAGE-PRESSED (IMDOCUMENTO en NOTIFICACION_TELEMATICA)
+- **Funcionalidad:** Muestra los anexos asociados al documento.
+- **Eventos Asociados:** Se desencadena al presionar la imagen `IMDOCUMENTO`.
+- **Interacción con Elementos:** Muestra los anexos asociados al documento seleccionado.
+
+### 20. WHEN-IMAGE-PRESSED (RESULTADO en NOTIFICACION_TELEMATICA)
+- **Funcionalidad:** Muestra el error asociado al documento.
+- **Eventos Asociados:** Se desencadena al presionar la imagen `RESULTADO`.
+- **Interacción con Elementos:** Muestra el error especificado en el campo `RESULTADO_ERROR`.
+
+### 21. WHEN-IMAGE-PRESSED (SITUACION en NOTIFICACION_TELEMATICA)
+- **Funcionalidad:** Muestra la situación del documento.
+- **Eventos Asociados:** Se desencadena al presionar la imagen `SITUACION`.
+- **Interacción con Elementos:** Muestra información detallada sobre la situación del documento.
+
+### 22. WHEN-CHECKBOX-CHANGED (CB_MARCA en NOTIFICACION_TELEMATICA)
+- **Funcionalidad:** Maneja la lógica al marcar o desmarcar un documento para notificación telemática.
+- **Eventos Asociados:** Se desencadena al cambiar el estado del checkbox `CB_MARCA`.
+- **Cálculos y Validaciones:**
+  - Verifica varias condiciones antes de permitir marcar el documento.
+  - Actualiza el contador de documentos seleccionados si se cumple con las condiciones.
+- **Interacción con Elementos:** Actualiza el estado del checkbox `CB_MARCA` y el campo `docsel` en `BL_DOC_NOTE`.
+
+
+## Unidades de Programación
+
+### 1. COMPROBAR_SELECCION
+- **Funcionalidad:** Comprueba si los documentos seleccionados cumplen con las condiciones requeridas antes de ser enviados.
+- **Cálculos y Validaciones:**
+  - Verifica si el documento está guardado en la base de datos, tiene DUE, está registrado de salida, está firmado y si tiene anexos seleccionados.
+  - Actualiza el estado de los documentos según las validaciones realizadas.
+- **Interacción con Elementos:** Actualiza los campos `SITUACION_ERROR_BD`, `SITUACION_ERROR_DUE`, `SITUACION_ERROR_REGSAL`, `SITUACION_ERROR_FIRMA` y `CB_MARCA` en `NOTIFICACION_TELEMATICA`.
+
+### 2. CONSTRUIR_WHERE_NOTE
+- **Funcionalidad:** Construye la cláusula WHERE para las notificaciones telemáticas.
+- **Cálculos y Validaciones:**
+  - Verifica las inclusiones de enviados, fechas, departamento, tipo de expediente, número de expediente, y otros parámetros.
+  - Construye dinámicamente la cláusula WHERE según estos parámetros.
+- **Interacción con Elementos:** Establece la propiedad `DEFAULT_WHERE` del bloque `NOTIFICACION_TELEMATICA`.
+
+### 3. CONSTRUIR_WHERE_CORR
+- **Funcionalidad:** Construye la cláusula WHERE para las notificaciones de correo.
+- **Cálculos y Validaciones:**
+  - Verifica las inclusiones de enviados, fechas, departamento, tipo de expediente, número de expediente, y otros parámetros.
+  - Construye dinámicamente la cláusula WHERE según estos parámetros.
+- **Interacción con Elementos:** Establece la propiedad `DEFAULT_WHERE` del bloque `GEA_ACURE`.
+
+### 4. VALIDA_EXPEDIENTE
+- **Funcionalidad:** Valida el estado del expediente introducido en el formulario.
+- **Cálculos y Validaciones:**
+  - Verifica que el expediente no esté anulado o finalizado.
+  - Llama a la función `f_estado_expediente` para obtener el estado del expediente.
+- **Interacción con Elementos:** Muestra mensajes de error y evita la continuación de la operación si el expediente está anulado o finalizado.
+
+### 5. VALIDA_FECHAS
+- **Funcionalidad:** Valida las fechas de inicio y fin introducidas en el formulario.
+- **Cálculos y Validaciones:**
+  - Verifica que las fechas no sean mayores a la fecha actual.
+  - Verifica que la fecha de fin no sea menor a la fecha de inicio.
+- **Interacción con Elementos:** Muestra mensajes de error y redirige el foco a los campos correspondientes si las validaciones fallan.
+
+### 6. GLOBALES_SESION
+- **Funcionalidad:** Gestiona variables de sesión para inicializar valores en el formulario.
+- **Cálculos y Validaciones:**
+  - Verifica si hay variables de sesión definidas y asigna los valores respectivos a los campos en el bloque `BL_GENERAL`.
+- **Interacción con Elementos:** Asigna valores a `cddeptno`, `cdtexp`, `cdnexp`, `cddigito`, `cdaexp` en `BL_GENERAL`.
+
+### 7. PROC_INICIALIZAR_DATOS_DEVOL
+- **Funcionalidad:** Inicializa los datos necesarios para el proceso de devolución.
+- **Cálculos y Validaciones:**
+  - Recupera información de la base de datos sobre la unidad administrativa y la consejería asociada a la devolución.
+- **Interacción con Elementos:** Asigna valores a los campos en el bloque `BL_DEVOL`.
+
+### 8. PONER_ROJO
+- **Funcionalidad:** Cambia el color de los elementos en el bloque `GEA_ACURE` para indicar el estado de los elementos.
+- **Cálculos y Validaciones:**
+  - Itera sobre cada ítem en el bloque `GEA_ACURE` y cambia su color a rojo si el campo `ITIMPRE` está marcado, o lo restaura si no lo está.
+- **Interacción con Elementos:** Cambia la propiedad de visualización de los ítems en el bloque `GEA_ACURE`.
+
+### 9. PONER_ROJO_NOTE
+- **Funcionalidad:** Cambia el color de los elementos en el bloque `NOTIFICACION_TELEMATICA` para indicar el estado de los elementos.
+- **Cálculos y Validaciones:**
+  - Itera sobre cada ítem en el bloque `NOTIFICACION_TELEMATICA` y cambia su color a rojo si el campo `FCCREA` está marcado, o lo restaura si no lo está.
+- **Interacción con Elementos:** Cambia la propiedad de visualización de los ítems en el bloque `NOTIFICACION_TELEMATICA`.
+
+### 10. ULTIMA_NOTIFICACION
+- **Funcionalidad:** Recupera la fecha de la última notificación para el documento especificado.
+- **Cálculos y Validaciones:
+  - Recupera el último año y número de lista de notificación para el documento.
+  - Asigna la fecha de creación (FCCREA) de la última notificación encontrada al campo correspondiente.
+- **Interacción con Elementos:** Actualiza el campo `FCCREA` en `NOTIFICACION_TELEMATICA`.
+
+### 11. CALCULAR_NUMERO_ANEXOS
+- **Funcionalidad:** Calcula la cantidad de anexos asociados a un documento.
+- **Cálculos y Validaciones:**
+  - Realiza una consulta para contar los anexos asociados al documento especificado que estén marcados para ser enviados.
+- **Interacción con Elementos:** Devuelve el número de anexos asociados al campo `ANEXOS_NOTE` en `NOTIFICACION_TELEMATICA`.
+
+### 12. VALIDA_MUNICIPIO
+- **Funcionalidad:** Valida el municipio ingresado y actualiza su descripción.
+- **Cálculos y Validaciones:**
+  - Realiza una consulta para obtener la descripción del municipio basado en su código.
+- **Interacción con Elementos:** Actualiza el campo `DSMUNI` en el bloque `BL_DEVOL`.
+
+## Conclusión
+Este análisis exhaustivo cubre la lógica de comportamiento y control para el formulario Oracle Forms en cuestión. Cada uno de los triggers y unidades de programación están detallados en términos de funcionalidad, eventos asociados, cálculos, validaciones y cómo interactúan con otros elementos del formulario. Esto asegura una comprensión completa para replicar la lógica de negocio y comportamiento implementado en el formulario, permitiendo una implementación precisa y eficiente.

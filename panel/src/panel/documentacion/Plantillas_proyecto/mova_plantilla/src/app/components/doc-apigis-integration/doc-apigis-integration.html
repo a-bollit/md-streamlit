@@ -1,0 +1,52 @@
+<section class="view-default-style">
+
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #info><strong>Integración del API GIS en MOVA2</strong></mv-card-title>
+      <mv-card-subtitle>Información sobre la integración del API GIS en MOVA2.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>El API GIS se compone de una serie de puntos de entrada que los integradores deben consumir para desarrollar
+        sus propios visores, mapas, servicios... etc.</p>
+      <p>Para tener acceso a todos los puntos de entrada del API GIS, el integrador deberá instalar el API GIS
+        situándose en el
+        directorio del proyecto MOVA2 y con la consola ejecutar <strong>"npm install
+          http://e_jpb71@gitlab.madrid.org/GIS_open/GIS_DIFUSION.git#develop"</strong>. </p>
+      <mv-card class="warning-card">
+        <mv-card-header>
+          <mv-card-title>
+            <strong>IMPORTANTE</strong>
+          </mv-card-title>
+        </mv-card-header>
+
+        <mv-card-content>
+          <p>Para que el API GIS funcione correctamente, es necesario que el integrador instale también las dependencias
+            que necesite. Puede
+            obtenerse más información en
+            <strong><a target="_blank" href="#/doc-apigis-dependencies">Dependencias del API GIS</a></strong>.
+          </p>
+        </mv-card-content>
+      </mv-card>
+
+      <p>Una vez que se ha realizado la instalación, se pueden importar los distintos puntos de entrada del API GIS de
+        la siguiente forma: </p>
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAddTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p>Se puede ver una explicación más extensa sobre la funcionalidad que añade cada punto de entrada en
+        <strong><a target="_blank" href="#/doc-apigis-considerations">Consideraciones Generales</a></strong>.
+      </p>
+    </mv-card-content>
+  </mv-card>
+
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

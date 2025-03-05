@@ -1,0 +1,83 @@
+### Servicios de Angular 8
+
+1. **Service NotificacionTelematica**
+
+    - **Funcionalidad específica**: Gestiona las notificaciones telemáticas, incluyendo la obtención de datos, el envío de notificaciones y la actualización de estados.
+    - **Métodos HTTP**: 
+        - GET: Para obtener la lista de notificaciones telemáticas y detalles específicos.
+        - POST: Para enviar nuevas notificaciones telemáticas.
+        - PUT: Para actualizar estados de notificaciones enviadas.
+    - **Parámetros y estructuras de datos**:
+        - GET `/api/notificaciones-telematicas`: Sin parámetros.
+        - GET `/api/notificaciones-telematicas/{id}`: Parámetro `id` (número) para obtener detalles de una notificación específica.
+        - POST `/api/notificaciones-telematicas`: JSON con los datos de la notificación a enviar.
+        - PUT `/api/notificaciones-telematicas/{id}`: Parámetro `id` (número) y JSON con los datos a actualizar.
+    - **Integración con endpoints del backend**:
+        - URLS: `/api/notificaciones-telematicas`
+        - Formato de datos: JSON
+    - **Descripción detallada y guía para desarrolladores**:
+        - Obtención de la lista de notificaciones: El método GET del servicio debe realizar una llamada al endpoint `/api/notificaciones-telematicas` y retornar un array de notificaciones en formato JSON.
+        - Envío de notificaciones: El método POST debe enviar un JSON con los datos de la nueva notificación al endpoint `/api/notificaciones-telematicas`.
+        - Actualización de notificaciones: El método PUT se utilizará para actualizar el estado de una notificación específica usando el endpoint `/api/notificaciones-telematicas/{id}`.
+    - **Manejo de errores**: Implementar un interceptor HTTP para capturar errores de la API y mostrar mensajes de error adecuados al usuario.
+    - **Dependencias**: Este servicio se integrará con otros servicios como `AuthService` para gestionar la autenticación y `NotificationService` para mostrar mensajes en la UI.
+
+2. **Service GeaAcure**
+
+    - **Funcionalidad específica**: Gestiona los expedientes y documentos, incluyendo la obtención, registro y actualización de estados.
+    - **Métodos HTTP**:
+        - GET: Para obtener la lista de expedientes y detalles específicos.
+        - POST: Para registrar nuevos documentos dentro de un expediente.
+        - PUT: Para actualizar estados de documentos registrados.
+    - **Parámetros y estructuras de datos**:
+        - GET `/api/gea-acure`: Sin parámetros.
+        - GET `/api/gea-acure/{id}`: Parámetro `id` (número) para obtener detalles de un expediente específico.
+        - POST `/api/gea-acure`: JSON con los datos del nuevo documento a registrar.
+        - PUT `/api/gea-acure/{id}`: Parámetro `id` (número) y JSON con los datos a actualizar.
+    - **Integración con endpoints del backend**:
+        - URLS: `/api/gea-acure`
+        - Formato de datos: JSON
+    - **Descripción detallada y guía para desarrolladores**:
+        - Obtención de la lista de expedientes: El método GET del servicio debe realizar una llamada al endpoint `/api/gea-acure` y retornar un array de expedientes en formato JSON.
+        - Registro de documentos: El método POST debe enviar un JSON con los datos del nuevo documento al endpoint `/api/gea-acure`.
+        - Actualización de documentos: El método PUT se utilizará para actualizar el estado de un documento específico usando el endpoint `/api/gea-acure/{id}`.
+    - **Manejo de errores**: Implementar un interceptor HTTP para capturar errores de la API y mostrar mensajes de error adecuados al usuario.
+    - **Dependencias**: Este servicio se integrará con otros servicios como `AuthService` para gestionar la autenticación y `NotificationService` para mostrar mensajes en la UI.
+
+### Integración con Backend
+
+1. **Endpoint de Notificaciones Telemáticas**
+    - **URL**: `/api/notificaciones-telematicas`
+    - **Métodos**:
+        - GET: Devuelve una lista de todas las notificaciones telemáticas.
+        - GET `{id}`: Devuelve los detalles de una notificación específica.
+        - POST: Envía una nueva notificación telemática.
+        - PUT `{id}`: Actualiza los detalles de una notificación específica.
+    - **Datos necesarios y formato**:
+        - Para el método POST, el JSON debe incluir los campos de la notificación como destinatario, mensaje, fecha, etc.
+        - Para el método PUT, el JSON debe incluir los campos a actualizar, como estado de envío, fecha de recepción, etc.
+    - **Manejo de respuestas**:
+        - Respuestas exitosas deben devolver un `200 OK` con el JSON de la notificación creada/actualizada.
+        - Los errores deben manejarse con códigos de estado HTTP apropiados (`400 Bad Request`, `401 Unauthorized`, `500 Internal Server Error`, etc.)
+    - **Autenticación y autorización**:
+        - Utilizar JSON Web Tokens (JWT) para autenticar las solicitudes.
+        - Verificar tokens en cada petición utilizando un interceptor en el frontend y middleware en el backend.
+
+2. **Endpoint de GEA ACURE**
+    - **URL**: `/api/gea-acure`
+    - **Métodos**:
+        - GET: Devuelve una lista de todos los expedientes.
+        - GET `{id}`: Devuelve los detalles de un expediente específico.
+        - POST: Registra un nuevo documento dentro de un expediente.
+        - PUT `{id}`: Actualiza los detalles de un documento.
+    - **Datos necesarios y formato**:
+        - Para el método POST, el JSON debe incluir los campos del documento como título, descripción, fecha de creación, etc.
+        - Para el método PUT, el JSON debe incluir los campos a actualizar, como estado, comentarios, etc.
+    - **Manejo de respuestas**:
+        - Respuestas exitosas deben devolver un `200 OK` con el JSON del documento creado/actualizado.
+        - Los errores deben manejarse con códigos de estado HTTP apropiados (`400 Bad Request`, `401 Unauthorized`, `500 Internal Server Error`, etc.)
+    - **Autenticación y autorización**:
+        - Utilizar JSON Web Tokens (JWT) para autenticar las solicitudes.
+        - Verificar tokens en cada petición utilizando un interceptor en el frontend y middleware en el backend.
+
+Estos servicios y sus integraciones con el backend asegurarán una funcionalidad fluida y robusta en la migración de Oracle Forms a una aplicación web moderna basada en Angular 8, cumpliendo con todos los requisitos técnicos y funcionales detallados.

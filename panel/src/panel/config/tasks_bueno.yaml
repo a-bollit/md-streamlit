@@ -1,0 +1,216 @@
+estructura_visual_task:
+  description: >
+    Esta tarea requiere un análisis exhaustivo y detallado del formulario de Oracle Forms basado en el código proporcionado: {code}. Tu principal objetivo es describir de manera clara y precisa todos los componentes visuales, tales como lienzos, ventanas, atributos visuales, alertas y menús. Las descripciones deben ser presentadas en forma narrativa, evitando listas, pero puedes usar el formato de lista markdown para dividir secciones y elementos. Cada componente visual debe ser descrito con profundidad, especificando sus propiedades visuales como colores, dimensiones, coordenadas, fuentes y estilos. También debes explicar cómo cada lienzo se relaciona con los bloques de datos desde una perspectiva visual. Cada ventana debe ser descrita en detalle, mencionando tamaño, posición, visibilidad, títulos y comportamiento. Las alertas y menús deben ser explicados con detalle, describiendo su funcionalidad y cómo afectan la navegación del usuario. Evita analizar datos, lógica de negocio o comportamiento del sistema, ya que estos son analizados por otros agentes. La descripción final debe ser lo suficientemente detallada para que otro desarrollador pueda replicar la interfaz visual sin ambigüedad.
+
+  expected_output: >
+    Un informe detallado que describe cada componente visual del formulario en Oracle Forms, incluyendo sus atributos y relaciones visuales. El informe debe permitir a un desarrollador replicar la interfaz visual con precisión, sin necesidad de detalles de lógica de negocio o programación.
+
+datos_negocio_task:
+  description: >
+    Esta tarea se enfoca en describir la estructura de datos y lógica de negocio del formulario en Oracle Forms a partir del código: {code}. Debes describir cada bloque de datos con precisión, detallando los campos que lo componen, sus atributos y las validaciones o dependencias entre ellos. Las listas de valores (LOVs) y los grupos de registros también deben ser descritos, especificando su origen y cómo se utilizan en el formulario. El análisis debe incluir las operaciones CRUD, las reglas de negocio y las validaciones que afectan a las tablas de la base de datos. Asegúrate de no incluir detalles de la interfaz visual o los triggers, ya que estos son analizados por otros agentes. La descripción final debe ser lo suficientemente detallada para que se pueda replicar la estructura y lógica de los datos.
+
+  expected_output: >
+    Un informe completo que describe la estructura de datos y lógica de negocio del formulario en Oracle Forms, incluyendo bloques de datos, campos, LOVs, grupos de registros y relaciones. El informe debe permitir a un desarrollador replicar la estructura de datos y lógica de negocio con precisión, sin necesidad de detalles de interfaz visual o triggers.
+
+comportamiento_control_task:
+  description: >
+    Esta tarea se enfoca en analizar la lógica de comportamiento y control del formulario en Oracle Forms a partir del código: {code}. Debes describir cada trigger y unidad de programación en detalle, especificando su funcionalidad, los eventos asociados, los cálculos realizados y cómo interactúan con otros elementos. Cada trigger debe explicarse individualmente, detallando su funcionalidad, eventos asociados, cálculos, validaciones y cómo interactúa con otros elementos como campos o bloques de datos, debes describir cual sera la accion tomada por el codigo plsql, sin necesidad de escribir el codigo. Si un trigger afecta a múltiples items, describe su efecto en cada uno por separado.  Asegúrate de no incluir detalles de componentes visuales o estructuras de datos, ya que estos son analizados por otros agentes. La descripción final debe ser lo suficientemente detallada para que se pueda replicar la lógica de comportamiento y control con precisión. Toda funcionalidad que deba ser implementada , debe ser explicada aqui.
+  
+  expected_output: >
+    Un documento detallado en texto que cubra la lógica de comportamiento y control, incluyendo triggers, unidades de programación, validaciones y eventos, sin mencionar aspectos visuales ni detalles de datos.
+
+logica_negocio_task:
+
+  description: >
+    Analizar la lógica de negocio identificada en Oracle Forms y proporcionar instrucciones específicas para implementarla en clases de servicio de Java Spring Boot. Se deben detallar los métodos, validaciones, reglas de negocio, y patrones de diseño a utilizar para garantizar una implementación eficiente y mantenible. Toda funcionalidad que deba ser implementada , debe ser explicada aqui.
+
+  expected_output: >
+    Guía detallada con la estructura de las clases de servicio, métodos a implementar, validaciones necesarias, ejemplos de código, y sugerencias de patrones de diseño. Se deben incluir recomendaciones para garantizar buenas prácticas y una arquitectura limpia y escalable.
+
+models_task:
+  description: >
+      A partir de un archivo en markdown ({modelos}) que contiene un gran conjunto de sentencias SQL, debes realizar un análisis detallado de las entidades definidas. Tu objetivo es identificar cada entidad, sus nombres y cualquier pseudónimo que se utilice en el código SQL, así como todos sus atributos. Para cada entidad, debes listar los atributos, sus tipos de datos, y cualquier restricción importante (por ejemplo, claves primarias, claves foráneas, restricciones de unicidad, valores por defecto). También debes identificar otras características clave, como índices, relaciones entre entidades, y cualquier anotación o comentario que pueda ser relevante para la comprensión completa del modelo de datos. La información debe ser precisa y clara, sin omisiones. Toda descripcion que hagas debe ser completa para que un desarrollador pueda replciar la funcionalidad, no puedes hacer una descripcion dejando elementos genericos.
+  expected_output: >
+    Un listado completo de todas las entidades identificadas en el archivo SQL, incluyendo: Nombres y posibles pseudónimos utilizados para cada entidad; Atributos de cada entidad, con detalles completos, nombre del atributo, tipo de dato definido en las sentencias SQL, restricciones (claves primarias, claves foráneas, restricciones de unicidad, valores por defecto); Relaciones entre entidades y detalles de cómo se conectan (por ejemplo, si hay referencias cruzadas o joins explícitos); Información adicional relevante, como comentarios encontrados en el SQL que proporcionen contexto sobre las entidades.
+
+requirements_backend_task:
+  description: >
+    A partir de la descripción funcional y del código en formato XML: {code}, generar una lista precisa y completa de requisitos técnicos y funcionales para implementar la aplicación en Java Spring Boot. La descripción de los elementos debe presentarse en un formato narrativo de párrafo, evitando el formato de lista, pero para dividir entre secciones y elementos hazlo en una lsita formato markdown.  El analisis debe ser muy completo y definiendo cada uno de los endpoint con todo detalle. Toda descripcion que hagas debe ser completa para que un desarrollador pueda replciar la funcionalidad, no puedes hacer una descripcion dejando elementos genericos. Super importante, a partir del codigo debes sacar todas las tablas y entidades sacadas, definir todos y cada uno de los metodos CRUD para cada entidad, con todos sus parametros. Apoyate en la herramienta. Debes definir los modelos de datos, es decir, identificar y detallar todas las entidades del sistema, con énfasis en la correspondencia entre las tablas de Oracle Forms y las entidades en Java. Toda funcionalidad que deba ser implementada , debe ser explicada aqui. Para las tablas, modelos de datos y sus atributos debes utilizar como contexto los modelos de datos descritos por el agente models_agent. Por cada entidad define:
+            - Nombre y tabla asociada.
+            - Atributos con tipos de datos y restricciones (única, no nula).
+            - Relaciones con cardinalidades y claves foráneas.
+            - Detalle de claves primarias.
+            - Campos calculados y su lógica.
+            - API REST: Para cada entidad debe estar definida cada una de las operaciones CRUD, POST, GET, PUT, DELETE que presente cada entidad, si la entidad no tiene en el codigo algun metodo HTTP, no tienes que definir. Definelo de la siguiente manera:
+              - Método HTTP (GET, POST, PUT, DELETE).
+              - URI del endpoint.
+              - Body en formato JSON con los atributos requeridos.
+              - Importantisimo añadir los Parámetros de cada endpoint.
+              - Incluir endpoints adicionales derivados de Oracle Forms (cálculos, búsquedas avanzadas).
+    Tambien debes añadir una seccion con los servicios y logica de negocio describiendo los servicios para lógica compleja fuera de CRUD. Para cada servicio:
+            - Funcionalidad específica.
+            - Parámetros de entrada y salida.
+            - Validaciones, reglas de negocio, y dependencias.
+
+  expected_output: >
+    Una lista detallada de requisitos técnicos y funcionales del backend, organizados por categorías. Los requisitos deben estar explicados con suficiente profundidad para guiar el desarrollo y permitir la implementación efectiva de un backend robusto en Java Spring Boot.
+
+swagger_task:
+  description: >
+    Utilizando la plantilla {plantilla_openapi}, genera una configuración OpenAPI 3.0 completamente funcional para los endpoints de las entidades definidas por la herramienta. La herramienta proporcionará una lista detallada de entidades y sus respectivos endpoints.
+
+        **Requisitos para la configuración**:
+        1. **Completitud**: La configuración debe ser completa y funcional. No se deben omitir endpoints ni referencias `$ref` sin definir. Cada referencia debe estar definida en `components`.
+        2. **Límite de Tokens**: La respuesta no debe exceder los 4000 tokens. Prioriza los atributos más importantes en los `request body` y respuestas.
+        3. **Estructura**: Mantén la misma estructura de `components` que en la plantilla proporcionada. Respeta las indicaciones de modificaciones que se deben añadir o evitar.
+        4. **Endpoints y Operaciones**: Define claramente todos los endpoints y sus operaciones HTTP (CRUD). Cada endpoint debe tener identificadores únicos. Define solo los endpoints que existen sobre gea_acure y notificacion_telematica.
+        5. **Documentación**: Asegúrate de que todo esté documentado y que la configuración pueda ser utilizada sin errores.
+        6. **Prioridad de la Herramienta**: Utiliza la información detallada generada por la herramienta para definir los endpoints y entidades. No modifiques los parámetros proporcionados.
+        7. **Reducción de Referencias**: Minimiza el uso de referencias `$ref` cuando sea posible para evitar exceder el límite de tokens. Si utilizas referencias, asegúrate de definirlas completamente.
+
+        La configuración debe estar lista para ser usada en un entorno de desarrollo sin errores, garantizando que los endpoints y sus respectivas operaciones funcionen correctamente.
+  expected_output: >
+    Configuracion OpenAPI 3.0.
+
+requirements_controlador_servicio_task:
+  description: >  
+    Analizar el código de Oracle Forms {code} y el contexto que recibiras y proporcionar una guía clara y detallada para implementar la funcionalidad en Java Spring Boot. Debes:  
+    1. Definir los controladores necesarios para una API RESTful.  
+    2. Describir los servicios que interactúan con estos controladores.  
+    3. Especificar las clases de datos (DTOs) necesarias.  
+    4. Explicar y detallar todos los servicios necesarios vinculados con las entidades `GeaAcure` y `NotificacionTelematica`.  
+    5. Separar los contenidos por la base de datos o entidad relacionada para mayor claridad.  
+
+  expected_output: > 
+     Especificación detallada de los endpoints REST, incluyendo rutas y métodos HTTP. Descripción de la lógica de negocio en los servicios y cómo interactúan con las entidades `GeaAcure` y `NotificacionTelematica`. Ejemplos de código para los controladores y servicios. Estructuras de datos (DTOs) necesarias para la API. Instrucciones claras sobre cómo manejar errores y excepciones. Separación de los contenidos por la base de datos o entidad relacionada para facilitar la comprensión.  
+
+DTO_MAPPER_generator_task:  
+  description: >  
+    Dada la descripción y el código proporcionado en {descripcion_code}, se debe implementar y completar la generación del DTO y el mapper necesarios para implementar la logica en la descripcion proporcionada y que se implementera en serviceImpl: {serviceimpl}. Es importante revisar los comentarios y los todo en el serviceImpl porque eso es lo que se tiene que implementar. La funcionalidad de este agente es implementar los mapper y dtos que se usaran para esas logicas de negocio necesarias de implementar. Tienes que utilizar ese código como base, porque la funcionalidad tiene que estar descrita ahí.  
+    La tarea implica la implementación completa del DTO y el mapper necesarios para la conversión de datos entre capas de la aplicación.  No debe encargarse del service o controller porque es otra tarea, debe encargarse solo del dto y mapper. Es de vital importancia que la respuesta se proporcione en el formato adecuado: ### (nombre)DTO.java, seguido del bloque de código en formato Java, que debe ir entre tres comillas invertidas (```java) para delimitar el script correctamente. Este formato es aplicable no solo para DTO, sino también para clases Mapper, Service o Controller.
+  
+    DTO:  
+      - Crear el DTO que contendrá los datos de la entidad.  
+      - DEBE ESTAR COMPLETO.
+      - Asegurar que el DTO sea compatible con las conversiones definidas en el mapper.
+      - Incluir los atributos necesarios y sus getters y setters. Es importante usar estos imports: import com.fasterxml.jackson.annotation.JsonProperty;
+                                                                        import lombok.Getter;
+                                                                        import lombok.Setter;
+                                                                        import org.madrid.japi.api.dto.scan.JapiField;
+                                                                        import org.madrid.japi.api.dto.scan.JapiFieldClass; 
+  
+    Mapper:  
+      - Crear el mapper para convertir entre la entidad y el DTO.  
+      - Incluir métodos para convertir una entidad a un DTO y viceversa, así como una lista de entidades a una lista de DTOs.  
+      - Asegurar que el mapper sea compatible con las conversiones definidas en el servicio.
+      -Todos los mappers deben heredar JapiAbstractCustomMapper y tendrán que sobrescribir alguno de estos métodos dtoToEntity() o entityToDto(). En los mappers no se deben inyectar DAOs ni Services, ni haber búsquedas, ni más código más allá de la propia transformación de datos de propiedades de los DTOs a las Entidades y al revés. Están anotadas con @Component.  
+  
+  expected_output: >  
+    Un conjunto de dos archivos generados:  
+      - DTO: El archivo del DTO debe estar implementado con los atributos necesarios y sus getters y setters, siendo compatible con las conversiones definidas en el mapper.  
+      - Mapper: El archivo del mapper debe estar implementado y proporcionar los métodos de mapeo necesarios, siendo compatible con las conversiones definidas en el servicio.  
+
+service_controller_generator_task:  
+  description: >  
+    Dada la descripción y el código proporcionado en {descripcion_code}, se debe implementar y completar la generación del servicio y controlador especificados en {serviceimpl}. Tienes que utilizar ese código como base, porque la funcionalidad tiene que estar descrita ahí. Se debe usar ese codigo de base y añadir la logica de negocio dentro de ese codigo. Es de vital importancia que la respuesta se proporcione en el formato adecuado: (nombre)DTO.java, seguido del bloque de código en formato Java, que debe ir entre tres comillas invertidas (```java) para delimitar el script correctamente. Este formato es aplicable no solo para DTO, sino también para clases Mapper, Service o Controller.
+    La tarea implica la implementación completa del servicio para manejar las operaciones CRUD, y la creación del controlador necesario para las solicitudes HTTP. Se debe generar todos los servicios explicados y detallados en la descripcion proporcionada, en el {descripcion_code}.
+  
+    Servicio:  
+      - Implementar los métodos necesarios para las operaciones CRUD (crear, leer, actualizar y eliminar).  
+      - Los métodos deben interactuar con la base de datos a través del DAO correspondiente.  
+      - Convertir las entidades a DTOs utilizando los mappers correspondientes.  
+      - Manejar adecuadamente las excepciones y asegurar que se sigan las indicaciones del placeholder.  
+  
+    Controlador:  
+      - Crear el controlador para manejar las solicitudes HTTP relacionadas con la entidad.  
+      - Implementar métodos para obtener todos los registros, obtener un registro por ID, crear un nuevo registro, actualizar un registro y eliminar un registro.  
+      - Utilizar el servicio implementado para realizar las operaciones necesarias.  
+  
+  expected_output: >  
+    Un conjunto de dos archivos generados:  
+      - Servicio: El archivo del servicio debe estar completo con la lógica para manejar las operaciones CRUD, incluyendo la interacción con la base de datos, las conversiones entre entidades y DTOs, y el manejo de excepciones adecuado.  
+      - Controlador: El archivo del controlador debe estar implementado y manejar las solicitudes HTTP adecuadas para las operaciones CRUD, utilizando el servicio implementado.   
+
+requirements_components_task:  
+  description: >  
+    A partir de la descripción funcional proporcionada del sistema en Oracle Forms y del código en formato XML: {code}, generar una lista completa y detallada de requisitos técnicos y funcionales necesarios para implementar los **componentes** de la interfaz de usuario en una arquitectura moderna basada en Angular 8. Los componentes deben presentarse en el formato "1. **Componente NombreComponente**" o "1. **Component NombreComponent**". La descripción de los elementos debe presentarse en un formato narrativo de párrafo, evitando el formato de lista, pero para dividir entre secciones y elementos hazlo en una lista formato markdown. La descripción debe incluir todos los detalles necesarios para desarrollar cada componente en `/components` de acuerdo a la plantilla del proyecto. Toda funcionalidad que deba ser implementada , debe ser explicada aqui. Sigue este esquema:  
+      - Componentes de Angular 8:  
+          - Listar los componentes necesarios, indicando para cada uno:  
+            - Nombre del componente.  
+            - Funcionalidad específica.  
+            - Datos de entrada (Input) y de salida (Output).  
+            - Dependencias con otros componentes o servicios.  
+            - Descripcion muy detallada de su funcionalidad y guia para desarrolladores  
+          - Detallar las directivas personalizadas y componentes reutilizables necesarios para implementar la funcionalidad derivada de Oracle Forms.  
+      - Vistas y Formularios (asociadas a los componentes):  
+          - Describir las vistas o pantallas relacionadas con cada componente. Para cada vista, especificar:  
+            - Propósito exacto de la vista.  
+            - Campos que deben mostrarse, tipo de campo (input, dropdown, checkbox, datepicker), validaciones específicas.  
+            - Acciones permitidas en cada vista (botones para CRUD, navegación, filtros, ordenación).  
+            - Descripcion muy detallada de su funcionalidad y guia para desarrolladores  
+      - Navegación y Enrutamiento (vinculado a los componentes):  
+          - Especificar las rutas necesarias que interactúan directamente con los componentes desarrollados.  
+          - Identificar el path de cada ruta y el componente asociado.  
+          - Describir cómo los componentes se integran en la jerarquía de navegación y su interacción con rutas hijas o protegidas.  
+          - Descripcion muy detallada de su funcionalidad y guia para desarrolladores  
+  expected_output: >  
+    Una lista detallada y organizada de requisitos técnicos y funcionales para los componentes del frontend, incluyendo vistas, enrutamiento y dependencias. Los requisitos deben proporcionar una guía exhaustiva para el desarrollo de componentes en `/components`, asegurando su integración adecuada con la interfaz de usuario y la estructura del proyecto Angular 8. Es importantisimo que los componentes deben ser listados de acuerdo al formato "1. **Componente NombreComponente**" o "1. **Component NombreComponent**".  Es de vital importancia que sigas ese formato con los componentes y despues pongas "Vistas y formularios" y acabes con "Navegacion y enrutamiento"
+
+
+requirements_services_task:
+  description: >
+    A partir de la descripción funcional proporcionada del sistema en Oracle Forms y del código en formato XML: {code}, generar una lista completa y detallada de requisitos técnicos y funcionales necesarios para implementar los **servicios** de la aplicación web en Angular 8. La descripción de los elementos debe presentarse en un formato narrativo de párrafo, evitando el formato de lista, pero para dividir entre secciones y elementos hazlo en una lsita formato markdown. La descripción debe incluir todos los detalles necesarios para desarrollar cada servicio en `/services` de acuerdo a la plantilla del proyecto. Añade en que bloques de datos del plsql, el service seria necesario. Busca generar todos los services que fueran necesarios para replciar los bloques del codigo de gea_acure y notificacion_telematica. Sigue este esquema:
+      - Servicios de Angular 8:
+          - Listar los servicios necesarios, indicando para cada uno:
+            - Nombre del servicio.
+            - Funcionalidad específica (CRUD u otras operaciones).
+            - Métodos HTTP que utiliza (GET, POST, PUT, DELETE).
+            - Parámetros requeridos y estructura de los datos enviados/recibidos.
+            - Integración con endpoints del backend, especificando URL y formato (JSON).
+            - Descripcion muy detallada de su funcionalidad y guia para desarrolladores
+          - Detallar cómo manejar los errores y las respuestas de cada servicio.
+          - Especificar las dependencias de cada servicio con otros servicios o componentes.
+      - Integración con Backend:
+          - Detallar los endpoints que cada servicio debe consumir, especificando los datos necesarios y su formato.
+          - Especificar cómo se manejarán las respuestas del backend, incluyendo casos de éxito y errores.
+          - Identificar cualquier requisito adicional para la autenticación o autorización.
+          - Descripcion muy detallada de su funcionalidad y guia para desarrolladores
+  expected_output: >
+    Una lista detallada y organizada de requisitos técnicos y funcionales para los servicios del frontend, incluyendo su integración con el backend. Los requisitos deben proporcionar una guía exhaustiva para el desarrollo de servicios en `/services`, asegurando su funcionalidad y su conexión adecuada con la estructura del proyecto Angular 8.Los servicios deben ser listados de acuerdo al formato "1. **Servicio NombreComponente**" o "1. **Service NombreComponent**". Es de vital importancia que sigas este formato con los services y despues pongas "Integracion con backend".
+
+component_generator_task:
+    description: >
+      El agente debe generar un conjunto de tres archivos a partir de la descripción proporcionada {description}: un archivo TypeScript (`.ts`), un archivo de plantilla HTML (`.html`) y un archivo de estilos SCSS (`.scss`). El archivo `.ts` debe contener la lógica del componente, incluyendo las dependencias necesarias y las entradas requeridas. El archivo `.html` debe contener la estructura visual básica, y el archivo `.scss` debe definir los estilos iniciales. El agente debe garantizar que el código generado cumpla con las convenciones de Angular y sea completamente funcional según las especificaciones proporcionadas. El código debe incluir el uso adecuado de `@Input` para manejar los datos entrantes, y las dependencias como los servicios deben estar inyectadas correctamente. Además, el código debe ser modular y seguir buenas prácticas de desarrollo. Debes usar la herramienta para poder generar el codigo, porque tiene la especificacion de los componentes necesarios de mova a usar. Debe ser un codigo completo y funcional. Ademas se debe usar el service ya codificado en el proyecto: {requirements_contexto}. Debes usarlo teniendo en cuenta que el servicio HttpClient de Angular se está utilizando para hacer solicitudes HTTP al backend. Este es un módulo comúnmente utilizado para interactuar con APIs RESTful. Usalos cuando sea conveniente. Si no tienes services que encajan en el codigo, no puedes inventarlos. Es de vital importancia que la respuesta se proporcione en el formato adecuado: ### (nombre).component.(extension), seguido del bloque de código, que debe ir entre tres comillas invertidas (```ts, html o scss) para delimitar el script correctamente. Este formato es aplicable no solo para ts, sino también para html y scss. 
+
+    expected_output: >
+      Un conjunto de tres archivos generados:
+      - `header.component.ts`: Contiene la lógica y estructura del componente Angular, incluyendo la gestión de entradas y dependencias.
+      - `header.component.html`: Define la plantilla básica del componente, reflejando la funcionalidad y la estructura solicitada.
+      - `header.component.scss`: Proporciona los estilos iniciales del componente, asegurando un diseño adecuado y consistente.
+
+      El componente debe estar completamente funcional, utilizando correctamente la inyección de dependencias, el manejo de entradas (`@Input`), y una estructura modular que sea fácilmente escalable. Debe cumplir con cada requisito de la descripcion. Asegurate de ponerle un nombre orientativo de su funcionalidad.
+
+services_generator_task:
+  description: >
+    El agente debe generar un archivo de servicio Angular (`.service.ts`) a partir de la descripción proporcionada {description}. El archivo debe contener la lógica del servicio, incluyendo las dependencias necesarias y los métodos requeridos para interactuar con APIs o gestionar datos. El servicio debe garantizar el uso adecuado de `HttpClient` para realizar solicitudes HTTP, y se debe inyectar correctamente cualquier dependencia necesaria. Además, debe manejar la autenticación JWT si es necesario, y debe incluir una gestión adecuada de errores según las prácticas recomendadas. El codigo ademas debe tener en cuenta el codigo java que se utiliza backedn, y debe aladir las implementaciones necesarias. Este es el codigo java: {requirements_contexto}
+
+    El código generado debe cumplir con las convenciones de Angular y MOVA, ser modular, y seguir buenas prácticas de desarrollo. Se debe utilizar la herramienta proporcionada para garantizar que el servicio implemente los métodos y funcionalidades especificadas, siguiendo las directrices de MOVA. El código debe ser completo y funcional, listo para integrarse sin errores en un proyecto Angular.
+
+  expected_output: >
+    Un archivo generado:
+    - `data.service.ts`: Contiene la lógica del servicio Angular, incluyendo métodos para realizar operaciones HTTP (GET, POST, PUT, DELETE), manejo de errores, autenticación JWT (si se requiere), y la inyección correcta de dependencias.
+
+    El servicio debe estar completamente funcional y cumplir con cada requisito de la descripción. Debe incluir:
+    - Métodos CRUD correspondientes a las funcionalidades solicitadas.
+    - Uso adecuado de `HttpClient` para realizar las solicitudes HTTP.
+    - Gestión de respuestas y errores de forma consistente.
+    - Autenticación JWT en las solicitudes cuando sea necesario.
+    - Un diseño modular y escalable, siguiendo las directrices de MOVA.
+
+    El código debe estar listo para ser utilizado en un proyecto Angular sin necesidad de modificaciones adicionales, asegurando que todas las dependencias y métodos estén correctamente implementados y documentados. Asegurate de ponerle un nombre orientativo de su funcionalidad.
+
+
+
+
+
+

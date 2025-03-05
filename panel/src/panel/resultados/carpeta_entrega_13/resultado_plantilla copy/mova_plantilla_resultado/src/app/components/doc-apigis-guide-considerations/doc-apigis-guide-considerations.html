@@ -1,0 +1,94 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Consideraciones Generales sobre el API GIS</strong></mv-card-title>
+
+    <p>El API GIS proporciona clases para facilitar la estandarización y la generación de visores de mapas en las
+      aplicaciones.</p>
+    <p>Para poder visualizar capas de información geográfica, estas capas siempre deberán estar contenidas dentro de un mapa. Este mapa,
+      a su vez se deberá instanciar dentro de una vista. Además, el API GIS incluye herramientas que permiten la intercción con esas capas y otras funcionalidades.</p>
+    <p>Los puntos de entrada al API GIS son los siguientes:</p>
+    <ul>
+      <li>
+        <p><strong>ApiLayer</strong></p>
+      </li>
+      <p> Punto de entrada para la generación de servicios. La documentación sobre este punto está disponible en
+        <strong><a target="_blank" href="#/doc-apigis-layers">doc-apigis-layers.</a></strong>
+      </p>
+      <li>
+        <p><strong>ApiMap</strong></p>
+      </li>
+      <p> Punto de entrada para la generación de mapas. Un mapa puede estar formado por uno o más servicios.
+        La documentación sobre este punto está disponible en <strong><a target="_blank"
+            href="#/doc-apigis-map">doc-apigis-map.</a></strong>
+      </p>
+      <li>
+        <p><strong>ApiViewer</strong></p>
+        <p> Punto de entrada para la generación de visores. Un visor está compuesto de uno o más mapas.
+          La documentación sobre este punto está disponible en <strong><a target="_blank"
+              href="#/doc-apigis-viewer">doc-apigis-viewer.</a></strong>
+        </p>
+      <li>
+        <p><strong>ApiSimpleMarkerSymbol</strong></p>
+      </li>
+      <p> Punto de entrada para la generación de simbología puntual. La documentación sobre este punto está disponible
+        en <strong><a target="_blank" href="#/doc-apigis-simplemarkersymbol">doc-apigis-simplemarkersymbol.</a></strong>
+      </p>
+      <li>
+        <p><strong>ApiSimpleLineSymbol</strong></p>
+      </li>
+      <p> Punto de entrada para la generación de simbología lineal. La documentación sobre este punto está disponible en
+        <strong><a target="_blank" href="#/doc-apigis-simplelinesymbol">doc-apigis-simplelinesymbol.</a></strong>
+      </p>
+      <li>
+        <p><strong>ApiSimpleFillSymbol</strong></p>
+      </li>
+      <p> Punto de entrada para la generación de simbología poligonal. La documentación sobre este punto está disponible
+        en <strong><a target="_blank" href="#/doc-apigis-simplefillsymbol">doc-apigis-simplefillsymbol.</a></strong>
+      </p>
+      <li>
+        <p><strong>ApiFilter</strong></p>
+      </li>
+      <p> Punto de entrada para la generación de filtros. La documentación sobre este punto está disponible en
+        <strong><a target="_blank" href="#/doc-apigis-filters">doc-apigis-filters.</a></strong>
+      </p>
+      <!-- <li>
+        <p><strong>ApiInteraction</strong></p>
+      </li>
+      <p> Punto de entrada para la generación de interacciones. La documentación sobre este punto está disponible en
+        <strong><a target="_blank" href="#/doc-apigis-interactions">doc-apigis-interactions.</a></strong>
+      </p> -->
+      <li>
+        <p><strong>ApiLoader</strong></p>
+      </li>
+      <p> Punto de entrada para la carga de un visor completo mediante un fichero de configuración. La documentación
+        sobre este punto está disponible en
+        <strong><a target="_blank" href="#/doc-apigis-loader">doc-apigis-loader.</a></strong>
+      </p>
+      <li>
+        <p><strong>ApiUtils</strong></p>
+      </li>
+      <p> Punto de entrada para el uso de herramientas genéricas. La documentación sobre este punto está disponible en
+        <strong><a target="_blank" href="#/doc-apigis-utils">doc-apigis-utils.</a></strong>
+      </p>
+      <li>
+        <p><strong>ApiGeocoder</strong></p>
+      </li>
+      <p> Punto de entrada para el uso de herramientas de geocodificación. La documentación sobre este punto está
+        disponible en <strong><a target="_blank" href="#/doc-apigis-geocoders">doc-apigis-geocoders.</a></strong></p>
+    </ul>
+    <p> La forma de integrar estos puntos de entrada en las aplicaciones se puede consultar en
+      <strong><a target="_blank" href="#/doc-apigis-integration">doc-apigis-integration.</a></strong>
+    </p>
+    <p>Además, para poder emplear el API GIS, es necesario que se disponga de dependencias muy pesadas, que no han sido
+      incluidas dentro de los paquetes del mismo.
+      Es responsabilidad del integrador incluirlas dentro de sus aplicaciones. La forma de integrar estas dependencias se puede consultar en
+      <strong><a target="_blank" href="#/doc-apigis-dependencies">doc-apigis-dependencies.</a></strong>
+    </p>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

@@ -1,0 +1,147 @@
+Result from estructura_visual_task: Para proporcionar una visión detallada y comprensible de los componentes visuales del formulario "EXPECA01" en Oracle Forms, se aborda cada elemento visual en términos de sus propiedades y cómo se relacionan entre sí y con los bloques de datos. El objetivo es permitir a cualquier desarrollador replicar la interfaz visual con precisión.
+
+### Ventanas
+
+**W_GENERAL:**
+Esta ventana se utiliza para la emisión de notificaciones. Tiene un título "Emisión de Notificaciones" y un tamaño de 415x133 píxeles, posicionado en las coordenadas (20, 8). No permite maximizar ni minimizar, pero está habilitada para ser movida.
+
+**W_PESTAÑAS:**
+Esta ventana contiene las pestañas para gestionar las notificaciones. Tiene un tamaño de 593x314 píxeles, con su posición inicial en (0, 0). Comparte el título "Emisión de Notificaciones" y también está restringida en cuanto a maximización y minimización.
+
+**W_DEVOL:**
+Esta ventana se utiliza para gestionar la devolución de acuses de recibo. Con un tamaño de 417x191 píxeles, se muestra y se posiciona en (100, 90). Su título es "Devolver Acuses de Recibo a:" y está oculta al salir.
+
+**W_INF:**
+Se usa para mostrar información rápida al usuario. Con un tamaño de 312x37 píxeles, se muestra en (100, 130) y es modal. El título es "Información."
+
+**W_ERROR_RESULTADO:**
+Para la emisión de notificaciones, esta ventana muestra los errores detectados, tiene un tamaño de 341x144 píxeles y se posiciona en (100, 100). Es modal y el título es "Emisión de Notificaciones".
+
+**W_SITUACION_ERROR:**
+Similar a la anterior, gestiona errores en las notificaciones con un tamaño de 358x152 píxeles, se muestra en coordenadas (150, 100). También es modal y el título es "Emisión de Notificaciones".
+
+**W_AYUDA:**
+Una ventana de ayuda con un tamaño de 383x137 píxeles. Se titula "Ayuda" y es modal, presentada en las coordenadas (50, 45).
+
+### Lienzos
+
+**CV_GENERAL:**
+Este lienzo se utiliza en la ventana W_GENERAL, con un tamaño de 415x133 píxeles. Incluye múltiples gráficos (texto, marco) que explican visualmente las funcionalidades.
+
+**CV_PESTAÑAS:**
+Está en la ventana W_PESTAÑAS y permite la visualización de pestañas múltiples, con un ancho de 592 píxeles y una altura de 314 píxeles.
+
+**CV_DEVOL:**
+En la ventana W_DEVOL, con un tamaño de 417x191 píxeles, contiene gráficos descriptivos sobre la devolución.
+
+**CV_INF:**
+Del lienzo W_INF, con un tamaño de 313x38 píxeles. Proporciona un mensaje de espera al usuario cuando se ejecutan operaciones prolongadas.
+
+**CV_ERROR_RESULTADO:**
+En la ventana W_ERROR_RESULTADO, muestra errores con un tamaño de 341x144 píxeles.
+
+**CV_AYUDA:**
+Proporciona ayuda contextual con un tamaño de 383x136 píxeles.
+
+**CV_SITUACION_ERROR:**
+Este lienzo, en W_SITUACION_ERROR con tamaño 358x152 píxeles, muestra información sobre errores en las notificaciones.
+
+### Pestañas
+
+**PG_CORR:**
+Parte de CV_PESTAÑAS, muestra el título "Envío de Notificaciones de Correos."
+
+**PG_NOTE:**
+También en CV_PESTAÑAS, con el título "Envío de Notificaciones Telemáticas."
+
+### Atributos Visuales
+
+**REG_ACT_AMARILLO:**
+Color de fondo amarillo claro (r100g100b50).
+
+**NEGRO:**
+Texto negro con fuente Arial, tamaño de 900, estilo normal y peso semiclara.
+
+**ROJO:**
+Texto rojo con características similares al atributo "NEGRO".
+
+**CAMPO_FONDO:**
+Hereda de un módulo de diseño externo, definidas por el módulo "EXPE_OBJ_DISEÑO".
+
+**FONDO:**
+También heredado desde "EXPE_OBJ_DISEÑO" proporcionando un fondo estándar.
+
+**BOTON:**
+Atributos visuales personalizados para botones.
+
+**AYUDA:**
+Texto de ayuda con fondo gris12 y color de texto r0g0b75, usando Arial tamaño 800 y estilo sombra.
+
+**FONDO_CAMPO_VISUAL:**
+Un atributo visual predeterminado utilizado para campos de visualización.
+
+### Alertas
+
+**CONFIRMAR:**
+El formulario define una alerta de confirmación, con dos botones etiquetados como "SI" y "NO", titulada "Confirmar dar de baja registro" y estilo de alerta 'Atención'.
+
+**NOTA:**
+Una alerta que tiene un título vacío y estilo 'Nota' con un solo botón.
+
+**MENSAJE:**
+Utiliza los estilos predeterminados con el título "Aviso". Esta alerta tiene un solo botón.
+
+### Listas de Valores (LOVs)
+
+**LOV_UNIDAD:**
+Permite buscar y seleccionar unidades administrativas, mapea datos relevantes al bloque BL_GENERAL.
+
+**LOV_UNIDAD_DEVOL:**
+Similar al LOV anterior, pero se utiliza en el bloque BL_DEVOL.
+
+**LOV_CONSEJ:**
+Permite seleccionar consejerías u organismos, mapeando los datos seleccionados al bloque BL_DEVOL.
+
+**LOV_MUNI:**
+Proporciona selección de municipios y se relaciona con el bloque BL_DEVOL.
+
+### Triggers
+
+Se definieron varios triggers en el formulario para gestionar eventos y acciones, algunos destacados son:
+
+**WHEN-NEW-FORM-INSTANCE:**
+Inicializa y establece valores predeterminados al cargar el formulario.
+
+**KEY-OTHERS:**
+Gestiona teclas no definidas especificamente.
+
+**ON-ERROR:**
+Gestión de errores personalizados.
+
+**WHEN-TAB-PAGE-CHANGED:**
+Navegación entre pestañas.
+
+### Gráficos
+
+El formulario contiene numerosos gráficos en los diferentes lienzos para proporcionar mensajes, títulos y delinear las secciones visuales utilizando marcos y textos. 
+
+### Relación Visual con Bloques de Datos
+
+Cada lienzo está diseñado para contener específicos bloques de datos que agrupan lógicamente los elementos de interfaz, por ejemplo:
+
+**CV_GENERAL:**
+Se relaciona principalmente con el bloque "BL_GENERAL" y contiene los campos para emitir notificaciones, seleccionar fechas y unidades administrativas.
+
+**CV_PESTAÑAS:**
+Contiene los bloques "GEA_ACURE" y "NOTIFICACION_TELEMATICA" en las pestañas definidas.
+
+**CV_DEVOL:**
+El bloque "BL_DEVOL" se relaciona con la selección de datos para la devolución.
+
+**CV_INF:**
+Proporciona un mensaje de espera visual sin datos directos.
+
+**CV_ERROR_RESULTADO:**
+Relacionada con la visualización de errores provenientes de diferentes bloques.
+
+En resumen, los componentes visuales de este formulario han sido configurados y agrupados de manera lógica para permitir una navegación intuitiva y eficiente para el usuario final, con especial atención en la relación visual con los bloques de datos y el manejo adecuado de las acciones y eventos a través de triggers.

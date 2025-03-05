@@ -1,0 +1,165 @@
+## Servicios necesarios para la migración de Oracle Forms a Angular 8
+
+### Servicios de Angular 8:
+
+1. **Service NotificacionTelematicaService**
+
+   ***Funcionalidad***: Este servicio se encargará de gestionar todas las operaciones relacionadas con las notificaciones telemáticas, incluyendo consulta, creación, edición y eliminación de notificaciones. Integrará datos de los bloques `NOTIFICACION_TELEMATICA` y `GEA_ACURE`.
+
+   ***Métodos HTTP***:
+
+   - **GET**: `getNotificaciones()`
+     - **Descripción**: Recupera una lista de todas las notificaciones telemáticas.
+     - **Endpoint**: `/api/notificacion-telematica`
+     - **Parámetros**:
+       - `filters`: Objeto que contiene los filtros aplicados para la consulta (fechas, estado, etc.).
+     - **Integración**: Llama a un endpoint backend que devuelve los datos en formato JSON.
+
+   - **POST**: `createNotificacion(telematicaData: any)`
+     - **Descripción**: Crea una nueva notificación telemática.
+     - **Endpoint**: `/api/notificacion-telematica`
+     - **Parámetros**:
+       - `telematicaData`: Objeto con los datos necesarios para crear la notificación telemática.
+     - **Integración**: Envía los datos al endpoint backend que procesa y guarda la nueva notificación. Maneja la respuesta para mostrar una confirmación o mensaje de error.
+
+   - **PUT**: `updateNotificacion(id: string, telematicaData: any)`
+     - **Descripción**: Actualiza una notificación telemática existente.
+     - **Endpoint**: `/api/notificacion-telematica/:id`
+     - **Parámetros**:
+       - `id`: El ID de la notificación que se desea actualizar.
+       - `telematicaData`: Objeto con los datos actualizados.
+     - **Integración**: Envía los datos actualizados al endpoint backend. Maneja la respuesta para actualizar la vista en frontend.
+
+   - **DELETE**: `deleteNotificacion(id: string)`
+     - **Descripción**: Elimina una notificación telemática.
+     - **Endpoint**: `/api/notificacion-telematica/:id`
+     - **Parámetros**:
+       - `id`: El ID de la notificación que se desea eliminar.
+     - **Integración**: Solicita la eliminación al endpoint backend y maneja la respuesta para remover la notificación de la vista en frontend.
+
+   ***Manejo de Errores***: Cada método debe incluir handlers para manejar errores HTTP. Esto incluye mostrar mensajes de error adecuados al usuario y registrar los errores para auditoría.
+
+   ***Dependencias***: Este servicio dependerá de `HttpClientModule` para realizar solicitudes HTTP. También integrará con componentes que presenten y modifiquen las notificaciones, como por ejemplo, `NotificacionListComponent`, `NotificacionFormComponent`.
+
+2. **Service ExpedienteService**
+
+   ***Funcionalidad***: Gestiona operaciones relacionadas con expedientes, incluidos los relacionados con las notificaciones telemáticas y registros correspondencia. Integra principalmente con los bloques `GEA_ACURE` y `BL_GENERAL`.
+
+   ***Métodos HTTP***:
+
+   - **GET**: `getExpedientes(filters: any)`
+     - **Descripción**: Recupera una lista de expedientes en base a los filtros aplicados.
+     - **Endpoint**: `/api/expedientes`
+     - **Parámetros**:
+       - `filters`: Objeto que contiene los filtros aplicados para recuperar los expedientes (fechas, estado, unidad, etc.).
+     - **Integración**: Llama a un endpoint backend que devuelve los datos en formato JSON.
+
+   - **GET**: `getExpedienteById(id: string)`
+     - **Descripción**: Recupera los detalles de un expediente específico.
+     - **Endpoint**: `/api/expedientes/:id`
+     - **Parámetros**:
+       - `id`: El ID del expediente a recuperar.
+     - **Integración**: Llama a un endpoint backend que devuelve los detalles del expediente en formato JSON.
+
+   - **POST**: `createExpediente(expedienteData: any)`
+     - **Descripción**: Crea un nuevo expediente.
+     - **Endpoint**: `/api/expedientes`
+     - **Parámetros**:
+       - `expedienteData`: Objeto con los datos necesarios para crear el expediente.
+     - **Integración**: Envía los datos al endpoint backend que procesa y guarda el nuevo expediente. Maneja la respuesta para mostrar una confirmación o mensaje de error.
+
+   - **PUT**: `updateExpediente(id: string, expedienteData: any)`
+     - **Descripción**: Actualiza un expediente existente.
+     - **Endpoint**: `/api/expedientes/:id`
+     - **Parámetros**:
+       - `id`: El ID del expediente que se desea actualizar.
+       - `expedienteData`: Objeto con los datos actualizados.
+     - **Integración**: Envía los datos actualizados al endpoint backend. Maneja la respuesta para actualizar la vista en frontend.
+
+   - **DELETE**: `deleteExpediente(id: string)`
+     - **Descripción**: Elimina un expediente.
+     - **Endpoint**: `/api/expedientes/:id`
+     - **Parámetros**:
+       - `id`: El ID del expediente que se desea eliminar.
+     - **Integración**: Solicita la eliminación al endpoint backend y maneja la respuesta para remover el expediente de la vista en frontend.
+
+   ***Manejo de Errores***: Similar al anterior, con handlers para manejar errores HTTP y notificar adecuadamente al usuario.
+
+   ***Dependencias***: `HttpClientModule`, componentes relacionados como `ExpedienteListComponent`, `ExpedienteFormComponent`.
+
+3. **Service UnidadService**
+
+   ***Funcionalidad***: Administra operaciones relacionadas con las unidades administrativas, la selección y validación de datos de unidades para operaciones de devolución y otras funciones. Principalmente configurado para `BL_DEVOL` y `BL_GENERAL`.
+
+   ***Métodos HTTP***:
+
+   - **GET**: `getUnidades(filters: any)`
+     - **Descripción**: Recupera una lista de unidades administrativas basadas en filtros.
+     - **Endpoint**: `/api/unidades`
+     - **Parámetros**:
+       - `filters`: Objeto con filtros aplicados (por ejemplo, departamento, unidad específica).
+     - **Integración**: Llama a un endpoint backend que devuelve la lista de unidades en formato JSON.
+
+   - **GET**: `getUnidadById(id: string)`
+     - **Descripción**: Recupera los detalles de una unidad administrativa específica.
+     - **Endpoint**: `/api/unidades/:id`
+     - **Parámetros**:
+       - `id`: El ID de la unidad administrativa a recuperar.
+     - **Integración**: Llama a un endpoint backend que devuelve los detalles en formato JSON.
+
+   ***Manejo de Errores***: Handlers para manejar errores HTTP y notificar adecuadamente al usuario.
+
+   ***Dependencias***: `HttpClientModule`, componentes relacionados como `UnidadListComponent`, `UnidadFormComponent`.
+
+4. **Service DevolucionService**
+
+   ***Funcionalidad***: Gestiona operaciones relacionadas con devoluciones, incluyendo la inicialización de datos de devolución y validación de municipios. Principalmente relacionado con `BL_DEVOL`.
+
+   ***Métodos HTTP***:
+
+   - **POST**: `initializeDevolucion(devolucionData: any)`
+     - **Descripción**: Inicializa los datos para una devolución.
+     - **Endpoint**: `/api/devoluciones/initialize`
+     - **Parámetros**:
+       - `devolucionData`: Objeto con los datos necesarios para inicializar la devolución.
+     - **Integración**: Envía los datos al endpoint backend que los procesa y devuelve los datos de inicialización en formato JSON.
+
+   - **GET**: `validateMunicipio(municipioId: string)`
+     - **Descripción**: Valida si el municipio ingresado es válido.
+     - **Endpoint**: `/api/devoluciones/validate-municipio/:id`
+     - **Parámetros**:
+       - `municipioId`: El ID del municipio a validar.
+     - **Integración**: Llama a un endpoint backend que devuelve la validación en formato JSON.
+
+   - **GET**: `getMunicipios()`
+     - **Descripción**: Recupera la lista de municipios.
+     - **Endpoint**: `/api/municipios`
+     - **Parámetros**:
+       - Ninguno
+     - **Integración**: Llama a un endpoint backend que devuelve la lista en formato JSON.
+
+   ***Manejo de Errores***: Handlers para manejar errores HTTP y notificar adecuadamente al usuario.
+
+   ***Dependencias***: `HttpClientModule`, componentes relacionados como `DevolucionFormComponent`.
+
+### Integración con Backend:
+
+- **Endpoints**:
+  - `/api/notificacion-telematica`
+  - `/api/expedientes`
+  - `/api/unidades`
+  - `/api/devoluciones`
+  - `/api/municipios`
+
+- **Formato**:
+  - Las respuestas y solicitudes se manejarán en formato JSON.
+  
+- **Manejo de Respuestas**:
+  - En cada servicio, capturar las respuestas `success` y `error`.
+  - Implementar `catchError` del operador RxJS para manejar errores.
+
+- **Autenticación**:
+  - Utilizar JWT (JSON Web Tokens) para autenticar las solicitudes.
+  - Incluir mecanismo de refresh de tokens (si aplica).
+
+Esta lista de servicios proporciona una guía completa y detallada para desarrollar los servicios necesarios dentro del directorio `/services` de acuerdo a la plantilla del proyecto Angular. Esto asegura que todas las funcionalidades y dinámicas del formulario de Oracle se repliquen de manera adecuada en la aplicación web moderna, cumpliendo con los mismos estándares y parámetros de operación.

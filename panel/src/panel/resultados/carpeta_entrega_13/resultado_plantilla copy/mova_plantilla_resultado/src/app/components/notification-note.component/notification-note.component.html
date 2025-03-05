@@ -1,0 +1,17 @@
+<mv-card class="notification-card">
+  <mv-header>
+    <mv-title>Gestión de Notificaciones Telemáticas</mv-title>
+  </mv-header>
+  <mv-content>
+    <mv-button (click)="obtenerNotificaciones()" color="primary" appearance="raised">Cargar Notificaciones</mv-button>
+    <ul>
+      <li *ngFor="let notificacion of notificaciones">
+        <mv-header>
+          <mv-title>{{ notificacion.tipo }}</mv-title>
+        </mv-header>
+        <p>{{ notificacion.contenido }}</p>
+        <mv-button (click)="onSeleccionarNotificacion(notificacion)" color="accent" appearance="stroked">Seleccionar</mv-button>
+      </li>
+    </ul>
+  </mv-content>
+</mv-card>

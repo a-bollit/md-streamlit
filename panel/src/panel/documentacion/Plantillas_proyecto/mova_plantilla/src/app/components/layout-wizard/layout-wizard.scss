@@ -1,0 +1,178 @@
+@import '~@mova/components/_variables.scss';
+
+.flex-container{
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  margin: 5px;
+
+  // Wizard de pasos
+  .steps{
+    margin-bottom: 0;
+    ul{
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+      list-style: none;
+      position: relative;
+    }
+    ul:before {
+      content: " ";
+      position: absolute;
+      left: 15px;
+      top: 12px;
+      bottom: 12px;
+      width: 2px;
+      background-color: #eee;
+    }
+    li{
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 3.5rem;
+      .step{
+        background-color: #e1e1e1;
+        color: #8b8b8b;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 12px;
+        outline: 4px solid #fff;
+        flex-shrink: 0;
+
+        > mv-icon {
+          display: none;
+          line-height: 30px;
+        }
+      }
+      &.success:not(.clicked) {
+        .step {
+          background: #32b86a;
+          color: #fff;
+          > .number {
+            display: none;
+          }
+          > mv-icon {
+            display: inline-block;
+          }
+        }
+      }
+      &.clicked {
+        background: transparent !important;
+        font-weight: bold;
+        box-shadow: none;
+
+        .step {
+          background: #32b86a;
+          background: #df002c;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  // Formulario
+  .form{
+    width: 100%;
+    margin: 0 0 0 0.4rem;
+    ::ng-deep.mat-form-field{
+      max-width: calc(100% - 15px);
+    }
+    .wizardDetailStep1{
+      background: url('~src/assets/examples/step1.jpg');
+      background-position: center top;
+      color: #fff;
+      height: 5rem;
+    }
+    .wizardDetailStep2{
+      background: url('~src/assets/examples/step2.jpg');
+      background-position: center top;
+      color: #fff;
+      height: 5rem;
+    }
+    .wizardDetailStep3{
+      background: url('~src/assets/examples/step3.jpg');
+      background-position: center top;
+      color: #fff;
+      height: 5rem;
+    }
+    .wizardDetailStep4{
+      background: url('~src/assets/examples/step4.jpg');
+      background-position: center top;
+      color: #fff;
+      height: 5rem;
+    }
+    .wizardDetailStep5{
+      background: url('~src/assets/examples/step5.jpg');
+      background-position: center top;
+      color: #fff;
+      height: 5rem;
+    }
+    .wizardDetailStep6{
+      background: url('~src/assets/examples/step6.jpg');
+      background-position: center top;
+      color: #fff;
+      height: 5rem;
+    }
+    .wizardDetailStep7{
+      background: url('~src/assets/examples/step6.jpg');
+      background-position: center top;
+      color: #fff;
+      height: 5rem;
+    }
+    .wizardDetailStep8{
+      background-color: #32b86a;
+      color: #fff;
+      height: 5rem;
+    }
+    .mat-card-title{
+      margin-bottom: 2rem;
+    }
+    .buttonGroup{
+      margin: 3rem 0 0 0;
+    }
+    .buttonGroupLeft{
+      text-align: left;
+    }
+    .buttonGroupRight{
+      text-align: right;
+    }
+    .greyBackground{
+      background-color: #ececec;
+      margin: 0 0 10px 0;
+      mv-checkbox-x{
+        margin: 1rem 0 0 1rem;
+        ::ng-deep.form-controls{
+          max-width: calc(100% - 2rem);
+          height: 100%;
+        }
+        strong::ng-deep{
+          white-space: normal;
+        }
+      }
+    }
+    .greenBackground{
+      background-color: #d2f5da;
+      padding: 0 0 0 10px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+@media only screen and (max-width : $media-col-sm-min) {
+  .flex-container{
+    flex-direction: column;
+    .steps{
+      order: 2;
+    }
+    .form{
+      width: auto;
+      margin: 0 0 0.4rem 0;
+      order: 1;
+    }
+  }
+}

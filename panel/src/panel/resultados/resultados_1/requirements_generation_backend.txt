@@ -1,0 +1,399 @@
+Result from requirements_generation_backend: # Requisitos Técnicos y Funcionales del Backend en Java Spring Boot
+
+A continuación, se presentan los requisitos técnicos y funcionales detallados para la implementación del backend de una aplicación basada en el análisis del código Oracle Forms "EXPECA01". Este análisis cubre la descripción detallada de las tablas, entidades, sus atributos, las operaciones CRUD requeridas y la lógica de negocio necesaria para replicar fielmente la funcionalidad del sistema original en un entorno basado en Spring Boot.
+
+## Entidades y Modelos de Datos
+
+### 1. **Entidades del Sistema**
+
+#### 1.1. **GEA_ACURE**
+- **Tabla Asociada**: GEA_ACURE
+- **Atributos**:
+  - `CDDOCUM` (char, pk)
+  - `CB_MARCA` (char)
+  - `DOCUMENTO` (char)
+  - `DSDOCUM` (char)
+  - `EXPEDIENTE` (char)
+  - `INTERESADO` (char)
+  - `IT_OFICIO_PDF` (char)
+  - `IT_FIRMADO` (char)
+  - `IT_REGISTRADO` (char)
+  - `FCEMISION` (date)
+  - `FCREAL` (date)
+  - `ITIMPRE` (char)
+  - `NUMRELACION` (number)
+  - `CDDEPTNO` (char)
+  - `CDTEXP` (char)
+  - `CDNEXP` (number)
+  - `CDDIGITO` (number)
+  - `CDAEXP` (number)
+  - `CDINTERESADO` (char)
+  - `CDINTERESADO_OLD` (char)
+  - `CDSUBINT` (char)
+  - `CDSUBINT_OLD` (char)
+  - `DSNOMBRE` (char)
+  - `DSAPELLIDO1` (char)
+  - `DSAPELLIDO2` (char)
+  - `DSRAZONSOC` (char)
+  - `CDPAIS` (char)
+  - `CDPROV` (char)
+  - `CDMUNI` (char)
+  - `DSDIRECCION` (char)
+  - `DSDIRECCION1` (char)
+  - `DSDIRECCION2` (char)
+  - `CDPOSTAL` (char)
+  - `DSTELEFONO` (char)
+  - `DSFAX` (char)
+  - `CLAVE2` (char)
+  - `CONTENIDO2` (char)
+- **Relaciones**:
+  - Clave foránea:
+    - `CDDEPTNO` referencia a `GEXPEDIENT.CDDEPTNO`
+    - `CDTEXP` referencia a `GEXPEDIENT.CDTEXP`
+    - `CDNEXP` referencia a `GEXPEDIENT.CDNEXP`
+    - `CDDIGITO` referencia a `GEXPEDIENT.CDDIGITO`
+    - `CDAEXP` referencia a `GEXPEDIENT.CDAEXP`
+- **Claves Primarias**: `CDDOCUM`
+
+#### 1.2. **NOTIFICACION_TELEMATICA**
+- **Tabla Asociada**: NOTIFICACION_TELEMATICA
+- **Atributos**:
+  - `CDDOCUM` (char, pk)
+  - `DOCUMENTO` (char)
+  - `DSDOCUM` (char)
+  - `EXPEDIENTE` (char)
+  - `INTERESADO` (char)
+  - `FCCREA` (date)
+  - `ANEXOS_NOTE` (number)
+  - `IT_FIRMADO` (char)
+  - `IT_REGISTRADO` (char)
+  - `IMDOCUMENTO` (imagen)
+  - `CDPROCEDIMIENTO` (char)
+  - `IT_CDPROC_OK` (char)
+  - `CDDEPTNO` (char)
+  - `CDNEXP` (number)
+  - `CDDIGITO` (number)
+  - `CDAEXP` (number)
+  - `CDTEXP` (char)
+  - `IDALTA` (char)
+  - `DSDOCUM1` (char)
+  - `DSDOCUM2` (char)
+  - `CDPARTICULAR` (char)
+  - `RESULTADO` (imagen)
+  - `SITUACION` (imagen)
+  - `CB_MARCA` (char)
+  - `CDSUBPART` (char)
+  - `DSNOMBRE` (char)
+  - `DSAPELLIDO1` (char)
+  - `DSAPELLIDO2` (char)
+  - `DSRAZONSOC` (char)
+  - `DSDIRECCION1` (char)
+  - `CDOFI` (char)
+  - `DSOFI` (char)
+  - `RESULTADO_ERROR` (char)
+  - `SITUACION_ERROR_BD` (char)
+  - `SITUACION_ERROR_DUE` (char)
+  - `SITUACION_ERROR_REGSAL` (char)
+  - `SITUACION_ERROR_FIRMA` (char)
+  - `SITUACION_REENVIO` (char)
+  - `CODARCHIVO_PDF` (number)
+  - `CLAVE_EXTERNA` (char)
+  - `CDESTADO_NOTIFICACION` (number)
+- **Relaciones**:
+  - Clave foránea:
+    - `CDDEPTNO` referencia a `GEXPEDIENT.CDDEPTNO`
+    - `CDTEXP` referencia a `GEXPEDIENT.CDTEXP`
+    - `CDNEXP` referencia a `GEXPEDIENT.CDNEXP`
+    - `CDDIGITO` referencia a `GEXPEDIENT.CDDIGITO`
+    - `CDAEXP` referencia a `GEXPEDIENT.CDAEXP`
+- **Claves Primarias**: `CDDOCUM`
+
+#### 1.3. **EREG_NOTIFICACION**
+- **Tabla Asociada**: EREG_NOTIFICACION
+- **Atributos**:
+  - `IDNOTIFICACION` (number, pk)
+  - `NMLISTNOTI` (number)
+  - `NMEJERCICIO` (number)
+  - `CDREFDOCUM` (char)
+  - `DSOBJETO` (char)
+  - `CDDOCIDENT` (char)
+  - `DSNOMBRE` (char)
+  - `DSAPELLIDO1` (char)
+  - `DSAPELLIDO2` (char)
+  - `DSRAZONSOC` (char)
+  - `CDPAIS` (char)
+  - `CDPROV` (char)
+  - `CDMUNI` (char)
+  - `DSDIRECCION` (char)
+  - `DSDIRECCION_EXTEN` (char)
+  - `CDPOSTAL` (char)
+  - `DSTELEFONO` (char)
+  - `DSTELEFMOVIL` (char)
+  - `DSFAX` (char)
+  - `DSEMAIL` (char)
+  - `DSDIRECCION1` (char)
+  - `DSDIRECCION2` (char)
+  - `DSLIN_INFO1` (char)
+  - `DSLIN_INFO2` (char)
+  - `DSLIN_INFO3` (char)
+  - `DSLIN_INFO4` (char)
+  - `DSLIN_INFO5` (char)
+  - `DSDEVOLVERA` (char)
+  - `FCREIMPRESION` (date)
+  - `CDESTADO1` (char)
+  - `FCESTADO1` (date)
+  - `CDESTADO2` (char)
+  - `FCESTADO2` (date)
+  - `NMBOCM` (char)
+  - `FCPUBBOCM` (date)
+  - `CDUSRMOD` (char)
+  - `FCFECMOD` (date)
+  - `CDDOCIDENT_REP` (char)
+  - `DSNOMBRE_REP` (char)
+  - `DSAPELLIDO1_REP` (char)
+  - `DSAPELLIDO2_REP` (char)
+  - `DSRAZONSOC_REP` (char)
+  - `DSEXPEDIENTE` (char)
+- **Relaciones**:
+  - Clave foránea:
+    - `CDDEPTNO` referencia a `GEXPEDIENT.CDDEPTNO`
+    - `CDTEXP` referencia a `GEXPEDIENT.CDTEXP`
+    - `CDNEXP` referencia a `GEXPEDIENT.CDNEXP`
+    - `CDDIGITO` referencia a `GEXPEDIENT.CDDIGITO`
+    - `CDAEXP` referencia a `GEXPEDIENT.CDAEXP`
+- **Claves Primarias**: `IDNOTIFICACION`
+
+#### 1.4. **EREG_LISTNOTI**
+- **Tabla Asociada**: EREG_LISTNOTI
+- **Atributos**:
+  - `NMLISTNOTI` (number, pk)
+  - `NMEJERCICIO` (number, pk)
+  - `FCCREA` (date)
+  - `CDAPLICACION` (char)
+  - `IDUNIDAD` (number)
+  - `FCDESDE` (date)
+  - `FCHASTA` (date)
+  - `CDESTADO` (char)
+  - `FCESTADO` (date)
+  - `CDUSRMOD` (char)
+  - `FCFECMOD` (date)
+  - `DSCONS_DEVOL` (char)
+  - `DSUNIDAD_DEVOL` (char)
+  - `DSDIR1_DEVOL` (char)
+  - `DSDIR2_DEVOL` (char)
+  - `CDPOSTAL_DEVOL` (char)
+  - `CDMUNI_DEVOL` (char)
+  - `CDTIPONOTI` (char)
+- **Relaciones**:
+  - Clave foránea:
+    - `CDDEPTNO` referencia a `GEXPEDIENT.CDDEPTNO`
+    - `CDTEXP` referencia a `GEXPEDIENT.CDTEXP`
+    - `CDNEXP` referencia a `GEXPEDIENT.CDNEXP`
+    - `CDDIGITO` referencia a `GEXPEDIENT.CDDIGITO`
+    - `CDAEXP` referencia a `GEXPEDIENT.CDAEXP`
+- **Claves Primarias**: `NMLISTNOTI`, `NMEJERCICIO`
+
+### 2. **Operaciones CRUD**
+
+Para cada entidad, se deben definir las operaciones CRUD con los siguientes detalles:
+
+#### 2.1. **GEA_ACURE**
+- **GET /gea_acure**: Recupera todos los registros
+  - **Body**:
+    ```json
+    []
+    ```
+- **GET /gea_acure/{CDDOCUM}**: Recupera un registro específico.
+  - **Parámetros**: `CDDOCUM`
+  - **Body**:
+    ```json
+    {
+      "CDDOCUM": "value"
+    }
+    ```
+- **POST /gea_acure**: Crea un nuevo registro.
+  - **Body**:
+    ```json
+    {
+      "CDDOCUM": "value",
+      "CB_MARCA": "value",
+      "DOCUMENTO": "value",
+      "DSDOCUM": "value",
+      "EXPEDIENTE": "value",
+      "INTERESADO": "value",
+      "IT_OFICIO_PDF": "value",
+      "IT_FIRMADO": "value",
+      "IT_REGISTRADO": "value",
+      "FCEMISION": "value",
+      "FCREAL": "value",
+      "ITIMPRE": "value",
+      "NUMRELACION": "value",
+      "CDDEPTNO": "value",
+      "CDTEXP": "value",
+      "CDNEXP": "value",
+      "CDDIGITO": "value",
+      "CDAEXP": "value",
+      "CDINTERESADO": "value",
+      "CDINTERESADO_OLD": "value",
+      "CDSUBINT": "value",
+      "CDSUBINT_OLD": "value",
+      "DSNOMBRE": "value",
+      "DSAPELLIDO1": "value",
+      "DSAPELLIDO2": "value",
+      "DSRAZONSOC": "value",
+      "CDPAIS": "value",
+      "CDPROV": "value",
+      "CDMUNI": "value",
+      "DSDIRECCION": "value",
+      "DSDIRECCION1": "value",
+      "DSDIRECCION2": "value",
+      "CDPOSTAL": "value",
+      "DSTELEFONO": "value",
+      "DSFAX": "value",
+      "CLAVE2": "value",
+      "CONTENIDO2": "value"
+    }
+    ```
+- **PUT /gea_acure/{CDDOCUM}**: Actualiza un registro específico.
+  - **Parámetros**: `CDDOCUM`
+  - **Body**:
+    ```json
+    {
+      "CDDOCUM": "value",
+      "CB_MARCA": "value",
+      "DOCUMENTO": "value",
+      "DSDOCUM": "value",
+      "EXPEDIENTE": "value",
+      "INTERESADO": "value",
+      "IT_OFICIO_PDF": "value",
+      "IT_FIRMADO": "value",
+      "IT_REGISTRADO": "value",
+      "FCEMISION": "value",
+      "FCREAL": "value",
+      "ITIMPRE": "value",
+      "NUMRELACION": "value",
+      "CDDEPTNO": "value",
+      "CDTEXP": "value",
+      "CDNEXP": "value",
+      "CDDIGITO": "value",
+      "CDAEXP": "value",
+      "CDINTERESADO": "value",
+      "CDINTERESADO_OLD": "value",
+      "CDSUBINT": "value",
+      "CDSUBINT_OLD": "value",
+      "DSNOMBRE": "value",
+      "DSAPELLIDO1": "value",
+      "DSAPELLIDO2": "value",
+      "DSRAZONSOC": "value",
+      "CDPAIS": "value",
+      "CDPROV": "value",
+      "CDMUNI": "value",
+      "DSDIRECCION": "value",
+      "DSDIRECCION1": "value",
+      "DSDIRECCION2": "value",
+      "CDPOSTAL": "value",
+      "DSTELEFONO": "value",
+      "DSFAX": "value",
+      "CLAVE2": "value",
+      "CONTENIDO2": "value"
+    }
+    ```
+- **DELETE /gea_acure/{CDDOCUM}**: Elimina un registro específico.
+  - **Parámetros**: `CDDOCUM`
+  - **Body**:
+    ```json
+    []
+    ```
+
+#### 2.2. **NOTIFICACION_TELEMATICA**
+- **GET /notificacion_telematica**: Recupera todos los registros.
+  - **Body**:
+    ```json
+    []
+    ```
+- **GET /notificacion_telematica/{CDDOCUM}**: Recupera un registro específico.
+  - **Parámetros**: `CDDOCUM`
+  - **Body**:
+    ```json
+    {
+      "CDDOCUM": "value"
+    }
+    ```
+- **POST /notificacion_telematica**: Crea un nuevo registro.
+  - **Body**:
+    ```json
+    {
+      "CDDOCUM": "value",
+      "DOCUMENTO": "value",
+      "DSDOCUM": "value",
+      "EXPEDIENTE": "value",
+      "INTERESADO": "value",
+      "FCCREA": "value",
+      "ANEXOS_NOTE": "value",
+      "IT_FIRMADO": "value",
+      "IT_REGISTRADO": "value",
+      "IMDOCUMENTO": "value",
+      "CDPROCEDIMIENTO": "value",
+      "IT_CDPROC_OK": "value",
+      "CDDEPTNO": "value",
+      "CDNEXP": "value",
+      "CDDIGITO": "value",
+      "CDAEXP": "value",
+      "CDTEXP": "value",
+      "IDALTA": "value",
+      "DSDOCUM1": "value",
+      "DSDOCUM2": "value",
+      "CDPARTICULAR": "value",
+      "RESULTADO": "value",
+      "SITUACION": "value",
+      "CB_MARCA": "value",
+      "CDSUBPART": "value",
+      "DSNOMBRE": "value",
+      "DSAPELLIDO1": "value",
+      "DSAPELLIDO2": "value",
+      "DSRAZONSOC": "value",
+      "DSDIRECCION1": "value",
+      "CDOFI": "value",
+      "DSOFI": "value",
+      "RESULTADO_ERROR": "value",
+      "SITUACION_ERROR_BD": "value",
+      "SITUACION_ERROR_DUE": "value",
+      "SITUACION_ERROR_REGSAL": "value",
+      "SITUACION_ERROR_FIRMA": "value",
+      "SITUACION_REENVIO": "value",
+      "CODARCHIVO_PDF": "value",
+      "CLAVE_EXTERNA": "value",
+      "CDESTADO_NOTIFICACION": "value"
+    }
+    ```
+- **PUT /notificacion_telematica/{CDDOCUM}**: Actualiza un registro específico.
+  - **Parámetros**: `CDDOCUM`
+  - **Body**:
+    ```json
+    {
+      "CDDOCUM": "value",
+      "DOCUMENTO": "value",
+      "DSDOCUM": "value",
+      "EXPEDIENTE": "value",
+      "INTERESADO": "value",
+      "FCCREA": "value",
+      "ANEXOS_NOTE": "value",
+      "IT_FIRMADO": "value",
+      "IT_REGISTRADO": "value",
+      "IMDOCUMENTO": "value",
+      "CDPROCEDIMIENTO": "value",
+      "IT_CDPROC_OK": "value",
+      "CDDEPTNO": "value",
+      "CDNEXP": "value",
+      "CDDIGITO": "value",
+      "CDAEXP": "value",
+      "CDTEXP": "value",
+      "IDALTA": "value",
+      "DSDOCUM1": "value",
+      "DSDOCUM2": "value",
+      "CDPARTICULAR": "value",
+      "RESULTADO": "value",
+      "SITUACION": "value",
+      "CB_MARCA": "value",
+      "CDSUBPART": "value",
+      "DS

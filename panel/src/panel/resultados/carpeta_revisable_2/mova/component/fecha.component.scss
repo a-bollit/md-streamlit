@@ -1,0 +1,25 @@
+@import '~@mova/components/_variables.scss';
+
+.card {
+  .fecha-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    
+    .input-group {
+      display: flex;
+      align-items: center;
+    }
+
+    .form-control {
+      border: 1px solid $border-color;
+      padding: 0.5rem;
+      width: auto;
+    }
+
+    .input-group-append {
+      margin-left: 0.5rem;
+    }
+  }
+}

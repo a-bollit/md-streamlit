@@ -1,0 +1,169 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-big;
+}
+.titulo {
+  color: $secondary-009;
+  strong {
+    font-size: 1.2em;
+  }
+}
+.nombre {
+  color: #6c6c6c;
+  strong {
+    font-size: 1.5em;
+  }
+}
+.infoAlumno {
+  .datos {
+    .blockTitle{
+      font-size: 1.25rem;
+      margin: 1rem 0 1rem 0;
+      color: $secondary-009;
+      font-weight: bold;
+      .mat-icon{
+        vertical-align: bottom;
+      }
+    }
+    .caja {
+      padding: 10px;
+      .campo {
+        font-size: 0.9em;
+        .dato_titulo {
+          display: flex;
+          flex-wrap: nowrap;
+          font-size: 0.9em;
+          color: $secondary-003;
+          padding-top:3px;
+          padding-left: 5px;
+          align-items: center;
+          span {
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+        .separador {
+          width: 100%;
+          height: 1px;
+          color: $secondary-004;
+          padding: 0;
+          margin: 0;
+        }
+        .dato_alumno {
+          margin-left: 0;
+          color: $secondary-003;
+          padding-left: 0.4em;
+          height: 40px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .imgAlumno {
+    img {
+      max-width: 250px;
+      max-height: 250px;
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+  .botones{
+    display: flex;
+    place-content: flex-end;
+    width: 100%;
+  }
+  ::ng-deep {
+    .dato_alumno {
+      .mat-form-field-infix {
+        border-top: 0px;
+        font-weight: bold;
+        padding-top: 10px;
+      }
+    }
+    .mat-input-element:disabled {
+      color:black;
+    }
+  }
+}
+.asignaturas {
+  margin: 17px;
+  padding: 10px;
+  .tabla_asignaturas {
+
+  }
+}
+.notas {
+
+}
+@media only screen and (max-width: 300px) {
+  :host {
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  :host {
+
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  :host {
+    .infoAlumno{
+      .datos{
+        .caja{
+          gap:0px;
+        }
+      }
+      .imgAlumno {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1600px) {
+  :host {
+  }
+}
+@media only screen and (min-width: 1800px) {
+
+}
+@media only screen and (min-width: 2000px) {
+  :host {
+    .infoAlumno{
+      .datos{
+        .caja{
+          gap:  0px;
+          .campo{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            .dato_titulo {
+              grid-column: 1;
+              grid-row: 1;
+            }
+            .dato_alumno {
+              grid-column: 2 / 5;
+              grid-row: 1;
+            }
+            .separador{
+              grid-row: 1;
+              grid-column: 0;
+              width: 0;
+              display: block;
+              height: 1px;
+              border: 0;
+              border-top: 1px solid #ccc;
+              margin: 1em 0;
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

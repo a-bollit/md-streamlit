@@ -1,0 +1,183 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación accesibilidad</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='propTitle.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Propiedad title
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='propRecomendations.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Recomendaciones html
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='propForms.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Propiedades de formulario
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información sobre accesibilidad.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La accesibilidad en la web tiene como propósito garantizar el acceso y uso por personas con todo tipo de conocimientos y capacidades.
+        MOVA proporciona configuración para cumplir este objetivo.</p>
+
+      <p>Documentación sobre accesibilidad en Angular:
+        <a target="_blank" href="https://codelabs.developers.google.com/angular-a11y?hl=es-419#0">.
+          <strong>https://codelabs.developers.google.com/angular-a11y?hl=es-419#0</strong>
+        </a>
+      </p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Propiedad title -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #propTitle><strong>Propiedad title</strong></mv-card-title>
+      <mv-card-subtitle>Configuración del title en MOVA.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>MOVA permite la configuración del title de varias formas.</p>
+
+      <p>Si queremos tener el mismo title para todas las vistas (configuración no recomendada de cara a la accesibilidad) se hará con la etiqueta
+      title del archivo index.html, como en cualquier web:</p>
+
+      <mv-tab-group>
+        <mv-tab label="index.html">
+          <pre><code [highlight]="codeTitleExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Si queremos tener un title único para cada vista (configuración recomendada de cara a la accesibilidad) se hace con la propiedad appTitle
+        del archivo config-default.json:</p>
+      <p>Lo que se define en este archivo es un prefijo personalizado para nuestra app, que se mostrará en el title de todas las vistas. Después
+        de este prefijo se concatenará el nombre del estado correspondiente a la vista en la que nos encontremos en cada momento.</p>
+
+      <mv-tab-group>
+        <mv-tab label="config-default.json">
+          <pre><code [highlight]="codeTitleExample2JSON"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Recomendaciones html -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #propRecomendations><strong>Recomendaciones html</strong></mv-card-title>
+      <mv-card-subtitle>Recomendaciones html.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p><strong>Encabezados</strong></p>
+      <p>Se recomienda el uso de encabezados html para los títulos y secciones de las distintas vistas. Ejemplo de uso:</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHeadingExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <h1 class="mv-h1">Título principal con estilo mv-h1</h1>
+      <h1>Título principal estándar</h1>
+      <h1>Título secundario</h1>
+      <h1>Título terciario</h1>
+
+      <p><strong>Foco</strong></p>
+      <p>Se recomienda que en todos los componentes accionables, se distinga claramente cuando tiene el foco en el mismo o no.</p>
+      <p>Siguiendo este principio, todos los componentes accionables de MOVA cambian de tonalidad cuando tienen el foco.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeFocusExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <div>
+        <mv-button>
+          Botón básico
+        </mv-button>
+      </div>
+
+      <div>
+        <mv-button
+          appearance="raised"
+          color="primary">
+          Acción
+        </mv-button>
+      </div>
+
+      <div>
+        <mv-input>
+        </mv-input>
+      </div>
+
+
+
+      <p><strong>Contraste</strong></p>
+      <p>Se recomienda que haya el suficiente contraste de color para diferenciar las distintas secciones de la app.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Propiedades formulario -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #propForms><strong>Propiedades formulario</strong></mv-card-title>
+      <mv-card-subtitle>Propiedades de formulario.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El aspecto más importante de cara a la accesibilidad son los formularios, ya que requiere una alta interacción con el usuario. MOVA proporciona
+        funcionalidad en sus componentes para mejorar la accesibilidad de los formularios.</p>
+      <p>Para ver ejemplos de formularios, ir a <a target="_blank" href="#/doc-forms">
+        <strong>ejemplo de formularios</strong>
+      </a></p>
+
+      <p><strong>Aria-label</strong></p>
+      <p>Esta propiedad permite que los lectores distingan los distintos componentes de formulario (input, textarea, select...) con el campo concreto
+        que representen (ciudad, nombre, edad...)</p>
+
+      <p><strong>Aria-invalid</strong></p>
+      <p>Esta propiedad permite que los lectores distingan cuándo los componentes de formulario contienen algún error, para que el usuario tenga conocimiento
+        de ello.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

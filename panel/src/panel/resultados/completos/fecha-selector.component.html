@@ -1,0 +1,34 @@
+<div class="fecha-selector-container">
+  <form [formGroup]="fechaForm" (ngSubmit)="onSubmit()">
+    <mv-card>
+      <mv-card-content>
+        <div class="field">
+          <mv-datepicker 
+            label="Fecha desde" 
+            [formControl]="fechaForm.get('fechaInicio')"
+            [min]="null"
+            [max]="today">
+          </mv-datepicker>
+          <div *ngIf="fechaForm.get('fechaInicio').hasError('futureDate')" class="error">
+            La fecha de inicio no puede ser futura.
+          </div>
+        </div>
+        <div class="field">
+          <mv-datepicker 
+            label="Fecha hasta" 
+            [formControl]="fechaForm.get('fechaFin')"
+            [min]="fechaForm.get('fechaInicio').value || null" 
+            [max]="today">
+          </mv-datepicker>
+          <div *ngIf="fechaForm.get('fechaFin').hasError('futureDate')" class="error">
+            La fecha de fin no puede ser futura.
+          </div>
+          <div *ngIf="fechaForm.get('fechaFin').hasError('earlierEndDate')" class="error">
+            La fecha de fin no puede ser menor que la fecha de inicio.
+          </div>
+        </div>
+        <mv-button type="submit" [disabled]="!fechaForm.valid">Seleccionar Fechas</mv-button>
+      </mv-card-content>
+    </mv-card>
+  </form>
+</div>

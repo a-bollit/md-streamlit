@@ -1,0 +1,112 @@
+Result from comportamiento_control_task: ## Triggers and Programming Units of the EXPECA01 Oracle Form
+
+### Triggers
+
+1. **Block B00**
+   - **Trigger WHEN-BUTTON-PRESSED**
+     - **ACEPTAR Button:**
+       - **Functionality:** This trigger performs validation checks on the `cdunidad` field before proceeding. If valid, it triggers validation on expediente, dates, and performs various UI actions to display valid data.
+       - **Events:** Executed when the 'ACEPTAR' button is pressed.
+       - **Calculations & Interactions:** Calls several procedures (`Valida_Expediente`, `Valida_Fechas`, `Construir_Where_Corr`, `Construir_Where_Note`) to validate the data and refreshes views and synchronizes data display.
+     - **CANCELAR Button:**
+       - **Functionality:** Exits the form without validation.
+       - **Events:** Executed when the 'CANCELAR' button is pressed.
+     - **WHEN-VALIDATE-ITEM Trigger on `CDTEXP` field**
+       - **Functionality:** Validates the `cdtexp` value and applies restrictions based on global application settings.
+       - **Events:** Triggered during item-level validation.
+       - **Calculations & Interactions:** Calls `Permisos_Aplicacion` and checks `Restricciones_APL_TEXP` for validations concerning application permissions.
+
+2. **Block BL_GENERAL**
+   - **WHEN-BUTTON-PRESSED Trigger:**
+     - **CAL_FCDESDE Button:**
+       - **Functionality:** Displays the calendar to select the 'from date'.
+       - **Events:** Executed when the 'CAL_FCDESDE' button is pressed.
+       - **Calculations & Interactions:** Calls `FCALENDARIO` procedure with `fcdesde`.
+     - **CAL_FCHASTA Button:**
+       - **Functionality:** Displays the calendar to select the 'to date'.
+       - **Events:** Executed when the 'CAL_FCHASTA' button is pressed.
+       - **Calculations & Interactions:** Calls `FCALENDARIO` procedure with `fchasta`.
+   - **KEY-NEXT-ITEM Trigger on Date Fields:**
+     - **Functionality:** Sets navigation to next items in a sequential manner.
+     - **Events:** Triggered during tabbing or enter key events.
+     - **Calculations & Interactions:** Uses `go_item` to navigate to `fchasta` from `fcdesde` and to `cddeptno` from `fchasta`.
+   - **WHEN-BUTTON-PRESSED Trigger on `LOV_CDUNIDAD` Button:**
+     - **Functionality:** Displays LOV for administrative units for selection.
+     - **Events:** Executed when the 'LOV_CDUNIDAD' button is pressed.
+     - **Calculations & Interactions:** Displays LOV form for `CDUNIDAD`.
+
+3. **Block GEA_ACURE**
+   - **WHEN-CHECKBOX-CHANGED Trigger:**
+     - **CB_MARCA Checkbox:**
+       - **Functionality:** Evaluates mark changes and handles data integrity by verifying if a document can be marked based on its data completeness.
+       - **Events:** Triggered when the checkbox state changes.
+       - **Calculations & Interactions:** Increments or decrements selection counter and applies data validation messages accordingly.
+
+   - **POST-QUERY Trigger:**
+     - **Functionality:** Executes after a record fetch. It populates derived fields, validates expediente status, and formats displayed data with expedition identifiers.
+     - **Events:** Automatically triggered post data query.
+     - **Calculations & Interactions:** Uses `f_estado_expediente` to check statuses, formats expedition display, and resets internal flags.
+
+   - **KEY-UP & KEY-DOWN Triggers:**
+     - **Functionality:** Handles navigation within the block; prevents moving before the first and beyond the last records respectively.
+     - **Events:** Triggered by navigation keys.
+     - **Calculations & Interactions:** Uses `up` & `down` to navigate records with validation checks.
+
+4. **Block NOTIFICACION_TELEMATICA**
+   - **WHEN-CHECKBOX-CHANGED Trigger:**
+     - **CB_MARCA Checkbox:**
+       - **Functionality:** Manages the validation and marking of checkboxes, ensuring that only valid records are marked for action.
+       - **Events:** Triggered when the checkbox state changes.
+       - **Calculations & Interactions:** Implements validation logic to ensure that attached documents, saved states, and authorization criteria are met before marking a document.
+
+   - **KEY-UP & KEY-DOWN Triggers:**
+     - **Functionality:** Manages upward and downward navigation within records ensuring index bounds.
+     - **Events:** Triggered by navigation keys.
+     - **Calculations & Interactions:** Utilizes `up` & `down` to navigate with appropriate boundary messages.
+
+   - **POST-QUERY Trigger:**
+     - **Functionality:** Acts post data fetching to validate and format the notification records for display.
+     - **Events:** Automatic post-query execution.
+     - **Calculations & Interactions:** Executes structured queries to assess the state of each document and updates UI dynamically based on validation results.
+
+### Programming Units
+
+1. **Procedures:**
+   - **ULTIMA_NOTIFICACION:**
+     - **Functionality:** Fetches last notification details for the given document.
+     - **Calculations & Interactions:** Uses select statements to count and format output for last notification display.
+  
+   - **COMPROBAR_SELECCION:**
+     - **Functionality:** Validates if the selected checkboxes meet the required criteria before acting.
+     - **Calculations & Interactions:** Checks for validation errors across different document states and displays interactive messages.
+
+   - **PONER_ROJO:**
+     - **Functionality:** Highlights specific UI items in red if they meet the error criteria.
+     - **Calculations & Interactions:** Iterates over fields and updates visual properties based on internal states.
+  
+   - **VALIDA_EXPEDIENTE:**
+     - **Functionality:** Ensures that the selected expediente values are valid and not closed or annulled.
+     - **Calculations & Interactions:** Compares database values and raises exceptions for invalid states.
+
+   - **VALIDA_FECHAS:**
+     - **Functionality:** Ensures the provided date fields comply with business date rules (not future dates, logical date ranges).
+     - **Calculations & Interactions:** Validates and ensures dates are within a valid range, raising errors as necessary.
+
+   - **CONSTRUIR_WHERE_CORR:**
+     - **Functionality:** Dynamically builds the WHERE clause for conditional filtering in SQL queries related to Correos.
+     - **Calculations & Interactions:** Updates the SQL default where clause with dynamic filters based on user input.
+
+   - **CONSTRUIR_WHERE_NOTE:**
+     - **Functionality:** Constructs dynamic WHERE clauses for SQL queries related to Notifications.
+     - **Calculations & Interactions:** Customizes and sets the WHERE clause conditionally for data retrieval.
+
+2. **Functions:**
+   - **F_ESTADO_EXPEDIENTE (State Function):**
+     - **Functionality:** Determines the state of a document/expendiente.
+     - **Calculations & Interactions:** Returns the status of the expediente by querying DB status values.
+
+   - **CALCULAR_NUMERO_ANEXOS:**
+     - **Functionality:** Counts the number of annexes associated with a given document.
+     - **Calculations & Interactions:** Executes a count query and returns the result.
+
+This thorough outline captures the essential logic underpinning the EXPECA01 Oracle Form, facilitating the backend execution tied to key fields, processes, and their validations, ensuring a comprehensive replication or migration with predictable behaviors.

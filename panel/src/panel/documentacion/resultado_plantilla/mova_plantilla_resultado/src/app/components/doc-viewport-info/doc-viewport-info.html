@@ -1,0 +1,193 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-viewport-info</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='positionXExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> positionX
+      </a></li>
+      <li><a class="nostyle" (click)='positionYExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> positionY
+      </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-viewport-info</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente sirve para mostrar la información del viewport en tiempo real. </p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplo de uso del componente <strong>mv-viewport-info</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showComponent(1)">
+        Mostrar
+      </mv-button>
+
+      <mv-viewport-info
+        *ngIf="showViewport1">
+      </mv-viewport-info>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- positionX -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #positionXExample><strong>positionX</strong></mv-card-title>
+      <mv-card-subtitle>Posición horizontal.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad positionX permite situar horizontalmente el componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="columnCodePositionXHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showComponent(2)">
+        Mostrar left
+      </mv-button>
+
+      <mv-viewport-info
+        positionX="left"
+        *ngIf="showViewport2">
+      </mv-viewport-info>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showComponent(3)">
+        Mostrar center
+      </mv-button>
+
+      <mv-viewport-info
+        positionX="center"
+        *ngIf="showViewport3">
+      </mv-viewport-info>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showComponent(4)">
+        Mostrar right
+      </mv-button>
+
+      <mv-viewport-info
+        positionX="right"
+        *ngIf="showViewport4">
+      </mv-viewport-info>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- positionY -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #positionYExample><strong>positionY</strong></mv-card-title>
+      <mv-card-subtitle>Posición vertical.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad positionY permite situar verticalmente el componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="columnCodePositionYHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showComponent(5)">
+        Mostrar top
+      </mv-button>
+
+      <mv-viewport-info
+        positionY="top"
+        *ngIf="showViewport5">
+      </mv-viewport-info>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showComponent(6)">
+        Mostrar center
+      </mv-button>
+
+      <mv-viewport-info
+        positionY="center"
+        *ngIf="showViewport6">
+      </mv-viewport-info>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showComponent(7)">
+        Mostrar bottom
+      </mv-button>
+
+      <mv-viewport-info
+        positionY="bottom"
+        *ngIf="showViewport7">
+      </mv-viewport-info>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

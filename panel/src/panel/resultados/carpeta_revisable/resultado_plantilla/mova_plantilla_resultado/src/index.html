@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>MOVA 2 - Plantilla</title>
+  <base href="/">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap://ready;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.madrid.org https://*.comunidad.madrid https://www.google.com/recaptcha/
+      https://www.gstatic.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdnjs.cloudflare.com/ajax/libs/pdf.js/ https://cartociudad.es/geocoder/;
+      style-src 'self' 'unsafe-inline';
+      media-src 'self' https://*.madrid.org https://*.comunidad.madrid;
+      img-src 'self' https://a.tile.openstreetmap.org/ https://server.arcgisonline.com/ https://mt1.google.com/ https://*.madrid.org https://*.comunidad.madrid https://randomuser.me/ https://cartodb-basemaps-a.global.ssl.fastly.net/ blob: data:;
+      font-src 'self';
+      frame-src https://*.madrid.org https://*.comunidad.madrid https://www.google.com/recaptcha/;
+      connect-src https://*.madrid.org https://*.comunidad.madrid http://localhost:* ws://localhost:* http://*.madrid.org https://cartociudad.es/;
+      child-src gap://ready https://*.madrid.org https://*.comunidad.madrid https://www.google.com/ file://*;
+      worker-src https://*.madrid.org blob: https://*.comunidad.madrid http://localhost:* ws://localhost:*;">
+  <link rel="manifest" href="manifest.webmanifest"/>
+  <meta name="mobile-web-app-capable" content="yes">
+  <script>
+      window.addEventListener = function () {
+        (window.EventTarget || Window).prototype.addEventListener.apply(this, arguments);
+      };
+      window.removeEventListener = function () {
+        (window.EventTarget || Window).prototype.removeEventListener.apply(this, arguments);
+      };
+      document.addEventListener = function () {
+        (window.EventTarget || Document).prototype.addEventListener.apply(this, arguments);
+      };
+      document.removeEventListener = function () {
+        (window.EventTarget || Document).prototype.removeEventListener.apply(this, arguments);
+      };
+  </script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script src="https://idem.madrid.org/visor/vgcm.js"></script>
+  <!-- API GIS -->
+  <link href="assets/vendors/ext/ol_7_1_0.css" rel="stylesheet">
+</head>
+<body style="overflow:hidden;height:calc(100vh - env(safe-area-inset-top)); padding-bottom: 0px !important;">
+  <app-root></app-root>
+</body>
+</html>

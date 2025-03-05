@@ -1,0 +1,18 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+.dependency{
+  color: #bb2d2d;
+  margin-left: 1rem;
+}
+.permission{
+  color: #442dbb;
+  margin-left: 1rem;
+}
+li{
+  margin: 0 0 2rem 0;
+}

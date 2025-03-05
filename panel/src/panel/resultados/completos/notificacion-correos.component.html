@@ -1,0 +1,29 @@
+<mv-card>
+  <mv-header>
+    <mv-title>Gestión de Notificaciones de Correos</mv-title>
+    <mv-subtitle>Seleccione las notificaciones que desea enviar</mv-subtitle>
+  </mv-header>
+  <mv-content>
+    <mv-button (click)="seleccionarTodo()">Seleccionar Todo</mv-button>
+    <mv-button (click)="desmarcarTodo()">Desmarcar Todo</mv-button>
+    <table>
+      <thead>
+        <tr>
+          <th><mv-checkbox [(ngModel)]="allSelected" (change)="toggleAll()"></mv-checkbox></th>
+          <th>Correo</th>
+          <th>Fecha</th>
+          <th>Asunto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let notificacion of notificacionesCorreos">
+          <td><mv-checkbox [(ngModel)]="notificacion.seleccionado"></mv-checkbox></td>
+          <td>{{ notificacion.correo }}</td>
+          <td>{{ notificacion.fecha | date }}</td>
+          <td>{{ notificacion.asunto }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <mv-button (click)="enviarNotificaciones()">Enviar Notificaciones</mv-button>
+  </mv-content>
+</mv-card>

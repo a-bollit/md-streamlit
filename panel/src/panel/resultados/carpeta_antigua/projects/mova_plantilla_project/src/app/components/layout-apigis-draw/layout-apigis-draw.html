@@ -1,0 +1,26 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 draw-mobile">
+      <div class="draw-container">
+        <mv-button appearance="raised" color="primary" adapt=true (clickEvent)="drawPoint()">
+          Dibujar punto
+        </mv-button>
+        <mv-button appearance="raised" color="primary"  adapt=true (clickEvent)="drawLine()">
+          Dibujar línea
+        </mv-button>
+        <mv-button appearance="raised" color="primary"  adapt=true (clickEvent)="drawPolygon()">
+          Dibujar polígono
+        </mv-button>
+        <!-- <mv-button appearance="raised" color="primary"  adapt=true (clickEvent)="drawCircle()">
+          Dibujar círculo
+        </mv-button> -->
+        <mv-button appearance="raised" color="corporative"  adapt=true (clickEvent)="remove()">
+          Borrar todo
+        </mv-button>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-9 map-mobile">
+      <div id="container-apigis-draw"></div>
+    </div>
+  </div>
+</div>

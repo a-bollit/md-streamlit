@@ -1,0 +1,42 @@
+@import '~@mova/components/_variables.scss';
+
+.card-devoluciones {
+  padding: 16px;
+  max-width: 600px;
+  margin: auto;
+
+  mv-header {
+    margin-bottom: 20px;
+  }
+
+  mv-content {
+    form {
+      display: flex;
+      flex-direction: column;
+
+      div {
+        margin-bottom: 15px;
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+
+        input, select {
+          width: 100%;
+          padding: 8px;
+          box-sizing: border-box;
+        }
+      }
+
+      .btn-primary {
+        @include button-color(#007bff);
+      }
+
+      .btn-secondary {
+        @include button-color(#6c757d);
+      }
+    }
+  }
+}

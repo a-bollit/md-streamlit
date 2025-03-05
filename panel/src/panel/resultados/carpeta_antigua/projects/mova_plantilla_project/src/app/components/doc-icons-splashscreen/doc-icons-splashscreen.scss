@@ -1,0 +1,14 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+.config_image{
+  width: calc(100% - 30px);
+  padding: 15px;
+}
+.config_icon{
+  width: 120px;
+}

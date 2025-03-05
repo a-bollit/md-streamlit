@@ -1,0 +1,227 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-footer-nav-tab</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='navBarColor.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> navBarColor
+      </a></li>
+      <li><a class="nostyle" (click)='navBarColorBar.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> navBarColorBar
+      </a></li>
+      <li><a class="nostyle" (click)='navBarConfig.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> navBarConfig
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-footer-nav-tab</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente sirve para poner una barra fija de navegación a modo de menú en la parte de abajo
+        de la app.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-footer-nav-tab</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExample1HTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExample1TS"></code></pre>
+        </mv-tab>
+        <mv-tab label="SCSS">
+          <pre><code [highlight]="codeUseExample1SCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de footer-nav-tab:</strong></p>
+      <mv-button
+        link="/doc-footer-nav-tab-example1"
+        appearance="raised"
+        color="primary">
+        Activar ejemplo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- navBarColor -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #navBarColor><strong>navBarColor</strong></mv-card-title>
+      <mv-card-subtitle>Color del elemento de selección.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad navBarColor permite definir el color de la barra de selección, cuando está seleccionado un elemento.
+        Los colores disponibles son:</p>
+        <ul>
+          <li>primary</li>
+          <li>accent</li>
+          <li>warn</li>
+          <li>corporative</li>
+          <li>secondary-001</li>
+          <li>secondary-002</li>
+          <li>secondary-003</li>
+          <li>secondary-004</li>
+          <li>secondary-005</li>
+          <li>secondary-006</li>
+          <li>secondary-007</li>
+          <li>secondary-008</li>
+          <li>secondary-009</li>
+          <li>secondary-010</li>
+          <li>secondary-011</li>
+          <li>secondary-012</li>
+          <li>secondary-white</li>
+          <li>secondary-black</li>
+        </ul>
+      <p>Si no especificamos ningún valor, el color de la barra es negro.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeRestOfExamplesHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeRestOfExamplesTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="SCSS">
+          <pre><code [highlight]="codeRestOfExamplesSCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- navBarColorBar -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #navBarColorBar><strong>navBarColorBar</strong></mv-card-title>
+      <mv-card-subtitle>Color de los botones.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad navBarColorBar permite definir el color de fondo de los botones. Los colores disponibles son:</p>
+      <ul>
+        <li>primary</li>
+        <li>accent</li>
+        <li>warn</li>
+        <li>corporative</li>
+        <li>secondary-001</li>
+        <li>secondary-002</li>
+        <li>secondary-003</li>
+        <li>secondary-004</li>
+        <li>secondary-005</li>
+        <li>secondary-006</li>
+        <li>secondary-007</li>
+        <li>secondary-008</li>
+        <li>secondary-009</li>
+        <li>secondary-010</li>
+        <li>secondary-011</li>
+        <li>secondary-012</li>
+        <li>secondary-white</li>
+        <li>secondary-black</li>
+      </ul>
+      <p>Si no especificamos ningún valor, el color de fondo es blanco.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeRestOfExamplesHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeRestOfExamplesTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="SCSS">
+          <pre><code [highlight]="codeRestOfExamplesSCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- navBarConfig -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #navBarConfig><strong>navBarConfig</strong></mv-card-title>
+      <mv-card-subtitle>Definición de los botones y menú.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad navBarConfig permite definir los distintos botones de los que se compone la barra de navegación.</p>
+      <p>Hay que definir por un lado un array con tantas posiciones como botones queramos que tenga el componente. En cada posición
+        del array debemos definir el icono, el título y la url de navegación:</p>
+        <ul>
+          <li>icon: nombre del icono </li>
+          <li>fontSet: 'fa' (si queremos que sea Font Awesome. Material por defecto)</li>
+          <li>title: título que se mostrará debajo del icono</li>
+          <li>stateUrl: url de navegación</li>
+        </ul>
+      <p>También se puede definir un botón más a modo de menú, que desplegará un menú contextual con tantas opciones como definamos:</p>
+      <ul>
+        <li>title: título que se mostrará debajo del icono</li>
+        <li>stateUrl: url de navegación</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeRestOfExamplesHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeRestOfExamplesTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="SCSS">
+          <pre><code [highlight]="codeRestOfExamplesSCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top
+  upper=true>
+</mv-button-scroll-to-top>

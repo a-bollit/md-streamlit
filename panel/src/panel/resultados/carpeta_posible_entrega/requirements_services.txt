@@ -1,0 +1,157 @@
+## Servicios de Angular 8:
+
+Cada servicio detalla su propósito, funcionalidad, métodos HTTP utilizados, parámetros manejados, ejemplos de integración con el backend y manejo de autenticaciones, para replicar los bloques del código `gea_acure` y `notificacion_telematica` de Oracle Forms.
+
+### 1. **Servicio GeaAcureService**
+
+#### Funcionalidad
+Este servicio se encarga de realizar las operaciones CRUD para el bloque `GEA_ACURE`. Permite la gestión de registros asociados a la base de datos y la validación.
+
+#### Métodos HTTP
+- **GET**: Recupera los registros.
+- **POST**: Crea nuevos registros.
+- **PUT**: Actualiza los registros existentes.
+- **DELETE**: Elimina registros.
+
+#### Parámetros y Datos
+- **GET**: Parámetros de consulta como `cdunidad`, `dsunidad`, `fcdesde`, `fchasta`.
+- **POST**: Datos del nuevo registro a crear.
+- **PUT**: Datos actualizados del registro.
+- **DELETE**: Identificador del registro a eliminar.
+
+#### Integración con Backend
+- **GET**: `/api/geaAcure`
+- **POST**: `/api/geaAcure`
+- **PUT**: `/api/geaAcure/{id}`
+- **DELETE**: `/api/geaAcure/{id}`
+
+#### Guía para Desarrolladores
+1. **GET**: Utilizar para listar todos los registros con opción de filtro.
+    ```typescript
+    this.geaAcureService.getGeaAcure({ cdunidad: 'value', dsunidad: 'value', fcdesde: 'value', fchasta: 'value' }).subscribe(response => {
+      console.log(response);
+    });
+    ```
+2. **POST**: Para crear un nuevo registro gea_acure.
+    ```typescript
+    const newRecord = { /* datos del registro */ };
+    this.geaAcureService.createGeaAcure(newRecord).subscribe(response => {
+      console.log(response);
+    });
+    ```
+3. **PUT**: Actualizar registro existente.
+    ```typescript
+    const updatedRecord = { /* datos actualizados */ };
+    this.geaAcureService.updateGeaAcure(existingRecordId, updatedRecord).subscribe(response => {
+      console.log(response);
+    });
+    ```
+4. **DELETE**: Eliminar registro por ID.
+    ```typescript
+    this.geaAcureService.deleteGeaAcure(recordId).subscribe(response => {
+      console.log(response);
+    });
+    ```
+
+#### Manejo de Errores y Respuestas
+- **Errores**: Implementar manejo de errores usando `catchError` de RxJS.
+- **Respuestas**: Validar y procesar las respuestas en el componente llamante.
+
+### 2. **Servicio NotificacionTelematicaService**
+
+#### Funcionalidad
+Este servicio gestiona las notificaciones telemáticas (`notificacion_telematica`). Incluye validaciones para las notificaciones y actualizaciones de estado.
+
+#### Métodos HTTP
+- **GET**: Recupera notificaciones.
+- **POST**: Crea nuevas notificaciones.
+- **PUT**: Actualiza notificaciones existentes.
+- **DELETE**: Elimina notificaciones.
+
+#### Parámetros y Datos
+- **GET**: Parámetros de consulta como `cdunidad`, `dsunidad`, `fcdesde`, `fchasta`.
+- **POST**: Datos de la nueva notificación.
+- **PUT**: Datos actualizados de la notificación.
+- **DELETE**: Identificador de la notificación a eliminar.
+
+#### Integración con Backend
+- **GET**: `/api/notificacionTelematica`
+- **POST**: `/api/notificacionTelematica`
+- **PUT**: `/api/notificacionTelematica/{id}`
+- **DELETE**: `/api/notificacionTelematica/{id}`
+
+#### Guía para Desarrolladores
+1. **GET**: Utilizar para listar las notificaciones con opciones de filtro.
+    ```typescript
+    this.notificacionTelematicaService.getNotificaciones({ cdunidad: 'value', dsunidad: 'value', fcdesde: 'value', fchasta: 'value' }).subscribe(response => {
+      console.log(response);
+    });
+    ```
+2. **POST**: Crear una nueva notificación.
+    ```typescript
+    const newNotification = { /* datos de la notificación */ };
+    this.notificacionTelematicaService.createNotificacion(newNotification).subscribe(response => {
+      console.log(response);
+    });
+    ```
+3. **PUT**: Actualizar notificación existente.
+    ```typescript
+    const updatedNotification = { /* datos actualizados */ };
+    this.notificacionTelematicaService.updateNotificacion(existingNotificacionId, updatedNotification).subscribe(response => {
+      console.log(response);
+    });
+    ```
+4. **DELETE**: Eliminar notificación por ID.
+    ```typescript
+    this.notificacionTelematicaService.deleteNotificacion(notificacionId).subscribe(response => {
+      console.log(response);
+    });
+    ```
+
+#### Manejo de Errores y Respuestas
+- **Errores**: Implementar manejo de errores usando `catchError` de RxJS.
+- **Respuestas**: Validar y procesar las respuestas en el componente llamante.
+
+## Integración con Backend
+
+Cada servicio se integra cuidadosamente con los respectivos endpoints del backend. Detallamos los requisitos para cada integración de servicio.
+
+### Endpoint de GeaAcureService
+1. **GET**: `/api/geaAcure`
+    - **Datos**: Parámetros de consulta enviados como query params.
+    - **Maneja Respuesta**: Procesa la respuesta para mostrar los registros; maneja errores con `catchError`.
+
+2. **POST**: `/api/geaAcure`
+    - **Datos**: Objeto JSON con datos del nuevo registro.
+    - **Maneja Respuesta**: Procesa la respuesta de creación; errores manejados con `catchError`.
+
+3. **PUT**: `/api/geaAcure/{id}`
+    - **Datos**: ID en la URL y objeto JSON con datos actualizados.
+    - **Maneja Respuesta**: Procesa la respuesta de actualización; errores manejados con `catchError`.
+
+4. **DELETE**: `/api/geaAcure/{id}`
+    - **Datos**: ID del registro a eliminar en la URL.
+    - **Maneja Respuesta**: Procesa la respuesta de eliminación; errores manejados con `catchError`.
+
+### Endpoint de NotificacionTelematicaService
+1. **GET**: `/api/notificacionTelematica`
+    - **Datos**: Parámetros de consulta enviados como query params.
+    - **Maneja Respuesta**: Procesa la respuesta para mostrar las notificaciones; maneja errores con `catchError`.
+
+2. **POST**: `/api/notificacionTelematica`
+    - **Datos**: Objeto JSON con datos de la nueva notificación.
+    - **Maneja Respuesta**: Procesa la respuesta de creación; errores manejados con `catchError`.
+
+3. **PUT**: `/api/notificacionTelematica/{id}`
+    - **Datos**: ID en la URL y objeto JSON con datos actualizados.
+    - **Maneja Respuesta**: Procesa la respuesta de actualización; errores manejados con `catchError`.
+
+4. **DELETE**: `/api/notificacionTelematica/{id}`
+    - **Datos**: ID de la notificación a eliminar en la URL.
+    - **Maneja Respuesta**: Procesa la respuesta de eliminación; errores manejados con `catchError`.
+
+### Requisitos Adicionales
+- **Autenticación**: Implementar guardas de autenticación utilizando `AuthGuard` para proteger rutas de acceso a los servicios.
+- **Autorización**: Implementar middleware para validar roles y permisos de usuario al acceder a los servicios.
+
+Estas descripciones detalladas aseguran una guía exhaustiva para el desarrollo y la integración correcta de los servicios en `/services`, facilitando su configuración precisa y funcionalidad dentro del proyecto Angular 8.

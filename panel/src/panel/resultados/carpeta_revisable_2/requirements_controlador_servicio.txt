@@ -1,0 +1,353 @@
+Eres un desarrollador senior especializado en Java Spring Boot con experiencia extensa en el diseño e implementación de APIs RESTful. Has trabajado en varios proyectos de migración desde Oracle Forms a arquitecturas modernas basadas en microservicios. Tu misión es asistir a otros desarrolladores en la correcta estructuración de controladores y servicios en Java Spring Boot para replicar la funcionalidad de Oracle Forms. Proporcionas explicaciones claras y detalladas junto con ejemplos de código para asegurar un proceso de migración sencillo y preciso, con el objetivo de que se implementen soluciones robustas y escalables.
+
+Tu objetivo personal es analizar el código de Oracle Forms y ofrecer una guía detallada sobre cómo replicar su funcionalidad en Java Spring Boot. Deberás:
+
+1. Identificar y describir los controladores REST necesarios.
+2. Especificar los métodos en cada controlador, incluyendo las rutas, los parámetros de entrada y salida.
+3. Detallar los servicios que interactúan con estos controladores.
+4. Proporcionar ejemplos de código para cada parte.
+5. Explicar claramente a qué bases de datos o entidades están ligados los controladores y servicios.
+6. Incluir el manejo de errores y la estructura adecuada del proyecto.
+7. Separar los contenidos por la base de datos o entidad relacionada para mayor claridad.
+
+El código de Oracle Forms XML define un módulo llamado "EXPECA01" con varias configuraciones, incluyendo alertas y bloques.
+
+**Atributos:**
+- Versión del módulo: 122011900
+- Namespace: `http://xmlns.oracle.com/Forms`
+- MouseNavigationLimit: "Pantalla"
+- MenuModule: "DEFAULT&amp;SMARTBAR"
+
+**Alertas:**
+1. **CONFIRMAR**: Título "Confirmar dar de baja registro", Botón1 "SI", Botón2 "NO", Estilo "Atención".
+2. **NOTA**: Estilo "Nota".
+3. **MENSAJE**: Título "Aviso".
+
+**Bloques:**
+1. **B00**:
+   - RecordsDisplayCount: 1
+   - Propiedades como InsertAllowed, UpdateAllowed, DeleteAllowed: true
+   - Ítem **EXISTEN_EXP_AN_FI**: Ítem básico con ancho y alto definidos.
+   - Ítem **FALLO**: Propiedades extensas como justificación, dimensiones, seguridad y visibilidad.
+
+2. **BL_GENERAL**:
+   - RecordsDisplayCount: 1
+   - Propiedades como InsertAllowed, UpdateAllowed, DeleteAllowed: true
+   - Ítems:
+     - **CDORGA_EREG**: Elemento de texto con ancho, longitud máxima, visibilidad y posicionamiento.
+     - **IDORGA_EREG**: Similar a CDORGA_EREG con ligeras variaciones.
+     - **LOV_CDUNIDAD**: Tipo botón, atributos visuales y un trigger asociado "WHEN-BUTTON-PRESSED".
+     - **CDUNIDAD**: Elemento mostrado con permisos de inserción, actualización y consulta.
+     - **DSUNIDAD**: Elemento de texto con múltiples atributos visuales, de seguridad y funcionalidad.
+
+El código establece la estructura del formulario, las interacciones del usuario y el formato visual, junto con reglas de manejo de datos en varios ítems y bloques. El texto proporcionado parece ser una configuración o código para un diseño de interfaz de usuario, detallando múltiples ítems o campos. Aquí tienes un resumen de los detalles importantes:
+
+1. **Configuraciones Generales**:
+   - `UpdateIfNull`: false
+   - `KeepCursorPosition`: false
+   - `VisualAttributeName`: CAMPO_FONDO
+   - `LockRecord`: false
+   - `ShowVerticalScrollbar`: false
+
+2. **Ítems (Campos)**:
+   - **FCDESDE**: 
+     - Habilitado, 57 de ancho, 10 de longitud máxima, AutoSkip false, posicionado en X=95, Y=38, no requerido o ítem de base de datos, formato de fecha `dd-mm-rrrr`, altura 15.
+     - Navegación a `FCHASTA`, atributo visual de fondo `CAMPO_FONDO`, consulta permitida.
+     - Trigger en `KEY-NEXT-ITEM` para ir a `BL_GENERAL.fchasta`.
+
+   - **CAL_FCDESDE**: 
+     - Botón icónico en X=156, Y=37, archivo de icono `EXPE_CAL`, atributo visual `BOTON`, altura 18.
+     - Trigger en `WHEN-BUTTON-PRESSED` para llamar a `FCALENDARIO`.
+
+   - **FCHASTA**: 
+     - Propiedades similares a `FCDESDE`, 57 de ancho, longitud máxima 10, X=221, Y=38.
+     - Navegación a `CDDEPTNO`, atributo visual de fondo `CAMPO_FONDO`, consulta permitida.
+     - Trigger en `KEY-NEXT-ITEM` para ir a `BL_GENERAL.cddeptno`.
+
+   - **CAL_FCHASTA**: 
+     - Botón icónico en X=282, Y=37, archivo de icono `EXPE_CAL`, atributo visual `BOTON`, altura 18.
+     - Trigger en `WHEN-BUTTON-PRESSED` para llamar a `FCALENDARIO`.
+
+   - **CDDEPTNO**: 
+     - Tipo de datos carácter, posicionado en X=95, Y=61, navegable por teclado, fondo blanco, fuente Arial tamaño 900.
+     - Navegación a `CDTEXP`.
+
+   - **CDTEXP**: 
+     - Tipo de datos carácter, posicionado en X=117, Y=61, navegable por teclado, fondo blanco, fuente Arial tamaño 900.
+     - Trigger de validación para permisos y restricciones, navegación a `CDNEXP`.
+
+   - **CDNEXP**: 
+     - Tipo de datos númerico, posicionado en X=158, Y=61, navegable por teclado, fondo blanco, fuente Arial tamaño 900, máscara de formato `00009`.
+     - Navegación a `CDDIGITO`.
+
+   - **CDDIGITO**: 
+     - Tipo de datos númerico, posicionado en X=199, Y=61, navegable por teclado, fondo blanco, fuente Arial tamaño 900.
+     - Navegación a `CDAEXP`.
+
+   - **CDAEXP**: 
+     - Tipo de datos numérico, estilo lista de cuadro combinado, posicionado en X=218, Y=61, no requerido, fondo blanco, fuente Arial tamaño 900.
+     - Navegación a `ACEPTAR`.
+
+   - **INCLUIR_ENVIADOS**: 
+     - Casilla de verificación, ancho 110.
+
+La configuración define la apariencia, comportamiento y navegación de campos y botones dentro de un formulario o interfaz, principalmente usados para selección de fechas y entradas adicionales de texto y numéricas. El texto parece describir la configuración y comportamiento de varios elementos interactivos dentro de un formulario. Aquí están los componentes clave:
+
+1. **Checkbox (Incluir enviados)**:
+   - Posicionado en X: 95, Y: 82.
+   - Etiquetado "Incluir enviados".
+   - Fuente: Arial, tamaño 900, estilo normal, peso semi-negrita.
+   
+2. **Button (Aceptar)**:
+   - Posicionado en X: 214, Y: 110.
+   - Etiquetado "Aceptar".
+   - Habilitado.
+   - Realiza diversas verificaciones y acciones al ser presionado, como validar ciertos campos, cambiar vistas, construir condiciones de consulta y ejecutar consultas.
+
+3. **Button (Cancelar)**:
+   - Posicionado en X: 114, Y: 110.
+   - Etiquetado "Cancelar".
+   - Habilitado.
+   - Acción: Salir del formulario sin validación.
+   
+4. **Checkbox (Imprimir oficios asociados)**:
+   - Posicionado en X: 31, Y: 237.
+   - Etiquetado "Imprimir oficios asociados".
+   - Fuente: Arial, tamaño 800, estilo normal, peso semi-negrita, color r0g50b0.
+   
+5. **Button (AYUDA)**:
+   - Posicionado en X: 322, Y: 37.
+   - Etiquetado "PUSH_BUTTON844".
+   - Acción: Navegar al ítem 'bl_general.cerrar'.
+   
+6. **Button (Cerrar)**:
+   - Posicionado en X: 140, Y: 111.
+   - Etiquetado "Cerrar".
+   - Acción: Navegar al ítem 'Bl_general.ayuda'.
+   
+7. **Triggers**:
+   - PRE-TEXT-ITEM: Cambia el color de fondo de la fila actual.
+   - POST-TEXT-ITEM: Revierte el color de fondo después de dejar el ítem.
+   
+8. **Block GEA_ACURE**:
+   - Contiene condiciones de consulta detalladas para obtener registros asociados con el ítem actual.
+   - Configurado con propiedades visuales y de navegación específicas, permitiendo 14 registros en buffer, mostrados y obtenidos.
+   - Incluye una cláusula ORDER BY para ordenar registros.
+
+Los elementos y sus comportamientos asociados están definidos meticulosamente para asegurar la funcionalidad y navegación adecuada en el formulario. El texto describe la configuración de elementos en un bloque automatizado de base de datos llamado GEA_ACURE, incluyendo modo de clave "Automático" y opciones de consulta, permitiendo pero no todos los registros. Incluye ítems con propiedades específicas:
+
+1. **CODARCHIVO_PDF**: Este es un ítem de texto oculto con varias propiedades como posición, tamaño y ocultamiento de datos.
+2. **CDDOCUM**: Este es un ítem de texto de clave primaria con atributos que lo definen como un ítem de base de datos oculto y no editable.
+3. **CB_MARCA**: Un ítem tipo checkbox ubicado en la página de pestañas "PG_CORR" que activa acciones basadas en su valor marcado.
+4. **DOCUMENTO**: Un ítem de texto visible para la entrada de documentos con propiedades como fuente y color de fondo detalladas.
+5. **DSDOCUM**: Un ítem de texto visible para la descripción del documento con múltiples características incluyendo detalles de fuente, tamaño y color de fondo.
+
+Atributos para estos ítems incluyen sus posiciones, dimensiones, enlaces de base de datos, atributos visuales, opciones de interactividad y propiedades adicionales de la UI. El texto proporcionado describe las especificaciones para varios elementos de la UI dentro de un formulario o aplicación. Cada ítem tiene atributos específicos pero comparte algunos comunes y diferencias. Aquí se resumen los detalles para cada ítem mencionado:
+
+1. **CAMPO_FONDO**
+   - Altura: 1
+   - Varios atributos no especificados, incluyendo Nombre, LockRecord y ShowVerticalScrollbar.
+
+2. **DSRAZONSOC**
+   - Nombre: DSRAZONSOC
+   - Ancho: 83
+   - Longitud máxima: 80
+   - Posición X: 273
+   - Posición Y: 16
+   - Color de fondo: r100g100b88
+   - ConcealData: true
+   - DisplayQuality: Alta
+   - Habilitado: true
+   - ValidateFromList: false
+   - Múltiples atributos que indican características de visualización, entrada y validación.
+
+3. **CDPAIS**
+   - Nombre: CDPAIS
+   - Longitud máxima: 3
+   - Otros atributos similares a DSRAZONSOC pero con algunas características compartidas entre propiedades como ancho, posiciones, color de fondo y manejo de datos.
+
+4. **CDPROV**
+   - Nombre: CDPROV
+   - Longitud máxima: 2
+   - Otros atributos muy similares a DSRAZONSOC y CDPAIS.
+
+5. **CDMUNI**
+   - Nombre: CDMUNI
+   - Longitud máxima: 3
+   - Atributos se alinean nuevamente con DSRAZONSOC y los elementos de ítem previos.
+
+6. **DSDIRECCION**
+   - Nombre: DSDIRECCION
+   - Longitud máxima: 80
+   - QueryLength: 80 (indicativo de diferente manejo comparado con ítems anteriores, con propiedades relevantes de visualización y validación).
+
+7. **DSDIRECCION1**
+   - Nombre: DSDIRECCION1
+   - Longitud máxima: 150
+   - Datos y propiedades de visualización similares a otros ítems con algunas diferencias en longitud máxima y estilo de validación.
+
+Cada ítem está definido con varias propiedades para validación, visualización, conectividad de base de datos e interacción del usuario pero no se proporcionan todos los atributos. Atributos importantes compartidos incluyen colores estándar, posiciones y calidad de visualización. El texto describe configuraciones para varios elementos, predominantemente elementos de texto, presumiblemente dentro de una aplicación o formulario. Atributos clave para cada ítem incluyen ítems como DSDIRECCION2, CDPOSTAL, DSTELEFONO, DSFAX y CLAVE2. Estos ítems comparten varias propiedades comunes:
+
+- **ValidateFromList:** false
+- **Justification:** "Izquierda" (Left)
+- **ListStyle:** "Lista Emergente" (Popup List)
+- **Width:** 83
+- **BackColor:** r100g100b88
+- **XPosition:** 273
+- **YPosition:** 16
+- **DatabaseItem:** false
+- **Bevel:** "Hundido" (Sunken)
+- **MultiLine:** false
+- **CaseInsensitiveQuery:** false
+- **KeyboardNavigable:** false
+- **CaseRestriction:** "Mixto" (Mixed)
+- **CheckBoxOtherValues:** "No Permitido" (Not Allowed)
+- **PrimaryKey:** false
+- **DirtyInfo:** true
+- **DefaultButton:** true
+- **QueryAllowed:** false
+- **Visible:** false
+- **QueryLength:** various
+- **DisplayQuality:** "Alta" (High)
+- **EditXPosition:** 0
+- **EditYPosition:** 0
+- **Enabled:** true
+- **DistanceBetweenRecords:** 0
+- **FixedLength:** false
+- **Required:** false
+- **Height:** 1
+- **ConcealData:** true
+- **SizingStyle:** "Recortar" (Clip)
+- **ShowHorizontalScrollbar:** false
+- **ItemType:** "Elemento de Texto" (Text Element)
+- **DataType:** "Char" (Character)
+- **UpdateAllowed:** false
+- **UpdateIfNull:** false
+- **KeepCursorPosition:** false
+- **VisualAttributeName:** "CAMPO_FONDO"
+- **LockRecord:** false
+- **ShowVerticalScrollbar:** false
+
+Cada ítem también tiene características únicas en términos de `MaximumLength` y otras propiedades específicas relacionadas con su función. Por ejemplo, `CDPOSTAL` tiene una `MaximumLength` de 5, mientras que `CLAVE2` tiene una `MaximumLength` de 30. Todos los ítems tienen características específicas de navegación e interactividad. 
+
+Para replicar esta lógica en Java Spring Boot, se pueden seguir los siguientes pasos:
+
+### Estructura del Proyecto
+Crear un nuevo proyecto Spring Boot, asegurándose de incluir las dependencias necesarias para Spring Data JPA y Spring Web para manejar solicitudes HTTP y operaciones con la base de datos.
+
+### Controlador REST
+Crear un controlador REST para manejar las solicitudes relacionadas con las migraciones y entidades.
+
+#### Crear un Controlador Básico
+
+```java
+@RestController
+@RequestMapping("/api/v1/migracion")
+public class MigracionController {
+
+    @Autowired
+    private MigracionService migracionService;
+
+    @PostMapping("/procesar")
+    public ResponseEntity<String> procesarMigracion(@RequestBody MigracionRequest migracionRequest) {
+        migracionService.procesarMigracion(migracionRequest);
+        return ResponseEntity.ok("Migración procesada con éxito");
+    }
+}
+```
+
+### Servicio de Migración
+Crear servicios que contengan la lógica de negocio para procesar los datos migrados y validaciones requeridas.
+
+#### Servicio Básico
+
+```java
+@Service
+public class MigracionService {
+
+    @Autowired
+    private MigracionRepository migracionRepository;
+
+    public void procesarMigracion(MigracionRequest request) {
+        // Procesar la lógica de migración
+        validarDatos(request);
+        migracionRepository.saveAll(request.getDatos());
+    }
+
+    private void validarDatos(MigracionRequest request) {
+        // Implementar validaciones necesarias
+    }
+}
+```
+
+### Respositorio de Migración
+Definir repositorios para manejar operaciones con la base de datos.
+
+#### Repositorio Básico
+
+```java
+@Repository
+public interface MigracionRepository extends JpaRepository<MigracionEntity, Long> {
+}
+```
+
+### Entidades de Base de Datos
+Definir las entidades correspondientes que se mapearán a las tablas de base de datos.
+
+#### Entidad Básica
+
+```java
+@Entity
+@Table(name = "migracion")
+public class MigracionEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(name = "nombre")
+    private String nombre;
+    
+    // Otros campos según la tabla de Oracle Forms
+
+    // Getters y Setters
+}
+```
+
+### Manejo de Errores
+Implementar un manejador global de excepciones para captura y reporte de errores.
+
+#### Manejador de Errores Global
+
+```java
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    // Otros manejadores de excepciones
+}
+```
+
+### DTOs para Validaciones
+Crear DTOs para transferir datos entre el controlador y el servicio, asegurando la validación de datos.
+
+#### DTO Básico
+
+```java
+public class MigracionRequest {
+
+    @NotEmpty
+    private String nombre;
+
+    // Otros campos según los requerimientos
+
+    // Getters y Setters
+}
+```
+
+### Conclusión
+Implementar una estructura semejante no solo permite una clara separación de responsabilidades, sino también asegura la escalabilidad y mantenimiento del sistema a largo plazo. Las validaciones robustas y un manejo adecuado de errores son esenciales para replicar la complejidad y robustez de los Oracle Forms en un entorno moderno de microservicios utilizando Spring Boot.

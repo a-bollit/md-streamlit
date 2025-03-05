@@ -1,0 +1,255 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación last-notifications</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='TemplateProperty.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Template
+      </a>
+    </div>
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='TemplateProperty.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> template
+      </a></li>
+      <li><a class="nostyle" (click)='Configuration.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> configuration
+      </a></li>
+    </ol>
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='Update.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Update
+      </a></li>
+      <li><a class="nostyle" (click)='Delete.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Delete
+      </a></li>
+      <li><a class="nostyle" (click)='DeleteAll.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> DeleteAll
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-last-notifications</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente sirve para mostrar las últimas notificaciones recibidas al dispositivo. Solo funcionará por tanto, si tenemos
+       habilitadas las notificaciones push para nuestra app.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso  -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplo de uso del componente <strong>mv-last-notifications</strong></mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Ejemplo de uso básico para las notificaciones. Se puede ver accediendo al apartado de notificaciones del menú
+        <a href="#/last-notifications-view">/last-notifications-view</a>
+      <p>En el ejemplo se usa un template propio, el uso de eliminar notificaciones y la actualización manual de las notificaciones.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="EjemploUsoExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="Template">
+          <pre><code [highlight]="EjemploUsoExampleTemplate"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="EjemploUsoExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+    </mv-card-content>
+
+  </mv-card>
+
+  <!-- Template -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #Template><strong>Template de notificación</strong></mv-card-title>
+      <mv-card-subtitle>Template.</mv-card-subtitle>
+    </mv-card-header>
+    <mv-card-content>
+
+      <p>Se usa un ng-template de angular.</p>
+      <p>Al template se le pasa la siguiente información: </p>
+      <ol class="ol-code">
+        <li>
+          <p> <strong>let-date</strong>: Fecha de la notificación </p>
+        </li>
+        <li>
+          <p><strong> let-data</strong>: Recibe los datos de la notificación </p>
+
+          <ol class="ol-code">
+            <li> <strong>titulo</strong>: Titulo de la notificación </li>
+            <li> <strong>mensaje</strong>: Mensaje de la notificación </li>
+            <li> <strong>infoApp</strong>: Objeto de info </li>
+          </ol>
+        </li>
+      </ol>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="TemplateExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="TemplateExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Update -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #Update><strong>Update de notificación</strong></mv-card-title>
+      <mv-card-subtitle>Update.</mv-card-subtitle>
+    </mv-card-header>
+    <mv-card-content>
+
+      <p>
+        Actualiza el listado de notificaciones. En teléfonos se actualiza solo al
+        recibir una notificación. Se le puede pasar un Date() para que descargue
+        las notificaciones desde esa fecha.
+      </p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="UpdateExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="UpdateExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Delete -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #Delete><strong>Delete de notificación</strong></mv-card-title>
+      <mv-card-subtitle>Delete.</mv-card-subtitle>
+    </mv-card-header>
+    <mv-card-content>
+
+      <p>
+        Metodo para borrar una notificación. Se le debe pasar la notificación
+        (El objeto que se recibe en <strong>let-data</strong>) que
+        se quiere borrar.
+      </p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="DeleteExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="DeleteExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- DeleteAll -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #DeleteAll><strong>DeleteAll de notificación</strong></mv-card-title>
+      <mv-card-subtitle>DeleteAll.</mv-card-subtitle>
+    </mv-card-header>
+    <mv-card-content>
+
+      <p>
+        Metodo para borrar todas las notificaciones del listado
+      </p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="DeleteAllExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="DeleteAllExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuration -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #Configuration><strong>Configuration</strong></mv-card-title>
+      <mv-card-subtitle>Configuration.</mv-card-subtitle>
+    </mv-card-header>
+    <mv-card-content>
+
+      <p> Configuración de la petición notificaciones: </p>
+      <ol class="ol-code">
+        <li>
+          <p> <strong>limit</strong>: Límite de notificaciones  </p>
+        </li>
+      </ol>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="ConfigurationExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="ConfigurationExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- TemplateProperty -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #TemplateProperty><strong>template</strong></mv-card-title>
+      <mv-card-subtitle>Propiedad del template.</mv-card-subtitle>
+    </mv-card-header>
+    <mv-card-content>
+
+      <p>
+        Propiedad para pasar el template html para las notificaciones
+      </p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="TemplatePropertyExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="TemplatePropertyExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

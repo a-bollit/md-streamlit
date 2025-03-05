@@ -1,0 +1,50 @@
+<mv-card>
+  <mv-header>
+    <mv-title>Emitir Notificación</mv-title>
+  </mv-header>
+
+  <mv-content>
+    <form [formGroup]="generalForm" (ngSubmit)="onSubmit()">
+      
+      <mv-input 
+        formControlName="unidadRemitente" 
+        placeholder="Unidad Remitente"
+        [errorMessage]="form.unidadRemitente.touched && form.unidadRemitente.errors?.required ? 'Campo requerido' : ''">
+      </mv-input>
+      
+      <mv-datepicker 
+        formControlName="fechaDesde"
+        placeholder="Fecha Desde"
+        [maxDate]="datePickerService.currentDate">
+      </mv-datepicker>
+
+      <mv-datepicker 
+        formControlName="fechaHasta"
+        placeholder="Fecha Hasta"
+        [maxDate]="datePickerService.currentDate">
+      </mv-datepicker>
+
+      <mv-input 
+        formControlName="expediente" 
+        placeholder="Expediente"
+        [errorMessage]="form.expediente.touched && form.expediente.errors?.invalidExpediente ? 'Expediente inválido' : ''">
+      </mv-input>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        type="submit"
+        [disabled]="generalForm.invalid">
+        Aceptar
+      </mv-button>
+
+      <mv-button
+        appearance="raised"
+        type="button"
+        (clickEvent)="generalForm.reset()">
+        Cancelar
+      </mv-button>
+      
+    </form>
+  </mv-content>
+</mv-card>

@@ -1,0 +1,2232 @@
+<section class="view-default-style">
+
+    <!-- Componente -->
+    <mv-card class="card-code">
+        <mv-card-title><strong>Documentación mv-input</strong></mv-card-title>
+
+        <!-- Índice de la documentación -->
+        <div>
+            <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+                <mv-icon>link</mv-icon> Información
+            </a>
+        </div>
+        <div>
+            <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+                <mv-icon>link</mv-icon> Ejemplo de uso
+            </a>
+        </div>
+        <p>Propiedades:</p>
+        <ol class="ol-code">
+            <li>
+                <a class="nostyle" (click)='maxlength.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> maxlength
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='adapt.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> adapt
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='appearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> appearance
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='autocomplete.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> autocomplete
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='delay.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> delay
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='disabled.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> disabled
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='floatLabel.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> floatLabel
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='hint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> hint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='hintAlign.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> hintAlign
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='hintType.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> hintType
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='inputmodeExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> inputmode
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='label.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> label
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='placeholder.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> placeholder
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='refAutocompleteExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> refAutocomplete
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='refAutocompleteConnectedToExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> refAutocompleteConnectedTo
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='required.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> required
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='requiredHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> requiredHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showClear.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showClear
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showMaxlength.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showMaxlength
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showMinlength.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showMinlength
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showUnlockPass.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showUnlockPass
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='type.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> type
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateCustom.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateCustom
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateCustomHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateCustomHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateEmail.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateEmail
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateEmailHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateEmailHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateFirst.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateFirst
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMaxlength.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMaxlength
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMaxlengthHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMaxlengthHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMax.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMax
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMaxHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMaxHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMin.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMin
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMinHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMinHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMinlength.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMinlength
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateMinlengthHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateMinlengthHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNIE.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNIE
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNIEHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNIEHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNIF.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNIF
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNIFHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNIFHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNIFNIEHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNIFNIEHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateNotNumberHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateNotNumberHint
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateOnType.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateOnType
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateRegex.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateRegex
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='validateRegexHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> validateRegexHint
+                </a>
+            </li>
+        </ol>
+        <p>Eventos:</p>
+        <ol class="ol-code">
+            <li>
+                <a class="nostyle" (click)='changeEvent.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> changeEvent
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='keyupEvent.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> keyupEvent
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='focusEvent.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> focusEvent
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='blurEvent.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> blurEvent
+                </a>
+            </li>
+        </ol>
+
+        <p>Accesibilidad:</p>
+        <ol class="ol-code">
+            <li>
+                <a class="nostyle" (click)='ariaLabel.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> ariaLabel
+                </a>
+            </li>
+        </ol>
+
+
+    </mv-card>
+
+    <!-- Información -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #info><strong>Información</strong></mv-card-title>
+            <mv-card-subtitle>Información del componente <strong>mv-input</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>El componente mv-input se basa en el componente mat-input de Angular Material, al que se le añade funcionalidad y estilos adicionales.</p>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- Ejemplo de uso -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+            <mv-card-subtitle>Uso básico del componente <strong>mv-input</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeUseExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Input básico:</strong></p>
+
+            <mv-input [(ngModel)]="input001Model">
+            </mv-input>
+
+            <p><strong>Valor variable 'input001Model'</strong>: {{input001Model}}</p>
+
+        </mv-card-content>
+    </mv-card>
+    <!-- maxlength -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #maxlength><strong>maxlength</strong></mv-card-title>
+            <mv-card-subtitle>Uso de <strong>maxlength</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>A continuación se muestra un ejemplo básico de uso de maxlength. Se puede modificar en tiempo de ejecución</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="maxLenghtExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="maxLenghtExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Input básico con maxLenght:</strong></p>
+            <mv-input [maxlength]="maxLenght" [(ngModel)]="inputModelMax">
+            </mv-input>
+            <p><strong>Tamaño máximo del input:</strong></p>
+            <mv-input [(ngModel)]="maxLenght">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- adapt -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #adapt><strong>adapt</strong></mv-card-title>
+            <mv-card-subtitle>Ancho del 100%.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad adapt permite definir el ancho del componente al 100% del contenedor.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAdaptExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAdaptExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con adapt a true:</strong></p>
+
+            <mv-input adapt=true>
+            </mv-input>
+
+            <p><strong>Con adapt a false:</strong></p>
+
+            <mv-input adapt=false>
+            </mv-input>
+
+            <p><strong>Sin adapt (comportamiento por defecto):</strong></p>
+
+            <mv-input>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- appearance -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #appearance><strong>appearance</strong></mv-card-title>
+            <mv-card-subtitle>Apariencia del input.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad appearance permite definir la apariencia del componente, por defecto outline.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAppearanceExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAppearanceExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con apariencia 'legacy':</strong></p>
+
+            <mv-input appearance="legacy">
+            </mv-input>
+
+            <p><strong>Con apariencia 'standard':</strong></p>
+
+            <mv-input appearance="standard">
+            </mv-input>
+
+            <p><strong>Con apariencia 'fill':</strong></p>
+
+            <mv-input appearance="fill">
+            </mv-input>
+
+            <p><strong>Con apariencia 'outline':</strong></p>
+
+            <mv-input appearance="outline">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- autocomplete -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #autocomplete><strong>autocomplete</strong></mv-card-title>
+            <mv-card-subtitle>Autocompletar.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad autocomplete permite que el navegador autocomplete el contenido de un input con valores ya introducidos anteriormente. Por ejemplo, si el navegador tiene almacenado nuestro correo, se podrá autocompletar cualquier input que tenga
+                la propiedad autocomplete con valor "email".</p>
+
+            <p>Para ver los valores que acepta la propiedad y tener más información ver la documentación oficial:
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete" target="_blank">
+                    <strong>https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete</strong></a>
+            </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAutocompleteExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAutocompleteExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Ejemplo autocomplete con valor "email":</strong></p>
+            <form #autocompleteForm="ngForm">
+                <mv-input autocomplete="email">
+                </mv-input>
+            </form>
+
+            <p><strong>Ejemplo autocomplete con valor "given-name":</strong></p>
+            <form #autocompleteForm="ngForm">
+                <mv-input autocomplete="given-name">
+                </mv-input>
+            </form>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- delay -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #delay><strong>delay</strong></mv-card-title>
+            <mv-card-subtitle>Retardo del input.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad delay permite definir un retardo después de escribir en el componente, por defecto su valor es 0ms.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeDelayExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeDelayExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con delay de 3000 ms:</strong></p>
+
+            <mv-input (changeEvent)="changeEventFunctionMillis($event)" delay="3000">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- disabled -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #disabled><strong>disabled</strong></mv-card-title>
+            <mv-card-subtitle>Deshabilitar el input.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad disabled permite deshabilitar el componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeDisabledExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeDisabledExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con disabled a true:</strong></p>
+
+            <mv-input disabled=true>
+            </mv-input>
+
+            <p><strong>Con disabled a false:</strong></p>
+
+            <mv-input disabled=false>
+            </mv-input>
+
+            <p><strong>Sin disabled (comportamiento por defecto):</strong></p>
+
+            <mv-input>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- floatLabel -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #floatLabel><strong>floatLabel</strong></mv-card-title>
+            <mv-card-subtitle>Comportamiento de la label.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad floatLabel permite definir el comportamiento de la label del componente.</p>
+            <p>Si usamos la propiedad floatLabel también tendrá que haber definida una label, mediante la propiedad <strong>label</strong>.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeFloatLabelExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeFloatLabelExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con floatLabel 'always':</strong></p>
+
+            <mv-input label="Propiedad floatLabel" floatLabel="always">
+            </mv-input>
+
+            <p><strong>Con floatLabel 'never':</strong></p>
+            <p>* El valor 'never' solo aplica cuando la propiedad <strong>appearance='legacy'</strong></p>
+
+            <mv-input label="Propiedad floatLabel" appearance="legacy" floatLabel="never">
+            </mv-input>
+
+            <p><strong>Con floatLabel 'auto':</strong></p>
+
+            <mv-input label="Propiedad floatLabel" floatLabel="auto">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- hint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #hint><strong>hint</strong></mv-card-title>
+            <mv-card-subtitle>Texto explicativo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad hint permite definir un texto debajo del componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con hint 'Propiedad hint':</strong></p>
+
+            <mv-input hint="Propiedad hint">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- hintAlign -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #hintAlign><strong>hintAlign</strong></mv-card-title>
+            <mv-card-subtitle>Posición del hint.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad hintAlign permite establecer la posición del hint al principio o al final del componente.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>hint</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeHintAlignExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeHintAlignExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con hintAlign 'start':</strong></p>
+
+            <mv-input hintAlign="start" hint="Hint al principio">
+            </mv-input>
+
+            <p><strong>Con hintAlign 'end':</strong></p>
+
+            <mv-input hintAlign="end" hint="Hint al final">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- hintType -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #hintType><strong>hintType</strong></mv-card-title>
+            <mv-card-subtitle>Estilo del hint.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad hintType permite definir el estilo del hint entre los valores warning, info, danger y success. </p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>hint</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeHintTypeExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeHintTypeExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con hintType 'info':</strong></p>
+
+            <mv-input hintType="info" hint="Hint info">
+            </mv-input>
+
+            <p><strong>Con hintType 'success':</strong></p>
+
+            <mv-input hintType="success" hint="Hint success">
+            </mv-input>
+            <p><strong>Con hintType 'warning':</strong></p>
+
+            <mv-input hintType="warning" hint="Hint warning">
+            </mv-input>
+            <p><strong>Con hintType 'danger':</strong></p>
+
+            <mv-input hintType="danger" hint="Hint danger">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- inputmode -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #inputmodeExample><strong>inputmode</strong></mv-card-title>
+            <mv-card-subtitle>Propiedad inputmode del input de HTML.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad inputmode permite definir el teclado que queremos que salga al hacer foco en el input. Es una propiedad nativa del componente HTML input.</p>
+
+            <p>Usos útiles del atributo inputmode:</p>
+            <ul>
+                <li>
+                    <strong>
+          <a href="https://css-tricks.com/everything-you-ever-wanted-to-know-about-inputmode/">
+            https://css-tricks.com/everything-you-ever-wanted-to-know-about-inputmode</a>
+          </strong>
+                </li>
+                <li>
+                    <strong>
+          <a href="https://www.twilio.com/blog/html-attributes-two-factor-authentication-autocomplete">
+            https://www.twilio.com/blog/html-attributes-two-factor-authentication-autocomplete</a>
+          </strong>
+                </li>
+            </ul>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeInputModeExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeInputModeExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con inputmode 'decimal':</strong></p>
+            <mv-input inputmode="decimal">
+            </mv-input>
+
+            <p><strong>Con inputmode 'email':</strong></p>
+            <mv-input inputmode="email">
+            </mv-input>
+
+            <p><strong>Con inputmode 'none':</strong></p>
+            <mv-input inputmode="none">
+            </mv-input>
+
+            <p><strong>Con inputmode 'numeric':</strong></p>
+            <mv-input inputmode="numeric">
+            </mv-input>
+
+            <p><strong>Con inputmode 'search':</strong></p>
+            <mv-input inputmode="search">
+            </mv-input>
+
+            <p><strong>Con inputmode 'tel':</strong></p>
+            <mv-input inputmode="tel">
+            </mv-input>
+
+            <p><strong>Con inputmode 'text' (por defecto):</strong></p>
+            <mv-input inputmode="text">
+            </mv-input>
+
+            <p><strong>Con inputmode 'url':</strong></p>
+            <mv-input inputmode="url">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- label -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #label><strong>label</strong></mv-card-title>
+            <mv-card-subtitle>Label del input.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad label permite definir un texto que queda por encima del componente, a modo de título. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeLabelExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeLabelExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con label 'Label del input' y apariencia 'legacy':</strong></p>
+
+            <mv-input label="Label del input" appearance="legacy">
+            </mv-input>
+
+            <p><strong>Con label 'Label del input' y apariencia 'standard':</strong></p>
+
+            <mv-input label="Label del input" appearance="standard">
+            </mv-input>
+
+            <p><strong>Con label 'Label del input' y apariencia 'fill':</strong></p>
+
+            <mv-input label="Label del input" appearance="fill">
+            </mv-input>
+
+            <p><strong>Con label 'Label del input' y apariencia 'outline':</strong></p>
+
+            <mv-input label="Label del input" appearance="outline">
+            </mv-input>
+
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- placeholder -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #placeholder><strong>placeholder</strong></mv-card-title>
+            <mv-card-subtitle>Placeholder del input.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad placeholder permite definir un texto que queda por encima del componente, a modo de título. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codePlaceholderExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codePlaceholderExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con placeholder 'Nombre':</strong></p>
+
+            <mv-input placeholder="Nombre">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- refAutocomplete -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #refAutocompleteExample><strong>refAutocomplete</strong></mv-card-title>
+            <mv-card-subtitle>Autocompletar con valores.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad refAutocomplete permite definir una serie de valores para autocompletar el contenido del input, permitiendo filtrar si así se desea. </p>
+
+            <p> Para definir un input con autocompletado hay que definir un componente mv-input y un mat-autocomplete de Material
+                <strong>
+          <a rel="noopener noreferrer" href="https://material.angular.io/components/automcomplete/overview" target="_blank">
+            https://material.angular.io/components/automcomplete/overview
+          </a>
+        </strong>
+            </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeRefAutocompleteExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeRefAutocompleteExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con refAutocomplete y sin filtrado:</strong></p>
+
+            <mv-input [refAutocomplete]="auto1">
+            </mv-input>
+
+            <mat-autocomplete #auto1="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option.name">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+
+            <p><strong>Con refAutocomplete y filtrado según vamos escribiendo:</strong></p>
+
+            <mv-input [refAutocomplete]="auto2" [formControl]="optionsCtrl">
+            </mv-input>
+
+            <mat-autocomplete #auto2="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+
+            <p><strong>Con refAutocomplete y opciones de grupo:</strong></p>
+
+            <mv-input [refAutocomplete]="auto5" [formControl]="optionsGroupCtrl">
+            </mv-input>
+
+            <mat-autocomplete #auto5="matAutocomplete">
+                <mat-optgroup *ngFor="let group of filteredGroupOptions | async" [label]="group.index">
+                    <mat-option *ngFor="let name of group.names" [value]="name">
+                        {{name}}
+                    </mat-option>
+                </mat-optgroup>
+            </mat-autocomplete>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- refAutocompleteConnectedTo -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #refAutocompleteConnectedToExample><strong>refAutocompleteConnectedTo</strong></mv-card-title>
+            <mv-card-subtitle>Autocompletar con valores.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad refAutocompleteConnectedTo permite definir el comportamiento de la propiedad
+                <strong>refAutocomplete</strong> en un elemento HTML distinto del input de búsqueda. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeRefAutocompleteConnectedToExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeRefAutocompleteConnectedToExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con refAutocompleteConnectedTo en el elemento 'refAutocompleteConnectedTo':</strong></p>
+
+            <mv-input [refAutocomplete]="auto3" [refAutocompleteConnectedTo]="auto4">
+            </mv-input>
+
+            <mat-autocomplete #auto3="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option.name">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+
+            <span id="matAutocompleteOrigin" matAutocompleteOrigin #auto4="matAutocompleteOrigin">
+        <p>refAutocompleteConnectedTo</p>
+      </span>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- required -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #required><strong>required</strong></mv-card-title>
+            <mv-card-subtitle>Input obligatorio.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad required permite definir el input como obligatorio. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeRequiredExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeRequiredExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con required a true:</strong></p>
+
+            <mv-input required=true>
+            </mv-input>
+
+            <p><strong>Con required a false:</strong></p>
+
+            <mv-input required=false>
+            </mv-input>
+
+            <p><strong>Sin required (comportamiento por defecto):</strong></p>
+
+            <mv-input>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- requiredHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #requiredHint><strong>requiredHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje del input required.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad requiredHint permite definir el mensaje cuando el input es required. </p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>required</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeRequiredHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeRequiredHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con requiredHint 'Campo obligatorio':</strong></p>
+
+            <mv-input requiredHint="Campo obligatorio" required=true>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showClear -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showClear><strong>showClear</strong></mv-card-title>
+            <mv-card-subtitle>Botón para borrar el contenido del input.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showClear permite mostrar el botón para borrar cuando el input tiene contenido. </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowClearExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowClearExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showClear a true:</strong></p>
+
+            <mv-input showClear=true>
+            </mv-input>
+
+            <p><strong>Con showClear a false:</strong></p>
+
+            <mv-input showClear=false>
+            </mv-input>
+
+            <p><strong>Sin showClear (comportamiento por defecto):</strong></p>
+
+            <mv-input>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showMaxlength -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showMaxlength><strong>showMaxlength</strong></mv-card-title>
+            <mv-card-subtitle>Indicación de los caracteres restantes para llegar al máximo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showMaxlength permite mostrar el número de caracteres que hay escritos, así como el máximo de caracteres permitidos.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateMaxlength</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowMaxlengthExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowMaxlengthExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showMaxlength a true:</strong></p>
+
+            <mv-input validateMaxlength=20 showMaxlength=true>
+            </mv-input>
+
+            <p><strong>Con showMaxlength a false:</strong></p>
+
+            <mv-input validateMaxlength=20 showMaxlength=false>
+            </mv-input>
+
+            <p><strong>Sin showMaxlength (comportamiento por defecto):</strong></p>
+
+            <mv-input validateMaxlength=20>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showMinlength -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showMinlength><strong>showMinlength</strong></mv-card-title>
+            <mv-card-subtitle>Indicación de los caracteres restantes para llegar al mínimo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showMinlength permite mostrar el número de caracteres que hay escritos, así como el mínimo de caracteres permitidos.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateMinlength</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowMinlengthExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowMinlengthExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showMinlength a true:</strong></p>
+
+            <mv-input validateMinlength=10 showMinlength=true>
+            </mv-input>
+
+            <p><strong>Con showMinlength a false:</strong></p>
+
+            <mv-input validateMinlength=10 showMinlength=false>
+            </mv-input>
+
+            <p><strong>Sin showMinlength (comportamiento por defecto):</strong></p>
+
+            <mv-input validateMinlength=10>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showUnlockPass -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showUnlockPass><strong>showUnlockPass</strong></mv-card-title>
+            <mv-card-subtitle>Botón para mostrar/ocultar los caracteres de un input type password.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showUnlockPass permite mostrar un botón que permite ocultar o mostrar los caracteres de la contraseña.
+            </p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>type='password'</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowUnlockPassExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowUnlockPassExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showUnlockPass a true:</strong></p>
+
+            <mv-input type="password" showUnlockPass=true>
+            </mv-input>
+
+            <p><strong>Con showUnlockPass a false:</strong></p>
+
+            <mv-input type="password" showUnlockPass=false>
+            </mv-input>
+
+            <p><strong>Sin showUnlockPass (comportamiento por defecto):</strong></p>
+
+            <mv-input type="password">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- type -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #type><strong>type</strong></mv-card-title>
+            <mv-card-subtitle>Propiedad type del input de HTML.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad type permite definir la misma propiedad type de HTML. Los type soportados son los que define Material
+                <strong>
+          <a rel="noopener noreferrer"  href="https://material.angular.io/components/input/overview" target="_blank">
+            https://material.angular.io/components/input/overview
+          </a>
+        </strong>.
+            </p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeTypeExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeTypeExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con type 'color':</strong></p>
+
+            <mv-input type="color">
+            </mv-input>
+
+            <p><strong>Con type 'date':</strong></p>
+
+            <mv-input type="date">
+            </mv-input>
+
+            <p><strong>Con type 'datetime-local':</strong></p>
+
+            <mv-input type="datetime-local">
+            </mv-input>
+
+            <p><strong>Con type 'email':</strong></p>
+
+            <mv-input type="email">
+            </mv-input>
+
+            <p><strong>Con type 'month':</strong></p>
+
+            <mv-input type="month">
+            </mv-input>
+
+            <p><strong>Con type 'number':</strong></p>
+
+            <mv-input type="number">
+            </mv-input>
+
+            <p><strong>Con type 'password':</strong></p>
+
+            <mv-input type="password">
+            </mv-input>
+
+            <p><strong>Con type 'search':</strong></p>
+
+            <mv-input type="search">
+            </mv-input>
+
+            <p><strong>Con type 'tel':</strong></p>
+
+            <mv-input type="tel">
+            </mv-input>
+
+            <p><strong>Con type 'text':</strong></p>
+
+            <mv-input type="text">
+            </mv-input>
+
+            <p><strong>Con type 'time':</strong></p>
+
+            <mv-input type="time">
+            </mv-input>
+
+            <p><strong>Con type 'url':</strong></p>
+
+            <mv-input type="url">
+            </mv-input>
+
+            <p><strong>Con type 'week':</strong></p>
+
+            <mv-input type="week">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateCustom -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateCustom><strong>validateCustom</strong></mv-card-title>
+            <mv-card-subtitle>Validación customizada.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateCustom permite realizar validaciones personalizadas, que deberemos implementar nosotros mismos.</p>
+            <p>En caso de no cumplir la validación que hayamos definido, el componente se marcará con aspecto de error.</p>
+            <p>Documentación de Angular sobre validaciones:
+                <a href="https://angular.io/guide/form-validation" type="_blank"><strong>https://angular.io/guide/form-validation</strong></a></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeCustomValidateExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeCustomValidateExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validación personalizada tal que todas las letras sean mayúsculas:</strong></p>
+
+            <mv-input [validateCustom]="myCustomValidation()">
+            </mv-input>
+
+            <mv-input [validateCustom]="myCustomValidation()">
+            </mv-input>
+
+            <mv-input validateFirst=true validateOnType=true [validateCustom]="myCustomValidation()">
+            </mv-input>
+
+            <mv-input validateFirst=false validateOnType=true [validateCustom]="myCustomValidation()">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateCustomHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateCustomHint><strong>validateCustomHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de la validación de validateCustom.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateCustomHint permite definir un mensaje para la propiedad validateCustom</p>
+            <p>El mensaje por defecto es 'El valor es incorrecto'</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateCustomHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateCustomHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateCustomHint 'Todas las letras mayúsculas':</strong></p>
+
+            <mv-input validateCustomHint="Todas las letras mayúsculas" [validateCustom]="myCustomValidation()">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateEmail -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateEmail><strong>validateEmail</strong></mv-card-title>
+            <mv-card-subtitle>Validación de email.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateEmail permite realizar validaciones para input con type 'email'</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>type='email'</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateEmailExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateEmailExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateEmail a true:</strong></p>
+
+            <mv-input type="email" validateEmail=true>
+            </mv-input>
+
+            <p><strong>Con validateEmail a false:</strong></p>
+
+            <mv-input type="email" validateEmail=false>
+            </mv-input>
+
+            <p><strong>Sin validateEmail (comportamiento por defecto):</strong></p>
+
+            <mv-input type="email">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateEmailHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateEmailHint><strong>validateEmailHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de la validación de email.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateEmailHint permite definir un mensaje para la validación de email</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>type='email'</strong> y la propiedad <strong>validateEmail=true</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateEmailHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateEmailHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateEmailHint 'Introduce un correo':</strong></p>
+
+            <mv-input type="email" validateEmail=true validateEmailHint="Introduce un correo">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateFirst -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateFirst><strong>validateFirst</strong></mv-card-title>
+            <mv-card-subtitle>Validación inicial del componente.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateFirst permite validar o no el componente al ser cargado, ya que a lo mejor no queremos que de primeras se marquen como erróneos determinados input o al revés, queremos que nada más cargar la vista se haga la validación</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo <strong>required=true</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateFirstExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateFirstExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateFirst a true:</strong></p>
+
+            <mv-input required=true validateFirst=true>
+            </mv-input>
+
+            <p><strong>Con validateFirst a false:</strong></p>
+
+            <mv-input required=true validateFirst=false>
+            </mv-input>
+
+            <p><strong>Sin validateFirst (comportamiento por defecto):</strong></p>
+
+            <mv-input required=true>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMaxlength -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMaxlength><strong>validateMaxlength</strong></mv-card-title>
+            <mv-card-subtitle>Validación de longitud máxima.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMaxlength permite definir una longitud máxima del contenido del input.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMaxlengthExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMaxlengthExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMaxlength con valor 8:</strong></p>
+
+            <mv-input validateMaxlength="8">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMaxlengthHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMaxlengthHint><strong>validateMaxlengthHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateMaxlength.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMaxlengthHint permite definir un mensaje personalizado para la propiedad validateMaxlength.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateMaxlength</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMaxlengthHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMaxlengthHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMaxlengthHint 'demasiado largo':</strong></p>
+
+            <mv-input validateMaxlengthHint="demasiado largo" validateMaxlength="10">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMax -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMax><strong>validateMax</strong></mv-card-title>
+            <mv-card-subtitle>Validación de número máximo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMax permite definir un número máximo del contenido del input.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>type=number</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMaxExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMaxExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMax con valor 65:</strong></p>
+
+            <mv-input type="number" validateMax="65">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMaxHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMaxHint><strong>validateMaxHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateMax.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMaxHint permite definir un mensaje personalizado para la propiedad validateMax.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateMax</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMaxHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMaxHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMaxHint 'Introduce un número inferior':</strong></p>
+
+            <mv-input type="number" validateMaxHint="Introduce un número inferior" validateMax="30">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMin -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMin><strong>validateMin</strong></mv-card-title>
+            <mv-card-subtitle>Validación de número mínimo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMin permite definir un número mínimo del contenido del input.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>type=number</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMinExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMinExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMin con valor 18:</strong></p>
+
+            <mv-input type="number" validateMin="18">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMinHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMinHint><strong>validateMinHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateMin.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMinHint permite definir un mensaje personalizado para la propiedad validateMin.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateMin</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMinHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMinHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMinHint 'Introduce un número superior':</strong></p>
+
+            <mv-input type="number" validateMinHint="Introduce un número superior" validateMin="18">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMinlength -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMinlength><strong>validateMinlength</strong></mv-card-title>
+            <mv-card-subtitle>Validación de longitud máxima.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMinlength permite definir una longitud mínima del contenido del input.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMinlengthExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMinlengthExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMinlength con valor 8:</strong></p>
+
+            <mv-input validateMinlength="8">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateMinlengthHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateMinlengthHint><strong>validateMinlengthHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateMinlength.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateMinlengthHint permite definir un mensaje personalizado para la propiedad validateMinlength.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateMinlength</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateMinlengthHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateMinlengthHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateMinlengthHint 'demasiado corto':</strong></p>
+
+            <mv-input validateMinlengthHint="demasiado corto" validateMinlength="10">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNIE -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNIE><strong>validateNIE</strong></mv-card-title>
+            <mv-card-subtitle>Validación de NIE.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNIE permite validar si el contenido es un NIE.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNIEExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNIEExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNIE:</strong></p>
+
+            <mv-input validateNIE=true>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNIEHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNIEHint><strong>validateNIEHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateNIE.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNIEHint permite definir un mensaje personalizado para la propiedad validateNIE.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateNIE</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNIEHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNIEHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNIEHint 'Introduce un NIE correcto':</strong></p>
+
+            <mv-input validateNIE=true validateNIEHint="Introduce un NIE correcto">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNIF -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNIF><strong>validateNIF</strong></mv-card-title>
+            <mv-card-subtitle>Validación de NIF.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNIF permite validar si el contenido es un NIF.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNIFExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNIFExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNIF:</strong></p>
+
+            <mv-input validateNIF=true>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNIFHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNIFHint><strong>validateNIFHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateNIF.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNIFHint permite definir un mensaje personalizado para la propiedad validateNIF.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateNIF</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNIFHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNIFHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNIFHint 'Introduce un NIF correcto':</strong></p>
+
+            <mv-input validateNIF=true validateNIFHint="Introduce un NIF correcto">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNIFNIEHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNIFNIEHint><strong>validateNIFNIEHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateNIE y validateNIF a la vez.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNIFNIEHint permite definir un mensaje personalizado para cuando se usen las propiedades validateNIE y validateNIF a la vez. Concretamente, saldrá este mensaje cuando el texto introducido no sea ni un NIE ni un NIF.</p>
+            <p>Para los casos en los que sea tan solo o el NIF o el NIE lo que sea incorrecto mostrará el mensaje definido en
+                <strong>validateNIF</strong> o <strong>validateNIE</strong>, respectivamente.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateNIE</strong> y la propiedad <strong>validateNIF</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNIFNIEHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNIFNIEHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNIFNIEHint 'Introduce un NIF correcto':</strong></p>
+
+            <mv-input validateNIE=true validateNIF=true validateNIFNIEHint="Introduce un NIF/NIE correcto">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateNotNumberHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateNotNumberHint><strong>validateNotNumberHint</strong></mv-card-title>
+            <mv-card-subtitle>Validación de valor numérico.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateNotNumberHint permite validar que el elemento introducido sea numérico.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateNotNumberHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateNotNumberHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateNotNumberHint a true:</strong></p>
+
+            <mv-input validateOnType=true validateNotNumberHint="No es un número">
+            </mv-input>
+
+            <p><strong>Con validateNotNumberHint a false:</strong></p>
+
+            <mv-input validateOnType=true validateNotNumberHint=false>
+            </mv-input>
+
+            <p><strong>Sin validateNotNumberHint (comportamiento por defecto):</strong></p>
+
+            <mv-input validateOnType=true>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateOnType -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateOnType><strong>validateOnType</strong></mv-card-title>
+            <mv-card-subtitle>Validación en tiempo real.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateOnType permite activar la validación del componente en tiempo real, esto es según se va escribiendo.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como por ejemplo <strong>required=true</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateOnTypeExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateOnTypeExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con validateOnType a true:</strong></p>
+
+            <mv-input required=true validateOnType=true>
+            </mv-input>
+
+            <p><strong>Con validateOnType a false:</strong></p>
+
+            <mv-input required=true validateOnType=false>
+            </mv-input>
+
+            <p><strong>Sin validateOnType (comportamiento por defecto):</strong></p>
+
+            <mv-input required=true>
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateRegex -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateRegex><strong>validateRegex</strong></mv-card-title>
+            <mv-card-subtitle>Validación de expresión regular.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateRegex permite validar si el contenido cumple con la expresión regular definida.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateRegexExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateRegexExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con expresión regular para validar matrículas, validateRegex '(\d{{'{'}}4{{'}'}})([A-z]{{'{'}}3{{'}'}})':</strong></p>
+
+            <mv-input validateRegex="(\d{4})([A-z]{3})">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- validateRegexHint -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #validateRegexHint><strong>validateRegexHint</strong></mv-card-title>
+            <mv-card-subtitle>Mensaje de validación de validateRegexHint.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad validateRegexHint permite definir un mensaje personalizado para la propiedad validateRegex.</p>
+            <p>En caso de usar esta propiedad también tendrá que estar definida la propiedad <strong>validateRegex</strong></p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeValidateRegexHintExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeValidateRegexHintExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con expresión regular para validar correos de gmail, validateRegex '([^@]+@gmail.com)'
+        y validateRegexHint 'El correo debe ser gmail':</strong></p>
+
+            <mv-input validateRegexHint="El correo debe ser gmail" validateRegex="([^@]+@gmail.com)">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- changeEvent -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #changeEvent><strong>changeEvent</strong></mv-card-title>
+            <mv-card-subtitle>Evento change.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>El evento changeEvent permite definir una función que se ejecutará cuando cambie el valor del input</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeChangeEventExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeChangeEventExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con changeEvent:</strong></p>
+
+            <mv-input (changeEvent)="changeEventFunction($event)">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- keyupEvent -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #keyupEvent><strong>keyupEvent</strong></mv-card-title>
+            <mv-card-subtitle>Evento keyup.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>El evento keyupEvent permite definir una función que se ejecutará cuando el usuario deja de teclear</p>
+            <p>La diferencia con el evento <strong>changeEvent</strong> es que no se ejecutará la función keyupEvent hasta que el usuario deje de teclear, de manera que si mantiene pulsado de manera continuada un valor del teclado se estará introduciendo
+                muchos caracteres sin que se ejecute la función keyupEvent, sin embargo sí se estaría ejecutando la función changeEvent porque el valor sí está cambiando.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeKeyupEventExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeKeyupEventExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con keyupEvent:</strong></p>
+
+            <mv-input (keyupEvent)="keyupEventFunction($event)">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- focusEvent -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #focusEvent><strong>focusEvent</strong></mv-card-title>
+            <mv-card-subtitle>Evento keyup.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>El evento focusEvent permite definir una función que se ejecutará cuando el usuario seleccione el input</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codefocusEventExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codefocusEventExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con focusEvent:</strong></p>
+
+            <mv-input (focusEvent)="focusEventFunction($event)">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- blurEvent -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #blurEvent><strong>blurEvent</strong></mv-card-title>
+            <mv-card-subtitle>Evento keyup.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>El evento blurEvent permite definir una función que se ejecutará cuando el usuario salga del input</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeblurEventExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeblurEventExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con blurEvent:</strong></p>
+
+            <mv-input (blurEvent)="blurEventFunction($event)">
+            </mv-input>
+
+        </mv-card-content>
+    </mv-card>
+
+
+    <!-- ariaLabel -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #ariaLabel><strong>ariaLabel</strong></mv-card-title>
+            <mv-card-subtitle>Etiqueta para accesibilidad</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La etiqueta ariaLabel se utiliza para proporcionar una descripción de texto alternativa para elementos que no tienen un texto visible por si mismo y aseguarse que usuarios con lectores de pantalla y otros asistentes de accesibilidad puedan
+                entender el propósito del componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="ariaLabelHtml"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="ariaLabelTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+        </mv-card-content>
+    </mv-card>
+
+
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

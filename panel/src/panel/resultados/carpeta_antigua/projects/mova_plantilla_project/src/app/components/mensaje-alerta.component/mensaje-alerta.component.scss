@@ -1,0 +1,15 @@
+@import '~@mova/components/_variables.scss';
+
+.info-card {
+  @include card-format(info);
+
+  mv-header {
+    background-color: $primary-color;
+    color: #ffffff;
+  }
+
+  mv-content {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}

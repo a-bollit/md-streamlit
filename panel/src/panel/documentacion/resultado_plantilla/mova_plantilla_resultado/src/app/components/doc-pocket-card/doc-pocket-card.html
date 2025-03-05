@@ -1,0 +1,248 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación pocket-card</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='metodos.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Métodos
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='rest.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Servicios
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='pkpass.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Generación de pkpass
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- info -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información pocket-card</strong></mv-card-title>
+      <mv-card-subtitle>Información Pocket card</mv-card-subtitle>
+    </mv-card-header>
+
+
+    <mv-card-content>
+      <p>Componente "Tarjetero Digital", permite mostrar las imágenes de la tarjeta y su QR, asi como descargar el fichero .PKPass de la tarjeta llamando a un servicio REST que las generan siempre que este servicio REST cumpla con un formato definido de llamada y respuesta.</p>
+      <p>Ninguno de los métodos del componente funcionara si no se está logueado</p>
+
+
+      <ol  class="ol-code">
+        <li> <strong>card_number:</strong> Número de la tarjeta</li>
+        <li> <strong>expiration_date:</strong> Fecha de caducidad de la tarjeta</li>
+        <li> <strong>dni_nie:</strong> Identificador</li>
+        <li> <strong>card_type:</strong> Tipo de tarjeta </li>
+        <li> <strong>load_on_init:</strong> Para cargar al inicio la imagen de la tarjeta</li>
+        <li> <strong>hide_button_export:</strong> Para ocultar el botón de exportar a tarjetero</li>
+        <li> <strong>hide_button_images:</strong> Para ocultar el botón de mostrar tarjeta</li>
+        <li> <strong>hide_button_qr:</strong> Para ocultar el botón de mostrar qr</li>
+        <li> <strong>hide_button_reload:</strong> Para ocultar el botón de recargar </li>
+        <li> <strong>url_card_images:</strong> Para recuperar la imagen de la tarjeta </li>
+        <li> <strong>url_card_pkpass:</strong> Para recuperar el fichero pkpass de la tarjeta</li>
+        <li> <strong>url_card_qr:</strong> Para recuperar el QR de la tarjeta</li>
+        <li> <strong>token:</strong> Token para la llamada a los servicios</li>
+      </ol>
+
+      <p><strong>Metodo de uso:</strong></p>
+
+      <mv-tab-group>
+
+        <mv-tab label="HTML">
+          <pre><code [highlight]="metodoDeUsoExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="metodoDeUsoExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-pocket-card #pocketCard [data]="oDataExample">
+
+      </mv-pocket-card>
+      <mv-button
+        class="btnExamples"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showQR()">
+        showQR
+      </mv-button>
+      <mv-button
+        class="btnExamples"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="cardImage()">
+        cardImage
+      </mv-button>
+      <mv-button
+        class="btnExamples"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="downloadPKPass()">
+        downloadPKPass
+      </mv-button>
+      <mv-button
+        class="btnExamples"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="reload()">
+        reload
+      </mv-button>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- metodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #metodos><strong>Métodos invocables pocket-card</strong></mv-card-title>
+      <mv-card-subtitle>Pocket card</mv-card-subtitle>
+    </mv-card-header>
+
+    <p>Ninguno de los métodos del componente funcionara si no se está logueado</p>
+
+    <mv-card-content>
+      <p>Métodos invocables del componente</p>
+
+      <ol  class="ol-code">
+        <li>
+          <strong>ShowQR:</strong> para mostrar el QR en el componente
+        </li>
+        <li>
+          <strong>ShowCardImage:</strong> para mostrar la imagen de la tarjeta
+        </li>
+        <li>
+          <strong>DownloadPass:</strong> para descargar la tarjeta a una app compatible
+        </li>
+        <li>
+          <strong>reload:</strong> para recargar el componente
+        </li>
+      </ol>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="metodosExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="metodosExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Estas acciones afectan al componente de ejemplo de uso</p>
+      <mv-button
+        class="btnExamples"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showQR()">
+        showQR
+      </mv-button>
+      <mv-button
+        class="btnExamples"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="cardImage()">
+        cardImage
+      </mv-button>
+      <mv-button
+        class="btnExamples"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="downloadPKPass()">
+        downloadPKPass
+      </mv-button>
+      <mv-button
+        class="btnExamples"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="reload()">
+        reload
+      </mv-button>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- rest -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #rest><strong>Servicios rest para pocket-card</strong></mv-card-title>
+      <mv-card-subtitle>Pocket card</mv-card-subtitle>
+    </mv-card-header>
+
+
+    <mv-card-content>
+      Esto aplica a las siguientes llamadas a servicios rest:
+      <ol  class="ol-code">
+        <li> <strong>url_card_images</strong></li>
+        <li> <strong>url_card_pkpass</strong> </li>
+        <li> <strong>url_card_qr</strong> </li>
+      </ol>
+      <p>Ejemplos:</p>
+      <ol  class="ol-code">
+        <li>
+          input: Ejemplo del JSON que recibira el servicio Rest por parte del componente
+        </li>
+        <li>
+          output: Ejemplo de lo que el servicio rest deberia devolver
+          <ol  class="ol-code">
+            <li>imagenes y qr: Base64</li>
+            <li>pkpass: binario del fichero</li>
+          </ol>
+        </li>
+      </ol>
+      <mv-tab-group>
+        <mv-tab label="Input">
+          <pre><code [highlight]="inputExample"></code></pre>
+        </mv-tab>
+        <mv-tab label="Output">
+          <pre><code [highlight]="outputExample"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- pkpass -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #pkpass><strong>Ejemplo de generación de pkpass</strong></mv-card-title>
+      <mv-card-subtitle>Pocket card</mv-card-subtitle>
+    </mv-card-header>
+
+
+    <mv-card-content>
+
+      <p>Un fichero con extensión .pkpass es muy similar a un fichero .zip que contiene una estructura de directorios y ficheros.</p>
+      <p>Más información en la <a href="https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/PassKit_PG/YourFirst.html">documentación oficial de Apple</a>.</p>
+      <p>Este fichero debe generarse en el servicio mediante la librería <strong>jpasskit</strong>, más información en su <a href="https://github.com/drallgood/jpasskit">repositorio git</a>.</p>
+      <p>La funcionalidad a realizar es la siguiente:</p>
+      <ol>
+        <li>Configurar el objeto pass con los datos necesarios.</li>
+        <li>Firmar el pass con el certificado de Apple para dotarlo de la seguridad necesaria.</li>
+        <li>Escribir el fichero final con formato .pkpass</li>
+      </ol>
+      <mv-tab-group>
+        <mv-tab label="Ejemplo jpasskit">
+          <pre><code [highlight]="generacionPkpassExample"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

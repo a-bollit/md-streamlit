@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  mv-card {
+    max-width: 800px;
+    margin: 0 auto;
+    mv-header {
+      display: flex;
+      justify-content: center;
+      mv-title {
+        font-size: 1.5rem;
+      }
+    }
+    mv-content {
+      padding: 1rem;
+      table {
+        width: 100%;
+        tr {
+          td {
+            padding: 0.5rem;
+            mv-icon {
+              font-size: 1.2rem;
+              &.error {
+                color: red;
+              }
+              &.check_circle {
+                color: green;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

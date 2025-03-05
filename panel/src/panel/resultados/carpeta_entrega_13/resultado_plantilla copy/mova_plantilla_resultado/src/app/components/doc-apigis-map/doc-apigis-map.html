@@ -1,0 +1,903 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Los mapas</strong></mv-card-title>
+
+    <p>Uno de los componentes principales del API GIS es el mapa. Un mapa puede contener capas de información geográfica
+      y, para poder visualizarlo, deberá estar contenido dentro de un Visor (apigis.Viewer). </p>
+    <p>A continuación, se muestra la manera en la que podemos contruír un mapa, cómo podemos acceder (mediante Getters)
+      y establecer/cambiar
+      sus propiedades (mediante Setters) y diversos métodos para trabajar con el mapa después de haberlo generado.
+    </p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='constructor.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Constructor de un mapa (apigis.Map)
+        </a></li>
+      <li><a class="nostyle" (click)='getters.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Getters
+        </a></li>
+      <li><a class="nostyle" (click)='setters.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Setters
+        </a></li>
+      <li><a class="nostyle" (click)='metodos.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- MAp -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #constructor><strong>Constructor de un mapa (apigis.Map)</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se puede instanciar un nuevo mapa mediante la clase <strong>apigis.;ap</strong>. Para poder visualizar el mapa, deberá
+        estar
+        contenido dentro de un objeto <a routerLink="/doc-apigis-viewer" routerLinkActive="active"
+          ariaCurrentWhenActive="page">Viewer</a>.
+      </p>
+      <p><em><strong>new ApiMap(args)</strong></em></p>
+      <ul>
+        <li><strong>args</strong> &#60;<i>object</i> &#62; Objeto con todos los argumentos del contructor. Puede
+          contener las siguientes propiedades:</li>
+        <ul>
+          <li><strong>type</strong> &#60;<i>'OL'</i> &#62; Nombre del contenedor del DOM que almacenará el mapa.</li>
+          <li><strong>container</strong> &#60;<i>string</i> &#62; Tipo de mapa que deseamos instanciar. Debe coincidir
+            con alguno de los disponibles actualmente ([OL]). El API GIS está preparada para poder integrar diversas
+            librerías GIS. A día de hoy, el API GIS únicamente permite integrar OpenLayers. </li>
+          <li><strong>inheritedclass</strong> &#60;<i>string</i> &#62; Clase de la que heredará dinámicamente el mapa.
+            Debe coincidir con alguno de los disponibles actualmente ([MapFish]).</li>
+          <li><strong>options</strong> &#60;<i>object</i> &#62; Propiedades asociadas al viewer. Dependen de la
+            propiedad type. Si type = 'OL' puede contener las
+            siguientes propiedades:</li>
+          <ul>
+            <li><strong>id</strong> &#60;<i>string</i> &#62; Identificador del mapa.</li>
+            <li><strong>title</strong> &#60;<i>string</i> &#62; Título del mapa.</li>
+            <li><strong>layers</strong> &#60;<i>apigis.Layer[]</i> &#62; Capas a añadir al mapa.</li>
+            <li><strong>projection</strong> &#60;<i>string</i> &#62; EProyección a utilizar en el mapa (por ejemplo,
+              'EPSG:25830'). Todos los mapas del Viewer deberían tener la misma proyección.</li>
+            <li><strong>isOverviewMap = false</strong> &#60;<i>boolean</i>&#62; Indica si el mapa es de tipo Overview.
+            </li>
+          </ul>
+        </ul>
+      </ul>
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeMapExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Visor con un mapa con una capa base:</strong></p>
+      <div id="doc-apigis-map-container">
+      </div>
+      <br>
+      <p>Se puede consultar información más detallada y ejemplos sobre el uso de apigis.Map en el documento de Arquitectura sobre el API GIS.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getters -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #getters><strong>Getters</strong></mv-card-title>
+      <mv-card-subtitle>Métodos que nos permiten acceder (Getters) a las propiedades de un mapa.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se muestran a continuación los Getters disponibles en un objeto de tipo Map:</p>
+      <p><em><strong>id</strong></em></p>
+      <p>Recupera el id del mapa.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeIdExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeIdExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getId=map.id">
+        Obtener id del mapa
+      </mv-button>
+      <p>Resultado: {{getId}}</p>
+      <br>
+      <p><em><strong>title</strong></em></p>
+      <p>Recupera el nombre del mapa.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTitleExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTitleExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getTitle=map.title">
+        Obtener title del mapa
+      </mv-button>
+      <p>Resultado: {{getTitle}}</p>
+      <br>
+      <p><em><strong>grid</strong></em></p>
+      <p>Recupera el estado que nos dirá si el mapa debe formar parte de la disposición en grid.</p>
+      <br>
+      <p><em><strong>container</strong></em></p>
+      <p>Recupera el nombre del contenedor donde está incrustado el mapa.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeContainerExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeContainerExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getContainer=map.container">
+        Obtener container del mapa
+      </mv-button>
+      <p>Resultado: {{getContainer}}</p>
+      <br>
+      <p><em><strong>viewer</strong></em></p>
+      <p>Recupera el objeto Visor asociado al mapa.</p>
+      <br>
+      <p><em><strong>synchronize</strong></em></p>
+      <p>Recupera el estado de sincronización del mapa. Hay tres tipos de sincronización (0: no sincronizados,
+        1: sincronización de mapas, 2: sincronización continua).</p>
+      <br>
+      <p><em><strong>typeMap</strong></em></p>
+      <p>Recupera el tipo de mapa.</p>
+      <br>
+      <p><em><strong>props</strong></em></p>
+      <p>Recupera las propiedades del mapa.</p>
+      <br>
+      <p><em><strong>container_ext</strong></em></p>
+      <p>Recupera el nombre del contenedor externo que se haya podido setear al mapa. En caso de no haberse seteado
+        devolverá NULL.</p>
+      <br>
+      <p><em><strong>active</strong></em></p>
+      <p>Recupera el estado del mapa: activo / no activo.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeContainerExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeContainerExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getActive=map.active.toString()">
+        Obtener active del mapa
+      </mv-button>
+      <p>Resultado: {{getActive}}</p>
+      <br>
+      <p><em><strong>isOverviewMap</strong></em></p>
+      <p>Comprueba si el mapa es de tipo Overview.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeIsOverviewMapExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeIsOverviewMapExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getIsOverviewMap=map.isOverviewMap">
+        Obtener isOverviewMap del mapa
+      </mv-button>
+      <p>Resultado: {{getIsOverviewMap}}</p>
+      <br>
+      <p><em><strong>layers</strong></em></p>
+      <p>Recupera la lista de capas del mapa.</p>
+      <br>
+      <p><em><strong>eventQueue</strong></em></p>
+      <p>Recupera la cola de eventos del mapa.</p>
+      <br>
+      <p><em><strong>resolution</strong></em></p>
+      <p>Recupera la resolución actual del mapa.</p>
+      <br>
+      <p><em><strong>minResolution</strong></em></p>
+      <p>Recupera la resolución mínima del mapa.</p>
+      <br>
+      <p><em><strong>backgroundColor</strong></em></p>
+      <p>Recupera la color del contenedor del mapa.</p>
+      <br>
+      <p><em><strong>snapObject</strong></em></p>
+      <p>Recupera el objeto generado por el snap.</p>
+      <br>
+      <p><em><strong>popups</strong></em></p>
+      <p>Recupera la lista de popups del mapa.</p>
+      <br>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- setters -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #setters><strong>Setters</strong></mv-card-title>
+      <mv-card-subtitle>Métodos que nos permiten establecer (Setters) las propiedades de un mapa.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Las clases de ES6 incorporan una nueva sintaxis para obtener y configurar valores en las propiedades de los
+        objetos (GET y SET). Get y set permiten ejecutar código en la lectura y escritura de una propiedad.
+        Los métodos SET se han implementado de manera tradicional (como métodos).
+      </p>
+      <p>Se muestran a continuación los Setters disponibles en un objeto de tipo apigis.Map:</p>
+      <p><em><strong>setId(value)</strong></em></p>
+      <p>Establece el Id del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Id del mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setTitle(value)</strong></em></p>
+      <p>Establece el nombre del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Nombre del mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setGrid(value)</strong></em></p>
+      <p>Configura el estado que hará que el mapa forme parte de la disposición en grid. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>boolean</i> &#62; Estado.</li>
+      </ul>
+      <br>
+      <p><em><strong>setContainer(value)</strong></em></p>
+      <p>Establece el contenedor donde debe incrustarse el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Nombre del contenedor del DOM.</li>
+      </ul>
+      <br>
+      <p><em><strong>setViewer(value)</strong></em></p>
+      <p>Setea el objeto Viewer que estará asociado al mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>Viewer object</i> &#62; Objeto Viewer.</li>
+      </ul>
+      <br>
+      <p><em><strong>setSynchronize(value)</strong></em></p>
+      <p>Setea el estado de sincronización del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>number</i> &#62; Tipo de sincronización (0: no sincronizados, 1:
+          sincronización de mapas, 2: sincronización continua).</li>
+      </ul>
+      <br>
+      <p><em><strong>setInheritedclass(value)</strong></em></p>
+      <p>Almacena el inherited class. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Ruta en el arbol de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setContainer_ext(value)</strong></em></p>
+      <p>Setea el nombre de un contenedor externo al mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Nombre del contenedor externo.</li>
+      </ul>
+      <br>
+      <p><em><strong>setActive(value)</strong></em></p>
+      <p>Setea el estado del mapa: activo / no activo. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>boolean</i> &#62; Estado de actividad del mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setIsOverviewMap(value)</strong></em></p>
+      <p>Configura un mapa como tipo Overview. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>boolean</i> &#62; Ruta en el arbol de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setResolution(value)</strong></em></p>
+      <p>Almacena el inherited class. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Ruta en el arbol de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setMinResolution(value)</strong></em></p>
+      <p>Almacena el inherited class. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Ruta en el arbol de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setBackgroundColor(color)</strong></em></p>
+      <p>Almacena el inherited class. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Ruta en el arbol de la capa.</li>
+      </ul>
+      <br>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Métodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodos><strong>Métodos</strong></mv-card-title>
+      <mv-card-subtitle>Métodos de un visor.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>
+      </p>
+      <p>Se muestran a continuación los métodos disponibles para trabajar con un objeto de tipo Viewer:</p>
+
+      <p><em><strong>addLayer(layer)</strong></em></p>
+      <p>Añade una capa al Visor. Sus argumentos son: </p>
+      <ul>
+        <li><strong>layer</strong> &#60;<i>Layer object</i> &#62; Objeto de tipo Layer.</li>
+      </ul>
+      <br>
+      <p><em><strong>removeLayer(layer) </strong></em></p>
+      <p>Elimina una capa del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>layer</strong> &#60;<i>Layer object</i> &#62; Objeto de tipo Layer.</li>
+      </ul>
+      <br>
+      <p><em><strong>moveLayer(layerId, indexTo)</strong></em></p>
+      <p>Mueve una capa de posición dentro del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>layerId</strong> &#60;<i>string</i> &#62; Identificador de la capa.</li>
+        <li><strong>indexTo</strong> &#60;<i>number</i> &#62; Ínice donde queremos ubicar la capa. Si existe una capa
+          base, el índice no puede ser 0.</li>
+      </ul>
+      <br>
+      <p><em><strong>getLayerIndex(layerId)</strong></em></p>
+      <p>Obtiene la posición que ocupa la capa en la lista de capas del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>layerId</strong> &#60;<i>string</i> &#62; Identificador de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>rearrangeZIndexes()</strong></em></p>
+      <p>Reorganiza el parámetro z-index de las capas del mapa.</p>
+      <br>
+      <p><em><strong>getLayerById(value)</strong></em></p>
+      <p>Recupera la primera capa del mapa que coincida con el Id. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Identificador de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>getLayerByTitle(value)</strong></em></p>
+      <p>Recupera la primera capa del mapa que coincida con la etiqueta pasada como parámetro. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Título de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>addOverlayLayer(name, queryable = true, properties = &#123;&#125;)</strong></em></p>
+      <p>Añade una capa operacional al mapa con el nombre especificado. Sus argumentos son: </p>
+      <ul>
+        <li><strong>name</strong> &#60;<i>string</i> &#62; Título de la capa operacional.</li>
+        <li><strong>queryable = true</strong> &#60;<i>boolean</i> &#62; Indica si la capa es identificable o no.</li>
+        <li><strong>properties</strong> &#60;<i>object</i> &#62; Objeto de propiedades. Sus argumentos son:</li>
+        <ul>
+          <li><strong>updateWhileExtentChange = false</strong> &#60;<i>boolean</i> &#62; Si se setea a true las features
+            se recargarán cada vez que se produzca un cambio en la extensión del mapa.</li>
+        </ul>
+      </ul>
+      <p>TODO. Se puede obtener más información sobre las capas operacionales en XXX</p>
+      <br>
+      <p><em><strong>removeOverlayLayer(name)</strong></em></p>
+      <p>Elimina una capa operacional del mapa a partir del nombre especificado. Sus argumentos son: </p>
+      <ul>
+        <li><strong>name</strong> &#60;<i>string</i> &#62; Nombre de la capa operacional.</li>
+      </ul>
+      <p>TODO. Se puede obtener más información sobre las capas operacionales en XXX</p>
+      <br>
+      <br>
+      <p><em><strong>findOverlayLayer(name)</strong></em></p>
+      <p>Recupera la capa operacional del mapa que coincida con el nombre especificado. Sus argumentos son: </p>
+      <ul>
+        <li><strong>name</strong> &#60;<i>string</i> &#62; Nombre de la capa operacional.</li>
+      </ul>
+      <p>TODO. Se puede obtener más información sobre las capas operacionales en XXX</p>
+      <br>
+      <p><em><strong>addPopup(id, feature, domNode, container)</strong></em></p>
+      <p>Permite crear un popup de información en el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>id</strong> &#60;<i>string</i> &#62; Identificador del popup. Si se especifica un identificador que
+          ya existía el POPUP se reutiliza, en caso contrario se genera uno nuevo.</li>
+        <li><strong>feature</strong> &#60;<i>object</i> &#62; Objeto GeoJSON con la coordenada donde se situará el
+          POPUP.</li>
+        <li><strong>domNode</strong> &#60;<i>HTMLElement | string</i> &#62; Elemento del DOM o identificador del mismo
+          que se incrustará en el POPUP.</li>
+        <li><strong>container</strong> &#60;<i>string</i> &#62; Contenedor del POPUP. Si no se pasa como parámetro se
+          creará uno básico.</li>
+      </ul>
+      <br>
+      <p><em><strong>removePopup(ids)</strong></em></p>
+      <p>Permite eliminar uno o varios popup del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>ids</strong> &#60;<i>string[]</i> &#62; Identificadores de los popups.</li>
+      </ul>
+      <br>
+      <p><em><strong>movePopup(id, feature)</strong></em></p>
+      <p>Permite cambiar la ubicación de un popup en el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>id</strong> &#60;<i>string</i> &#62; Identificador de popup.</li>
+        <li><strong>feature</strong> &#60;<i>object</i> &#62; Feature con la posición donde ubicar el popup.</li>
+      </ul>
+      <br>
+      <p><em><strong>closePopups(ids)</strong></em></p>
+      <p>Permite ocultar popups del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>ids</strong> &#60;<i>string[]</i> &#62; Identificadores de los popups.</li>
+      </ul>
+      <br>
+      <p><em><strong>getResolutionFromScale(scaleDenominator, units = 'm')</strong></em></p>
+      <p>Devuelve la resolución a partir de la escala pasada como parámetro. Sus argumentos son: </p>
+      <ul>
+        <li><strong>scaleDenominator</strong> &#60;<i>number</i> &#62; Escala.</li>
+        <li><strong>units = 'm'</strong> &#60;<i>string</i> &#62; Unidad de medida.</li>
+      </ul>
+      <br>
+      <p><em><strong>getScaleFromResolution(resolution, mpu = 1, units = 'm')</strong></em></p>
+      <p>Devuelve la escala a partir de la resolución pasada como parámetro. Sus argumentos son: </p>
+      <ul>
+        <li><strong>resolution</strong> &#60;<i>number</i> &#62; Resolución.</li>
+        <li><strong>mpu = 1</strong> &#60;<i>number</i> &#62; Metros por unidad.</li>
+        <li><strong>units = 'm'</strong> &#60;<i>string</i> &#62; Unidad de medida.</li>
+      </ul>
+      <br>
+      <p><em><strong>listenExtentChange(callback)</strong></em></p>
+      <p>Listener para escuchar cuando cambia el mapa de extensión. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>listenChangeVisibilityLayer(callback)</strong></em></p>
+      <p>Listener para escuchar cuando cambia la visibilidad de una capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>drawPolygon(options)</strong></em></p>
+      <p>Permite generar una interacción de dibujo (Polígono) con el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones de dibujado. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layer</strong> &#60;<i>layer object</i> &#62; Capa sobre la que se dibujará la feature. </li>
+          <li><strong>measure</strong> &#60;<i>boolean</i> &#62; Permite que el resultado del dibujado sea un objeto con
+            la feature y la unidad de medida que le corresponda (área en el caso de polígonos, longitud en el caso de
+            líneas...).</li>
+          <li><strong>callback</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará una vez dibujada
+            la geometría.</li>
+          <li><strong>callbackStart</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará al inicio
+            del dibujado de la geometría.</li>
+          <li><strong>onDrawingFunction</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará durante
+            el dibujado la geometría.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>drawLine(options)</strong></em></p>
+      <p>Permite generar una interacción de dibujo (Línea) con el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones de dibujado. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layer</strong> &#60;<i>layer object</i> &#62; Capa sobre la que se dibujará la feature. </li>
+          <li><strong>measure</strong> &#60;<i>boolean</i> &#62; Permite que el resultado del dibujado sea un objeto con
+            la feature y la unidad de medida que le corresponda (área en el caso de polígonos, longitud en el caso de
+            líneas...).</li>
+          <li><strong>callback</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará una vez dibujada
+            la geometría.</li>
+          <li><strong>callbackStart</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará al inicio
+            del dibujado de la geometría.</li>
+          <li><strong>onDrawingFunction</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará durante
+            el dibujado la geometría.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>drawPoint(options)</strong></em></p>
+      <p>Permite generar una interacción de dibujo (Punto) con el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones de dibujado. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layer</strong> &#60;<i>layer object</i> &#62; Capa sobre la que se dibujará la feature. </li>
+          <li><strong>measure</strong> &#60;<i>boolean</i> &#62; Permite que el resultado del dibujado sea un objeto con
+            la feature y la unidad de medida que le corresponda (área en el caso de polígonos, longitud en el caso de
+            líneas...).</li>
+          <li><strong>callback</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará una vez dibujada
+            la geometría.</li>
+          <li><strong>callbackStart</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará al inicio
+            del dibujado de la geometría.</li>
+          <li><strong>onDrawingFunction</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará durante
+            el dibujado la geometría.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>drawCircle(options)</strong></em></p>
+      <p>Permite generar una interacción de dibujo (Círculo) con el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones de dibujado. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layer</strong> &#60;<i>layer object</i> &#62; Capa sobre la que se dibujará la feature. </li>
+          <li><strong>measure</strong> &#60;<i>boolean</i> &#62; Permite que el resultado del dibujado sea un objeto con
+            la feature y la unidad de medida que le corresponda (área en el caso de polígonos, longitud en el caso de
+            líneas...).</li>
+          <li><strong>callback</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará una vez dibujada
+            la geometría.</li>
+          <li><strong>callbackStart</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará al inicio
+            del dibujado de la geometría.</li>
+          <li><strong>onDrawingFunction</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará durante
+            el dibujado la geometría.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>drawBox(options)</strong></em></p>
+      <p>Permite generar una interacción de dibujo (Caja) con el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones de dibujado. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layer</strong> &#60;<i>layer object</i> &#62; Capa sobre la que se dibujará la feature. </li>
+          <li><strong>measure</strong> &#60;<i>boolean</i> &#62; Permite que el resultado del dibujado sea un objeto con
+            la feature y la unidad de medida que le corresponda (área en el caso de polígonos, longitud en el caso de
+            líneas...).</li>
+          <li><strong>callback</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará una vez dibujada
+            la geometría.</li>
+          <li><strong>callbackStart</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará al inicio
+            del dibujado de la geometría.</li>
+          <li><strong>onDrawingFunction</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará durante
+            el dibujado la geometría.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>editBox(options)</strong></em></p>
+      <p>Permite generar una interacción de modificacion (Caja) con el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layer</strong> &#60;<i>layer object</i> &#62; Capa sobre la que se dibujará la feature. </li>
+          <li><strong>featureId</strong> &#60;<i>string</i> &#62; Identificador de feature de la capa que queremos
+            modificar.</li>
+          <li><strong>measure</strong> &#60;<i>boolean</i> &#62; Permite que el resultado del dibujado sea un objeto con
+            la feature y la unidad de medida que le corresponda (área en el caso de polígonos, longitud en el caso de
+            líneas...).</li>
+          <li><strong>callback</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará una vez dibujada
+            la geometría.</li>
+          <li><strong>callbackStart</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará al inicio
+            del dibujado de la geometría.</li>
+          <li><strong>onModifyingFunction</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará
+            durante la edición la geometría.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>editLine(options)</strong></em></p>
+      <p>Permite generar una interacción de modificación (línea) con el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layer</strong> &#60;<i>layer object</i> &#62; Capa sobre la que se dibujará la feature. </li>
+          <li><strong>featureId</strong> &#60;<i>string</i> &#62; Identificador de feature de la capa que queremos
+            modificar.</li>
+          <li><strong>measure</strong> &#60;<i>boolean</i> &#62; Permite que el resultado del dibujado sea un objeto con
+            la feature y la unidad de medida que le corresponda (área en el caso de polígonos, longitud en el caso de
+            líneas...).</li>
+          <li><strong>callback</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará una vez dibujada
+            la geometría.</li>
+          <li><strong>callbackStart</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará al inicio
+            del dibujado de la geometría.</li>
+          <li><strong>onModifyingFunction</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará
+            durante la edición la geometría.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>editPolygon(options)</strong></em></p>
+      <p>Permite generar una interacción de modificación (polígono) con el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layer</strong> &#60;<i>layer object</i> &#62; Capa sobre la que se dibujará la feature. </li>
+          <li><strong>featureId</strong> &#60;<i>string</i> &#62; Identificador de feature de la capa que queremos
+            modificar.</li>
+          <li><strong>measure</strong> &#60;<i>boolean</i> &#62; Permite que el resultado del dibujado sea un objeto con
+            la feature y la unidad de medida que le corresponda (área en el caso de polígonos, longitud en el caso de
+            líneas...).</li>
+          <li><strong>callback</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará una vez dibujada
+            la geometría.</li>
+          <li><strong>callbackStart</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará al inicio
+            del dibujado de la geometría.</li>
+          <li><strong>onModifyingFunction</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará
+            durante la edición la geometría.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>snap(options)</strong></em></p>
+      <p>Activa el snapping durante el dibujado o la edición. La acción de dibujar con snapping se debe realizar
+        invocando a la interacción de dibujado previamente y a la de snapping después. Sus argumentos son: </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layers</strong> &#60;<i>apigis.Layer[]</i> &#62; Capas a las que snapear.</li>
+          <li><strong>features</strong> &#60;<i>object</i> &#62; Features a las que snapear.</li>
+          <li><strong>edge = true </strong> &#60;<i>boolean</i> &#62;Snapear al eje.
+          <li><strong>vertex = true </strong> &#60;<i>boolean</i> &#62; Snapear al vértice.</li>
+          <li><strong>tolerance = 10</strong> &#60;<i>number</i> &#62;Tolerancia en píxeles.</li>
+          <li><strong>collection = false</strong> &#60;<i>boolean</i> &#62; Indica si la entidad a snapear es un
+            collección.</li>
+          <li><strong>featuresId</strong> &#60;<i>string</i> &#62; Lista con los identificadores de las features de la
+            colleccion que intervienen en el snapping.</li>
+          <li><strong>hightlight</strong> &#60;<i>boolean</i> &#62; Resaltado de la feature de snapeo.
+          <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback que se ejecutará una vez
+            realizado el snap.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>cut(options)</strong></em></p>
+      <p>Activa la interacción de corte. Sus argumentos son: </p>
+      <ul>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layers</strong> &#60;<i>apigis.Layer[]</i> &#62; Capas con las features que cortar.</li>
+          <li><strong>offset</strong> &#60;<i>number</i> &#62; Offset para cortes en T.</li>
+          <li><strong>drawOptions</strong> &#60;<i>object</i> &#62;Opciones del dibujado. Sus argumentos son: </li>
+          <ul>
+            <li><strong>maxPoints</strong> &#60;<i>number</i> &#62; Máximo de puntos de la línea de corte.</li>
+            <li><strong>rightAngle</strong> &#60;<i>boolean</i> &#62; Línea de corte en ángulo recto.</li>
+          </ul>
+          <li><strong>callback</strong> &#60;<i>function</i> &#62; Función de callback que se ejecutará una vez
+            realizado el corte.</li>
+        </ul>
+      </ul>
+      <br>
+
+      <p><em><strong>identifyTask(layers, feature, identifyParams)</strong></em></p>
+      <p>Activa la interacción de corte. Sus argumentos son: </p>
+      <ul>
+        <li><strong>layers</strong> &#60;<i>object</i> &#62; Opciones. Sus argumentos son: </li>
+        <li><strong>feature</strong> &#60;<i>apigis.Layer[]</i> &#62; Capas con las features que cortar.</li>
+        <li><strong>identifyParams</strong> &#60;<i>number</i> &#62; Offset para cortes en T.</li>
+      </ul>
+      <br>
+      <p><em><strong>select(type = 'POINT', options = &#123;&#125;)</strong></em></p>
+      <p>Activa la interacción de corte. Sus argumentos son: </p>
+      <ul>
+        <li><strong>type = 'POINT'</strong> &#60;<i>string</i> &#62; Opciones. Sus argumentos son: </li>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones. Sus argumentos son: </li>
+        <ul>
+          <li><strong>multiple = false </strong> &#60;<i>boolean</i> &#62; Indica si se permite selección múltiple de
+            elementos. Por defecto, limpia la capa operacional en cada selección.</li>
+          <li><strong>tolerance</strong> &#60;<i>number</i> &#62; Tolerancia en píxeles.</li>
+          <li><strong>clientSide = true</strong> &#60;<i>number</i> &#62; Indica si se la identificación se hace en
+            cliente o en servidor.</li>
+          <li><strong>layers = this.layers</strong> &#60;<i></i> &#62; Lista de capas sobre las que se ejecutará la
+            selección.</li>
+          <li><strong>callback</strong> &#60;<i>number</i> &#62; Función de callback que se ejecutará una vez finalizada
+            la selección. Recibe las features seleccionadas y como segundo parámetro el último punto del finalizado de
+            la selección.</li>
+          <li><strong>onDrawingFunction</strong> &#60;<i>object</i> &#62;Función de callback que se ejecutará durante la
+            selección</li>
+          <li><strong>callbackStart</strong> &#60;<i>function</i> &#62;Función de callback que se ejecutará al iniciar
+            la selección.</li>
+          <li><strong>color = [255, 255, 0]</strong> &#60;<i>string | number[]</i> &#62; Color a aplicar a la
+            selección.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>cleanSelect()</strong></em></p>
+      <p>Permite limpiar la capa operacional establecida para la selección.</p>
+      <br>
+      <p><em><strong>show()</strong></em></p>
+      <p>Hace visible el contenedor del mapa.</p>
+      <br>
+      <p><em><strong>hide()</strong></em></p>
+      <p>Hace invisible el contenedor del mapa.</p>
+      <br>
+      <p><em><strong>getTree(path, validation_function)</strong></em></p>
+      <p>Devuelve el árbol de capas desde una ruta o si no se pasa el árbol entero. Sus argumentos son: </p>
+      <ul>
+        <li><strong>path</strong> &#60;<i>string</i> &#62; Ruta del árbol.</li>
+        <li><strong>validation_function</strong> &#60;<i>function</i> &#62; Función de validacion para no tener en
+          cuenta las capas que no cumplan con dicha validación.</li>
+      </ul>
+      <br>
+      <p><em><strong>setInteraction()</strong></em></p>
+      <p>Permite asociar una nueva interacción al mapa.</p>
+      <br>
+      <br>
+      <p><em><strong>cleanInteraction()</strong></em></p>
+      <p>Elimina la interacción asociada al mapa.</p>
+      <br>
+      <br>
+      <p><em><strong>addDOMNode(domNode)</strong></em></p>
+      <p>Permite añadir elementos DOM al contenedor del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>domNode</strong> &#60;<i>HTMLElement</i> &#62; Elemento DOM.</li>
+      </ul>
+      <br>
+      <br>
+      <p><em><strong>refresh(idLayers)</strong></em></p>
+      <p>Refresca las capas pasadas como parámetro o en su defecto todas. Sus argumentos son: </p>
+      <ul>
+        <li><strong>idLayers</strong> &#60;<i>string[]</i> &#62; Identificadores de las capas a refrescar.</li>
+      </ul>
+      <br>
+      <br>
+      <p><em><strong>exportState()</strong></em></p>
+      <p>Devuelve el estado del mapa (extent y capas visibles).</p>
+      <br>
+      <br>
+      <p><em><strong>loadState(state)</strong></em></p>
+      <p>Carga el estado del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>state</strong> &#60;<i>object</i> &#62; Estado guardado.</li>
+      </ul>
+      <br>
+      <br>
+      <p><em><strong>toJson(functions_code = [], symbolConf = []) </strong></em></p>
+      <p>Devuelve la configuracion del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>functions_code = [],</strong> &#60;<i> [ ] </i> &#62; Array con el codigo de las funciones internas
+          que vamos a generar al exportar.</li>
+        <li><strong>symbolConf = []</strong> &#60;<i> [ ] </i> &#62; Array con la configuracion de simbolos a generar al
+          exportar.</li>
+      </ul>
+      <br>
+      <p><em><strong>zoomToLayer(layer)</strong></em></p>
+      <p>Permite hacer zoom a la extensión de una capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>layer</strong> &#60;<i>Layer object</i> &#62; Objeto de tipo Layer.</li>
+      </ul>
+      <br>
+      <p><em><strong>zoomToFeatures(featuresGeoJSON, offset, maxZoom, callback)</strong></em></p>
+      <p>Permite añadir zoom a los elementos pasados. Sus argumentos son: </p>
+      <ul>
+        <li><strong>featuresGeoJSON</strong> &#60;<i>string | string[]</i> &#62; Colección de features a enfocar.
+          Acepta una feature, una colección de features o un array de features, todo ello en formato GeoJSON.</li>
+        <li><strong>offset</strong> &#60;<i>number</i> &#62; Offset en pixeles.</li>
+        <li><strong>maxZoom</strong> &#60;<i>number</i> &#62; Nivel maximo zoom.</li>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>centerAt(point)</strong></em></p>
+      <p>Centra el mapa sobre la coordenada pasada como parámetro. El formato de la coordenada será [x, y]. Sus
+        argumentos son: </p>
+      <ul>
+        <li><strong>point</strong> &#60;<i>number[]</i> &#62; Coordenada.</li>
+      </ul>
+      <br>
+      <p><em><strong>setZoom(zoom)</strong></em></p>
+      <p>Establece el nivel de zoom de acuerdo con el mapa base. Sus argumentos son: </p>
+      <ul>
+        <li><strong>zoom</strong> &#60;<i>number</i> &#62; Nivel de zoom.</li>
+      </ul>
+      <br>
+      <p><em><strong>setScale(value)</strong></em></p>
+      <p>Establece la escala del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>number</i> &#62; Escala.</li>
+      </ul>
+      <br>
+      <p><em><strong>setExtent(extent)</strong></em></p>
+      <p>Centra el mapa sobre la extensión pasada como parámetro. El formato de la extensión será [xmax, ymax, xmin,
+        ymin]. Sus argumentos son: </p>
+      <ul>
+        <li><strong>extent</strong> &#60;<i>number[]</i> &#62; Coordenadas.</li>
+      </ul>
+      <br>
+      <p><em><strong>getExtent()</strong></em></p>
+      <p> Obtiene el extent actual del mapa.</p>
+      <br>
+      <p><em><strong>getCenter()</strong></em></p>
+      <p>Obtiene el punto central del mapa.</p>
+      <br>
+      <p><em><strong>getScale()</strong></em></p>
+      <p>Permite obtener la escala del mapa.</p>
+      <br>
+      <p><em><strong>updateSize()</strong></em></p>
+      <p>Actuliza el mapa para adaptarse a posibles cambios de tamaño del contenedor.</p>
+      <br>
+      <p><em><strong>onceLoaded(callback)</strong></em></p>
+      <p>Permite establecer una acción una vez se haya renderizado el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>hover(layerFilter, options)</strong></em></p>
+      <p>Permite ejecutar una selección a medida que se pasa el ratón por las features de la capa. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>layerFilter</strong> &#60;<i>Function</i> &#62; Función de filtrado de capas, la cual recibirá un
+          argumento, el tipo de capa candidata. Sólo para las capas visibles y para las que dicha función devuelva true
+          serán testadas. Por defecto todas las capas visibles serán testadas.</li>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones. Puede contener:</li>
+        <ul>
+          <li><strong>symbol</strong> &#60;<i>symbology object</i> &#62; Simbología de la capa operacional. </li>
+          <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback que se ejecutará una vez
+            finalizada la acción.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>onHover(callback)</strong></em></p>
+      <p>Permite ejecutar una función de callback cada vez que se mueve el cursor sobre el mapa. Sus argumentos son:
+      </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>onceHover(callback)</strong></em></p>
+      <p>Permite ejecutar una función de callback la primera vez que se mueve el cursor sobre el mapa. Sus argumentos
+        son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>click(callback)</strong></em></p>
+      <p>Permite ejecutar una función de callback cada vez que se hace click en el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>doubleclick(callback)</strong></em></p>
+      <p>Permite ejecutar una función de callback cada vez que se hace doble click en el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>mouseDown(callback)</strong></em></p>
+      <p>Permite ejecutar una función de callback cada vez que se hace click en el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>eachFeature(pixel, callback, options)</strong></em></p>
+      <p>Permite ejecutar una acción por cada una de las features de las capas del mapa que intersequen con la
+        coordenada pasada como parámetro. Sus argumentos son: </p>
+      <ul>
+        <li><strong>pixel</strong> &#60;<i>number[ ]</i> &#62; Coordenadas en pixeles del mapa.</li>
+        <li><strong>callback</strong> &#60;<i>function</i> &#62; Función de callback.</li>
+        <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones. Sus argumentos son: </li>
+        <ul>
+          <li><strong>layerFilter</strong> &#60;<i>Layer[]</i> &#62; Lista de capas para generar la función de filtrado
+            de capas, la cual recibirá un argumento, el tipo de capa candidata. Sólo para las capas visibles y para las
+            que dicha función devuelva true serán testadas. Por defecto todas las capas visibles serán testadas.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>cleanMapEvent(key)</strong></em></p>
+      <p>Elimina el evento activo sobre el mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>key</strong> &#60;<i>string</i> &#62; Evento a borrar. Si no se pasa ninguna clave se eliminarán
+          todas los eventos.</li>
+      </ul>
+      <br>
+      <p><em><strong>project(featuresGeoJSON, projectSrc)</strong></em></p>
+      <p>Permite proyectar las geometrías pasadas como parámetro a la proyección del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>featuresGeoJSON</strong> &#60;<i>string[ ]</i> &#62; Colección de features a añadir. Acepta una
+          feature, una colección de features o un array de features, todo ello en formato GeoJSON.</li>
+        <li><strong>projectSrc</strong> &#60;<i>string</i> &#62; Projección de origen (EPSG).</li>
+      </ul>
+      <br>
+      <p><em><strong>calculateExtent()</strong></em></p>
+      <p>Permite obtener la extensión de la vista actual.</p>
+      <br>
+      <p><em><strong>exportMap(parentId, extent, resolution, width, height, images)</strong></em></p>
+      <p>Permite imprimir en cliente el mapa indicado. Sus argumentos son: </p>
+      <ul>
+        <li><strong>parentId</strong> &#60;<i>string</i> &#62; Identificador del padre (contenedor) que contiene el
+          canvas a imprimir.</li>
+        <li><strong>extent</strong> &#60;<i>number[ ]</i> &#62; Extensión del mapa que queremos imprimir.</li>
+        <li><strong>resolution</strong> &#60;<i>string</i> &#62; Resolución a la que queremos imprimir (dpi).</li>
+        <li><strong>width</strong> &#60;<i>string</i> &#62; Ancho en milimetros del contenedor donde se ubicará la
+          imagen.</li>
+        <li><strong>height</strong> &#60;<i>string</i> &#62; Alto en milimetros del contenedor donde se ubicará la
+          imagen.</li>
+        <li><strong>images</strong> &#60;<i>object[]</i> &#62; Lista de imagenes adicionales para imprimir en el
+          canvas. Cada imagen debe contener el id de la imagen y su posición x,y a ocupar en el canvas y optativamente
+          un width (ancho) y un height (alto) en píxeles.</li>
+      </ul>
+      <p>TODO</p>
+      <br>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

@@ -1,0 +1,10 @@
+<mv-card class="card-code">
+  <mv-header>
+    <mv-title>Detalle del Error en Documento</mv-title>
+  </mv-header>
+  <mv-content>
+    <p>Ocurrió un error al procesar el documento.</p>
+    <p>Detalles: {{errorDetails?.message}}</p>
+    <mv-button (click)="openErrorDialog()">Ver detalles del error</mv-button>
+  </mv-content>
+</mv-card>

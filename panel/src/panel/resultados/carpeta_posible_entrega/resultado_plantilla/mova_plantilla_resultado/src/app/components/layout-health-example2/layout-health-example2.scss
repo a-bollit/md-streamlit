@@ -1,0 +1,115 @@
+@import '~@mova/components/_variables.scss';
+
+.header-1{
+  margin: 0;
+  background-color: #009ada;
+  color: #fff;
+  padding: 10px;
+  font-size: 1.75rem;
+}
+.header-2{
+  background: -moz-linear-gradient(top, #eee 0%, #ccc 100%);
+  background: -webkit-linear-gradient(top, #eee 0%, #ccc 100%);
+  background: linear-gradient(to bottom, #eee 0%, #ccc 100%);
+  color: #666;
+  padding: 10px;
+  margin-bottom: 0;
+}
+.view-default-style{
+  height: 100vh;
+  background-color: #fff !important;
+}
+#health-card{
+  padding-top: 0;
+  max-width: $container-max-width-medium;
+  margin: 1rem auto 1rem auto;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  .cardTitle{
+    margin-top: 0.75rem;
+    color: #009ada;
+    strong{
+      vertical-align: super;
+    }
+  }
+  .truncate{
+    img{
+      vertical-align: middle;
+    }
+  }
+  #logoutButton{
+    float: right;
+    margin: 10px 0 10px 0;
+  }
+  .bigButton{
+    padding: 0.75rem 0.75rem 0.75rem 0.75rem;
+    text-align: center;
+    ::ng-deep button{
+      background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+      -webkit-box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.65);
+      -moz-box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.65);
+      box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.6);
+      img{
+        margin: 1rem 0 0 0;
+      }
+    }
+    mv-icon{
+      position: absolute;
+      top: -13px;
+      right: 5px;
+      padding: 2px 4px 2px 4px;
+      background-color: #fff;
+      border: thin solid #E6E6E6;
+      border-radius: 40%;
+    }
+  }
+  .padding{
+    padding: 1rem 0 0 0;
+  }
+  .margin{
+    margin: 1rem 0 0 0;
+  }
+  .backgroundGrey{
+    background-color: rgba(86,115,131,0.1);
+  }
+  .smallButtonColor{
+    padding: 0.5rem 0.75rem 0.75rem 0.75rem;
+    text-align: center;
+    ::ng-deep button{
+      -webkit-box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.65);
+      -moz-box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.65);
+      box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.6);
+    }
+  }
+  .smallButton{
+    padding: 0.5rem 0.75rem 0.75rem 0.75rem;
+    text-align: center;
+    ::ng-deep button{
+      background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+      -webkit-box-shadow: 0.05rem 0.05rem 0.25rem 0 rgba(125,125,125,0.65);
+      -moz-box-shadow: 0.05rem 0.05rem 0.25rem 0 rgba(125,125,125,0.65);
+      box-shadow: 0.05rem 0.05rem 0.25rem 0 rgba(125,125,125,0.6);
+    }
+  }
+  .message{
+    span{
+      vertical-align: sub;
+    }
+    div:nth-child(2){
+      text-align: right;
+    }
+  }
+}
+
+// xs
+@media only screen and (max-width: $media-col-xs-max) {
+  #health-card{
+    #logoutButton{
+      float: left;
+    }
+    .bigButton:nth-child(1), .bigButton:nth-child(2){
+      margin: 0 0 0.5rem 0;
+    }
+  }
+}

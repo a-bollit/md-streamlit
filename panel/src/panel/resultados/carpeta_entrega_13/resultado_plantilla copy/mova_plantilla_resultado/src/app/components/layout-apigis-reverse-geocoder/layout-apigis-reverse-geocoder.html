@@ -1,0 +1,20 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 reverse-geocoder-mobile">
+      <div class="reverse-geocoder-container">
+        <span class="span">Reverse Geocoder</span>
+        <span class="info">Esribe unas coordenadas y pulsa en <b>Ir a</b>...</span>
+        <mv-input type="number" adapt="true" placeholder="40.395795" label="Latitud" [(ngModel)]="latitud">
+        </mv-input>
+        <mv-input type="number" adapt="true" placeholder="-3.717712" label="Longitud" [(ngModel)]="longitud">
+        </mv-input>
+        <mv-button appearance="raised" color="corporative" adapt=true (clickEvent)="searchOnReverseGeocoder()">
+          Ir a...
+        </mv-button>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-9 map-mobile">
+      <div id="container-apigis-reverse-geocoder"></div>
+    </div>
+  </div>
+</div>

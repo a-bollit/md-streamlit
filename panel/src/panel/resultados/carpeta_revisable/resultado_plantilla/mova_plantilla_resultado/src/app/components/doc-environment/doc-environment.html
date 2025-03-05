@@ -1,0 +1,223 @@
+<section class="view-default-style">
+
+    <!-- Componente -->
+    <mv-card class="card-code">
+        <mv-card-title><strong>Documentación environment.ts, environment.val.ts y environment.prod.ts</strong></mv-card-title>
+
+        <!-- Índice de la documentación -->
+        <div>
+            <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+                <mv-icon>link</mv-icon> Información
+            </a>
+        </div>
+        <div>
+            <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+                <mv-icon>link</mv-icon> Configuración
+            </a>
+        </div>
+
+    </mv-card>
+
+    <!-- Información -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #info><strong>Información</strong></mv-card-title>
+            <mv-card-subtitle>Información <strong>environment.ts, environment.val.ts y environment.prod.ts</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>Estos archivos permiten definir la configuración por entorno (desarrollo/validación/producción) de la app.</p>
+            <p>Para configurar el aspecto visual general de la app (estilo rojo/azul, menú lateral, header...) ver la documentación de
+                <strong><a target="_blank" href="#/doc-config-default-main-frame">config-default-main-frame.json</a></strong></p>
+            <p>Para configurar los aspectos generales de la app ver la documentación de
+                <strong><a target="_blank" href="#/doc-config-default">config-default.json</a></strong></p>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- Configuración -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+            <mv-card-subtitle>Configuración <strong>environment.ts, environment.val.ts y environment.prod.ts</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <mv-tab-group>
+                <mv-tab label="environment.ts">
+                    <pre><code [highlight]="codeEnvironmentTS"></code></pre>
+                </mv-tab>
+                <mv-tab label="environment.val.ts">
+                    <pre><code [highlight]="codeEnvironmentValTS"></code></pre>
+                </mv-tab>
+                <mv-tab label="environment.prod.ts">
+                    <pre><code [highlight]="codeEnvironmentProdTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p>En estos archivos se configuran las variables que varían según el entorno: desarrollo, validación y producción. Así, en el archivo environment.ts se configuran los valores para desarrollo, en el archivo environment.val.ts se configuran los
+                valores para validación y en el archivo archivo environment.prod.ts se configuran los valores para producción.</p>
+
+            <ul class="margin-li">
+                <li>mova:</li>
+                <ul>
+                    <li><strong>environment</strong> - Variable para definir el entorno (DES/VAL/PRO). No se debe tocar.</li>
+                    <li>brokerView (<strong><a target="_blank" href="#/doc-broker-view">documentación broker-view</a></strong>):</li>
+                    <ul>
+                        <li><strong>autoRedirect</strong> - Variable para definir si queremos que el sistema broker-view redirija automáticamente al volver de la obtención del ticket.</li>
+                    </ul>
+                    <li>initView (<strong><a target="_blank" href="#/doc-init-view">documentación init-view</a></strong>)</li>
+                    <ul>
+                        <li><strong>autoRedirect</strong> - Variable para definir si queremos que nos redirija automáticamente a la vista correspondiente al hacer el chequeo de nueva versión.</li>
+                        <li><strong>skipVersionRequirementsCheck</strong> - Variable para definir si no queremos que la app haga el chequeo de nueva versión.</li>
+                        <li><strong>showVersionNewsWeb</strong> - Variable para definir si queremos mostrar las novedades de la versión en modo webapp.</li>
+                        <li><strong>showVersionNewsMobile</strong> - Variable para definir si queremos mostrar las novedades de la versión en modo móvil.</li>
+                    </ul>
+                    <li>loginView (<strong><a target="_blank" href="#/doc-login-view">documentación login-view</a></strong>)</li>
+                    <ul>
+                        <li><strong>dametokenSystemEnabled</strong> - Variable para definir si queremos mostrar el botón de usuario y contraseña - osb en la vista login-view.</li>
+                        <li><strong>dametokenButtonLabel</strong> - Variable para definir el texto del botón de usuario y contraseña - osb en la vista login-view.</li>
+                        <li><strong>dametokenInfoLabel</strong> - Variable para definir el texto explicativo al elegir el sistema usuario y contraseña - osb en login-view.</li>
+                        <li><strong>fingerprintAuth</strong> - Variable para definir si queremos acceso biométrico.</li>
+                        <li><strong>wso2SystemEnabled</strong> - Variable para definir si queremos mostrar el botón de WSO2 en la vista login-view.</li>
+                        <li><strong>wso2ButtonLabel</strong> - Variable para definir el texto del botón de WSO2 en la vista login-view.</li>
+                        <li><strong>wso2InfoLabel</strong> - Variable para definir el texto explicativo al elegir el sistema WSO2 en login-view.</li>
+                        <li><strong>autologinSystemEnabled</strong> - Variable para definir si queremos mostrar el botón de autologin - osb en la vista login-view.</li>
+                        <li><strong>autologinButtonLabel</strong> - Variable para definir el texto del botón de autologin - osb en la vista login-view.</li>
+                        <li><strong>autologinInfoLabel</strong> - Variable para definir el texto explicativo al elegir el sistema autologin - osb en login-view.</li>
+                        <li><strong>autologinWso2SystemEnabled</strong> - Variable para definir si queremos mostrar el botón de autologin - WSO2 en la vista login-view.</li>
+                        <li><strong>autologinWso2ButtonLabel</strong> - Variable para definir el texto del botón de autologin - WSO2 en la vista login-view.</li>
+                        <li><strong>autologinWso2InfoLabel</strong> - Variable para definir el texto explicativo al elegir el sistema autologin - WSO2 en login-view.</li>
+                        <li><strong>urlPasswordReset</strong> - Variablesssss para definir la url del link de recuperación de la contraseña en la pantalla de login.</li>
+                        <li><strong>urlBottomText</strong> - Variable para definir el texto del link de la parte baja de la pantalla de login.</li>
+                        <li><strong>urlBottomUrl</strong> - Variable para definir la url del link de la parte baja de la pantalla de login. Permite definir una url externa o el nombre de una ruta de la aplicación.</li>
+                        <li><strong>urlCornerIcon</strong> - Variable para definir el icono de material del link de de la esquina de la pantalla de login.</li>
+                        <li><strong>urlCornerUrl</strong> - Variable para definir la url del link de la esquina superior izquierda de la pantalla de login. Permite url externa o interna de la app. Sirve para crear una página de ayuda referente al login. Si
+                            se deja urlCornerUrl en blanco desaparecerá el icono
+                        </li>
+                        <li><strong>placeholder</strong></li>
+                        <ul>
+                            <li><strong>user</strong> - Placeholder para el usuario en la pantalla de login</li>
+                            <li><strong>password</strong> - Placeholder para la contraseña en la pantalla de login</li>
+                        </ul>
+                    </ul>
+                    <li>authenticationService <strong><a target="_blank" href="#/doc-broker-view">documentación broker-view</a></strong> y <strong><a target="_blank" href="#/doc-login-view">documentación login-view</a></strong></li>
+                    <ul>
+                        <li><strong>authenticationDefaultSystem</strong> - Variable para definir el sistema de autenticación que queremos: 'autologin', 'wso2' o 'dameToken'.</li>
+                        <li><strong>authenticationSaveLastLoginSystem</strong> - Permite definir qué sistema de autenticación aparecerá seleccionado en la pantalla de login en caso de poder escoger varios. Si el valor es true aparecerá seleccionado el último
+                            escogido. Si el valor es false aparecerá seleccionado el definido en la variable authenticationDefaultSystem.</li>
+                        <li><strong>authenticationSaveInSessionWeb</strong> - Permite escoger si, en modo web, queremos que las credenciales se almacenen en sessionStorage en vez de localStorage.</li>
+                        <li><strong>authenticationSaveInSessionMobile</strong> - Permite escoger si, en modo móvil, queremos que las credenciales se almacenen en sessionStorage en vez de localStorage.</li>
+                        <li>dameTokenConfig:</li>
+                        <ul>
+                            <li><strong>uriBase</strong> - Variable para definir la url base del sistema dameToken. No se debe tocar.</li>
+                            <li><strong>uriEliminaToken</strong> - Variable para definir la url de eliminación del token al hacer logout. No se debe tocar.</li>
+                            <li><strong>authenticationSystem</strong> - Variable para definir el tipo de usuario del sistema dameToken. No se debe tocar.</li>
+                            <li><strong>expirationTime</strong> - Variable para definir el tiempo de expiración de los token del sistema dameToken.</li>
+                            <li><strong>httpHeaderTokenAuthAlways</strong> - Variable para definir si queremos pasar la cabecera token-auth en las llamadas http cuando estamos logados con el sistema dameToken o autologin.</li>
+                            <li><strong>technicalModules</strong> - Variable para definir un array con los módulos técnicos que podemos usar en la app.</li>
+                            <li><strong>authenticationTechnicalModuleIndex</strong> - Variable para definir qué módulo del array de módulos técnicos es el principal.</li>
+                        </ul>
+                        <li>wso2Config:</li>
+                        <ul>
+                            <li><strong>uriBase</strong> - Variable para definir la url base del sistema WSO2. No se debe tocar.</li>
+                            <li><strong>uriRevoke</strong> - Variable para definir la url de revocación de tokens del sistema WSO2. No se debe tocar.</li>
+                            <li><strong>consumerKey</strong> - Variable para definir la clave pública del sistema WSO2 para nuestra app.</li>
+                            <li><strong>consumerSecret</strong> - Variable para definir la clave pública del sistema WSO2 para nuestra app.</li>
+                            <li><strong>customDomain</strong> - Variable para definir el customDomain de wso2. </li>
+                            <li><strong>customTenant</strong> - Variable para definir el customTenant de wso2.</li>
+                            <li><strong>scopes</strong> - Variable para definir el array de scopes relativos al sistema WSO2.</li>
+                        </ul>
+                        <li>autologinConfig:</li>
+                        <ul>
+                            <li><strong>appRedirect</strong> - Variable para definir el identificador de la app para poder volver desde el broker en móvil.</li>
+                            <li><strong>uriBase</strong> - Variable para definir la url base del sistema autologin. No se debe tocar.</li>
+                            <li><strong>uriLogout</strong> - Variable para definir la url de logout de dameToken. No se debe tocar.</li>
+                            <li><strong>uriRedirectSite</strong> - Variable para definir la url del sitio web intermedio en el uso de autologin. No se debe tocar.</li>
+                            <li><strong>paramIosSS</strong> - Variable para definir el subservicio de la plataforma iOS, el parámetro ss, de la URL de Autologin.</li>
+                            <li><strong>paramIosPass</strong> - Variable para definir la contraseña para el servicio de la plataforma iOS, el parámetro pass, con la clave de la App para pasar por la URL de Autologin.</li>
+                            <li><strong>paramAndroidSS</strong> - Variable para definir el subservicio de la plataforma iOS, el parámetro ss, de la URL de Autologin.</li>
+                            <li><strong>paramAndroidPass</strong> - Variable para definir la contraseña para el servicio de la plataforma iOS, el parámetro pass, con la clave de la App para pasar por la URL de Autologin.</li>
+                            <li><strong>paramWebAppSS</strong> - Variable para definir el subservicio en WebApp, el parámetro ss, de la URL de Autologin.</li>
+                            <li><strong>paramWebAppPass</strong> - Variable para definir la contraseña para el servicio en WebApp, el parámetro pass, con la clave de la App para pasar por la URL de Autologin.</li>
+                            <li><strong>paramWebappOkUrl</strong> - Variable para definir otra url de vuelta del sistema Autologin. No se debe tocar.</li>
+                            <li><strong>paramWebappOkUrlLogout</strong> - Variable para definir la url de vuelta del sistema Autologin al hacer logout. No se debe tocar ya que se utilizará el estado actual en el que se encuentre la App a la hora de hacer
+                                logout
+                            </li>
+                            <li>autologinOsb:</li>
+                            <ul>
+                                <li><strong>uriGetToken</strong> - Variable para definir la url de obtención de token de dameToken. No se debe tocar.</li>
+                                <li><strong>uriValidaTicket</strong> - Variable para definir la url para validar tokens de dameToken. No se debe tocar.</li>
+                            </ul>
+                            <li>autologinWso2:</li>
+                            <ul>
+                                <li><strong>consumerKeyAutologin</strong> - Variable para definir la clave pública del sistema autologin - WSO2 para nuestra app.</li>
+                                <li><strong>consumerSecretAutologin</strong> - Variable para definir la clave pública del sistema autologin - WSO2 para nuestra app.</li>
+                                <li><strong>uriGetUserData</strong> - Variable para definir la url de obtención de datos del usuario con autologin - WSO2.</li>
+                            </ul>
+                        </ul>
+                    </ul>
+                    <li>backendService</li>
+                    <ul>
+                        <li><strong>uriCheckVersion</strong> - Variable para definir la url base para obtener la versión de la app. No se debe tocar.</li>
+                        <li><strong>uriVersionNews</strong> - Variable para definir la url base para obtener las novedades de la versión. No se debe tocar.</li>
+                        <li><strong>uriScores</strong> - Variable para definir la url para valoraciones y comentarios de la app. No se debe tocar.</li>
+                    </ul>
+                    <li>interceptorService</li>
+                    <ul>
+                        <li><strong>apiKeys</strong> - Variable para definir un array con las apiKeys necesarias para nuestra app.</li>
+                    </ul>
+                    <li>fileUploaderComponent (<strong><a target="_blank" href="#/doc-file-uploader">documentación mv-file-uploader</a></strong>)</li>
+                    <ul>
+                        <li><strong>authorizationHeader</strong> - Variable para definir la cabecera de autenticación del rest.</li>
+                        <li><strong>uriUpload</strong> - Variable para definir la url de subida del archivo.</li>
+                        <li><strong>uriTokenBase</strong> - Variable para definir la url de obtención del token.</li>
+                    </ul>
+                    <li>notificationService (<strong><a target="_blank" href="#/doc-notification-service">documentación notificaciones push</a></strong>)</li>
+                    <ul>
+                        <li><strong>uriBase</strong> - Variable para definir la url base de la api de notificaciones de Madrid Digital. No se debe tocar.</li>
+                        <li><strong>alwaysShowIosTemplate</strong> - Variable para definir si queremos mostrar la vista de las notificaciones en iOS.</li>
+                        <li><strong>appKey</strong> - Variable para definir la clave de las notificaciones push.</li>
+                        <li><strong>browserServiceUri</strong> - Variable para definir la url del servicio de notificaciones push de Phonegap. No se debe tocar. </li>
+                        <li><strong>environment</strong> - Variable para definir el entorno de las notificaciones push. </li>
+                        <li><strong>receivedLimit</strong> - Variable para definir el número de notificaciones que se almacenarán como máximo en localStorage. </li>
+                    </ul>
+                    <li>recaptchaService (<strong><a target="_blank" href="#/doc-recaptcha">documentación recaptcha</a></strong>)</li>
+                    <ul>
+                        <li><strong>uriUtilSite</strong> - Variable para definir la url para el uso de captcha en móvil. No se debe tocar.</li>
+                        <li><strong>siteKey</strong> - Variable para definir la clave para el servicio de recaptcha de Google.</li>
+                    </ul>
+                    <li>localStorageService (<strong><a target="_blank" href="#/doc-local-storage-service">documentación localStorageService</a></strong>)</li>
+                    <ul>
+                        <li><strong>CryptP</strong> - Variable para definir la password para encriptar los datos de localStorage.</li>
+                        <li><strong>mainNodeSuffix</strong> - Variable para definir un sufijo que se añadirá al nombre del nodo de localStorage. Si no se añade nada, el nombre del nodo de memoria local será el módulo funcional que hayamos definido.</li>
+                    </ul>
+                    <li>sessionStorageService (<strong><a target="_blank" href="#/doc-session-storage-service">documentación sessionStorageService</a></strong>)</li>
+                    <ul>
+                        <li><strong>CryptP</strong> - Variable para definir la password para encriptar los datos de sessionStorage.</li>
+                        <li><strong>mainNodeSuffix</strong> - Variable para definir un sufijo que se añadirá al nombre del nodo de sessionStorage. Si no se añade nada, el nombre del nodo de memoria local será el módulo funcional que hayamos definido.</li>
+                    </ul>
+                </ul>
+                <li>app:</li>
+                <ul>
+                    <li>// Aquí se deben situar variables propias del negocio de la app:</li>
+                </ul>
+            </ul>
+
+        </mv-card-content>
+    </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

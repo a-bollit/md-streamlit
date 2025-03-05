@@ -1,0 +1,40 @@
+@import '~@mova/components/_variables.scss';
+
+::ng-deep {
+  .cdk-overlay-pane-student-edit {
+    max-width: none !important;
+    width: calc(100% - 1em);
+    height: calc(100% - 1em);
+  }
+}
+
+:host{
+  .mat-dialog-title{
+    color: $secondary-009;
+    .mat-icon{
+      vertical-align: sub;
+    }
+  }
+}
+
+// md
+@media only screen and (min-width : $media-col-md-min) and (max-width : $media-col-md-max){
+  ::ng-deep {
+    .cdk-overlay-pane-student-edit {
+      width: calc(100% - 16em);
+      height: calc(100% - 16em);
+      margin: 8em;
+    }
+  }
+}
+
+// lg
+@media only screen and (min-width : $media-col-lg-min) {
+  ::ng-deep {
+    .cdk-overlay-pane-student-edit {
+      width: calc(100% - 46em);
+      height: calc(100% - 16em);
+      margin: 8em;
+    }
+  }
+}

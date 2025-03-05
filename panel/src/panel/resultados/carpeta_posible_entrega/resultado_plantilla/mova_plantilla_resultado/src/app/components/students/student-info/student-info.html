@@ -1,0 +1,42 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Información</strong></mv-card-title>
+
+    <p>Las vistas de ejemplo que se pueden ver pulsando en el botón Acceder son un listado de alumnos, con posibilidad de creación, edición y borrado.</p>
+    <p>Es necesario estar logado con WSO2 para poder acceder. Las credenciales son:</p>
+    <ul>
+      <li>Usuario: <strong>movausu2</strong></li>
+      <li>Contraseña: <strong>movausu2</strong></li>
+    </ul>
+    <p>Las llamadas a los distintos recursos REST están securizadas con el envío de un token de acceso. Este token se obtiene con el login de WSO2 y su manejo es
+      transparente para el desarrollador.</p>
+
+    <p>Para más información de WSO2 ver la documentación: <a href="#/doc-login-view"><strong>doc-login-view</strong></a></p>
+
+    <p>Algunos de los datos que se muestran son aleatorios, no almacenándose en base de datos:</p>
+    <ul>
+      <li>Imágenes de los alumnos</li>
+      <li>Notas de las asignaturas</li>
+      <li>Observaciones de las asignaturas</li>
+      <li>Provincia</li>
+      <li>Municipio</li>
+      <li>Archivo PDF</li>
+      <li>Sexo</li>
+      <li>Solicitante de beca</li>
+    </ul>
+
+    <div class="btn-container">
+      <mv-button
+        appearance="raised"
+        color="primary"
+        size="medium"
+        (clickEvent)="goToStudents()">
+        Acceder
+      </mv-button>
+    </div>
+
+  </mv-card>
+
+</section>

@@ -1,0 +1,21 @@
+<mv-header [headerTitle]="'Gestión de Notificaciones'" [headerSubtitle]="''" [fixed]="true" [showBackButton]="true" [showMenuButton]="false" [type]="''"></mv-header>
+<div class="container">
+  <form [formGroup]="notificationForm" (ngSubmit)="aceptar()">
+    <div class="form-group">
+      <label for="unidadRemitente">Unidad Remitente:</label>
+      <app-dropdown formControlName="unidadRemitente"></app-dropdown>
+    </div>
+    <div class="form-group">
+      <label for="fcdesde">Fecha Desde:</label>
+      <app-date-picker formControlName="fcdesde"></app-date-picker>
+    </div>
+    <div class="form-group">
+      <label for="fchasta">Fecha Hasta:</label>
+      <app-date-picker formControlName="fchasta"></app-date-picker>
+    </div>
+    <div class="actions">
+      <mv-button type="submit" [label]="'Aceptar'" (click)="aceptar()"></mv-button>
+      <mv-button type="button" [label]="'Cancelar'" (click)="cancelar()"></mv-button>
+    </div>
+  </form>
+</div>

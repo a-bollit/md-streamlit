@@ -1,0 +1,815 @@
+<section class="view-default-style">
+
+    <!-- Componente -->
+    <mv-card class="card-code">
+        <mv-card-title><strong>Documentación mv-dialog-error</strong></mv-card-title>
+
+        <!-- Índice de la documentación -->
+        <div>
+            <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+                <mv-icon>link</mv-icon> Información
+            </a>
+        </div>
+        <div>
+            <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+                <mv-icon>link</mv-icon> Ejemplo de uso
+            </a>
+        </div>
+        <p>Propiedades:</p>
+        <ol class="ol-code">
+            <li>
+                <a class="nostyle" (click)='acceptAppearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> acceptAppearance
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='acceptColor.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> acceptColor
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='acceptText.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> acceptText
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='errorText.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> errorText
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='disableClose.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> disableClose
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='initAppearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> initAppearance
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='initColor.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> initColor
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='loginAppearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> loginAppearance
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='loginColor.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> loginColor
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showAcceptButton.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showAcceptButton
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showCloseButton.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showCloseButton
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showInitButton.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showInitButton
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showLoginButton.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showLoginButton
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='showDetail.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> showDetail
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='successCallback.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> successCallback
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='title.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> title
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='titleAccent.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> titleAccent
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='titleWarn.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> titleWarn
+                </a>
+            </li>
+
+        </ol>
+
+    </mv-card>
+
+    <!-- Información -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #info><strong>Información</strong></mv-card-title>
+            <mv-card-subtitle>Información del componente <strong>mv-dialog-error</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>El componente mv-dialog-error se basa en el componente mat-dialog de Angular Material, al que se le añade funcionalidad y estilos adicionales.</p>
+            <p>Sirve para mostrar un diálogo que se adapta al dispositivo, con el error que se desea mostrar.</p>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- Ejemplo de uso -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+            <mv-card-subtitle>Uso básico del componente <strong>mv-dialog-error</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeUseExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Ejemplo de diálogo de error local. </strong>Se muestra el dialogo bajo demanda y con una configuración personalizada:</p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleDialogErrorExample()">
+                Lanzar manualmente el dialogo de error
+            </mv-button>
+
+            <p><strong>Ejemplo de llamada 404 y 500 sin controlar el error. </strong> Se hace una petición http y se muestra el dialogo autáticamente cuando esta falla:</p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="ejemploUsoMovaError()">
+                Llamada http 404
+            </mv-button>
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="ejemploUsoMovaError2()">
+                Llamada http 500
+            </mv-button>
+
+            <p><strong>Ejemplo de error de una llamada http capturando el error.</strong> Se hace una petición http y no se muestra automáticamente el dialogo cuando falla. Para esta opción, añadir al header de la petición un campo mv-hide-error con valor
+                true. Ver ejemplo en TS:</p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="ejemploUsoCustomError()">
+                Llamada http capturando error
+
+            </mv-button>
+            <p *ngIf="httpCallCapturingErrorMessage" style="
+              margin-top:2px;
+              margin-left: 6px;
+              color: red;
+              font-weight: bold;
+            ">Error obteniendo los datos</p>
+
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- acceptAppearance -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #acceptAppearance><strong>acceptAppearance</strong></mv-card-title>
+            <mv-card-subtitle>Apariencia del botón aceptar.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad acceptAppearance permite definir la apariencia del botón asociado a la acción de aceptar.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAcceptAppearanceExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAcceptAppearanceExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con acceptAppearance = 'fab':</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleDialogErrorAcceptAppearance()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- acceptColor -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #acceptColor><strong>acceptColor</strong></mv-card-title>
+            <mv-card-subtitle>Color del botón aceptar.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad acceptColor permite definir el color del botón asociado a la acción de aceptar.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAcceptColorExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAcceptColorExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con acceptColor = 'warn':</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleDialogErrorAcceptColor()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- acceptText -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #acceptText><strong>acceptText</strong></mv-card-title>
+            <mv-card-subtitle>Texto del botón aceptar.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad acceptText permite definir el texto del botón asociado a la acción de aceptar.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAcceptTextExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAcceptTextExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con acceptText = 'Confirmación':</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleDialogErrorAcceptText()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- errorText -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #errorText><strong>errorText</strong></mv-card-title>
+            <mv-card-subtitle>Detalle del error.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad errorText permite definir el detalle específico del error, por ejemplo una línea de código o llamada http.</p>
+            <p>Para que el detalle de errorText esté abierto por defecto, hay que configurar la variable <strong>showDetail</strong> a true.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeErrorTextExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeErrorTextExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con errorText = 'Error en la línea de código 195':</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleDialogErrorTextAppearance()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- disableClose -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #disableClose><strong>disableClose</strong></mv-card-title>
+            <mv-card-subtitle>No permitir cerrar el diálogo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad disableClose permite que no se cierre el diálogo al pulsar fuera del contenedor del mismo.</p>
+            <p>Esto puede servir para errores críticos, que obliguen al usuario a refrescar la app entera por ejemplo.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeDisableCloseExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeDisableCloseExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con disableClose = true:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleDialogDisableClose()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- initAppearance -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #initAppearance><strong>initAppearance</strong></mv-card-title>
+            <mv-card-subtitle>Apariencia del botón aceptar.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad initAppearance permite definir la apariencia del botón asociado a la acción de aceptar.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeInitAppearanceExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeInitAppearanceExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con initAppearance = 'fab':</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleDialogErrorInitAppearance()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- initColor -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #initColor><strong>initColor</strong></mv-card-title>
+            <mv-card-subtitle>Color del botón de ir a inicio.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad initColor permite definir el color del botón asociado a la acción de ir a inicio.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeInitColorExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeInitColorExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con initColor = 'warn':</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleDialogErrorInitColor()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- loginAppearance -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #loginAppearance><strong>loginAppearance</strong></mv-card-title>
+            <mv-card-subtitle>Color del botón de login.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad loginAppearance permite definir la apariencia del botón asociado a la acción de login.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeLoginAppearanceExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeLoginAppearanceExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con loginAppearance = 'fab':</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleDialogErrorLoginAppearance()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- loginColor -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #loginColor><strong>loginColor</strong></mv-card-title>
+            <mv-card-subtitle>Color del botón de ir a inicio.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad loginColor permite definir el color del botón asociado a la acción de ir a login.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeLoginColorExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeLoginColorExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con loginColor = 'warn':</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleDialogErrorLoginColor()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showAcceptButton -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showAcceptButton><strong>showAcceptButton</strong></mv-card-title>
+            <mv-card-subtitle>Mostrar o no el botón aceptar.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showAcceptButton permite mostrar u ocultar el botón de aceptar.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowAcceptButtonExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowAcceptButtonExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showAcceptButton a true:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleShowAcceptButtonTrue()">
+                Lanzar diálogo
+            </mv-button>
+
+            <p><strong>Con showAcceptButton a false:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleShowAcceptButtonFalse()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showCloseButton -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showCloseButton><strong>showCloseButton</strong></mv-card-title>
+            <mv-card-subtitle>Mostrar o no el botón de cerrar.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showCloseButton permite mostrar u ocultar el botón de cerrar.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowCloseButtonExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowCloseButtonExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showCloseButton a true:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleShowCloseButtonTrue()">
+                Lanzar diálogo
+            </mv-button>
+
+            <p><strong>Con showCloseButton a false:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleShowCloseButtonFalse()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showInitButton -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showInitButton><strong>showInitButton</strong></mv-card-title>
+            <mv-card-subtitle>Mostrar o no el botón de ir a inicio.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showInitButton permite mostrar u ocultar el botón de cerrar.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowInitButtonExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowInitButtonExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showInitButton a true:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleShowInitButtonTrue()">
+                Lanzar diálogo
+            </mv-button>
+
+            <p><strong>Con showInitButton a false:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleShowInitButtonFalse()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showLoginButton -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showLoginButton><strong>showLoginButton</strong></mv-card-title>
+            <mv-card-subtitle>Mostrar o no el botón de ir a login.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showLoginButton permite mostrar u ocultar el botón de cerrar.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowLoginButtonExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowLoginButtonExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showLoginButton a true:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleShowLoginButtonTrue()">
+                Lanzar diálogo
+            </mv-button>
+
+            <p><strong>Con showLoginButton a false:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleShowLoginButtonFalse()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- showDetail -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #showDetail><strong>showDetail</strong></mv-card-title>
+            <mv-card-subtitle>Mostrar o no el detalle del error.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad showDetail permite mostrar u ocultar la sección del detalle del error <strong>errorText</strong>.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeShowDetailExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeShowDetailExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con showDetail a true:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleShowDetailTrue()">
+                Lanzar diálogo
+            </mv-button>
+
+            <p><strong>Con showDetail a false:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleShowDetailFalse()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- successCallback -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #successCallback><strong>successCallback</strong></mv-card-title>
+            <mv-card-subtitle>Función de callback.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad successCallback permite definir la acción a realizar cuando pulsamos algún botón del diálogo.</p>
+            <p>La función de callback devolverá el resultado de la acción.</p>
+
+            <p>Devuelve un objeto con los siguientes parametros, marcando a true el botón que el usuario hubiera marcado</p>
+            <ul>
+                <li><strong>accept</strong>: Al hacer click al botón de aceptar</li>
+                <li><strong>close</strong>: Al cerrar el dialogo</li>
+                <li><strong>out</strong>: Al hacer click fuera del dialogo</li>
+                <li><strong>login</strong>: Al hacer click al botón de login</li>
+                <li><strong>init</strong>: Al hacer click en el botón de inicio</li>
+            </ul>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeSuccessCallbackExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeSuccessCallbackExampleTS"></code></pre>
+                </mv-tab>
+                <mv-tab label="RETURN">
+                    <pre><code [highlight]="codeSuccessCallbackExampleReturn"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con successCallback:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleSuccessCallbackExample()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- title -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #title><strong>title</strong></mv-card-title>
+            <mv-card-subtitle>Título del diálogo.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad title permite definir la apariencia del título en color warn.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeTitleExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeTitleExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con title = 'Error crítico':</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleTitle()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- titleAccent -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #titleAccent><strong>titleAccent</strong></mv-card-title>
+            <mv-card-subtitle>Apariencia del título warn.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad titleAccent permite definir la apariencia del título en color accent.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeTitleAccentExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeTitleAccentExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con titleAccent a true:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleTitleAccentTrue()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- titleWarn -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #titleWarn><strong>titleWarn</strong></mv-card-title>
+            <mv-card-subtitle>Apariencia del título warn.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad titleWarn permite definir la apariencia del título en color warn.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeTitleWarnExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeTitleWarnExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con titleWarn a true:</strong></p>
+
+            <mv-button class="configButton" color="primary" appearance="raised" (clickEvent)="exampleTitleWarnTrue()">
+                Lanzar diálogo
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

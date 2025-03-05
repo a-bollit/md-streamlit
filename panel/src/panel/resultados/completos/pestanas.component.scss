@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+mv-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  
+  mv-button {
+    margin-right: 15px;
+    
+    mv-icon {
+      margin-right: 5px;
+    }
+  }
+}
+
+mv-card {
+  margin: 20px;
+}
+
+mv-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+mv-content {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}

@@ -1,0 +1,84 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+  ul{
+    padding: 0 20px 0 20px;
+  }
+}
+.margin-li{
+  li{
+    margin: 0 0 1rem 0;
+  }
+}
+.color{
+  display: inline-block;
+  height: 12px;
+  width: 90px;
+}
+.primary{
+  background-color: $primary;
+}
+.accent-rojo{
+  background-color: $accent;
+}
+.accent-azul{
+  background-color: $accent-salud-madrid;
+}
+.warn{
+  background-color: $warn;
+}
+.corporative-rojo{
+  background-color: $corporative-comunidad-madrid;
+}
+.corporative-azul{
+  background-color: $corporative-salud-madrid;
+}
+.secondary-001{
+  background-color: $secondary-001;
+}
+.secondary-002{
+  background-color: $secondary-002;
+}
+.secondary-003{
+  background-color: $secondary-003;
+}
+.secondary-004{
+  background-color: $secondary-004;
+}
+.secondary-005{
+  background-color: $secondary-005;
+}
+.secondary-006{
+  background-color: $secondary-006;
+}
+.secondary-007{
+  background-color: $secondary-007;
+}
+.secondary-008{
+  background-color: $secondary-008;
+}
+.secondary-009{
+  background-color: $secondary-009;
+}
+.secondary-010{
+  background-color: $secondary-010;
+}
+.secondary-011{
+  background-color: $secondary-011;
+}
+.secondary-012{
+  background-color: $secondary-012;
+}
+.secondary-013{
+  background-color: $secondary-013;
+}
+.secondary-black{
+  background-color: $secondary-black;
+}
+.secondary-white{
+  background-color: $secondary-white;
+  border: 1px solid $secondary-black;
+}

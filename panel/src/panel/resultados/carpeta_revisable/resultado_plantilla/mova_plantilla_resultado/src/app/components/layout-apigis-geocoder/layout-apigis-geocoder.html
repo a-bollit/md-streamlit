@@ -1,0 +1,29 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 geocoder-mobile">
+      <div class="geocoder-container">
+        <span class="span">Geocoder</span>
+        <span class="info">Selecciona una dirección y pulsa en <b>Ir a</b>...</span>
+
+        <mv-input label="Dirección" (changeEvent)="onDirectionChange($event)"
+        [(ngModel)]="geocoderText" adapt="true" placeholder="Castellana, Madrid..."
+         [refAutocomplete]="auto2"></mv-input>
+
+        <mat-autocomplete #auto2="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions"
+            [value]="option.address">
+            {{option.address}}
+          </mat-option>
+        </mat-autocomplete>
+
+        <mv-button appearance="raised" color="corporative" adapt=true (clickEvent)="searchOnGeocoder()">
+          Ir a...
+        </mv-button>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-9 map-mobile">
+      <div id="container-apigis-geocoder"></div>
+    </div>
+  </div>
+</div>

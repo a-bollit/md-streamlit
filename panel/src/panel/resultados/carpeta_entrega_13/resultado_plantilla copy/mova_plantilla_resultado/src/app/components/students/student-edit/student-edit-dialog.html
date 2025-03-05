@@ -1,0 +1,53 @@
+<h1 mat-dialog-title *ngIf="editMode"><mv-icon>school</mv-icon> Edición asignatura</h1>
+<h1 mat-dialog-title *ngIf="!editMode"><mv-icon>school</mv-icon> Nueva asignatura</h1>
+<div mat-dialog-content>
+
+  <div class="row mat-tab-container">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <mv-values-list
+        #mvValuesList
+        [(ngModel)]="newAsignatura.id_asignatura"
+        [dataSourceLoader]="loadAsignaturasSource"
+        [tableColumns]="asignaturasTableColumns"
+        dialogTitle="Listado de direcciones"
+        placeholderCode="Id"
+        placeholderText="Asignatura"
+        labelCode="Id"
+        labelText="Asignatura"
+        filter=true
+        adapt=true
+        columnCode="id_asignatura"
+        columnText="nombre_asignatura">
+      </mv-values-list>
+      <mv-textarea
+        [(ngModel)]="newAsignatura.observaciones_asignatura"
+        label="Observaciones"
+        adapt=true>
+      </mv-textarea>
+    </div>
+  </div>
+
+</div>
+<div mat-dialog-actions>
+  <mv-button
+    appearance="raised"
+    (clickEvent)="onCancel()">
+    Cancelar
+  </mv-button>
+  <mv-button
+    *ngIf="editMode"
+    appearance="raised"
+    color="accent"
+    (clickEvent)="onDelete()">
+    Borrar
+    <mv-icon>delete</mv-icon>
+  </mv-button>
+  <mv-button
+    [disabled]="disableSaveButton()"
+    appearance="raised"
+    color="primary"
+    (clickEvent)="onSave()">
+    Guardar
+    <mv-icon>save</mv-icon>
+  </mv-button>
+</div>

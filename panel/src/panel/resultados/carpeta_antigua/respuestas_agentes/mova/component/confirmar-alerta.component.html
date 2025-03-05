@@ -1,0 +1,20 @@
+<mv-modal>
+  <mv-header [headerTitle]="titulo"></mv-header>
+  <div class="modal-body">
+    <p>{{ mensaje }}</p>
+  </div>
+  <div class="modal-footer">
+    <mv-button
+      [appearance]="'raised'"
+      [color]="'primary'"
+      (click)="confirmar()">
+      {{ siLabel }}
+    </mv-button>
+    <mv-button
+      [appearance]="'stroked'"
+      [color]="'warn'"
+      (click)="cancelar()">
+      {{ noLabel }}
+    </mv-button>
+  </div>
+</mv-modal>

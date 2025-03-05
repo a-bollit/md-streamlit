@@ -1,0 +1,278 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación session-storage-service</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='init.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> init
+      </a></li>
+      <li><a class="nostyle" (click)='setItem.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> setItem
+      </a></li>
+      <li><a class="nostyle" (click)='getItem.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> getItem
+      </a></li>
+      <li><a class="nostyle" (click)='clearItem.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> clearItem
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del servicio <strong>session-storage-service</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este servicio sirve de interfaz para acceder al sessionStorage del navegador. Se puede usar en web y móvil.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- init -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #init><strong>init</strong></mv-card-title>
+      <mv-card-subtitle>Resetear el nodo principal.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento init permite resetear el nodo principal de sessionStorage donde se almacena la información
+        de MOVA.</p>
+
+      <p><em>init(reset)</em></p>
+      <p>reset</p>
+      <ul>
+        <li>true: resetea el nodo principal de sessionStorage</li>
+        <li>false: resetea el nodo principal de sessionStorage si está creado y lo crea en caso contrario</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeInitExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeInitExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Resetear el nodo prinicpal de mova mediante el evento init:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="initEventExample()">
+        init(true)
+      </mv-button>
+
+      <p><strong>Recuperar el nodo de MOVA en sessionStorage:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getItemsExample()">
+        getItems()
+      </mv-button>
+
+      <p><strong>Nodo principal de MOVA en sessionStorage:</strong></p>
+      <p>{{movaSessionStorageNode | json}}</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- setItem -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #setItem><strong>setItem</strong></mv-card-title>
+      <mv-card-subtitle>Almacenar información en sessionStorage.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento setItem permite almacenar información en el nodo principal de sessionStorage donde se almacena la información
+        de MOVA.</p>
+
+      <p><em>setItem(key, value, crypt)</em></p>
+      <p>key</p>
+      <ul>
+        <li>'string': cadena con la clave del objeto que estamos almacenando</li>
+      </ul>
+
+      <p>value</p>
+      <ul>
+        <li>'string': valor que estamos almacenando</li>
+      </ul>
+
+      <p>crypt</p>
+      <ul>
+        <li>true: encripta el valor que estamos almacenando</li>
+        <li>false: no encripta el valor que estamos almacenando</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeSetItemExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeSetItemExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Almacenar en el nodo de MOVA en sessionStorage el texto de 'lorem ipsum' sin encriptar:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="setItemExample('DocSessionStorageServiceExample', false)">
+        setItem('DocSessionStorageServiceExample', 'lorem ipsum...', false)
+      </mv-button>
+
+      <p><strong>Almacenar en el nodo de MOVA en sessionStorage el texto de 'lorem ipsum' encriptado:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="setItemExample('DocSessionStorageServiceExample', true)">
+        setItem('DocSessionStorageServiceExample', 'lorem ipsum...', true)
+      </mv-button>
+
+      <p><strong>Recuperar el nodo de MOVA en sessionStorage:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getItemsExample()">
+        getItems()
+      </mv-button>
+
+      <p><strong>Nodo principal de MOVA en sessionStorage:</strong></p>
+      <p>{{movaSessionStorageNode | json}}</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getItem -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #getItem><strong>getItem</strong></mv-card-title>
+      <mv-card-subtitle>Recuperar un objeto concreto de sessionStorage.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento getItem permite recuperar un objeto concreto del nodo principal de sessionStorage donde se almacena la información
+        de MOVA.</p>
+
+      <p><em>getItem(key)</em></p>
+      <p>key</p>
+      <ul>
+        <li>'string': cadena con la clave del objeto que queremos recuperar</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeGetItemExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeGetItemExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Almacenamos con clave 'DocSessionStorageServiceExample' en el nodo de MOVA en sessionStorage:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="setItemExample('DocSessionStorageServiceExample', false)">
+        setItem('DocSessionStorageServiceExample', 'lorem ipsum...', false)
+      </mv-button>
+
+      <p><strong>Recuperar el objeto de clave 'DocSessionStorageServiceExample' del nodo de MOVA en sessionStorage:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getItemExample('DocSessionStorageServiceExample')">
+        getItem('DocSessionStorageServiceExample')
+      </mv-button>
+
+      <p><strong>Objeto de clave 'DocSessionStorageServiceExample' del nodo principal de MOVA en sessionStorage:</strong></p>
+      <p>{{movaSessionStorageNodeKey | json}}</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- clearItem -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #clearItem><strong>clearItem</strong></mv-card-title>
+      <mv-card-subtitle>Eliminar objeto del nodo principal.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento clearItem permite eliminar un objeto del nodo principal de sessionStorage donde se almacena la información
+        de MOVA.</p>
+
+      <p><em>clearItem(key)</em></p>
+      <p>key</p>
+      <ul>
+        <li>'string': cadena con la clave del objeto que queremos eliminar</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeClearItemExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeClearItemExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Almacenar en el nodo de MOVA en sessionStorage el texto de 'lorem ipsum':</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="setItemExample('DocSessionStorageServiceExample', false)">
+        setItem('DocSessionStorageServiceExample', 'lorem ipsum...', false)
+      </mv-button>
+
+      <p><strong>Eliminar el nodo 'DocSessionStorageServiceExample' del nodo de MOVA en sessionStorage:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="clearItemExample('DocSessionStorageServiceExample')">
+        clearItem('DocSessionStorageServiceExample')
+      </mv-button>
+
+      <p><strong>Recuperar el nodo de MOVA en sessionStorage:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getItemsExample()">
+        getItems()
+      </mv-button>
+
+      <p><strong>Nodo principal de MOVA en sessionStorage:</strong></p>
+      <p>{{movaSessionStorageNode | json}}</p>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

@@ -1,0 +1,116 @@
+## Componentes de Angular 8
+
+1. **Component UnidadRemitenteComponent**
+    - **Funcionalidad específica**: Permite seleccionar la unidad remitente para la emisión de notificaciones.
+    - **Datos de entrada (Input)**:
+        - `unidadSeleccionada`: Datos de la unidad actualmente seleccionada.
+    - **Datos de salida (Output)**:
+        - `unidadChange`: Evento emitido cuando la unidad cambia.
+    - **Dependencias con otros componentes o servicios**:
+        - Servicio `UnidadService` para obtener y gestionar las unidades.
+    - **Descripción detallada de su funcionalidad**:
+        Este componente muestra una lista de unidades administrativas que el usuario puede seleccionar. Utiliza una lista desplegable para permitir la selección. Cuando se selecciona una unidad, se emite un evento para notificar al componente padre del cambio. El componente se integra con el servicio `UnidadService` para obtener las unidades disponibles desde el backend.
+
+2. **Component FechaSeleccionComponent**
+    - **Funcionalidad específica**: Permite al usuario seleccionar una fecha de inicio y una fecha de fin para el rango de búsqueda.
+    - **Datos de entrada (Input)**:
+        - `fechaInicio`: Fecha de inicio seleccionada.
+        - `fechaFin`: Fecha de finalización seleccionada.
+    - **Datos de salida (Output)**:
+        - `fechaChange`: Evento emitido cuando una de las fechas cambia.
+    - **Dependencias con otros componentes o servicios**:
+        - Ninguno directo, pero puede interactuar con servicios de validación y utilidades de fechas.
+    - **Descripción detallada de su funcionalidad**:
+        El componente presenta dos campos de fecha, uno para la fecha de inicio y otro para la fecha de fin. Implementa validaciones para asegurar que la fecha de fin no es anterior a la fecha de inicio y que ninguna de ellas es futura. Utiliza un calendario para la selección de fechas. Cada vez que se selecciona una nueva fecha, se emite un evento con ambas fechas.
+
+3. **Component ExpedienteComponent**
+    - **Funcionalidad específica**: Permite al usuario ver y editar detalles del expediente.
+    - **Datos de entrada (Input)**:
+        - `expediente`: Objeto que contiene los detalles del expediente.
+    - **Datos de salida (Output)**:
+        - `expedienteChange`: Evento emitido cuando se modifican los detalles del expediente.
+    - **Dependencias con otros componentes o servicios**:
+        - Servicio `ExpedienteService` para gestionar CRUD de expedientes.
+    - **Descripción detallada de su funcionalidad**:
+        Este componente muestra diferentes campos para editar los detalles del expediente, incluyendo campos de texto y fechas. Se integra con `ExpedienteService` para cargar y guardar los detalles del expediente. Realiza validaciones para asegurarse de que los campos obligatorios estén completos y de que los valores sean válidos.
+
+4. **Component ConfirmarAlertaComponent**
+    - **Funcionalidad específica**: Muestra una alerta de confirmación con opciones de "Sí" y "No".
+    - **Datos de entrada (Input)**:
+        - `mensaje`: Mensaje que muestra la alerta.
+    - **Datos de salida (Output)**:
+        - `confirmado`: Evento emitido cuando el usuario confirma la acción.
+    - **Dependencias con otros componentes o servicios**:
+        - Ninguno.
+    - **Descripción detallada de su funcionalidad**:
+        Este componente actúa como un cuadro de diálogo modal que muestra un mensaje de confirmación al usuario. Tiene dos botones, uno para confirmar la acción y otro para cancelarla. Cuando se presiona el botón "Sí", se emite un evento `confirmado`, y cuando se presiona "No", el cuadro de diálogo se cierra sin emitir eventos.
+
+5. **Component NotificacionCorreosComponent**
+    - **Funcionalidad específica**: Gestión y envío de notificaciones de correos.
+    - **Datos de entrada (Input)**:
+        - `notificacionesCorreos`: Lista de notificaciones a enviar.
+    - **Datos de salida (Output)**:
+        - `envioCompletado`: Evento emitido cuando se completan los envíos.
+    - **Dependencias con otros componentes o servicios**:
+        - Servicio `NotificacionService` para gestionar envíos de notificaciones.
+    - **Descripción detallada de su funcionalidad**:
+        Este componente permite al usuario seleccionar múltiples notificaciones de correos para enviarlas. Muestra una lista de correos, permite marcar todos o desmarcarlos, y puede enviar las notificaciones seleccionadas. Utiliza el `NotificacionService` para manejar el proceso de envío y actualizar el estado de las notificaciones.
+
+6. **Component NotificacionTelematicaComponent**
+    - **Funcionalidad específica**: Gestión y envío de notificaciones telemáticas.
+    - **Datos de entrada (Input)**:
+        - `notificacionesTelematicas`: Lista de notificaciones telemáticas a enviar.
+    - **Datos de salida (Output)**:
+        - `envioCompletado`: Evento emitido cuando se completan los envíos.
+    - **Dependencias con otros componentes o servicios**:
+        - Servicio `NotificacionService` para gestionar envíos de notificaciones.
+    - **Descripción detallada de su funcionalidad**:
+        Similar al componente de correos, permite al usuario seleccionar y enviar múltiples notificaciones telemáticas. El componente incluye validaciones para asegurar que los anexos están cargados y que los documentos están firmados y registrados antes de enviarlos. Interactúa con `NotificacionService` para ejecutar los envíos y gestionar los resultados.
+
+## Vistas y Formularios
+
+### Vista Principal Notificaciones
+- **Propósito exacto**: Administración integral de envío de notificaciones de correos y telemáticas.
+- **Campos que deben mostrarse**:
+    - Selección de unidad remitente (dropdown)
+    - Fechas de inicio y fin (datepicker)
+    - Detalles del expediente (input)
+    - Listados de notificaciones de correos y telemáticas con opción de marcado (checkbox)
+- **Acciones permitidas**:
+    - Botones para seleccionar todo o desmarcar todo.
+    - Botón para enviar notificaciones.
+    - Validación centralizada para fechas, unidades, y expedientes.
+- **Descripción detallada de su funcionalidad**:
+    La vista principal permite al usuario gestionar todas las notificaciones desde un único lugar. Integra los componentes `UnidadRemitenteComponent`, `FechaSeleccionComponent`, `ExpedienteComponent`, `NotificacionCorreosComponent` y `NotificacionTelematicaComponent`. El usuario puede seleccionar una unidad remitente, definir un rango de fechas y ver los detalles del expediente. Además, puede marcar las notificaciones de correos y telemáticas para enviarlas, asegurándose de que los requisitos de validación se cumplan antes del envío.
+
+### Vista Confirmación
+- **Propósito exacto**: Confirmar la inclusión de documentos en la notificación.
+- **Campos que deben mostrarse**:
+    - Mensaje de confirmación (static text)
+    - Botones de confirmación y cancelación (buttons)
+- **Acciones permitidas**:
+    - Botón "Sí" para confirmar la inclusión.
+    - Botón "No" para cancelar la operación.
+- **Descripción detallada de su funcionalidad**:
+    Esta vista se muestra como un cuadro de diálogo modal cuando se requiere una acción de confirmación. Presenta un mensaje de advertencia o confirmación según el contexto y proporciona dos botones: "Sí" para proceder y "No" para cancelar. Utiliza el componente `ConfirmarAlertaComponent`.
+
+## Navegación y Enrutamiento
+
+### Rutas necesarias
+1. **Ruta**: `/notificaciones`
+    - **Componente asociado**: `NotificacionesComponent`
+    - **Descripción**: Esta ruta es la principal para la página de notificaciones, donde se listan y gestionan las notificaciones tanto de correos como telemáticas.
+
+2. **Ruta**: `/notificaciones/expediente/detalles`
+    - **Componente asociado**: `ExpedienteComponent`
+    - **Descripción**: Permite la edición y visualización de los detalles de un expediente específico. Se accede desde la vista principal de notificaciones.
+
+### Descripción de integración
+- **Jerarquía de navegación**:
+    La jerarquía se estructura de manera que la `NotificacionesComponent` es el componente principal y otros componentes como `ExpedienteComponent`, `UnidadRemitenteComponent` son accesibles desde aquí. Utiliza rutas anidadas e hijos para ofrecer una experiencia fluida.
+- **Interacción con rutas hijas o protegidas**:
+    Utilizar `AuthGuard` para rutas protegidas asegurando que sólo los usuarios autorizados pueden acceder a ciertas funcionalidades. La navegación interna entre los componentes hijos se lleva a cabo sin recargar la página completa, usando `router-outlet`.
+
+---
+
+Esta lista exhaustiva incluye todos los detalles necesarios, asegurando que cada componente, vista y ruta pueda ser implementada siguiendo las mejores prácticas y compatibilidad con Angular 8, facilitando su integración en la plantilla del proyecto.

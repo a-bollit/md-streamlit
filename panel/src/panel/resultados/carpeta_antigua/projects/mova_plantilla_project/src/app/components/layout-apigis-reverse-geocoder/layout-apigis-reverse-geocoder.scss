@@ -1,0 +1,40 @@
+@import "~src/styles";
+
+.main-container {
+  height: calc(100% - 64px);
+  background-color: whitesmoke;
+  .row {
+    height: 100%;
+    .reverse-geocoder-container {
+      display: flex;
+      flex-direction: column;
+      margin: 2%;
+      .span {
+        font-size: 12pt;
+        margin: 10px;
+        font-weight: bold;
+      }
+      .coordinates {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+      }
+      .info {
+        margin: 10px;
+        font-size: 10pt;
+      }
+    }
+    #container-apigis-reverse-geocoder {
+      height: 100%;
+    }
+  }
+}
+@media only screen and (max-width: $media-col-sm-max) {
+  .reverse-geocoder-mobile {
+    height: 40vh;
+    overflow: auto;
+  }
+  .map-mobile {
+    height: 60vh;
+  }
+}

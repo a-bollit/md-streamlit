@@ -1,0 +1,12 @@
+.form-group {
+  margin-bottom: 16px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+
+  mv-button {
+    flex: 1;
+  }
+}

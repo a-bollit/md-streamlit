@@ -1,0 +1,864 @@
+<section class="view-default-style">
+
+    <!-- Componente -->
+    <mv-card class="card-code">
+        <mv-card-title><strong>Documentación mv-button</strong></mv-card-title>
+
+        <!-- Índice de la documentación -->
+        <div>
+            <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+                <mv-icon>link</mv-icon> Información
+            </a>
+        </div>
+        <div>
+            <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+                <mv-icon>link</mv-icon> Ejemplo de uso
+            </a>
+        </div>
+        <p>Propiedades:</p>
+        <ol class="ol-code">
+            <li>
+                <a class="nostyle" (click)='adapt.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> adapt
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='appearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> appearance
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='color.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> color
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='disabled.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> disabled
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='imgSrc.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> imgSrc
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='imgSize.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> imgSize
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='imgPosition.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> imgPosition
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='imgRepeat.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> imgRepeat
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='link.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> link
+                </a>
+            </li>
+            <li>
+                <a class="nostyle" (click)='size.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> size
+                </a>
+            </li>
+        </ol>
+
+        <p>Eventos:</p>
+        <ol class="ol-code">
+            <li>
+                <a class="nostyle" (click)='clickEvent.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> clickEvent
+                </a>
+            </li>
+        </ol>
+
+
+        <p>Accesibilidad:</p>
+        <ol class="ol-code">
+            <li>
+                <a class="nostyle" (click)='ariaLabel.scrollIntoView({behavior: "smooth",block: "start"})'>
+                    <mv-icon>link</mv-icon> ariaLabel
+                </a>
+            </li>
+        </ol>
+
+    </mv-card>
+
+    <!-- Información -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #info><strong>Información</strong></mv-card-title>
+            <mv-card-subtitle>Información del componente <strong>mv-button</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>El componente mv-button se basa en el componente mat-button de Angular Material, al que se le añade funcionalidad y estilos adicionales.</p>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- Ejemplo de uso -->
+    <mv-card class="card-code">
+
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+            <mv-card-subtitle>Uso básico del componente <strong>mv-button</strong>.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeUseExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Botón básico:</strong></p>
+
+            <mv-button>
+                Entrar
+            </mv-button>
+
+            <p><strong>Botón con color primary y appearance raised:</strong></p>
+
+            <mv-button appearance="raised" color="primary">
+                Acción
+            </mv-button>
+
+            <p><strong>Botón pequeño y estilo fab:</strong></p>
+
+            <mv-button size="small" appearance="fab">
+                Fab
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- adapt -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #adapt><strong>adapt</strong></mv-card-title>
+            <mv-card-subtitle>Ancho del 100%.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad adapt permite definir el ancho del componente al 100% del contenedor.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAdaptExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAdaptExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con adapt a true:</strong></p>
+
+            <mv-button color="primary" appearance="raised" adapt=true>
+                Con adapt
+            </mv-button>
+
+            <p><strong>Con adapt a false:</strong></p>
+
+            <mv-button color="primary" appearance="raised" adapt=false>
+                Sin adapt
+            </mv-button>
+
+            <p><strong>Sin adapt (comportamiento por defecto):</strong></p>
+
+            <mv-button color="primary" appearance="raised">
+                Sin adapt
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- appearance -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #appearance><strong>appearance</strong></mv-card-title>
+            <mv-card-subtitle>Tipo de botón.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad appearance permite definir el tipo de botón.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeAppearanceExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeAppearanceExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>appearance icon:</strong></p>
+
+            <mv-button color="primary" appearance="icon">
+                icon
+            </mv-button>
+
+            <p><strong>appearance raised:</strong></p>
+
+            <mv-button color="primary" appearance="raised">
+                raised
+            </mv-button>
+
+            <p><strong>appearance fab:</strong></p>
+
+            <mv-button color="primary" appearance="fab">
+                fab
+            </mv-button>
+
+            <p><strong>appearance miniFab:</strong></p>
+
+            <mv-button color="primary" appearance="miniFab">
+                miniFab
+            </mv-button>
+
+            <p><strong>appearance stroked:</strong></p>
+
+            <mv-button color="primary" appearance="stroked">
+                stroked
+            </mv-button>
+
+            <p><strong>appearance flat:</strong></p>
+
+            <mv-button color="primary" appearance="flat">
+                flat
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- color -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #color><strong>color</strong></mv-card-title>
+            <mv-card-subtitle>Color del botón.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad color permite definir el color del botón entre primary, accent, warn, corporative y secondary-001.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeColorExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeColorExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Primary:</strong></p>
+
+            <mv-button appearance="raised" color="primary">
+                primary
+            </mv-button>
+
+            <p><strong>Accent:</strong></p>
+
+            <mv-button appearance="raised" color="accent">
+                accent
+            </mv-button>
+
+            <p><strong>Warn:</strong></p>
+
+            <mv-button appearance="raised" color="warn">
+                warn
+            </mv-button>
+
+            <p><strong>Corporative:</strong></p>
+
+            <mv-button appearance="raised" color="corporative">
+                corporative
+            </mv-button>
+
+            <p><strong>Secondary-001:</strong></p>
+
+            <mv-button appearance="raised" color="secondary-001">
+                secondary-001
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- disabled -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #disabled><strong>disabled</strong></mv-card-title>
+            <mv-card-subtitle>Deshabilitar el botón.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad disabled permite deshabilitar el botón además de añadir el estilo característico.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeDisabledExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeDisabledExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con disabled a true:</strong></p>
+
+            <mv-button color="primary" appearance="raised" disabled=true>
+                Con disabled
+            </mv-button>
+
+            <p><strong>Con disabled a false:</strong></p>
+
+            <mv-button color="primary" appearance="raised" disabled=false>
+                Sin disabled
+            </mv-button>
+
+            <p><strong>Sin disabled (comportamiento por defecto):</strong></p>
+
+            <mv-button color="primary" appearance="raised">
+                Sin disabled
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- imgSrc -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #imgSrc><strong>imgSrc</strong></mv-card-title>
+            <mv-card-subtitle>Imagen en el botón.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad imgSrc permite definir una imagen como fondo del botón.</p>
+            <p>Es obligatorio definir también la propiedad appearance</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeImgSrcExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeImgSrcExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con imagen combinado con tamaño de botón grande:</strong></p>
+
+            <mv-button imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                Mis vacaciones
+            </mv-button>
+
+            <p><strong>Con imagen combinado con tipo fab:</strong></p>
+
+            <mv-button appearance="fab" imgSrc="assets/examples/portal-001.png">
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- imgSize -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #imgSize><strong>imgSize</strong></mv-card-title>
+            <mv-card-subtitle>Tamaño de la imagen.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad imgSize permite definir el tamaño de la imagen, previamente definida con la propiedad imgSrc.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeImgSizeExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeImgSizeExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Auto:</strong></p>
+
+            <mv-button imgSize="auto" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                auto
+            </mv-button>
+
+            <p><strong>Cover:</strong></p>
+
+            <mv-button imgSize="cover" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                cover
+            </mv-button>
+
+            <p><strong>Contain:</strong></p>
+
+            <mv-button imgSize="contain" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                contain
+            </mv-button>
+
+            <p><strong>Initial:</strong></p>
+
+            <mv-button imgSize="initial" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                initial
+            </mv-button>
+
+            <p><strong>Inherit:</strong></p>
+
+            <mv-button imgSize="inherit" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                inherit
+            </mv-button>
+
+            <p><strong><em>Porcentaje</em></strong>:</p>
+
+            <ul>
+                <li>% total
+
+                    <mv-button imgSize="20%" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        20%
+                    </mv-button>
+
+                    <mv-button imgSize="50%" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        50%
+                    </mv-button>
+
+                    <mv-button imgSize="90%" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        90%
+                    </mv-button>
+
+                </li>
+                <li>% ancho % alto
+
+                    <mv-button imgSize="20% 10%" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        20% 10%
+                    </mv-button>
+
+                    <mv-button imgSize="70% 10%" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        70% 10%
+                    </mv-button>
+
+                    <mv-button imgSize="10% 20%" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        10% 20%
+                    </mv-button>
+
+                    <mv-button imgSize="10% 70%" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        10% 70%
+                    </mv-button>
+
+                </li>
+            </ul>
+
+            <p><strong><em>Longitud</em></strong>:</p>
+
+            <ul>
+                <li>px total
+
+                    <mv-button imgSize="20px" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        20px
+                    </mv-button>
+
+                    <mv-button imgSize="50px" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        50px
+                    </mv-button>
+
+                    <mv-button imgSize="90px" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        90px
+                    </mv-button>
+
+                </li>
+                <li>px ancho px alto
+
+                    <mv-button imgSize="20px 10px" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        20px 10px
+                    </mv-button>
+
+                    <mv-button imgSize="70px 10px" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        70px 10px
+                    </mv-button>
+
+                    <mv-button imgSize="10px 20px" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        10px 20px
+                    </mv-button>
+
+                    <mv-button imgSize="10px 70px" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        10px 70px
+                    </mv-button>
+
+                </li>
+            </ul>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- imgPosition -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #imgPosition><strong>imgPosition</strong></mv-card-title>
+            <mv-card-subtitle>Posición de la imagen.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad imgPosition permite definir la posición de la imagen dentro del botón.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeImgPositionExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeImgPositionExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>top|right|bottom|left</strong>:</p>
+
+            <ul>
+                <li>
+                    <mv-button class="buttonMargin" imgPosition="left top" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        left top
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="left center" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        left center
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="left bottom" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        left bottom
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="right top" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        right top
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="right center" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        right center
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="right bottom" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        right bottom
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="center top" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        center top
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="center center" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        center center
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="center bottom" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        center bottom
+                    </mv-button>
+                </li>
+            </ul>
+
+            <p><strong><em>Posición</em></strong>:</p>
+
+            <ul>
+                <li>%x %y
+                    <mv-button class="buttonMargin" imgPosition="50% 50%" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        50% 50%
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="10% 75%" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        10% 75%
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="75% 10%" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        75% 10%
+                    </mv-button>
+                </li>
+
+                <li>px x px y
+                    <mv-button class="buttonMargin" imgPosition="10px 10px" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        50px 50px
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="10px 25px" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        10px 25px
+                    </mv-button>
+
+                    <mv-button class="buttonMargin" imgPosition="75px 10px" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                        75px 10px
+                    </mv-button>
+                </li>
+            </ul>
+
+            <p><strong>Initial</strong>:</p>
+
+            <mv-button imgPosition="initial" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                initial
+            </mv-button>
+
+            <p><strong>Inherit</strong>:</p>
+
+            <mv-button imgPosition="inherit" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                inherit
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- imgRepeat -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #imgRepeat><strong>imgRepeat</strong></mv-card-title>
+            <mv-card-subtitle>Cómo se repite la imagen, si es necesario.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad imgRepeat permite definir con qué patrón se debe repetir la imagen en caso de quedar huecos vacíos.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeImgRepeatExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeImgRepeatExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Repeat</strong>:</p>
+
+            <mv-button class="buttonMargin" imgSize="20px 20px" imgRepeat="repeat" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                repeat
+            </mv-button>
+
+            <p><strong>Repeat-x</strong>:</p>
+
+            <mv-button class="buttonMargin" imgSize="20px 20px" imgRepeat="repeat-x" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                repeat-x
+            </mv-button>
+
+            <p><strong>Repeat-y</strong>:</p>
+
+            <mv-button class="buttonMargin" imgSize="20px 20px" imgRepeat="repeat-y" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                repeat-y
+            </mv-button>
+
+            <p><strong>No-repeat</strong>:</p>
+
+            <mv-button class="buttonMargin" imgSize="20px 20px" imgRepeat="no-repeat" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                no repeat
+            </mv-button>
+
+            <p><strong>Space</strong>:</p>
+
+            <mv-button class="buttonMargin" imgSize="20px 20px" imgRepeat="space" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                space
+            </mv-button>
+
+            <p><strong>Round</strong>:</p>
+
+            <mv-button class="buttonMargin" imgSize="20px 20px" imgRepeat="round" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                round
+            </mv-button>
+
+            <p><strong>Initial</strong>:</p>
+
+            <mv-button class="buttonMargin" imgSize="20px 20px" imgRepeat="initial" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                initial
+            </mv-button>
+
+            <p><strong>Inherit</strong>:</p>
+
+            <mv-button class="buttonMargin" imgSize="20px 20px" imgRepeat="inherit" imgSrc="assets/examples/ejemplo_imagen2.jpg">
+                inherit
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- link -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #link><strong>link</strong></mv-card-title>
+            <mv-card-subtitle>Enlace del botón.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad link permite definir un enlace al estado de la app que definamos.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeLinkExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeLinkExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Con link al estado 'layout':</strong></p>
+
+            <mv-button color="primary" appearance="raised" link="/layout">
+                Link
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- size -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #size><strong>size</strong></mv-card-title>
+            <mv-card-subtitle>Tamaño del botón.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad size permite definir el tamaño del botón.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeSizeExampleHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeSizeExampleTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <p><strong>Tamaño por defecto</strong>:</p>
+
+            <mv-button class="buttonMargin" appearance="raised" color="primary">
+                Por defecto
+            </mv-button>
+
+            <p><strong>Small</strong>:</p>
+
+            <mv-button class="buttonMargin" appearance="raised" color="primary" size="small">
+                Small
+            </mv-button>
+
+            <p><strong>Medium</strong>:</p>
+
+            <mv-button class="buttonMargin" appearance="raised" color="primary" size="medium">
+                Medium
+            </mv-button>
+
+            <p><strong>Big</strong>:</p>
+
+            <mv-button class="buttonMargin" appearance="raised" color="primary" size="big">
+                Big
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+    <!-- clickEvent -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #clickEvent><strong>clickEvent</strong></mv-card-title>
+            <mv-card-subtitle>Evento click del botón.</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La propiedad clickEvent permite definir la función que se ejecutará al hacer click en el botón.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="codeClickHTML"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="codeClickTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+
+            <mv-button appearance="raised" color="primary" (clickEvent)="clickFunction()">
+                Función clickEvent
+            </mv-button>
+
+        </mv-card-content>
+    </mv-card>
+
+
+    <!-- ariaLabel -->
+    <mv-card class="card-code">
+        <mv-card-header>
+            <div mv-card-avatar>
+                <mv-icon>code</mv-icon>
+            </div>
+            <mv-card-title #ariaLabel><strong>ariaLabel</strong></mv-card-title>
+            <mv-card-subtitle>Etiqueta para accesibilidad</mv-card-subtitle>
+        </mv-card-header>
+
+        <mv-card-content>
+
+            <p>La etiqueta ariaLabel se utiliza para proporcionar una descripción de texto alternativa para elementos que no tienen un texto visible por si mismo y aseguarse que usuarios con lectores de pantalla y otros asistentes de accesibilidad puedan
+                entender el propósito del componente.</p>
+
+            <mv-tab-group>
+                <mv-tab label="HTML">
+                    <pre><code [highlight]="ariaLabelHtml"></code></pre>
+                </mv-tab>
+                <mv-tab label="TS">
+                    <pre><code [highlight]="ariaLabelTS"></code></pre>
+                </mv-tab>
+            </mv-tab-group>
+        </mv-card-content>
+    </mv-card>
+
+
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

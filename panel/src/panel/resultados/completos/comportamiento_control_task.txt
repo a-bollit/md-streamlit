@@ -1,0 +1,216 @@
+Result from comportamiento_control_task: The provided Oracle Forms module "EXPECA01" is a form used to manage notifications, particularly for the issuance and management of both telematic and postal notifications. The form is designed with multiple blocks, items, and LOVs to facilitate data entry, validation, and queries. Below is a detailed description of the business logic implemented in the form.
+
+### Triggers and Program Units
+Here's a detailed description of each trigger and program unit, specifying their functionalities, events, associated calculations, validations, and interactions with other elements.
+
+### Block: BL_GENERAL
+#### Trigger: `WHEN-BUTTON-PRESSED` on `LOV_CDUNIDAD`
+- **Functionality**: Opens the list of values (LOV) for `CDUNIDAD`.
+- **Event**: Button pressed.
+
+#### Trigger: `KEY-NEXT-ITEM` on `FCDESDE`
+- **Functionality**: Navigates to the `FCHASTA` item.
+- **Event**: Key press for moving to the next item.
+- **Associated Calculation**: Uses the PL/SQL `go_item` procedure to navigate.
+
+#### Trigger: `KEY-NEXT-ITEM` on `FCHASTA`
+- **Functionality**: Navigates to the `CDDEPTNO` item.
+- **Event**: Key press for moving to the next item.
+- **Associated Calculation**: Uses the PL/SQL `go_item` procedure to navigate.
+
+#### Trigger: `WHEN-BUTTON-PRESSED` on `CAL_FCDESDE`
+- **Functionality**: Opens the calendar for `FCDESDE`.
+- **Event**: Button pressed.
+- **Associated Calculation**: Calls the `FCALENDARIO` procedure to open the calendar.
+
+#### Trigger: `WHEN-BUTTON-PRESSED` on `CAL_FCHASTA`
+- **Functionality**: Opens the calendar for `FCHASTA`.
+- **Event**: Button pressed.
+- **Associated Calculation**: Calls the `FCALENDARIO` procedure to open the calendar.
+
+#### Trigger: `WHEN-VALIDATE-ITEM` on `CDTEXP`
+- **Functionality**: Validates the value of `CDTEXP` and checks application permissions.
+- **Event**: Validation after item value is entered.
+- **Associated Calculation**: 
+  - Checks if `CDTEXP` is not null.
+  - If `Restricciones_APL_TEXP` returns 'S', it calls `Permisos_Aplicacion` to verify permissions.
+  - Outputs an error message if permission validation fails.
+  - Uses exception handling to manage errors.
+
+#### Trigger: `WHEN-BUTTON-PRESSED` on `ACEPTAR`
+- **Functionality**: Validates required fields and transitions to the associated block.
+- **Event**: Button pressed.
+- **Associated Calculation**:
+  - Validates if `CDUNIDAD` is not null.
+  - Calls `Valida_Expediente` to validate the expedition details.
+  - Calls `Valida_Fechas` to ensure date fields are valid.
+  - Navigates to the `BL_DOC_CORR` block and executes a query.
+  - Checks for the presence of records in `NOTIFICACION_TELEMATICA` and `GEA_ACURE`.
+
+#### Trigger: `WHEN-BUTTON-PRESSED` on `CANCELAR`
+- **Functionality**: Exits the form without validation.
+- **Event**: Button pressed.
+- **Associated Calculation**: Uses the `exit_form` procedure to close the form.
+
+### Block: GEA_ACURE
+#### Trigger: `POST-QUERY`
+- **Functionality**: Checks the status of the associated expedition and fetches related details.
+- **Event**: After a query is executed.
+- **Associated Calculation**:
+  - Uses `f_estado_expediente` to verify the status of the expedition.
+  - If the expedition is finalized or canceled, it raises an exception.
+  - Sets values for various fields such as `EXPEDIENTE`, `CDINTERESADO`, and `CB_MARCA`.
+  - Retrieves and sets detailed information from the `GIMPREDOCU` and other related tables.
+  - Synchronizes the form and updates UI elements based on the retrieved data.
+
+#### Trigger: `KEY-UP`
+- **Functionality**: Handles moving to the previous record.
+- **Event**: Key press for moving up.
+- **Associated Calculation**: Uses the `up` procedure and checks if it's the first record to display a message.
+
+#### Trigger: `KEY-DOWN`
+- **Functionality**: Handles moving to the next record.
+- **Event**: Key press for moving down.
+- **Associated Calculation**: Uses the `down` procedure and checks if it's the last record to display a message.
+
+### Block: BL_DOC_CORR
+#### Trigger: `WHEN-BUTTON-PRESSED` on `REGISTRAR`
+- **Functionality**: Handles the registration of selected documents.
+- **Event**: Button pressed.
+- **Associated Calculation**:
+  - Validates the number of documents selected.
+  - Iterates through each document to check if it's already registered or if it meets the requirements for registration.
+  - Calls procedures to insert related records and manages error handling.
+  - Commits the transaction if successful or rolls back in case of errors.
+
+#### Trigger: `WHEN-BUTTON-PRESSED` on `ACEPTAR`
+- **Functionality**: Manages the sending process for selected documents.
+- **Event**: Button pressed.
+- **Associated Calculation**:
+  - Validates the number of documents selected.
+  - Checks if the documents are registered before sending.
+  - Calls procedures `Construir_Where_Corr` and `Construir_Where_Note` to set where clauses for queries based on form inputs.
+  - Initiates the sending process and handles errors by updating the results field.
+
+#### Trigger: `WHEN-BUTTON-PRESSED` on `MARCAR`
+- **Functionality**: Marks all documents for inclusion.
+- **Event**: Button pressed.
+- **Associated Calculation**: Iterates through records, applies selection criteria, and updates the `docsel` field.
+
+#### Trigger: `WHEN-BUTTON-PRESSED` on `DESMARCAR`
+- **Functionality**: Deselects all marked documents.
+- **Event**: Button pressed.
+- **Associated Calculation**: Iterates through records, deselects them, and updates the `docsel` field.
+
+### Block: BL_DEVOL
+#### Trigger: `WHEN-VALIDATE-ITEM` on `CDMUNI`
+- **Functionality**: Validates the municipality code.
+- **Event**: Validation after item value is entered.
+- **Associated Calculation**:
+  - Calls `valida_municipio` to ensure the code corresponds to a valid municipality.
+  - Handles validation errors by raising `form_trigger_failure`.
+
+#### Trigger: `WHEN-BUTTON-PRESSED` on `ACEPTAR`
+- **Functionality**: Handles acceptance of form inputs and inclusion in the notification list.
+- **Event**: Button pressed.
+- **Associated Calculation**:
+  - Validates required fields.
+  - Calls `GEAD_PAQ_CONEX_EREG.crear_lista_notificacion` to create a notification list.
+  - Includes selected documents in the notification list.
+  - Updates records, commits the transaction, and handles any errors.
+
+### Block: NOTIFICACION_TELEMATICA
+#### Trigger: `POST-QUERY`
+- **Functionality**: Fetches and validates data related to telematic notifications.
+- **Event**: After a query is executed.
+- **Associated Calculation**:
+  - Verifies the status of the associated expedition.
+  - Fetches and sets details for interested parties.
+  - Calculates the number of annexes and sets field values accordingly.
+  - Updates item properties based on query results.
+
+#### Trigger: `KEY-UP`
+- **Functionality**: Handles moving to the previous record.
+- **Event**: Key press for moving up.
+- **Associated Calculation**: Uses the `up` procedure and checks if it's the first record to display a message.
+
+#### Trigger: `KEY-DOWN`
+- **Functionality**: Handles moving to the next record.
+- **Event**: Key press for moving down.
+- **Associated Calculation**: Uses the `down` procedure and checks if it's the last record to display a message.
+
+### Block: BL_DOC_NOTE
+#### Trigger: `WHEN-BUTTON-PRESSED` on `ACEPTAR`
+- **Functionality**: Orchestrates the notification sending process.
+- **Event**: Button pressed.
+- **Associated Calculation**:
+  - Validates the number of selected documents.
+  - Calls `GEAD_PAQ_CONEX_EREG.crear_lista_notificacion` to create a notification list.
+  - Includes documents in the notification list and sends notifications.
+  - Handles errors and updates statuses accordingly.
+
+#### Trigger: `WHEN-BUTTON-PRESSED` on `MARCAR`
+- **Functionality**: Marks all documents for inclusion.
+- **Event**: Button pressed.
+- **Associated Calculation**: Iterates through records, applies selection criteria, and updates the `docsel` field.
+
+#### Trigger: `WHEN-BUTTON-PRESSED` on `DESMARCAR`
+- **Functionality**: Deselects all marked documents.
+- **Event**: Button pressed.
+- **Associated Calculation**: Iterates through records, deselects them, and updates the `docsel` field.
+
+### Program Units
+1. **`COMPROBAR_SELECCION`**:
+   - **Functionality**: Validates the selection of documents for sending notifications.
+   - **Calculations and Validations**:
+     - Checks if the document is saved in the database.
+     - Verifies if the notification has a valid recipient.
+     - Ensures the document is signed and registered.
+     - Updates status fields based on validations and sets error flags if any conditions fail.
+
+2. **`PONER_ROJO`**:
+   - **Functionality**: Applies a visual attribute to highlight items based on conditions.
+   - **Calculations**: Iterates through items in the block and sets their visual attributes to "ROJO" or "NEGRO" based on the status.
+
+3. **`ULTIMA_NOTIFICACION`**:
+   - **Functionality**: Retrieves the last notification sent for a specific document.
+   - **Calculations**: Queries the `EREG_LISTNOTI` table to fetch the most recent notification date for the given document.
+
+4. **`CALCULAR_NUMERO_ANEXOS`**:
+   - **Functionality**: Calculates the number of annexes associated with a document.
+   - **Calculations**: Queries the `GEA_ANEXOS` table to count the number of annexes marked for notification.
+
+5. **`VALIDA_FECHAS`**:
+   - **Functionality**: Validates date fields to ensure they are within acceptable ranges.
+   - **Calculations**: Checks that dates are not in the future and that the end date is not before the start date. Raises errors if validations fail.
+
+6. **`CONSTRUIR_WHERE_NOTE`**:
+   - **Functionality**: Constructs a where clause for filtering telematic notifications based on form inputs.
+   - **Calculations**: Constructs the SQL WHERE clause by appending conditions related to date ranges and other filter criteria entered in the form.
+
+7. **`CONSTRUIR_WHERE_CORR`**:
+   - **Functionality**: Constructs a where clause for filtering postal notifications based on form inputs.
+   - **Calculations**: Constructs the SQL WHERE clause by appending conditions related to date ranges and other filter criteria entered in the form.
+
+8. **`PROC_INICIALIZAR_DATOS_DEVOL`**:
+   - **Functionality**: Initializes data for the return address based on organizational unit details.
+   - **Calculations**: Fetches and sets values for the return address fields based on the selected organization unit.
+
+9. **`VALIDA_MUNICIPIO`**:
+   - **Functionality**: Validates the municipality code entered in the form.
+   - **Calculations**: Queries the `SUCA_MUNICIPIO` table to fetch and validate the municipality name. Raises errors if validation fails.
+
+10. **`GLOBALES_SESION`**:
+    - **Functionality**: Initializes session variables for regional and expedition codes.
+    - **Calculations**: Sets default values for session variables and updates form fields based on session data.
+
+11. **`F_ESTADO_EXPEDIENTE`**:
+    - **Functionality**: Fetches the status of a specified expedition.
+    - **Calculations**: Queries the `GEXPEDIENT` table to return the expedition status.
+
+12. **`VALIDA_EXPEDIENTE`**:
+    - **Functionality**: Validates that the expedition is not finalized or canceled.
+    - **Calculations**: Calls `f_estado_expediente` to check the expedition status. Raises errors if the status is 'FI' (finalized) or 'AN' (canceled).
+
+### Conclusion
+This detailed document covers the behavior and control logic implemented in the Oracle Forms module "EXPECA01". It includes individual trigger descriptions, program unit functionalities, calculations, validations, and interactions with other items and blocks. This comprehensive description should allow precise replication of the form's behavior and control logic.

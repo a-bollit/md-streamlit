@@ -1,0 +1,89 @@
+#stepperExample{
+  ::ng-deep.mat-horizontal-stepper-header-container{
+    overflow-x: auto;
+  }
+}
+#wizardDetail{
+  margin: 0.4rem 0.4rem 1rem 0.4rem;
+  ::ng-deep.mat-form-field{
+    max-width: calc(100% - 15px);
+  }
+  .wizardDetailStep1{
+    background: url('~src/assets/examples/step1.jpg');
+    background-position: center top;
+    color: #fff;
+    height: 5rem;
+  }
+  .wizardDetailStep2{
+    background: url('~src/assets/examples/step2.jpg');
+    background-position: center top;
+    color: #fff;
+    height: 5rem;
+  }
+  .wizardDetailStep3{
+    background: url('~src/assets/examples/step3.jpg');
+    background-position: center top;
+    color: #fff;
+    height: 5rem;
+  }
+  .wizardDetailStep4{
+    background: url('~src/assets/examples/step4.jpg');
+    background-position: center top;
+    color: #fff;
+    height: 5rem;
+  }
+  .wizardDetailStep5{
+    background: url('~src/assets/examples/step5.jpg');
+    background-position: center top;
+    color: #fff;
+    height: 5rem;
+  }
+  .wizardDetailStep6{
+    background: url('~src/assets/examples/step6.jpg');
+    background-position: center top;
+    color: #fff;
+    height: 5rem;
+  }
+  .wizardDetailStep7{
+    background: url('~src/assets/examples/step6.jpg');
+    background-position: center top;
+    color: #fff;
+    height: 5rem;
+  }
+  .wizardDetailStep8{
+    background-color: #32b86a;
+    color: #fff;
+    height: 5rem;
+  }
+  .mat-card-title{
+    margin-bottom: 2rem;
+  }
+  .buttonGroup{
+    margin: 3rem 0 0 0;
+  }
+  .buttonGroupLeft{
+    text-align: left;
+  }
+  .buttonGroupRight{
+    text-align: right;
+  }
+  .greyBackground{
+    background-color: #ececec;
+    margin: 0 0 10px 0;
+    mv-checkbox-x{
+      margin: 1rem 0 0 1rem;
+      ::ng-deep.form-controls{
+        max-width: calc(100% - 2rem);
+        height: 100%;
+      }
+      strong::ng-deep{
+        white-space: normal;
+      }
+    }
+  }
+  .greenBackground{
+    background-color: #d2f5da;
+    padding: 0 0 0 10px;
+    margin-bottom: 10px;
+  }
+}

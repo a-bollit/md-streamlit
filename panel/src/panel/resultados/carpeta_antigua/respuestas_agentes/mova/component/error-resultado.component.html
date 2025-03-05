@@ -1,0 +1,23 @@
+<mv-header
+  [headerTitle]="'Error'"
+  [headerSubtitle]="'Ha ocurrido un problema'"
+  [fixed]="false"
+  [showBackButton]="false"
+  [showMenuButton]="false"
+  [type]="'dark'"
+>
+</mv-header>
+
+<div *ngIf="errores && errores.length" class="error-container">
+  <mv-card class="danger-card">
+    <mv-header>
+      <mv-title>Errores</mv-title>
+    </mv-header>
+    <mv-content>
+      <ul>
+        <li *ngFor="let error of errores">{{ error }}</li>
+      </ul>
+      <mv-button (click)="cerrar()">Aceptar</mv-button>
+    </mv-content>
+  </mv-card>
+</div>

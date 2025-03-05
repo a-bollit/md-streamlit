@@ -1,0 +1,410 @@
+<section class="view-default-style">
+
+  <mv-card class="card-code">
+    <form
+      [formGroup]="studentForm"
+      (ngSubmit)="mvValuesListDireccionAlumno.doValidate() && mvValuesListDireccionProfesor.doValidate() &&
+        mvRadioSexo.doValidate() && mvCheckBeca.doValidate() && onSubmit()">
+
+      <mv-card-content class="student-info">
+        <div class="row image">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <img [src]="studentImage">
+          </div>
+
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" *ngIf="editMode">
+            <div class="main-info">
+              <div class="field-title" *ngIf="studentForm.get('nombre_alumno').value">
+                <span>{{studentForm.get('nombre_alumno').value}} {{studentForm.get('apellido_1').value}} {{studentForm.get('apellido_2').value}}</span>
+              </div>
+              <div class="field-title-mobile" *ngIf="studentForm.get('nombre_alumno').value">
+                <span>{{studentForm.get('nombre_alumno').value}}</span>
+                <div>
+                  <span>{{studentForm.get('apellido_1').value}} {{studentForm.get('apellido_2').value}}</span>
+                </div>
+              </div>
+              <p>Este alumno forma parte de la Escuela Técnica Superior de Ingeniería Informática. Comenzó su andadura en la escuela en el año 2010.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="second-info">
+              <mv-icon class="pass">thumb_up</mv-icon>
+              <div class="text-container">
+                <div class="second-text">{{studentForm.get('numero_asignaturas_aprobadas').value}}</div>
+                <div class="first-text">Asignaturas aprobadas</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="second-info">
+              <mv-icon class="fail">thumb_down</mv-icon>
+              <div class="text-container">
+                <div class="second-text">{{(10 - studentForm.get('numero_asignaturas_aprobadas').value)}}</div>
+                <div class="first-text">Asignaturas suspensas</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="second-info">
+              <mv-icon class="normal">trending_up</mv-icon>
+              <div class="text-container">
+                <div class="second-text">{{globalNota}}</div>
+                <div class="first-text">Nota media</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <mat-divider></mat-divider>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="blockTitle">
+              <mv-icon>account_circle</mv-icon>
+              Datos personales
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <div class="field_data">
+              <mv-input
+                adapt=true
+                label="Nombre"
+                required=true
+                validateOnType=true
+                formControlName="nombre_alumno">
+              </mv-input>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <div class="field_data">
+              <mv-input
+                adapt=true
+                label="Primer apellido"
+                required=true
+                validateOnType=true
+                formControlName="apellido_1">
+              </mv-input>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <div class="field_data">
+              <mv-input
+                adapt=true
+                label="Segundo apellido"
+                required=true
+                validateOnType=true
+                formControlName="apellido_2">
+              </mv-input>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <div class="field_data">
+              <mv-input
+                adapt=true
+                label="NIF"
+                required=true
+                validateOnType=true
+                validateNIF=true
+                formControlName="nif">
+              </mv-input>
+            </div>
+          </div>
+
+          <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="field_data">
+              <mv-input
+                datepicker=true
+                label="Fecha de nacimiento"
+                adapt=true
+                required=true
+                validateOnType=true
+                formControlName="fecha_nacimiento">
+              </mv-input>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="blockTitle">
+              <mv-icon>home</mv-icon>
+              Domicilio
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="field_data" formGroupName="direccion_alumno">
+              <mv-values-list
+                #mvValuesListDireccionAlumno
+                required=true
+                validateOnType=true
+                formControlName="id_direccion"
+                [dataSourceLoader]="loadDirectionsSource"
+                [tableColumns]="directionsTableColumns"
+                dialogTitle="Listado de direcciones"
+                placeholderCode="Id"
+                placeholderText="Dirección"
+                labelCode="Id"
+                labelText="Dirección alumno"
+                filter=true
+                adapt=true
+                columnCode="id_direccion"
+                columnText="calle">
+              </mv-values-list>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="field_data" formGroupName="direccion_profesor">
+              <mv-values-list
+                #mvValuesListDireccionProfesor
+                formControlName="id_direccion"
+                [dataSourceLoader]="loadDirectionsSource"
+                [tableColumns]="directionsTableColumns"
+                dialogTitle="Listado de direcciones"
+                placeholderCode="Id"
+                placeholderText="Dirección"
+                labelCode="Id"
+                labelText="Dirección profesor"
+                filter=true
+                adapt=true
+                columnCode="id_direccion"
+                columnText="calle">
+              </mv-values-list>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="field_data">
+              <mv-select-x
+                adapt=true
+                validateOnType=true
+                required=true
+                [options]="selectOptionsProvinces"
+                label="Provincia"
+                (changeEvent)="provChange()"
+                formControlName="province">
+              </mv-select-x>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="field_data">
+              <mv-select-x
+                adapt=true
+                validateOnType=true
+                required=true
+                [options]="selectOptionsMunicipalities"
+                label="Municipio"
+                formControlName="municipality">
+              </mv-select-x>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="blockTitle">
+              <mv-icon>credit_card</mv-icon>
+              Solicitud de beca
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="field_data">
+              <mv-file-uploader
+                #mvFileUploader
+                fileDescription="Suba el archivo de solicitud de Beca para el curso 2021/2022 completo."
+                [allowedExtensions]="uploaderAllowedExtensions"
+                [maxSizeBytes]="uploaderMaxSize"
+                (onUploadSuccess)="onSuccessCallback()"
+                required=true>
+              </mv-file-uploader>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <mv-button
+              *ngIf="showPdfViewerButton"
+              (clickEvent)="showPdfViewer($event)"
+              [disabled]="!viewerPdfUrl"
+              adapt=true
+              appearance="raised"
+              color="primary">
+              Visualizar pdf
+              <mv-icon>preview</mv-icon>
+            </mv-button>
+
+            <mv-button
+              *ngIf="!showPdfViewerButton"
+              (clickEvent)="closePdfViewer()"
+              adapt=true
+              appearance="raised"
+              color="primary">
+              Cerrar pdf
+              <mv-icon>preview</mv-icon>
+            </mv-button>
+
+            <mv-pdf-viewer
+              *ngIf="viewerPdfShow"
+              [url]="viewerPdfUrl"
+              hidePrintButton=true>
+            </mv-pdf-viewer>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="blockTitle">
+              <mv-icon>receipt</mv-icon>
+              Datos administrativos
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="field_data">
+              <mv-input
+                adapt=true
+                required=true
+                validateOnType=true
+                label="Asignaturas aprobadas"
+                type="number"
+                formControlName="numero_asignaturas_aprobadas">
+              </mv-input>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="field_data">
+              <mv-radio
+                #mvRadioSexo
+                formControlName="sexo"
+                validateOnType=true
+                [options]=radioOptions
+                required=true
+                alignHorizontal=true>
+              </mv-radio>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="field_data">
+              <mv-checkbox-x
+                #mvCheckBeca
+                formControlName="beca">
+                Solicitante beca MEC
+              </mv-checkbox-x>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="botones col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+          <mv-card class="danger-card" *ngIf="errorMessage">
+            <mv-card-content>
+              <div [innerHTML]="errorMessage"></div>
+            </mv-card-content>
+          </mv-card>
+
+          <mv-button
+            appearance="raised"
+            color="primary"
+            type="submit">
+            Guardar cambios
+            <mv-icon>save</mv-icon>
+          </mv-button>
+
+          <mv-button
+            *ngIf="editMode && scopeHasPermission()"
+            appearance="raised"
+            color="warn"
+            (clickEvent)="deleteStudent()">
+            Eliminar alumno
+            <mv-icon>delete</mv-icon>
+          </mv-button>
+
+        </div>
+      </mv-card-content>
+    </form>
+  </mv-card>
+
+  <mv-card class="card-code">
+    <mv-card-header>
+      <mv-card-title class="title">
+        <mv-icon>school</mv-icon>
+        Asignaturas
+      </mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <div class="btnContainer">
+        <mv-button
+          appearance="raised"
+          color="primary"
+          (clickEvent)="openDialogAsignatura()">
+          Añadir asignatura
+          <mv-icon>add</mv-icon>
+        </mv-button>
+      </div>
+
+      <mv-tab-group id="matTabAsignaturas">
+        <mv-tab label="Listado">
+          <ul>
+            <li *ngFor="let asignatura of asignaturas">
+              <div class="row">
+
+                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                  <span *ngIf="asignatura.nota_asignatura >= 6.5" class="pass"><mv-icon>mood</mv-icon></span>
+                  <span *ngIf="asignatura.nota_asignatura >= 5 && asignatura.nota_asignatura < 6.5" class="normal"><mv-icon>sentiment_satisfied</mv-icon></span>
+                  <span *ngIf="asignatura.nota_asignatura < 5"class="fail"><mv-icon>mood_bad</mv-icon></span>
+                  <span class="field_asignatura">
+                    <span class="title">
+                      {{asignatura.nombre_asignatura}}
+                    </span>
+                  </span>
+                </div>
+
+                <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2">
+                  <span class="field_nota">
+                    <span class="title">
+                      Nota:
+                    </span>
+                    <span class="data">
+                      {{asignatura.nota_asignatura}}
+                    </span>
+                  </span>
+                </div>
+
+                <div class="col-xs-4 col-sm-1 col-md-1 col-lg-1">
+                  <span>
+                    <mv-icon
+                      class="clickable_icon"
+                      (click)="openDialogAsignatura(asignatura)">edit
+                    </mv-icon>
+                  </span>
+                </div>
+
+              </div>
+            </li>
+          </ul>
+        </mv-tab>
+
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>

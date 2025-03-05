@@ -1,0 +1,48 @@
+FROM python:3.12  
+
+# Establece variables de entorno para Poetry  
+ENV POETRY_VERSION=1.8.1 \  
+    POETRY_VIRTUALENVS_CREATE=false \  
+    PYTHONDONTWRITEBYTECODE=1 \  
+    PYTHONUNBUFFERED=1 \  
+    PIP_DEFAULT_TIMEOUT=100  
+
+# Actualiza los paquetes del sistema y instala dependencias esenciales  
+RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \  
+    build-essential \  
+    && apt-get -qq clean \  
+    && rm -rf /var/lib/apt/lists/*  
+
+# Instala Poetry  
+RUN pip install --no-cache-dir poetry==$POETRY_VERSION  
+
+# Establece el directorio de trabajo  
+WORKDIR /app  
+
+# Copia los archivos de configuración de Poetry y el archivo .env  
+COPY ./pyproject.toml /app/pyproject.toml  
+COPY ./poetry.lock /app/poetry.lock  
+COPY ./.env /app/.env  
+
+# Regenerar el archivo poetry.lock  
+RUN poetry lock  
+
+# Instala las dependencias usando Poetry  
+RUN poetry install --only main --no-interaction --no-ansi  
+
+# Instala Panel  
+RUN pip install --no-cache-dir panel  
+
+# Copia el código fuente de la aplicación  
+COPY ./src /app/src  
+COPY ./tests /app/tests  
+
+# Descargar datos de nltk necesarios  
+RUN python -m nltk.downloader punkt punkt_tab  
+
+# Expone el puerto 5006 para acceder a la aplicación  
+EXPOSE 8046  
+
+# Comando para ejecutar la aplicación usando panel serve en el puerto 5006  
+CMD ["panel", "serve", "src/panel/masterultimo.py", "--address", "0.0.0.0", "--port", "8046"]  
+#CMD ["python", "src/panel/test_server.py"]  

@@ -1,0 +1,610 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Consideraciones generales sobre Capas</strong></mv-card-title>
+
+    <p>Uno de los componentes principales del API GIS es el mapa. Pero un mapa no aporta nada de información si no dispone da capas geográficas a las que también denominamos servicios.</p>
+    <p>A continuación, se muestra la manera en la que podemos contruír servicios, cómo podemos acceder (mediante Getters)
+      y establecer/cambiar
+      sus propiedades (mediante Setters) y diversos métodos para trabajar con las capas después de haberlas generado.
+    </p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='considerations.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon>Consideraciones generales sobre apigis.Layer
+        </a></li>
+      <li><a class="nostyle" (click)='constructor.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Constructor de un servicio (apigis.Layer)
+        </a></li>
+      <li><a class="nostyle" (click)='getters.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Getters
+        </a></li>
+      <li><a class="nostyle" (click)='setters.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Setters
+        </a></li>
+      <li><a class="nostyle" (click)='metodos.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Consideraciones generales -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #considerations><strong>Consideraciones Generales sobre apigis.Layer</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>La clase base de la que se derivan todos los tipos de capas que se pueden generar con el API GIS es
+        <strong>apigis.Layer</strong>.
+      <p>
+        En esta página se muestran infomación sobre la construcción de un objeto Layer junto con la documentación sobre
+        los métodos que
+        permiten establecer sus propiedades, acceder a sus propiedades y otros métodos para trabajar con estos objetos.
+      </p>
+      <p>
+        Además de los métodos que se muestran en esta página, en función de las propiedades que se pasen como typeLayer
+        y supTypeLayer
+        en la generación de un objeto Layer, tendremos métodos adicionales a los que se puede acceder directamente desde
+        los
+        siguientes enlaces:
+      </p>
+      <ul>
+        <li><a routerLink="/doc-apigis-image" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Imágenes
+              WMS</strong></a> (typeLayer: Image, subtypeLayer: Image)</li>
+        <li><a routerLink="/doc-apigis-tile" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Imágenes WMS
+              tileadas</strong></a> (typeLayer: Image, subtypeLayer: Tile)</li>
+        <li><a routerLink="/doc-apigis-xyz" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Imágenes
+              XYZ</strong></a> (typeLayer: Image, subtypeLayer: XYZ)</li>
+        <li><a routerLink="/doc-apigis-wmts" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Imágenes
+              WMTS</strong></a> (typeLayer: Image, subtypeLayer: WMTS)</li>
+        <li><a routerLink="/doc-apigis-vector" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Capas
+              vectoriales</strong></a> (typeLayer: Vector, subtypeLayer: Vector)</li>
+        <li><a routerLink="/doc-apigis-overlay" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Capas
+              operacionale</strong></a> (typeLayer: Vector, subtypeLayer: Overlay)</li>
+        <li><a routerLink="/doc-apigis-vectortile" routerLinkActive="active"
+            ariaCurrentWhenActive="page"><strong>Teselas vectoriales</strong></a> (typeLayer: Vector, subtypeLayer:
+          VectorTile)</li>
+      </ul>
+
+      <mv-card class="warning-card">
+        <mv-card-header>
+          <mv-card-title>
+            <strong>IMPORTANTE</strong>
+          </mv-card-title>
+        </mv-card-header>
+
+        <mv-card-content>
+          <p>Para poder visualizar una capa, deberá estar contenida dentro de un objeto de tipo <a
+              routerLink="/doc-apigis-map" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Map</a>.
+          </p>
+          <p>Así mismo, un objeto de tipo apigis.Map deberá estar contenido dentro de un objeto de tipo <a
+              routerLink="/doc-apigis-viewer" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Viewer</a>.
+          </p>
+        </mv-card-content>
+      </mv-card>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- constructor -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #constructor><strong>Constructor de un servicio (apigis.Layer)</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p><em><strong>new ApiLayer(args)</strong></em></p>
+      <ul>
+        <li><strong>args</strong> &#60;<i>object</i> &#62; Objeto con todos los argumentos del contructor. Puede
+          contener las siguientes propiedades:</li>
+        <ul>
+          <li><strong>type</strong> &#60;<i>'OL'</i> &#62; Nombre del contenedor del DOM que almacenará el mapa.</li>
+          <li><strong>typeLayer</strong> &#60;<i>'OL'</i> &#62; Tipo de capa que deseamos instanciar. Debe coincidir con
+            alguna de los disponibles actualmente ([Image, Vector]).</li>
+          <li><strong>subtypeLayer</strong> &#60;<i>'OL'</i> &#62; Subtipo de capa que deseamos instanciar. Debe
+            coincidir con alguno de los disponibles actualmente
+            * (Image: [Image, WMTS, Tile, XYZ], Vector: [Vector, Overlay, VectorTile].</li>
+          <li><strong>inheritedclass</strong> &#60;<i>string</i> &#62; Clase de la que heredará dinámicamente la capa.
+            Debe coincidir con alguno de los disponibles actualmente ([Geoserver, Catastro]).</li>
+          <li><strong>options</strong> &#60;<i>object</i> &#62; Opciones asociadas a la capa según el valor de typeLayer
+            y subtypeLayer.
+            A continuación, se muestran todos las propiedades que puede tener options especificando en la descripción
+            que propiedad es propia de cada tipo.
+            En los enlaces
+            que se muestran al comienzo de esta página se puede acceder a la información de generación de capas de cada
+            tipo determinado.</li>
+          <ul>
+            <li><strong>id</strong> &#60;<i>string</i> &#62; Identificador de la capa. Si no se especifica, se gener un
+              id automáticamente.</li>
+            <li><strong>title</strong> &#60;<i>string</i> &#62; Título de la capa.</li>
+            <li><strong>url</strong> &#60;<i>string</i> &#62; URL del recurso.</li>
+            <li><strong>baseLayer</strong> &#60;<i>boolean</i>&#62; Indica si la capa será una capa base.</li>
+            <li><strong>treePath</strong> &#60;<i>boolean</i>&#62; Ruta en el árbol de la capa.</li>
+            <li><strong>linkVisibiltyGroup</strong> &#60;<i>string</i>&#62; Grupo de visibilidad linkada al que
+              pertenece el Servicio.</li>
+            <li><strong>excVisibiltyGroup</strong> &#60;<i>string</i>&#62; Grupo de visibilidad exclusiva al que
+              pertenece el Servicio.</li>
+            <li><strong>legend</strong> &#60;<i>string</i>&#62; Url de la leyenda asociada al servicio.</li>
+            <li><strong>visible</strong> &#60;<i>boolean</i> &#62; Indica si la capa será visible de inicio en la
+              renderización de la capa.</li>
+            <li><strong>opacity</strong> &#60;<i>number</i>&#62; Opacidad de inicio de la capa en la renderización de la
+              capa.</li>
+            <li><strong>minResolution</strong> &#60;<i>number</i>&#62; Indica la mínima resolución de la capa.</li>
+            <li><strong>maxResolution</strong> &#60;<i>number</i>&#62; Indica la máxima resolución de la capa.</li>
+            <li><strong>symbol</strong> &#60;<i>TODO</i>&#62; Definición de la simbología (SimpleFillSymbol,
+              SimpleLineSymbol, SimpleMarkerSymbol).</li>
+            <li><strong>params</strong> &#60;<i>oject</i>&#62; Todo tipo de parámetros que pueda aceptar el API o
+              protocolo que estemos utilizando. Las opciones disponibles para este argumento se
+              definen en los enlaces de cada tipo de capa disponible.
+            </li>
+            <li><strong>queryable</strong> &#60;<i>number</i>&#62; Indica si la capa es identificable o no.</li>
+            <li><strong>updateWhileExtentChange</strong> &#60;<i>boolean</i>&#62; Si se setea a true las features se
+              recargarán cada vez que se produzca un cambio en la extensión de la capa.</li>
+          </ul>
+        </ul>
+      </ul>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLayerExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLayerExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="CSS">
+          <pre><code [highlight]="codeLayerExampleCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Resultado:</strong></p>
+      <div id="doc-apigis-layer-container">
+      </div>
+      <br>
+      <p>Se puede consultar información más detallada y ejemplos sobre el uso de apigis.Layer en el documento de Arquitectura sobre el API GIS.</p>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getters -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #getters><strong>Getters</strong></mv-card-title>
+      <mv-card-subtitle>Métodos que nos permiten acceder a las propiedades cómunes a todos los objetos de tipo Layer.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se muestran a continuación los getters comunes a todos los objetos de tipo Layer. Se debe consultar la
+        documentación correspondiente a cada tipo de capa para ver sus getters propios.
+      </p>
+      <p><em><strong>id</strong></em></p>
+      <p>Recupera el id de la capa.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeIdExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeIdExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getId=imageLayer.id">
+        Obtener la propiedad id de la capa
+      </mv-button>
+      <p>Resultado: {{getId}}</p>
+      <br>
+      <p><em><strong>title</strong></em></p>
+      <p>Recupera el nombre de la capa.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTitleExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTitleExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getTitle=imageLayer.title">
+        Obtener la propiedad title de de la capa
+      </mv-button>
+      <p>Resultado: {{getTitle}}</p>
+      <br>
+      <p><em><strong>props</strong></em></p>
+      <p>Recupera las propiedades originales pasadas al instanciar el servicio.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codePropsExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codePropsExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getProps=objectToString(imageLayer.props)">
+        Obtener la propiedad props de la capa
+      </mv-button>
+      <p>Resultado: {{getProps}}</p>
+      <br>
+      <p><em><strong>map</strong></em></p>
+      <p>Recupera el mapa asociado al servicio.</p>
+      <br>
+      <p><em><strong>mapType</strong></em></p>
+      <p>Recupera el tipo de mapa al que pertenece el servicio.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeMapTypeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeMapTypeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getMapType=imageLayer.mapType">
+        Obtener la propiedad mapType de la capa
+      </mv-button>
+      <p>Resultado: {{getMapType}}</p>
+      <br>
+      <p><em><strong>layerType</strong></em></p>
+      <p>Recupera el tipo de servicio.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLayerTypeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLayerTypeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getLayerType=imageLayer.layerType">
+        Obtener la propiedad layerType de la capa
+      </mv-button>
+      <p>Resultado: {{getLayerType}}</p>
+      <br>
+      <p><em><strong>bbox</strong></em></p>
+      <p>Recupera la extensión total del servicio, en base a su capabilities o features (dependiendo del tipo de
+        servicio).</p>
+      <br>
+      <p><em><strong>getLegend()</strong></em></p>
+      <p>Recupera la leyenda estática del servicio en base a la resolución actual de la capa.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLegendExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLegendExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getLegend=true">
+        Obtener la propiedad legend de la capa
+      </mv-button>
+      <p>Resultado: </p>
+      <img *ngIf="getLegend" class="img" [src]="imageLayer.getLegend()">
+      <br>
+      <p><em><strong>filter</strong></em></p>
+      <p>Recupera el filtro establecido al servicio.</p>
+      <p>Se pueden crear muchos tipos de filtros. Puede consultarse toda la información relacionada en <a
+          routerLink="/doc-apigis-filters" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Filter</a>.
+      </p>
+      <br>
+      <p><em><strong>visible</strong></em></p>
+      <p>Recupera el estado de visibilidad del servicio.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeVisibleExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeVisibleExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getVisible=imageLayer.visible">
+        Obtener la propiedad la propiedad visible de la capa
+      </mv-button>
+      <p>Resultado: {{getVisible}}</p>
+      <br>
+      <p><em><strong>maxResolution</strong></em></p>
+      <p>Recupera la máxima resolución a la que es visible el servicio.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeMaxResolutionExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeMaxResolutionExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised"
+        (clickEvent)="getMaxResolution=imageLayer.maxResolution.toString()">
+        Obtener la propiedad maxResolution de la capa
+      </mv-button>
+      <p>Resultado: {{getMaxResolution}}</p>
+      <br>
+      <p><em><strong>minResolution</strong></em></p>
+      <p>Recupera la mínima resolución a la que es visible el servicio.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeMinResolutionExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeMinResolutionExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised"
+        (clickEvent)="getMinResolution=imageLayer.minResolution.toString()">
+        Obtener la propiedad minResolution de la capa
+      </mv-button>
+      <p>Resultado: {{getMinResolution}}</p>
+      <br>
+      <p><em><strong>opacity</strong></em></p>
+      <p>Recupera la opacidad de la capa.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeOpacityExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeOpacityExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getOpacity=imageLayer.opacity">
+        Obtener la propiedad opacity de la capa
+      </mv-button>
+      <p>Resultado: {{getOpacity}}</p>
+      <br>
+      <p><em><strong>eventQueue</strong></em></p>
+      <p>Recupera la cola de eventos de la capa.</p>
+      <br>
+      <p><em><strong>excVisibiltyGroup</strong></em></p>
+      <p>Recupera el grupo de visibilidad exclusiva al que pertenece.</p>
+      <br>
+      <p><em><strong>linkVisibiltyGroup</strong></em></p>
+      <p>Recupera el grupo de visibilidad linkada al que pertenece.</p>
+      <br>
+      <p><em><strong>visibleExtent</strong></em></p>
+      <p>Recupera la visibilidad según la extensión del mapa.</p>
+      <br>
+      <p><em><strong>treePath</strong></em></p>
+      <p>Recupera el ruta en el arbol de la capa.</p>
+      <br>
+      <p><em><strong>url</strong></em></p>
+      <p>Recupera la url configurada para el servicio.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUrlExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUrlExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getUrl=imageLayer.url">
+        Obtener la propiedad url de la capa
+      </mv-button>
+      <p>Resultado: {{getUrl}}</p>
+      <br>
+      <p><em><strong>params</strong></em></p>
+      <p>Recupera los parámetros configurados para el servicio.</p>
+      <br>
+      <p><em><strong>queryable</strong></em></p>
+      <p>Recupera si la capa es identificable o no.</p>
+      <br>
+      <p><em><strong>baseLayer</strong></em></p>
+      <p>Recupera si la el servicio es de tipo base.</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeBaseLayerExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeBaseLayerExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <mv-button color="primary" appearance="raised" (clickEvent)="getBaseLayer=imageLayer.baseLayer.toString()">
+        Obtener la propiedad baseLayer de la capa
+      </mv-button>
+      <p>Resultado: {{getBaseLayer}}</p>
+      <br>
+      <p><em><strong>capabilities</strong></em></p>
+      <p>Recupera el capabilities del servicio.</p>
+      <br>
+      <p><em><strong>getSymbology()</strong></em></p>
+      <p>Recupera la simbología de la capa.</p>
+      <br>
+      <p><em><strong>printConfig</strong></em></p>
+      <p>Recupera los parámetros configurados para la impresión.</p>
+      <br>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- setters -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #setters><strong>Setters</strong></mv-card-title>
+      <mv-card-subtitle>Métodos que nos permiten establecer las propiedades de una capa. Únicamente se muestran los
+        métodos comunes a todos los tipos de capas.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se muestran a continuación los métodos que permiten establecer propiedades comunes a todos los objetos Layer.
+        Para ver los setters propios de cada tipo, se debe consultar su documentación correspondiente.</p>
+      <br>
+      <p><em><strong>setId(value)</strong></em></p>
+      <p>Establece el Id de la capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Id de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setTitle(value)</strong></em></p>
+      <p>Establece el nombre de la capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Nombre de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setInheritedclass(value)</strong></em></p>
+      <p>Almacena el inherited class. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Inherited class.</li>
+      </ul>
+      <br>
+      <p><em><strong>setVisibleExtent(value)</strong></em></p>
+      <p>Establece la visibilidad según la extensión del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Visibilidad.</li>
+      </ul>
+      <br>
+      <p><em><strong>setTreepath(value)</strong></em></p>
+      <p>Establece la ruta en el arbol de la capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Ruta del arbol.</li>
+      </ul>
+      <br>
+      <p><em><strong>setLinkVisibiltyGroup(value)</strong></em></p>
+      <p>Establece el grupo de visibilidad linkada al que pertenece. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Grupo de visibilidad.</li>
+      </ul>
+      <br>
+      <p><em><strong>setExcVisibiltyGroup(value)</strong></em></p>
+      <p>Establece el grupo de visibilidad exclusiva al que pertenece. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Grupo de visibilidad.</li>
+      </ul>
+      <br>
+      <p><em><strong>setUrl(value)</strong></em></p>
+      <p>Configura la URL del servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; URL del servicio.</li>
+      </ul>
+      <br>
+      <p><em><strong>setParams(value)</strong></em></p>
+      <p>Configura los parámetros del servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>object</i> &#62; Parámetros de configuración.</li>
+      </ul>
+      <br>
+      <p><em><strong>setPrintConfig(value)</strong></em></p>
+      <p>Configura los parámetros de impresión. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>object</i> &#62; Parámetros.</li>
+      </ul>
+      <br>
+      <p><em><strong>setCapabilities(value)</strong></em></p>
+      <p>Configura el Capabilities del servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Capabilities del servicio.</li>
+      </ul>
+      <br>
+      <p><em><strong>setTitle(value)</strong></em></p>
+      <p>Configura el nombre del servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Nombre del servicio.</li>
+      </ul>
+      <br>
+      <p><em><strong>setMap(value)</strong></em></p>
+      <p>Configura el mapa asociado al servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>apigis.Map</i> &#62; Mapa asociado al servicio.</li>
+      </ul>
+      <br>
+      <p><em><strong>setQueryable(value)</strong></em></p>
+      <p>Configura si la capa es identificable o no. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>boolean</i> &#62; Valor.</li>
+      </ul>
+      <br>
+      <p><em><strong>setBbox(value)</strong></em></p>
+      <p> Configura la extensión total del servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>number[]</i> &#62; Extensión total del servicio.</li>
+      </ul>
+      <br>
+      <p><em><strong>setLegend(value)</strong></em></p>
+      <p> Configura la leyenda del servicio.Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Leyenda del servicio.</li>
+      </ul>
+      <br>
+      <p><em><strong>setDefinitionQuery(value)</strong></em></p>
+      <p>Configura el filtro del servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>apigis.Filter</i> &#62; Filtro. El objeto tendrá propiedades que harán
+          referencia a las diferentes expresiones de la consulta.</li>
+      </ul>
+      <br>
+      <p><em><strong>setVisible(value)</strong></em></p>
+      <p>Configura la visibilidad del servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>boolean</i> &#62;Visibilidad.</li>
+      </ul>
+      <br>
+      <p><em><strong>setMaxResolution(value)</strong></em></p>
+      <p>Configura la máxima resolución a la que es visible el servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>number</i> &#62;Máxima resolución.</li>
+      </ul>
+      <br>
+      <p><em><strong>setMinResolution(value) </strong></em></p>
+      <p>Configura la mínima resolución a la que es visible el servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>number</i> &#62; Mínima resolución..</li>
+      </ul>
+      <br>
+      <p><em><strong>setOpacity(value)</strong></em></p>
+      <p>Configura la opacidad de la capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>number[]</i> &#62;Opacidad.</li>
+      </ul>
+      <br>
+      <p><em><strong>setIdentifyUrl(url)</strong></em></p>
+      <p>Configura la URL utilizada en procesos de identificación de la capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>number[]</i> &#62; URL</li>
+      </ul>
+      <br>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Métodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodos><strong>Métodos</strong></mv-card-title>
+      <mv-card-subtitle>Métodos de un visor.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>
+      </p>
+      <p>Se muestran a continuación los métodos comunes a todas los objeto de tipo apigis.Layer:</p>
+      <p><em><strong>listenChangeVisibilityInExtent(callback)</strong></em></p>
+      <p>Listener para escuchar cuando cambia la visibilidad de una capa según extensión. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>listenChangeVisibility(callback)</strong></em></p>
+      <p>Listener para escuchar cuando cambia la visibilidad de una capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>toJson(functions_code = [], symbolConf = []) </strong></em></p>
+      <p>Devuelve la configuracion de la capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>functions_code = [],</strong> &#60;<i> [ ] </i> &#62; Array con el codigo de las funciones internas
+          que vamos a generar al exportar.</li>
+        <li><strong>symbolConf = []</strong> &#60;<i> [ ] </i> &#62; Array con la configuracion de simbolos a generar al
+          exportar.</li>
+      </ul>
+      <br>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

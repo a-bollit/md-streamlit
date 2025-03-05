@@ -1,0 +1,19 @@
+<div class="emision-notificaciones">
+  <mv-header
+    [headerTitle]="'Emisión de Notificaciones'"
+    [headerSubtitle]="''"
+    [fixed]="true"
+    [showBackButton]="true"
+    [showMenuButton]="false"
+    [type]="''">
+  </mv-header>
+  <app-filtro (buscar)="onBuscar($event)"></app-filtro>
+  <app-tabla-documentos *ngIf="mostrarTabla" 
+                       [documentos]="documentos" 
+                       (seleccionar)="onSeleccionar($event)">
+  </app-tabla-documentos>
+  <div *ngIf="mostrarAcciones" class="acciones">
+    <mv-button (click)="onEnviar()">Enviar</mv-button>
+    <mv-button (click)="onCancelar()">Cancelar</mv-button>
+  </div>
+</div>

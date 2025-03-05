@@ -1,0 +1,100 @@
+@import '~@mova/components/_variables.scss';
+
+.view-default-style{
+  background-color: #fff;
+  padding: 2rem !important;
+}
+#health-card{
+  max-width: $container-max-width-small;
+  margin: 0 auto 1rem auto;
+  padding: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  .truncate{
+    img{
+      vertical-align: middle;
+    }
+  }
+  .cardTitle{
+    color: #567383;
+    strong{
+      vertical-align: super;
+    }
+  }
+  .fecha{
+    margin: 0.45rem 0.75rem 0 0;
+    font-size: 0.75rem;
+    float: right;
+    color: #567383;
+  }
+  .backgroundGrey{
+    padding-top: 1rem;
+    background-color: rgba(86,115,131,0.1);
+  }
+  .bigButton{
+    text-align: center;
+    padding: 0 0.75rem 0.75rem 0.75rem;
+    
+    ::ng-deep button{
+      background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+      -webkit-box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.65);
+      -moz-box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.65);
+      box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.6);
+      img{
+        margin: 1rem 0 0 0;
+      }
+    }
+    .buttonText{
+      color: #155DB3;
+    }
+  }
+  .smallButton{
+    text-align: center;
+    padding: 0.25rem 0.75rem 0.75rem 0.75rem;
+    .blue{
+      
+    ::ng-deep button{
+        background-color: #01479d;
+      }
+    }
+    .green{
+      
+    ::ng-deep button{
+        background-color: #006658;
+      }
+    }
+    .red{
+      
+    ::ng-deep button{
+        background-color: #a30003;
+      }
+    }
+    .grey{
+      
+    ::ng-deep button{
+        background-color: #354a55;
+      }
+    }
+    
+    ::ng-deep button{
+      -webkit-box-shadow: 0.05rem 0.05rem 0.25rem 0 rgba(125,125,125,0.65);
+      -moz-box-shadow: 0.05rem 0.05rem 0.25rem 0 rgba(125,125,125,0.65);
+      box-shadow: 0.05rem 0.05rem 0.25rem 0 rgba(125,125,125,0.6);
+      color: #fff;
+    }
+    
+    ::ng-deep button[disabled]{
+      color: #c7c7c76e;
+    }
+  }
+}
+
+// xs
+@media only screen and (max-width: $media-col-xs-max) {
+  #health-card{
+    .fecha{
+      float: left;
+    }
+  }
+}

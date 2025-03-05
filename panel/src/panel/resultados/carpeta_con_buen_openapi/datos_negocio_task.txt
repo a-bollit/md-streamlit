@@ -1,0 +1,259 @@
+Result from datos_negocio_task: La estructura del formulario Oracle Forms definido en el código XML proporcionado se organiza en varios bloques de datos, listas de valores (LOVs) y grupos de registros (Record Groups). A continuación, se proporciona una descripción detalle de cada bloque de datos, los campos que lo componen y sus características principales:
+
+### Bloques de Datos
+
+1. **B00:**
+   - **Descripción:** Bloque no asociado a la base de datos. Utilizado para gestionar elementos no visibles importantes para la lógica del formulario.
+   - **Campos:** 
+     - `EXISTEN_EXP_AN_FI` (Char, 1)
+     - `FALLO` (Char, 1, Inactivo, Transactional attribute, Otros valores no permitidos)
+   - **Validaciones/Dependencias:** Ninguna especificada.
+
+2. **BL_GENERAL:**
+   - **Descripción:** Bloque principal con múltiples campos para gestionar datos generales.
+   - **Campos:**
+     - `CDORGA_EREG` (Char, 16)
+     - `IDORGA_EREG` (Char, 12)
+     - `LOV_CDUNIDAD` (Botón, Trigger `WHEN-BUTTON-PRESSED`)
+     - `CDUNIDAD` (Char, 5)
+     - `DSUNIDAD` (Char, 150)
+     - `FCDESDE` (Fecha, dd-mm-rrrr, `KEY-NEXT-ITEM` trigger)
+     - `CAL_FCDESDE` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `FCHASTA` (Fecha, dd-mm-rrrr, `KEY-NEXT-ITEM` trigger)
+     - `CAL_FCHASTA` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `CDDEPTNO` (Char, 2, Valida_Municipio)
+     - `CDTEXP` (Char, 4, `WHEN-VALIDATE-ITEM` trigger)
+     - `CDNEXP` (Number, 5)
+     - `CDDIGITO` (Number, 1)
+     - `CDAEXP` (Number, 4)
+     - `INCLUIR_ENVIADOS` (CheckBox, Valores: S/N)
+     - `ACEPTAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `CANCELAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+   - **Validaciones/Dependencias:** Los campos `CDORGA_EREG`, `IDORGA_EREG`, `LOV_CDUNIDAD`, `FCDESDE`, `FCHASTA`, `CDDEPTNO`, `CDTEXP`, `CDNEXP`, y `CDDIGITO` tienen validaciones y triggers asociados que afectan cómo y cuándo se puede interactuar con estos elementos.
+
+3. **GEA_ACURE:**
+   - **Descripción:** Bloque basado en tabla asociado a la tabla `GEA_ACURE`.
+   - **Campos:**
+     - `CODARCHIVO_PDF` (Number, 12)
+     - `CDDOCUM` (Char, 11, Operación es Key)
+     - `CB_MARCA` (CheckBox, Valores: S/N)
+     - `DOCUMENTO` (Char, 14)
+     - `DSDOCUM` (Char, 70)
+     - `EXPEDIENTE` (Char, 50)
+     - `INTERESADO` (Char, 70)
+     - `IT_OFICIO_PDF` (CheckBox, Valores: S/N)
+     - `IT_FIRMADO` (CheckBox, Valores: S/N)
+     - `IT_REGISTRADO` (CheckBox, Valores: S/N)
+     - `FCEMISION` (Datetime)
+     - `FCREAL` (Datetime)
+     - `ITIMPRE` (Char, 1)
+     - `NUMRELACION` (Number, 7)
+     - `CDDEPTNO` (Char, 2)
+     - `CDTEXP` (Char, 4)
+     - `CDNEXP` (Number, 5)
+     - `CDDIGITO` (Number, 1)
+     - `CDAEXP` (Number, 4)
+     - `CDINTERESADO` (Char, 9)
+     - `CDINTERESADO_OLD` (Char, 9)
+     - `CDSUBINT` (Char, 2)
+     - `CDSUBINT_OLD` (Char, 2)
+     - `DSNOMBRE` (Char, 30)
+     - `DSAPELLIDO1` (Char, 25)
+     - `DSAPELLIDO2` (Char, 25)
+     - `DSRAZONSOC` (Char, 80)
+     - `CDPAIS` (Char, 3)
+     - `CDPROV` (Char, 2)
+     - `CDMUNI` (Char, 3)
+     - `DSDIRECCION` (Char, 80)
+     - `DSDIRECCION1` (Char, 150)
+     - `DSDIRECCION2` (Char, 150)
+     - `CDPOSTAL` (Char, 5)
+     - `DSTELEFONO` (Char, 13)
+     - `DSFAX` (Char, 13)
+     - `CLAVE2` (Char, 30)
+     - `CONTENIDO2` (Char, 50)
+   - **Validaciones/Dependencias:** La información de dirección y estado de documentos depende de procedimientos externos y triggers que actualizan los estados y visualizaciones de los datos en el bloque.
+
+4. **BL_DOC_CORR:**
+   - **Descripción:** Bloque no asociado a la base de datos que maneja los procesos de registro y envío relacionados con documentos.
+   - **Campos:**
+     - `OCULTO` (Char, 1, Invisible)
+     - `REGISTRAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `ACEPTAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `MARCAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `DESMARCAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `DOCSEL` (Number, 4)
+     - `DSRESULTADO` (Char, 5000)
+   - **Validaciones/Dependencias:** Los campos `REGISTRAR` y `ACEPTAR` tienen triggers asociados que gestionan la lógica de envío y registro.
+
+5. **BL_DEVOL:**
+   - **Descripción:** Bloque que maneja los datos relacionados con la devolución de documentos.
+   - **Campos:**
+     - `CDDEPTNO` (Char, 2, Relación con LOV_CONSEJ)
+     - `DSCONS` (Char, 80, Relación con LOV_CONSEJ)
+     - `LOV_CONSEJ` (Botón)
+     - `CDUNIDAD` (Char, 15, Relación con LOV_UNIDAD)
+     - `IDORGA` (Number, 12)
+     - `DSUNIDAD` (Char, 100, Relación con LOV_UNIDAD)
+     - `LOV_UNIDAD` (Botón)
+     - `DSDIR1` (Char, 80)
+     - `DSDIR2` (Char, 80)
+     - `CDPOSTAL` (Char, 5)
+     - `CDPROV` (Char, 2, Invisible)
+     - `CDMUNI` (Char, 3)
+     - `LOV_MUNI` (Botón)
+     - `DSMUNI` (Char, 50)
+     - `CANCELAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `ACEPTAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+   - **Validaciones/Dependencias:** Los elementos relacionados con las direcciones y unidades son controlados a través de LOVs que permiten seleccionar y validar los datos adecuados.
+
+6. **NOTIFICACION_TELEMATICA:**
+   - **Descripción:** Bloque basado en tabla asociado a `GIMPREDOCU` y `GDOCUMENTO`.
+   - **Campos:**
+     - `DOCUMENTO` (Char, 14)
+     - `DSDOCUM` (Char, 70)
+     - `EXPEDIENTE` (Char, 50)
+     - `INTERESADO` (Char, 70)
+     - `FCCREA` (Datetime)
+     - `ANEXOS_NOTE` (Number)
+     - `IT_FIRMADO` (CheckBox, Valores: S/N)
+     - `IT_REGISTRADO` (CheckBox, Valores: S/N)
+     - `IMDOCUMENTO` (Imagen, `WHEN-IMAGE-PRESSED` trigger)
+     - `CDPROCEDIMIENTO` (Char, 11)
+     - `IT_CDPROC_OK` (Char, 1)
+     - `CDDOCUM` (Char, 11)
+     - `CDDEPTNO` (Char, 2)
+     - `CDNEXP` (Number, 5)
+     - `CDDIGITO` (Number, 1)
+     - `CDAEXP` (Number, 4)
+     - `CDTEXP` (Char, 4)
+     - `IDALTA` (Char, 8)
+     - `DSDOCUM1` (Char, 35)
+     - `DSDOCUM2` (Char, 35)
+     - `CDPARTICULAR` (Char, 9)
+     - `RESULTADO` (Imagen, `WHEN-IMAGE-PRESSED` trigger)
+     - `SITUACION` (Imagen, `WHEN-IMAGE-PRESSED` trigger)
+     - `CB_MARCA` (CheckBox, Valores: S/N)
+     - `CDSUBPART` (Char, 2)
+     - `DSNOMBRE` (Char, 30)
+     - `DSAPELLIDO1` (Char, 25)
+     - `DSAPELLIDO2` (Char, 25)
+     - `DSRAZONSOC` (Char, 80)
+     - `DSDIRECCION1` (Char, 150)
+     - `CDOFI` (Char, 8)
+     - `DSOFI` (Char, 70)
+     - `RESULTADO_ERROR` (Char, 500)
+     - `SITUACION_ERROR_BD` (Char, 10)
+     - `SITUACION_ERROR_DUE` (Char, 10)
+     - `SITUACION_ERROR_REGSAL` (Char, 10)
+     - `SITUACION_ERROR_FIRMA` (Char, 10)
+     - `SITUACION_REENVIO` (Char, 10)
+     - `CODARCHIVO_PDF` (Number, 12)
+     - `CLAVE_EXTERNA` (Char, 50)
+     - `CDESTADO_NOTIFICACION` (Char, 10)
+   - **Validaciones/Dependencias:** Este bloque tiene multiples validaciones relacionadas con el estado de los documentos, su registro y firma. Usa diversos triggers y procedimientos para comprobar estas condiciones antes de permitir ciertas acciones.
+
+7. **BL_DOC_NOTE:**
+   - **Descripción:** Bloque no basado en la base de datos que maneja el proceso de envío de notificaciones telemáticas.
+   - **Campos:**
+     - `ACEPTAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `MARCAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `DESMARCAR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `DOCSEL` (Number, 4)
+     - `OCULTO` (Char, 1, Invisible)
+   - **Validaciones/Dependencias:** La lógica de marcado y envío de documentos se gestiona a través de los triggers de los botones respectivos.
+
+8. **BL_RESULTADO_ERROR:**
+   - **Descripción:** Utilizado para presentar errores de resultados en los procesos de notificación.
+   - **Campos:**
+     - `OCULTO` (Char, 1, Invisible)
+     - `B_SALIR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+   - **Validaciones/Dependencias:** No especificadas.
+
+9. **BL_SITUACION_ERROR:**
+   - **Descripción:** Utilizado para gestionar y presentar errores de situación durante los procesos.
+   - **Campos:**
+     - `OCULTO` (Char, 1, Invisible)
+     - `SITUACION_ERROR_BD` (Imagen, Propiedad de selección de color)
+     - `DES_SITUACION_ERROR_BD` (Char, 100)
+     - `B_BD` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `SITUACION_ERROR_DUE` (Imagen, Propiedad de selección de color)
+     - `DES_SITUACION_ERROR_DUE` (Char, 100)
+     - `SITUACION_ERROR_REGSAL` (Imagen, Propiedad de selección de color)
+     - `DES_SITUACION_ERROR_REGSAL` (Char, 100)
+     - `B_REGSAL` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+     - `SITUACION_ERROR_FIRMA` (Imagen, Propiedad de selección de color)
+     - `DES_SITUACION_ERROR_FIRMA` (Char, 100)
+     - `B_SALIR` (Botón, `WHEN-BUTTON-PRESSED` trigger)
+   - **Validaciones/Dependencias:** No especificadas.
+
+
+### Listas de Valores (LOVs)
+
+1. **LOV_UNIDAD:**
+   - Origen: `RG_UNIDAD`.
+   - Campos:
+     - `UNIDAD`
+     - `DSUNIDAD_S`
+     - `CDUNIDAD_GESTOR`
+     - `DSUNIDAD_EREG`
+     - `IDORGA_EREG`
+     - `CDORGA_EREG`
+   - Uso: Asociado a `CDUNIDAD` en `BL_GENERAL`.
+
+2. **LOV_UNIDAD_DEVOL:**
+   - Origen: `RG_UNIDAD_DEVOL`.
+   - Campos:
+     - `CDUNIDAD`
+     - `DSUNIDAD_S`
+     - `DSUNIDAD`
+     - `IDORGA`
+     - `DSDIR1`
+     - `DSDIR2`
+     - `CDPOSTAL`
+     - `CDMUNI`
+   - Uso: Asociado a `CDUNIDAD` en `BL_DEVOL`.
+
+3. **LOV_CONSEJ:**
+   - Origen: `RG_CONSEJ`.
+   - Campos:
+     - `CDDEPTNO`
+     - `DSEXTEN`
+   - Uso: Asociado a `CDDEPTNO` en `BL_DEVOL`.
+
+4. **LOV_MUNI:**
+   - Origen: `RG_MUNI`.
+   - Campos:
+     - `CDMUNI`
+     - `DSMUNI`
+   - Uso: Asociado a `CDMUNI` en `BL_DEVOL`.
+
+### Grupos de Registros (Record Groups)
+
+1. **RG_UNIDAD:**
+   - Consulta SQL: Recupera información de unidades de orga estructurada jerárquicamente.
+   - Uso: Fuente de datos para `LOV_UNIDAD`.
+
+2. **RG_UNIDAD_DEVOL:**
+   - Consulta SQL: Recupera información de unidades de orga para devoluciones.
+   - Uso: Fuente de datos para `LOV_UNIDAD_DEVOL`.
+
+3. **RG_CONSEJ:**
+   - Consulta SQL: Recupera información de consejerías y organismos.
+   - Uso: Fuente de datos para `LOV_CONSEJ`.
+
+4. **RG_MUNI:**
+   - Consulta SQL: Recupera información de municipios.
+   - Uso: Fuente de datos para `LOV_MUNI`.
+
+### Reglas de negocio y validaciones:
+1. **Validaciones y Lógicas:**
+   - Los triggers `WHEN-VALIDATE-ITEM` se usan ampliamente para validar campos como `CDTEXP`, `FCDESDE`, `FCHASTA`, etc.
+   - Procedimientos como `Valida_Fechas`, `Valida_Municipio`, `Construir_Where_Note`, `Construir_Where_Corr`, aseguran que las reglas de negocio y las validaciones de datos se cumplan adecuadamente.
+
+2. **Operaciones CRUD:**
+   - La mayoría de los bloques están configurados para permitir inserciones (`InsertAllowed`), actualizaciones (`UpdateAllowed`) y eliminaciones (`DeleteAllowed`), dependiendo de las reglas y condiciones establecidas en los triggers.
+   - Los bloques basados en tablas (`GEA_ACURE` y `NOTIFICACION_TELEMATICA`) realizan operaciones CRUD directamente en la base de datos.
+   - Los botones dentro de cada bloque manejan las acciones de registro y envío de documentos.
+
+Esta descripción detallada es necesaria para entender la estructura de datos y la lógica de negocio implementada en el formulario Oracle Forms, permitiendo a otros desarrolladores replicar la estructura de datos y la lógica de negocio sin necesidad de interfaces visuales o triggers.

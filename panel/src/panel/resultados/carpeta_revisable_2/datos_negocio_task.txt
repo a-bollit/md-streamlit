@@ -1,0 +1,57 @@
+Result from datos_negocio_task: ### Estructura de Datos y Lógica de Negocio del Formulario Oracle `EXPECA01`
+
+A continuación, se proporciona una descripción detallada de la estructura de datos y lógica de negocio del formulario Oracle `EXPECA01`. Esta descripción incluye los bloques de datos, los campos que los componen, sus atributos y las validaciones o dependencias entre ellos. Además, se describen las Listas de Valores (LOVs) y los grupos de registros, especificando su origen y uso en el formulario.
+
+#### BLOQUES DE DATOS
+
+##### Bloque `B00`
+- **Descripción**: Bloque de datos genérico utilizado para almacenar información temporal.
+- **Items**:
+  - `EXISTEN_EXP_AN_FI`: Campo de texto (`Elemento de Texto`) de longitud máxima 1 y altura 14.
+  - `FALLO`: Campo de texto invisible (`Elemento de Texto`) de longitud máxima 1 y altura 1. Es un campo criptográfico (`ConcealData=true`).
+
+##### Bloque `BL_GENERAL`
+- **Descripción**: Bloque principal que gestiona la interacción de los usuarios con diferentes atributos asociados a las notificaciones.
+- **Items**:
+  - `CDORGA_EREG`: Campo de texto de longitud máxima 16.
+  - `IDORGA_EREG`: Campo de texto de longitud máxima 12.
+  - `LOV_CDUNIDAD`: Botón encargado de desplegar las Unidades Administrativas asociadas.
+  - `CDUNIDAD`: Campo de texto de longitud máxima 5.
+  - `DSUNIDAD`: Campo de texto de 150 caracteres de longitud máxima.
+  - `FCDESDE`: Campo de texto de tipo fecha (`Date`) con un formato de `dd-mm-rrrr`.
+  - `CAL_FCDESDE`: Botón asociado al calendario para seleccionar la fecha 'Desde'.
+  - `FCHASTA`: Campo de texto de tipo fecha (`Date`) con un formato de `dd-mm-rrrr`.
+  - `CAL_FCHASTA`: Botón asociado al calendario para seleccionar la fecha 'Hasta'.
+  - `CDDEPTNO`, `CDTEXP`, `CDNEXP`, `CDDIGITO`, `CDAEXP`: Campos de texto asociados a identificar un expediente.
+  - `INCLUIR_ENVIADOS`: Casilla de control para incluir notificaciones enviadas.
+  - `ACEPTAR`, `CANCELAR`: Botones para confirmar o cancelar operaciones.
+
+###### Validaciones y Dependencias:
+- **Fecha Desde y Fecha Hasta**:
+  - Las fechas deben respetar las reglas lógicas (Fecha 'Hasta' >= Fecha 'Desde').
+  - Validación sobre el campo `CDTEXP` para asegurar la consistencia de datos.
+- **Campo `CDTEXP`**:
+  - Validación del contenido para asegurar que está permitido en la aplicación y que respeta las restricciones.
+
+##### Bloque `GEA_ACURE`
+- **Descripción**: Bloque encargado de gestionar las notificaciones de correos.
+- **Items**:
+  - `DOCUMENTO`, `DSDOCUM`, `INTERESADO`: Campos de texto para mostrar datos relevantes del documento.
+  - `CB_MARCA`: Casilla de control para seleccionar registros.
+  - `IT_OFICIO_PDF`, `IT_FIRMADO`, `IT_REGISTRADO`: Indicadores de estado del documento.
+  - `CODARCHIVO_PDF`, `FCREAL`, `ITIMPRE`: Campos relacionados con el estado y características del documento.
+
+###### Condiciones del Bloque:
+- **WhereClause**: Filtrado sobre las notificaciones donde `CDREMI` coincide con la unidad y existe información relevante en la tabla relacionada.
+
+##### Bloque `NOTIFICACION_TELEMATICA`
+- **Descripción**: Bloque responsable de gestionar las notificaciones telemáticas.
+- **Items** similares al bloque `GEA_ACURE`, con campos específicos del expediente como `EXPEDIENTE` y `CDDOCUM`.
+ 
+###### Condiciones del Bloque:
+- **WhereClause**: Filtrado de notificaciones telemáticas basadas en criterios específicos como inclusión de OFI y el tipo de notificación `NOTE`.
+
+##### Bloque `BL_DOC_CORR`
+- **Descripción**: Bloque temporal para gestionar el envío de notificaciones y la selección de documentos.
+- **Items**:
+  - `REGISTRAR`, `ACEPTAR`, `MARCAR`, `DESMARCAR`: Botones para acciones de envío,

@@ -1,0 +1,40 @@
+<mv-card>
+  <mv-header
+    [headerTitle]="'Seleccionar Rango de Fechas'"
+    [fixed]="true"
+    [showBackButton]="true"
+    [showMenuButton]="false">
+  </mv-header>
+  <mv-content>
+    <form [formGroup]="fechaForm" (ngSubmit)="validarFechas()">
+      <div class="form-group">
+        <label for="fechaInicio">Fecha Inicio</label>
+        <input type="date" id="fechaInicio" formControlName="fechaInicio" class="form-control"/>
+        <div *ngIf="fechaForm.get('fechaInicio')?.errors?.required" class="error">
+          La fecha de inicio es obligatoria.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fechaFin">Fecha Fin</label>
+        <input type="date" id="fechaFin" formControlName="fechaFin" class="form-control"/>
+        <div *ngIf="fechaForm.get('fechaFin')?.errors?.required" class="error">
+          La fecha de fin es obligatoria.
+        </div>
+        <div *ngIf="fechaForm.get('fechaFin')?.errors?.beforeStartDate" class="error">
+          La fecha de fin no puede ser anterior a la fecha de inicio.
+        </div>
+      </div>
+      <div class="buttons">
+        <mv-button
+          [adapt]="true"
+          [appearance]="'raised'"
+          [color]="'primary'"
+          [size]="'medium'"
+          (clickEvent)="validarFechas()"
+          ariaLabel="Guardar Fechas">
+          Guardar
+        </mv-button>
+      </div>
+    </form>
+  </mv-content>
+</mv-card>

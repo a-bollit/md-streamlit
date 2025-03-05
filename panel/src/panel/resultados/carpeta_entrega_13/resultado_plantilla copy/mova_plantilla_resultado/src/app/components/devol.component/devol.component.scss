@@ -1,0 +1,43 @@
+@import '~@mova/components/_variables.scss';
+
+.card-devolucion {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .text-danger {
+    color: #ff0000;
+    font-size: 12px;
+  }
+}
+
+.btn-primary {
+  @include button-color(#007bff);
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken(#007bff, 10%);
+  }
+}

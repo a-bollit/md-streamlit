@@ -1,0 +1,75 @@
+<mv-card>
+  <mv-header
+    [headerTitle]="'Consultar Notificaciones'"
+    [headerSubtitle]="''"
+    [fixed]="true"
+    [showBackButton]="false"
+    [showMenuButton]="true"
+    [type]="'white-corporative'">
+  </mv-header>
+  <mv-content>
+    <form [formGroup]="formulario">
+      <div>
+        <label for="unidad">Unidad Administrativa</label>
+        <select id="unidad" formControlName="unidad">
+          <option *ngFor="let unidad of unidades" [value]="unidad.id">{{ unidad.nombre }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="fechaDesde">Fecha Desde</label>
+        <input id="fechaDesde" type="date" formControlName="fechaDesde">
+      </div>
+
+      <div>
+        <label for="fechaHasta">Fecha Hasta</label>
+        <input id="fechaHasta" type="date" formControlName="fechaHasta">
+      </div>
+
+      <div>
+        <label for="expedienteDepartamento">Departamento</label>
+        <input id="expedienteDepartamento" type="text" formControlName="expedienteDepartamento">
+      </div>
+
+      <div>
+        <label for="expedienteTipo">Tipo de Expediente</label>
+        <input id="expedienteTipo" type="text" formControlName="expedienteTipo">
+      </div>
+
+      <div>
+        <label for="expedienteNumero">Número</label>
+        <input id="expedienteNumero" type="text" formControlName="expedienteNumero">
+      </div>
+
+      <div>
+        <label for="expedienteDigito">Dígito</label>
+        <input id="expedienteDigito" type="text" formControlName="expedienteDigito">
+      </div>
+
+      <div>
+        <label for="expedienteAno">Año</label>
+        <input id="expedienteAno" type="text" formControlName="expedienteAno">
+      </div>
+
+      <div class="button-group">
+        <mv-button
+          [adapt]="true"
+          [appearance]="'raised'"
+          [color]="'primary'"
+          [size]="'medium'"
+          (clickEvent)="onAceptar()">
+          Aceptar
+        </mv-button>
+
+        <mv-button
+          [adapt]="true"
+          [appearance]="'raised'"
+          [color]="'warn'"
+          [size]="'medium'"
+          (clickEvent)="onCancelar()">
+          Cancelar
+        </mv-button>
+      </div>
+    </form>
+  </mv-content>
+</mv-card>

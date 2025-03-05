@@ -1,0 +1,74 @@
+<mv-header
+  [headerTitle]="'Notificaciones de Correo'"
+  [headerSubtitle]="'Gestiona las notificaciones asociadas a correos'"
+  [fixed]="true"
+  [showBackButton]="true"
+  [showMenuButton]="true">
+</mv-header>
+
+<form [formGroup]="notificationForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="unidadRemitente">Unidad Remitente</label>
+    <input id="unidadRemitente" formControlName="unidadRemitente" type="text">
+    <div *ngIf="notificationForm.get('unidadRemitente').invalid && notificationForm.get('unidadRemitente').touched">
+      Unidad Remitente es requerida.
+    </div>
+  </div>
+
+  <div>
+    <label for="fechaDesde">Fecha Desde</label>
+    <input id="fechaDesde" formControlName="fechaDesde" type="date">
+    <div *ngIf="notificationForm.get('fechaDesde').invalid && notificationForm.get('fechaDesde').touched">
+      Fecha Desde es requerida.
+    </div>
+  </div>
+
+  <div>
+    <label for="fechaHasta">Fecha Hasta</label>
+    <input id="fechaHasta" formControlName="fechaHasta" type="date">
+    <div *ngIf="notificationForm.get('fechaHasta').invalid && notificationForm.get('fechaHasta').touched">
+      Fecha Hasta es requerida.
+    </div>
+  </div>
+
+  <div>
+    <label for="expediente">Expediente</label>
+    <input id="expediente" formControlName="expediente" type="text">
+    <div *ngIf="notificationForm.get('expediente').invalid && notificationForm.get('expediente').touched">
+      Expediente es requerido y debe seguir el patrón específico.
+    </div>
+  </div>
+
+  <mv-button [color]="'primary'" [disabled]="!notificationForm.valid" (click)="onSubmit()">
+    Aceptar
+  </mv-button>
+  <mv-button [color]="'warn'" (click)="notificationForm.reset()">
+    Cancelar
+  </mv-button>
+</form>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <mv-button (click)="markAll()">Marcar Todos</mv-button>
+          <mv-button (click)="unmarkAll()">Desmarcar Todos</mv-button>
+        </th>
+        <th>Notificación</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let notification of correoNotifications">
+        <td>
+          <input type="checkbox" [(ngModel)]="notification.selected">
+        </td>
+        <td>{{ notification.details }}</td>
+        <td>{{ notification.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<mv-button (click)="processSelected()">Procesar Seleccionados</mv-button>

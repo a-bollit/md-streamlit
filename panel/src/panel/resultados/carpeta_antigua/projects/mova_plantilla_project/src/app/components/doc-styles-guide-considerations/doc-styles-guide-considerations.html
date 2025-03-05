@@ -1,0 +1,216 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Consideraciones generales</strong></mv-card-title>
+
+    <p>El framework MOVA proporciona elementos (como clases y variables CSS) centralizadas para facilitar la estandarización y el desarrollo de las aplicaciones:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='consideraciones.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Consideraciones de diseño
+      </a></li>
+      <li><a class="nostyle" (click)='clases.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Clases CSS
+      </a></li>
+      <li><a class="nostyle" (click)='mixins.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Mixins CSS
+      </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Consideraciones de diseño -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #consideraciones><strong>Consideraciones de diseño</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <br>
+
+      <ul>
+        <li><p><strong>Contenedores de información:</strong></p></li>
+
+        <p>En la medida de lo posible es recomendable encuadrar la información dentro de un contenedor con un ancho menor que el de la pantalla y de un
+        color distinto al color de fondo, para que el usuario visualice más fácilmente la información.</p>
+        <p>Mostramos como ejemplo este mismo contenedor de documentación: </p>
+
+        <mv-tab-group>
+          <mv-tab label="HTML">
+            <pre><code [highlight]="codeMvCardExampleHTML"></code></pre>
+          </mv-tab>
+          <mv-tab label="CSS">
+            <pre><code [highlight]="codeMvCardExampleCSS"></code></pre>
+          </mv-tab>
+        </mv-tab-group>
+
+        <ul>
+          <li><strong>Componente HTML mv-card</strong> - Contenedor basado en Material con título, subtítulo, contenido...</li>
+          <li><strong>Clase CSS 'card-code'</strong> - Añade estilo al componente.</li>
+          <li><strong>Ancho máximo del contenedor</strong> - Mediante variable SCSS de MOVA.</li>
+        </ul>
+
+        <br>
+
+        <li><p><strong>Cards:</strong></p></li>
+
+        <p>MOVA proporciona clases para mostrar información importante, de peligro, de aviso...</p>
+
+        <mv-tab-group>
+          <mv-tab label="HTML">
+            <pre><code [highlight]="codeMvCardColorExampleHTML"></code></pre>
+          </mv-tab>
+        </mv-tab-group>
+
+        <mv-card
+          class="warning-card">
+          <mv-card-header>
+            <mv-card-title>
+              <strong>Aviso</strong>
+            </mv-card-title>
+          </mv-card-header>
+
+          <mv-card-content>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </mv-card-content>
+        </mv-card>
+
+        <mv-card
+          class="danger-card">
+          <mv-card-header>
+            <mv-card-title>
+              <strong>Peligro</strong>
+            </mv-card-title>
+          </mv-card-header>
+
+          <mv-card-content>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </mv-card-content>
+        </mv-card>
+
+        <mv-card
+          class="success-card">
+          <mv-card-header>
+            <mv-card-title>
+              <strong>Correcto</strong>
+            </mv-card-title>
+          </mv-card-header>
+
+          <mv-card-content>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </mv-card-content>
+        </mv-card>
+
+        <mv-card
+          class="info-card">
+          <mv-card-header>
+            <mv-card-title>
+              <strong>Información</strong>
+            </mv-card-title>
+          </mv-card-header>
+
+          <mv-card-content>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </mv-card-content>
+        </mv-card>
+
+        <br>
+
+        <li><p><strong>Grid 12:</strong></p></li>
+
+        <p>Para distribuir elementos según el tamaño de la pantalla MOVA usa el grid12 de Bootstrap. Ver explicación y ejemplos de uso en
+          <strong><a target="_blank" href="#/layout-responsive">layout-responsive</a></strong></p>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Clases CSS -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #clases><strong>Clases CSS de utilidad</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <br>
+
+      <p>Mostramos a continuación todas las clases CSS que proporciona MOVA a los desarrolladores. .
+        Para usarlas hay que importar los estilos generales de la app:</p>
+
+      <mv-tab-group>
+        <mv-tab label="SCSS">
+          <pre><code [highlight]="codeCSSExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <ul class="margin-li">
+        <li><strong>.card-code</strong> - Estilo para el componente mv-card como contenedor.</li>
+        <li><strong>.fade-in</strong> - Animación de entrada a cualquier elemento.</li>
+        <li><strong>.display-none</strong> - Ocultar cualquier elemento.</li>
+        <li><strong>.display-none-xs</strong> - Ocultar cualquier elemento cuando el tamaño de la pantalla sea móvil.</li>
+        <li><strong>.display-none-sm</strong> - Ocultar cualquier elemento cuando el tamaño de la pantalla sea pequeño.</li>
+        <li><strong>.display-none-md</strong> - Ocultar cualquier elemento cuando el tamaño de la pantalla sea mediano.</li>
+        <li><strong>.display-none-lg</strong> - Ocultar cualquier elemento cuando el tamaño de la pantalla sea grande.</li>
+        <li><strong>.mv-h1</strong> - Estilo para títulos con elementos h1.</li>
+        <li><strong>.no-select</strong> - Hace que un texto no sea seleccionable.</li>
+        <li><strong>.shadow</strong> - Crea una sombra en cualquier elemento.</li>
+        <li><strong>.text-center</strong> - Centrar textos o elementos.</li>
+        <li><strong>.truncate</strong> - Truncar un texto que no tiene suficiente espacio añadiendo puntos suspensivos.</li>
+        <li><strong>.warning-card</strong> - Estilos para el componente mv-card en color amarillo (aviso).</li>
+        <li><strong>.info-card</strong> - Estilos para el componente mv-card en color amarillo (información).</li>
+        <li><strong>.success-card</strong> - Estilos para el componente mv-card en color amarillo (correcto).</li>
+        <li><strong>.danger-card</strong> - Estilos para el componente mv-card en color amarillo (fallo o peligro).</li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Mixins CSS -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #mixins><strong>Mixins CSS</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <br>
+
+      <p>Mostramos a continuación todas los mixins CSS que proporciona MOVA a los desarrolladores. .
+        Para usarlos hay que importar los estilos generales de la app:</p>
+
+      <mv-tab-group>
+        <mv-tab label="SCSS">
+          <pre><code [highlight]="codeCSSMixinExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <ul class="margin-li">
+        <li><strong>@icon-size(<em>tamaño</em>)</strong> - Mixin para cambiar correctamente el tamaño de un componente mv-icon.</li>
+        <li><strong>@button-color(<em>color</em>)</strong> - Mixin para cambiar correctamente el color de un componente mv-button.</li>
+        <li><strong>@icon-color(<em>color</em>)</strong> - Mixin para cambiar correctamente el color de un componente mv-button-login.</li>
+        <li><strong>@icon-color(<em>color</em>)</strong> - Mixin para cambiar correctamente el color de un componente mv-button-scroll-to-top.</li>
+        <li><strong>@checkbox-color(<em>color</em>)</strong> - Mixin para cambiar correctamente el color de un componente mv-checkbox-x.</li>
+        <li><strong>@border-color(<em>color</em>)</strong> - Mixin para cambiar correctamente el color de un componente mv-footer-tab.</li>
+        <li><strong>@input-color(<em>color</em>)</strong> - Mixin para cambiar correctamente el color de un componente mv-input.</li>
+        <li><strong>@radio-color(<em>color</em>)</strong> - Mixin para cambiar correctamente el color de un componente mv-radio.</li>
+        <li><strong>@card-format(<em>formato</em>)</strong> - Mixin para cambiar correctamente el formato de un componente mv-table-responsive.</li>
+        <li><strong>@card-inline-format(<em>formato</em>)</strong> - Mixin para cambiar correctamente el formato de un componente mv-table-responsive.</li>
+        <li><strong>@card-inline-truncate-format(<em>formato</em>)</strong> - Mixin para cambiar correctamente el formato de un componente mv-table-responsive.</li>
+        <li><strong>@icon-color(<em>tamaño</em>)</strong> - Mixin para cambiar correctamente el color de un componente mv-tree-filter-item.</li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

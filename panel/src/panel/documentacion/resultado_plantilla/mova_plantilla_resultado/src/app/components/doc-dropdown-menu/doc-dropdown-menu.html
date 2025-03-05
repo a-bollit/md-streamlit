@@ -1,0 +1,339 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-dropdown-menu</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='xPosition.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> xPosition
+      </a></li>
+      <li><a class="nostyle" (click)='yPosition.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> yPosition
+      </a></li>
+    </ol>
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='openMenu.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> openMenu
+      </a></li>
+      <li><a class="nostyle" (click)='closeMenu.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> closeMenu
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-dropdown-menu</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El componente mv-dropdown se basa en el componente mat-menu de Angular Material, al que se le añade funcionalidad y estilos adicionales.</p>
+      <p>Sirve para desplegar un menú contextual en cualquier parte de la pantalla.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-dropdown-menu</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de menú:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        [mvMenuTriggerFor]="menu">
+        Lanzar menú
+      </mv-button>
+
+      <mv-menu #menu="mvMenu">
+        <button mv-menu-item>Item 1</button>
+        <button mv-menu-item>Item 2</button>
+      </mv-menu>
+
+      <p>Menús anidados e iconos:</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeCompleteExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeCompleteExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de menú completo:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        [mvMenuTriggerFor]="menuComplex">
+        Lanzar menú
+      </mv-button>
+
+      <mv-menu #menuComplex="mvMenu">
+        <button mv-menu-item [mvMenuTriggerFor]="vertebrados">
+          <mv-icon>pets</mv-icon>
+          <span>Vertebrados</span>
+        </button>
+        <button mv-menu-item [mvMenuTriggerFor]="invertebrados">
+          <mv-icon>bug_reports</mv-icon>
+          <span>Invertebrados</span>
+        </button>
+      </mv-menu>
+
+      <mv-menu #vertebrados="mvMenu">
+        <button mv-menu-item [mvMenuTriggerFor]="peces">Peces</button>
+        <button mv-menu-item>Anfibios</button>
+        <button mv-menu-item>Reptiles</button>
+        <button mv-menu-item>Pájaros</button>
+        <button mv-menu-item>Mamíferos</button>
+      </mv-menu>
+
+      <mv-menu #peces="mvMenu">
+        <button mv-menu-item>Salmón</button>
+        <button mv-menu-item>Trucha</button>
+        <button mv-menu-item>Sardina</button>
+        <button mv-menu-item>Bacalao</button>
+      </mv-menu>
+
+      <mv-menu #invertebrados="mvMenu">
+        <button mv-menu-item>Insectos</button>
+        <button mv-menu-item>Moluscos</button>
+        <button mv-menu-item>Crustáceos</button>
+        <button mv-menu-item>Corales</button>
+        <button mv-menu-item>Arácnidos</button>
+      </mv-menu>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- xPosition -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #xPosition><strong>xPosition</strong></mv-card-title>
+      <mv-card-subtitle>Posición horizontal del menú.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad xPosition permite definir la posición horizontal donde aparecerá el menú respecto al elemento que lo lanza.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeXPositionExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeXPositionExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>xPosition:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        [mvMenuTriggerFor]="beforeMenu">
+        Lanzar menú (before)
+      </mv-button>
+      <mv-menu #beforeMenu="mvMenu" xPosition="before">
+        <button mv-menu-item>Item 1</button>
+        <button mv-menu-item>Item 2</button>
+      </mv-menu>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        [mvMenuTriggerFor]="beforeMenu">
+        Lanzar menú (after)
+      </mv-button>
+      <mv-menu #afterMenu="mvMenu" xPosition="after">
+        <button mv-menu-item>Item 1</button>
+        <button mv-menu-item>Item 2</button>
+      </mv-menu>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- yPosition -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #yPosition><strong>yPosition</strong></mv-card-title>
+      <mv-card-subtitle>Posición vertical del menú.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad yPosition permite definir la posición horizontal donde aparecerá el menú respecto al elemento que lo lanza.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeYPositionExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeYPositionExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>yPosition:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        [mvMenuTriggerFor]="beforeMenu">
+        Lanzar menú (above)
+      </mv-button>
+      <mv-menu #beforeMenu="mvMenu" yPosition="above">
+        <button mv-menu-item>Item 1</button>
+        <button mv-menu-item>Item 2</button>
+      </mv-menu>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        [mvMenuTriggerFor]="beforeMenu">
+        Lanzar menú (below)
+      </mv-button>
+      <mv-menu #afterMenu="mvMenu" yPosition="below">
+        <button mv-menu-item>Item 1</button>
+        <button mv-menu-item>Item 2</button>
+      </mv-menu>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- openMenu -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #openMenu><strong>openMenu</strong></mv-card-title>
+      <mv-card-subtitle>Abrir el menú desde el código TS.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La función openMenu permite abrir el menú desde el código TS.</p>
+      <p>Aunque se abra el menú por código, hay que definir un elemento lanzador "mvMenuTrigger"</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeOpenMenuExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeOpenMenuExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>openMenu:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="openMenuFunctionExample()">
+        Abrir menú
+      </mv-button>
+
+      <div #menuTriggerOpen="mvMenuTrigger" [mvMenuTriggerFor]="openMenuExample"></div>
+      <mv-menu #openMenuExample="mvMenu">
+        <button mv-menu-item>Item 1</button>
+        <button mv-menu-item>Item 2</button>
+      </mv-menu>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- closeMenu -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #closeMenu><strong>closeMenu</strong></mv-card-title>
+      <mv-card-subtitle>Cerrar el menú desde el código TS.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La función closeMenu permite cerrar el menú desde el código TS.</p>
+      <p>Aunque se cierre el menú por código, hay que definir un elemento lanzador "mvMenuTrigger"</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeCloseMenuExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeCloseMenuExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="closeMenuFunctionExampleOpen()">
+        Abrir menú
+      </mv-button>
+
+      <p><strong>closeMenu:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="closeMenuFunctionExample()">
+        Cerrar menú
+      </mv-button>
+
+      <div #menuTriggerClose="mvMenuTrigger" [mvMenuTriggerFor]="closeMenuExample"></div>
+      <mv-menu #closeMenuExample="mvMenu">
+        <button mv-menu-item>Item 1</button>
+        <button mv-menu-item>Item 2</button>
+      </mv-menu>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

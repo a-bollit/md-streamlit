@@ -1,0 +1,82 @@
+@import '~@mova/components/_variables.scss';
+
+// Menu 1
+.menu1{
+  -webkit-box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.65);
+  -moz-box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.65);
+  box-shadow: 0.2rem 0.2rem 0.25rem 0 rgba(125,125,125,0.65);
+  padding: 1rem;
+  background: url('~src/assets/examples/tileable_wood_texture.png');
+  background-repeat: repeat;
+  max-width: $container-max-width-small;
+  margin: 2rem auto 2rem auto;
+  width: 97%;
+  border: solid thick #666;
+  img{
+    max-width: 70%;
+    margin: 4rem 0 0rem 0;
+  }
+  .title{
+    -webkit-border-bottom-left-radius: .45rem;
+    -moz-border-radius-topleft: .45rem;
+    -moz-border-radius-topright: .45rem;
+    -moz-border-radius-bottomright: .45rem;
+    -moz-border-radius-bottomleft: .45rem;
+    border-top-left-radius: .45rem;
+    border-top-right-radius: .45rem;
+    border-bottom-right-radius: .45rem;
+    border-bottom-left-radius: .45rem;
+    background-color: #efab2c;
+    border: solid thick #666;
+    color: #fff;
+    padding: 1rem 2.55rem 1rem 2.55rem;
+    margin: 0 auto 1rem auto;
+    width: 50%;
+    font-size: 1.75rem;
+  }
+  .menuCard{
+    -webkit-border-top-left-radius: .45rem;
+    -webkit-border-top-right-radius: .45rem;
+    -webkit-border-bottom-right-radius: .45rem;
+    -webkit-border-bottom-left-radius: .45rem;
+    -moz-border-radius-topleft: .45rem;
+    -moz-border-radius-topright: .45rem;
+    -moz-border-radius-bottomright: .45rem;
+    -moz-border-radius-bottomleft: .45rem;
+    border-top-left-radius: .45rem;
+    border-top-right-radius: .45rem;
+    border-bottom-right-radius: .45rem;
+    border-bottom-left-radius: .45rem;
+    padding: 0.55rem;
+    margin: 1rem 0 1rem 0;
+    background-color: rgba(86,115,131,0.6);
+    color: #fff;
+    border: solid medium #666;
+  }
+}
+// Menu 2
+.menu2{
+  background: url('~src/assets/examples/tileable_wood_texture.png');
+  background-repeat: repeat;
+  margin: 2rem auto 2rem auto;
+  > .mat-card-title{
+    margin: 0 0 2rem 0;
+    text-align: center;
+    font-size: 2rem;
+  }
+  .example-card{
+    margin: 0 0.5rem 1rem 0.5rem;
+    min-height: 34rem;
+    background: rgba(255, 255, 255, 0.5);
+    .mat-card-image{
+      height: 12rem;
+      object-fit: contain;
+    }
+  }
+}
+.textRight{
+  text-align: right;
+}
+.textLeft{
+  text-align: left;
+}

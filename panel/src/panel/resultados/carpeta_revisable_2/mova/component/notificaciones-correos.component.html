@@ -1,0 +1,46 @@
+<mv-card>
+  <mv-header>
+    <mv-title>Gestión de Notificaciones por Correo</mv-title>
+  </mv-header>
+  <mv-content>
+    <form [formGroup]="form">
+      <div>
+        <label for="unidadRemitente">Unidad Remitente</label>
+        <select formControlName="unidadRemitente" id="unidadRemitente">
+          <option *ngFor="let unidad of unidades" [value]="unidad.id">{{ unidad.nombre }}</option>
+        </select>
+        <mv-button (click)="openLovUnidad()">Buscar Unidad</mv-button>
+      </div>
+      <div>
+        <label for="fechaDesde">Fecha Desde</label>
+        <input type="date" formControlName="fechaDesde" id="fechaDesde">
+      </div>
+      <div>
+        <label for="fechaHasta">Fecha Hasta</label>
+        <input type="date" formControlName="fechaHasta" id="fechaHasta">
+      </div>
+    </form>
+    <mv-table>
+      <table>
+        <thead>
+          <tr>
+            <th><mv-checkbox (change)="seleccionarTodas()"></mv-checkbox></th>
+            <th>Descripción</th>
+            <th>Interesados</th>
+            <th>Fecha de Creación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let notificacion of notificaciones">
+            <td><mv-checkbox [(ngModel)]="notificacion.seleccionada"></mv-checkbox></td>
+            <td>{{ notificacion.descripcion }}</td>
+            <td>{{ notificacion.interesados }}</td>
+            <td>{{ notificacion.fechaCreacion | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <mv-button (click)="enviar()">Enviar</mv-button>
+      <mv-button (click)="deseleccionarTodas()">Desmarcar Todos</mv-button>
+    </mv-table>
+  </mv-content>
+</mv-card>

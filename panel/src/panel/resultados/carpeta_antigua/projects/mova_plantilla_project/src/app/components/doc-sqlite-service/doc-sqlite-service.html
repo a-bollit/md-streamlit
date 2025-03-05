@@ -1,0 +1,477 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación sqlite-service</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='sandbox.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Sandbox
+      </a>
+    </div>
+    <p>Metodos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='CreateBD.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> CreateBD
+      </a></li>
+      <li><a class="nostyle" (click)='ExistsDB.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> ExistsDB
+      </a></li>
+      <li><a class="nostyle" (click)='UseDB.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> UseDB
+      </a></li>
+      <li><a class="nostyle" (click)='Exec.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Exec
+      </a></li>
+      <li><a class="nostyle" (click)='ExecArray.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> ExecArray
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- info -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del servicio <strong>mv-sqlite-service</strong></mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Este servicio implementa una base de datos sqlite basado en el plugin <strong><a href="https://github.com/agershun/alasql/wiki" >alasql</a></strong>
+      La información se puede guardar en memoria, en indexedDB o en localStorage. LocalSorage es el valor por defecto</p>
+
+      <p><strong>Metodos de guardado:</strong></p>
+      <ol>
+        <li>localStorage</li>
+        <li>indexedDB(<strong>Solo llamadas asincronas</strong>)</li>
+      </ol>
+
+      <p><strong>Metodo de uso:</strong></p>
+      <ol>
+        <li>Hacer un llamar a <strong>ExistsDB</strong> para saber si la bd ya existe</li>
+        <li>Crear la base de datos con <strong>CreateDB</strong></li>
+        <li>Hacer un llamar a <strong>UseDB</strong> para apuntar a la db</li>
+        <li>Una vez apuntando a la base de datos que queramos ejecutar las consultas con <strong>Exec, ExecArray, ExecAsync, ExecArrayAsync</strong></li>
+      </ol>
+
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="metodoDeUsoExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        class="btnExamples"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="metodoDeUso()">
+        Crear bases de datos
+      </mv-button>
+
+      <mv-button
+      class="btnExamples"
+        *ngIf="metodoDeUsoData.db"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="metodoDeUsoAddDataDbExample1()">
+        Crear tablas en bd1
+      </mv-button>
+
+      <mv-button
+      class="btnExamples"
+      *ngIf="metodoDeUsoData.db"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="metodoDeUsoAddDataDbExample2()">
+        Crear tablas en bd2
+      </mv-button>
+
+      <mv-button
+      class="btnExamples"
+        *ngIf="metodoDeUsoData.tablasBD1"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="metodoDeUsoGetDataDbExample1()">
+        Ver datos bd1
+      </mv-button>
+
+      <mv-button
+      class="btnExamples"
+      *ngIf="metodoDeUsoData.tablasBD2"
+        color="primary"
+        appearance="raised"
+        (clickEvent)="metodoDeUsoGetDataDbExample2()">
+        Ver datos bd2
+      </mv-button>
+
+      <pre class="jsonExample"> {{metodoDeUsoData.resultado | json}}</pre>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- ejemploUso -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplos de uso</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplo de uso del servicio <strong>mv-sqlite-service</strong></mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Ejemplos de uso del servicio sqlite.</p>
+      <p>En modo indexedDB solo funciona en asíncrono</p>
+
+      <div class="col-xs-12 col-sm-6">
+      </div>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="ejemploUsoExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="ejemploUsoExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplos síncrono (estos ejemplos no funcionaran en modo indexedDB):</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="ejemploDeUso1()">
+        ciudades < 3500000
+      </mv-button>
+      <p><strong>SELECT * FROM cities WHERE pop < 3500000 ORDER BY pop DESC:</strong></p>
+      <mv-card *ngFor="let item of ejemploDeUsoMenores">
+        <mv-card-header><strong>Ciudad: {{item.city}}</strong></mv-card-header>
+        <mv-card-content>población: {{item.pop}}</mv-card-content>
+      </mv-card>
+      <pre class="jsonExample"> {{ejemploDeUsoMenores | json}}</pre>
+
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="ejemploDeUso2()">
+        ciudades > 3500000
+      </mv-button>
+      <p><strong>SELECT * FROM cities WHERE pop > 3500000 ORDER BY pop DESC:</strong></p>
+      <mv-card *ngFor="let item of ejemploDeUsoMayores">
+        <mv-card-header><strong>Ciudad: {{item.city}}</strong></mv-card-header>
+        <mv-card-content>población: {{item.pop}}</mv-card-content>
+      </mv-card>
+      <pre class="jsonExample"> {{ejemploDeUsoMayores | json}}</pre>
+
+      <hr/>
+      <p><strong>Ejemplos asíncrono (Funcionaran con indexedDB y con localStorage):</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="ejemploDeUso3()">
+        ver tablas
+      </mv-button>
+
+      <p><strong>SHOW TABLES FROM dbTest:</strong></p>
+      <mv-card *ngFor="let item of ejemploDeUsoTables">
+        <mv-card-header><strong>Tabla:</strong> </mv-card-header>
+        <mv-card-content>{{item.tableid}}</mv-card-content>
+      </mv-card>
+      <pre class="jsonExample"> {{ejemploDeUsoTables | json}}</pre>
+
+      <mv-button
+      color="primary"
+      appearance="raised"
+      (clickEvent)="showDatabases()">
+      Ver bases de datos
+    </mv-button>
+
+    <p><strong>SHOW DATABASES:</strong></p>
+    <mv-card *ngFor="let item of databases">
+      <mv-card-header><strong>Tabla:</strong> </mv-card-header>
+      <mv-card-content>{{item | json}}</mv-card-content>
+    </mv-card>
+    <pre class="jsonExample"> {{databases | json}}</pre>
+
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="ejemploDeUso4()">
+        Carga de datos de personas asíncrono
+      </mv-button>
+      <p><strong>SELECT * FROM personas:</strong></p>
+      <mv-card *ngFor="let item of ejemploDeUsoPersonas">
+        <mv-card-header><strong>Persona {{item.id}}:</strong> </mv-card-header>
+        <mv-card-content>{{item.nombre}}, {{item.apellido}}</mv-card-content>
+      </mv-card>
+      <pre class="jsonExample"> {{ejemploDeUsoPersonas | json}}</pre>
+    </mv-card-content>
+  </mv-card>
+
+
+  <!-- sandbox -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #sandbox><strong>sandbox</strong></mv-card-title>
+      <mv-card-subtitle>Sqlite sandbox async</mv-card-subtitle>
+    </mv-card-header>
+
+
+    <mv-card-content>
+      <p>Ejemplo de uso del servicio de manera asíncrona (funciona con indexedDB y localStorage).</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="sandboxHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="sandboxTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo asíncrono:</strong></p>
+      <mv-textarea
+        validateMaxlength=150
+        showMaxlength=true
+        adapt=true
+        [(ngModel)]="sandboxQuery">
+      </mv-textarea>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="sandBoxExec()">
+        Ejecutar sql
+      </mv-button>
+      <p><strong>Result:</strong></p>
+      <pre class="jsonExample"> {{sandboxQueryResult | json}}</pre>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- CreateBD -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #CreateBD><strong>CreateBD & CreateBDS</strong></mv-card-title>
+      <mv-card-subtitle>Sqlite CreateBD async</mv-card-subtitle>
+    </mv-card-header>
+
+
+    <mv-card-content>
+      <p>Crea una base de datos de manera asincrona, si ya existe, dará un warning y apuntara a esa base de datos</p>
+      <p>Tambien se le puede pasar como parametro el metodo de guardado</p>
+      <p>CreateBDS recibe un array de nombres de bds y las genera consecutivamente </p>
+      <p>Metodos de guardado:</p>
+      <ol class="ol-code">
+        <li>localStorage</li>
+        <li>indexedDB</li>
+      </ol>
+      <p><strong>Todas las peticiones a indexedDB son asincronas</strong></p>
+      <mv-tab-group>
+
+        <mv-tab label="TS">
+          <pre><code [highlight]="CreateBDTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-select-x
+      adapt=true
+      label="Tipos de guardado"
+      [options]="OptionsSaveTypes"
+      [(ngModel)]= "SelectedDbMethod"
+      (changeEvent)="TypeChanged($event)"
+
+      >
+    </mv-select-x>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- ExistsDB -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #ExistsDB><strong>ExistsDB</strong></mv-card-title>
+      <mv-card-subtitle>Sqlite ExistsDB</mv-card-subtitle>
+    </mv-card-header>
+
+
+    <mv-card-content>
+      <p>Comprueba si la el nombre de la base de datos ya ha sido usado para crear una base de datos</p>
+      <p>Devuelve un boolean</p>
+
+      <mv-tab-group>
+
+        <mv-tab label="HTML">
+          <pre><code [highlight]="ExistsDBHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="ExistsDBTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="existsExample()">
+        Ejecutar Exec
+      </mv-button>
+      <p><strong>Result:</strong></p>
+      <pre class="jsonExample"> {{ExistsDBQueryResult | json}}</pre>
+
+    </mv-card-content>
+  </mv-card>
+
+
+  <!-- UseDB -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #UseDB><strong>UseDB</strong></mv-card-title>
+      <mv-card-subtitle>Sqlite UseDB</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Marca la base de datos que se recibe como string, como la base de datos actual</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="UseDBHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="UseDBTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="useDBExample('dbTest')">
+        USE dbTest
+      </mv-button>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="useDBExample('NoExiste')">
+        USE NoExiste
+      </mv-button>
+      <p><strong>Result:</strong></p>
+      <pre class="jsonExample"> {{useDBQueryResult | json}}</pre>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Exec -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #Exec><strong>Exec</strong></mv-card-title>
+      <mv-card-subtitle>Sqlite Exec</mv-card-subtitle>
+    </mv-card-header>
+
+
+    <mv-card-content>
+      <p>El metodo exec recibe un string como parametro con la consulta y opcionalmente un array de parametros </p>
+      <p><strong>Ejemplo:</strong>  this.sqliteService.Exec("SELECT * FROM ciudades WHERE pop < ? ORDER BY pop DESC", [3500000])</p>
+      <p>Se puede ejecutar de manera síncrona(sqliteService.Exec) o asincrona(sqliteService.ExecAsync)</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="ExecHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="ExecTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      Lineas: <mv-input
+        [(ngModel)]="lines">
+      </mv-input>
+      <p><strong>Ejemplo insertando {{lines}} lineas en modo síncrono y asíncrono:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="ExecExample()">
+        Ejecutar Exec
+      </mv-button>
+      <p><strong>Result:</strong></p>
+      <pre class="jsonExample"> {{ExecQueryResult | json}}</pre>
+      <hr/>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="ExecExampleAsync()">
+        Ejecutar Exec Async
+      </mv-button>
+      <p><strong>Result:</strong></p>
+      <pre class="jsonExample"> {{ExecAsyncQueryResult | json}}</pre>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- ExecArray -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #ExecArray><strong>ExecArray</strong></mv-card-title>
+      <mv-card-subtitle>Sqlite ExecArray</mv-card-subtitle>
+    </mv-card-header>
+
+
+    <mv-card-content>
+      <p>El metodo exec recibe un array de strings como parametro con la consulta</p>
+      <p>Se puede ejecutar de manera sincrona(sqliteService.Exec) o asincrona(sqliteService.ExecAsync)</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="ExecArrayHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="ExecArrayTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      Lineas: <mv-input
+        [(ngModel)]="lines">
+      </mv-input>
+      <p><strong>Ejemplo insertando {{lines}} lineas en modo normal y async:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="ExecArrayExample()">
+        Ejecutar Exec Array
+      </mv-button>
+      <p><strong>Result:</strong></p>
+      <pre class="jsonExample"> {{ExecArrayQueryResult | json}}</pre>
+      <hr/>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="ExecArrayExampleAsync()">
+        Ejecutar Exec Array Async
+      </mv-button>
+      <p><strong>Result:</strong></p>
+      <pre class="jsonExample"> {{ExecArrayQueryAsyncResult | json}}</pre>
+    </mv-card-content>
+  </mv-card>
+
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

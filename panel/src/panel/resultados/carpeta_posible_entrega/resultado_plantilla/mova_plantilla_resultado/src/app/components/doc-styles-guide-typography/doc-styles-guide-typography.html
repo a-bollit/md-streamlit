@@ -1,0 +1,185 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='Textos.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Textos y tipografía general
+      </a></li>
+      <li><a class="nostyle" (click)='Textos.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Textos y tipografía MOVA
+      </a></li>
+      <li><a class="nostyle" (click)='variables.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Colores corporativos
+      </a></li>
+
+    </ol>
+  </mv-card>
+
+  <!-- Textos y tipografia general -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #Textos><strong>Textos y tipografía general</strong></mv-card-title>
+    </mv-card-header>
+
+    <p>La tipografía principal de MOVA es "Montserrat".</p>
+
+    <mv-card
+      class="warning-card">
+      <mv-card-header>
+        <mv-card-title>
+          <strong>IMPORTANTE</strong>
+        </mv-card-title>
+      </mv-card-header>
+
+      <mv-card-content>
+        <p>Si se quiere usar texto en negrita hay que hacerlo usando la etiqueta &lt;strong>, ya que es la adecuada por cuestiones de
+          accesibilidad. En la medida de los posible no usar la etiqueta &lt;b> de html.</p>
+
+        <p>Así mismo, no usar la etiqueta &lt;i> de html para mostrar texto en cursiva o destacado. Usar en su defecto la etiqueta
+          &lt;em> por el mismo motivo.</p>
+      </mv-card-content>
+    </mv-card>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeUseTypoExampleHTML"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <h1>Ejemplo de título principal</h1>
+    <h2>Ejemplo de título secundario</h2>
+    <h3>Ejemplo de título terciario</h3>
+    <p>Ejemplo de párrafo: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+      ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+      mollit anim id est laborum.</p>
+    <p>Texto con énfasis: <em>texto a destacar</em></p>
+    <p>Texto en negrita: <strong>texto a destacar</strong></p>
+
+  </mv-card>
+
+  <!-- Textos y tipografia MOVA -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #Textos><strong>Textos y tipografía MOVA</strong></mv-card-title>
+    </mv-card-header>
+
+    <p>MOVA proporciona la clase .mv-h1 para los elementos &lt;h1> que añade un borde al elemento.</p>
+
+    <mv-tab-group>
+      <mv-tab label="HTML">
+        <pre><code [highlight]="codeUseTypoMovaExampleHTML"></code></pre>
+      </mv-tab>
+      <mv-tab label="SCSS">
+        <pre><code [highlight]="codeUseTypoMovaExampleCSS"></code></pre>
+      </mv-tab>
+    </mv-tab-group>
+
+    <h1 class="mv-h1 h1-primary">Ejemplo de título principal con estilo mv-h1 y color primary</h1>
+    <h1 class="mv-h1 h1-accent">Ejemplo de título principal con estilo mv-h1 y color accent</h1>
+    <h1 class="mv-h1 h1-warn">Ejemplo de título principal con estilo mv-h1 y color warn</h1>
+    <h1 class="mv-h1 h1-corporative">Ejemplo de título principal con estilo mv-h1 y color corporative</h1>
+
+  </mv-card>
+
+  <!-- Variables CSS -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #variables><strong>Colores corporativos</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <br>
+
+      <p>Colores corporativos disponibles en MOVA como variables css para su uso en las aplicaciones. Para usarlas hay que importar los estilos</p>
+
+      <mv-tab-group>
+        <mv-tab label="SCSS">
+          <pre><code [highlight]="codeCSSExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <ul class="margin-li">
+        <li><strong>$primary</strong> - Color primario de Material
+          <div class="color primary">(#000000)</div></li>
+        <li><strong>$accent</strong> - Color accent cuando el tema escogido es el rojo
+          <div class="color accent-rojo">(#850d0f)</div></li>
+        <li><strong>$accent</strong> - Color accent cuando el tema escogido es el azul
+          <div class="color accent-azul">(#0b5394)</div></li>
+        <li><strong>$warn</strong> - Color warn de Material
+          <div class="color warn">(#d34e32)</div></li>
+        <li><strong>$corporative</strong> - Color corporativo cuando el tema escogido es el rojo
+          <div class="color corporative-rojo">(#d10002)</div></li>
+        <li><strong>$corporative</strong> - Color corporativo cuando el tema escogido es el azul
+          <div class="color corporative-azul">(#155db3)</div></li>
+        <li><strong>$secondary-001</strong> - Color secundario
+          <div class="color secondary-001">(#155db3)</div></li>
+        <li><strong>$secondary-002</strong> - Color secundario
+          <div class="color secondary-002">(#018373)</div></li>
+        <li><strong>$secondary-003</strong> - Color secundario
+          <div class="color secondary-003">(#567383)</div></li>
+        <li><strong>$secondary-004</strong> - Color secundario
+          <div class="color secondary-004">(#d10002)</div></li>
+        <li><strong>$secondary-005</strong> - Color secundario
+          <div class="color secondary-005">(#cc0098)</div></li>
+        <li><strong>$secondary-006</strong> - Color secundario
+          <div class="color secondary-006">(#9900cc)</div></li>
+        <li><strong>$secondary-007</strong> - Color secundario
+          <div class="color secondary-007">(#336601)</div></li>
+        <li><strong>$secondary-008</strong> - Color secundario
+          <div class="color secondary-008">(#560100)</div></li>
+        <li><strong>$secondary-009</strong> - Color secundario
+          <div class="color secondary-009">(#016666)</div></li>
+        <li><strong>$secondary-010</strong> - Color secundario
+          <div class="color secondary-010">(#666666)</div></li>
+        <li><strong>$secondary-011</strong> - Color secundario
+          <div class="color secondary-011">(#666632)</div></li>
+        <li><strong>$secondary-012</strong> - Color secundario
+          <div class="color secondary-012">(#6734ff)</div></li>
+        <li><strong>$secondary-013</strong> - Color secundario
+          <div class="color secondary-013">(#e6e6e6)</div></li>
+        <li><strong>$secondary-black</strong> - Color negro
+          <div class="color secondary-black">(#000000)</div></li>
+        <li><strong>$secondary-white</strong> - Color blanco (no incluye el borde)
+          <div class="color secondary-white">(#ffffff)</div></li>
+        <li><strong>$container-max-width-big</strong> - Ancho grande para contenedores (1000px).</li>
+        <li><strong>$container-max-width-medium</strong> - Ancho mediano para contenedores (800px).</li>
+        <li><strong>$container-max-width-small</strong> - Ancho pequeño para contenedores (600px).</li>
+        <li><strong>$text-small</strong> - Tamaño de texto pequeño (10pt).</li>
+        <li><strong>$media-col-xs-max</strong> - Tamaño máximo de móvil para media queries (767px).</li>
+        <li><strong>$media-col-sm-min</strong> - Tamaño mínimo de pantallas pequeñas para media queries (768px).</li>
+        <li><strong>$media-col-sm-max</strong> - Tamaño máximo de pantallas pequeñas para media queries (991px).</li>
+        <li><strong>$media-col-md-min</strong> - Tamaño mínimo de pantallas medianas para media queries (992px).</li>
+        <li><strong>$media-col-md-max</strong> - Tamaño máximo de pantallas medianas para media queries (1199px).</li>
+        <li><strong>$media-col-lg-min</strong> - Tamaño mínimo de pantallas grandes para media queries (1200px).</li>
+        <li><strong>$z-index-max</strong> - Z-index máximo (9999).</li>
+        <li><strong>$z-index-005</strong> - Z-index alto (7500).</li>
+        <li><strong>$z-index-004</strong> - Z-index medio-ato (5000).</li>
+        <li><strong>$z-index-003</strong> - Z-index medio (2500).</li>
+        <li><strong>$z-index-002</strong> - Z-index medio-bajo (1000).</li>
+        <li><strong>$z-index-001</strong> - Z-index bajo (100).</li>
+      </ul>
+
+      <p>En la medida de lo posible es recomendable usar las variables que proporciona MOVA porque está todo desarrollado en base a muchas de estas
+        variables y si usamos otras puede ocasionar comportamientos o aspectos indeseados. Por ejemplo,
+        en caso de necesitar media-queries, se recomienda hacerlo con las variables que MOVA proporciona para ello, porque los componentes están desarrollados en base a
+        esas variables. Otro ejemplo puede ser los z-index, si usamos un z-index con valor al azar podría ocasionar conflictos con otros componentes. </p>
+      <p>No obstante, se pueden crear todas las variables que sean necesarias para aspectos concretos de nuestra app que MOVA no proporcione.
+        En caso de crearlas es recomendable situarlas en el archivo styles.scss por mantenerlas centralizadas y para un mejor mantenimiento.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

@@ -1,0 +1,11 @@
+<div class="unidad-remitente">
+  <mv-header title="Seleccione la Unidad Remitente"></mv-header>
+  
+  <div class="dropdown-container">
+    <mv-dropdown 
+      [options]="unidades" 
+      [(ngModel)]="unidadSeleccionada" 
+      (change)="onUnidadSeleccionada($event)">
+    </mv-dropdown>
+  </div>
+</div>

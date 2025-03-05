@@ -1,0 +1,31 @@
+.alert-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  mv-button {
+    margin: 0 10px;
+  }
+}
+
+/* Estilos por tipo de alerta */
+.alerta-advertencia {
+  color: #f0ad4e;
+}
+
+.alerta-informacion {
+  color: #5bc0de;
+}
+
+.alerta-error {
+  color: #d9534f;
+}
+
+.alerta-exito {
+  color: #5cb85c;
+}

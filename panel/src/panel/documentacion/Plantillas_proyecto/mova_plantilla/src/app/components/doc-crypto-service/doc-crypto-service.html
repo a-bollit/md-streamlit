@@ -1,0 +1,157 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación crypto-service</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='encrypt.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> encrypt
+      </a></li>
+      <li><a class="nostyle" (click)='decrypt.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> decrypt
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información básica del servicio <strong>crypto-service</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente permite encriptar y desencriptar cadenas basándose en una semilla.</p>
+
+      <p>Lo más importante a la hora de encriptar en un móvil es se guardará la semilla</p>
+      <p>La semilla no puede ser guardada en el propio móvil porque sin no te pueden
+        decompilar la aplicación que simplemente es javascript y la verán con lo cual
+        llamarán a tu librería de encriptación/desencriptación y no valdrá para nada
+      </p>
+      <p>Una forma de generar una semilla valida:</p>
+
+      <ul>
+        <li>Hacer un servicio REST para obtener la semilla con un recurso GET /semilla</li>
+        <li>Ese servicio rest debe ser securizado con un token de usuario</li>
+        <li>A partir del token de usuario con obtener el usuario que está llamando a GET /semilla</li>
+        <li>Existirá una tabla en BBDD con al menos los campos: usuario | semilla | fecha creación</li>
+        <li>Si al llamar al recurso en la tabla no hay un registro para ese usuario se creará un registro usuario | semilla nueva</li>
+        <li>y se devolverá la semilla creada</li>
+        <li>Si en la tabla ya hay un registro para ese usuario se devolverá la semilla que hay en BBDD</li>
+      </ul>
+      <p>El algoritmo usado para encriptar del componente es: AES con keys de 256 bits</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- encrypt -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #encrypt><strong>encrypt</strong></mv-card-title>
+      <mv-card-subtitle>Encriptar una cadena u objeto.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento encrypt permite encriptar cualquier cadena u objeto con la contraseña que elija el usuario.</p>
+
+      <p><em>encrypt(string | object, semilla)</em></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeEncryptExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeEncryptExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Encriptar una cadena con semilla 'MiSemilla':</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="encryptExample('string', 'MiSemilla')">
+        encrypt()
+      </mv-button>
+
+      <p><strong>Cadena:</strong></p>
+      <p class="response">{{encryptString}}</p>
+
+      <p><strong>Encriptar una cadena con semilla 'MiSemilla':</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="encryptExample('obj', 'MiSemilla')">
+        encrypt()
+      </mv-button>
+
+      <p><strong>Objeto:</strong></p>
+      <p class="response">{{encryptObject | json}}</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- decrypt -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #decrypt><strong>decrypt</strong></mv-card-title>
+      <mv-card-subtitle>Desencriptar una cadena u objeto.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento decrypt permite desencriptar cualquier cadena u objeto con la contraseña que elija el usuario.</p>
+
+      <p><em>encrypt(string | object, semilla)</em></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDecryptExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDecryptExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Desencriptar una cadena con semilla 'MiSemilla':</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="decryptExample('string', 'MiSemilla')">
+        decrypt()
+      </mv-button>
+
+      <p><strong>Cadena:</strong></p>
+      <p class="response">{{encryptString}}</p>
+
+      <p><strong>Desencriptar una cadena con semilla 'MiSemilla':</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="decryptExample('obj', 'MiSemilla')">
+        decrypt()
+      </mv-button>
+
+      <p><strong>Objeto:</strong></p>
+      <p class="response">{{encryptObject | json}}</p>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

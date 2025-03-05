@@ -1,0 +1,118 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de Imágenes WMTS (typeLayer: Image, subtypeLayer: WMTS)</strong>
+    </mv-card-title>
+    <p> A continuación, se muestra la manera en la que podemos contruír una capa de este tipo y los métodos propios
+      disponibles
+      para este tipo de objetos.</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='considerations.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon>Consideraciones generales sobre Imágenes WMTS
+        </a></li>
+      <li><a class="nostyle" (click)='metodos.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Consideraciones generales -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #considerations><strong>Consideraciones generales sobre Imágenes WMTS</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Podemos generar capas de imágenes WMTS a través de servicios WMTS. Para ello, debemos establecer typeLayer como 'Image' y
+        subtypeLayer como 'WMTS' en la contrucción de un objeto de tipo apigis.Layer() como se explica en la <a routerLink="/doc-apigis-tile"
+          routerLinkActive="active" ariaCurrentWhenActive="page">documentación general sobre Servicios</a>.
+      </p>
+
+      <mv-card class="warning-card">
+        <mv-card-header>
+          <mv-card-title>
+            <strong>IMPORTANTE</strong>
+          </mv-card-title>
+        </mv-card-header>
+
+        <mv-card-content>
+          <p>Para poder visualizar una capa, deberá estar contenida dentro de un objeto de tipo <a
+              routerLink="/doc-apigis-map" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Map</a>.
+          </p>
+          <p>Así mismo, un objeto de tipo apigis.Map deberá estar contenido dentro de un objeto de tipo <a
+              routerLink="/doc-apigis-viewer" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Viewer</a>.
+          </p>
+        </mv-card-content>
+      </mv-card>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeImageLayerExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeImageLayerExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="CSS">
+          <pre><code [highlight]="codeImageLayerExampleCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Resultado:</strong></p>
+      <div id="doc-apigis-wmts-container">
+      </div>
+      <br>
+      <p>Se puede consultar información más detallada y ejemplos sobre el uso de apigis.Layer en el documento de Arquitectura sobre el API GIS.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Métodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodos><strong>Métodos</strong></mv-card-title>
+      <mv-card-subtitle>Métodos comunes a todas las capas cuyo mapType: 'OL', typeLayer: 'Image' y subtypeLayer:
+        'WMTS'.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se muestran a continuación los métodos comunes a todas los objeto de tipo apigis.Layer
+        cuyo mapType: 'OL', typeLayer: 'Image' y subtypeLayer: 'WMTS':</p>
+
+      <br>
+      <p><em><strong>initialized</strong></em></p>
+      <p>Permite saber si el servicio está inicializado (el servicio se inicializa una vez se han recuperado los capabilities del mismo).</p>
+      <br>
+
+      <p><em><strong>setCapabilities(value) </strong></em></p>
+      <p>Configura el nombre del servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Capabilities del servicio.</li>
+      </ul>
+      <br>
+
+      <p><em><strong>moveLayer(indexTo)</strong></em></p>
+      <p>Cambia la posición de la capa dentro del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>indexTo</strong> &#60;<i>number</i> &#62; Nuevo índice en el mapa.</li>
+      </ul>
+      <br>
+
+      <p><em><strong>refresh()</strong></em></p>
+      <p>Refresca la capa.</p>
+      <br>
+
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

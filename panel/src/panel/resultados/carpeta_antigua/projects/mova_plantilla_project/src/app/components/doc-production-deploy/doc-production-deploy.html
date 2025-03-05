@@ -1,0 +1,70 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Aspectos importantes antes de la puesta en producción</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información sobre despliegue en producción.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Antes de lanzar una aplicación MOVA en producción ya sea en modo webapp o móvil, hay que revisar varios aspectos:</p>
+      <p>Archivo config.xml:</p>
+      <ul>
+        <li>id="<strong>org.madrid.MOVA.mova2App</strong>": poner el nombre de paquete que proporcione el departamento de Arquitectura</li>
+        <li>&lt;name> <strong>MOVA </strong>&lt;/name>: poner el nombre de aplicación que corresponda</li>
+        <li>&lt;description> <strong>Framework MOVA para el desarrollo de aplicaciones móviles.</strong> &lt;/description>: poner la descripción que corresponda</li>
+        <li>&lt;variable name="URL_SCHEME" value="<strong>org.madrid.MOVA.mova2App</strong>" />: si no se ha eliminado el plugin cordova-plugin-customurlscheme
+          (porque se usa el broker o porque es necesario para alguna funcionalidad propia de la app) habrá que poner el nombre de paquete que proporcione
+          el departamento de Arquitectura</li>
+      </ul>
+      <mv-tab-group>
+        <mv-tab label="config.xml">
+          <pre><code [highlight]="codeConfigXml"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Archivo config-default.json:</p>
+      <ul>
+        <li>"<strong>appId</strong>": poner el identificador que proporciona Arquitectura</li>
+        <li>"<strong>appVersion</strong>": poner la versión que corresponda, si es la primera vez que se lanza: 1.0.0</li>
+        <li>"<strong>moduloFuncional</strong>": poner el valor que corresponda</li>
+        <li>"<strong>moduloTecnicoIos</strong>": poner el valor que corresponda</li>
+        <li>"<strong>moduloTecnicoAndroid</strong>": poner el valor que corresponda</li>
+        <li>"<strong>moduloTecnicoWebapp</strong>": poner el valor que corresponda</li>
+        <li>"<strong>piwikId</strong>": poner el valor que proporciona Arquitectura. Si no tenemos dejarlo vacío</li>
+      </ul>
+      <mv-tab-group>
+        <mv-tab label="config-default.json">
+          <pre><code [highlight]="codeConfigDefaultJson"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Textos de protección de datos:</p>
+
+      <p>Hay que cambiar los textos de protección de datos que vienen por defecto en la vista <strong>data-protection-view</strong> por los correspondientes a nuestra app.</p>
+      <p>Documentación del componente: <a target="_blank" href="#/doc-protection-view"><strong>doc-protection-view</strong></a></p>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

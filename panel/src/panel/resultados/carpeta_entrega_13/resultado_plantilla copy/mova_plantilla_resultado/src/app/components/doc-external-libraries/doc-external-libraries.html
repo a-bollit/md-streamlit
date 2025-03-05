@@ -1,0 +1,170 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de librerías externas</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+
+    <p>Librerías:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='rxjsExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Rxjs
+      </a></li>
+      <li><a class="nostyle" (click)='highlightExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Highlightjs
+      </a></li>
+      <li><a class="nostyle" (click)='matomoExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Matomo
+      </a></li>
+      <li><a class="nostyle" (click)='hammerExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Hammer-js
+      </a></li>
+      <li><a class="nostyle" (click)='momentExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Moment
+      </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información sobre librerías externas.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>MOVA incluye por defecto librerías externas que pueden ser útiles para los desarrolladores. Enumeramos las más relevantes y referenciamos a su documentación oficial. </p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Rxjs -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #rxjsExample><strong>Rxjs</strong></mv-card-title>
+      <mv-card-subtitle>Rxjs.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Rxjs es una librería Javascript para programación reactiva y uso de observables, callbacks y llamadas asíncronas.</p>
+      <p>Documentación oficial: <a href="https://rxjs.dev/"><strong>https://rxjs.dev/</strong></a></p>
+
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleRxjsTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- highlightjs -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #highlightExample><strong>highlightjs</strong></mv-card-title>
+      <mv-card-subtitle>highlightjs.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Highlightjs es una librería para mostrar código de una forma estética para una correcta visualización.</p>
+      <p>Documentación oficial: <a href="https://highlightjs.org/"><strong>https://highlightjs.org/</strong></a></p>
+
+      <mv-card
+        class="warning-card">
+        <mv-card-content>
+          <p>Los import de esta librería se pueden quitar de una aplicación que no muestre código fuente como hace la plantilla de MOVA.</p>
+        </mv-card-content>
+      </mv-card>
+
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleHighlightTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Matomo -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #matomoExample><strong>Matomo</strong></mv-card-title>
+      <mv-card-subtitle>Matomo.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Matomo es un analizador de seguimiento para aplicaciones. Con ello se puede realizar trazas sobre el uso de las apps.</p>
+      <p>Documentación oficial: <a href="https://www.npmjs.com/package/ngx-matomo"><strong>https://www.npmjs.com/package/ngx-matomo</strong></a></p>
+
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleMatomoTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Hammer -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #hammerExample><strong>Hammer</strong></mv-card-title>
+      <mv-card-subtitle>Hammer.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Hammer es una librería para capturar gestos y movimientos en una aplicación.</p>
+      <p>Documentación oficial: <a href="https://hammerjs.github.io/"><strong>https://hammerjs.github.io/</strong></a></p>
+
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleHammerTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Moment -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #momentExample><strong>Moment</strong></mv-card-title>
+      <mv-card-subtitle>Moment.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Moment es una librería para el manejo de fechas, horas y eventos temporales (tiempos entre fechas, etc)</p>
+      <p>Documentación oficial: <a href="https://momentjs.com/"><strong>https://momentjs.com/</strong></a></p>
+
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleMomentTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

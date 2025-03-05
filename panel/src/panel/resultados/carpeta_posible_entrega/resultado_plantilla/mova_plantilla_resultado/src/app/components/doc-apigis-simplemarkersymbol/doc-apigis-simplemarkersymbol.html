@@ -1,0 +1,198 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de apigis.SimpleMarkerSymbol</strong></mv-card-title>
+
+    <p>apigis.SimpleMarkerSymbol se usa para representar entidades poligonales 2D.</p>
+    <p>A continuación, se muestra la manera en la que podemos contruír un objeto apigis.SimplMarkerSymbol, cómo podemos
+      acceder (mediante Getters)
+      y establecer/cambiar
+      sus propiedades (mediante Setters) y diversos métodos para trabajar con simbologías de este tipo.
+    </p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='constructor.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon>Generación de objeto apigis.SimpleMarkerSymbol
+        </a></li>
+      <li><a class="nostyle" (click)='getters.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Getters
+        </a></li>
+      <li><a class="nostyle" (click)='setters.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Setters
+        </a></li>
+      <li><a class="nostyle" (click)='metodos.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- MAp -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #constructor><strong>Generación de objeto apigis.SimpleMarkerSymbol</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se puede instanciar una simbología para entidades poligonales en 2D mediante la clase
+        <strong>apigis.SimpleMarkerSymbol</strong>.
+      </p>
+      <p><em>new ApiSimpleMarkerSymbol(args)</em></p>
+      <ul>
+        <li><strong>args</strong> &#60;<i>object</i> &#62; Objeto con todos los argumentos del contructor. Puede
+          contener las siguientes propiedades:</li>
+        <ul>
+          <li><strong>type</strong> &#60;<i>string</i> &#62; Tipo de mapa sobre el que deseamos instanciar. Debe
+            coincidir con alguno de los disponibles actualmente ([OL]).</li>
+          <li><strong>properties</strong> &#60;<i>object</i> &#62; Propiedades asociadas al símbolo según el tipo de
+            mapa (propiedad type anterior). Si type:'OL', estas propiedades pueden ser:</li>
+          <ul>
+            <li><strong>type = 'circle'</strong> &#60;<i>'circle' | 'cross' | 'icon'</i> &#62; Tipo de representación. Posibles valores ['circle', 'cross', 'icon'].</li>
+            <li><strong>opacity</strong> &#60;<i>number</i> &#62; Opacidad.</li>
+            <li><strong>strokeWidth</strong> &#60;<i>number</i> &#62; Grosor del contorno. Solo disponible si la propiedad type es ['circle', 'cross']</li>
+            <li><strong>lineDash</strong> &#60;<i>number[]</i> &#62; Patrón de línea punteada para el contorno. Solo disponible si la propiedad type es ['circle', 'cross']</li>
+            <li><strong>lineDashOffset</strong> &#60;<i>number</i> &#62; Offset de línea punteada para el contorno. Solo disponible si la propiedad type es ['circle', 'cross']</li>
+            <li><strong>fillColor</strong> &#60;<i>number[] | string</i> &#62; Color de relleno. Solo disponible si la propiedad type es ['circle', 'cross']</li>
+            <li><strong>radius</strong> &#60;<i>number</i> &#62; Radio. Solo disponible si la propiedad type es ['cross'].</li>
+            <li><strong>radius2</strong> &#60;<i>number</i> &#62; Radio interior. Solo disponible si la propiedad type es ['cross'].</li>
+            <li><strong>points</strong> &#60;<i>number</i> &#62; Numero de puntos. Solo disponible si la propiedad type es ['cross'].</li>
+            <li><strong>angle</strong> &#60;<i>number</i> &#62; Ángulo. Solo disponible si la propiedad type es ['cross'].</li>
+            <li><strong>anchor = [ 0.5, 0.5 ]</strong> &#60;<i>number[]</i> &#62; Punto de inserción del icono en unidades de fracción. Por defecto, el centro del icono.  Solo disponible si la propiedad type es ['icon']</li>
+            <li><strong>rotation</strong> &#60;<i>number</i> &#62;Ángulo de rotación en radianes y en sentido de las agujas del reloj. Solo disponible si la propiedad type es ['icon'].</li>
+            <li><strong>color</strong> &#60;<i>number[] | string</i> &#62;  Color del icono. Solo disponible si la propiedad type es ['icon'].</li>
+            <li><strong>scale</strong> &#60;<i>number</i> &#62; Escala del icono. Solo disponible si la propiedad type es ['icon'].</li>
+            <li><strong>src</strong> &#60;<i>boolean</i> &#62; URI de la imagen. Solo disponible si la propiedad type es ['icon']..</li>
+            <li><strong>text</strong> &#60;<i>object</i> &#62; Propiedades asociadas a un etiquetado. Puede contener las
+              siguientes propiedades:</li>
+            <ul>
+              <li><strong>text</strong> &#60;<i>string</i> &#62; Texto de la etiqueta.</li>
+              <li><strong>placement</strong> &#60;<i>object</i> &#62; Disposición de la etiqueta. Valores [point, line].
+              </li>
+              <li><strong>offsetX</strong> &#60;<i>number</i> &#62; Desplazamiento horizontal en píxeles de la etiqueta.
+                Un valor positivo indica un desplazamiento a la derecha.</li>
+              <li><strong>offsetY</strong> &#60;<i>number</i> &#62; Desplazamiento vertical en píxeles de la etiqueta.
+                Un valor positivo indica un desplazamiento hacia abajo.</li>
+              <li><strong>strokeColor</strong> &#60;<i>number[] | string</i>&#62; Color del contorno del texto.</li>
+              <li><strong>strokeWidth</strong> &#60;<i>object</i> &#62;Grosor del contorno del texto.</li>
+              <li><strong>fillColor</strong> &#60;<i>number[] | string</i> &#62; Color del texto.</li>
+              <li><strong>font = '10px sans-serif'</strong> &#60;<i>string</i>&#62; Estilo css de la fuente del texto.
+              </li>
+            </ul>
+            <li><strong>url</strong> &#60;<i>string</i> &#62; URL del SLD a aplicar.</li>
+            <li><strong>headers</strong> &#60;<i>Headers</i> &#62; Cabeceras para la petición.</li>
+            <li><strong>rules</strong> &#60;<i>string[]</i> &#62; Nombre de las reglas definidas en el SLD a aplicar.
+            </li>
+          </ul>
+        </ul>
+      </ul>
+      <p>Un símbolo puede alimentarse de las propiedades de estilo pasadas como parámetros o de un SLD pasado mediante una url.</p>
+      <p><strong>Ejemplo de uso de apigis.SimpleMarkerSymbol mediante uso de propiedades de estilo y mediante SLD:</strong></p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeSMSExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeSMSExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="CSS">
+          <pre><code [highlight]="codeSMSExampleCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <div id="doc-apigis-simplemarkersymbol-container">
+      </div>
+      <br>
+      <p>Se puede consultar información más detallada y ejemplos sobre el uso de apigis.SimpleMarkerSymbol en el documento de Arquitectura sobre el API GIS.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getters -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #getters><strong>Getters</strong></mv-card-title>
+      <mv-card-subtitle>Métodos que nos permiten acceder (Getters) a las propiedades de un simbología de este tipo.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se muestran a continuación los Getters disponibles en un objeto de tipo apigis.SimpleMarkerSymbol:</p>
+      <p><em><strong>symbol</strong></em></p>
+      <p>Recupera el symbol.</p>
+      <br>
+      <p><em><strong>properties</strong></em></p>
+      <p>Recupera la lista de propiedades.</p>
+      <br>
+      <p><em><strong>type</strong></em></p>
+      <p>Recupera el tipo de símbolo.</p>
+      <br>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- setters -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #setters><strong>Setters</strong></mv-card-title>
+      <mv-card-subtitle>Métodos que nos permiten establecer (Setters) las propiedades de una simbología de este tipo.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se muestran a continuación los Setters disponibles en un objeto de tipo apigis.SimpleMarkerSymbol:</p>
+      <p><em><strong>setSymbol(olStyle)</strong></em></p>
+      <p>Añade el estilo de OL a la propiedad symbol. Sus argumentos son: </p>
+      <ul>
+        <li><strong>olStyle</strong> &#60;<i>object | Function</i> &#62;Objeto o funcion de OL.</li>
+      </ul>
+      <br>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Métodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodos><strong>Métodos</strong></mv-card-title>
+      <mv-card-subtitle>Métodos de apigis.SimpleMarkerSymbol.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se muestran a continuación los métodos disponibles para trabajar con un objeto de tipo Viewer:</p>
+      <p><em><strong>clone()</strong></em></p>
+      <p>Permite clonar un estilo.</p>
+      <br>
+      <p><em><strong>toJson()</strong></em></p>
+      <p>Exporta el json del objeto.</p>
+      <br>
+      <p><em><strong>getRules()</strong></em></p>
+      <p>Recupera las reglas aplicadas al simbolo siempre y cuando el símbolo sea de tipo SLD.</p>
+      <br>
+      <p><em><strong>setRules(rules)</strong></em></p>
+      <p>Configura las nuevas reglas para el símbolo con SLD. Sus argumentos son: </p>
+      <ul>
+        <li><strong>rules</strong> &#60;<i>object</i> &#62; Objeto de geostyler con las nuevas reglas.</li>
+      </ul>
+      <br>
+      <p><em><strong>clonedFunctionSymbolProperty(color)</strong></em></p>
+      <p>Clona el la propiedad symbol. Sus argumentos son: </p>
+      <ul>
+        <li><strong>color</strong> &#60;<i>number[] | string</i> &#62;Color a aplicar a la simbología.</li>
+      </ul>
+      <br>
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

@@ -1,0 +1,10 @@
+@import '~@mova/components/_variables.scss';
+
+:host {
+  display: block;
+  padding: 16px;
+}
+
+mv-checkbox-x {
+  @include checkbox-color(#4CAF50); // Customize as needed
+}

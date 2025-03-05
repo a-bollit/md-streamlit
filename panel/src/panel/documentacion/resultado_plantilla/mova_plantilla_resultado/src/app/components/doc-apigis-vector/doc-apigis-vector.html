@@ -1,0 +1,252 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de Capas Vectoriales (typeLayer: Vector, subtypeLayer: Vector)</strong>
+    </mv-card-title>
+    <p> A continuación, se muestra la manera en la que podemos contruír una capa de este tipo y los métodos propios
+      disponibles
+      para este tipo de objetos.</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='considerations.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon>Consideraciones generales sobre Capas Vectoriales
+        </a></li>
+      <li><a class="nostyle" (click)='metodos.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Consideraciones generales -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #considerations><strong>Consideraciones generales sobre Capas Vectoriales</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Podemos generar capas vectoriales través de servicios WFS. Para ello, debemos establecer typeLayer como 'Vector' y
+        subtypeLayer como 'Vector' en la contrucción de un objeto de tipo apigis.Layer() como se explica en la <a routerLink="/doc-apigis-tile"
+          routerLinkActive="active" ariaCurrentWhenActive="page">documentación general sobre Servicios</a>.
+      </p>
+
+      <mv-card class="warning-card">
+        <mv-card-header>
+          <mv-card-title>
+            <strong>IMPORTANTE</strong>
+          </mv-card-title>
+        </mv-card-header>
+
+        <mv-card-content>
+          <p>Para poder visualizar una capa, deberá estar contenida dentro de un objeto de tipo <a
+              routerLink="/doc-apigis-map" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Map</a>.
+          </p>
+          <p>Así mismo, un objeto de tipo apigis.Map deberá estar contenido dentro de un objeto de tipo <a
+              routerLink="/doc-apigis-viewer" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Viewer</a>.
+          </p>
+        </mv-card-content>
+      </mv-card>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeVectorLayerExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeVectorLayerExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="CSS">
+          <pre><code [highlight]="codeVectorLayerExampleCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Resultado:</strong></p>
+      <div id="doc-apigis-vector-container">
+      </div>
+      <br>
+      <p>Se puede consultar información más detallada y ejemplos sobre el uso de apigis.Layer en el documento de Arquitectura sobre el API GIS.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Métodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodos><strong>Métodos</strong></mv-card-title>
+      <mv-card-subtitle>Métodos comunes a todas las capas cuyo mapType: 'OL', typeLayer: 'Vector' y subtypeLayer:
+        'Vector'.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se muestran a continuación los métodos comunes a todas los objeto de tipo apigis.Layer
+        cuyo mapType: 'OL', typeLayer: 'Vector' y subtypeLayer: 'Vector':</p>
+
+      <br>
+      <p><em><strong>strategy</strong></em></p>
+      <p> Recupera la estrategia de carga de las features en la capa ('all' o 'bbox'). Pueden cargarse todas las features de inicio (rendimiento bajo en caso de un número elevado de features) o por extensión.</p>
+      <br>
+      <p><em><strong>labelsConf</strong></em></p>
+      <p>Recupera la propiedad 'labelConf'.</p>
+      <br>
+      <p><em><strong>setLabelsConf(value)</strong></em></p>
+      <p>Establece la configuracion de las labels. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Labels de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>clusterConf</strong></em></p>
+      <p>Recupera la configuracion del cluster.</p>
+      <br>
+      <p><em><strong>setClusterConf(value)</strong></em></p>
+      <p>EEstablece la configuracion de la capa cluster. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Cluster de la capa.</li>
+      </ul>
+      <br>
+      <p><em><strong>setLinkedTo(layer)</strong></em></p>
+      <p>Establece la propia capa como enlace a otra para realizar identificaciones. Sus argumentos son: </p>
+      <ul>
+        <li><strong>layer</strong> &#60;<i>apigis.Layer</i> &#62; Capa a la que enlazar.</li>
+      </ul>
+      <br>
+      <p><em><strong>setSymbology(value)</strong></em></p>
+      <p>Permite establecer una simbología a la capa mediante el paso de una clase apigis.SimpleMarkerSymbol, apigis.SimpleLineSymbol o apigis.SimpleFillSymbol. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>apigis.SimpleMarkerSymbol | apigis.SimpleLineSymbol | apigis.SimpleFillSymbol</i> &#62; Objeto con la simbología.</li>
+      </ul>
+      <br>
+      <p><em><strong>getFeatures()</strong></em></p>
+      <p> Recupera la features cargadas en el servicio.</p>
+      <br>
+      <p><em><strong>identify(featureGeoJSON, identifyParams = &#123;&#125;)</strong></em></p>
+      <p>Permite ejecutar una consulta de identificación mediante ECQL. Sus argumentos son: </p>
+      <ul>
+        <li><strong>featureGeoJSON</strong> &#60;<i>string</i> &#62; Feature en geojson sobre la que ejecutar la
+          identificación.</li>
+        <li><strong>identifyParams</strong> &#60;<i>object</i> &#62; Parámetros de identificación. Estos pueden ser:
+        </li>
+        <ul>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+          <li><strong>force</strong> &#60;<i>boolean</i> &#62; Forzar la identificación sin necesidad de disponer de
+            mapa. No se acepta tolerancia puesto que no hay mapa para obtener la resolución.</li>
+            <li><strong>tolerance</strong> &#60;<i>number</i> &#62; Tolerancia en píxeles.</li>
+            <li><strong>clientSide</strong> &#60;<i>boolean</i> &#62; Especifica si la identificación debe forzarse para que se haga en el lado del cliente.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>identifyClient(featureGeoJSON, identifyParams = &#123;&#125;)</strong></em></p>
+      <p>Permite ejecutar una consulta de identificación en cliente (navegador). Sus argumentos son: </p>
+      <ul>
+        <li><strong>featureGeoJSON</strong> &#60;<i>string</i> &#62; Feature en geojson sobre la que ejecutar la
+          identificación.</li>
+        <li><strong>identifyParams</strong> &#60;<i>object</i> &#62; Parámetros de identificación. Estos pueden ser:
+        </li>
+        <ul>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+            <li><strong>tolerance</strong> &#60;<i>number</i> &#62; Tolerancia en píxeles.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>find(filterObj, findParams = &#123;&#125; )</strong></em></p>
+      <p>Ejecuta una búsqueda sobre el servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>filterObj</strong> &#60;<i>apigis.Filter</i> &#62;Filtro. El objeto tendrá propiedades que harán
+          referencia a las diferentes expresiones de la consulta.</li>
+        <li><strong>findParams</strong> &#60;<i>object</i> &#62; Parámetros de búsqueda. Estos pueden ser:</li>
+        <ul>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+          <li><strong>caseSensitive</strong> &#60;<i>boolean</i> &#62; Determina si el filtro es case sensitive o case unsensitive. Por defecto es true (distingue entre mayúsculas y minúsculas).</li>
+
+        </ul>
+      </ul>
+      <p>Si el servicio dispone de un servidor asociado la búsqueda se ejecutará en servido, si no, se realizará en cliente.</p>
+      <br>
+      <p><em><strong>findClient(filterObj, findParams = &#123;&#125; )</strong></em></p>
+      <p>Ejecuta una búsqueda sobre el servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>filterObj</strong> &#60;<i>apigis.Filter</i> &#62;Filtro. El objeto tendrá propiedades que harán
+          referencia a las diferentes expresiones de la consulta.</li>
+        <li><strong>findParams</strong> &#60;<i>object</i> &#62; Parámetros de búsqueda. Estos pueden ser:</li>
+        <ul>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+          <li><strong>caseSensitive</strong> &#60;<i>boolean</i> &#62; Determina si el filtro es case sensitive o case unsensitive. Por defecto es true (distingue entre mayúsculas y minúsculas).</li>
+
+        </ul>
+      </ul>
+      <p>Si el servicio dispone de un servidor asociado la búsqueda se ejecutará en servido, si no, se realizará en cliente.</p>
+      <br>
+      <p><em><strong>getExtent()</strong></em></p>
+      <p>Recupera la extensión total de la capa.</p>
+      <br>
+      <p><em><strong>setCluster(distance = 50, symbol, clusterSizeConfig, formatFunction &#61; (text) &#61;&#62; text)</strong></em></p>
+      <p>Configura el servicio en cluster. Sus argumentos son: </p>
+      <ul>
+        <li><strong>distance</strong> &#60;<i>number</i> &#62; Distancia a la que se agruparán las features. Por defecto 50.</li>
+        <li><strong>symbol</strong> &#60;<i>apigis.SimpleMarkerSymbol | apigis.SimpleLineSymbol | apigis.SimpleFillSymbol | Fuction</i> &#62;  Estilo.</li>
+        <li><strong>clusterSizeConfig</strong> &#60;<i>object</i> &#62;  Configuración para el cálculo del tamaño del clúster. En caso de no definirse se aplica el tamaño con el número de entidades. Puede contener las propiedades:</li>
+        <ul>
+          <li><strong>field</strong> &#60;<i>string</i> &#62; Nombre del campo.</li>
+          <li><strong>operation</strong> &#60;<i>'sum' | 'max' | 'min' | 'average'</i> &#62; Operación a realizar en el cálculo.</li>
+          <li><strong>minResolution</strong> &#60;<i>number</i> &#62; Resolución mínima del clúster antes de explotar.</li>
+          <li><strong>minScaleDenominator</strong> &#60;<i>number</i> &#62; Denominador mínimo de escala del cluster antes de explotar.</li>
+          <li><strong>resize</strong> &#60;<i>object[]</i> &#62; Configuración para el redimensionado del cluster. Sus propiedades pueden ser: </li>
+          <ul>
+            <li><strong>range</strong> &#60;<i>number[]</i> &#62; Rango de valores originales.</li>
+            <li><strong>resizeValue</strong> &#60;<i>number</i> &#62; Nuevo valor redimensionado.</li>
+            <li><strong>symbol</strong> &#60;<i>apigis.SimpleMarkerSymbol</i> &#62; Símbolo a aplicar para dicho valor.</li>
+            <li><strong>originalRange</strong> &#60;<i>number[]</i> &#62; Rango de valores originales.</li>
+            <li><strong>resizeRange</strong> &#60;<i>number[]</i> &#62;  Nuevo rango de valores redimensionados.</li>
+          </ul>
+          <li><strong>formatFunction</strong> &#60;<i>Function</i> &#62; Función de formateo del texto del cluster.</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>toogleCluster()</strong></em></p>
+      <p>Permite cambiar el estado de una capa entre clusterizado y no clusterizado.</p>
+      <br>
+      <p><em><strong>labelByProperty(property = null, options = &#123;&#125;, operation, formatFunction &#61; (text) &#61;&#62; text)</strong></em></p>
+      <p>Permite etiquetar la capa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>property</strong> &#60;<i>string</i> &#62; Nombre del campo.</li>
+        <li><strong>object</strong> &#60;<i>object</i> &#62; Opciones de estilo del texto.</li>
+        <li><strong>clusterSizeConfig</strong> &#60;<i>'sum' | 'count' | 'max' | 'min' | 'average' | Function</i> &#62; Operación para el cálculo de la etiqueta en caso de que sea de tipo cluster. En caso de ser una función recibe un array de features del cluster y devuelve un valor.</li>
+        <li><strong>formatFunction</strong> &#60;<i>Function</i> &#62; Función para formatear el texto. </li>
+      </ul>
+      <br>
+      <p><em><strong>toogleCluster()</strong></em></p>
+      <p>Permite cambiar el estado de una capa entre clusterizado y no clusterizado.</p>
+      <br>
+      <p><em><strong>moveLayer(indexTo)</strong></em></p>
+      <p>Cambia la posición de la capa dentro del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>indexTo</strong> &#60;<i>number</i> &#62; Nuevo índice en el mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>onLoaded(callback)</strong></em></p>
+      <p>Permite ejecutar una función de callback cuando la fuente de datos cambia. Esto incluye la carga inicial. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>onceLoaded(callback)</strong></em></p>
+      <p>Permite activar un evento para saber cuando se ha cargado la capa por primera vez. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+      <br>
+      <p><em><strong>refresh()</strong></em></p>
+      <p>Refresca la capa.</p>
+      <br>
+
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

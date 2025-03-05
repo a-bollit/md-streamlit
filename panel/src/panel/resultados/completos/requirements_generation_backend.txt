@@ -1,0 +1,406 @@
+Result from requirements_generation_backend: ### Requisitos Técnicos y Funcionales para Implementar la Aplicación en Java Spring Boot
+
+---
+
+## Tablas y Entidades
+
+A partir del análisis del XML proporcionado y utilizando la herramienta para identificar los detalles de las entidades y sus endpoints, a continuación se presenta la estructura detallada de las tablas utilizadas, sus atributos, restricciones, relaciones, claves primarias, lógicas de campos calculados, y los endpoints CRUD necesarios para la implementación en Java Spring Boot.
+
+### 1. Tabla: `GEA_ACURE`
+
+**Descripción:** Esta tabla contiene registros relacionados con los documentos.
+
+#### Atributos:
+- **CDDOCUM** (VARCHAR2): Clave primaria.
+- **ITIMPRE** (VARCHAR2): Indica si el documento está impreso.
+- **NUMRELACION** (NUMBER): Número de relación.
+- **FCEMISION** (DATE): Fecha de emisión.
+- **CB_MARCA** (VARCHAR2): Indica si el documento está marcado.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CDDOCUM`
+
+#### Endpoints CRUD:
+- **GET /gea_acure:** Recupera todos los registros.
+- **GET /gea_acure/{CDDOCUM}:** Recupera un registro específico.
+- **PUT /gea_acure/{CDDOCUM}:** Actualiza un registro específico con el siguiente JSON body:
+    ```json
+    {
+      "ITIMPRE": "value",
+      "NUMRELACION": "value",
+      "FCEMISION": "value",
+      "CB_MARCA": "value"
+    }
+    ```
+
+### 2. Tabla: `NOTIFICACION_TELEMATICA`
+
+**Descripción:** Esta tabla registra las notificaciones telemáticas.
+
+#### Atributos:
+- **CDDOCUM** (VARCHAR2): Clave primaria.
+- **FCCREA** (DATE): Fecha de creación.
+- **IT_FIRMADO** (VARCHAR2): Indica si está firmado.
+- **IT_REGISTRADO** (VARCHAR2): Indica si está registrado.
+- **CB_MARCA** (VARCHAR2): Indica si está marcado.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CDDOCUM`
+
+#### Endpoints CRUD:
+- **GET /notificacion_telematica:** Recupera todos los registros.
+- **GET /notificacion_telematica/{CDDOCUM}:** Recupera un registro específico.
+- **PUT /notificacion_telematica/{CDDOCUM}:** Actualiza un registro específico con el siguiente JSON body:
+    ```json
+    {
+      "FCCREA": "value",
+      "IT_FIRMADO": "value",
+      "IT_REGISTRADO": "value",
+      "CB_MARCA": "value"
+    }
+    ```
+
+### 3. Tabla: `EREG_NOTIFICACION`
+
+**Descripción:** Esta tabla maneja las notificaciones enviadas.
+
+#### Atributos:
+- **IDNOTIFICACION** (NUMBER): Clave primaria.
+- **NMLISTNOTI** (NUMBER): Número de lista de notificación.
+- **NMEJERCICIO** (NUMBER): Año de ejercicio.
+- **CDREFDOCUM** (VARCHAR2): Referencia del documento.
+- **DSOBJETO** (VARCHAR2): Descripción del objeto.
+- **CDDOCIDENT** (VARCHAR2): Identificación del documento.
+- **DSNOMBRE** (VARCHAR2): Nombre del interesado.
+- **DSAPELLIDO1** (VARCHAR2): Primer apellido.
+- **DSAPELLIDO2** (VARCHAR2): Segundo apellido.
+- **DSRAZONSOC** (VARCHAR2): Razón social.
+- **CDPAIS** (VARCHAR2): Código de país.
+- **CDPROV** (VARCHAR2): Código de provincia.
+- **CDMUNI** (VARCHAR2): Código de municipio.
+- **DSDIRECCION** (VARCHAR2): Dirección.
+- **DSDIRECCION_EXTEN** (VARCHAR2): Dirección extendida.
+- **CDPOSTAL** (VARCHAR2): Código postal.
+- **DSTELEFONO** (VARCHAR2): Teléfono.
+- **DSTELEFMOVIL** (VARCHAR2): Teléfono móvil.
+- **DSFAX** (VARCHAR2): Fax.
+- **DSEMAIL** (VARCHAR2): Email.
+- **DSDIRECCION1** (VARCHAR2): Dirección 1.
+- **DSDIRECCION2** (VARCHAR2): Dirección 2.
+- **DSLIN_INFO** (VARCHAR2): Líneas de información.
+- **DSDEVOLVERA** (VARCHAR2): Información de devolución.
+- **FCREIMPRESION** (DATE): Fecha de reimpresión.
+- **CDUSRMOD** (VARCHAR2): Usuario modificador.
+- **FCFECMOD** (DATE): Fecha de modificación.
+- **CDDOCIDENT_REP** (VARCHAR2): Identificación del documento representante.
+- **DSNOMBRE_REP** (VARCHAR2): Nombre del representante.
+- **DSAPELLIDO1_REP** (VARCHAR2): Primer apellido del representante.
+- **DSAPELLIDO2_REP** (VARCHAR2): Segundo apellido del representante.
+- **DSRAZONSOC_REP** (VARCHAR2): Razón social del representante.
+- **DSEXPEDIENTE** (VARCHAR2): Expediente.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `NMLISTNOTI`, `NMEJERCICIO`, `CDREFDOCUM`
+
+#### Endpoints CRUD:
+- **POST /ereg_notificacion:** Crea un nuevo registro con el siguiente JSON body:
+    ```json
+    {
+      "NMLISTNOTI": "value",
+      "NMEJERCICIO": "value",
+      "CDREFDOCUM": "value",
+      "DSOBJETO": "value",
+      "CDDOCIDENT": "value",
+      "DSNOMBRE": "value",
+      "DSAPELLIDO1": "value",
+      "DSAPELLIDO2": "value",
+      "DSRAZONSOC": "value",
+      "CDPAIS": "value",
+      "CDPROV": "value",
+      "CDMUNI": "value",
+      "DSDIRECCION": "value",
+      "DSDIRECCION_EXTEN": "value",
+      "CDPOSTAL": "value",
+      "DSTELEFONO": "value",
+      "DSTELEFMOVIL": "value",
+      "DSFAX": "value",
+      "DSEMAIL": "value",
+      "DSDIRECCION1": "value",
+      "DSDIRECCION2": "value"
+    }
+    ```
+- **GET /ereg_notificacion:** Recupera todos los registros.
+- **GET /ereg_notificacion/{NMLISTNOTI}/{NMEJERCICIO}/{CDREFDOCUM}:** Recupera un registro específico.
+- **DELETE /ereg_notificacion/{NMLISTNOTI}/{NMEJERCICIO}/{CDREFDOCUM}:** Elimina un registro específico.
+
+### 4. Tabla: `EREG_LISTNOTI`
+
+**Descripción:** Esta tabla contiene listas de notificaciones.
+
+#### Atributos:
+- **NMLISTNOTI** (NUMBER): Clave primaria.
+- **NMEJERCICIO** (NUMBER): Año de ejercicio.
+- **FCCREA** (DATE): Fecha de creación.
+- **CDAPLICACION** (VARCHAR2): Código de aplicación.
+- **DSCONS_DEVOL** (VARCHAR2): Descripción de devolución.
+- **DSUNIDAD_DEVOL** (VARCHAR2): Descripción de la unidad de devolución.
+- **DSDIR1_DEVOL** (VARCHAR2): Dirección 1 de devolución.
+- **DSDIR2_DEVOL** (VARCHAR2): Dirección 2 de devolución.
+- **CDPOSTAL_DEVOL** (VARCHAR2): Código postal de devolución.
+- **CDMUNI_DEVOL** (VARCHAR2): Código de municipio de devolución.
+- **CDTIPONOTI** (VARCHAR2): Tipo de notificación.
+- **CDESTADO** (VARCHAR2): Estado.
+- **FCDESDE** (DATE): Fecha desde.
+- **FCHASTA** (DATE): Fecha hasta.
+- **IDCENTROMODIF** (VARCHAR2): Centro de modificación.
+- **FCFINSITUACION** (DATE): Fecha de fin de situación.
+- **DOMICILIO_DEVOL** (VARCHAR2): Domicilio de devolución.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `NMLISTNOTI`, `NMEJERCICIO`
+
+#### Endpoints CRUD:
+- **POST /ereg_listnoti:** Crea un nuevo registro con el siguiente JSON body:
+    ```json
+    {
+      "NMLISTNOTI": "value",
+      "NMEJERCICIO": "value",
+      "FCCREA": "value",
+      "CDAPLICACION": "value",
+      "DSCONS_DEVOL": "value",
+      "DSUNIDAD_DEVOL": "value",
+      "DSDIR1_DEVOL": "value",
+      "DSDIR2_DEVOL": "value",
+      "CDPOSTAL_DEVOL": "value",
+      "CDMUNI_DEVOL": "value",
+      "CDTIPONOTI": "value",
+      "CDESTADO": "value",
+      "FCDESDE": "value",
+      "FCHASTA": "value",
+      "IDCENTROMODIF": "value",
+      "FCFINSITUACION": "value",
+      "DOMICILIO_DEVOL": "value"
+    }
+    ```
+- **GET /ereg_listnoti:** Recupera todos los registros.
+- **GET /ereg_listnoti/{NMLISTNOTI}/{NMEJERCICIO}:** Recupera un registro específico.
+- **DELETE /ereg_listnoti/{NMLISTNOTI}/{NMEJERCICIO}:** Elimina un registro específico.
+
+### 5. Tabla: `GEXPEDIENT`
+
+**Descripción:** Esta tabla contiene datos de expedientes.
+
+#### Atributos:
+- **CDDEPTNO** (VARCHAR2): Clave primaria.
+- **CDTEXP** (VARCHAR2): Tipo de expediente clave primaria.
+- **CDNEXP** (NUMBER): Número de expediente clave primaria.
+- **CDDIGITO** (NUMBER): Dígito clave primaria.
+- **CDAEXP** (NUMBER): Año del expediente clave primaria.
+- **CDESTADO** (VARCHAR2): Estado del expediente.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CDDEPTNO`, `CDTEXP`, `CDNEXP`, `CDDIGITO`, `CDAEXP`
+
+#### Endpoints CRUD:
+- **GET /gexpedient:** Recupera todos los registros.
+- **GET /gexpedient/{CDDEPTNO}/{CDTEXP}/{CDNEXP}/{CDDIGITO}/{CDAEXP}:** Recupera un registro específico.
+
+### 6. Tabla: `GINTERESAD`
+
+**Descripción:** Esta tabla contiene datos de los interesados.
+
+#### Atributos:
+- **CDINTERESADO** (VARCHAR2): Clave primaria.
+- **CDSUBINT** (VARCHAR2): Sub clave primaria.
+- **DSNOMBRE** (VARCHAR2): Nombre del interesado.
+- **DSAPELLIDO1** (VARCHAR2): Primer apellido.
+- **DSAPELLIDO2** (VARCHAR2): Segundo apellido.
+- **DSRAZONSOC** (VARCHAR2): Razón social.
+- **CDPAIS** (VARCHAR2): Código de país.
+- **CDPROV** (VARCHAR2): Código de provincia.
+- **CDMUNI** (VARCHAR2): Código de municipio.
+- **DSDIRECCION** (VARCHAR2): Dirección.
+- **CDPOSTAL** (VARCHAR2): Código postal.
+- **DSTELEFONO** (VARCHAR2): Teléfono.
+- **DSFAX** (VARCHAR2): Fax.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CDINTERESADO`, `CDSUBINT`
+
+#### Endpoints CRUD:
+- **GET /ginteresad:** Recupera todos los registros.
+- **GET /ginteresad/{CDINTERESADO}/{CDSUBINT}:** Recupera un registro específico.
+
+### 7. Tabla: `GCAOFICIOS`
+
+**Descripción:** Esta tabla contiene descripciones de oficios.
+
+#### Atributos:
+- **CDOFI** (VARCHAR2): Clave primaria.
+- **DSOFI** (VARCHAR2): Descripción del oficio.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CDOFI`
+
+#### Endpoints CRUD:
+- **GET /gcaoficios:** Recupera todos los registros.
+- **GET /gcaoficios/{CDOFI}:** Recupera un registro específico.
+
+### 8. Tabla: `EREG_V_ORGA`
+
+**Descripción:** Esta tabla contiene datos de las organizaciones por vista.
+
+#### Atributos:
+- **IDORGA** (NUMBER): Clave primaria.
+- **CDORGA** (VARCHAR2): Código de la organización.
+- **DSORGA** (VARCHAR2): Descripción de la organización.
+- **DIRECCION** (VARCHAR2): Dirección de la organización.
+- **CDPOSTAL** (VARCHAR2): Código postal.
+- **CDMUNI** (VARCHAR2): Código de municipio.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `IDORGA`
+
+#### Endpoints CRUD:
+- **GET /ereg_v_orga:** Recupera todos los registros.
+- **GET /ereg_v_orga/{IDORGA}:** Recupera un registro específico.
+
+### 9. Tabla: `EREG_UNIDEQUI`
+
+**Descripción:** Tabla de equivalencias de unidades.
+
+#### Atributos:
+- **CDDEPTNO** (VARCHAR2): Clave primaria.
+- **CDUNIDAD** (VARCHAR2): Clave primaria.
+- **CDDEPTNO_EREG** (VARCHAR2): Código de departamento en registro.
+- **CDUNIDAD_EREG** (VARCHAR2): Unidad en registro.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CDDEPTNO`, `CDUNIDAD`
+
+#### Endpoints CRUD:
+- **GET /ereg_unidequi:** Recupera todos los registros.
+- **GET /ereg_unidequi/{CDDEPTNO}/{CDUNIDAD}:** Recupera un registro específico.
+
+### 10. Tabla: `EREG_BD_REPLICA`
+
+**Descripción:** Registro de réplicas de base de datos.
+
+#### Atributos:
+- **CD_BD_REPLICA** (VARCHAR2): Clave primaria.
+- **CD_CG_DESTINO** (VARCHAR2): Código del destino.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CD_BD_REPLICA`
+
+#### Endpoints CRUD:
+- **GET /ereg_bd_replica:** Recupera todos los registros.
+- **GET /ereg_bd_replica/{CD_BD_REPLICA}:** Recupera un registro específico.
+
+### 11. Tabla: `GPARAMEXPD`
+
+**Descripción:** Configuración de parámetros de expedientes.
+
+#### Atributos:
+- **CDTEXP** (VARCHAR2): Clave primaria.
+- **ITDIRNOTISING** (VARCHAR2): Indicador de dirección de notificación.
+- **CDPROCEDIMIENTO** (VARCHAR2): Código de procedimiento.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CDTEXP`
+
+#### Endpoints CRUD:
+- **GET /gparamexpd:** Recupera todos los registros.
+- **GET /gparamexpd/{CDTEXP}:** Recupera un registro específico.
+
+### 12. Tabla: `SUCA_MUNICIPIO`
+
+**Descripción:** Contiene datos de municipios.
+
+#### Atributos:
+- **CDPAIS** (VARCHAR2): Clave primaria.
+- **CDPROV** (VARCHAR2): Clave primaria.
+- **CDMUNI** (VARCHAR2): Clave primaria.
+- **DSMUNI** (VARCHAR2): Nombre del municipio.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CDPAIS`, `CDPROV`, `CDMUNI`
+
+#### Endpoints CRUD:
+- **GET /suca_municipio:** Recupera todos los registros.
+- **GET /suca_municipio/{CDPAIS}/{CDPROV}/{CDMUNI}:** Recupera un registro específico.
+
+### 13. Tabla: `GENTIADMIN`
+
+**Descripción:** Contiene datos administrativos.
+
+#### Atributos:
+- **CDDEPTNO** (VARCHAR2): Clave primaria.
+- **CDUNIDAD** (VARCHAR2): Clave primaria.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CDDEPTNO`, `CDUNIDAD`
+
+#### Endpoints CRUD:
+- **GET /gentiadmin:** Recupera todos los registros.
+- **GET /gentiadmin/{CDDEPTNO}/{CDUNIDAD}:** Recupera un registro específico.
+
+### 14. Tabla: `GORGANISMO`
+
+**Descripción:** Contiene datos de organismos.
+
+#### Atributos:
+- **CDDEPTNO** (VARCHAR2): Clave primaria.
+- **DSEXTEN** (VARCHAR2): Descripción del organismo.
+
+#### Relaciones y Claves:
+- **Clave primaria:** `CDDEPTNO`
+
+#### Endpoints CRUD:
+- **GET /gorganismo:** Recupera todos los registros.
+- **GET /gorganismo/{CDDEPTNO}:** Recupera un registro específico.
+
+---
+
+### Servicios y Lógica de Negocio
+
+Además de las operaciones CRUD estándar, se deben definir servicios y lógicas específicas para la aplicación.
+
+#### 1. Servicio: **Validación de Fechas**
+- **Funcionalidad:** Valida que las fechas de inicio y fin no sean mayores que la fecha actual y que la fecha fin no sea anterior a la fecha inicio.
+- **Entradas:** `fcdesde`, `fchasta`
+- **Salidas:** Validación de fechas.
+- **Lógica:**
+  ```java
+  if (fcdesde > current_date || fchasta > current_date || fchasta < fcdesde) {
+      throw new ValidationException("Fechas inválidas.");
+  }
+  ```
+
+#### 2. Servicio: **Validación de Municipio**
+- **Funcionalidad:** Valida que el código de municipio corresponda a un municipio válido.
+- **Entradas:** `cdmuni`
+- **Salidas:** Información del municipio.
+- **Lógica:**
+  ```java
+  String municipio = sucaMunicipioRepository.findByCdmuni(cdmuni);
+  if (municipio == null) {
+      throw new ValidationException("Municipio no válido.");
+  }
+  ```
+
+#### 3. Servicio: **Construcción de Where Cláusula para Notificaciones**
+- **Funcionalidad:** Construye la cláusula WHERE para filtrar notificaciones con base en los inputs del formulario.
+- **Entradas:** Parámetros del formulario (`fcdesde`, `fchasta`, etc.)
+- **Salidas:** Cláusula WHERE.
+- **Lógica:**
+  ```java
+  String whereClause = "WHERE 1=1";
+  if (fcdesde != null) {
+      whereClause += " AND TRUNC(FCCREA) >= " + fcdesde;
+  }
+  if (fchasta != null) {
+      whereClause += " AND TRUNC(FCCREA) <= " + fchasta;
+  }
+  if (cddeptno != null) {
+      whereClause

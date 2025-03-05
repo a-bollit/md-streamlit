@@ -1,0 +1,51 @@
+<mv-header headerTitle="Gestión de Notificaciones Telemáticas" headerSubtitle="Administre las notificaciones telemáticas" fixed="true" showBackButton="true" showMenuButton="true" type="white-corporative">
+  <mv-icon class="icon" aria-hidden="false" aria-label="Configurar"></mv-icon>
+</mv-header>
+
+<div class="notification-form">
+  <form [formGroup]="notificationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="unidadRemitente">Unidad Remitente</label>
+      <input formControlName="unidadRemitente" id="unidadRemitente" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="fechaDesde">Fecha Desde</label>
+      <input formControlName="fechaDesde" id="fechaDesde" type="date" />
+    </div>
+    <div class="form-group">
+      <label for="fechaHasta">Fecha Hasta</label>
+      <input formControlName="fechaHasta" id="fechaHasta" type="date" />
+    </div>
+    <div class="form-group">
+      <label for="expediente">Expediente</label>
+      <input formControlName="expediente" id="expediente" type="text" />
+    </div>
+    <mv-button type="submit" [disabled]="!isFormValid()">Aceptar</mv-button>
+    <mv-button type="button" (click)="onCancel()">Cancelar</mv-button>
+  </form>
+</div>
+
+<div class="notification-table">
+  <mv-table-responsive>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>ID</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let notification of notifications">
+          <td><input type="checkbox" [(ngModel)]="notification.selected"></td>
+          <td>{{ notification.id }}</td>
+          <td>{{ notification.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mv-table-responsive>
+
+  <mv-button (click)="markAll()">Marcar Todos</mv-button>
+  <mv-button (click)="unmarkAll()">Desmarcar Todos</mv-button>
+  <mv-button (click)="sendNotifications()">Enviar Notificaciones</mv-button>
+</div>

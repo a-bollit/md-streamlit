@@ -1,0 +1,404 @@
+### Java Spring Boot Implementation for Oracle Forms Functionality
+
+Here's a detailed guide on how to replicate the functionality found in your Oracle Forms application using Java Spring Boot, particularly focusing on replicating the functionality of the entities `GEA_ACURE` and `NOTIFICACION_TELEMATICA`.
+
+### **1. Overall Project Structure**
+
+We'll structure the project following a typical Spring Boot layout:
+
+```text
+src/main/java/com/example/project
+|-- controller 
+|-- service
+|-- repository
+|-- entity
+|-- dto
+|-- config
+src/main/resources
+|-- application.properties
+```
+
+### **2. Database Configuration**
+
+First, configure the application properties to set up your database connection in `src/main/resources/application.properties`:
+
+```properties
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+spring.datasource.username=yourUsername
+spring.datasource.password=yourPassword
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+spring.jpa.database-platform=org.hibernate.dialect.Oracle12cDialect
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+```
+
+### **3. Entities**
+
+Define the JPA entities for `GEA_ACURE` and `NOTIFICACION_TELEMATICA`:
+
+#### GEA_ACURE.java
+
+```java
+@Entity
+@Table(name = "GEA_ACURE")
+public class GeaAcure {
+
+    @Id
+    @Column(name = "CDDOCUM", length = 11)
+    private String cdDocum;
+
+    @Column(name = "DOCUMENTO", length = 14)
+    private String documento;
+
+    @Column(name = "DSDOCUM", length = 70)
+    private String dsDocum;
+
+    @Column(name = "EXPEDIENTE", length = 50)
+    private String expediente;
+
+    @Column(name = "INTERESADO", length = 70)
+    private String interesado;
+
+    @Column(name = "ITIMPRE", length = 1)
+    private String itImpre;
+
+    @Column(name = "NUMRELACION")
+    private Integer numRelacion;
+
+    @Column(name = "FCEMISION")
+    private LocalDateTime fcEmision;
+
+    @Column(name = "IT_FIRMADO", length = 1)
+    private String itFirmado;
+
+    @Column(name = "IT_REGISTRADO", length = 1)
+    private String itRegistrado;
+
+    @Column(name = "CB_MARCA", length = 1)
+    private String cbMarca;
+
+    // Getters and Setters
+}
+```
+
+#### NotificacionTelematica.java
+
+```java
+@Entity
+@Table(name = "NOTIFICACION_TELEMATICA")
+public class NotificacionTelematica {
+
+    @Id
+    @Column(name = "CDDOCUM", length = 11)
+    private String cdDocum;
+
+    @Column(name = "DOCUMENTO", length = 14)
+    private String documento;
+
+    @Column(name = "DSDOCUM", length = 70)
+    private String dsDocum;
+
+    @Column(name = "EXPEDIENTE", length = 50)
+    private String expediente;
+
+    @Column(name = "INTERESADO", length = 70)
+    private String interesado;
+
+    @Column(name = "FCCREA")
+    private LocalDateTime fcCrea;
+
+    @Column(name = "SITUACION_ERROR_BD", length = 10)
+    private String situacionErrorBD;
+
+    @Column(name = "SITUACION_ERROR_DUE", length = 10)
+    private String situacionErrorDUE;
+
+    @Column(name = "SITUACION_ERROR_REGSAL", length = 10)
+    private String situacionErrorRegSal;
+
+    @Column(name = "SITUACION_ERROR_FIRMA", length = 10)
+    private String situacionErrorFirma;
+
+    @Column(name = "CB_MARCA", length = 1)
+    private String cbMarca;
+
+    // Getters and Setters
+}
+```
+
+### **4. Repositories**
+
+Create repository interfaces for the entities:
+
+#### GeaAcureRepository.java
+
+```java
+public interface GeaAcureRepository extends JpaRepository<GeaAcure, String> {
+}
+```
+
+#### NotificacionTelematicaRepository.java
+
+```java
+public interface NotificacionTelematicaRepository extends JpaRepository<NotificacionTelematica, String> {
+}
+```
+
+### **5. DTOs**
+
+Define Data Transfer Objects (DTOs) to facilitate data transfer:
+
+#### GeaAcureDTO.java
+
+```java
+public class GeaAcureDTO {
+
+    private String cdDocum;
+    private String documento;
+    private String dsDocum;
+    private String expediente;
+    private String interesado;
+    private String itImpre;
+    private Integer numRelacion;
+    private LocalDateTime fcEmision;
+    private String itFirmado;
+    private String itRegistrado;
+    private String cbMarca;
+
+    // Getters and Setters
+}
+```
+
+#### NotificacionTelematicaDTO.java
+
+```java
+public class NotificacionTelematicaDTO {
+
+    private String cdDocum;
+    private String documento;
+    private String dsDocum;
+    private String expediente;
+    private String interesado;
+    private LocalDateTime fcCrea;
+    private String situacionErrorBD;
+    private String situacionErrorDUE;
+    private String situacionErrorRegSal;
+    private String situacionErrorFirma;
+    private String cbMarca;
+
+    // Getters and Setters
+}
+```
+
+### **6. Services**
+
+Implement business logic in service classes:
+
+#### GeaAcureService.java
+
+```java
+@Service
+public class GeaAcureService {
+
+    @Autowired
+    private GeaAcureRepository geaAcureRepository;
+
+    public List<GeaAcure> findAll() {
+        return geaAcureRepository.findAll();
+    }
+
+    public GeaAcure findById(String cdDocum) {
+        return geaAcureRepository.findById(cdDocum)
+            .orElseThrow(() -> new ResourceNotFoundException("GeaAcure not found: " + cdDocum));
+    }
+
+    public GeaAcure save(GeaAcure geaAcure) {
+        return geaAcureRepository.save(geaAcure);
+    }
+
+    public void deleteById(String cdDocum) {
+        geaAcureRepository.deleteById(cdDocum);
+    }
+}
+```
+
+#### NotificacionTelematicaService.java
+
+```java
+@Service
+public class NotificacionTelematicaService {
+
+    @Autowired
+    private NotificacionTelematicaRepository notificacionTelematicaRepository;
+
+    public List<NotificacionTelematica> findAll() {
+        return notificacionTelematicaRepository.findAll();
+    }
+
+    public NotificacionTelematica findById(String cdDocum) {
+        return notificacionTelematicaRepository.findById(cdDocum)
+            .orElseThrow(() -> new ResourceNotFoundException("NotificacionTelematica not found: " + cdDocum));
+    }
+
+    public NotificacionTelematica save(NotificacionTelematica notificacionTelematica) {
+        return notificacionTelematicaRepository.save(notificacionTelematica);
+    }
+
+    public void deleteById(String cdDocum) {
+        notificacionTelematicaRepository.deleteById(cdDocum);
+    }
+}
+```
+
+### **7. Controllers**
+
+Define REST controllers to handle API requests:
+
+#### GeaAcureController.java
+
+```java
+@RestController
+@RequestMapping("/api/gea_acure")
+public class GeaAcureController {
+
+    @Autowired
+    private GeaAcureService geaAcureService;
+
+    @GetMapping
+    public List<GeaAcure> getAll() {
+        return geaAcureService.findAll();
+    }
+
+    @GetMapping("/{cdDocum}")
+    public GeaAcure getById(@PathVariable String cdDocum) {
+        return geaAcureService.findById(cdDocum);
+    }
+
+    @PostMapping
+    public GeaAcure create(@RequestBody GeaAcure geaAcure) {
+        return geaAcureService.save(geaAcure);
+    }
+
+    @PutMapping("/{cdDocum}")
+    public GeaAcure update(@PathVariable String cdDocum, @RequestBody GeaAcure geaAcure) {
+        geaAcure.setCdDocum(cdDocum);
+        return geaAcureService.save(geaAcure);
+    }
+
+    @DeleteMapping("/{cdDocum}")
+    public void delete(@PathVariable String cdDocum) {
+        geaAcureService.deleteById(cdDocum);
+    }
+}
+```
+
+#### NotificacionTelematicaController.java
+
+```java
+@RestController
+@RequestMapping("/api/notificacion_telematica")
+public class NotificacionTelematicaController {
+
+    @Autowired
+    private NotificacionTelematicaService notificacionTelematicaService;
+
+    @GetMapping
+    public List<NotificacionTelematicaDTO> getAll() {
+        return notificacionTelematicaService.findAll().stream()
+            .map(this::convertToDTO)
+            .collect(Collectors.toList());
+    }
+
+    @GetMapping("/{cdDocum}")
+    public NotificacionTelematicaDTO getById(@PathVariable String cdDocum) {
+        return convertToDTO(notificacionTelematicaService.findById(cdDocum));
+    }
+
+    @PostMapping
+    public NotificacionTelematicaDTO create(@RequestBody NotificacionTelematicaDTO dto) {
+        NotificacionTelematica notificacionTelematica = convertToEntity(dto);
+        return convertToDTO(notificacionTelematicaService.save(notificacionTelematica));
+    }
+
+    @PutMapping("/{cdDocum}")
+    public NotificacionTelematicaDTO update(@PathVariable String cdDocum, @RequestBody NotificacionTelematicaDTO dto) {
+        dto.setCdDocum(cdDocum);
+        NotificacionTelematica notificacionTelematica = convertToEntity(dto);
+        return convertToDTO(notificacionTelematicaService.save(notificacionTelematica));
+    }
+
+    @DeleteMapping("/{cdDocum}")
+    public void delete(@PathVariable String cdDocum) {
+        notificacionTelematicaService.deleteById(cdDocum);
+    }
+
+    private NotificacionTelematicaDTO convertToDTO(NotificacionTelematica entity) {
+        // conversion logic
+    }
+
+    private NotificacionTelematica convertToEntity(NotificacionTelematicaDTO dto) {
+        // conversion logic
+    }
+}
+```
+
+### **8. Exception Handling**
+
+Define a custom exception handler to manage exceptions:
+
+#### RestExceptionHandler.java
+
+```java
+@ControllerAdvice
+public class RestExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    protected ResponseEntity<Object> handleResourceNotFound(ResourceNotFoundException ex) {
+        ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+        return new ResponseEntity<>(apiError, apiError.getStatus());
+    }
+
+    @ExceptionHandler(Exception.class)
+    protected ResponseEntity<Object> handleGenericException(Exception ex) {
+        ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error", ex);
+        return new ResponseEntity<>(apiError, apiError.getStatus());
+    }
+}
+```
+
+### **9. Error Management**
+
+Define a custom error response:
+
+#### ApiError.java
+
+```java
+public class ApiError {
+
+    private HttpStatus status;
+    private String message;
+    private String debugMessage;
+    private List<ApiSubError> subErrors;
+
+    // Constructors, getters, and setters
+
+    private abstract class ApiSubError {}
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private class ApiValidationError extends ApiSubError {
+        private String object;
+        private String field;
+        private Object rejectedValue;
+        private String message;
+
+        // Constructors, getters, and setters
+    }
+}
+```
+
+### Conclusion
+
+This comprehensive guide outlines the steps necessary to replicate the Oracle Forms functionality using Java Spring Boot. It includes definitions for entities, DTOs, repositories, services, controllers, exception handling, and error management. This ensures a smooth transition to a modern and scalable architecture.
+
+With this detailed approach, you can successfully migrate the complex business logic and functionality of your Oracle Forms application to a Spring Boot application, offering enhanced performance, maintainability, and scalability.

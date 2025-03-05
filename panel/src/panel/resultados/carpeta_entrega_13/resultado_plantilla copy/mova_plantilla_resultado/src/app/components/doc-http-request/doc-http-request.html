@@ -1,0 +1,202 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación llamadas http</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='showloading.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> mv-showLoading
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información  de las llamadas http.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Las llamadas http en mova se realizan como en cualquier proyecto Angular.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración de las llamadas http.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Las urls deben centralizarse en los archivos de environment:
+        <strong>
+          <a target="_blank" href="#/doc-environment">
+            environment.ts, environment.val.ts y environment.prod.ts
+          </a>
+        </strong>
+      </p>
+
+      <mv-tab-group>
+        <mv-tab label="environment.ts">
+          <pre><code [highlight]="codeEnvironmentTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.val.ts">
+          <pre><code [highlight]="codeEnvironmentValTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.prod.ts">
+          <pre><code [highlight]="codeEnvironmentProdTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Mova, además, proporciona una serie de parámetros de configuración para cada llamada http. </p>
+
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeMovaConfigTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <ul>
+        <li>
+          <strong>mv-api-key</strong>: "nombreApiKey" para incluir una apiKey en la llamada. Explicado en <strong><a target="_blank" href="#/doc-login-view">doc-login-view</a></strong>
+        </li>
+        <li>
+          <strong>mv-hide-error</strong>: "true"/"false" para ocultar el diálogo de error en caso de error en la llamada.
+        </li>
+        <li>
+          <strong>mv-request-token</strong>: "true"/"false" para realizar una llamada sin pedir ningún tipo de token
+        </li>
+        <li>
+          <strong>mv-token-auth</strong>: "nombreTokenAuth" para incluir un token de autenticación en la llamada.
+        </li>
+        <li>
+          <strong>mv-wso2-token</strong>: "true"/"false" para realizar una llamada con token de wso2. Explicado en <strong><a target="_blank" href="#/doc-login-view">doc-login-view</a></strong>
+        </li>
+        <li>
+          <strong>mv-showLoading</strong>: "true"/"false"  para mostrar la pantalla de carga desde que se hace la petición hasta que se resuelve(máximo 20 segundos).
+        </li>
+        <li>
+          <strong>mv-showLoading-text</strong>: "Texto a mostrar" Le pone un texto especifico al loading mientras la petición se está ejecutando.
+        </li>
+      </ul>
+
+    </mv-card-content>
+
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplo de llamadas http.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Ejemplo de llamada http:</p>
+
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+
+  </mv-card>
+
+  <!-- showLoading -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showloading><strong>mv-showLoading y mv-showLoading-text</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplo de uso de mv-showLoading y mv-showLoading-text.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>El parámetro showLoading muestra la pantalla de carga en las peticiones http hasta que reciba una respuesta.</p>
+      <p>El showLoading por http se puede configurar de dos maneras:</p>
+      <ul>
+        <li>Configuración por entorno: afecta a todas las llamadas de la aplicación</li>
+        <li>Configuración por llamada: afecta solo a la llamada actual</li>
+      </ul>
+      <p>La configuración que se especifica en la llamada, sobrescribirá a la
+        de la configuración general de la app</p>
+
+      <p>Environment show loading config: <strong>{{showLoadingConfig}}</strong></p>
+
+      <p>El parametro mv-showLoading-text añade un texto indicativo que se mostrara debajo del loading de la aplicación</p>
+      <mv-tab-group>
+        <mv-tab label="TS llamada">
+          <pre><code [highlight]="showLoadingTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="Environment configuration">
+          <pre><code [highlight]="showLoadingConfigTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showLoading('true')">
+        showLoading('true')
+      </mv-button>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showLoadingWithText('true', 'Texto a mostrar', '7')">
+        showLoadingWithText('true', 'Texto a mostrar', '7')
+      </mv-button>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showLoading('false')">
+        showLoading('false')
+      </mv-button>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="WithoutShowLoading()">
+        WithoutShowLoading()
+      </mv-button>
+
+
+
+    </mv-card-content>
+  </mv-card>
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

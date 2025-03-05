@@ -1,0 +1,280 @@
+La tabla EXPE_ENI_CARPETA, del esquema DBA_EXPE (DBA_EXPE.EXPE_ENI_CARPETA) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_ENI_DOCUMENTO, del esquema DBA_EXPE (DBA_EXPE.EXPE_ENI_DOCUMENTO) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_ENI_EXPEDIENTE, del esquema DBA_EXPE (DBA_EXPE.EXPE_ENI_EXPEDIENTE) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T001, del esquema DBA_EXPE (DBA_EXPE.EXPE_T001) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T002, del esquema DBA_EXPE (DBA_EXPE.EXPE_T002) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T003, del esquema DBA_EXPE (DBA_EXPE.EXPE_T003) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T004, del esquema DBA_EXPE (DBA_EXPE.EXPE_T004) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T005, del esquema DBA_EXPE (DBA_EXPE.EXPE_T005) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T006, del esquema DBA_EXPE (DBA_EXPE.EXPE_T006) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T007, del esquema DBA_EXPE (DBA_EXPE.EXPE_T007) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T009, del esquema DBA_EXPE (DBA_EXPE.EXPE_T009) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T010, del esquema DBA_EXPE (DBA_EXPE.EXPE_T010) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T011, del esquema DBA_EXPE (DBA_EXPE.EXPE_T011) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T012, del esquema DBA_EXPE (DBA_EXPE.EXPE_T012) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T013, del esquema DBA_EXPE (DBA_EXPE.EXPE_T013) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T014, del esquema DBA_EXPE (DBA_EXPE.EXPE_T014) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T015, del esquema DBA_EXPE (DBA_EXPE.EXPE_T015) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T016, del esquema DBA_EXPE (DBA_EXPE.EXPE_T016) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T018_OLD, del esquema DBA_EXPE (DBA_EXPE.EXPE_T018_OLD) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T019_OLD, del esquema DBA_EXPE (DBA_EXPE.EXPE_T019_OLD) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T020, del esquema DBA_EXPE (DBA_EXPE.EXPE_T020) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T021, del esquema DBA_EXPE (DBA_EXPE.EXPE_T021) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T023, del esquema DBA_EXPE (DBA_EXPE.EXPE_T023) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T024, del esquema DBA_EXPE (DBA_EXPE.EXPE_T024) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T025, del esquema DBA_EXPE (DBA_EXPE.EXPE_T025) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T026, del esquema DBA_EXPE (DBA_EXPE.EXPE_T026) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T027, del esquema DBA_EXPE (DBA_EXPE.EXPE_T027) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T028, del esquema DBA_EXPE (DBA_EXPE.EXPE_T028) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T029_OLD, del esquema DBA_EXPE (DBA_EXPE.EXPE_T029_OLD) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T030, del esquema DBA_EXPE (DBA_EXPE.EXPE_T030) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T031, del esquema DBA_EXPE (DBA_EXPE.EXPE_T031) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T032, del esquema DBA_EXPE (DBA_EXPE.EXPE_T032) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T033, del esquema DBA_EXPE (DBA_EXPE.EXPE_T033) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T034, del esquema DBA_EXPE (DBA_EXPE.EXPE_T034) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T036, del esquema DBA_EXPE (DBA_EXPE.EXPE_T036) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T037, del esquema DBA_EXPE (DBA_EXPE.EXPE_T037) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T038, del esquema DBA_EXPE (DBA_EXPE.EXPE_T038) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T039_OLD, del esquema DBA_EXPE (DBA_EXPE.EXPE_T039_OLD) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T040_OLD, del esquema DBA_EXPE (DBA_EXPE.EXPE_T040_OLD) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T041_OLD, del esquema DBA_EXPE (DBA_EXPE.EXPE_T041_OLD) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T042, del esquema DBA_EXPE (DBA_EXPE.EXPE_T042) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T043, del esquema DBA_EXPE (DBA_EXPE.EXPE_T043) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T044, del esquema DBA_EXPE (DBA_EXPE.EXPE_T044) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T046, del esquema DBA_EXPE (DBA_EXPE.EXPE_T046) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T047, del esquema DBA_EXPE (DBA_EXPE.EXPE_T047) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T048, del esquema DBA_EXPE (DBA_EXPE.EXPE_T048) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T049, del esquema DBA_EXPE (DBA_EXPE.EXPE_T049) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T050, del esquema DBA_EXPE (DBA_EXPE.EXPE_T050) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T052, del esquema DBA_EXPE (DBA_EXPE.EXPE_T052) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T053, del esquema DBA_EXPE (DBA_EXPE.EXPE_T053) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T054, del esquema DBA_EXPE (DBA_EXPE.EXPE_T054) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T055, del esquema DBA_EXPE (DBA_EXPE.EXPE_T055) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T056, del esquema DBA_EXPE (DBA_EXPE.EXPE_T056) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T057, del esquema DBA_EXPE (DBA_EXPE.EXPE_T057) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T058, del esquema DBA_EXPE (DBA_EXPE.EXPE_T058) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T059, del esquema DBA_EXPE (DBA_EXPE.EXPE_T059) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T061, del esquema DBA_EXPE (DBA_EXPE.EXPE_T061) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T064, del esquema DBA_EXPE (DBA_EXPE.EXPE_T064) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T065, del esquema DBA_EXPE (DBA_EXPE.EXPE_T065) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T066, del esquema DBA_EXPE (DBA_EXPE.EXPE_T066) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T067, del esquema DBA_EXPE (DBA_EXPE.EXPE_T067) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T072, del esquema DBA_EXPE (DBA_EXPE.EXPE_T072) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T074, del esquema DBA_EXPE (DBA_EXPE.EXPE_T074) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T076, del esquema DBA_EXPE (DBA_EXPE.EXPE_T076) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T077, del esquema DBA_EXPE (DBA_EXPE.EXPE_T077) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T078, del esquema DBA_EXPE (DBA_EXPE.EXPE_T078) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T079, del esquema DBA_EXPE (DBA_EXPE.EXPE_T079) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T081, del esquema DBA_EXPE (DBA_EXPE.EXPE_T081) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T082, del esquema DBA_EXPE (DBA_EXPE.EXPE_T082) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T083, del esquema DBA_EXPE (DBA_EXPE.EXPE_T083) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T084, del esquema DBA_EXPE (DBA_EXPE.EXPE_T084) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T085, del esquema DBA_EXPE (DBA_EXPE.EXPE_T085) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T087, del esquema DBA_EXPE (DBA_EXPE.EXPE_T087) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T088, del esquema DBA_EXPE (DBA_EXPE.EXPE_T088) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T089, del esquema DBA_EXPE (DBA_EXPE.EXPE_T089) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T090, del esquema DBA_EXPE (DBA_EXPE.EXPE_T090) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T093, del esquema DBA_EXPE (DBA_EXPE.EXPE_T093) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T094, del esquema DBA_EXPE (DBA_EXPE.EXPE_T094) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T095, del esquema DBA_EXPE (DBA_EXPE.EXPE_T095) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T096, del esquema DBA_EXPE (DBA_EXPE.EXPE_T096) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T097, del esquema DBA_EXPE (DBA_EXPE.EXPE_T097) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T098, del esquema DBA_EXPE (DBA_EXPE.EXPE_T098) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T100, del esquema DBA_EXPE (DBA_EXPE.EXPE_T100) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T104, del esquema DBA_EXPE (DBA_EXPE.EXPE_T104) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T105, del esquema DBA_EXPE (DBA_EXPE.EXPE_T105) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T106, del esquema DBA_EXPE (DBA_EXPE.EXPE_T106) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T107, del esquema DBA_EXPE (DBA_EXPE.EXPE_T107) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T108, del esquema DBA_EXPE (DBA_EXPE.EXPE_T108) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T109, del esquema DBA_EXPE (DBA_EXPE.EXPE_T109) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T110, del esquema DBA_EXPE (DBA_EXPE.EXPE_T110) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T111, del esquema DBA_EXPE (DBA_EXPE.EXPE_T111) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T112, del esquema DBA_EXPE (DBA_EXPE.EXPE_T112) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T113, del esquema DBA_EXPE (DBA_EXPE.EXPE_T113) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T113_AUX, del esquema DBA_EXPE (DBA_EXPE.EXPE_T113_AUX) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T114, del esquema DBA_EXPE (DBA_EXPE.EXPE_T114) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T115, del esquema DBA_EXPE (DBA_EXPE.EXPE_T115) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T116, del esquema DBA_EXPE (DBA_EXPE.EXPE_T116) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T117, del esquema DBA_EXPE (DBA_EXPE.EXPE_T117) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T118, del esquema DBA_EXPE (DBA_EXPE.EXPE_T118) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T119, del esquema DBA_EXPE (DBA_EXPE.EXPE_T119) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T200, del esquema DBA_EXPE (DBA_EXPE.EXPE_T200) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T201, del esquema DBA_EXPE (DBA_EXPE.EXPE_T201) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T202, del esquema DBA_EXPE (DBA_EXPE.EXPE_T202) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T203, del esquema DBA_EXPE (DBA_EXPE.EXPE_T203) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T204, del esquema DBA_EXPE (DBA_EXPE.EXPE_T204) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T205, del esquema DBA_EXPE (DBA_EXPE.EXPE_T205) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T206, del esquema DBA_EXPE (DBA_EXPE.EXPE_T206) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T207, del esquema DBA_EXPE (DBA_EXPE.EXPE_T207) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T209, del esquema DBA_EXPE (DBA_EXPE.EXPE_T209) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T211, del esquema DBA_EXPE (DBA_EXPE.EXPE_T211) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T212, del esquema DBA_EXPE (DBA_EXPE.EXPE_T212) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T213, del esquema DBA_EXPE (DBA_EXPE.EXPE_T213) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T214, del esquema DBA_EXPE (DBA_EXPE.EXPE_T214) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T218, del esquema DBA_EXPE (DBA_EXPE.EXPE_T218) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T219, del esquema DBA_EXPE (DBA_EXPE.EXPE_T219) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T220, del esquema DBA_EXPE (DBA_EXPE.EXPE_T220) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T221, del esquema DBA_EXPE (DBA_EXPE.EXPE_T221) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T223, del esquema DBA_EXPE (DBA_EXPE.EXPE_T223) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T226, del esquema DBA_EXPE (DBA_EXPE.EXPE_T226) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T230, del esquema DBA_EXPE (DBA_EXPE.EXPE_T230) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T231, del esquema DBA_EXPE (DBA_EXPE.EXPE_T231) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T232, del esquema DBA_EXPE (DBA_EXPE.EXPE_T232) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T234, del esquema DBA_EXPE (DBA_EXPE.EXPE_T234) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T235, del esquema DBA_EXPE (DBA_EXPE.EXPE_T235) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T236, del esquema DBA_EXPE (DBA_EXPE.EXPE_T236) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T239, del esquema DBA_EXPE (DBA_EXPE.EXPE_T239) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T240, del esquema DBA_EXPE (DBA_EXPE.EXPE_T240) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T241, del esquema DBA_EXPE (DBA_EXPE.EXPE_T241) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T242, del esquema DBA_EXPE (DBA_EXPE.EXPE_T242) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T243, del esquema DBA_EXPE (DBA_EXPE.EXPE_T243) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T244, del esquema DBA_EXPE (DBA_EXPE.EXPE_T244) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+La tabla EXPE_T245, del esquema DBA_EXPE (DBA_EXPE.EXPE_T245) no tiene clave primaria, por lo que no se ha podido usar en la generación
+
+T062 - En la entidad T062, no se ha encontrado la secuencia asociada a la tabla EXPE_T062 en la columna CDDEPTNO, por lo que la anotación @Sequence se ha dejado como PENDIENTE
+
+T238 - En la entidad T238, no se ha encontrado la secuencia asociada a la tabla EXPE_T238 en la columna CDDOCUM, por lo que la anotación @Sequence se ha dejado como PENDIENTE
+
+GetGeaAcureOutputDTO#eliminar - El responseBody del recurso asociado al DTO GetGeaAcureOutputDTO no estaba definido, por lo que se genera este DTO sin campos, que debe rellenarse o eliminarse
+
+GetGimpredocuOutputDTO#eliminar - El responseBody del recurso asociado al DTO GetGimpredocuOutputDTO no estaba definido, por lo que se genera este DTO sin campos, que debe rellenarse o eliminarse
+
+T238ServiceImpl#getGeaAcure - ATENCIÓN. Se devuelve un elemento, pero no se está filtrando en la búsqueda en el método getGeaAcure. Definir y añadir estos filtros con 'addFilters'
+
+T238ServiceImpl#getGeaAcure - El DTO GetGeaAcureOutputDTO no tiene campos, por lo que no se ha podido crear un mapper asociado. Hay que crear el mapper y añadir llamar a su método: entityToDto(searchResultEntities)
+
+T062ServiceImpl#getGimpredocu - ATENCIÓN. Se devuelve un elemento, pero no se está filtrando en la búsqueda en el método getGimpredocu. Definir y añadir estos filtros con 'addFilters'
+
+T062ServiceImpl#getGimpredocu - El DTO GetGimpredocuOutputDTO no tiene campos, por lo que no se ha podido crear un mapper asociado. Hay que crear el mapper y añadir llamar a su método: entityToDto(searchResultEntities)
+

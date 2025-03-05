@@ -1,0 +1,17 @@
+.acciones-card {
+  @include card-format('default');
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+
+  mv-button {
+    margin-left: 10px;
+    @include button-color('primary');
+  }
+}
+
+mv-button[appearance="stroked"] {
+  @include button-color('warn');
+}

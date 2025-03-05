@@ -1,0 +1,27 @@
+<mv-card>
+  <mv-header title="Formulario General" subtitle="Emisión de notificaciones" icon="assignment"></mv-header>
+  <mv-content>
+    <form [formGroup]="generalForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="unidadRemitente">Unidad Remitente</label>
+        <input id="unidadRemitente" type="text" formControlName="unidadRemitente" />
+      </div>
+      <div class="form-group">
+        <label for="fechaDesde">Fecha Desde</label>
+        <input id="fechaDesde" type="date" formControlName="fechaDesde" />
+      </div>
+      <div class="form-group">
+        <label for="fechaHasta">Fecha Hasta</label>
+        <input id="fechaHasta" type="date" formControlName="fechaHasta" />
+      </div>
+      <div class="form-group">
+        <label for="expediente">Expediente</label>
+        <input id="expediente" type="text" formControlName="expediente" />
+      </div>
+      <div class="button-group">
+        <mv-button color="primary" appearance="raised" type="submit">Aceptar</mv-button>
+        <mv-button color="warn" appearance="stroked" type="button" (click)="generalForm.reset()">Cancelar</mv-button>
+      </div>
+    </form>
+  </mv-content>
+</mv-card>

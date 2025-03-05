@@ -1,0 +1,299 @@
+# Servicios de Angular 8
+
+## Servicios necesarios
+
+### 1. **Service GeaAcureService**
+
+#### Funcionalidad específica
+Este servicio se encarga de manejar todas las operaciones relacionadas con el bloque de datos `GEA_ACURE`, incluyendo la obtención de registros, la inserción de datos, la actualización y la eliminación de registros específicos.
+
+#### Métodos HTTP y funcionalidad
+
+- **GET**: Recupera los registros de la tabla `GEA_ACURE`. 
+- **POST**: Inserta un nuevo registro en la tabla `GEA_ACURE`.
+- **PUT**: Actualiza un registro existente en la tabla `GEA_ACURE`.
+- **DELETE**: Elimina un registro de la tabla `GEA_ACURE`.
+
+#### Parámetros requeridos y estructura de datos
+
+- **GET**: No requiere parámetros.
+- **POST**: Requiere un objeto JSON con los datos del registro a insertar.
+  ```json
+  {
+    "cddocum": "string",
+    "dsdocum": "string",
+    "cdunidad": "string",
+    "fcemision": "Date",
+    ...
+  }
+  ```
+- **PUT**: Requiere un objeto JSON con los datos del registro a actualizar y el identificador del registro.
+  ```json
+  {
+    "id": "number",
+    "cddocum": "string",
+    "dsdocum": "string",
+    "cdunidad": "string",
+    "fcemision": "Date",
+    ...
+  }
+  ```
+- **DELETE**: Requiere el identificador del registro a eliminar.
+
+#### Integración con endpoints del backend
+
+- **GET**: `/api/gea_acure`
+- **POST**: `/api/gea_acure`
+- **PUT**: `/api/gea_acure/{id}`
+- **DELETE**: `/api/gea_acure/{id}`
+
+#### Detalle de funcionalidad
+
+El `GeaAcureService` deberá incluir métodos para cada una de las operaciones CRUD descritas. Los métodos manejarán las solicitudes HTTP correspondientes y gestionarán las respuestas, actualizando los componentes que consumen el servicio.
+
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GeaAcureService {
+
+  private apiUrl = '/api/gea_acure';
+
+  constructor(private http: HttpClient) { }
+
+  getGeaAcure(): Observable<GeaAcure[]> {
+    return this.http.get<GeaAcure[]>(this.apiUrl);
+  }
+
+  addGeaAcure(geaAcure: GeaAcure): Observable<GeaAcure> {
+    return this.http.post<GeaAcure>(this.apiUrl, geaAcure);
+  }
+
+  updateGeaAcure(id: number, geaAcure: GeaAcure): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}`, geaAcure);
+  }
+
+  deleteGeaAcure(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+}
+```
+
+### 2. **Service NotificacionTelematicaService**
+
+#### Funcionalidad específica
+Este servicio se encarga de manejar todas las operaciones relacionadas con el bloque de datos `NOTIFICACION_TELEMATICA`, incluyendo la obtención de registros, la inserción de datos, la actualización y la eliminación de registros específicos.
+
+#### Métodos HTTP y funcionalidades
+
+- **GET**: Recupera los registros de la tabla `NOTIFICACION_TELEMATICA`.
+- **POST**: Inserta un nuevo registro en la tabla `NOTIFICACION_TELEMATICA`.
+- **PUT**: Actualiza un registro existente en la tabla `NOTIFICACION_TELEMATICA`.
+- **DELETE**: Elimina un registro de la tabla `NOTIFICACION_TELEMATICA`.
+
+#### Parámetros requeridos y estructura de datos
+
+- **GET**: No requiere parámetros.
+- **POST**: Requiere un objeto JSON con los datos del registro a insertar.
+  ```json
+  {
+    "cddocum": "string",
+    "dsdocum": "string",
+    "cdunidad": "string",
+    "fcemision": "Date",
+    ...
+  }
+  ```
+- **PUT**: Requiere un objeto JSON con los datos del registro a actualizar y el identificador del registro.
+  ```json
+  {
+    "id": "number",
+    "cddocum": "string",
+    "dsdocum": "string",
+    "cdunidad": "string",
+    "fcemision": "Date",
+    ...
+  }
+  ```
+- **DELETE**: Requiere el identificador del registro a eliminar.
+
+#### Integración con endpoints del backend
+
+- **GET**: `/api/notificacion_telematica`
+- **POST**: `/api/notificacion_telematica`
+- **PUT**: `/api/notificacion_telematica/{id}`
+- **DELETE**: `/api/notificacion_telematica/{id}`
+
+#### Detalle de funcionalidad
+
+El `NotificacionTelematicaService` deberá incluir métodos para cada una de las operaciones CRUD descritas. Los métodos manejarán las solicitudes HTTP correspondientes y gestionarán las respuestas, actualizando los componentes que consumen el servicio.
+
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NotificacionTelematicaService {
+
+  private apiUrl = '/api/notificacion_telematica';
+
+  constructor(private http: HttpClient) { }
+
+  getNotificaciones(): Observable<NotificacionTelematica[]> {
+    return this.http.get<NotificacionTelematica[]>(this.apiUrl);
+  }
+
+  addNotificacion(notificacion: NotificacionTelematica): Observable<NotificacionTelematica> {
+    return this.http.post<NotificacionTelematica>(this.apiUrl, notificacion);
+  }
+
+  updateNotificacion(id: number, notificacion: NotificacionTelematica): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}`, notificacion);
+  }
+
+  deleteNotificacion(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+}
+```
+
+### 3. **Service ExpedienteService**
+
+#### Funcionalidad específica
+Este servicio se encarga de manejar las validaciones y recuperaciones de datos relacionadas con expedientes, como la validación de fechas y la consulta de estado de expedientes.
+
+#### Métodos HTTP y funcionalidades
+
+- **GET**: Recupera el estado de un expediente.
+- **POST**: Valida las fechas de un expediente.
+- **PUT**: No aplica.
+- **DELETE**: No aplica.
+
+#### Parámetros requeridos y estructura de datos
+
+- **GET**: Requiere parámetros de consulta para obtener el estado del expediente.
+  ```json
+  {
+    "cddeptno": "string",
+    "cdtexp": "string",
+    "cdnexp": "number",
+    "cddigito": "number",
+    "cdaexp": "number"
+  }
+  ```
+- **POST**: Requiere un objeto JSON con las fechas a validar.
+  ```json
+  {
+    "fcdesde": "Date",
+    "fchasta": "Date"
+  }
+  ```
+
+#### Integración con endpoints del backend
+
+- **GET**: `/api/expediente/estado`
+- **POST**: `/api/expediente/validar-fechas`
+
+#### Detalle de funcionalidad
+
+El `ExpedienteService` incluye métodos para validar y consultar información de expedientes. Maneja solicitudes HTTP y gestiona las respuestas para establecer las validaciones en los componentes consumidores.
+
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ExpedienteService {
+
+  private apiUrl = '/api/expediente';
+
+  constructor(private http: HttpClient) { }
+
+  getEstadoExpediente(cddeptno: string, cdtexp: string, cdnexp: number, cddigito: number, cdaexp: number): Observable<EstadoExpediente> {
+    const params = new HttpParams()
+      .set('cddeptno', cddeptno)
+      .set('cdtexp', cdtexp)
+      .set('cdnexp', cdnexp.toString())
+      .set('cddigito', cddigito.toString())
+      .set('cdaexp', cdaexp.toString());
+    return this.http.get<EstadoExpediente>(`${this.apiUrl}/estado`, { params });
+  }
+
+  validarFechas(fcdesde: Date, fchasta: Date): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/validar-fechas`, { fcdesde, fchasta });
+  }
+}
+```
+
+## Manejo de errores y respuestas
+Cada servicio debe implementar manejadores de errores utilizando operadores RxJS como `catchError`. Se deben definir estrategias claras para manejar errores comunes como errores de red, errores de validación y datos no encontrados. 
+
+## Dependencias con otros servicios o componentes
+- **GeaAcureService**: Puede depender de servicios relacionados con la autenticación para validar permisos antes de realizar operaciones CRUD.
+- **NotificacionTelematicaService**: Puede depender de otros servicios de notificaciones para enviar correos o alertas telemáticas.
+- **ExpedienteService**: Depende de los servicios de autenticación y puede requerir datos de servicios relacionados con la gestión de expedientes.
+
+# Integración con Backend
+
+## Endpoints y datos necesarios
+
+### `GET /api/gea_acure`
+- **Respuesta esperada**: JSON array de registros `GEA_ACURE`.
+- **Error handling**: Devuelve un error 404 si no hay registros.
+
+### `POST /api/gea_acure`
+- **Datos esperados**: JSON con los campos del nuevo registro.
+- **Respuesta esperada**: El registro creado.
+- **Error handling**: Devuelve un error 400 si hay problemas de validación.
+
+### `PUT /api/gea_acure/{id}`
+- **Datos esperados**: JSON con los campos actualizados del registro.
+- **Respuesta esperada**: Status 200 OK si la actualización es exitosa.
+- **Error handling**: Devuelve un error 404 si el registro no se encuentra.
+
+### `DELETE /api/gea_acure/{id}`
+- **Respuesta esperada**: Status 200 OK si la eliminación es exitosa.
+- **Error handling**: Devuelve un error 404 si el registro no se encuentra.
+
+### `GET /api/notificacion_telematica`
+- **Respuesta esperada**: JSON array de registros `NOTIFICACION_TELEMATICA`.
+- **Error handling**: Devuelve un error 404 si no hay registros.
+
+### `POST /api/notificacion_telematica`
+- **Datos esperados**: JSON con los campos del nuevo registro.
+- **Respuesta esperada**: El registro creado.
+- **Error handling**: Devuelve un error 400 si hay problemas de validación.
+
+### `PUT /api/notificacion_telematica/{id}`
+- **Datos esperados**: JSON con los campos actualizados del registro.
+- **Respuesta esperada**: Status 200 OK si la actualización es exitosa.
+- **Error handling**: Devuelve un error 404 si el registro no se encuentra.
+
+### `DELETE /api/notificacion_telematica/{id}`
+- **Respuesta esperada**: Status 200 OK si la eliminación es exitosa.
+- **Error handling**: Devuelve un error 404 si el registro no se encuentra.
+
+### `GET /api/expediente/estado`
+- **Parámetros esperados**: `cddeptno`, `cdtexp`, `cdnexp`, `cddigito`, `cdaexp`.
+- **Respuesta esperada**: JSON con el estado del expediente.
+- **Error handling**: Devuelve un error 404 si el expediente no se encuentra.
+
+### `POST /api/expediente/validar-fechas`
+- **Datos esperados**: JSON con `fcdesde`, `fchasta`.
+- **Respuesta esperada**: Status 200 OK si las fechas son válidas.
+- **Error handling**: Devuelve un error 400 si hay problemas de validación.
+
+## Requisitos adicionales para la autenticación
+Todos los servicios deberán incluir mecanismos de autenticación para proteger los endpoints. Se utilizarán tokens JWT para validar las sesiones de los usuarios antes de permitir cualquier operación CRUD. Los tokens se enviarán en los encabezados de las solicitudes HTTP.
+
+Esta lista detallada proporciona todas las especificaciones necesarias para que los desarrolladores puedan implementar los servicios en la capa de frontend de la aplicación utilizando Angular 8. Los ejemplos de código y las descripciones detalladas de cada servicio facilitarán la implementación y asegurará una integración exitosa con el backend.

@@ -1,0 +1,11 @@
+<mv-header [headerTitle]="'Gestión de Notificaciones de Correos'" [headerSubtitle]="'Selección y envío de documentos'">
+</mv-header>
+<div class="document-list">
+  <mv-button (click)="toggleSelectAll()" color="primary" appearance="raised">{{ allSelected ? 'Desmarcar Todos' : 'Marcar Todos' }}</mv-button>
+  <ul>
+    <li *ngFor="let doc of documentos">
+      <mv-checkbox [checked]="selectedDocs.includes(doc)" (change)="toggleSelectDoc(doc)">{{ doc.nombre }}</mv-checkbox>
+    </li>
+  </ul>
+  <mv-button (click)="registerDocuments()" color="accent" appearance="raised">Registrar Documentos</mv-button>
+</div>

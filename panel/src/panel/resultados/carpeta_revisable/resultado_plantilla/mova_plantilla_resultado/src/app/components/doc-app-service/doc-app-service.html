@@ -1,0 +1,522 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación app-service</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='b64toBlob.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> b64toBlob
+      </a></li>
+      <li><a class="nostyle" (click)='getFormattedDate.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> getFormattedDate
+      </a></li>
+      <li><a class="nostyle" (click)='getTechnicalModule.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> getTechnicalModule
+      </a></li>
+      <li><a class="nostyle" (click)='getRandomString.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> getRandomString
+      </a></li>
+      <li><a class="nostyle" (click)='indexOfWithAttr.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> indexOfWithAttr
+      </a></li>
+      <li><a class="nostyle" (click)='showLoading.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showLoading
+      </a></li>
+      <li><a class="nostyle" (click)='titleCase.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> titleCase
+      </a></li>
+      <li><a class="nostyle" (click)='windowOpen.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> windowOpen
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del servicio.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este servicio proporciona funcionalidad para el uso de componentes internos de mova, como mostrar el loading, así como funcionalidad adicional que puede ser útil para el desarrollador,
+        como un conversor de base64 a blob, obtención de una cadena aleatoria...</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- b64toBlob -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #b64toBlob><strong>b64toBlob</strong></mv-card-title>
+      <mv-card-subtitle>Conversor de base64 a blob.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento b64toBlob permite convertir una cadena en base64 a tipo blob.</p>
+
+      <p><em>base64(b64Data, contentType, sliceSize?)</em></p>
+      <p>b64Data</p>
+      <ul>
+        <li>información en base64. </li>
+      </ul>
+      <p>contentType</p>
+      <ul>
+        <li>mimeType del fichero. </li>
+      </ul>
+      <p>sliceSize</p>
+      <ul>
+        <li>Opcional. Tamaño máximo, por defecto 512MB. </li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeB64ToBlobExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeB64ToBlobExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Obtener módulo técnico por plataforma:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="b64toBlobExample()">
+        b64toBlob
+      </mv-button>
+
+      <p><strong>Resultado:</strong></p>
+      {{ b64toBlobValue }}
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getFormattedDate -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #getFormattedDate><strong>getFormattedDate</strong></mv-card-title>
+      <mv-card-subtitle>Obtener fecha con formato.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento getFormattedDate permite obtener la fecha actual o una dada con el formato que especifiquemos.</p>
+      <p>Los formatos aceptados son los que define Angular
+        (<a target="_blank" rel="noopener noreferrer"  href="https://angular.io/api/common/DatePipe#pre-defined-format-options">
+          <strong>https://angular.io/api/common/DatePipe#pre-defined-format-options</strong></a>)
+      </p>
+
+      <p><em>getFormattedDate(format, date) </em></p>
+      <p>format</p>
+      <ul>
+        <li>string del formato que queremos para la fecha. </li>
+      </ul>
+      <p>date</p>
+      <ul>
+        <li>objeto Date de la fecha que queremos formatear. Si no se especifica este atributo devuelve la fecha actual. </li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeGetFormattedDateExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeGetFormattedDateExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Fecha sin formatear:</strong></p>
+      {{ exampleDate }}
+
+      <p><strong>Formato 'd/M/yy, h:mm a':</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getFormattedDateExample('d/M/yy, h:mm a')">
+        getFormattedDateExample 'd/M/yy, h:mm a'
+      </mv-button>
+
+      <p><strong>Formato 'd MMMM, y, h:mm:ss a z':</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getFormattedDateExample('d MMMM, y, h:mm:ss a z')">
+        getFormattedDateExample 'd MMMM, y, h:mm:ss a z'
+      </mv-button>
+
+      <p><strong>Formato 'hh:mm:ss':</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getFormattedDateExample('hh:mm:ss')">
+        getFormattedDateExample 'hh:mm:ss'
+      </mv-button>
+
+      <p><strong>Formato 'dd/MM/yyyy':</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getFormattedDateExample('dd/MM/yyyy')">
+        getFormattedDateExample 'dd/MM/yyyy'
+      </mv-button>
+
+      <p><strong>Fecha formateada:</strong></p>
+      {{ exampleDateFormatted }}
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getTechnicalModule -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #getTechnicalModule><strong>getTechnicalModule</strong></mv-card-title>
+      <mv-card-subtitle>Obtener módulo técnico por plataforma.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento getTechnicalModule permite obtener el módulo técnico configurado para la app según la plataforma en la que se esté ejecutando.</p>
+      <p>Así, si estamos ejecutando la app en modo webapp nos devolverá el módulo técnico configurado para webapp, si estamos en una app Android nos
+      devolverá el módulo técnico configurado para Android, etc.</p>
+
+      <p><em>getTechnicalModule() </em></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeGetTechnicalModuleExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeGetTechnicalModuleExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Módulo técnico configurado para webapp:</strong></p>
+      {{ webAppModule }}
+
+      <p><strong>Módulo técnico configurado para Android:</strong></p>
+      {{ androidModule }}
+
+      <p><strong>Módulo técnico configurado para iOS:</strong></p>
+      {{ iosModule }}
+
+      <p><strong>Obtener módulo técnico por plataforma:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (click)="getTechnicalModuleExample()">
+        getTechnicalModule
+      </mv-button>
+
+      <p><strong>Resultado:</strong></p>
+      {{ getTechnicalModuleValue }}
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getRandomString -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #getRandomString><strong>getRandomString</strong></mv-card-title>
+      <mv-card-subtitle>Obtener un string aleatorio.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento getRandomString permite obtener el un string aleatorio partiendo de unos parámetros configurables.</p>
+
+      <p><em>getRandomString(length, chars, addTimestamp)</em></p>
+      <p>length</p>
+      <ul>
+        <li>longitud del string resultante. </li>
+      </ul>
+      <p>chars</p>
+      <ul>
+        <li>caracteres que componen el string resultante. </li>
+      </ul>
+      <p>addTimestamp</p>
+      <ul>
+        <li>añadir timestamp al string resultante. </li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeGetRandomStringExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeGetRandomStringExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Obtener un string aleatorio:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getRandomStringExample()">
+        getRandomString
+      </mv-button>
+
+      <p><strong>Resultado:</strong></p>
+      {{ getRandomStringValue }}
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- indexOfWithAttr -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #indexOfWithAttr><strong>indexOfWithAttr</strong></mv-card-title>
+      <mv-card-subtitle>Índice de objeto JSON.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento indexOfWithAttr permite obtener el indice de un elemento JSON en un array mediante el valor de uno de sus atributos.</p>
+
+      <p><em>indexOfWithAttr(array, attr, value)</em></p>
+      <p>array</p>
+      <ul>
+        <li> array en el que buscar</li>
+      </ul>
+      <p>attr</p>
+      <ul>
+        <li>atributo por el que buscar.</li>
+      </ul>
+      <p>value</p>
+      <ul>
+        <li>valor por el que buscar. </li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeIndexOfWithAttrExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeIndexOfWithAttrExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Array de ejemplo:</strong></p>
+      {{ arrayExample | json }}
+
+      <p><strong>Buscar por clave 'nombre' y valor 'Clara':</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="indexOfWithAttrExample()">
+        indexOfWithAttrExample
+      </mv-button>
+
+      <p>Índice del elemento:</p>
+      {{ index }}
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showLoading -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showLoading><strong>showLoading</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar/ocultar loading.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento showLoading permite mostrar/ocultar una 'cortina' con un icono de loading.</p>
+      <p>Hay que tener en cuenta que si se llama varias veces al evento para mostrar el loading, habrá que llamar las mismas veces
+        para ocultarlo, ya que las llamadas para mostrar se van acumulando.</p>
+      <p>Por defecto el método quita el loading a los 20 segundos, pero,
+        con el parametro opcional de seconds se le puede indicar más o menos tiempo</p>
+      <p>Se puede establecer un texto que se mostrará debajo del icono de loading con el parametro opcional text. Para establecer un texto por defecto,
+        se configura en el archivo config-default-main-frame.json explicado más abajo
+      </p>
+      <p><em>showLoading(show, seconds, text) </em></p>
+      <p>show</p>
+      <ul>
+        <li>boolean </li>
+      </ul>
+
+      <p>seconds <em>(Opcional)</em></p>
+      <ul>
+        <li>number</li>
+      </ul>
+
+      <p>text <em>(Opcional)</em></p>
+      <ul>
+        <li>string</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowLoadingExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeShowLoadingExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>También se puede configurar si queremos el icono de loading como un spinner (por defecto) o como un icono corporativo con animación:</p>
+
+      <p>showLoadingMode</p>
+      <ul>
+        <li>"mova1"/"mova2": "mova1" si queremos el icono corporativo, "mova2" si queremos el spinner</li>
+      </ul>
+
+      <p>loadingText</p>
+      <ul>
+        <li>"Cargando..."</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="config-default-main-frame.json">
+          <pre><code [highlight]="codeShowLoadingExampleConfigDefaultMainFrameJSON"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>showLoading por defecto</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showLoadingExample()">
+        showLoading
+      </mv-button>
+
+      <p><strong>showLoading timeouts</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showLoadingExampleWithoutTimeout()">
+        showLoading sin timeout
+      </mv-button>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showLoadingExampleWithLargeTimeout()">
+        showLoading 30 segundos
+      </mv-button>
+
+      <p><strong>showLoading text</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showLoadingExampleWithDefaultText()">
+        showLoading texto por defecto
+      </mv-button>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="showLoadingExampleWithText()">
+        showLoading con texto personalizado
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- titleCase -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #titleCase><strong>titleCase</strong></mv-card-title>
+      <mv-card-subtitle>Texto en CamelCase.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento titleCase permite obtener un texto con la primera letra de cada palabra en mayúsculas (CamelCase).</p>
+
+      <p><em>titleCase(str)</em></p>
+      <p>str</p>
+      <ul>
+        <li>texto que queremos tratar. </li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTitleCaseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTitleCaseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Texto de ejemplo:</strong></p>
+      {{ exampleText }}
+
+      <p><strong>llamada a titleCase:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="titleCaseExample()">
+        titleCaseExample
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- windowOpen -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #windowOpen><strong>windowOpen</strong></mv-card-title>
+      <mv-card-subtitle>Abrir url en nueva ventana.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento windowOpen permite abrir una nueva ventana ejecutando el evento nativo window.open de manera segura, securizando la url.</p>
+
+      <p><em>windowOpen(url, name)</em></p>
+      <p>url</p>
+      <ul>
+        <li>url a abrir. </li>
+      </ul>
+      <p>name</p>
+      <ul>
+        <li>propiedad name de window.open. </li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeWindowOpenExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeWindowOpenExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>llamada a windowOpen:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="windowOpenExample()">
+        windowOpen
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

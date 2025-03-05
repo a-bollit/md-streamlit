@@ -1,0 +1,27 @@
+<mv-card class="expediente-card">
+  <mv-header>
+    <mv-title>Detalles del Expediente</mv-title>
+  </mv-header>
+  <mv-content>
+    <form [formGroup]="expedienteForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="cddocum">Código de Documento</label>
+        <input id="cddocum" formControlName="cddocum" type="text" />
+      </div>
+      <div>
+        <label for="dsdocum">Descripción</label>
+        <input id="dsdocum" formControlName="dsdocum" type="text" />
+      </div>
+      <div>
+        <label for="cdunidad">Unidad</label>
+        <input id="cdunidad" formControlName="cdunidad" type="text" />
+      </div>
+      <div>
+        <label for="fcemision">Fecha de Emisión</label>
+        <input id="fcemision" formControlName="fcemision" type="date" />
+      </div>
+      <!-- Agregar otros campos según sea necesario -->
+      <button mv-button type="submit" [disabled]="expedienteForm.invalid">Guardar</button>
+    </form>
+  </mv-content>
+</mv-card>

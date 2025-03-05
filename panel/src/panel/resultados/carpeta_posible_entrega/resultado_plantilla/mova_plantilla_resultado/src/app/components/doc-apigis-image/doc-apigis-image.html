@@ -1,0 +1,195 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de Imágenes WMS (typeLayer: Image, subtypeLayer: Image)</strong>
+    </mv-card-title>
+    <p> A continuación, se muestra la manera en la que podemos contruír una capa de este tipo y los métodos propios
+      disponibles
+      para este tipo de objetos.</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='considerations.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon>Consideraciones generales sobre Imágenes WMS
+        </a></li>
+      <li><a class="nostyle" (click)='metodos.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Consideraciones generales -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #considerations><strong>Consideraciones generales sobre Imágenes WMS</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Podemos generar capas a partir de WMS como una capa de imagen, como se muestra aquí, o como una capa tileada,
+        como se muestra en la documentación de <a routerLink="/doc-apigis-tile" routerLinkActive="active"
+          ariaCurrentWhenActive="page">Imágenes WMS tileadas</a>.</p>
+      <p>Para generar capas de Imágenes WMS no tileadas, debemos establecer typeLayer como 'Image' y
+        subtypeLayer como 'Image'
+        en la contrucción de un objeto de tipo apigis.Layer() como se explica en la <a routerLink="/doc-apigis-tile"
+          routerLinkActive="active" ariaCurrentWhenActive="page">documentación general sobre Servicios</a>.
+      </p>
+
+      <mv-card class="warning-card">
+        <mv-card-header>
+          <mv-card-title>
+            <strong>IMPORTANTE</strong>
+          </mv-card-title>
+        </mv-card-header>
+
+        <mv-card-content>
+          <p>Para poder visualizar una capa, deberá estar contenida dentro de un objeto de tipo <a
+              routerLink="/doc-apigis-map" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Map</a>.
+          </p>
+          <p>Así mismo, un objeto de tipo apigis.Map deberá estar contenido dentro de un objeto de tipo <a
+              routerLink="/doc-apigis-viewer" routerLinkActive="active" ariaCurrentWhenActive="page">apigis.Viewer</a>.
+          </p>
+        </mv-card-content>
+      </mv-card>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeImageLayerExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeImageLayerExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="CSS">
+          <pre><code [highlight]="codeImageLayerExampleCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Resultado:</strong></p>
+      <div id="doc-apigis-image-container">
+      </div>
+      <br>
+      <p>Se puede consultar información más detallada y ejemplos sobre el uso de apigis.Layer en el documento de Arquitectura sobre el API GIS.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Métodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodos><strong>Métodos</strong></mv-card-title>
+      <mv-card-subtitle>Métodos comunes a todas las capas cuyo mapType: 'OL', typeLayer: 'Image' y subtypeLayer:
+        'Image'.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>
+      </p>
+      <p>Se muestran a continuación los métodos comunes a todas los objeto de tipo apigis.Layer
+        cuyo mapType: 'OL', typeLayer: 'Image' y subtypeLayer: 'Image':</p>
+
+      <br>
+      <p><em><strong>linkedLayer</strong></em></p>
+      <p>Recupera el servicio asociado.</p>
+      <br>
+
+      <p><em><strong>setLinkedLayer(layer)</strong></em></p>
+      <p> Permite asociar al servicio actual otro servicio para efectuar diferentes operaciones no soportadas en el
+        mismo. Sus argumentos son: </p>
+      <ul>
+        <li><strong>layer</strong> &#60;<i>apigis.Layer</i> &#62; Servicio.</li>
+      </ul>
+      <br>
+
+      <p><em><strong>setLinkedTo(layer)</strong></em></p>
+      <p>Establece la propia capa como enlace a otra para realizar identificaciones. Sus argumentos son: </p>
+      <ul>
+        <li><strong>layer</strong> &#60;<i>apigis.Layer</i> &#62; Capa a la que enlazar.</li>
+      </ul>
+      <br>
+
+      <p><em><strong>getExtent()</strong></em></p>
+      <p>Recupera la extensión total de la capa.</p>
+      <br>
+
+      <p><em><strong>identify(featureGeoJSON, identifyParams = &#123;&#125;)</strong></em></p>
+      <p>Permite ejecutar una consulta de identificación mediante ECQL. Sus argumentos son: </p>
+      <ul>
+        <li><strong>featureGeoJSON</strong> &#60;<i>string</i> &#62; Feature en geojson sobre la que ejecutar la
+          identificación.</li>
+        <li><strong>identifyParams</strong> &#60;<i>object</i> &#62; Parámetros de identificación. Estos pueden ser:
+        </li>
+        <ul>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+          <li><strong>force</strong> &#60;<i>boolean</i> &#62; Forzar la identificación sin necesidad de disponer de
+            mapa. No se acepta tolerancia puesto que no hay mapa para obtener la resolución. Estos pueden ser:</li>
+        </ul>
+      </ul>
+      <p>
+        En caso de tener asociado algún servidor la identificación se ejecutará contra el mismo. Por ejemplo, en el caso
+        de tener asociado ‘Geoserver’ ejecutará identificaciones haciendo uso del lenguaje ‘ECQL’.
+        Para servicios sin servidor asociado, la identificación se ejecutará mediante el protocolo GetFeatureInfo.
+        En caso de tener asociado otro posible servicio, la identificación se ejecutará contra el mismo.
+      </p>
+      <br>
+
+      <p><em><strong>find(filterObj, findParams = &#123;&#125; )</strong></em></p>
+      <p>Ejecuta una búsqueda sobre el servicio. Sus argumentos son: </p>
+      <ul>
+        <li><strong>filterObj</strong> &#60;<i>apigis.Filter</i> &#62;Filtro. El objeto tendrá propiedades que harán
+          referencia a las diferentes expresiones de la consulta.</li>
+        <li><strong>findParams</strong> &#60;<i>object</i> &#62; Parámetros de búsqueda. Estos pueden ser:</li>
+        <ul>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+        </ul>
+      </ul>
+      <p>Este tipo de acción en imágenes sólo es válido cuando se dispone de un servicio WFS asociado con soporte de
+        algún servidor (hay que tener en cuenta que el WFS asociado no es visible y por lo tanto la búsqueda no se puede
+        ejecutar en cliente). </p>
+
+      <br>
+
+      <p><em><strong>getFeatureInfo(coordinate, identifyParams)</strong></em></p>
+      <p>LPermite ejecutar una consulta de identificación mediante el servicio GetFeatureInfo. Sus argumentos son: </p>
+      <ul>
+        <li><strong>coordinate</strong> &#60;<i>number[]</i> &#62; Coordenada de identificación. Solo permitido para puntos.</li>
+        <li><strong>identifyParams</strong> &#60;<i>object</i> &#62; Parámetros de identificación. Estos pueden ser:
+        </li>
+        <ul>
+          <li><strong>filter</strong> &#60;<i>apigis.Filter</i> &#62; Filtro aplicado sobre la capa.</li>
+        </ul>
+      </ul>
+      <p>
+        Para servicios sin servidor asociado, la identificación se ejecutará mediante el protocolo GetFeatureInfo. En caso de tener asociado otro posible servicio, la identificación se ejecutará contra  el mismo.
+      </p>
+      <br>
+
+      <p><em><strong>setSymbology(sld)</strong></em></p>
+      <p>Permite establecer una simbología a la capa mediante el paso de un SLD. Sus argumentos son: </p>
+      <ul>
+        <li><strong>sld</strong> &#60;<i>string</i> &#62; Puede ser un SLD formado correctamente o la ruta a un fichero SLD en el servidor.</li>
+      </ul>
+      <br>
+
+      <p><em><strong>moveLayer(indexTo)</strong></em></p>
+      <p>Cambia la posición de la capa dentro del mapa. Sus argumentos son: </p>
+      <ul>
+        <li><strong>indexTo</strong> &#60;<i>number</i> &#62; Nuevo índice en el mapa.</li>
+      </ul>
+      <br>
+
+      <p><em><strong>refresh()</strong></em></p>
+      <p>Refresca la capa.</p>
+      <br>
+
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

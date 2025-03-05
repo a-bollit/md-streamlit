@@ -1,0 +1,60 @@
+@import '~@mova/components/_variables.scss';
+
+.config-example-icon{
+  transform: scale(2.5);
+  color: #567383 !important;
+}
+.config-card{
+  mv-card-title{
+    margin: 0 0 3rem 0;
+  }
+  .config-example-title1{
+    max-width: 100%;
+    display: block;
+    margin: 0.85rem 0 0 0;
+    background-color: transparent;
+    color: #000;
+    font-size: 1rem;
+    padding: 0.55rem 0.55rem 0 0.55rem;
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -khtml-user-select: text;
+    -ms-user-select: text;
+  }
+  .config-example-title2{
+    max-width: 100%;
+    display: block;
+    margin: 0 0 1.75rem 0;
+    background-color: transparent;
+    color: #8e8b8b;
+    font-size: .85rem;
+    padding: 0 0.55rem 0.55rem 0.55rem;
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -khtml-user-select: text;
+    -ms-user-select: text;
+  }
+}
+.content{
+  position: relative;
+  min-height: 3rem;
+  padding: 1rem 0.25rem 0.25rem 0.25rem;
+  margin: 0 0 1px 0;
+}
+.entrante{
+  background-color: #bd767766;
+}
+.saliente{
+  background-color: #768dbd66;
+}
+.mensaje{
+  background-color: #b8b3bd66;
+}
+.fecha{
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.85rem;
+}

@@ -1,0 +1,357 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación notificaciones push</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='onNotificationReceived.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> onNotificationReceived
+      </a></li>
+      <li><a class="nostyle" (click)='onRegistrationSuccess.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> onRegistrationSuccess
+      </a></li>
+      <li><a class="nostyle" (click)='onRegistrationError.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> onRegistrationError
+      </a></li>
+      <li><a class="nostyle" (click)='onRegistrationUser.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> onRegistrationUser
+      </a></li>
+      <li><a class="nostyle" (click)='comprobacion.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Comprobación del funcionamiento de las notificaciones
+      </a></li>
+      <li><a class="nostyle" (click)='comprobacionTest.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Comprobación del funcionamiento - app de test
+      </a></li>
+      <li><a class="nostyle" (click)='topics.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Topics
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información general de las notificaciones push.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El servicio de notificaciones push de MOVA proporciona toda la funcionalidad necesaria para la recepción de notificaciones push en un dispositivo móvil.</p>
+
+      <p>Este servicio funciona de forma autónoma, lo único que debe hacer el desarrollador es definir qué debe realizar la app en caso de: </p>
+      <ul>
+        <li><a class="nostyle" (click)='onNotificationReceived.scrollIntoView({behavior: "smooth",block: "start"})'>
+          onNotificationReceived
+        </a>: recibir una notificación</li>
+        <li><a class="nostyle" (click)='onRegistrationSuccess.scrollIntoView({behavior: "smooth",block: "start"})'>
+          onRegistrationSuccess
+        </a>: registro correcto</li>
+        <li><a class="nostyle" (click)='onRegistrationError.scrollIntoView({behavior: "smooth",block: "start"})'>
+          onRegistrationError
+        </a>: registro erróneo</li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración general de las notificaciones push.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Para configurar correctamente el servicio de notificaciones en nuestra app, tendremos que trasladar a las variables de entorno
+        los valores de las claves que proporciona Arquitectura en la ficha de inicio de la app.</p>
+
+      <mv-tab-group>
+        <mv-tab label="environment.ts">
+          <pre><code [highlight]="codeEnvironmentTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.val.ts">
+          <pre><code [highlight]="codeEnvironmentValTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.prod.ts">
+          <pre><code [highlight]="codeEnvironmentProdTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- onNotificationReceived -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #onNotificationReceived><strong>onNotificationReceived</strong></mv-card-title>
+      <mv-card-subtitle>Evento de notificación.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento onNotificationReceived (app.component.ts) permite definir el comportamiento de la app en caso de recibir una notificación.</p>
+      <p>El evento por defecto viene con código ya implementado que se debería respetar, aunque hay una sección para que el desarrollador implemente
+        el comportamiento adicional que desee que haga la app si lo desea.</p>
+
+      <mv-tab-group>
+        <mv-tab label="app.component.ts">
+          <pre><code [highlight]="codeOnNotificationReceivedExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- onRegistrationSuccess -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #onRegistrationSuccess><strong>onRegistrationSuccess</strong></mv-card-title>
+      <mv-card-subtitle>Evento de registro correcto.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento onRegistrationSuccess (app.component.ts) permite definir el comportamiento de la app en caso de registro correcto en el servicio de notificaciones.</p>
+      <p>El evento por defecto viene vacío para que el desarrollador implemente el comportamiento adicional que desee que haga la app si lo desea.</p>
+
+      <mv-tab-group>
+        <mv-tab label="app.component.ts">
+          <pre><code [highlight]="codeOnRegistrationSuccessExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- onRegistrationError -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #onRegistrationError><strong>onRegistrationError</strong></mv-card-title>
+      <mv-card-subtitle>Evento de registro erróneo.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento onRegistrationError (app.component.ts) permite definir el comportamiento de la app en caso de registro erróneo en el servicio de notificaciones.</p>
+      <p>El evento por defecto viene vacío para que el desarrollador implemente el comportamiento adicional que desee que haga la app si lo desea.</p>
+
+      <mv-tab-group>
+        <mv-tab label="app.component.ts">
+          <pre><code [highlight]="codeOnRegistrationErrorExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- onRegistrationUser -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #onRegistrationUser><strong>onRegistrationUser</strong></mv-card-title>
+      <mv-card-subtitle>Evento de registro de usuario.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El evento onRegistrationUser (app.component.ts) permite definir qué identificador de usuario queremos usar para asociar al idDispostivo de nuestro
+        móvil al hacer login.</p>
+      <p>Si queremos el comportamiento por defecto, es decir, que en login mediante Autologin se use el campo cdUsuario (típicamente el NIF) y con login
+        mediante usuario y contraseña se use el campo relativo al usuario debemos dejar el evento onRegistrationUser por defecto.</p>
+      <p>Si queremos usar un identificador de usuario distinto (por ejemplo hacer una petición a un REST del negocio que devuelva el identificador buscado)
+         debemos realizar esa llamada en el evento onRegistrationUser.</p>
+
+      <mv-tab-group>
+        <mv-tab label="app.component.ts">
+          <pre><code [highlight]="codeOnRegistrationUserExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- comprobacion -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #comprobacion><strong>Comprobación del funcionamiento</strong></mv-card-title>
+      <mv-card-subtitle>Comprobación del funcionamiento de las notificaciones push.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La solución de problemas con las notificaciones pasa por conseguir que funcionen al menos en Android, ya que en
+        iOS existen otros factores que pueden provocar un mal funcionamiento, se puede decir que si las notificaciones
+        con MOVA funcionan en iOS van a funcionar con Android pero si funcionan con Android no tienen por qué
+        funcionar en iOS. </p>
+
+      <p>Por este motivo, se considera primordial empezar por solucionar el problema para Android y
+      después para iOS en caso de que no funcionen en ambas plataformas.</p>
+
+      <p> Si dispones de una versión anterior de tu app que si funciona y la nueva versión no, debes comparar las
+      diferencias entre una y otra versión</p>
+
+      <p>También dispones de la plantilla de MOVA para realizar pruebas de notificaciones y poder comprobar las
+      diferencias entre tu APP y la plantilla de MOVA.
+      En caso de un funcionamiento incorrecto de las notificaciones PUSH sigue los pasos que se detallan a continuación:</p>
+
+      <p><strong>1. He generado la app para Android y no recibo notificaciones PUSH </strong></p>
+
+      <p>Lo primero es comprobar si tenemos el archivo google-services.json en el directorio raíz de nuestro proyecto.
+      Este archivo se proporciona desde Arquitectura junto con la ficha de inicio de la app rellena.</p>
+
+      <p>Si disponemos del archivo google-services.json, debemos comprobar que la variable "package_name" coincide con el bundleId de
+      nuestra app (variable id del archivo config.xml)</p>
+
+      <p><strong>2. He realizado el punto anterior y sigo sin recibir notificaciones PUSH </strong></p>
+
+      <p>Puede suceder que no estemos llegando a registrar nuestra app en Google y no estemos consiguiendo el token de
+      notificaciones PUSH de Google.</p>
+
+      <p>Podemos conseguir el token de notificaciones PUSH mediante la variable MovaCloudMessagingToken guardada
+      en la memoria local, la instrucción para conseguirla desde la consola es la siguiente:</p>
+
+      <mv-tab-group>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeGetTokenExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p> El resultado debe ser un número alfanumérico muy largo.
+      Si no disponemos de este número seguramente es porque no estamos registrando correctamente nuestro
+      dispositivo en Google. Esto se realiza a través de los servicios REST de notificaciones Push que se configuran con la
+      información aportada en la Ficha de solicitud de una nueva APP. Estas variables deben coincidir con las variables
+      de la sección src/environments.</p>
+
+      <p><strong>3. He realizado el punto anterior y sigo sin recibir notificaciones PUSH </strong></p>
+
+      <p>Llegados a este punto, si hemos realizado correctamente los puntos anteriores puede que exista un problema en
+      el alta de la app, en este caso hay que ponerse en contacto con el departamento de Arquitectura mediante un
+      mantis donde se deberán indicar lo que sucede, el código de la app mediante una entrega y el código completo
+      de los ejemplos realizados en los puntos anteriores para poder reproducir el error.</p>
+
+      <p><strong>4. Las notificaciones PUSH funcionan en Android pero no en iOS </strong></p>
+
+      <p>Es necesario seguir correctamente los pasos especificados en el Manual de despliegue, en el punto que explica
+      cómo debe generarse el IPA.</p>
+
+      <p><strong>5. He realizado el punto anterior y sigo sin recibir notificaciones PUSH solo en iOS </strong></p>
+
+      <p>Debes haber completado el campo Correo de la cuenta de desarrollador la Ficha de solicitud de una nueva APP
+      con una cuenta de desarrollador válida y esta es la cuenta que debe usarse para generar el IPA ya que es la cuenta
+      que vamos a vincular con la cuenta de Arquitectura para que pueda usar los certificados de notificaciones PUSH
+      generados para la APP.</p>
+
+      <p> Si usas otra cuenta de desarrollador tu app no será capaz de usar las notificaciones PUSH, aunque hayas creado
+      tus propios certificados como desarrollador ya que no son los que están dados de alta en el servicio REST de
+      notificaciones que usa MOVA.</p>
+
+      <p><strong>6. He realizado el punto anterior y sigo sin recibir notificaciones PUSH solo en iOS </strong></p>
+
+      <p>Debes comprobar que el nombre del paquete usado (Bundle ID) de tu proyecto nativo iOS coincide con el nombre
+      del paquete definido en el config.xml en el nodo id y que a su vez coincide con el nombre del paquete de la app
+      que se encuentra en la Ficha de solicitud de una nueva APP.</p>
+
+      <p>Si no coinciden hay que utilizar el que hay en la Ficha de solicitud de una nueva APP ya que este es el nombre
+      creado y facilitado inicialmente por el departamento de Arquitectura.</p>
+
+      <p><strong>7. He realizado el punto anterior y sigo sin recibir notificaciones PUSH solo en iOS </strong></p>
+
+      <p> Si estás probando en producción recuerda que debes generar un IPA con una cuenta de desarrollador válida, esta
+      cuenta de desarrollador debe ser la que ha sido facilitada en la Ficha de solicitud de una nueva APP ya que es la
+      que Arquitectura ha incluido en su grupo de desarrollo y es la que tendrá acceso los certificados correctos de
+      notificaciones Push.</p>
+
+      <p> Si estás probando en desarrollo recuerda que no hay que generar el IPA, simplemente haz run con XCode contra
+      un dispositivo de Apple, siempre usando una cuenta de desarrollador válida, esta cuenta de desarrollador debe
+      ser la que ha sido facilitada en la Ficha de solicitud de una nueva APP ya que es la que Arquitectura ha incluido en
+      su grupo de desarrollo y es la que tendrá acceso los certificados correctos de notificaciones Push.</p>
+
+      <p> Es importante saber que Apple ofrece dos certificados APNS uno para desarrollo y otro para producción. XCode
+      considera una app de desarrollo la que se genera directamente en un dispositivo de Apple mediante run y una
+      app de producción el IPA generado mediante archive.</p>
+
+      <p><strong>8. He realizado el punto anterior y sigo sin recibir notificaciones PUSH solo en iOS </strong></p>
+
+      <p>Debes ponerte en contacto con el departamento de Arquitectura mediante mantis explicando lo que sucede y
+      adjuntando todas los datos, pruebas, comprobaciones y los resultados de las mimas realizadas en los pasos
+      anteriores, a demás del correo del desarrollador</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- comprobacionTest -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #comprobacionTest><strong>Comprobación del funcionamiento</strong></mv-card-title>
+      <mv-card-subtitle>Comprobación del funcionamiento con app de test.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Hay disponible una app de test para comprobar el funcionamiento de las notificaciones push:</p>
+      <strong><a target="_blank" rel="noopener noreferrer" href="https://gestiona3.madrid.org/portalapps/apps/mova_test_plugins">https://gestiona3.madrid.org/portalapps/apps/mova_test_plugins</a></strong>
+
+      <p>Hay disponible una colección de Postman para hacer pruebas con esta app de test:</p>
+      <strong><a target="_blank" rel="noopener noreferrer" href="https://gestiona3.madrid.org/portalapps/apps/mova_test_plugins">https://gestiona3.madrid.org/portalapps/apps/mova_test_plugins</a></strong>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- topics -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #topics><strong>Topics</strong></mv-card-title>
+      <mv-card-subtitle>Información sobre topics.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Un topic es un 'tema' al que una app se puede suscribir y recibir notificaciones. Así, esta funcionalidad permite enviar notificaciones a un grupo de dispositivos
+        que se hayan suscrito al topic en cuestión.</p>
+
+      <p>Cada app de mova tiene por defecto un topic que se crea siempre: XXXX_MOV_NOMBREAPP_TOPIC_GENERAL.
+        Aparte, se podrán crear topics adicionales según la funcionalidad de la app (se deben especificar en la ficha de inicio de la app)</p>
+
+      <p>La nomenclatura de los topics sigue el siguiente formato:</p>
+      <p><strong><em>XXXX</em>_MOV_<em>NOMBREAPP</em>_<em>ENTORNO</em>_<em>NOMBRETOPIC</em></strong></p>
+
+      <p>Por ejemplo, para una app MOVA_MOV_EJEMPLOMOVA y un topic AVISOS_GENERALES tendríamos los siguientes topics:</p>
+      <ul>
+        <li>MOVA_MOV_EJEMPLOMOVA_DES_AVISOS_GENERALES</li>
+        <li>MOVA_MOV_EJEMPLOMOVA_VAL_AVISOS_GENERALES</li>
+        <li>MOVA_MOV_EJEMPLOMOVA_PRO_AVISOS_GENERALES</li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

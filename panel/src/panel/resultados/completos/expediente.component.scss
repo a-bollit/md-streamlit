@@ -1,0 +1,29 @@
+@import '~@mova/components/_variables.scss';
+
+.expediente-card {
+  @include card-format('default');
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    div {
+      margin-bottom: 10px;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      align-self: flex-start;
+      @include button-color(#007bff);
+    }
+  }
+}

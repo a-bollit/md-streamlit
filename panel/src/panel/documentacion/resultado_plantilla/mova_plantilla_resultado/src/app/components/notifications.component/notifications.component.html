@@ -1,0 +1,34 @@
+<mv-header>
+  <mv-title>Gestión de Notificaciones</mv-title>
+</mv-header>
+
+<mv-tabs>
+  <mv-tab *ngFor="let tab of tabs" (click)="onTabChange(tab.id)" [active]="selectedTab === tab.id">
+    {{ tab.label }}
+  </mv-tab>
+</mv-tabs>
+
+<mv-content>
+  <mv-table-responsive>
+    <table>
+      <thead>
+        <tr>
+          <th>Notificación</th>
+          <th>Fecha</th>
+          <th>Leído</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let notification of filteredNotifications">
+          <td>{{ notification.contenido }}</td>
+          <td>{{ notification.fechaEmision | date }}</td>
+          <td><mv-checkbox-x [(ngModel)]="notification.leido" (change)="toggleReadStatus(notification)"></mv-checkbox-x></td>
+        </tr>
+      </tbody>
+    </table>
+  </mv-table-responsive>
+</mv-content>
+
+<mv-footer class="text-center">
+  <mv-button (click)="loadNotifications()">Actualizar Notificaciones</mv-button>
+</mv-footer>

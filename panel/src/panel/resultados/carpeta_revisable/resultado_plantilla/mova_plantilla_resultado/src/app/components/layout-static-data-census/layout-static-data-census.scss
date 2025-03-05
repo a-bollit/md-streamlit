@@ -1,0 +1,59 @@
+.card1{
+  .mat-card-title{
+    color: #e06061;
+    margin: 0 0 1rem 0;
+  }
+  .labelChip{
+    font-size: 1rem;
+    border-bottom: solid 2px #E6E6E6;
+    margin: 10px 0 6px 0;
+  }
+  .dataChip{
+    font-weight: bold;
+  }
+}
+.card2{
+  .mat-card-title{
+    color: #607ce0;
+    margin: 0 0 1rem 0;
+  }
+  .labelChip{
+    font-size: 1.15rem;
+    margin: 10px 0 6px 0;
+  }
+  .dataChip{
+    color: #b1b1b1;
+  }
+}
+.card3{
+  h1{
+    color: #567383;
+  }
+  .mat-card-title{
+    margin: 0 0 1rem 0;
+  }
+  .labelChip{
+    font-size: 1.15rem;
+    margin: 10px 0 6px 0;
+  }
+  .dataChip{
+    color: #b1b1b1;
+  }
+  .text-center{
+    text-align: center;
+    ::ng-deep button {
+      margin: 1rem 0 0 0;
+      max-width: calc(100% - 38px);
+      background-color: red;
+    }
+  }
+}
+.mv-h1{
+  border-left: solid 0.75rem;
+  margin: 1rem 0.55rem 1.25rem 0.55rem;
+  padding: 0.55rem 0.55rem 0.55rem 0.55rem;
+}
+
+.marginTop{
+  margin: 2rem 0 0 0;
+}

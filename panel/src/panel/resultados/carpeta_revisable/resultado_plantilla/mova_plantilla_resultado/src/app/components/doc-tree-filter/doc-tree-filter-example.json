@@ -1,0 +1,195 @@
+[{
+		"title": "Pediatría",
+		"subtitle": "",
+		"children": [{
+				"title": "ORL",
+				"subtitle": "",
+				"children": [{
+						"title": "Abceso periamigdalino retrofaríngeo o parafaríngeo",
+						"subtitle": "Streptococcus pyogenes <br>Anaerobios (Bacteroides, Fusobacterium, Peptostreptococcus, Prevotella) <br>Staphylococcus aureus",
+						"children": [{
+								"title": "Tratamiento 1ª elección",
+								"subtitle": "Derivación hospitalaria para ingreso y tratamiento intravenoso. <br>Drenaje quirúrgico. <br>Amoxicilina-clavulánico IV: 100 mg/kg/día en 3-4 dosis."
+							},
+							{
+								"title": "Tratamiento alternativo",
+								"subtitle": "Clindamicina IV: 20-40 mg/kg/día, en 4 dosis + cefotaxima 150 mg/kg/día cada 8 horas. <br>En alérgicos a penicilina tipos I y II: clindamicina IV."
+							},
+							{
+								"title": "Observaciones",
+								"subtitle": "Tratamiento parenteral hasta mejoría clínica y afebril.<br><br>Completar tratamiento oral con Amoxicilina-clavulánico: 45 mg/kg/día [dosis máxima 875 mg] cada 8-12 horas:<br>Absceso periamigdalino: 10 días<br>Absceso retrofaríngeo: 10-14 días"
+							}
+						]
+					},
+					{
+						"title": "Adenitis cervical aguda unilateral",
+						"subtitle": "Unilateral: <br>Estreptococo grupo A, C, G <br>S. aureus <br>Micobacterias (TBC y atípicas) <br>VEB, <br>Toxoplasma gondii <br>br>Anaerobios en niños mayores y adolescentes asociados a proceso dental.",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "Adenitis cervical aguda bilateral",
+						"subtitle": "Bilateral: <br>rinovirus, adenovirus, VEB, <br>CMV, coxackie, parainfluenza, <br>Mycoplasma pneumoniae.",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					}
+				]
+			},
+			{
+				"title": "Tracto respiratorio",
+				"subtitle": "",
+				"children": [{
+						"title": "Bronquitis",
+						"subtitle": "Virus respiratorios, virus del sarampión, m. pneumoniae, c. pneumoniae, b. pertussis, m. tuberculosis",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "Bronquiolitis",
+						"subtitle": "VRS, rinovirus, adenovirus, virus parainfluenza, bocavirus, metapneumovirus,influenza.",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "Epiglotitis",
+						"subtitle": "H. influenzae (generalmente tipo b, aunque puede ser polimicrobiana).",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					}
+				]
+			},
+			{
+				"title": "Oftalmológicas",
+				"subtitle": "",
+				"children": [{
+						"title": "Conjuntivitis",
+						"subtitle": "Edad < 4 semanas: N. gonorrhoeae, chlamydiaspp, herpes virus",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "Conjuntivitis",
+						"subtitle": "Edad > 4 semanas. Virus: Adenovirus Edad > 4 semanas. Bacterias: Staphylococcus spp, H. influenzae, S. pneumoniae, Moraxella spp, Pseudomonas aeruginosa(uso de lentillas).",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "Orzuelo externo con drenaje purulento",
+						"subtitle": "Tratamiento empírico",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					}
+				]
+			}
+		]
+	},
+	{
+		"title": "Adulto",
+		"subtitle": "",
+		"children": [{
+				"title": "ORL",
+				"subtitle": "",
+				"children": [{
+						"title": "Faringoamigdalitis aguda",
+						"subtitle": "Virus (80%) Bacteriana: S. pyogenes 5-15% (SBHGA), M.pneumoniae, C.pneumoniae",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "Otitis externa circunscrita",
+						"subtitle": "S. aureus",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "Otitis externa aguda difusa",
+						"subtitle": "P. aeruginosa, s. aureus",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					}
+				]
+			},
+			{
+				"title": "Tracto respiratorio inferior",
+				"subtitle": "",
+				"children": [{
+						"title": "Bronquitis aguda",
+						"subtitle": "Virus (95%): Rhinovirus, Enterovirus, Influenza A, B, Parainfluenza, Coronavirus 1,3, Adenovirus, VRS, Metapneumovirus humano. No vírica (<5%): M. pneumoniae, Ch. pneumomiae, Neumococo o H influenzae (edad avanzada, comorbilidad), B. pertussis",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "Reagudización infecciosa de la EPOC",
+						"subtitle": "Causa no infecciosa (25%) Causa infecciosa (25-75%): a) Bacterianas (50%): • Más frecuentes: H. influenzae, S. pneumoniae, M. catarrhalis, Enterobacterias gramnegativas: E. coli, K. pneumonia, P. aeruginosa (EPOC grave o ragudizaciones frecuentes) • Menos frecuentes:, C. pneumoniae, M. pneumoniae, S. aureus (EPOC grave) b) Víricas (25-30%): Rhinovirus, Parainfluenza, Influenza, Coronavirus, Adenovirus, VRS C) Mixtas (10-20%)",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "Neumonía adquirida en la comunidad: Adulto sano, < 65 años, sin riesgo aumentado de infección por H. influenzae",
+						"subtitle": "Más frecuentes: S. pneumoniae, M. pneumoniae, C. pneumonia, H. influenzae, Menos frecuentes: Enterobacterias gramnegativas (E. coli, K. pneumoniae, P. aeruginosa), L. pneumophila, S. aureus, virus respiratorios",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					}
+				]
+			},
+			{
+				"title": "Tracto urinario",
+				"subtitle": "",
+				"children": [{
+						"title": "Bacteriuria asintomática",
+						"subtitle": "1,63 mill. habitantes",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "Cistitis aguda no complicada en mujer",
+						"subtitle": "Escherichia coli (75%-95% de los casos) Otros gérmenes: Klebsiella pneumoniae, Enterococcus faecalis, Proteus mirabilis, Staphylococcus saprophyticus, Streptococcus agalactiae",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					},
+					{
+						"title": "ITU inferior complicada (1)",
+						"subtitle": "E. coli. K.pneumoniae Enterococcus sp P.mirabilis S agalactiae Asociados a litiasis: Proteus, Corynebacterium urealyticum, Providencia stuartii",
+						"link": {
+							"type": "url",
+							"uri": "https://www.google.es"
+						}
+					}
+				]
+			}
+		]
+	}
+
+]

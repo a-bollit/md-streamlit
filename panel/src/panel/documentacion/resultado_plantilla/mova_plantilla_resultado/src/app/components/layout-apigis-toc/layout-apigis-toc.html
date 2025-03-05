@@ -1,0 +1,25 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 toc-mobile">
+      <div class="toc-container">
+        <span class="title">
+          <strong>Capas base</strong>
+        </span>
+        <mv-radio [(ngModel)]="baseLayerModel" [options]="baseLayersOptions" alignHorizontal=false size="small"
+          color="corporative" (changeEvent)="changeBaseMap()">
+        </mv-radio>
+        <span class="title">
+          <strong>Capas</strong>
+        </span>
+        <div *ngFor="let aLayer of layers" class="checkbox">
+          <mv-checkbox-x size="small" color="corporative" (changeEvent)="changeLayer($event, aLayer)">
+            {{ aLayer.options.title }}
+          </mv-checkbox-x>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-9 map-mobile">
+      <div id="container-apigis-toc"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación novedades de la versión</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información de novedades de la versión.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>MOVA comprueba en cada arranque las novedades de la versión de la aplicación que está ejecutando.</p>
+      <p>Cuando se muestren, se guardará en memoria local una marca para no volver a mostrarlas más veces.</p>
+      <p>Para cambiar el texto de las novedades de una app entrar con las credenciales de nuestra app en
+        <a
+          rel="noopener noreferrer"
+          href="https://gestiona3.madrid.org/portalapps/webapps/mova_backend"
+          target="_blank"
+        >
+          <strong>https://gestiona3.madrid.org/portalapps/webapps/mova_backend</strong>
+        </a>
+      </p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración de novedades de la versión.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Se puede configurar mova para mostrar las novedades:</p>
+      <ul>
+        <li><strong>showVersionNewsWeb</strong>: mostrar las novedades de la versión en modo webapp.</li>
+        <li><strong>showVersionNewsMobile</strong>: mostrar las novedades de la versión en modo móvil.</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="environment.ts">
+          <pre><code [highlight]="codeEnvironmentTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.val.ts">
+          <pre><code [highlight]="codeEnvironmentValTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.prod.ts">
+          <pre><code [highlight]="codeEnvironmentProdTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

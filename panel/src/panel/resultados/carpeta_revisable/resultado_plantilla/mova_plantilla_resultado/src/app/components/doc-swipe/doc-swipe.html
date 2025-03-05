@@ -1,0 +1,170 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Ejemplos de uso de Swipe con Hammer.js</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='swipegeneral.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Swipe
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='swipedirecciones.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Swipe por direcciones
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información sobre swipe.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p> Hammerjs es una librera para la detección de gestos. <a target="_blank" href="https://hammerjs.github.io/getting-started/">Documentación</a>.</p>
+      <p>Tiene varios gestos distintos, entre ellos:</p>
+      <ul>
+        <li>Pan</li>
+        <li>Pinch</li>
+        <li>Press</li>
+        <li>Rotate</li>
+        <li>Swipe</li>
+        <li>Tap</li>
+      </ul>
+      <p>En esta documentación solo expondremos ejemplos del swipe.</p>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración para establecer swipe en la aplicación</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Para configurar esta funcionalidad debemos definir los siguientes elementos:</p>
+      <ul>
+        <li>Crear un archivo ts que implementa la configuración hammer.config.js</li>
+        <li>Importar el archivo hammer.js en app.module.ts</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="hammer.config.ts">
+          <pre><code [highlight]="hammerConfigFile"></code></pre>
+        </mv-tab>
+        <mv-tab label="app.module.ts">
+          <pre><code [highlight]="appModuleProviders"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Swipe general -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #swipegeneral><strong>Swipe</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplos de uso de swipe por dirección</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Se muestran un ejemplo completo de swipe <a target="_blank" href="https://hammerjs.github.io/recognizer-swipe/">Documentación de swipe</a> </p>
+      <p>Para comprobar el funcionamiento, hacer el swipe dentro del area azul</p>
+      <div class="ejemplosSwipe">
+        <div
+          class="ejemploSwipe"
+          (swipe)="onSwipe($event)"
+        >
+          <div class="swipeTexto">{{swipeAction}}</div>
+        </div>
+      </div>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="swipeHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="swipe"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Swipe por direcciones -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #swipedirecciones><strong>Swipe por dirección</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplos de uso de swipe por dirección</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Se muestran cuatro ejemplos configurables por separado para cada dirección</p>
+      <p>Para comprobar el funcionamiento, hacer el swipe que se indica dentro del area azul</p>
+      <div class="ejemplosSwipe">
+        <div
+          class="ejemploSwipe"
+          (swipeup)="onSwipeUp($event)"
+        >
+          <div class="swipeTexto">Swipe Up</div>
+        </div>
+        <div
+          class="ejemploSwipe"
+          (swipedown)="onSwipeDown($event)"
+        >
+          <div class="swipeTexto">Swipe Down</div>
+        </div>
+        <div
+          class="ejemploSwipe"
+          (swiperight)="onSwipeRight($event)"
+        >
+          <div class="swipeTexto">Swipe Right</div>
+        </div>
+        <div
+          class="ejemploSwipe"
+          (swipeleft)="onSwipeLeft($event)"
+        >
+          <div class="swipeTexto">Swipe Left</div>
+        </div>
+      </div>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="swipeDirectionsHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="swipeDirections"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+</section>
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

@@ -1,0 +1,164 @@
+### Componentes de Angular 8
+
+#### 1. **Componente FormularioGeneral**
+- **Funcionalidad específica**: Este componente se encargará de presentar y manejar el formulario principal que incluye campos de selección de unidad administrativa, fechas de consulta, y expediente.
+- **Datos de entrada (Input)**: Ninguno.
+- **Datos de salida (Output)**: Eventos para notificar la selección de unidad, fechas y expedientes.
+- **Dependencias**: Servicios de validación y consulta de unidades (`unidadesService`).
+- **Descripción**:
+  - **Campos y Formularios**:
+    - `Unidad Administrativa` (input con botón de selección - dropdown)
+    - `Fecha Desde` (datepicker)
+    - `Fecha Hasta` (datepicker)
+    - `Expediente` (input dividido en departamentos, tipo de expediente, número, dígito y año)
+    - **Botones**:
+      - `Aceptar`: Valida los datos ingresados, realiza consultas basadas en los parámetros y navega a la vista de pestañas.
+      - `Cancelar`: Restablece el formulario y cierra la vista actual.
+  - **Validaciones**:
+    - Verificar que las fechas de consulta no sean futuras.
+    - Asegurarse de que la "Fecha Hasta" sea posterior o igual a la "Fecha Desde".
+    - Validar que el expediente no esté finalizado o anulado.
+  - **Guía detallada**:
+    - Implementar el servicio `unidadesService` para obtener la lista de unidades y validar los datos del expediente.
+    
+#### 2. **Componente PestañasNotificaciones**
+- **Funcionalidad específica**: Este componente maneja las pestañas de notificaciones de correos y notificaciones telemáticas.
+- **Datos de entrada (Input)**: Selección de unidad, fechas y parámetros de expediente desde `FormularioGeneral`.
+- **Datos de salida (Output)**: Ninguno.
+- **Dependencias**: Servicios de notificaciones (`notificacionesService`).
+- **Descripción**:
+  - **Pestañas "Notificaciones de Correos" y "Notificaciones Telemáticas"**:
+    - **Campos**:
+      - `Documento` (input)
+      - `Descripción` (input)
+      - `Expediente` (input)
+      - `Interesado` (input)
+      - `PDF` (checkbox, solo lectura)
+      - `Firma` (checkbox, solo lectura)
+      - `Registro` (checkbox editable)
+    - **Botones**:
+      - `Seleccionar Todos`: Marca todos los registros.
+      - `Desmarcar Todos`: Desmarca todos los registros.
+      - `Registrar/Enviar`: Realiza el registro o envío de las notificaciones seleccionadas.
+    - **Validaciones**:
+      - Valida si los documentos seleccionados están guardados en la base de datos, firmados y registrados.
+  - **Guía detallada**:
+    - Implementar el servicio `notificacionesService` para manejar las consultas, registros y envíos de notificaciones.
+    - Utilizar el enrutamiento para cambiar entre las vistas de correos y telemáticas.
+
+#### 3. **Componente NotificacionesCorreos**
+- **Funcionalidad específica**: Presenta la tabla de notificaciones de correos y maneja la selección, registro y envío de las mismas.
+- **Datos de entrada (Input)**: Parámetros de consulta desde `PestañasNotificaciones`.
+- **Datos de salida (Output)**: Ninguno.
+- **Dependencias**: Servicios de correo (`correoService`).
+- **Descripción**:
+  - **Tabla de Notificaciones**:
+    - Columnas: `Documento`, `Descripción`, `Expediente`, `Interesado`, `PDF`, `Firma`, `Registro`.
+    - **Botones**:
+      - `Marcar Todos`: Marca todos los registros.
+      - `Desmarcar Todos`: Desmarca todos los registros.
+      - `Registrar`: Registra los documentos marcados.
+      - `Enviar`: Envía las notificaciones registradas.
+    - **Validaciones**:
+      - Verifica que los documentos estén registrados y que el interesado esté completo.
+  - **Guía detallada**:
+    - Implementar `correoService` para obtener las notificaciones y gestionar los registros y envíos.
+
+#### 4. **Componente NotificacionesTelematicas**
+- **Funcionalidad específica**: Muestra y gestiona las notificaciones telemáticas.
+- **Datos de entrada (Input)**: Parámetros de consulta desde `PestañasNotificaciones`.
+- **Datos de salida (Output)**: Ninguno.
+- **Dependencias**: Servicios telemáticos (`telematicoService`).
+- **Descripción**:
+  - **Tabla de Notificaciones**:
+    - Columnas: `Documento`, `Descripción`, `Expediente`, `Interesado`, `PDF`, `Firma`, `Registro`.
+    - **Botones**:
+      - `Marcar Todos`: Marca todos los registros.
+      - `Desmarcar Todos`: Desmarca todos los registros.
+      - `Enviar Notificaciones`: Envía las notificaciones.
+    - **Validaciones**:
+      - Verifica que los documentos estén guardados en la base de datos, firmados, registrados, y que contengan los anexos necesarios.
+  - **Guía detallada**:
+    - Implementar `telematicoService` para gestionar la obtención, el envío y la validación de notificaciones telemáticas.
+
+#### 5. **Componente DevolverAcuses**
+- **Funcionalidad específica**: Proporciona la interfaz para gestionar la devolución de acuses de recibo.
+- **Datos de entrada (Input)**: Datos de notificación seleccionada.
+- **Datos de salida (Output)**: Ninguno.
+- **Dependencias**: Servicios de devolución (`devolucionService`).
+- **Descripción**:
+  - **Campos**:
+    - `Unidad Administrativa` (input con botón de selección)
+    - `Consejería u Organismo` (input con botón de selección)
+    - `Dirección` (input en varias líneas)
+    - `Código Postal` (input)
+    - `Municipio` (input con botón de selección)
+    - **Botones**:
+      - `Aceptar`: Valida los datos y procesa la devolución.
+      - `Cancelar`: Cancela la operación y cierra la vista.
+    - **Validaciones**:
+      - Verificar que los campos obligatorios estén llenos.
+      - Validar el código postal y la dirección.
+  - **Guía detallada**:
+    - Implementar `devolucionService` para manejar la validación y el procesamiento de devoluciones.
+
+#### 6. **Componente Ayuda**
+- **Funcionalidad específica**: Muestra información de ayuda sobre los criterios de búsqueda de fechas.
+- **Datos de entrada (Input)**: Ninguno.
+- **Datos de salida (Output)**: Ninguno.
+- **Dependencias**: Ninguna.
+- **Descripción**:
+  - **Contenido**:
+    - Explicar cómo se deben introducir las fechas en el sistema para notificaciones.
+  - **Guía detallada**:
+    - Simplemente mostrar el contenido de ayuda al usuario.
+
+### Vistas y Formularios
+
+#### Vista Formulario Principal
+- **Propósito**: Permitir al usuario seleccionar los parámetros para consultar notificaciones.
+- **Campos**: Unidad Administrativa (dropdown), Fecha Desde (datepicker), Fecha Hasta (datepicker), Expediente (input).
+- **Acciones**: Aceptar, Cancelar.
+- **Guía**: Implementar validaciones y navegación hacia la vista de pestañas.
+
+#### Vista de Pestañas
+- **Propósito**: Presentar las pestañas de "Notificaciones de Correos" y "Notificaciones Telemáticas".
+- **Campos**: Tabla con columnas: Documento, Descripción, Expediente, Interesado, PDF, Firma, Registro.
+- **Acciones**: Marcar Todos, Desmarcar Todos, Registrar, Enviar.
+- **Guía**: Utilizar servicios para gestionar las acciones de la tabla.
+
+#### Vista de Devolución de Acuses
+- **Propósito**: Permitir la devolución de acuses de recibo.
+- **Campos**: Unidad Administrativa, Consejería u Organismo, Dirección, Código Postal, Municipio.
+- **Acciones**: Aceptar, Cancelar.
+- **Guía**: Implementar validaciones y el servicio de devoluciones para procesar la operación.
+
+#### Vista de Ayuda
+- **Propósito**: Mostrar criterios de búsqueda de fechas.
+- **Campos**: Información textual.
+- **Acciones**: Ninguna.
+- **Guía**: Mostrar el contenido sin interacción adicional.
+
+### Navegación y Enrutamiento
+
+- **Ruta Principal ("/home")**:
+  - **Componente**: `FormularioGeneral`.
+  - **Descripción**: Muestra el formulario para ingresar los parámetros de consulta.
+  - **Guía**: Navegar a esta ruta al iniciar la aplicación.
+
+- **Ruta Pestañas ("/tabs")**:
+  - **Componente**: `PestañasNotificaciones`.
+  - **Descripción**: Presenta las pestañas de notificaciones.
+  - **Guía**: Navegar a esta ruta desde el botón "Aceptar" en `FormularioGeneral`.
+
+- **Ruta Devoluciones ("/devolucion")**:
+  - **Componente**: `DevolverAcuses`.
+  - **Descripción**: Muestra el formulario para devolver acuses de recibo.
+  - **Guía**: Navegar a esta ruta desde las acciones en `PestañasNotificaciones`.
+
+- **Ruta Ayuda ("/ayuda")**:
+  - **Componente**: `Ayuda`.
+  - **Descripción**: Muestra la vista de ayuda.
+  - **Guía**: Navegar a esta ruta desde un icono o enlace de ayuda en cualquier parte de la aplicación.
+
+En resumen, esta especificación proporciona una guía exhaustiva y detallada para desarrollar los componentes necesarios para migrar la interfaz de usuario de Oracle Forms a una arquitectura moderna basada en Angular 8. Los componentes se describen de manera que los desarrolladores puedan implementarlos y asegurarse de que cumplan con las funcionalidades requeridas.

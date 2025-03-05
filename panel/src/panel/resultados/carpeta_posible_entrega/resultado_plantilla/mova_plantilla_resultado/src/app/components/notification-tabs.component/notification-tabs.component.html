@@ -1,0 +1,12 @@
+<mv-card class="card-code">
+  <mv-header>
+    <mv-title>Notification Management</mv-title>
+  </mv-header>
+  <mv-content>
+    <mv-tab-group [(selectedIndex)]="selectedTab">
+      <mv-tab *ngFor="let tab of tabs" [label]="tab.label">
+        <ng-container *ngComponentOutlet="tab.component"></ng-container>
+      </mv-tab>
+    </mv-tab-group>
+  </mv-content>
+</mv-card>

@@ -1,0 +1,252 @@
+Como desarrollador senior en Java Spring Boot, tu misión es ayudar a otros desarrolladores a migrar desde Oracle Forms a arquitecturas modernas basadas en microservicios. Para proporcionar una guía completa y detallada sobre cómo replicar la funcionalidad de Oracle Forms en Java Spring Boot, aquí está el desglose paso a paso:
+
+1. **Identificar y describir los controladores REST necesarios:**
+   - Debemos identificar los controladores necesarios para manejar las operaciones que se realizaban en Oracle Forms.
+   - Por ejemplo, si Oracle Forms manejaba datos de "Clientes" y "Expedientes", se necesitarían al menos dos controladores: `ClienteController` y `ExpedienteController`.
+
+2. **Especificar los métodos en cada controlador:**
+   - Para `ClienteController`:
+     - `GET /clientes`: Obtener la lista de todos los clientes.
+     - `GET /clientes/{uuid}`: Obtener un cliente específico por UUID.
+     - `POST /clientes`: Crear un nuevo cliente.
+     - `PUT /clientes/{uuid}`: Actualizar un cliente existente.
+     - `DELETE /clientes/{uuid}`: Eliminar un cliente.
+   - Para `ExpedienteController`:
+     - `GET /expedientes`: Obtener la lista de todos los expedientes.
+     - `GET /expedientes/{uuid}`: Obtener un expediente específico por UUID.
+     - `POST /expedientes`: Crear un nuevo expediente.
+     - `PUT /expedientes/{uuid}`: Actualizar un expediente existente.
+     - `DELETE /expedientes/{uuid}`: Eliminar un expediente.
+     - `POST /expedientes/{uuid}/ficheros`: Subir un fichero a un expediente.
+     - `GET /expedientes/{uuid}/ficheros/{id}`: Obtener un fichero específico de un expediente.
+
+3. **Detallar los servicios que interactúan con estos controladores:**
+   - Cada controlador llamará a un servicio correspondiente que contendrá la lógica de negocio.
+   - `ClienteService` incluirá métodos como `findAllClients()`, `findClientByUuid(String uuid)`, `saveClient(ClienteDTO clienteDTO)`, `updateClient(String uuid, ClienteDTO clienteDTO)`, `deleteClient(String uuid)`.
+   - `ExpedienteService` tendrá métodos similares para operaciones relacionadas con "Expedientes", además de métodos para manejar los ficheros asociados a un expediente.
+
+4. **Proporcionar ejemplos de código para cada parte:**
+
+   - **ClienteController.java**:
+     ```java
+     @RestController
+     @RequestMapping("/clientes")
+     public class ClienteController {
+         
+         @Autowired
+         private ClienteService clienteService;
+         
+         @GetMapping
+         public ResponseEntity<List<ClienteDTO>> getAllClients() {
+             return ResponseEntity.ok(clienteService.findAllClients());
+         }
+         
+         @GetMapping("/{uuid}")
+         public ResponseEntity<ClienteDTO> getClientByUuid(@PathVariable String uuid) {
+             return ResponseEntity.ok(clienteService.findClientByUuid(uuid));
+         }
+         
+         @PostMapping
+         public ResponseEntity<ClienteDTO> createClient(@RequestBody ClienteDTO clienteDTO) {
+             return ResponseEntity.status(HttpStatus.CREATED).body(clienteService.saveClient(clienteDTO));
+         }
+         
+         @PutMapping("/{uuid}")
+         public ResponseEntity<ClienteDTO> updateClient(@PathVariable String uuid, @RequestBody ClienteDTO clienteDTO) {
+             return ResponseEntity.ok(clienteService.updateClient(uuid, clienteDTO));
+         }
+         
+         @DeleteMapping("/{uuid}")
+         public ResponseEntity<Void> deleteClient(@PathVariable String uuid) {
+             clienteService.deleteClient(uuid);
+             return ResponseEntity.noContent().build();
+         }
+     }
+     ```
+
+   - **ClienteService.java**:
+     ```java
+     @Service
+     public class ClienteService {
+         
+         @Autowired
+         private ClienteRepository clienteRepository;
+         
+         public List<ClienteDTO> findAllClients() {
+             return clienteRepository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
+         }
+         
+         public ClienteDTO findClientByUuid(String uuid) {
+             return clienteRepository.findById(uuid).map(this::convertToDto)
+                 .orElseThrow(() -> new ResourceNotFoundException("Client not found"));
+         }
+         
+         public ClienteDTO saveClient(ClienteDTO clienteDTO) {
+             Cliente cliente = convertToEntity(clienteDTO);
+             return convertToDto(clienteRepository.save(cliente));
+         }
+         
+         public ClienteDTO updateClient(String uuid, ClienteDTO clienteDTO) {
+             if (!clienteRepository.existsById(uuid)) {
+                 throw new ResourceNotFoundException("Client not found");
+             }
+             Cliente cliente = convertToEntity(clienteDTO);
+             cliente.setUuid(uuid);
+             return convertToDto(clienteRepository.save(cliente));
+         }
+         
+         public void deleteClient(String uuid) {
+             if (!clienteRepository.existsById(uuid)) {
+                 throw new ResourceNotFoundException("Client not found");
+             }
+             clienteRepository.deleteById(uuid);
+         }
+     }
+     ```
+     
+   - **ExpedienteController.java**:
+     ```java
+     @RestController
+     @RequestMapping("/expedientes")
+     public class ExpedienteController {
+         
+         @Autowired
+         private ExpedienteService expedienteService;
+         
+         @GetMapping
+         public ResponseEntity<List<ExpedienteDTO>> getAllExpedientes() {
+             return ResponseEntity.ok(expedienteService.findAllExpedientes());
+         }
+         
+         @GetMapping("/{uuid}")
+         public ResponseEntity<ExpedienteDTO> getExpedienteByUuid(@PathVariable String uuid) {
+             return ResponseEntity.ok(expedienteService.findExpedienteByUuid(uuid));
+         }
+         
+         @PostMapping
+         public ResponseEntity<ExpedienteDTO> createExpediente(@RequestBody ExpedienteDTO expedienteDTO) {
+             return ResponseEntity.status(HttpStatus.CREATED).body(expedienteService.saveExpediente(expedienteDTO));
+         }
+         
+         @PutMapping("/{uuid}")
+         public ResponseEntity<ExpedienteDTO> updateExpediente(@PathVariable String uuid, @RequestBody ExpedienteDTO expedienteDTO) {
+             return ResponseEntity.ok(expedienteService.updateExpediente(uuid, expedienteDTO));
+         }
+         
+         @DeleteMapping("/{uuid}")
+         public ResponseEntity<Void> deleteExpediente(@PathVariable String uuid) {
+             expedienteService.deleteExpediente(uuid);
+             return ResponseEntity.noContent().build();
+         }
+         
+         @PostMapping("/{uuid}/ficheros")
+         public ResponseEntity<ExpedienteDTO> uploadFileToExpediente(@PathVariable String uuid, @RequestParam("file") MultipartFile file) {
+             expedienteService.uploadFile(uuid, file);
+             return ResponseEntity.ok().build();
+         }
+         
+         @GetMapping("/{uuid}/ficheros/{id}")
+         public ResponseEntity<byte[]> getFileFromExpediente(@PathVariable String uuid, @PathVariable Long id) {
+             byte[] fileContent = expedienteService.getFile(uuid, id);
+             return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM).body(fileContent);
+         }
+     }
+     ```
+
+   - **ExpedienteService.java**:
+     ```java
+     @Service
+     public class ExpedienteService {
+         
+         @Autowired
+         private ExpedienteRepository expedienteRepository;
+         
+         @Autowired
+         private FileRepository fileRepository;
+         
+         public List<ExpedienteDTO> findAllExpedientes() {
+             return expedienteRepository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
+         }
+         
+         public ExpedienteDTO findExpedienteByUuid(String uuid) {
+             return expedienteRepository.findById(uuid).map(this::convertToDto)
+                 .orElseThrow(() -> new ResourceNotFoundException("Expediente not found"));
+         }
+         
+         public ExpedienteDTO saveExpediente(ExpedienteDTO expedienteDTO) {
+             Expediente expediente = convertToEntity(expedienteDTO);
+             return convertToDto(expedienteRepository.save(expediente));
+         }
+         
+         public ExpedienteDTO updateExpediente(String uuid, ExpedienteDTO expedienteDTO) {
+             if (!expedienteRepository.existsById(uuid)) {
+                 throw new ResourceNotFoundException("Expediente not found");
+             }
+             Expediente expediente = convertToEntity(expedienteDTO);
+             expediente.setUuid(uuid);
+             return convertToDto(expedienteRepository.save(expediente));
+         }
+         
+         public void deleteExpediente(String uuid) {
+             if (!expedienteRepository.existsById(uuid)) {
+                 throw new ResourceNotFoundException("Expediente not found");
+             }
+             expedienteRepository.deleteById(uuid);
+         }
+         
+         public void uploadFile(String uuid, MultipartFile file) {
+             Expediente expediente = expedienteRepository.findById(uuid)
+                 .orElseThrow(() -> new ResourceNotFoundException("Expediente not found"));
+             File fileEntity = new File();
+             fileEntity.setExpediente(expediente);
+             fileEntity.setData(file.getBytes());
+             fileRepository.save(fileEntity);
+         }
+         
+         public byte[] getFile(String uuid, Long fileId) {
+             return fileRepository.findById(fileId)
+                 .orElseThrow(() -> new ResourceNotFoundException("File not found"))
+                 .getData();
+         }
+     }
+     ```
+
+5. **Explicar claramente a qué bases de datos o entidades están ligados los controladores y servicios:**
+   - `ClienteController` y `ClienteService` interactúan con la base de datos que contiene la tabla `CL_CLIENTES`.
+   - `ExpedienteController` y `ExpedienteService` interactúan con la base de datos que contiene la tabla `CL_EXPEDIENTES` y la tabla asociada de ficheros.
+
+6. **Incluir el manejo de errores y la estructura adecuada del proyecto:**
+   - Crear una clase `ResourceNotFoundException.java` para manejar situaciones en las que una entidad no es encontrada.
+   - Implementar un controlador de excepciones global `GlobalExceptionHandler.java` para capturar y manejar las excepciones de manera centralizada.
+
+   - **ResourceNotFoundException.java**:
+     ```java
+     @ResponseStatus(HttpStatus.NOT_FOUND)
+     public class ResourceNotFoundException extends RuntimeException {
+         public ResourceNotFoundException(String message) {
+             super(message);
+         }
+     }
+     ```
+
+   - **GlobalExceptionHandler.java**:
+     ```java
+     @ControllerAdvice
+     public class GlobalExceptionHandler {
+         
+         @ExceptionHandler(ResourceNotFoundException.class)
+         public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException ex) {
+             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+         }
+         
+         @ExceptionHandler(Exception.class)
+         public ResponseEntity<String> handleGlobalException(Exception ex) {
+             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
+         }
+     }
+     ```
+
+7. **Separar los contenidos por la base de datos o entidad relacionada para mayor claridad:**
+   - Crear paquetes en el proyecto como `com.example.demo.cliente` y `com.example.demo.expediente` para organizar las clases relacionadas con clientes y expedientes respectivamente.
+
+Con esta guía detallada, los desarrolladores podrán replicar la funcionalidad de Oracle Forms en Java Spring Boot, creando soluciones robustas y escalables. Esta implementación permite migrar de Oracle Forms a una arquitectura de microservicios utilizando Java Spring Boot, manejando de forma ordenada y eficiente las operaciones de CRUD y la gestión de ficheros, además de proporcionar un manejo centralizado de excepciones y una estructura de proyecto organizada.

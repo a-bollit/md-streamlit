@@ -1,0 +1,551 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-dialog</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='acceptAppearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> acceptAppearance
+      </a></li>
+      <li><a class="nostyle" (click)='acceptColor.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> acceptColor
+      </a></li>
+      <li><a class="nostyle" (click)='acceptText.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> acceptText
+      </a></li>
+      <li><a class="nostyle" (click)='cancelAppearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> cancelAppearance
+      </a></li>
+      <li><a class="nostyle" (click)='cancelColor.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> cancelColor
+      </a></li>
+      <li><a class="nostyle" (click)='cancelText.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> cancelText
+      </a></li>
+      <li><a class="nostyle" (click)='showAcceptButton.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showAcceptButton
+      </a></li>
+      <li><a class="nostyle" (click)='showCancelButton.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showCancelButton
+      </a></li>
+      <li><a class="nostyle" (click)='showCloseButton.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showCloseButton
+      </a></li>
+      <li><a class="nostyle" (click)='successCallback.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> successCallback
+      </a></li>
+      <li><a class="nostyle" (click)='titleWarn.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> titleWarn
+      </a></li>
+      <li><a class="nostyle" (click)='titleAccent.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> titleAccent
+      </a></li>
+
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-dialog</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El componente mv-dialog se basa en el componente mat-dialog de Angular Material, al que se le añade funcionalidad y estilos adicionales.</p>
+      <p>Sirve para mostrar un diálogo que se adapta al dispositivo, con la información deseada.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-dialog</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de diálogo:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleDialogExample()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- acceptAppearance -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #acceptAppearance><strong>acceptAppearance</strong></mv-card-title>
+      <mv-card-subtitle>Apariencia del botón aceptar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad acceptAppearance permite definir la apariencia del botón asociado a la acción de aceptar.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAcceptAppearanceExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAcceptAppearanceExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con acceptAppearance = 'fab':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleDialogAcceptAppearance()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- acceptColor -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #acceptColor><strong>acceptColor</strong></mv-card-title>
+      <mv-card-subtitle>Color del botón aceptar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad acceptColor permite definir el color del botón asociado a la acción de aceptar.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAcceptColorExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAcceptColorExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con acceptColor = 'warn':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleDialogAcceptColor()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- acceptText -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #acceptText><strong>acceptText</strong></mv-card-title>
+      <mv-card-subtitle>Texto del botón aceptar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad acceptText permite definir el texto del botón asociado a la acción de aceptar.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAcceptTextExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAcceptTextExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con acceptText = 'Confirmación':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleDialogAcceptText()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- cancelAppearance -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #cancelAppearance><strong>cancelAppearance</strong></mv-card-title>
+      <mv-card-subtitle>Apariencia del botón cancelar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad cancelAppearance permite definir la apariencia del botón asociado a la acción de cancelar.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeCancelAppearanceExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeCancelAppearanceExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con cancelAppearance = 'fab':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleDialogCancelAppearance()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- cancelColor -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #cancelColor><strong>cancelColor</strong></mv-card-title>
+      <mv-card-subtitle>Color del botón cancelar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad cancelColor permite definir el color del botón asociado a la acción de cancelar.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeCancelColorExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeCancelColorExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con cancelColor = 'primary':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleDialogCancelColor()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- cancelText -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #cancelText><strong>cancelText</strong></mv-card-title>
+      <mv-card-subtitle>Texto del botón cancelar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad cancelText permite definir el texto del botón asociado a la acción de cancelar.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeCancelTextExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeCancelTextExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con cancelText = 'Quiero salir':</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleDialogCancelText()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showAcceptButton -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showAcceptButton><strong>showAcceptButton</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar o no el botón aceptar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad showAcceptButton permite mostrar u ocultar el botón de aceptar.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowAcceptButtonExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeShowAcceptButtonExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con showAcceptButton a true:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleShowAcceptButtonTrue()">
+        Lanzar diálogo
+      </mv-button>
+
+      <p><strong>Con showAcceptButton a false:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleShowAcceptButtonFalse()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showCancelButton -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showCancelButton><strong>showCancelButton</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar o no el botón cancelar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad showCancelButton permite mostrar u ocultar el botón de cancelar.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowCancelButtonExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeShowCancelButtonExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con showCancelButton a true:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleShowCancelButtonTrue()">
+        Lanzar diálogo
+      </mv-button>
+
+      <p><strong>Con showCancelButton a false:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleShowCancelButtonFalse()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showCloseButton -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showCloseButton><strong>showCloseButton</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar o no el botón de cerrar.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad showCloseButton permite mostrar u ocultar el botón de cerrar.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowCloseButtonExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeShowCloseButtonExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con showCloseButton a true:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleShowCloseButtonTrue()">
+        Lanzar diálogo
+      </mv-button>
+
+      <p><strong>Con showCloseButton a false:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleShowCloseButtonFalse()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+
+  <!-- successCallback -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #successCallback><strong>successCallback</strong></mv-card-title>
+      <mv-card-subtitle>Función de callback.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad successCallback permite definir la acción a realizar cuando pulsamos algún botón del diálogo.</p>
+      <p>La función de callback devolverá el resultado de la acción.</p>
+
+      <p>Devuelve un objeto con los siguientes parametros, marcando a true el botón que el usuario hubiera marcado</p>
+      <ul>
+        <li><strong>accept</strong>: Al hacer click al botón de aceptar</li>
+        <li><strong>cancel</strong>: Al hacer click al botón de cancelar</li>
+        <li><strong>out</strong>: Al hacer click fuera del dialogo</li>
+        <li><strong>close</strong>: Al cerrar el dialogo</li>
+      </ul>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeSuccessCallbackExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeSuccessCallbackExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="RETURN">
+          <pre><code [highlight]="returnSuccessCallbackExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con successCallback:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleSuccessCallbackExample()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- titleWarn -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #titleWarn><strong>titleWarn</strong></mv-card-title>
+      <mv-card-subtitle>Apariencia del título warn.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad titleWarn permite definir la apariencia del título en color warn.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTitleWarnExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTitleWarnExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con titleWarn a true:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleTitleWarnTrue()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- titleAccent -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #titleAccent><strong>titleAccent</strong></mv-card-title>
+      <mv-card-subtitle>Apariencia del título warn.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad titleAccent permite definir la apariencia del título en color warn.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTitleAccentExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTitleAccentExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con titleAccent a true:</strong></p>
+
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="exampleTitleAccentTrue()">
+        Lanzar diálogo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

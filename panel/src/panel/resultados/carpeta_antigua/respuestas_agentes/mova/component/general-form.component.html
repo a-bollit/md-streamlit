@@ -1,0 +1,45 @@
+<mv-card>
+  <mv-header [headerTitle]="'Formulario de Emisión de Notificaciones'"
+             [headerSubtitle]="'Complete los campos requeridos'"
+             [fixed]="true"
+             [showBackButton]="true"
+             [showMenuButton]="true">
+  </mv-header>
+  <div class="form-container">
+    <form [formGroup]="generalForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="unidadRemitente">Unidad Remitente</label>
+        <input id="unidadRemitente" mv-input formControlName="unidadRemitente" type="text"/>
+        <div *ngIf="generalForm.get('unidadRemitente').invalid && (generalForm.get('unidadRemitente').dirty || generalForm.get('unidadRemitente').touched)">
+          Unidad Remitente es requerido.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="fechaDesde">Fecha Desde</label>
+        <mv-calendar formControlName="fechaDesde"></mv-calendar>
+        <div *ngIf="generalForm.get('fechaDesde').invalid && (generalForm.get('fechaDesde').dirty || generalForm.get('fechaDesde').touched)">
+          Fecha no puede ser mayor a la actual.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="fechaHasta">Fecha Hasta</label>
+        <mv-calendar formControlName="fechaHasta"></mv-calendar>
+        <div *ngIf="generalForm.get('fechaHasta').invalid && (generalForm.get('fechaHasta').dirty || generalForm.get('fechaHasta').touched)">
+          Fecha debe ser mayor o igual a Fecha Desde.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="expediente">Expediente</label>
+        <input id="expediente" mv-input formControlName="expediente" type="text"/>
+        <div *ngIf="generalForm.get('expediente').invalid && (generalForm.get('expediente').dirty || generalForm.get('expediente').touched)">
+          Expediente es requerido.
+        </div>
+      </div>
+      
+      <mv-button type="submit" [disabled]="generalForm.invalid">Enviar</mv-button>
+    </form>
+  </div>
+</mv-card>

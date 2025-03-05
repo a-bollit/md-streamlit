@@ -1,0 +1,234 @@
+# Componentes de Angular 8
+
+## 1. **Componente ConfirmarAlerta**
+   ### Funcionalidad:
+   Un componente para mostrar una alerta de confirmación con opciones "SI" y "NO". Este componente se utiliza para confirmar la eliminación de registros.
+   ### Inputs:
+   - `titulo`: Título de la alerta.
+   - `mensaje`: Mensaje de la alerta.
+   - `siLabel`: Etiqueta del botón "SI".
+   - `noLabel`: Etiqueta del botón "NO".
+   ### Outputs:
+   - `onConfirm`: Evento emitido cuando se da clic en "SI".
+   - `onCancel`: Evento emitido cuando se da clic en "NO".
+   ### Dependencias:
+   - Servicio `AlertaService` para mostrar y ocultar la alerta.
+   ### Descripción detallada:
+   El componente debe renderizar una alerta modal que contenga el título y el mensaje proporcionados a través de las propiedades `titulo` y `mensaje`. Los botones tendrán las etiquetas `siLabel` y `noLabel`. Al hacer clic en el botón "SI", se debe emitir el evento `onConfirm` para notificar el componente padre. De igual manera, al hacer clic en "NO", se debe emitir `onCancel`.
+
+## 2. **Componente NotaAlerta**
+   ### Funcionalidad:
+   Componente para mostrar una alerta de nota sin botones, utilizado para mostrar mensajes informativos.
+   ### Inputs:
+   - `titulo`: Título de la nota.
+   - `mensaje`: Mensaje que se desea mostrar.
+   ### Dependencias:
+   - Servicio `AlertaService` para manejar la visualización de la nota.
+   ### Descripción detallada:
+   Renderiza una ventana modal simple con el título y el mensaje informativo. Este componente no necesita manejar eventos de salida ya que solo se utiliza para mostrar información al usuario.
+
+## 3. **Componente MensajeAlerta**
+   ### Funcionalidad:
+   Componente para mostrar mensajes de aviso sin botones, usado para notificar al usuario.
+   ### Inputs:
+   - `titulo`: Título del mensaje de aviso.
+   - `mensaje`: Mensaje de aviso.
+   ### Dependencias:
+   - Servicio `AlertaService` para manejar la visualización del mensaje.
+   ### Descripción detallada:
+   Este componente renderiza un mensaje modal con el título proporcionado. Similar al componente de nota, no necesita eventos de salida.
+
+## 4. **Componente GeneralForm**
+   ### Funcionalidad:
+   Este componente gestiona el formulario principal de emisión de notificaciones.
+   ### Inputs:
+   - `unidadRemitente`: Unidad remitente seleccionada.
+   - `fechaDesde`: Fecha inicial del rango.
+   - `fechaHasta`: Fecha final del rango.
+   - `expediente`: Detalle del expediente.
+   ### Dependencias:
+   - `FormService` para manejar la lógica del formulario.
+   - Componente `Calendar` para seleccionar fechas.
+   ### Descripción detallada:
+   Renderiza un formulario con selección de unidad remitente, fechas (desde y hasta), y detalle del expediente. Incluirá validaciones para fechas (no mayores a la actual y `fechaHasta` mayor o igual a `fechaDesde`). Los campos serán inputs de texto y datepickers.
+
+## 5. **Componente Pestañas**
+   ### Funcionalidad:
+   Administrar las diferentes pestañas (Correos y Telemáticas) para enviar notificaciones.
+   ### Inputs:
+   - `notificaciones`: Listado de notificaciones a mostrarse en las pestañas.
+   ### Dependencias:
+   - `TabService` para manejo de navegación entre pestañas.
+   ### Descripción detallada:
+   Incluye dos pestañas principales: `PG_CORR` para correos y `PG_NOTE` para telemáticas. Cada pestaña mostrará su respectivo contenido basado en la selección del usuario.
+
+## 6. **Componente CorreosNotificaciones**
+   ### Funcionalidad:
+   Gestionar las notificaciones de correos.
+   ### Inputs:
+   - `notificaciones`: Listado de notificaciones de correos.
+   ### Outputs:
+   - `onMarcarTodos`: Evento para marcar todas las notificaciones.
+   - `onDesmarcarTodos`: Evento para desmarcar todas las notificaciones.
+   ### Dependencias:
+   - `CorreosService` para manejar las notificaciones de correos.
+   ### Descripción detallada:
+   Renderiza una tabla con los detalles de las notificaciones de correos, incluyendo campos como documento, descripción, expedientes, etc. Debe tener botones "Marcar todos" y "Desmarcar todos" que gatillan los eventos `onMarcarTodos` y `onDesmarcarTodos`.
+
+## 7. **Componente TelematicasNotificaciones**
+   ### Funcionalidad:
+   Gestionar las notificaciones telemáticas.
+   ### Inputs:
+   - `notificacionesTelematicas`: Listado de notificaciones telemáticas.
+   ### Outputs:
+   - `onMarcarTodos`: Evento para marcar todas las notificaciones telemáticas.
+   - `onDesmarcarTodos`: Evento para desmarcar todas las notificaciones telemáticas.
+   ### Dependencias:
+   - `TelematicasService` para manejar las notificaciones telemáticas.
+   ### Descripción detallada:
+   Similar al componente `CorreosNotificaciones`, renderiza una tabla con los detalles de las notificaciones telemáticas y botones para marcar y desmarcar todas. Incluye campos específicos como número de anexos, firmados, y registrados.
+
+## 8. **Componente DevolucionForm**
+   ### Funcionalidad:
+   Formulario para manejar la devolución de acuses de recibo.
+   ### Inputs:
+   - `datosDevolucion`: Datos iniciales para la devolución.
+   ### Outputs:
+   - `onAceptar`: Evento al confirmar la devolución.
+   - `onCancelar`: Evento al cancelar la devolución.
+   ### Dependencias:
+   - `DevolucionService` para manejar la lógica de devolución.
+   ### Descripción detallada:
+   Renderiza un formulario con campos para la Consejería u Organismo, Unidad Administrativa, Dirección, Código Postal, y Municipio. Incluye botones "Aceptar" y "Cancelar" para emitir los eventos correspondientes.
+
+## 9. **Componente EsperaInfo**
+   ### Funcionalidad:
+   Mostrar un mensaje de espera durante operaciones prolongadas.
+   ### Inputs:
+   - `mensaje`: Mensaje de espera.
+   ### Dependencias:
+   - `InfoService` para manejar la visualización del mensaje.
+   ### Descripción detallada:
+   Renderiza un mensaje informativo indicando que el usuario debe esperar. Este componente será utilizado en situaciones donde las operaciones pueden tardar algunos segundos.
+
+## 10. **Componente ErrorResultado**
+   ### Funcionalidad:
+   Mostrar mensajes de error con resultados específicos.
+   ### Inputs:
+   - `errores`: Listado de errores a mostrar.
+   ### Outputs:
+   - `onCerrar`: Evento al cerrar el mensaje de error.
+   ### Dependencias:
+   - `ErrorService` para manejar los mensajes de error.
+   ### Descripción detallada:
+   Renderiza una lista de errores dentro de una ventana modal. Incluye un botón "Aceptar" para cerrar el mensaje que emite el evento `onCerrar`.
+
+## 11. **Componente SituacionError**
+   ### Funcionalidad:
+   Mostrar detalles de errores de situación específicos y permitir acciones correctivas.
+   ### Inputs:
+   - `errores`: Listado de situaciones de error detalladas.
+   ### Outputs:
+   - `onAccionCorregir`: Evento al seleccionar una acción correctiva.
+   ### Dependencias:
+   - `SituacionService` para manejar los errores de situación.
+   ### Descripción detallada:
+   Renderiza una ventana modal que muestra los detalles de cada situación de error. Incluye botones de acción para que el usuario intente corregir los errores, como "Editar y Salvar en BD" y "Registrar".
+
+# Vistas y Formularios (asociadas a los componentes)
+
+## 1. **Vista Inicial**
+   ### Propósito:
+   Formulario principal para la emisión de notificaciones.
+   ### Campos:
+   - Unidad remitente (input, dropdown).
+   - Fecha desde y hasta (datepicker con validaciones).
+   - Expedientes (input de texto).
+   ### Acciones:
+   - Botones para aceptar y cancelar.
+   ### Descripción:
+   Esta vista principal permite al usuario ingresar los detalles necesarios para generar las notificaciones.
+
+## 2. **Vista Pestañas**
+   ### Propósito:
+   Navegar entre las notificaciones de correos y telemáticas.
+   ### Campos:
+   - Tablas con detalles de notificaciones.
+   ### Acciones:
+   - Botones para marcar y desmarcar todas.
+   ### Descripción:
+   Vista que contiene las pestañas para acceder a notificaciones de diferentes tipos (correos y telemáticas).
+
+## 3. **Vista Devolución**
+   ### Propósito:
+   Manejar devoluciones de acuses de recibo.
+   ### Campos:
+   - Consejería u Organismo (input).
+   - Unidad Administrativa (input).
+   - Dirección, Código Postal, Municipio (input).
+   ### Acciones:
+   - Botones aceptar y cancelar.
+   ### Descripción:
+   Formulario dedicado a la devolución de acuses de recibo, con los datos necesarios para la operación.
+
+## 4. **Vista Información**
+   ### Propósito:
+   Mostrar mensajes informativos durante operaciones.
+   ### Campos:
+   - Mensaje de espera.
+   ### Descripción:
+   Vista que muestra un mensaje de espera mientras se ejecutan operaciones que pueden tardar unos segundos.
+
+## 5. **Vista Errores**
+   ### Propósito:
+   Mostrar errores detallados.
+   ### Campos:
+   - Listado de errores.
+   ### Acciones:
+   - Botón para aceptar y cerrar.
+   ### Descripción:
+   Vista que muestra una lista de errores y permite al usuario cerrar el mensaje.
+
+## 6. **Vista Situación de Error**
+   ### Propósito:
+   Indicar errores específicos y permitir acciones correctivas.
+   ### Campos:
+   - Listado de errores de situación.
+   ### Acciones:
+   - Botones para corregir errores.
+   ### Descripción:
+   Vista que muestra detalles de errores específicos y proporciona opciones para intentar corregirlos.
+
+# Navegación y Enrutamiento
+
+## Rutas
+### 1. Ruta `/general`
+   - Componente asociado: `GeneralForm`.
+   - Propósito: Visualiza el formulario principal de emisión de notificaciones.
+
+### 2. Ruta `/pestanas`
+   - Componente asociado: `Pestañas`.
+   - Propósito: Mostrar pestañas de notificaciones de correos y telemáticas.
+
+### 3. Ruta `/devolucion`
+   - Componente asociado: `DevolucionForm`.
+   - Propósito: Manejar la devolución de acuses de recibo.
+   
+### 4. Ruta `/informacion`
+   - Componente asociado: `EsperaInfo`.
+   - Propósito: Mostrar mensajes de espera.
+
+### 5. Ruta `/error`
+   - Componente asociado: `ErrorResultado`.
+   - Propósito: Mostrar errores detallados.
+
+### 6. Ruta `/situacion-error`
+   - Componente asociado: `SituacionError`.
+   - Propósito: Indicar y permitir la corrección de errores de situación.
+
+### Integración
+- Las rutas deben estar organizadas de manera que la navegación sea coherente y fluida.
+- `GeneralForm` será la vista principal, y desde ahí se podrá navegar a `Pestañas`, `DevolucionForm`, y otros componentes informativos según sea necesario.
+- Las rutas protegidas deben ser manejadas por guardias de navegación para asegurar que solo usuarios autorizados puedan acceder.
+
+La estructura presentada asegura una migración efectiva desde Oracle Forms a una arquitectura modernizada en Angular 8, proporcionando claridad y guía para el desarrollo de componentes reutilizables y funcionalidades específicas.

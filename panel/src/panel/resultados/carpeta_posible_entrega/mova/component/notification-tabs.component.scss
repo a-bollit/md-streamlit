@@ -1,0 +1,26 @@
+@import "~@mova/components/_variables.scss";
+
+.card-code {
+  margin: 16px;
+}
+
+mv-header {
+  background-color: $primary-color;
+  color: $text-color-light;
+  padding: 8px;
+  border-radius: 4px 4px 0 0;
+}
+
+mv-content {
+  padding: 16px;
+}
+
+mv-tab-group {
+  .mv-tab-label {
+    font-weight: bold;
+  }
+
+  .mv-tab-label-active {
+    color: $primary-color;
+  }
+}

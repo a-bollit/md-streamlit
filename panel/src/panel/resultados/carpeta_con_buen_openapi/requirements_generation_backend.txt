@@ -1,0 +1,467 @@
+Result from requirements_generation_backend: ### Listado Detallado de Requisitos Técnicos y Funcionales del Backend en Java Spring Boot
+
+----
+
+## **Entidades y Operaciones CRUD**
+
+### **1. GEA_ACURE**
+
+**1.1. Tabla asociada:**
+
+`GEA_ACURE`
+
+**1.2. Atributos:**
+
+```json
+{
+  "CDDOCUM": {
+    "type": "Char",
+    "length": 11,
+    "constraints": "Primary Key"
+  },
+  "DOCUMENTO": {
+    "type": "Char",
+    "length": 14
+  },
+  "DSDOCUM": {
+    "type": "Char",
+    "length": 70
+  },
+  "EXPEDIENTE": {
+    "type": "Char",
+    "length": 50
+  },
+  "INTERESADO": {
+    "type": "Char",
+    "length": 70
+  },
+  "ITIMPRE": {
+    "type": "Char",
+    "length": 1
+  },
+  "NUMRELACION": {
+    "type": "Number",
+    "length": 7
+  },
+  "FCEMISION": {
+    "type": "Datetime"
+  },
+  "IT_FIRMADO": {
+    "type": "Char",
+    "length": 1
+  },
+  "IT_REGISTRADO": {
+    "type": "Char",
+    "length": 1
+  },
+  "CB_MARCA": {
+    "type": "Char",
+    "length": 1
+  }
+}
+```
+
+**1.3. Relaciones:**
+
+- `CDDOCUM`: Llave primaria.
+
+**1.4. Endpoints CRUD:**
+
+- **GET /gea_acure**: Recupera todos los registros.
+- **GET /gea_acure/{CDDOCUM}**: Recupera un registro específico.
+- **PUT /gea_acure/{CDDOCUM}**: Actualiza un registro específico.
+- **DELETE /gea_acure/{CDDOCUM}**: Elimina un registro específico.
+
+**Request Body para PUT:**
+
+```json
+{
+  "DOCUMENTO": "string",
+  "DSDOCUM": "string",
+  "EXPEDIENTE": "string",
+  "INTERESADO": "string",
+  "ITIMPRE": "Y/N",
+  "NUMRELACION": 0,
+  "FCEMISION": "yyyy-MM-dd",
+  "IT_FIRMADO": "Y/N",
+  "IT_REGISTRADO": "Y/N",
+  "CB_MARCA": "Y/N"
+}
+```
+
+----
+
+### **2. NOTIFICACION_TELEMATICA**
+
+**2.1. Tabla asociada:**
+
+`NOTIFICACION_TELEMATICA`
+
+**2.2. Atributos:**
+
+```json
+{
+  "CDDOCUM": {
+    "type": "Char",
+    "length": 11,
+    "constraints": "Primary Key"
+  },
+  "DOCUMENTO": {
+    "type": "Char",
+    "length": 14
+  },
+  "DSDOCUM": {
+    "type": "Char",
+    "length": 70
+  },
+  "EXPEDIENTE": {
+    "type": "Char",
+    "length": 50
+  },
+  "INTERESADO": {
+    "type": "Char",
+    "length": 70
+  },
+  "FCCREA": {
+    "type": "Datetime"
+  },
+  "SITUACION_ERROR_BD": {
+    "type": "Char",
+    "length": 10
+  },
+  "SITUACION_ERROR_DUE": {
+    "type": "Char",
+    "length": 10
+  },
+  "SITUACION_ERROR_REGSAL": {
+    "type": "Char",
+    "length": 10
+  },
+  "SITUACION_ERROR_FIRMA": {
+    "type": "Char",
+    "length": 10
+  },
+  "CB_MARCA": {
+    "type": "Char",
+    "length": 1
+  }
+}
+```
+
+**2.3. Relaciones:**
+
+- `CDDOCUM`: Llave primaria.
+
+**2.4. Endpoints CRUD:**
+
+- **GET /notificacion_telematica**: Recupera todos los registros.
+- **GET /notificacion_telematica/{CDDOCUM}**: Recupera un registro específico.
+- **PUT /notificacion_telematica/{CDDOCUM}**: Actualiza un registro específico.
+- **DELETE /notificacion_telematica/{CDDOCUM}**: Elimina un registro específico.
+
+**Request Body para PUT:**
+
+```json
+{
+  "DOCUMENTO": "string",
+  "DSDOCUM": "string",
+  "EXPEDIENTE": "string",
+  "INTERESADO": "string",
+  "FCCREA": "yyyy-MM-dd",
+  "SITUACION_ERROR_BD": "string",
+  "SITUACION_ERROR_DUE": "string",
+  "SITUACION_ERROR_REGSAL": "string",
+  "SITUACION_ERROR_FIRMA": "string",
+  "CB_MARCA": "Y/N"
+}
+```
+
+----
+
+### **3. BL_DOC_CORR**
+
+**3.1. Tabla asociada:**
+
+`BL_DOC_CORR`
+
+**3.2. Atributos:**
+
+```json
+{
+  "DOCSEL": {
+    "type": "Number",
+    "length": 4,
+    "constraints": "Primary Key"
+  },
+  "OCULTO": {
+    "type": "Char",
+    "length": 1
+  },
+  "REGISTRAR": {
+    "type": "String"
+  },
+  "ACEPTAR": {
+    "type": "String"
+  },
+  "MARCAR": {
+    "type": "String"
+  },
+  "DESMARCAR": {
+    "type": "String"
+  },
+  "DSRESULTADO": {
+    "type": "Char",
+    "length": 5000
+  }
+}
+```
+
+**3.3. Relaciones:**
+
+- `DOCSEL`: Llave primaria.
+
+**3.4. Endpoints CRUD:**
+
+- **POST /bl_doc_corr**: Inserta un nuevo registro.
+- **PUT /bl_doc_corr/{DOCSEL}**: Actualiza un registro específico.
+- **DELETE /bl_doc_corr/{DOCSEL}**: Elimina un registro específico.
+
+**Request Body para POST/PUT:**
+
+```json
+{
+  "OCULTO": "string",
+  "REGISTRAR": "string",
+  "ACEPTAR": "string",
+  "MARCAR": "string",
+  "DESMARCAR": "string",
+  "DSRESULTADO": "string"
+}
+```
+
+----
+
+### **4. BL_DOC_NOTE**
+
+**4.1. Tabla asociada:**
+
+`BL_DOC_NOTE`
+
+**4.2. Atributos:**
+
+```json
+{
+  "DOCSEL": {
+    "type": "Number",
+    "length": 4,
+    "constraints": "Primary Key"
+  },
+  "OCULTO": {
+    "type": "Char",
+    "length": 1
+  },
+  "ACEPTAR": {
+    "type": "String"
+  },
+  "MARCAR": {
+    "type": "String"
+  },
+  "DESMARCAR": {
+    "type": "String"
+  }
+}
+```
+
+**4.3. Relaciones:**
+
+- `DOCSEL`: Llave primaria.
+
+**4.4. Endpoints CRUD:**
+
+- **POST /bl_doc_note**: Inserta un nuevo registro.
+- **PUT /bl_doc_note/{DOCSEL}**: Actualiza un registro específico.
+- **DELETE /bl_doc_note/{DOCSEL}**: Elimina un registro específico.
+
+**Request Body para POST/PUT:**
+
+```json
+{
+  "OCULTO": "string",
+  "ACEPTAR": "string",
+  "MARCAR": "string",
+  "DESMARCAR": "string"
+}
+```
+
+----
+
+### **5. BL_DEVOL**
+
+**5.1. Tabla asociada:**
+
+`BL_DEVOL`
+
+**5.2. Atributos:**
+
+```json
+{
+  "CDDEPTNO": {
+    "type": "Char",
+    "length": 2,
+    "constraints": "Primary Key"
+  },
+  "DSCONS": {
+    "type": "Char",
+    "length": 80
+  },
+  "CDUNIDAD": {
+    "type": "Char",
+    "length": 15
+  },
+  "IDORGA": {
+    "type": "Number",
+    "length": 12
+  },
+  "DSUNIDAD": {
+    "type": "Char",
+    "length": 100
+  },
+  "DSDIR1": {
+    "type": "Char",
+    "length": 80
+  },
+  "DSDIR2": {
+    "type": "Char",
+    "length": 80
+  },
+  "CDPOSTAL": {
+    "type": "Char",
+    "length": 5
+  },
+  "CDPROV": {
+    "type": "Char",
+    "length": 2
+  },
+  "CDMUNI": {
+    "type": "Char",
+    "length": 3
+  }
+}
+```
+
+**5.3. Relaciones:**
+
+- `CDDEPTNO`: Llave primaria.
+
+**5.4. Endpoints CRUD:**
+
+- **POST /bl_devol**: Inserta un nuevo registro.
+- **PUT /bl_devol/{CDDEPTNO}**: Actualiza un registro específico.
+- **DELETE /bl_devol/{CDDEPTNO}**: Elimina un registro específico.
+
+**Request Body para POST/PUT:**
+
+```json
+{
+  "DSCONS": "string",
+  "CDUNIDAD": "string",
+  "IDORGA": 0,
+  "DSUNIDAD": "string",
+  "DSDIR1": "string",
+  "DSDIR2": "string",
+  "CDPOSTAL": "string",
+  "CDPROV": "string",
+  "CDMUNI": "string"
+}
+```
+
+----
+
+### **Servicios y Lógica de Negocio**
+
+#### **1. Servicio: GEA_ACURE Management**
+
+**Funcionalidad Específica:**
+
+- Gestión completa del ciclo de vida de los documentos asociados a la tabla `GEA_ACURE`.
+- Validación de datos antes de aplicar cambios.
+- Inserción, actualización y eliminación de registros desde endpoints.
+
+**Parámetros de Entrada y Salida:**
+
+- Entrada: Atributos del request body.
+- Salida: Datos del registro afectado o mensaje de confirmación.
+
+**Validaciones y Reglas de Negocio:**
+
+- Verificar integridad de las relaciones antes de operaciones.
+- Validar formato y consistencia de fechas.
+- Verificar estados antes de actualizar o eliminar registros.
+
+----
+
+#### **2. Servicio: NOTIFICACION_TELEMATICA Management**
+
+**Funcionalidad Específica:**
+
+- Gestión completa de notificaciones telemáticas incluyendo validación de estatus y anexos.
+- Consulta, actualización y eliminación de registros.
+- Gestión de errores y situaciones.
+
+**Parámetros de Entrada y Salida:**
+
+- Entrada: Atributos del request body.
+- Salida: Datos del registro afectado o mensaje de confirmación.
+
+**Validaciones y Reglas de Negocio:**
+
+- Validar existencia de documentos antes de enviar notificaciones.
+- Comprobar autorizaciones de abonados.
+- Gestionar estados de documentos antes de confirmar envío.
+
+----
+
+#### **3. Servicio: Documentos de Correos Management**
+
+**Funcionalidad Específica:**
+
+- Inserción y actualización de registros relacionados con documentos de correos.
+- Validación de datos antes de registrar o aceptar documentos.
+- Gestión de errores en el procesamiento de documentos de correos.
+
+**Parámetros de Entrada y Salida:**
+
+- Entrada: Atributos del request body.
+- Salida: Datos del registro afectado o mensaje de confirmación.
+
+**Validaciones y Reglas de Negocio:**
+
+- Verificar que los documentos estén guardados correctamente en base de datos.
+- Validar existencia de interesados antes de registrar salida de documentos.
+
+----
+
+#### **4. Servicio: Devoluciones Management**
+
+**Funcionalidad Específica:**
+
+- Gestión de devoluciones, incluyendo inicialización de datos de devolución y registro de acuses de recibo.
+- Validación de datos antes de aceptar devoluciones.
+- Registro de errores y situaciones anómalas en el proceso de devolución.
+
+**Parámetros de Entrada y Salida:**
+
+- Entrada: Atributos del request body.
+- Salida: Datos del registro afectado o mensaje de confirmación.
+
+**Validaciones y Reglas de Negocio:**
+
+- Verificar que los atributos obligatorios no sean nulos.
+- Validar código postal y municipio.
+- Asegurar que los documentos devueltos estén registrados adecuadamente en el sistema.
+
+----
+
+**Conclusión**
+
+Este análisis detallado ofrece una guía completa para la implementación del backend en Java Spring Boot. Cada entidad y sus operaciones CRUD están definidas junto con los endpoints correspondientes y los modelos de datos, lo que asegura una implementación robusta y eficiente. La descripción de los servicios y la lógica de negocio adicional proporcionan una base sólida para gestionar las funcionalidades complejas fuera de las operaciones CRUD simples.

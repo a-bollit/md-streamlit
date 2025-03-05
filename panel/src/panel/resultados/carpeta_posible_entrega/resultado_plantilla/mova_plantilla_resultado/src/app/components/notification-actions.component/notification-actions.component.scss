@@ -1,0 +1,30 @@
+.notification-card {
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.notification-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-actions {
+  display: flex;
+  gap: 10px;
+
+  .btn-update {
+    @include button-color(#4caf50);
+  }
+
+  .btn-delete {
+    @include button-color(#f44336);
+  }
+
+  mv-icon {
+    margin-right: 5px;
+  }
+}

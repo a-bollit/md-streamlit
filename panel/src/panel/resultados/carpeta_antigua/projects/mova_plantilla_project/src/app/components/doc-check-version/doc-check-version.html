@@ -1,0 +1,75 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación comprobación de versiones</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='configuracion.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información de comprobación de versiones.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>MOVA comprueba, cada vez que arranca, si la versión de la aplicación que está ejecutando es distinta a la definida en mova_backend y, en caso de ser menor, muestra un
+        mensaje que típicamente tendrá una enlace a la descarga de la nueva versión</p>
+
+      <p>También se comprueba si la versión actual es menor que la versión mínima obligatoria definida en mova_backend, en cuyo caso no nos dejará continuar y deberemos
+      actualizar la app</p>
+
+      <p>Para cambiar la versión de una app entrar con las credenciales de nuestra app en
+        <a rel="noopener noreferrer" href="https://gestiona3.madrid.org/portalapps/webapps/mova_backend" target="_blank"><strong>https://gestiona3.madrid.org/portalapps/webapps/mova_backend</strong></a></p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #configuracion><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración de comprobación de versión.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Se puede configurar mova para que se salte la comprobación de versión:</p>
+
+      <mv-tab-group>
+        <mv-tab label="environment.ts">
+          <pre><code [highlight]="codeEnvironmentTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.val.ts">
+          <pre><code [highlight]="codeEnvironmentValTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.prod.ts">
+          <pre><code [highlight]="codeEnvironmentProdTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

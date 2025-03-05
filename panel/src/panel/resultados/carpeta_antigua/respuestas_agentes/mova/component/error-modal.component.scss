@@ -1,0 +1,10 @@
+@import '~@mova/components/_variables.scss';
+
+.error-modal {
+  @include card-format(border-radius: 8px, padding: 16px, background-color: #ffdddd);
+}
+
+.btn-close {
+  @include button-color(#d9534f);
+  margin-top: 16px;
+}

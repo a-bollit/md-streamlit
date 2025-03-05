@@ -1,0 +1,1213 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-button-login</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='adapt.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> adapt
+      </a></li>
+      <li><a class="nostyle" (click)='appearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> appearance
+      </a></li>
+      <li><a class="nostyle" (click)='color.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> color
+      </a></li>
+      <li><a class="nostyle" (click)='colorLogout.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> colorLogout
+      </a></li>
+      <li><a class="nostyle" (click)='disabled.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> disabled
+      </a></li>
+      <li><a class="nostyle" (click)='imgSrc.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> imgSrc
+      </a></li>
+      <li><a class="nostyle" (click)='imgSize.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> imgSize
+      </a></li>
+      <li><a class="nostyle" (click)='imgPosition.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> imgPosition
+      </a></li>
+      <li><a class="nostyle" (click)='imgRepeat.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> imgRepeat
+      </a></li>
+      <li><a class="nostyle" (click)='loginText.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> loginText
+      </a></li>
+      <li><a class="nostyle" (click)='logoutText.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> logoutText
+      </a></li>
+      <li><a class="nostyle" (click)='loginFontSet.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> loginFontSet
+      </a></li>
+      <li><a class="nostyle" (click)='loginIcon.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> loginIcon
+      </a></li>
+      <li><a class="nostyle" (click)='logoutFontSet.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> logoutFontSet
+      </a></li>
+      <li><a class="nostyle" (click)='logoutIcon.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> logoutIcon
+      </a></li>
+      <li><a class="nostyle" (click)='showIcon.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showIcon
+      </a></li>
+      <li><a class="nostyle" (click)='size.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> size
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-button-login</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El componente mv-button-login sirve para disponer de un botón con funcionalidad directa para logarse y deslogarse en la app. Si estamos deslogados y pulsamos en el botón,
+      nos logaremos y el aspecto del botón cambiará, de manera que si volvemos a pulsar nos deslogaremos.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-button-login</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Botón de login básico:</strong></p>
+
+      <mv-button-login>
+      </mv-button-login>
+
+      <p><strong>Botón de login con color 'primary' y appearance 'fab':</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="fab">
+        fab
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- adapt -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #adapt><strong>adapt</strong></mv-card-title>
+      <mv-card-subtitle>Ancho del 100%.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad adapt permite definir el ancho del componente al 100% del contenedor.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAdaptExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAdaptExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con adapt a true:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised"
+        adapt=true>
+      </mv-button-login>
+
+      <p><strong>Con adapt a false:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised"
+        adapt=false>
+      </mv-button-login>
+
+      <p><strong>Sin adapt (comportamiento por defecto):</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- appearance -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #appearance><strong>appearance</strong></mv-card-title>
+      <mv-card-subtitle>Tipo de botón.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad appearance permite definir el tipo de botón.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAppearanceExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAppearanceExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>appearance icon:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="icon">
+      </mv-button-login>
+
+      <p><strong>appearance raised:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised">
+      </mv-button-login>
+
+      <p><strong>appearance fab:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="fab">
+      </mv-button-login>
+
+      <p><strong>appearance miniFab:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="miniFab">
+      </mv-button-login>
+
+      <p><strong>appearance stroked:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="stroked">
+      </mv-button-login>
+
+      <p><strong>appearance flat:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="flat">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- color -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #color><strong>color</strong></mv-card-title>
+      <mv-card-subtitle>Color del botón.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad color permite definir el color del botón entre primary, accent, warn y corporative.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeColorExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeColorExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Primary:</strong></p>
+
+      <mv-button-login
+        color="primary">
+      </mv-button-login>
+
+      <p><strong>Accent:</strong></p>
+
+      <mv-button-login
+        color="accent">
+      </mv-button-login>
+
+      <p><strong>Warn:</strong></p>
+
+      <mv-button-login
+        color="warn">
+      </mv-button-login>
+
+      <p><strong>Corporative:</strong></p>
+
+      <mv-button-login
+        color="corporative">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- colorLogout -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #colorLogout><strong>colorLogout</strong></mv-card-title>
+      <mv-card-subtitle>Color del botón al hacer logout.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad colorLogout permite definir el color del botón cuando la acción disponible es hacer logout.
+        Los colores son primary, accent, warn y corporative.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeColorLogoutExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeColorLogoutExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Primary:</strong></p>
+
+      <mv-button-login
+        colorLogout="primary">
+      </mv-button-login>
+
+      <p><strong>Accent:</strong></p>
+
+      <mv-button-login
+        colorLogout="accent">
+      </mv-button-login>
+
+      <p><strong>Warn:</strong></p>
+
+      <mv-button-login
+        colorLogout="warn">
+      </mv-button-login>
+
+      <p><strong>Corporative:</strong></p>
+
+      <mv-button-login
+        colorLogout="corporative">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- disabled -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #disabled><strong>disabled</strong></mv-card-title>
+      <mv-card-subtitle>Deshabilitar el botón.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad disabled permite deshabilitar el botón además de añadir el estilo característico.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDisabledExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDisabledExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con disabled a true:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised"
+        disabled=true>
+      </mv-button-login>
+
+      <p><strong>Con disabled a false:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised"
+        disabled=false>
+      </mv-button-login>
+
+      <p><strong>Sin disabled (comportamiento por defecto):</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- imgSrc -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #imgSrc><strong>imgSrc</strong></mv-card-title>
+      <mv-card-subtitle>Imagen en el botón.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad imgSrc permite definir una imagen como fondo del botón.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeImgSrcExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeImgSrcExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con imagen combinado con tamaño de botón grande:</strong></p>
+
+      <mv-button-login
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Con imagen combinado con tipo fab:</strong></p>
+
+      <mv-button-login
+        appearance="fab"
+        imgSrc="/assets/examples/portal-001.png">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- imgSize -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #imgSize><strong>imgSize</strong></mv-card-title>
+      <mv-card-subtitle>Tamaño de la imagen.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad imgSize permite definir el tamaño de la imagen, previamente definida con la propiedad imgSrc.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeImgSizeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeImgSizeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Auto:</strong></p>
+
+      <mv-button-login
+        imgSize="auto"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Cover:</strong></p>
+
+      <mv-button-login
+        imgSize="cover"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Contain:</strong></p>
+
+      <mv-button-login
+        imgSize="contain"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Initial:</strong></p>
+
+      <mv-button-login
+        imgSize="initial"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Inherit:</strong></p>
+
+      <mv-button-login
+        imgSize="inherit"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong><em>Porcentaje</em></strong>:</p>
+
+      <ul>
+        <li>% total
+
+          <mv-button-login
+            imgSize="20%"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            imgSize="50%"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            imgSize="90%"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+        </li>
+        <li>% ancho % alto
+
+          <mv-button-login
+            imgSize="20% 10%"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            imgSize="70% 10%"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            imgSize="10% 20%"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            imgSize="10% 70%"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+        </li>
+      </ul>
+
+      <p><strong><em>Longitud</em></strong>:</p>
+
+      <ul>
+        <li>px total
+
+          <mv-button-login
+            imgSize="20px"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            imgSize="50px"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            imgSize="90px"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+        </li>
+        <li>px ancho px alto
+
+          <mv-button-login
+            imgSize="20px 10px"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            imgSize="70px 10px"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            imgSize="10px 20px"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            imgSize="10px 70px"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+        </li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- imgPosition -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #imgPosition><strong>imgPosition</strong></mv-card-title>
+      <mv-card-subtitle>Posición de la imagen.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad imgPosition permite definir la posición de la imagen dentro del botón.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeImgPositionExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeImgPositionExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>top|right|bottom|left</strong>:</p>
+
+      <ul>
+        <li>
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="left top"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="left center"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="left bottom"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="right top"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="right center"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="right bottom"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="center top"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="center center"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="center bottom"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+        </li>
+      </ul>
+
+      <p><strong><em>Posición</em></strong>:</p>
+
+      <ul>
+        <li>%x %y
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="50% 50%"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="10% 75%"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="75% 10%"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+        </li>
+
+        <li>px x px y
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="10px 10px"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="10px 25px"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+
+          <mv-button-login
+            class="buttonMargin"
+            imgPosition="75px 10px"
+            imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+          </mv-button-login>
+        </li>
+      </ul>
+
+      <p><strong>Initial</strong>:</p>
+
+      <mv-button-login
+        imgPosition="initial"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Inherit</strong>:</p>
+
+      <mv-button-login
+        imgPosition="inherit"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- imgRepeat -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #imgRepeat><strong>imgRepeat</strong></mv-card-title>
+      <mv-card-subtitle>Cómo se repite la imagen, si es necesario.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad imgRepeat permite definir con qué patrón se debe repetir la imagen en caso de quedar huecos vacíos.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeImgRepeatExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeImgRepeatExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Repeat</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        imgSize="20px 20px"
+        imgRepeat="repeat"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Repeat-x</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        imgSize="20px 20px"
+        imgRepeat="repeat-x"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Repeat-y</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        imgSize="20px 20px"
+        imgRepeat="repeat-y"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>No-repeat</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        imgSize="20px 20px"
+        imgRepeat="no-repeat"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Space</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        imgSize="20px 20px"
+        imgRepeat="space"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Round</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        imgSize="20px 20px"
+        imgRepeat="round"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Initial</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        imgSize="20px 20px"
+        imgRepeat="initial"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+      <p><strong>Inherit</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        imgSize="20px 20px"
+        imgRepeat="inherit"
+        imgSrc="/assets/examples/ejemplo_imagen2.jpg">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- loginText -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #loginText><strong>loginText</strong></mv-card-title>
+      <mv-card-subtitle>Texto de login.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad loginText permite definir el texto cuando el botón está en modo login.</p>
+      <p>El valor por defecto es 'Acceder'</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLoginTextExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLoginTextExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>loginText 'Login'</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        loginText="Login">
+      </mv-button-login>
+
+      <p><strong>loginText 'Inicie sesión'</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        loginText="Inicie sesión">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- logoutText -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #logoutText><strong>logoutText</strong></mv-card-title>
+      <mv-card-subtitle>Texto de logout.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad logoutText permite definir el texto cuando el botón está en modo logout.</p>
+      <p>El valor por defecto es 'Cerrar sesión'</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLogoutTextExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLogoutTextExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>logoutText 'Logout'</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        logoutText="Logout">
+      </mv-button-login>
+
+      <p><strong>logoutText 'Salir'</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        logoutText="Salir">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- loginFontSet -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #loginFontSet><strong>loginFontSet</strong></mv-card-title>
+      <mv-card-subtitle>Familia de iconos para login.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad loginFontSet permite definir la familia de iconos que queremos usar
+        cuando la acción a realizar es el login, tan solo en caso de querer usar Font Awesome.
+        Si queremos usar los iconos de Material no hay que usar esta propiedad.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLoginFontSetExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLoginFontSetExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>loginFontSet 'far' y loginIcon 'fa-address-book' (Font Awesome)</strong>:</p>
+
+      <mv-button-login
+        loginFontSet="far"
+        loginIcon="fa-address-book"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>loginFontSet 'fas' y loginIcon 'fa-address-book' (Font Awesome)</strong>:</p>
+
+      <mv-button-login
+        loginFontSet="fas"
+        loginIcon="fa-address-book"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>Sin loginFontSet y loginIcon 'build' (Material)</strong>:</p>
+
+      <mv-button-login
+        loginIcon="build"
+        showIcon=true>
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- loginIcon -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #loginIcon><strong>loginIcon</strong></mv-card-title>
+      <mv-card-subtitle>Icono para login.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad loginIcon permite definir el icono cuando la acción a realizar es el login.</p>
+      <p>Para usar iconos de Font Awesome debemos también definirlo mediante la propiedad <strong>loginFontSet</strong></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLoginIconExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLoginIconExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>loginIcon 'fa-car' (Font Awesome)</strong>:</p>
+
+      <mv-button-login
+        loginFontSet="fas"
+        loginIcon="fa-car"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>loginIcon 'fa-chart-pie' (Font Awesome)</strong>:</p>
+
+      <mv-button-login
+        loginFontSet="fas"
+        loginIcon="fa-chart-pie"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>loginIcon 'done' (Material)</strong>:</p>
+
+      <mv-button-login
+        loginIcon="done"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>loginIcon 'fingerprint' (Material)</strong>:</p>
+
+      <mv-button-login
+        loginIcon="fingerprint"
+        showIcon=true>
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- logoutFontSet -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #logoutFontSet><strong>logoutFontSet</strong></mv-card-title>
+      <mv-card-subtitle>Familia de iconos para logout.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad logoutFontSet permite definir la familia de iconos que queremos usar
+        cuando la acción a realizar es el login, tan solo en caso de querer usar Font Awesome.
+        Si queremos usar los iconos de Material no hay que usar esta propiedad.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLogoutFontSetExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLogoutFontSetExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>logoutFontSet 'far' y logoutIcon 'fa-address-book' (Font Awesome)</strong>:</p>
+
+      <mv-button-login
+        logoutFontSet="far"
+        logoutIcon="fa-address-book"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>logoutFontSet 'fas' y logoutIcon 'fa-address-book' (Font Awesome)</strong>:</p>
+
+      <mv-button-login
+        logoutFontSet="fas"
+        logoutIcon="fa-address-book"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>Sin logoutFontSet y logoutIcon 'build' (Material)</strong>:</p>
+
+      <mv-button-login
+        logoutIcon="build"
+        showIcon=true>
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- logoutIcon -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #logoutIcon><strong>logoutIcon</strong></mv-card-title>
+      <mv-card-subtitle>Icono para logout.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad logoutIcon permite definir el icono cuando la acción a realizar es el logout.</p>
+      <p>Para usar iconos de Font Awesome debemos también definirlo mediante la propiedad <strong>loginFontSet</strong></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeLogoutIconExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeLogoutIconExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>logoutIcon 'fa-car' (Font Awesome)</strong>:</p>
+
+      <mv-button-login
+        logoutFontSet="fas"
+        logoutIcon="fa-car"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>logoutIcon 'fa-chart-pie' (Font Awesome)</strong>:</p>
+
+      <mv-button-login
+        logoutFontSet="fas"
+        logoutIcon="fa-chart-pie"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>logoutIcon 'done' (Material)</strong>:</p>
+
+      <mv-button-login
+        logoutIcon="done"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>logoutIcon 'fingerprint' (Material)</strong>:</p>
+
+      <mv-button-login
+        logoutIcon="fingerprint"
+        showIcon=true>
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showIcon -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showIcon><strong>showIcon</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar el icono.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad showIcon permite mostrar el icono en el botón.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowIconExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeShowIconExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con showIcon a true:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>Con showIcon a true y loginIcon 'fingerprint':</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised"
+        loginIcon="fingerprint"
+        showIcon=true>
+      </mv-button-login>
+
+      <p><strong>Con showIcon a false:</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised"
+        showIcon=false>
+      </mv-button-login>
+
+      <p><strong>Sin showIcon (comportamiento por defecto):</strong></p>
+
+      <mv-button-login
+        color="primary"
+        appearance="raised">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- size -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #size><strong>size</strong></mv-card-title>
+      <mv-card-subtitle>Tamaño del botón.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad size permite definir el tamaño del botón.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeSizeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeSizeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Small</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        color="primary"
+        size="small">
+      </mv-button-login>
+
+      <p><strong>Medium</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        color="primary"
+        size="medium">
+      </mv-button-login>
+
+      <p><strong>Big</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        color="primary"
+        size="big">
+      </mv-button-login>
+
+      <p><strong>Tamaño por defecto</strong>:</p>
+
+      <mv-button-login
+        class="buttonMargin"
+        color="primary">
+      </mv-button-login>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

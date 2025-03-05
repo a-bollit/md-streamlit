@@ -1,0 +1,410 @@
+
+openapi: "3.0.0"
+info:
+  version: v1
+  title: PlantillaAPIMadridDigital
+  description: |
+    ----
+    ### Descripción de la API
+    API para la gestión de entidades `GEA_ACURE` y `NOTIFICACION_TELEMATICA`.
+    ----
+  contact:
+    name: API Owner
+    url: http://urldesoporte.com
+    email: email.de.area.responsable@madrid.org
+servers:
+  - url: https://apis.comunidad.madrid/gea_acure_notificacion_telematica
+    description: Url de la API
+tags:
+  - name: GEA_ACURE
+    description: Operaciones sobre la entidad 'GEA_ACURE'
+  - name: NOTIFICACION_TELEMATICA
+    description: Operaciones sobre la entidad 'NOTIFICACION_TELEMATICA'
+paths:
+  /gea_acure:
+    get:
+      summary: Obtener todos los registros de GEA_ACURE
+      description: Permite obtener una colección de registros de GEA_ACURE.
+      tags:
+        - GEA_ACURE
+      responses:
+        200:
+          description: Lista de registros obtenida correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gea_acure_response'
+        default:
+          $ref: '#/components/responses/standard_server_error_response'
+    post:
+      summary: Crear un nuevo registro en GEA_ACURE
+      description: Permite crear un nuevo registro en GEA_ACURE.
+      tags:
+        - GEA_ACURE
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gea_acure'
+      responses:
+        201:
+          description: Registro creado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gea_acure'
+        default:
+          $ref: '#/components/responses/standard_server_error_response'
+  /gea_acure/{CDDOCUM}:
+    get:
+      summary: Obtener un registro específico de GEA_ACURE
+      description: Permite obtener un registro específico de GEA_ACURE por su identificador único.
+      tags:
+        - GEA_ACURE
+      parameters:
+        - name: CDDOCUM
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Registro obtenido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gea_acure'
+        404:
+          $ref: '#/components/responses/standard_not_found_response'
+        default:
+          $ref: '#/components/responses/standard_server_error_response'
+    put:
+      summary: Actualizar un registro específico de GEA_ACURE
+      description: Permite actualizar los detalles de un registro específico de GEA_ACURE.
+      tags:
+        - GEA_ACURE
+      parameters:
+        - name: CDDOCUM
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gea_acure'
+      responses:
+        200:
+          description: Registro actualizado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gea_acure'
+        404:
+          $ref: '#/components/responses/standard_not_found_response'
+        default:
+          $ref: '#/components/responses/standard_server_error_response'
+    delete:
+      summary: Eliminar un registro específico de GEA_ACURE
+      description: Permite eliminar un registro específico de GEA_ACURE.
+      tags:
+        - GEA_ACURE
+      parameters:
+        - name: CDDOCUM
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Registro eliminado con éxito
+        404:
+          $ref: '#/components/responses/standard_not_found_response'
+        default:
+          $ref: '#/components/responses/standard_server_error_response'
+  /notificacion_telematica:
+    get:
+      summary: Obtener todos los registros de NOTIFICACION_TELEMATICA
+      description: Permite obtener una colección de registros de NOTIFICACION_TELEMATICA.
+      tags:
+        - NOTIFICACION_TELEMATICA
+      responses:
+        200:
+          description: Lista de registros obtenida correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notificacion_telematica_response'
+        default:
+          $ref: '#/components/responses/standard_server_error_response'
+    post:
+      summary: Crear un nuevo registro en NOTIFICACION_TELEMATICA
+      description: Permite crear un nuevo registro en NOTIFICACION_TELEMATICA.
+      tags:
+        - NOTIFICACION_TELEMATICA
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/notificacion_telematica'
+      responses:
+        201:
+          description: Registro creado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notificacion_telematica'
+        default:
+          $ref: '#/components/responses/standard_server_error_response'
+  /notificacion_telematica/{CDDOCUM}:
+    get:
+      summary: Obtener un registro específico de NOTIFICACION_TELEMATICA
+      description: Permite obtener un registro específico de NOTIFICACION_TELEMATICA por su identificador único.
+      tags:
+        - NOTIFICACION_TELEMATICA
+      parameters:
+        - name: CDDOCUM
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Registro obtenido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notificacion_telematica'
+        404:
+          $ref: '#/components/responses/standard_not_found_response'
+        default:
+          $ref: '#/components/responses/standard_server_error_response'
+    put:
+      summary: Actualizar un registro específico de NOTIFICACION_TELEMATICA
+      description: Permite actualizar los detalles de un registro específico de NOTIFICACION_TELEMATICA.
+      tags:
+        - NOTIFICACION_TELEMATICA
+      parameters:
+        - name: CDDOCUM
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/notificacion_telematica'
+      responses:
+        200:
+          description: Registro actualizado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notificacion_telematica'
+        404:
+          $ref: '#/components/responses/standard_not_found_response'
+        default:
+          $ref: '#/components/responses/standard_server_error_response'
+    delete:
+      summary: Eliminar un registro específico de NOTIFICACION_TELEMATICA
+      description: Permite eliminar un registro específico de NOTIFICACION_TELEMATICA.
+      tags:
+        - NOTIFICACION_TELEMATICA
+      parameters:
+        - name: CDDOCUM
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Registro eliminado con éxito
+        404:
+          $ref: '#/components/responses/standard_not_found_response'
+        default:
+          $ref: '#/components/responses/standard_server_error_response'
+components:
+  schemas:
+    gea_acure:
+      type: object
+      properties:
+        CDDOCUM:
+          type: string
+        CDDEPTNO:
+          type: string
+        CDTEXP:
+          type: string
+        CDNEXP:
+          type: number
+        CDDIGITO:
+          type: number
+        CDAEXP:
+          type: number
+        DSDOCUM:
+          type: string
+        DSNOMBRE:
+          type: string
+        DSAPELLIDO1:
+          type: string
+        DSAPELLIDO2:
+          type: string
+        DSRAZONSOC:
+          type: string
+        CDPAIS:
+          type: string
+        CDPROV:
+          type: string
+        CDMUNI:
+          type: string
+        DSDIRECCION:
+          type: string
+        DSDIRECCION1:
+          type: string
+        DSDIRECCION2:
+          type: string
+        CDPOSTAL:
+          type: string
+        DSTELEFONO:
+          type: string
+        DSFAX:
+          type: string
+        ITIMPRE:
+          type: number
+        NUMRELACION:
+          type: number
+        FCEMISION:
+          type: string
+          format: date
+        FCREAL:
+          type: string
+          format: date
+    gea_acure_response:
+      type: array
+      items:
+        $ref: '#/components/schemas/gea_acure'
+    notificacion_telematica:
+      type: object
+      properties:
+        CDDOCUM:
+          type: string
+        CDDEPTNO:
+          type: string
+        CDTEXP:
+          type: string
+        CDNEXP:
+          type: number
+        CDDIGITO:
+          type: number
+        CDAEXP:
+          type: number
+        DSDOCUM:
+          type: string
+        DSNOMBRE:
+          type: string
+        DSAPELLIDO1:
+          type: string
+        DSAPELLIDO2:
+          type: string
+        DSRAZONSOC:
+          type: string
+        CDPAIS:
+          type: string
+        CDPROV:
+          type: string
+        CDMUNI:
+          type: string
+        DSDIRECCION:
+          type: string
+        DSDIRECCION1:
+          type: string
+        DSDIRECCION2:
+          type: string
+        CDPOSTAL:
+          type: string
+        DSTELEFONO:
+          type: string
+        DSFAX:
+          type: string
+        ITIMPRE:
+          type: number
+        NUMRELACION:
+          type: number
+        FCEMISION:
+          type: string
+          format: date
+        FCREAL:
+          type: string
+          format: date
+    notificacion_telematica_response:
+      type: array
+      items:
+        $ref: '#/components/schemas/notificacion_telematica'
+  responses:
+    standard_server_error_response:
+      description: Error desconocido
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  http_code:
+                    type: integer
+                    example: 500
+                  info:
+                    type: string
+                    example: Error desconocido
+                  trace_id:
+                    type: string
+                    example: 123456abcde
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          example: 5000
+                        message:
+                          type: string
+                          example: Mensaje de error desconocido
+    standard_not_found_response:
+      description: No encontrado
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  http_code:
+                    type: integer
+                    example: 404
+                  info:
+                    type: string
+                    example: Recurso no encontrado
+                  trace_id:
+                    type: string
+                    example: 123456abcde
+  examples:
+    standard_delete_response_example:
+      value:
+        result:
+          status: true
+          http_code: 200
+          info: Solicitud realizada con éxito
+          trace_id: 123456abcde
+        data:
+          uuid: '5e1dd3b1-e524-43f4-beef-46b0795ebb4f'
+          id: 23

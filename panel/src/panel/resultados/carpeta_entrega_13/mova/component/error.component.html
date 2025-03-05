@@ -1,0 +1,13 @@
+<mv-header [headerTitle]="'Error'" [fixed]="true" [showBackButton]="false" [showMenuButton]="false">
+  <mv-icon name="error_outline" class="error-icon"></mv-icon>
+</mv-header>
+
+<div class="error-modal">
+  <div class="error-content">
+    <h2>{{ errorMessage }}</h2>
+    <mv-button class="btn-close" (click)="closeError()">
+      <mv-icon name="close"></mv-icon>
+      Close
+    </mv-button>
+  </div>
+</div>

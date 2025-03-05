@@ -1,0 +1,25 @@
+<mv-card>
+  <mv-header>
+    <mv-icon name="error" color="warn"></mv-icon>
+    <mv-title>Detalles de Errores de Situación</mv-title>
+  </mv-header>
+  <mv-content>
+    <div *ngFor="let error of errores" class="error-item">
+      <p><strong>Error:</strong> {{error.detalle}}</p>
+      <p><strong>Descripción:</strong> {{error.descripcion}}</p>
+      <div class="actions">
+        <mv-button appearance="raised" color="primary" (click)="corregirError('editarSalvar', error)">
+          Editar y Salvar en BD
+        </mv-button>
+        <mv-button appearance="raised" color="accent" (click)="corregirError('registrar', error)">
+          Registrar
+        </mv-button>
+      </div>
+    </div>
+  </mv-content>
+  <mv-footer>
+    <mv-button appearance="flat" color="warn" (click)="corregirError('cerrar', null)">
+      Cerrar
+    </mv-button>
+  </mv-footer>
+</mv-card>

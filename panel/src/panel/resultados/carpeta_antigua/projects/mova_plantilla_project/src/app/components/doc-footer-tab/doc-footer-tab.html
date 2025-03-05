@@ -1,0 +1,601 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-footer-tab</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='barColor.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> barColor
+      </a></li>
+      <li><a class="nostyle" (click)='color.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> color
+      </a></li>
+      <li><a class="nostyle" (click)='fixed.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> fixed
+      </a></li>
+      <li><a class="nostyle" (click)='showMenu.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showMenu
+      </a></li>
+      <!--<li><a class="nostyle" (click)='initialPosition.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> initialPosition
+      </a></li>-->
+      <li><a class="nostyle" (click)='selectedItem.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> selectedItem
+      </a></li>
+      <li><a class="nostyle" (click)='tabItems.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> tabItems
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-footer-tab</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El componente mv-footer-tab se basa en el componente mat-tab de Angular Material, al que se le añade funcionalidad y estilos adicionales.</p>
+      <p>Sirve para organizar la información y secciones de una app</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-footer-tab</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente sirve para poner una barra fija en la parte de abajo
+        de la app movil de hasta 6 iconos que pueden servir de menú o solapas.</p>
+
+      <p>Para ver ejemplos más realistas y completos del componente ver en los
+        <strong><a target="_blank" href="#/doc-environment">ejemplos de maquetación</a></strong></p>
+
+      <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de footer-tab:</strong></p>
+
+      <mv-footer-tab
+        [tabItems]="arrayTabItems">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- barColor -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #barColor><strong>barColor</strong></mv-card-title>
+      <mv-card-subtitle>Color del elemento de selección.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad barColor permite definir el color de la barra de selección, cuando está seleccionado un elemento.
+        Los colores disponibles son:</p>
+        <ul>
+          <li>primary</li>
+          <li>accent</li>
+          <li>warn</li>
+          <li>corporative</li>
+          <li>secondary-001</li>
+          <li>secondary-002</li>
+          <li>secondary-003</li>
+          <li>secondary-004</li>
+          <li>secondary-005</li>
+          <li>secondary-006</li>
+          <li>secondary-007</li>
+          <li>secondary-008</li>
+          <li>secondary-009</li>
+          <li>secondary-010</li>
+          <li>secondary-011</li>
+          <li>secondary-012</li>
+          <li>secondary-white</li>
+          <li>secondary-black</li>
+        </ul>
+      <p>Si no especificamos ningún valor, el color de la barra es negro.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeBarColorExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeBarColorExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con barColor = 'corporative':</strong></p>
+
+      <mv-footer-tab
+        barColor="corporative"
+        [tabItems]="arrayTabItems2">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+      <p><strong>Con barColor = 'accent':</strong></p>
+
+      <mv-footer-tab
+        barColor="accent"
+        [tabItems]="arrayTabItems2">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+      <p><strong>Con barColor = 'secondary-002':</strong></p>
+
+      <mv-footer-tab
+        barColor="secondary-002"
+        [tabItems]="arrayTabItems2">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- color -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #color><strong>color</strong></mv-card-title>
+      <mv-card-subtitle>Color de los botones.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad color permite definir el color de fondo de los botones. Los colores disponibles son:</p>
+      <ul>
+        <li>primary</li>
+        <li>accent</li>
+        <li>warn</li>
+        <li>corporative</li>
+        <li>secondary-001</li>
+        <li>secondary-002</li>
+        <li>secondary-003</li>
+        <li>secondary-004</li>
+        <li>secondary-005</li>
+        <li>secondary-006</li>
+        <li>secondary-007</li>
+        <li>secondary-008</li>
+        <li>secondary-009</li>
+        <li>secondary-010</li>
+        <li>secondary-011</li>
+        <li>secondary-012</li>
+        <li>secondary-white</li>
+        <li>secondary-black</li>
+      </ul>
+      <p>Si no especificamos ningún valor, el color de fondo es blanco.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeColorExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeColorExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con color = 'corporative':</strong></p>
+
+      <mv-footer-tab
+        color="corporative"
+        [tabItems]="arrayTabItems2">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+      <p><strong>Con color = 'accent':</strong></p>
+
+      <mv-footer-tab
+        color="accent"
+        [tabItems]="arrayTabItems2">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+      <p><strong>Con color = 'secondary-white':</strong></p>
+
+      <mv-footer-tab
+        color="secondary-white"
+        [tabItems]="arrayTabItems2">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- fixed -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #fixed><strong>fixed</strong></mv-card-title>
+      <mv-card-subtitle>Botonera fija o relativa al contenedor.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad fixed permite definir la posición de la botonera: fija en la pantalla o relativa al contenedor.</p>
+      <p>Si no especificamos ningún valor, se colocará de forma relativa.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeFixedExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeFixedExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con fixed = true:</strong></p>
+
+      <mv-button
+        (clickEvent)="showFixed=!showFixed"
+        *ngIf="!showFixed"
+        appearance="raised"
+        color="primary">
+        Activar ejemplo
+      </mv-button>
+
+      <mv-button
+        (clickEvent)="showFixed=!showFixed"
+        *ngIf="showFixed"
+        appearance="raised"
+        color="primary">
+        Desactivar ejemplo
+      </mv-button>
+
+      <mv-footer-tab
+        *ngIf="showFixed"
+        color="primary"
+        fixed=true
+        [tabItems]="arrayTabItems3">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+      <p><strong>Con fixed = false:</strong></p>
+
+      <mv-footer-tab
+        color="primary"
+        fixed="false"
+        [tabItems]="arrayTabItems3">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- initialPosition -->
+  <!--<mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #initialPosition><strong>initialPosition</strong></mv-card-title>
+      <mv-card-subtitle>Posición inicial.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad initialPosition permite seleccionar la vista que queremos mostrar de primeras.</p>
+      <p>Si no especificamos ningún valor, se mostrará la correspondiente a la primera posición.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeFixedExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeFixedExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con initialPosition = 3:</strong></p>
+
+      <mv-footer-tab
+        color="primary"
+        initialPosition=3
+        [tabItems]="arrayTabItems3">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+    </mv-card-content>
+  </mv-card>-->
+
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #selectedItem><strong>selectedItem</strong></mv-card-title>
+      <mv-card-subtitle>Posición seleccionada.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad selectedItem permite seleccionar la vista que queremos mostrar de inicio, así como en cualquier momento
+        cambiar la vista a mostrar cambiando el valor de la variable. También nos permite observar el valor de la vista seleccionada.</p>
+      <p>Si no especificamos ningún valor, se mostrará la vista correspondiente a la primera posición.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeSelectedItemExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeSelectedItemExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con selectedItem seleccionado inicialmente a 2:</strong></p>
+
+      <mv-footer-tab
+        color="primary"
+        [(selectedItem)]="selectedItemExample"
+        [tabItems]="arrayTabItems3">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+      <div class="buttons">
+        <mv-button
+          (clickEvent)="selectItem(0)"
+          appearance="raised"
+          color="primary">
+          Seleccionar vista 0
+        </mv-button>
+
+        <mv-button
+          (clickEvent)="selectItem(1)"
+          appearance="raised"
+          color="primary">
+          Seleccionar vista 1
+        </mv-button>
+
+        <mv-button
+          (clickEvent)="selectItem(2)"
+          appearance="raised"
+          color="primary">
+          Seleccionar vista 2
+        </mv-button>
+      </div>
+
+      <div>
+        <strong>Valor de la variable selectedItem: {{ selectedItemExample }}</strong>
+      </div>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showMenu -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showMenu><strong>showMenu</strong></mv-card-title>
+      <mv-card-subtitle>Menú en el último botón.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad showMenu permite definir un menú al final de los botones principales del menú. Aparte de poner la variable showMenu
+        a true también debemos definir el menú en sí como se muestra a continuación:</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowMenuExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeShowMenuExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con showMenu = true:</strong></p>
+
+      <mv-footer-tab
+        color="corporative"
+        [tabItems]="arrayTabItems3"
+        showMenu="true">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+        <div menu>
+          <button mat-menu-item>Opción 1</button>
+          <button mat-menu-item>Opción 2</button>
+          <button mat-menu-item>Opción 3</button>
+        </div>
+      </mv-footer-tab>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- tabItems -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #tabItems><strong>tabItems</strong></mv-card-title>
+      <mv-card-subtitle>Definición de los botones.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad tabItems permite definir los distintos botones de los que se compone el menú.
+        Como máximo se podrán definir 6 elementos más el menú.</p>
+      <p>Hay que definir por un lado un array con tantas posiciones como botones queramos que tenga el componente. En cada posición
+        del array debemos definir el icono, la familia de iconos y el título del botón:</p>
+        <ul>
+          <li>icon: nombre del icono (de Material o Font Awesome) </li>
+          <li>fontSet: 'fa' (si queremos que sea Font Awesome. Material por defecto)</li>
+          <li>title: título del botón</li>
+        </ul>
+      <p>Por otro lado hay que definir el html del contenido que queremos visualizar al pulsar cada botón con las etiquetas 'content1', 'content2'...</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTabsItemExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTabsItemExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con 5 elementos sin menú:</strong></p>
+
+      <mv-footer-tab
+        color="corporative"
+        [tabItems]="arrayTabItems4">
+
+        <div content1>
+          Contenido1
+        </div>
+        <div content2>
+          Contenido2
+        </div>
+        <div content3>
+          Contenido3
+        </div>
+        <div content4>
+          Contenido3
+        </div>
+        <div content5>
+          Contenido3
+        </div>
+      </mv-footer-tab>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top
+  upper=true>
+</mv-button-scroll-to-top>

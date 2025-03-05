@@ -1,0 +1,91 @@
+Result from estructura_visual_task: La descripción completa y detallada de los componentes visuales del formulario Oracle Forms EXPECA01 es la siguiente:
+
+---
+
+### Ventanas y Propiedades
+
+#### W_GENERAL
+Esta ventana sirve como la principal para la emisión de notificaciones. Tiene una dimensión de 415x133 píxeles, se posiciona en las coordenadas (20,8) en la pantalla y no permite ser maximizada, minimizada o redimensionada. Es una ventana de documento normal, cuyo lienzo principal es `CV_GENERAL`. 
+
+#### W_PESTAÑAS
+Esta ventana, también destinada a la emisión de notificaciones, tiene unas dimensiones de 593x314 píxeles, y se posiciona en (0, 0). Como `W_GENERAL`, no puede ser maximizada o redimensionada. Utiliza el lienzo `CV_PESTAÑAS` como principal.
+
+#### W_DEVOL
+La ventana `W_DEVOL` se utiliza para la devolución de acuses de recibo. Tiene dimensiones de 417x191 píxeles y está posicionada a (100, 90). Su lienzo principal es `CV_DEVOL`.
+
+#### W_INF
+`W_INF` proporciona información emergente. Con unas dimensiones de 312x37 píxeles y su posicionamiento en (100, 130), utiliza el lienzo `CV_INF`. Modal y sin capacidad de redimensionar o mover, está diseñada para mostrar mensajes emergentes al usuario.
+
+#### W_ERROR_RESULTADO
+Esta ventana aparece para mostrar errores en la emisión de notificaciones, mide 341x144 píxeles y se sitúa en (100, 100). Su lienzo principal es el `CV_ERROR_RESULTADO`.
+
+#### W_SITUACION_ERROR
+Similar a `W_ERROR_RESULTADO`, esta ventana muestra los errores de situación en la emisión de notificaciones. Tiene dimensiones de 358x152 píxeles y su lienzo principal es `CV_SITUACION_ERROR`.
+
+#### W_AYUDA
+La ventana `W_AYUDA`, con dimensiones de 383x137 píxeles, se utiliza para mostrar criterios de búsqueda relacionados con el campo de fecha. Está posicionada en (50, 45) y utiliza `CV_AYUDA` como lienzo principal.
+
+---
+
+### Lienzos y sus componentes
+
+#### CV_GENERAL
+Este lienzo, asociado a `W_GENERAL`, tiene unas dimensiones de 415x133 píxeles. Contiene varios gráficos de texto y marcos. Las posiciones precisas y tamaños de los componentes incluyen:
+- `Unidad Remitente` en (17, 22) con una altura de 11 píxeles.
+- `Fecha Desde` en (17, 46) con una altura de 11 píxeles.
+- `Expediente` en (17, 68) con una altura de 11 píxeles.
+
+Los marcos y gráficos adicionales que proporcionan delimitaciones y textos contextuales adicionales completan el aspecto visual de este lienzo.
+
+#### CV_PESTAÑAS
+Este lienzo se manifiesta como un separador de fichas con dimensiones 592x314 píxeles y altura de 314 píxeles. Se encuentra en la ventana `W_PESTAÑAS`. Tiene dos pestañas principales:
+- `PG_CORR` para la gestión de notificaciones de correos con marcos y gráficos de texto que delimitan y clarifican los distintos campos y elementos de interfaz.
+- `PG_NOTE` encargada de las notificaciones telemáticas, con una estructura similar a `PG_CORR` pero con diferencias específicas de texto y marcos.
+
+---
+
+### Alertas
+
+- **CONFIRMAR**: Representa una alerta de tipo atención con título "Confirmar dar de baja registro". Contiene botones "SI" y "NO" y utiliza el atributo visual `FONDO`.
+- **NOTA**: Una alerta de tipo nota que no tiene título ni mensajes de botón específicos.
+- **MENSAJE**: Una alerta de aviso que muestra un "Aviso" utilizando el atributo `FONDO`.
+
+---
+
+### Atributos Visuales
+
+- **REG_ACT_AMARILLO**: Utiliza un color de fondo `r100g100b50`.
+- **NEGRO**: Fuente Arial de tamaño 900, con color de `black`.
+- **ROJO**: Fuente Arial de tamaño 900, y el color `red` de primera plano.
+- **CAMPO_FONDO**, **FONDO**, **BOTON** y **FONDO_CAMPO_VISUAL**: Son atributos heredados que proveen estilos definidos previamente.
+
+---
+
+### Bloques y Datos
+
+#### BL_GENERAL
+Este bloque presenta elementos críticos con diferentes ubicaciones y tamaños que tienen atributos visuales específicos como:
+- **CDORGA_EREG** invisible, de 70x15 píxeles y posicionado en (168, 29).
+- **DSUNIDAD** mostrado, de 239x15 píxeles posicionado en (166, 15).
+
+#### GEA_ACURE y NOTIFICACION_TELEMATICA
+Ambos bloques muestran datos relacionados con documentos con elementos como `DOCUMENTO`, `DSDOCUM`, `EXPEDIENTE`, `INTERESADO` y otros. Cada elemento tiene atributos específicos como posición, justificación y propiedades de visualización (p.ej., si están visibles o no).
+
+#### BL_DOC_CORR y BL_DOC_NOTE
+Estos bloques permiten la interacción del usuario, presentando botones como `ACEPTAR`, `MARCAR` o `DESMARCAR`.
+
+---
+
+### Menús y Funciones
+
+El formulario utiliza un menú modular `DEFAULT&SMARTBAR` que proporciona acceso estándar y lógico a funciones comunes en Oracle Forms.
+
+---
+
+### Triggers y Propiedades Custom
+
+Varias triggers y propiedades programáticas en el formulario controlan el comportamiento y la disposición visual. Estas incluyen triggers para navegación, validación y estilos en formularios (`WHEN-NEW-FORM-INSTANCE`, `KEY-NEXT-ITEM`, `POST-QUERY`).
+
+---
+
+Esta descripción narrativa a profundidad incluye todos los aspectos visuales del formulario, proporcionando detalles completos de cada componente. Esto permite replicar la interfaz visual del formulario en Oracle Forms con precisión.

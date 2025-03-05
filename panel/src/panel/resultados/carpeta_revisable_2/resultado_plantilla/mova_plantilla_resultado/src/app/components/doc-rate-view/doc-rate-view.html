@@ -1,0 +1,42 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación valoración de la app</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información sobre valoración de la app.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>En MOVA hay definida una vista para valorar y realizar una encuesta sobre la app. Normalmente se suele acceder como un link en el menú de la aplicación,
+        pero se puede situar donde se desee. Para ver la vista acceder a <a target="_blank" href="#/rate-view"><strong>rate-view</strong></a></p>
+
+      <p>La vista se compone de una serie de estrellas para valorar la app del 1 al 5 y una sección de preguntas para responder.</p>
+
+      <p>Aparte de la puntuación y las preguntas, se almacenarán la fecha y el identificador de la app si estamos en una app móvil</p>
+
+      <p>Podremos ver toda la información sobre las puntuaciones y valoraciones de nuestra app en
+        <a href="https://gestiona3.madrid.org/portalapps/webapps/mova_backend" rel="noopener noreferrer" target="_blank"><strong>https://gestiona3.madrid.org/portalapps/webapps/mova_backend</strong></a></p>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

@@ -1,0 +1,98 @@
+Result from comportamiento_control_task: ### Triggers y Unidades de Programación en Oracle Forms
+
+#### Triggers
+
+1. **WHEN-BUTTON-PRESSED (LOV_CDUNIDAD)**
+   - **Descripción**: Este trigger se ejecuta cuando se presiona el botón `LOV_CDUNIDAD`.
+   - **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+   - **Funcionalidad**: Muestra una lista de valores (LOV) para seleccionar una unidad administrativa.
+   - **Interacción con Otros Elementos**: Llena el campo `CDUNIDAD` con el valor seleccionado de la lista.
+
+2. **KEY-NEXT-ITEM (FCDESDE)**
+   - **Descripción**: Este trigger se ejecuta cuando se presiona una tecla de navegación hacia el siguiente ítem.
+   - **Evento Asociado**: `KEY-NEXT-ITEM`.
+   - **Funcionalidad**: Mueve el cursor al ítem `FCHASTA`.
+   - **Interacción con Otros Elementos**: Navegación entre ítems de fechas de consulta.
+
+3. **WHEN-BUTTON-PRESSED (CAL_FCDESDE)**
+   - **Descripción**: Este trigger se ejecuta cuando se presiona el botón `CAL_FCDESDE`.
+   - **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+   - **Funcionalidad**: Muestra un calendario para seleccionar una fecha y actualizar el valor de `FCDESDE`.
+   - **Interacción con Otros Elementos**: Actualiza el campo `FCDESDE` con la fecha seleccionada.
+
+4. **KEY-NEXT-ITEM (FCHASTA)**
+   - **Descripción**: Este trigger se ejecuta cuando se presiona una tecla de navegación hacia el siguiente ítem.
+   - **Evento Asociado**: `KEY-NEXT-ITEM`.
+   - **Funcionalidad**: Mueve el cursor al ítem `CDDEPTNO`.
+   - **Interacción con Otros Elementos**: Navegación entre ítems de fechas de consulta.
+
+5. **WHEN-BUTTON-PRESSED (CAL_FCHASTA)**
+   - **Descripción**: Este trigger se ejecuta cuando se presiona el botón `CAL_FCHASTA`.
+   - **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+   - **Funcionalidad**: Muestra un calendario para seleccionar una fecha y actualizar el valor de `FCHASTA`.
+   - **Interacción con Otros Elementos**: Actualiza el campo `FCHASTA` con la fecha seleccionada.
+
+6. **WHEN-VALIDATE-ITEM (CDTEXP)**
+   - **Descripción**: Este trigger se ejecuta cuando se valida el ítem `CDTEXP`.
+   - **Evento Asociado**: `WHEN-VALIDATE-ITEM`.
+   - **Funcionalidad**: Valida el tipo de expediente y verifica permisos según aplicaciones y restricciones.
+   - **Cálculos Realizados**: Verifica distintos permisos de aplicaciones y restricciones.
+   - **Interacción con Otros Elementos**: Actualiza permisos y restricciones aplicables a `GLOBAL.cod_aplicacion`.
+
+7. **WHEN-BUTTON-PRESSED (ACEPTAR)**
+   - **Descripción**: Este trigger se ejecuta cuando se presiona el botón `ACEPTAR`.
+   - **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+   - **Funcionalidad**: Valida los datos ingresados, construye parámetros de consulta y actualiza vistas de bloques y datos.
+   - **Cálculos Realizados**: Validación de fechas, expedientes, construcción de consultas.
+   - **Interacción con Otros Elementos**: Interactúa con múltiples campos y bloques como `BL_GENERAL`, `B00`, `GEA_ACURE`, `NOTIFICACION_TELEMATICA`.
+
+8. **WHEN-BUTTON-PRESSED (CANCELAR)**
+   - **Descripción**: Este trigger se ejecuta cuando se presiona el botón `CANCELAR`.
+   - **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+   - **Funcionalidad**: Cierra el formulario sin validar.
+   - **Interacción con Otros Elementos**: `exit_form(no_validate)`.
+
+9. **WHEN-CHECKBOX-CHANGED (CB_MARCA - GEA_ACURE)**
+   - **Descripción**: Este trigger se ejecuta cuando cambia el estado de la casilla de verificación `CB_MARCA`.
+   - **Evento Asociado**: `WHEN-CHECKBOX-CHANGED`.
+   - **Funcionalidad**: Validaciones basadas en el registro y marcado.
+   - **Cálculos Realizados**: Comprobación de múltiples condiciones del documento.
+   - **Interacción con Otros Elementos**: Aumenta o disminuye el contador `docsel` en `BL_DOC_CORR`.
+
+10. **KEY-UP (GEA_ACURE, NOTIFICACION_TELEMATICA)**
+    - **Descripción**: Este trigger se ejecuta cuando se presiona la tecla hacia arriba.
+    - **Evento Asociado**: `KEY-UP`.
+    - **Funcionalidad**: Navega al bloque y verifica si está en el primer registro.
+    - **Interacción con Otros Elementos**: Interacción con el bloque correspondiente y mensajes de navegación.
+
+11. **KEY-DOWN (GEA_ACURE, NOTIFICACION_TELEMATICA)**
+    - **Descripción**: Este trigger se ejecuta cuando se presiona la tecla hacia abajo.
+    - **Evento Asociado**: `KEY-DOWN`.
+    - **Funcionalidad**: Navega al bloque y verifica si está en el último registro.
+    - **Interacción con Otros Elementos**: Interacción con el bloque correspondiente y mensajes de navegación.
+
+12. **POST-QUERY (GEA_ACURE, NOTIFICACION_TELEMATICA)**
+    - **Descripción**: Este trigger se ejecuta después de una consulta de base de datos.
+    - **Evento Asociado**: `POST-QUERY`.
+    - **Funcionalidad**: Procesa y establece datos adicionales luego de una consulta, verifica estado de expedientes y condiciones específicas de la notificación.
+    - **Cálculos Realizados**: Validaciones adicionales y construcción de datos.
+    - **Interacción con Otros Elementos**: Actualización de ítems y ajustes según resultados de consulta.
+
+13. **WHEN-BUTTON-PRESSED (REGISTRAR - BL_DOC_CORR)**
+    - **Descripción**: Este trigger se ejecuta cuando se presiona el botón `REGISTRAR`.
+    - **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+    - **Funcionalidad**: Registra documentos, valida y maneja errores de registro y estados del interesado.
+    - **Cálculos Realizados**: Registro de salida, validaciones de interesados, inserción de datos.
+    - **Interacción con Otros Elementos**: Interacción con datos e ítems en `GEA_ACURE`, ítems y bloques de control.
+
+14. **WHEN-BUTTON-PRESSED (MARCAR - BL_DOC_CORR)**
+    - **Descripción**: Este trigger se ejecuta cuando se presiona el botón `MARCAR`.
+    - **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+    - **Funcionalidad**: Marca todos los documentos para incluirlos en la salida, controla los estados de interesados y documentos.
+    - **Interacción con Otros Elementos**: Interacción con registros e ítems de `GEA_ACURE`, `BL_DOC_CORR`.
+
+15. **WHEN-BUTTON-PRESSED (DESMARCAR - BL_DOC_CORR)**
+    - **Descripción**: Este trigger se ejecuta cuando se presiona el botón `DESMARCAR`.
+    - **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+    - **Funcionalidad**: Desmarca todos los documentos para excluirlos de la salida.
+    - **Interacción con Otros Elementos**: Interacción con registros e ítems de `

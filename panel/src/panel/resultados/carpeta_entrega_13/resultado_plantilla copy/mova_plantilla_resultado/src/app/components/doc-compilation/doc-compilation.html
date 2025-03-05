@@ -1,0 +1,53 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de compilación y debug</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información sobre compilación.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Los distintos modos de compilación de una app MOVA son:</p>
+      <ul>
+        <li><strong>npm run serve-des</strong> - compilación en local con entorno de desarrollo. Sólo para ejecución en el navegador con localhost</li>
+        <li><strong>npm run serve-val</strong> - compilación en local con entorno de validación. Sólo para ejecución en el navegador con localhost</li>
+        <li><strong>npm run serve-pro</strong> - compilación en local con entorno de producción. Sólo para ejecución en el navegador con localhost</li>
+        <li><strong>npm run build-debug-des</strong> - compilación de archivos sin optimizar (mejor para depurar) con entorno de desarrollo.</li>
+        <li><strong>npm run build-debug-val</strong> - compilación de archivos sin optimizar (mejor para depurar) con entorno de validación.</li>
+        <li><strong>npm run build-debug-pro</strong> - compilación de archivos sin optimizar (mejor para depurar) con entorno de producción.</li>
+        <li><strong>npm run build-release-des</strong> - compilación de archivos optimizados con entorno de desarrollo.</li>
+        <li><strong>npm run build-release-val</strong> - compilación de archivos optimizados con entorno de validación.</li>
+        <li><strong>npm run build-release-pro</strong> - compilación de archivos optimizados con entorno de producción.</li>
+      </ul>
+
+      <p>Los primeros tres modos se usarán para ejecutar la app en local en el navegador, pero no se generará la app compilada</p>
+
+      <p>Los siguientes seis modos se usarán para generar la app compilada, bien para subirla como webapp a un servidor o para generar una app
+        móvil con Cordova.</p>
+
+    </mv-card-content>
+
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

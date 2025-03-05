@@ -1,0 +1,140 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación de Visores y Mapas</strong></mv-card-title>
+
+    <p>El API GIS diferencia entre el concepto de mapa (Map), que tiene el control sobre las capas, controles,
+      superposiciones, etc y la forma en la que lo visualizamos, que se realiza a través del visor (Viewer). </p>
+    <p>Una vista puede contener uno o más mapas, que a su vez contienen las capas. Para poder visualizar un mapa,
+      siempre se deberá instanciar dentro de una vista. A continuación,
+      se explica de forma detallada la forma de incluir ambos mediante el uso del APIGIS. </p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='visor.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Mapa
+        </a></li>
+      <li><a class="nostyle" (click)='mapa.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Vistas
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Viewer -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #visor><strong>El visor (Viewer)</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>El visor es el responsable de fijar ciertas propiedades como el centro, el nivel del zoom, la proyección de los
+        mapas.. etc.</p>
+      <p>Se puede instanciar un nuevo visor mediante la clase <strong>Viewer</strong>. </p>
+      <p><em>new ApiViewer(args)</em></p>
+      <ul>
+        <li><strong>args</strong> &#60;<i>object</i> &#62; Objeto con todos los argumentos del contructor. Puede
+          contener las siguientes propiedades:</li>
+        <ul>
+          <li><strong>container</strong> &#60;<i>string</i> &#62; Nombre del contenedor del DOM que almacenará los mapas
+            del viewer.</li>
+          <li><strong>maps</strong> &#60;<i>Map[]</i> &#62; Conjunto de mapas que contendrá el visor.</li>
+          <li><strong>options</strong> &#60;<i>object</i> &#62; Propiedades asociadas al viewer. Puede contener las
+            siguientes propiedades:</li>
+          <ul>
+            <li><strong>projections</strong> &#60;<i>object</i> &#62; En ocasiones la proyección a utilizar no está
+              registrada en el API, por lo que es necesario definirla. Para ello simplemente debe especificarse
+              * en un objeto el EPSG y la definición de la proyección.</li>
+            <li><strong>maxColumns = 3</strong> &#60;<i>integer</i>&#62; Número máximo de mapas por cada una de las
+              filas del Viewer.</li>
+            <li><strong>synchronize = 0 </strong> &#60;<i>integer</i>&#62; Inicializa los mapas en un modo de
+              sincronización. Admite tres valores (0: no sincronizados, 1: sincronización de mapas, 2: sincronización
+              continua).</li>
+            <li><strong>grid</strong> &#60;<i>object</i>&#62; Inicializa la disposición de los mapas del Viewer en modo
+              grid. Puede contener las siguientes propiedades:</li>
+            <ul>
+              <li><strong>active = true</strong> &#60;<i>boolean</i> &#62; Activación del modo grid.</li>
+              <li><strong>borders</strong> &#60;<i>object</i> &#62; Configura bordes entre los mapas en una vista en
+                grid. Por defecto, no se aplican bordes. Puede contener las siguientes propiedades:</li>
+              <ul>
+                <li><strong>color</strong> &#60;<i>string</i> &#62; Color del borde.</li>
+                <li><strong>borders</strong> &#60;<i>0 | 1 | 2</i> &#62; Inicializa los mapas en un modo de
+                  sincronización. Admite tres valores (0: no sincronizados, 1: sincronización de mapas, 2:
+                  sincronización continua).</li>
+              </ul>
+            </ul>
+          </ul>
+        </ul>
+      </ul>
+
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeViewerExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeViewerExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Visor con un mapa con una capa base:</strong></p>
+      <div id="doc-apigis-viewer-container">
+      </div>
+      <br>
+      <p>Se puede consultar información más detallada sobre el uso del Viewer en el documento XXX.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Mapa -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #mapa><strong>El mapa (Map)</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>El mapa está hecho de capas, una vista, controles, interacciones...</p>
+      <p>Se puede instanciar un nuevo mapa mediante la clase <strong>Map</strong>. </p>
+      <p><em>new ApiMap(args)</em></p>
+      <ul>
+        <li><strong>args</strong> &#60;<i>object</i> &#62; Objeto con todos los argumentos del contructor. Puede
+          contener las siguientes propiedades:</li>
+        <ul>
+          <li><strong>type</strong> &#60;<i>'OL'</i> &#62; Tipo de mapa que deseamos instanciar. Actualmente solo está disponible el tipo OL para OpenLayers. El API GIS permite su , el API permite su evolución para incorporar más librerías GIS. Hasta el momento, todos los desarrollos se han enfocado en la librería de Openlayers.</li>
+          <li><strong>container = Autogenerated</strong> &#60;<i>string</i> &#62; En ocasiones deseamos que algunos de los mapas del Visor se visualicen de manera externa al contenedor del mismo. Esta propiedad nos permite especificar otro contenedor distinto al del visor.</li>
+          <li><strong>options</strong> &#60;<i>object</i> &#62; Propiedades asociadas al mapa. Estas propiedades dependen del tipo de mapa que se esté instanciando. Para 'OL' estas pueden ser:</li>
+          <ul>
+            <li><strong>id</strong> &#60;<i>string</i>&#62; Identificador de mapa. Si no se asigna se autogenerará.</li>
+            <li><strong>title</strong> &#60;<i>string</i>&#62; Título del mapa.</li>
+            <li><strong>projections</strong> &#60;<i>object</i> &#62; Proyección a utilizar en el mapa. Todos los mapas del visor deberían tener la misma proyección.</li>
+            <li><strong>isOverviewMap = false</strong> &#60;<i>boolean</i> &#62; Indica si el mapa es de tipo Overview.</li>
+            <li><strong>layers</strong> &#60;<i>array de capas</i> &#62; Capas a añadir al mapa.</li>
+          </ul>
+          <li><strong>inheritedclass</strong> &#60;<i>'MapFish'</i> &#62; Clase de la que heredará dinámicamente el mapa. Debe coincidir con alguno de los disponibles actualmente ([MapFish]).</li>
+        </ul>
+      </ul>
+
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeMapExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeMapExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Visor con un mapa con una capa base:</strong></p>
+      <div id="doc-apigis-map-container">
+      </div>
+      <p>Se puede consultar información más detallada sobre el uso de Map en el documento XXX.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

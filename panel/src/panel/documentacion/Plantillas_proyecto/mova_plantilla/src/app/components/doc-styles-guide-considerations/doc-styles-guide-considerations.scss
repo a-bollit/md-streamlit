@@ -1,0 +1,14 @@
+@import '~@mova/components/_variables.scss';
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+  ul{
+    padding: 0 20px 0 20px;
+  }
+}
+.margin-li{
+  li{
+    margin: 0 0 1rem 0;
+  }
+}

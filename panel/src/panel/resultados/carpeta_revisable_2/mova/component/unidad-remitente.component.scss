@@ -1,0 +1,30 @@
+.unidad-remitente-card {
+  .form-group {
+    margin: 0 auto;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    select {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .btn-detallada {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+
+      mv-icon {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

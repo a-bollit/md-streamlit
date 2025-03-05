@@ -1,0 +1,27 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+#matAutocompleteOrigin{
+  position: absolute;
+  right: 16px;
+}
+
+// Ejemplo para editar el estilo del input
+// :host {
+//   ::ng-deep {
+//     /* Color de borde y fondo */
+//     mv-input[disabled="true"] > .mat-form-field-appearance-outline .mat-form-field-outline {
+//         color: rgb(245, 245, 245);
+//         background: rgb(245, 245, 245);
+//         background: linear-gradient(0deg, rgba(245, 245, 245,0.21332282913165268) 44%, rgba(0,212,255,0) 84%);
+//     }
+//     /* Color de fuente deshabilitado */
+//     mv-input[disabled="true"] > input.mat-input-element {
+//       color: rgb(245, 245, 245);
+//     }
+//   }
+// }

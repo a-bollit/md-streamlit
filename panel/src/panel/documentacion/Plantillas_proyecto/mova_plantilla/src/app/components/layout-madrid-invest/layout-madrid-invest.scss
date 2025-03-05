@@ -1,0 +1,37 @@
+.mat-card-title{
+  margin: 0 0 1rem 0;
+}
+.card-type-1{
+  width: calc(100% - 40px);
+  min-height: 10rem;
+  min-width: 5rem;
+  background-color: #ececec;
+  .mat-card-title{
+    font-size: 1.25rem;
+  }
+}
+.card-type-2{
+  width: calc(100% - 40px);
+  min-height: 10rem;
+  min-width: 5rem;
+  .mat-card-title{
+    font-size: 1.25rem;
+    color: #fff;
+  }
+  .mat-card-subtitle{
+    font-size: 1rem;
+    color: #fff;
+  }
+}
+.color1{
+  background-color: #e8b792;
+}
+.color2{
+  background-color: #dcd48b;
+}
+.color3{
+  background-color: #92cce8;
+}
+.color4{
+  background-color: #92e8e2;
+}

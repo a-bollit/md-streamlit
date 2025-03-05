@@ -1,0 +1,181 @@
+Result from comportamiento_control_task: # Informe Detallado de la Lógica de Comportamiento y Control del Formulario Oracle Forms: EXPECA01
+
+## Descripción de Triggers y Unidades de Programación
+
+### 1. Trigger: WHEN-BUTTON-PRESSED (Botón LOV_CDUNIDAD en BL_GENERAL)
+- **Funcionalidad**: Este trigger se activa cuando se presiona el botón asociado al campo `LOV_CDUNIDAD`.
+- **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+- **Acción**: Abre una lista de valores (LOV) para seleccionar una unidad, poblada con valores obtenidos de la `LOV_UNIDAD`.
+
+### 2. Trigger: KEY-NEXT-ITEM (Campo FCDESDE en BL_GENERAL)
+- **Funcionalidad**: Navega automáticamente al siguiente campo `FCHASTA` cuando se presiona la tecla "TAB" o "Enter".
+- **Evento Asociado**: `KEY-NEXT-ITEM`.
+- **Acción**: Usa la función `go_item()` para mover el cursor al campo `FCHASTA`.
+
+### 3. Trigger: WHEN-BUTTON-PRESSED (Botón CAL_FCDESDE en BL_GENERAL)
+- **Funcionalidad**: Llama a un calendario para seleccionar una fecha.
+- **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+- **Acción**: Invoca el procedimiento `FCALENDARIO` pasando la referencia del campo de fecha para obtener la selección del calendario.
+
+### 4. Trigger: KEY-NEXT-ITEM (Campo FCHASTA en BL_GENERAL)
+- **Funcionalidad**: Navega automáticamente al siguiente campo `CDDEPTNO` cuando se presiona la tecla "TAB" o "Enter".
+- **Evento Asociado**: `KEY-NEXT-ITEM`.
+- **Acción**: Usa la función `go_item()` para mover el cursor al campo `CDDEPTNO`.
+
+### 5. Trigger: WHEN-BUTTON-PRESSED (Botón CAL_FCHASTA en BL_GENERAL)
+- **Funcionalidad**: Llama a un calendario para seleccionar una fecha.
+- **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+- **Acción**: Invoca el procedimiento `FCALENDARIO` pasando la referencia del campo de fecha para obtener la selección del calendario.
+
+### 6. Trigger: WHEN-VALIDATE-ITEM (Campo CDTEXP en BL_GENERAL)
+- **Funcionalidad**: Valida el tipo de expediente y permisos de la aplicación.
+- **Evento Asociado**: `WHEN-VALIDATE-ITEM`.
+- **Acción**: Si el campo `CDTEXP` no está vacío, verifica con `Restricciones_APL_TEXP` y `Permisos_Aplicacion` para comprobar permisos. Muestra un mensaje de error si hay algún problema con la validación.
+
+### 7. Trigger: WHEN-BUTTON-PRESSED (Botón ACEPTAR en BL_GENERAL)
+- **Funcionalidad**: Validación y procesamiento de datos antes de mostrar la siguiente vista.
+- **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+- **Acción**: Realiza las siguientes acciones:
+  1. Verifica que el campo `CDUNIDAD` no esté vacío.
+  2. Llama a los procedimientos `Valida_Expediente` y `Valida_Fechas` para validar los datos ingresados.
+  3. Muestra la vista `CV_INF` y oculta `CV_PESTAÑAS` y `W_PESTAÑAS`.
+  4. Sincroniza los bloques `GEA_ACURE` y `NOTIFICACION_TELEMATICA` ejecutando sus consultas.
+  5. Valida si hay notificaciones asociadas a expedientes finalizados o anulados; si no hay datos, muestra un mensaje de error.
+
+### 8. Trigger: WHEN-BUTTON-PRESSED (Botón CANCELAR en BL_GENERAL)
+- **Funcionalidad**: Sale del formulario sin validar.
+- **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+- **Acción**: Llama a `exit_form(no_validate)` para salir del formulario.
+
+### 9. Trigger: PRE-TEXT-ITEM (Usado globalmente en varios campos)
+- **Funcionalidad**: Cambia el color de fondo de la fila actual al obtener el foco.
+- **Evento Asociado**: `PRE-TEXT-ITEM`.
+- **Acción**: Usa `SET_ITEM_PROPERTY` para cambiar el color de fondo del item actual.
+
+### 10. Trigger: POST-TEXT-ITEM (Usado globalmente en varios campos)
+- **Funcionalidad**: Restaurar el color de fondo estándar al perder el foco.
+- **Evento Asociado**: `POST-TEXT-ITEM`.
+- **Acción**: Usa `SET_ITEM_PROPERTY` para restaurar el color de fondo del item original.
+
+### 11. Trigger: WHEN-CHECKBOX-CHANGED (Campo CB_MARCA en GEA_ACURE)
+- **Funcionalidad**: Controla el marcado de documentos para registrar/envío.
+- **Evento Asociado**: `WHEN-CHECKBOX-CHANGED`.
+- **Acción**: Verifica varias condiciones antes de permitir marcar la casilla:
+  - Verifica que el registro no esté ya registrado (IT_REGISTRADO).
+  - Comprueba que esté completa la información del interesado (nombre, apellidos o razón social).
+  - Actualiza contadores en el bloque `BL_DOC_CORR`.
+
+### 12. Trigger: POST-QUERY (Bloque GEA_ACURE)
+- **Funcionalidad**: Realiza múltiples validaciones y obtiene datos necesarios.
+- **Evento Asociado**: `POST-QUERY`.
+- **Acción**: Realiza las siguientes acciones:
+  - Comprueba el estado del expediente asociado; si está finalizado o anulado, marca el campo `EXISTEN_EXP_AN_FI` en el bloque `B00`.
+  - Construye la referencia del expediente en pantalla.
+  - Inicializa el campo `CB_MARCA` en 'N'.
+  - Actualiza información del interesado desde parámetros de la aplicación.
+
+### 13. Trigger: WHEN-BUTTON-PRESSED (Botón ACEPTAR en BL_DOC_CORR)
+- **Funcionalidad**: Procesa el registro de notificaciones de correos.
+- **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+- **Acción**: Valida los documentos seleccionados para registro, invocando procedimientos de registro de salida y actualización del interesado. Actualiza la vista con resultados y posibles errores.
+
+### 14. Trigger: WHEN-BUTTON-PRESSED (Botón MARCAR en BL_DOC_CORR)
+- **Funcionalidad**: Marca todos los documentos para su procesamiento.
+- **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+- **Acción**: Recorre todos los registros y marca la casilla `CB_MARCA` si las condiciones son cumplidas (registro no existente, interesado completo).
+
+### 15. Trigger: WHEN-BUTTON-PRESSED (Botón DESMARCAR en BL_DOC_CORR)
+- **Funcionalidad**: Desmarca todos los documentos.
+- **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+- **Acción**: Recorre todos los registros y desmarca la casilla `CB_MARCA`.
+
+### 16. Trigger: WHEN-BUTTON-PRESSED (Botón ACEPTAR en BL_DOC_NOTE)
+- **Funcionalidad**: Envía las notificaciones telemáticas seleccionadas.
+- **Evento Asociado**: `WHEN-BUTTON-PRESSED`.
+- **Acción**: Realiza las siguientes acciones:
+  - Crea una lista de notificaciones ejecutando `crear_lista_notificacion`.
+  - Itera sobre los documentos marcados, incluyendo cada uno en la lista de notificaciones creada.
+  - Invoca procedimientos de envío de notificaciones (`gead_proc_envia_note_n`), actualizando el estado de los envíos y registrando errores si ocurren.
+
+### 17. Trigger: WHEN-CHECKBOX-CHANGED (Campo CB_MARCA en NOTIFICACION_TELEMATICA)
+- **Funcionalidad**: Controla el marcado de documentos para notificaciones telemáticas.
+- **Evento Asociado**: `WHEN-CHECKBOX-CHANGED`.
+- **Acción**: Valida múltiples criterios antes de permitir marcar el documento:
+  - Verifica la existencia de anexos.
+  - Comprueba si el documento está guardado en base de datos y firmado.
+  - Revise si el documento ya ha sido notificado previamente.
+
+### 18. Trigger: POST-QUERY (Bloque NOTIFICACION_TELEMATICA)
+- **Funcionalidad**: Realiza múltiples validaciones y obtiene datos necesarios para la notificación telemática.
+- **Evento Asociado**: `POST-QUERY`.
+- **Acción**: Realiza las siguientes acciones:
+  - Validación del estado del expediente.
+  - Obtiene datos del interesado y parámetros adicionales.
+  - Evalúa la situación de la notificación telemática previa y muestra la información en pantalla.
+
+### 19. Trigger: WHEN-NEW-FORM-INSTANCE (Formulario EXPECA01)
+- **Funcionalidad**: Configuración y validaciones iniciales cuando se abre el formulario.
+- **Evento Asociado**: `WHEN-NEW-FORM-INSTANCE`.
+- **Acción**: 
+  - Aplica el perfil de la aplicación y carga las globales de sesión.
+  - Configura las vistas y pestañas iniciales dependiendo de las configuraciones y permisos del usuario.
+
+## Procedimientos y Funciones
+
+### 1. Procedimiento: COMPROBAR_SELECCION
+- **Funcionalidad**: Validación de documentos seleccionados para envío telemático.
+- **Acción**: Realiza las siguientes validaciones:
+  - Comprueba si el documento está guardado en base de datos.
+  - Verifica la existencia de DUE (Documento Único Europeo).
+  - Comprueba si el documento está firmado y registrado de salida.
+  - Valida la existencia de anexos seleccionados para envío.
+
+### 2. Procedimiento: PONER_ROJO
+- **Funcionalidad**: Resalta en rojo los campos de un registro cuando una condición específica se cumple.
+- **Acción**: Establece el color de fondo de todos los campos en el bloque `GEA_ACURE` a rojo si se cumple la condición `ITIMPRE = 'S'`, de lo contrario, restaura el color original.
+
+### 3. Procedimiento: ULTIMA_NOTIFICACION
+- **Funcionalidad**: Obtiene la fecha de la última notificación realizada.
+- **Acción**: Consulta en la tabla `EREG_LISTNOTI` y almacena la fecha en el campo `FCCREA` de `NOTIFICACION_TELEMATICA`.
+
+### 4. Procedimiento: PONER_ROJO_NOTE
+- **Funcionalidad**: Resalta en rojo los campos de notificaciones telemáticas cuando una condición específica se cumple.
+- **Acción**: Establece el color de fondo de todos los campos en el bloque `NOTIFICACION_TELEMATICA` a rojo si se cumple la condición `FCCREA IS NOT NULL`, de lo contrario, restaura el color original.
+
+### 5. Procedimiento: Valida_Fechas
+- **Funcionalidad**: Validación de las fechas ingresadas en el formulario.
+- **Acción**: Verifica que las fechas `fcdesde` y `fchasta` no sean mayores a la fecha actual y que `fchasta` no sea menor que `fcdesde`. Muestra mensajes de error si las validaciones fallan.
+
+### 6. Procedimiento: Construir_Where_Note
+- **Funcionalidad**: Construye la cláusula `WHERE` para la consulta de notificaciones telemáticas.
+- **Acción**: Construye dinámicamente la cláusula `WHERE` del bloque `NOTIFICACION_TELEMATICA` en función de los valores seleccionados en `BL_GENERAL`.
+
+### 7. Procedimiento: Construir_Where_Corr
+- **Funcionalidad**: Construye la cláusula `WHERE` para la consulta de notificaciones de correos.
+- **Acción**: Construye dinámicamente la cláusula `WHERE` del bloque `GEA_ACURE` en función de los valores seleccionados en `BL_GENERAL`.
+
+### 8. Procedimiento: proc_inicializar_datos_devol
+- **Funcionalidad**: Inicializa datos de devolución en el bloque `BL_DEVOL`.
+- **Acción**: Población de campos con datos de la unidad y consejería asociada. Obtiene datos de `ereg_v_orga` y `gorganismo`.
+
+### 9. Procedimiento: Valida_Municipio
+- **Funcionalidad**: Valida si el municipio seleccionado es válido.
+- **Acción**: Comprueba el valor ingresado en `cdmuni` y obtiene el nombre del municipio desde `suca_municipio`. Muestra mensaje de error si no es válido.
+
+### 10. Procedimiento: GLOBALES_SESION
+- **Funcionalidad**: Carga globales de sesión si existen.
+- **Acción**: Asigna valores a los campos en `BL_GENERAL` basados en variables de sesión globales, si estas están definidas.
+
+### 11. Función: Calcular_Numero_Anexos
+- **Funcionalidad**: Calcula la cantidad de anexos seleccionados para una notificación telemática.
+- **Acción**: Realiza un `SELECT COUNT` en la tabla `GEA_ANEXOS` donde `itnote_enviar = 'S'` para contar los anexos seleccionados. Devuelve el total.
+
+### 12. Función: f_estado_expediente
+- **Funcionalidad**: Devuelve el estado de un expediente.
+- **Acción**: Realiza una consulta en la tabla `GEXPEDIENT` para obtener el campo `cdestado` correspondiente al expediente suministrado. Devuelve el valor del estado.
+
+### 13. Procedimiento: Valida_expediente
+- **Funcionalidad**: Valida si el expediente ingresado puede ser procesado.
+- **Acción**: Verifica si el expediente ingresado está anulado o finalizado usando la función `f_estado_expediente`. Muestra un mensaje de error si está en alguno de esos estados.
+
+Este informe cubre detalladamente los triggers y unidades de programación dentro del formulario Oracle Forms "EXPECA01". Cada sección describe la funcionalidad, eventos asociados, cálculos y cómo interactúan con otros elementos, con el fin de replicar la lógica de comportamiento y control con precisión.

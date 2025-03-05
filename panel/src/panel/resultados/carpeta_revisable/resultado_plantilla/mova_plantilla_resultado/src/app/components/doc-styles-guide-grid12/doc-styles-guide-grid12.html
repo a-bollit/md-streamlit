@@ -1,0 +1,32 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Grid 12</strong></mv-card-title>
+
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Para distribuir elementos según el tamaño de la pantalla MOVA usa el grid12 de Bootstrap. Ver explicación y ejemplos de uso en
+        <strong><a target="_blank" href="#/layout-responsive">layout-responsive</a></strong></p>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

@@ -1,0 +1,29 @@
+@import '~@mova/components/_variables.scss';
+
+:host {
+  display: inline-block;
+}
+
+.mv-button.primary {
+  @include button-color(#007bff);
+}
+
+.mv-button.secondary {
+  @include button-color(#6c757d);
+}
+
+.mv-button.acceptar {
+  @include button-color(#28a745);
+}
+
+.mv-button.cancelar {
+  @include button-color(#dc3545);
+}
+
+.mv-button.marcar-todos {
+  @include button-color(#ffc107);
+}
+
+.mv-button.desmarcar-todos {
+  @include button-color(#17a2b8);
+}

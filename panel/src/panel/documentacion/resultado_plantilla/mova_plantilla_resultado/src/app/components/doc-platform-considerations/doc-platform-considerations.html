@@ -1,0 +1,74 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Consideraciones por plataforma</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='windowOpen.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> window.open(pdf)
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Consideraciones por plataforma</strong></mv-card-title>
+      <mv-card-subtitle>Aspectos a considerar según navegadores y SO.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Hay funcionalidades que varía su implementación dependiendo del navegador o sistema operativo donde ejecutemos la app.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- windowOpen pdf -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #windowOpen><strong>window.open(pdf)</strong></mv-card-title>
+      <mv-card-subtitle>Abrir pdf según navegadores.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>En Safari, existe una carencia en la funcionalidad del método window.open (https://www.w3schools.com/jsref/met_win_open.asp)
+        que hace que no funcione correctamente este método al ser llamado dentro de una llamada asíncrona,
+        como en la función de callback de una llamada a un REST, por ejemplo)</p>
+
+      <p>El siguiente ejemplo en Safari puede que no abra la nueva pestaña</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeOpenPdfExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>La forma de asegurarnos que se abra siempre en todos los navegadores es la siguiente:</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeOpenPdfExample2TS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

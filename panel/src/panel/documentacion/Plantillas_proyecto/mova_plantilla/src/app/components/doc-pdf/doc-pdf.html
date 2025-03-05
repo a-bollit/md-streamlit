@@ -1,0 +1,478 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Visualización de pdf</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='hidePrintButtonExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> hidePrintButton
+      </a>
+      <li><a class="nostyle" (click)='hideDownloadButtonExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> hideDownloadButton
+      </a>
+      <li><a class="nostyle" (click)='hideLoadButtonExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> hideLoadButton
+      </a>
+      <li><a class="nostyle" (click)='hideEditButtonExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> hideEditButton
+      </a>
+      <li><a class="nostyle" (click)='urlExampleWithoutHeaders.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> url (sin cabeceras http)
+      </a>
+      <li><a class="nostyle" (click)='urlExampleWithHeaders.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> url (con cabeceras http)
+      </a>
+    </ol>
+    <p>Métodos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='addConfigParamsExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> addConfigParams (search, zoom, page)
+      </a>
+      <li><a class="nostyle" (click)='errorOnLoadingExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> errorOnLoading (control de errores)
+      </a>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente es un visor de pdf que se puede usar en web y móvil y que tiene parámetros y metodos de configuración.</p>
+      <p>El componente funciona de dos formas:</p>
+      <ul>
+        <li>Indicando la url de un pdf estático: <a (click)='urlExampleWithoutHeaders.scrollIntoView({behavior: "smooth",block: "start"})'>url sin cabeceras</a></li>
+        <li>Indicando la url de un servicio REST que devuelva un PDF:
+          <p>
+          Esta url que devuelva el PDF deberá ser un recurso GET de un servicio REST desarrollado por el Negocio en un API. Normalmente se usará para implementarlo el Framework JAPI.
+          Podrá tener seguridad de tipo token en la cabecera. Mirar el uso en el apartado
+          <a (click)='urlExampleWithHeaders.scrollIntoView({behavior: "smooth",block: "start"})'>url con cabeceras</a></p>
+          <p>
+          Con el Framework JAPI hay un ejemplo de recurso llamado /files que implementa la subida y descarga de ficheros en un Servicio REST.
+          Para las pruebas se ha hecho un ejemplo con los recursos de subida y bajada (recurso /files) del ejemplo japi_rest_ejemplo_alumnos del framework JAPI</p>
+        </li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración del componente.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-card
+        class="info-card">
+        <mv-card-header>
+          <mv-card-title>
+            <strong>Configuración</strong>
+          </mv-card-title>
+        </mv-card-header>
+
+        <mv-card-content>
+          <p>Primero, si no está ya incluído, hay que importar el componente en el archivo mova.module.ts.</p>
+          <p>También hay que configurar en los archivos de entorno las variables necesarias para el correcto funcionamiento del componente, como se muestra en el
+          código de environment.ts, environment.val.ts y environment.prod.ts.</p>
+          <p>La url del visor (variable uriViewer) se debe dejar con el valor por defecto cuando no vamos a instalar la librería del visor en el dominio de nuestra app.</p>
+          <p>Si, por el contrario, queremos instalar la libreria del visor en nuestro dominio, entonces debemos cambiar el valor al que corresponda.</p>
+        </mv-card-content>
+      </mv-card>
+
+      <mv-tab-group>
+        <mv-tab label="mova.module.ts">
+          <pre><code [highlight]="codeMovaModuleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.ts">
+          <pre><code [highlight]="codeEnvironmentTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.val.ts">
+          <pre><code [highlight]="codeEnvironmentValTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.prod.ts">
+          <pre><code [highlight]="codeEnvironmentProdTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo completo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplo de uso.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-input
+        adapt=true
+        label="Url del pdf"
+        [(ngModel)]="pdfSrcExample">
+      </mv-input>
+      <p *ngIf="errorOnLoadingPdf == true && showPdf == true" style="
+      margin-top:2px;
+      margin-left: 6px;
+      color: red;
+      font-weight: bold;
+    ">{{errorPdf}}</p>
+
+      <mv-button
+        adapt=true
+        appearance="raised"
+        color="primary"
+        [disabled]="componentUrl == pdfSrcExample"
+        (clickEvent)="changeVisorSrc()">
+        Mostrar pdf
+      </mv-button>
+      <p></p>
+      <mv-pdf-viewer
+       (errorOnLoading)="errorDectected($event)"
+        [url]="componentUrl"
+        hidePrintButton=true>
+      </mv-pdf-viewer>
+      
+    </mv-card-content>
+  </mv-card>
+   <!-- hideEditButton -->
+   <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #hideEditButtonExample><strong>hideEditButton</strong></mv-card-title>
+      <mv-card-subtitle>Ocultar botones de edición.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El atributo hideEditButton sirve para ocultar los botones de edición del pdf</p>
+      <p>El valor por defecto es false</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHideEditButtonExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHideEditButtonExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-pdf-viewer
+        [url]="componentUrl"
+        hideEditButton=true>
+      </mv-pdf-viewer>
+
+    </mv-card-content>
+  </mv-card>
+  <!-- hidePrintButton -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #hidePrintButtonExample><strong>hidePrintButton</strong></mv-card-title>
+      <mv-card-subtitle>Ocultar botón de impresión.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El atributo hidePrintButton sirve para ocultar el botón de imprimir el pdf</p>
+      <p>El valor por defecto es false</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHidePrintButtonExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHidePrintButtonExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-pdf-viewer
+        [url]="componentUrl"
+        hidePrintButton=true>
+      </mv-pdf-viewer>
+
+    </mv-card-content>
+  </mv-card>
+  
+  <!-- hideDownloadButton -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #hideDownloadButtonExample><strong>hideDownloadButton</strong></mv-card-title>
+      <mv-card-subtitle>Ocultar el botón de descarga.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El atributo hideDownloadButton sirve para ocultar el botón de descargar el pdf</p>
+      <p>El valor por defecto es false</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHideDownloadButtonExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHideDownloadButtonExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-pdf-viewer
+        [url]="componentUrl"
+        hideDownloadButton=true>
+      </mv-pdf-viewer>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- hideLoadButton -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #hideLoadButtonExample><strong>hideLoadButton</strong></mv-card-title>
+      <mv-card-subtitle>Ocultar el botón de carga.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El atributo hideLoadButton sirve para ocultar el botón de cargar un nuevo pdf</p>
+      <p>El valor por defecto es false</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHideLoadButtonExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHideLoadButtonExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-pdf-viewer
+        [url]="componentUrl"
+        hideLoadButton=true>
+      </mv-pdf-viewer>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- url (sin cabeceras) -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #urlExampleWithoutHeaders><strong>url (sin cabeceras)</strong></mv-card-title>
+      <mv-card-subtitle>Url del pdf sin cabeceras http.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El atributo url será una llamada con recurso GET de un servicio REST sin cabeceras en la llamada o la url de un pdf estático.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUrlExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUrlExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+       
+      <mv-pdf-viewer
+        [url]="pdfSrcExample">
+      </mv-pdf-viewer>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- url (con cabeceras) -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #urlExampleWithHeaders><strong>url (con cabeceras)</strong></mv-card-title>
+      <mv-card-subtitle>Url del pdf con cabeceras http.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El atributo url será una llamada con recurso GET de un servicio REST con cabeceras en la llamada</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUrlExampleWithHeadersHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUrlExampleWithHeadersTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de visualización de pdf con cabeceras http:</strong></p>
+      <p>1. Subir un pdf</p>
+
+      <mv-file-uploader
+        #mvFileUploaderExample
+        [allowedExtensions]="allowedExtensions"
+        [maxSizeBytes]="maxSizeBytes"
+        fileDescription="Suba un pdf de menos de 100MB para después visualizarlo con el visor de pdf"
+        chunked=true
+        (onUploadSuccess)="onUploadSuccess()"></mv-file-uploader>
+
+      <p>2. Obtenemos un token de autorización y visualizamos el pdf pasando como cabecera el token obtenido:</p>
+      <mv-button
+        *ngIf="showUploader"
+        adapt=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="changeVisorSrcWithHeaders()">
+        Visualizar pdf
+      </mv-button>
+
+      <mv-pdf-viewer
+        *ngIf="showUploader"
+        [url]="pdfSrcWithHeadersExample">
+      </mv-pdf-viewer>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- addConfigParams -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #addConfigParamsExample><strong>addConfigParams</strong></mv-card-title>
+      <mv-card-subtitle>Parámetros con opciones de uso.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El atributo addConfigParams sirve para usar distintas funcionalidades del visor, como zoom, cambio de página, búsqueda de texto...</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAddConfigParamsExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAddConfigParamsExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-pdf-viewer
+        #mvPdfViewerExample
+        [url]="componentUrl">
+      </mv-pdf-viewer>
+
+      <p>A continuación, se muestra un ejemplo para modificar el zoom del visor:</p>
+      <mv-button
+        adapt=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="addConfigParamZoomExample()">
+        Poner zoom = 50%
+      </mv-button>
+
+      <p>A continuación, se muestra un ejemplo para ir a una página concreta del pdf:</p>
+      <mv-button
+        adapt=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="addConfigParamPageExample()">
+        Ir a la página 3
+      </mv-button>
+
+      <p>A continuación, se muestra un ejemplo para buscar una cadena en el pdf:</p>
+      <mv-button
+        adapt=true
+        appearance="raised"
+        color="primary"
+        (clickEvent)="addConfigParamSearchExample()">
+        Buscar palabra 'mova'
+      </mv-button>
+      <p>Se pueden añadir múltiples parámetros de personalización de la búsqueda (por defecto todos son false):</p>
+      <ul>
+        <li><strong>phraseSearch</strong>: si está a true permite para buscar frases, no solo palabras.</li>
+        <li><strong>caseSensitive</strong>: si está a true es sensible a mayúsculas y minúsculas.</li>
+        <li><strong>entireWord</strong>: si está a true busca solo palabras enteras.</li>
+        <li><strong>highlightAll</strong>: si está a true marca todas las coincidencias, no solo la siguiente.</li>
+        <li><strong>findPrevious</strong>: si está a true marca las anteriores coincidencias, no solo las siguientes.</li>
+        <li><strong>matchDiacritics</strong>: si está a true la búsqueda es sensible a signos de puntuación.</li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+  <!-- control de errores (con cabeceras) -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #errorOnLoadingExample><strong>errorOnLoading</strong></mv-card-title>
+      <mv-card-subtitle>control de errores.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El método errorLoading se utilizará para poder controlar los errores cuando el pdf no ha sido cargado </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeErrorLoadingExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeErrorLoadingExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Para probarlo probarlo en el ejemplo completo del principio de esta página
+      </a>
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

@@ -1,0 +1,88 @@
+<section class="view-default-style">
+
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Deeplink</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='Config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- info -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>¿Que es un deeplink?</strong></mv-card-title>
+      <mv-card-subtitle>Deeplink</mv-card-subtitle>
+    </mv-card-header>
+    <mv-card-content>
+      <p>Un deepLink es un tipo de enlace &lt;a href=""&gt; que permite enlazar
+        a una app en vez de a una página web normal.</p>
+        <p> Al igual que a una página se
+        le pueden pasar una pagina o vista destino y unos parámetros
+      </p>
+      <p>Esta funcionalidad se está usando actualmente en MOVA para cuando se usa
+        el broker de identidades y se sale de la app para ir al broker de identidades
+        luego volver a la app mediante un enlace.</p>
+      <p><a href="https://medium.com/wolox/ios-deep-linking-url-scheme-vs-universal-links-50abd3802f97">Documentación</a></p>
+
+
+      <p>
+        Ejemplo de llamada desde HTML
+      </p>
+
+      <p><strong>Ejemplo de uso:</strong></p>
+      <mv-tab-group>
+
+        <mv-tab label="HTML">
+          <pre><code [highlight]="ExampleHTML"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+
+  <!-- Config -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #Config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Deeplink</mv-card-subtitle>
+    </mv-card-header>
+    <mv-card-content>
+      <ul>
+        <li>Registrar el bundleId o paquete en android</li>
+        <li>Recoger la página destino y  parámetros</li>
+        <li>La app destino puede manejar el evento handleOpenUrl si quiere coger
+          los parámetros que podrían pasarse con el deepLik despues del :// </li>
+        <li>En MOVA ya hay un manejador para coger el parámetro ticket en caso
+          de se esté usando autologin</li>
+      </ul>
+
+      <p><strong>Ejemplo de configuración:</strong></p>
+      <mv-tab-group>
+
+        <mv-tab label="config.xml">
+          <pre><code [highlight]="ExampleWidget"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="ExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>

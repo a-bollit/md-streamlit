@@ -1,0 +1,21 @@
+.notification-card {
+  @include card-code;
+  padding: 20px;
+  margin: 20px;
+
+  mv-header {
+    .mv-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  mv-button {
+    margin-top: 10px;
+  }
+}

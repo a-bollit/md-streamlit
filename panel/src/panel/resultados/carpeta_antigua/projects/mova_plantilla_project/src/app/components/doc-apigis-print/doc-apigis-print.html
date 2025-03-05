@@ -1,0 +1,66 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación sobre Impresión</strong></mv-card-title>
+
+    <p>El API GIS permite imprimir los mapas que se construyen de dos formas: impresión en servidor y impresión en
+      cliente.
+      La clase apigis.Map permiten la herencia de servidores para aumentar la funcionalidad de los
+      elementos.
+    </p>
+    <p>En esta página se muestra la forma en la que se puede realizar una impresión en cliente o en servidor.
+    </p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='server.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon>Impresión en servidor
+        </a></li>
+      <li><a class="nostyle" (click)='client.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon>Impresión en cliente
+        </a></li>
+
+    </ol>
+  </mv-card>
+
+  <!-- server -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #server><strong>Impresión en servidor</strong>
+      </mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Se puede realizar la impresión en servidor de un mapa mediante la herencia de la clase 'MapFish' en su
+        construcctor tal y como se
+        explica en
+        <a routerLink="/doc-apigis-servers" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Herencia de
+            servidores</strong></a>.
+      </p>
+      <br>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Layer -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #client><strong>Impresión en cliente</strong>
+      </mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>La impresión en cliente está permitida pero empleando librerías externas, como puede ser
+        <a routerLink="/doc-apigis-layer" routerLinkActive="active"
+          ariaCurrentWhenActive="page"><strong>LabelMake</strong></a>.
+      </p>
+    </mv-card-content>
+  </mv-card>
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

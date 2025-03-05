@@ -1,0 +1,845 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-file-uploader</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='allowedExtensionsExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> allowedExtensions
+      </a></li>
+      <li><a class="nostyle" (click)='chunkedExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> chunked
+      </a></li>
+      <li><a class="nostyle" (click)='disabledExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> disabled
+      </a></li>
+      <li><a class="nostyle" (click)='fileDescriptionExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> fileDescription
+      </a></li>
+      <li><a class="nostyle" (click)='maxConcurrentUploadsExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> maxConcurrentUploads
+      </a></li>
+      <li><a class="nostyle" (click)='maxSizeBytesExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> maxSizeBytes
+      </a></li>
+      <li><a class="nostyle" (click)='onUploadErrorExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> onUploadError
+      </a></li>
+      <li><a class="nostyle" (click)='onUploadSuccessExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> onUploadSuccess
+      </a></li>
+      <li><a class="nostyle" (click)='requiredExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> required
+      </a></li>
+      <li><a class="nostyle" (click)='requiredHintExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> requiredHint
+      </a></li>
+      <li><a class="nostyle" (click)='tokenTypeExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> tokenType
+      </a></li>
+      <li><a class="nostyle" (click)='showLogExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showLog
+      </a></li>
+      <li><a class="nostyle" (click)='storageTypeExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> storageType
+      </a></li>
+      <li><a class="nostyle" (click)='validateFirstExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> validateFirst
+      </a></li>
+      <li><a class="nostyle" (click)='validateOnTypeExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> validateOnType
+      </a></li>
+    </ol>
+    <p>Métodos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='getLastSuccededUploadResponseExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> getLastSuccededUploadResponse
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-file-uploader</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente sirve para realizar la subida de archivos al servidor al directorio compartido de los servidores Java.
+      A partir de ese directorio los servicios REST pueden tratar el fichero.</p>
+
+      <p>Usa la variable uriUpload para llamar a un servicio REST de subida de ficheros.
+      Este servicio debe ser un recuso de un API del negocio desarrollado normalmente con el Framework JAPI.
+      Para el entorno de desarrollo se usará el recurso /files del japi_rest_ejemplo_alumnos,
+      pero para los entornos de producción en el propio API del negocio se tendrá que hacer un recurso /files
+      igual o similar al del ejemplo cuando se crea un arquetipo con JAPI.</p>
+
+      <p>Este recurso siempre debe tener autorización y se implementará normalmente con un Token de WSO2.
+      Para ello, existen las variables uriTokenBase y authorizationHeader, que será el ApiKey de este recurso que podrá tener seguridad client_credentials o password.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración del componente <strong>mv-file-uploader</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-card
+        class="info-card">
+        <mv-card-header>
+          <mv-card-title>
+            <strong>Configuración</strong>
+          </mv-card-title>
+        </mv-card-header>
+
+        <mv-card-content>
+          <p>Primero, si no está ya incluído, hay que importar el componente en el archivo mova.module.ts.</p>
+          <p>También hay que configurar en los archivos de entorno las variables necesarias para el correcto funcionamiento del componente, como se muestra en el
+          código de environment.ts, environment.val.ts y environment.prod.ts.</p>
+          <p>En el environment.ts se muestran los valores de un servicio REST de ejemplo para la plantilla de MOVA. En producción no se debe usar esos valores.
+            Se usarán lo valores del servicio REST de subida de ficheros del negocio.
+            Los valores authorizationHeader, uriUpload y uriTokenBase serán los del servicio de negocio
+            La variable scope es opcional, dependiendo de si el token necesita scope o no para pedirse</p>
+        </mv-card-content>
+      </mv-card>
+
+      <mv-tab-group>
+        <mv-tab label="mova.module.ts">
+          <pre><code [highlight]="codeMovaModuleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.ts">
+          <pre><code [highlight]="codeEnvironmentTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.val.ts">
+          <pre><code [highlight]="codeEnvironmentValTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.prod.ts">
+          <pre><code [highlight]="codeEnvironmentProdTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo completo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplo de uso del componente <strong>mv-file-uploader</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="ServiceTS">
+          <pre><code [highlight]="codeUseExampleServiceTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de file-uploader:</strong></p>
+      <mv-file-uploader
+        #mvFileUploaderFirstExample
+        [allowedExtensions]="exampleAllowedExtensions"
+        fileDescription="Suba el archivo de solicitud de Beca para el curso 2021/2022 completo."
+        required=true></mv-file-uploader>
+
+      <p><strong>Obtener respuesta:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getLastSuccededUploadResponseClick('mvFileUploaderFirstExample')">
+        getLastSuccededUploadResponse()
+      </mv-button>
+
+      <p *ngIf="getExampleResponseFirstJSON"><strong>Respuesta:</strong></p>
+      <p class="response">{{ getExampleResponseFirstJSON | json }}</p>
+
+      <p><strong>Descargar archivo:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="downloadFile('mvFileUploaderFirstExample')">
+        Descargar archivo
+      </mv-button>
+
+      <p><strong>Ejemplo de file-uploader con subida por chunks:</strong></p>
+      <mv-file-uploader
+        #mvFileUploaderSecondExample
+        [maxSizeBytes]="maxSizeBytesChunked"
+        fileDescription="Para solicitar su prestación debe adjuntar el modelo 435 de la Tesorería General de la Seguridad Social completo."
+        chunked=true></mv-file-uploader>
+
+      <p><strong>Obtener respuesta:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getLastSuccededUploadResponseClick('mvFileUploaderSecondExample')">
+        getLastSuccededUploadResponse()
+      </mv-button>
+
+      <p *ngIf="getExampleResponseSecondJSON"><strong>Respuesta:</strong></p>
+      <p class="response">{{ getExampleResponseSecondJSON | json }}</p>
+
+      <p><strong>Descargar archivo:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="downloadFile('mvFileUploaderSecondExample')">
+        Descargar archivo
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- allowedExtensions -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #allowedExtensionsExample><strong>allowedExtensions</strong></mv-card-title>
+      <mv-card-subtitle>Extensiones permitidas.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para permitir la subida archivos con extensiones concretas. Por defecto, acepta pdf y jpg.</p>
+      <p>Si seleccionamos un archivo que no cumple con las extensiones definidas, nos saldrá un mensaje de error.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeAllowedExtensionsExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeAllowedExtensionsExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de allowedExtensions con .docx y .pdf:</strong></p>
+      <mv-file-uploader
+        [allowedExtensions]="exampleAllowedExtensions"></mv-file-uploader>
+
+      <p><strong>Ejemplo por defecto (sin allowedExtensions):</strong></p>
+      <mv-file-uploader></mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- chunked -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #chunkedExample><strong>chunked</strong></mv-card-title>
+      <mv-card-subtitle>Subir archivo por partes.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para poder subir archivos, normalmente grandes, por partes.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeChunkedExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeChunkedExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de chunked:</strong></p>
+      <mv-file-uploader
+        [maxSizeBytes]="maxSizeBytesChunked"
+        chunked=true></mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- disabled -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #disabledExample><strong>disabled</strong></mv-card-title>
+      <mv-card-subtitle>Deshabilitar el componente.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para deshabilitar el componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeDisabledExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeDisabledExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con disabled a true:</strong></p>
+
+      <mv-file-uploader
+        disabled=true>
+      </mv-file-uploader>
+
+      <p><strong>Con disabled a false:</strong></p>
+
+      <mv-file-uploader
+        disabled=false>
+      </mv-file-uploader>
+
+      <p><strong>Sin disabled (comportamiento por defecto):</strong></p>
+
+      <mv-file-uploader></mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- fileDescription -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #fileDescriptionExample><strong>fileDescription</strong></mv-card-title>
+      <mv-card-subtitle>Texto de descripción.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para añadir un texto a modo de descripción.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeFileDescriptionExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeFileDescriptionExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con fileDescription:</strong></p>
+
+      <mv-file-uploader
+        fileDescription="Debe adjuntar y subir el documento relleno">
+      </mv-file-uploader>
+
+      <p><strong>Sin fileDescription:</strong></p>
+
+      <mv-file-uploader></mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- maxConcurrentUploads -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #maxConcurrentUploadsExample><strong>maxConcurrentUploads</strong></mv-card-title>
+      <mv-card-subtitle>Número de subidas concurrentes.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para especificar el número de subidas de chunks simultáneas.</p>
+      <p>Como máximo el valor será 10. El valor por defecto es 5.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeMaxConcurrentUploadsExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeMaxConcurrentUploadsExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con maxConcurrentUploads:</strong></p>
+      <p>Seleccione el número de subidas de chunks simultáneas:</p>
+      <mv-select-x
+        [(ngModel)]="selectMaxConcurrentUploads"
+        [options]="selectOptionsMaxConcurrentUploads">
+      </mv-select-x>
+
+      <mv-file-uploader
+        chunked="true"
+        [maxConcurrentUploads]="selectMaxConcurrentUploads"
+        [maxSizeBytes]="maxSizeBytesChunked"></mv-file-uploader>
+
+      <p><strong>Sin maxConcurrentUploads (comportamiento por defecto, 5):</strong></p>
+
+      <mv-file-uploader
+        chunked="true"
+        [maxSizeBytes]="maxSizeBytesChunked"></mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- maxSizeBytes -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #maxSizeBytesExample><strong>maxSizeBytes</strong></mv-card-title>
+      <mv-card-subtitle>Tamaño del archivo.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para limitar el tamaño del archivo a subir.</p>
+      <p>Se debe especificar en bytes.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeMaxSizeBytesExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeMaxSizeBytesExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con maxSizeBytes:</strong></p>
+
+      <mv-file-uploader
+        [maxSizeBytes]="maxSize5KBExample">
+      </mv-file-uploader>
+
+      <p><strong>Sin maxSizeBytes (comportamiento por defecto, 10MB):</strong></p>
+
+      <mv-file-uploader></mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- onUploadError -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #onUploadErrorExample><strong>onUploadError</strong></mv-card-title>
+      <mv-card-subtitle>Evento en caso de subida incorrecta.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para lanzar una función en caso de una subida incorrecta.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeOnUploadErrorExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeOnUploadErrorExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de callback de error:</strong></p>
+
+      <mv-file-uploader
+        (onUploadError)=onErrorCallback()>
+      </mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- onUploadSuccess -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #onUploadSuccessExample><strong>onUploadSuccess</strong></mv-card-title>
+      <mv-card-subtitle>Evento en caso de subida correcta.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para lanzar una función en caso de una subida correcta.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeOnUploadSuccessExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeOnUploadSuccessExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Ejemplo de callback de subida correcta:</strong></p>
+
+      <mv-file-uploader
+        (onUploadSuccess)=onSuccessCallback()>
+      </mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- required -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #requiredExample><strong>required</strong></mv-card-title>
+      <mv-card-subtitle>Marcar componente como requerido.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para marcar el componente como requerido.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeRequiredExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeRequiredExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con required a true:</strong></p>
+
+      <mv-file-uploader
+        required=true>
+      </mv-file-uploader>
+
+      <p><strong>Con required a false:</strong></p>
+
+      <mv-file-uploader
+        required=false>
+      </mv-file-uploader>
+
+      <p><strong>Sin required (comportamiento por defecto):</strong></p>
+
+      <mv-file-uploader></mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- requiredHint -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #requiredHintExample><strong>requiredHint</strong></mv-card-title>
+      <mv-card-subtitle>Texto de requerido.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para especificar un texto para la propiedad required.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeRequiredHintExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeRequiredHintExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con requiredHint:</strong></p>
+
+      <mv-file-uploader
+        requiredHint="Debes subir el documento"
+        required=true>
+      </mv-file-uploader>
+
+      <p><strong>Sin requiredHint (comportamiento por defecto):</strong></p>
+
+      <mv-file-uploader
+        required=true>
+      </mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- tokenType -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #tokenTypeExample><strong>tokenType</strong></mv-card-title>
+      <mv-card-subtitle>Tipo de token.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para especificar el tipo de token: 'application' o 'client_credentials'.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTokenTipeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTokenTipeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con tokenType 'client_credentials':</strong></p>
+
+      <mv-file-uploader
+        tokenType="client_credentials">
+      </mv-file-uploader>
+
+      <p><strong>Con tokenType 'application':</strong></p>
+
+      <mv-file-uploader
+        tokenType="application">
+      </mv-file-uploader>
+
+      <p><strong>Sin tokenType (comportamiento por defecto, 'client_credentials'):</strong></p>
+
+      <mv-file-uploader></mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showLog -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showLogExample><strong>showLog</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar log.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para mostrar o no el log del componente. Este log va mostrando el instante de tiempo en el que se van realizando todo el proceso
+        de subida de los archivos, chunks...</p>
+      <p>Por defecto el valor es true</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowLogExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeShowLogExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con showLog a true:</strong></p>
+
+      <mv-file-uploader
+        showLog=true>
+      </mv-file-uploader>
+
+      <p><strong>Con showLog a false:</strong></p>
+
+      <mv-file-uploader
+        showLog=false>
+      </mv-file-uploader>
+
+      <p><strong>Sin showLog (comportamiento por defecto, true):</strong></p>
+
+      <mv-file-uploader></mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- storageType -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #storageTypeExample><strong>storageType</strong></mv-card-title>
+      <mv-card-subtitle>Espacio de almacenamiento en el servidor.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Esta propiedad sirve para especificar el esapcio de almacenamiento en el servidor.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeStorageTypeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeStorageTypeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con storageType 'COMPARTIDO':</strong></p>
+
+      <mv-file-uploader
+        storageType="COMPARTIDO">
+      </mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- validateFirst -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #validateFirstExample><strong>validateFirst</strong></mv-card-title>
+      <mv-card-subtitle>Validación inicial del componente.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad validateFirst permite validar o no el componente al ser cargado, ya que a lo mejor no queremos
+        que de primeras se marquen como erróneos determinados input o al revés, queremos que nada más cargar la vista
+        se haga la validación</p>
+      <p>En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como
+         por ejemplo <strong>required=true</strong></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeValidateFirstExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeValidateFirstExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con validateFirst a true:</strong></p>
+
+      <mv-file-uploader
+        required=true
+        validateFirst=true>
+      </mv-file-uploader>
+
+      <p><strong>Con validateFirst a false:</strong></p>
+
+      <mv-file-uploader
+        required=true
+        validateFirst=false>
+      </mv-file-uploader>
+
+      <p><strong>Sin validateFirst (comportamiento por defecto):</strong></p>
+
+      <mv-file-uploader
+        required=true>
+      </mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- validateOnType -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #validateOnTypeExample><strong>validateOnType</strong></mv-card-title>
+      <mv-card-subtitle>Validación en tiempo real.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad validateOnType permite activar la validación del componente en tiempo real, esto es según se
+        va escribiendo.</p>
+      <p>En caso de usar esta propiedad también tendrá que estar definida alguna propiedad que se pueda validar, como
+         por ejemplo <strong>required=true</strong></p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeValidateOnTypeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeValidateOnTypeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con validateOnType a true:</strong></p>
+
+      <mv-file-uploader
+        required=true
+        validateOnType=true>
+      </mv-file-uploader>
+
+      <p><strong>Con validateOnType a false:</strong></p>
+
+      <mv-file-uploader
+        required=true
+        validateOnType=false>
+      </mv-file-uploader>
+
+      <p><strong>Sin validateOnType (comportamiento por defecto):</strong></p>
+
+      <mv-file-uploader
+        required=true>
+      </mv-file-uploader>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getLastSuccededUploadResponse -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #getLastSuccededUploadResponseExample><strong>getLastSuccededUploadResponse</strong></mv-card-title>
+      <mv-card-subtitle>Respuesta de la subida del archivo.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este método sirve para obtener la respuesta del servidor a la subida correcta de nuestro archivo.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeGetLastSuccededUploadResponseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeGetLastSuccededUploadResponseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-file-uploader
+        #mvFileUploaderResponseExample>
+      </mv-file-uploader>
+
+      <p><strong>Obtener respuesta:</strong></p>
+      <mv-button
+        color="primary"
+        appearance="raised"
+        (clickEvent)="getLastSuccededUploadResponseClick('mvFileUploaderResponseExample')">
+        getLastSuccededUploadResponse()
+      </mv-button>
+
+      <p *ngIf="getLastSuccededUploadResponseJSON"><strong>Respuesta:</strong></p>
+      <p class="response">{{ getLastSuccededUploadResponseJSON | json }}</p>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

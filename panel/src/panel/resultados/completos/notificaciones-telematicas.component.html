@@ -1,0 +1,35 @@
+<mv-header
+  [headerTitle]="'Gestión de Notificaciones Telemáticas'"
+  [headerSubtitle]="'Seleccione los documentos para enviar las notificaciones'"
+  [fixed]="true"
+  [showBackButton]="true"
+  [showMenuButton]="true">
+</mv-header>
+
+<div class="notifications-container">
+  <mv-button [appearance]="'stroked'" [color]="'primary'" (clickEvent)="selectAll()">Marcar todos</mv-button>
+  <mv-button [appearance]="'stroked'" [color]="'warn'" (clickEvent)="deselectAll()">Desmarcar todos</mv-button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Seleccionar</th>
+        <th>Documento</th>
+        <th>Descripción</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let document of documentos">
+        <td>
+          <input type="checkbox" (change)="toggleSelection(document)" [checked]="selectedDocuments.includes(document)">
+        </td>
+        <td>{{ document.id }}</td>
+        <td>{{ document.description }}</td>
+        <td>{{ document.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <mv-button [appearance]="'raised'" [color]="'accent'" (clickEvent)="sendNotification()">Enviar Notificación</mv-button>
+</div>

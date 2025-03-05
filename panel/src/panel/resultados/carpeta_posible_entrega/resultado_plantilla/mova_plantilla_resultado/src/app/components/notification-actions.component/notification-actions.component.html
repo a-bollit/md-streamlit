@@ -1,0 +1,13 @@
+<mv-card class="notification-card">
+  <div class="notification-content">
+    <p>{{ notification.message }}</p>
+    <div class="notification-actions">
+      <mv-button (click)="updateNotification()" class="btn-update">
+        <mv-icon name="edit"></mv-icon> Edit
+      </mv-button>
+      <mv-button (click)="deleteNotification()" class="btn-delete">
+        <mv-icon name="delete"></mv-icon> Delete
+      </mv-button>
+    </div>
+  </div>
+</mv-card>

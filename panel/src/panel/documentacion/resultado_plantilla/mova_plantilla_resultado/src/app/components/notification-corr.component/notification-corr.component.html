@@ -1,0 +1,32 @@
+<div class="notification-corr">
+  <mv-header
+    [headerTitle]="'Gestión de Notificaciones'"
+    [headerSubtitle]="'Correos'"
+    [fixed]="true"
+    [showBackButton]="true"
+    [showMenuButton]="false"
+    [type]="'corporate'">
+  </mv-header>
+  <div class="notification-list">
+    <ul>
+      <li *ngFor="let notificacion of notificaciones">
+        <input type="checkbox" (change)="toggleSeleccion(notificacion)">
+        <span>{{ notificacion.titulo }}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="notification-actions">
+    <mv-button
+      [color]="'primary'"
+      [disabled]="notificacionesSeleccionadasList.length === 0"
+      (click)="registrarNotificaciones()">
+      Registrar
+    </mv-button>
+    <mv-button
+      [color]="'accent'"
+      [disabled]="notificacionesSeleccionadasList.length === 0"
+      (click)="enviarNotificaciones()">
+      Enviar
+    </mv-button>
+  </div>
+</div>

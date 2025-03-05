@@ -1,0 +1,22 @@
+<mv-card>
+  <mv-header>
+    <mv-title>Enviar Notificaciones Telemáticas</mv-title>
+  </mv-header>
+  <mv-content>
+    <form (ngSubmit)="enviarNotificaciones()">
+      <table>
+        <tr *ngFor="let notificacion of notificacionesTelematicas">
+          <td>{{ notificacion.cddocum }}</td>
+          <td>{{ notificacion.dsdocum }}</td>
+          <td>{{ notificacion.cdunidad }}</td>
+          <td>{{ notificacion.fcemision | date }}</td>
+          <td>
+            <mv-icon name="check_circle" *ngIf="validarNotificacion(notificacion)"></mv-icon>
+            <mv-icon name="error" *ngIf="!validarNotificacion(notificacion)"></mv-icon>
+          </td>
+        </tr>
+      </table>
+      <mv-button color="primary" appearance="raised" type="submit">Enviar</mv-button>
+    </form>
+  </mv-content>
+</mv-card>

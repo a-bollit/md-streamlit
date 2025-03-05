@@ -1,0 +1,231 @@
+Result from comportamiento_control_task: ## Detailed Description of Logic and Business Rules in Oracle Forms (EXPECA01)
+
+This document describes the logic and business rules implemented in the Oracle Forms module "EXPECA01" for handling the issuance of both mail and telematic notifications.
+
+## Triggers
+
+### WHEN-NEW-FORM-INSTANCE
+#### Functionality:
+- Initializes form settings and variables.
+- Applies user profile settings.
+- Checks and sets global variables for organizational and unit details.
+- Handles visibility of tabs based on the `GLOBAL.gead_vercorreos` value.
+
+#### Key Events and Validations:
+- Checks if `global.cddeptno_ereg` is null and shows a message if user information is not loaded in the registry.
+- Sets initial values for several global variables related to user details and unit information.
+- Handles the visibility of the "PG_CORR" tab based on the `GLOBAL.gead_vercorreos` value.
+- Handles errors and exits the form if required.
+
+
+### KEY-NEXT-ITEM and KEY-PREV-ITEM
+#### Functionality:
+- Facilitates navigation between items on the form.
+
+#### Key Events and Validations:
+- Uses `next_item` and `previous_item` commands to move the focus to the next or previous item.
+
+
+### ON-ERROR
+#### Functionality:
+- Handles form-level errors by redirecting them to custom error handling logic.
+
+#### Key Events and Validations:
+- Handles specific FRM errors (e.g., 40010).
+- Calls custom procedures (`PROC_ERRORES` and `CONTROL_ERROR`) for error handling.
+
+
+### WHEN-TAB-PAGE-CHANGED
+#### Functionality:
+- Changes focus between different blocks based on the selected tab.
+
+#### Key Events and Validations:
+- Navigates to the `GEA_ACURE` block if the "PG_CORR" tab is selected.
+- Navigates to the `NOTIFICACION_TELEMATICA` block if the "PG_NOTE" tab is selected.
+
+
+### BL_GENERAL.ACEPTAR WHEN-BUTTON-PRESSED
+#### Functionality:
+- Validates the notification input data.
+- Navigates and populates the `CV_INF` canvas.
+- Handles query execution and error handling for notifications.
+
+#### Key Events and Validations:
+- Checks for mandatory fields and shows relevant messages.
+- Calls procedures to validate expedition and date fields.
+- Constructs and executes queries for notifications.
+- Handles results and updates the form accordingly.
+
+
+### BL_GENERAL.CANCELAR WHEN-BUTTON-PRESSED
+#### Functionality:
+- Exits the form without validation.
+
+#### Key Events and Validations:
+- Uses the `exit_form(no_validate)` command to close the form.
+
+
+### BL_GENERAL.CAL_FCDESDE WHEN-BUTTON-PRESSED
+#### Functionality:
+- Opens a calendar for selecting the `FCDESDE` date.
+
+#### Key Events and Validations:
+- Calls the `FCALENDARIO` procedure to capture the selected date.
+
+
+### BL_GENERAL.CAL_FCHASTA WHEN-BUTTON-PRESSED
+#### Functionality:
+- Opens a calendar for selecting the `FCHASTA` date.
+
+#### Key Events and Validations:
+- Calls the `FCALENDARIO` procedure to capture the selected date.
+
+
+### GEA_ACURE WHEN-VALIDATE-ITEM (for CDTEXP)
+#### Functionality:
+- Validates the `CDTEXP` field based on application permissions and restrictions.
+
+#### Key Events and Validations:
+- Checks for application-specific restrictions using the `Restricciones_APL_TEXP` function.
+- Calls the `Permisos_Aplicacion` procedure if the application has permission restrictions.
+
+
+### NOTIFICACION_TELEMATICA.WHEN-IMAGE-PRESSED (for IMDOCUMENTO)
+#### Functionality:
+- Displays associated annexes for the selected document.
+
+#### Key Events and Validations:
+- Calls the `Mostrar_Anexos` procedure with document-specific parameters.
+
+
+### BL_DOC_CORR WHEN-BUTTON-PRESSED (for REGISTRAR, ACEPTAR, MARCAR, DESMARCAR)
+#### Functionality:
+- Handles actions related to document processing, such as marking, unmarking, registration, and sending.
+
+#### Key Events and Validations:
+- For `REGISTRAR`: Validates and registers selected documents.
+- For `ACEPTAR`: Validates and sends selected documents.
+- For `MARCAR`: Marks all documents for processing.
+- For `DESMARCAR`: Unmarks all documents.
+
+
+### BL_DOC_NOTE WHEN-BUTTON-PRESSED (for ACEPTAR, MARCAR, DESMARCAR)
+#### Functionality:
+- Handles actions related to telematic notification processing, such as marking, unmarking, registration, and sending.
+
+#### Key Events and Validations:
+- For `ACEPTAR`: Validates and sends selected telematic notifications.
+- For `MARCAR`: Marks all telematic notifications for processing.
+- For `DESMARCAR`: Unmarks all telematic notifications.
+
+
+### BL_DEVOL WHEN-BUTTON-PRESSED (for LOV_CONSEJ, LOV_UNIDAD, LOV_MUNI)
+#### Functionality:
+- Opens LOVs for selecting department, unit, and municipality for returns.
+
+#### Key Events and Validations:
+- Calls the respective LOVs (`LOV_CONSEJ`, `BLOV_UNIDAD`, `LOV_MUNI`) for user selection.
+
+
+### BL_RESULTADO_ERROR WHEN-BUTTON-PRESSED (for B_SALIR)
+#### Functionality:
+- Closes the error handling form and returns to `NOTIFICACION_TELEMATICA` block.
+
+#### Key Events and Validations:
+- Navigates back using the `GO_BLOCK` command.
+
+
+## Program Units
+
+### COMPROBAR_SELECCION
+#### Functionality:
+- Validates the selection of documents ensuring compliance with business rules.
+
+#### Key Events and Validations:
+- Checks if documents are saved in the database.
+- Validates DUE (Digital Encrypted User) details.
+- Ensures documents are signed and registered before issuing notifications.
+- Updates the `CB_MARCA` field based on validation results.
+
+
+### PONER_ROJO and PONER_ROJO_NOTE
+#### Functionality:
+- Changes the display color of items based on specific conditions.
+
+#### Key Events and Validations:
+- Updates the visual attributes of items in the `GEA_ACURE` and `NOTIFICACION_TELEMATICA` blocks based on whether they are printed or notification status.
+
+
+### ULTIMA_NOTIFICACION
+#### Functionality:
+- Retrieves the date of the last notification for a specific document.
+
+#### Key Events and Validations:
+- Queries the `EREG_LISTNOTI` table to find the last notification date and sets the `FCCREA` field accordingly.
+
+
+### VALIDA_FECHAS
+#### Functionality:
+- Validates the date fields `FCDESDE` and `FCHASTA`.
+
+#### Key Events and Validations:
+- Ensures `FCDESDE` and `FCHASTA` are not greater than the current date and ensures logical date order between `FCDESDE` and `FCHASTA`.
+
+
+### CONSTRUIR_WHERE_NOTE and CONSTRUIR_WHERE_CORR
+#### Functionality:
+- Constructs dynamic WHERE clauses for queries based on form inputs.
+
+#### Key Events and Validations:
+- Builds queries incorporating filters for date ranges, department codes, and other criteria.
+- Determines whether to include sent notifications in the query.
+
+
+### PROC_INICIALIZAR_DATOS_DEVOL
+#### Functionality:
+- Initializes and sets default return data based on user input.
+
+#### Key Events and Validations:
+- Sets default values for organizational and return address details.
+
+
+### VALIDA_MUNICIPIO
+#### Functionality:
+- Validates the municipality code and name.
+
+#### Key Events and Validations:
+- Queries the `suca_municipio` table to validate the municipality code and set the municipality name.
+
+
+### GLOBALES_SESION
+#### Functionality:
+- Checks and sets global variables for session-specific details related to expeditions.
+
+#### Key Events and Validations:
+- Sets expedition-related global variables based on session values.
+
+
+### CALCULAR_NUMERO_ANEXOS
+#### Functionality:
+- Calculates the number of annexes associated with a document.
+
+#### Key Events and Validations:
+- Queries the `gea_anexos` table to count the annexes marked for sending.
+
+
+### F_ESTADO_EXPEDIENTE
+#### Functionality:
+- Retrieves the status of an expedition.
+
+#### Key Events and Validations:
+- Queries the `gexpedient` table to determine if an expedition is finalized or annulled.
+
+
+### VALIDA_EXPEDIENTE
+#### Functionality:
+- Validates that an expedition is not finalized or annulled before issuing notifications.
+
+#### Key Events and Validations:
+- Checks the status of an expedition using the `f_estado_expediente` function.
+
+The logic and business rules within the EXPECA01 form ensure that notifications and their associated documents are correctly validated, processed, and issued while maintaining compliance with the specified business logic and constraints. The triggers, program units, and fields collectively enforce these rules and manage the various actions required for notification issuance.

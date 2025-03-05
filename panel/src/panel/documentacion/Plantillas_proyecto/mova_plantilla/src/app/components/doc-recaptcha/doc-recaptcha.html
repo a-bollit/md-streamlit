@@ -1,0 +1,400 @@
+
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-recaptcha</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='backendExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de backend
+      </a>
+    </div>
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='getLastSuccessCaptcha.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> getLastSuccessCaptcha
+      </a></li>
+      <li><a class="nostyle" (click)='onSuccess.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> onSuccess
+      </a></li>
+      <li><a class="nostyle" (click)='onExpired.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> onExpired
+      </a></li>
+      <li><a class="nostyle" (click)='onError.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> onError
+      </a></li>
+      <li><a class="nostyle" (click)='reset.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> reset
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-recaptcha</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente sirve para implementar el servicio de reCaptcha de Google.</p>
+      <p>Por limitaciones de reCaptcha de Google, este componente se comporta de forma distinta en una Web App que en una aplicación móvil.
+      Esto es debido a que la aplicación móvil usa en su URL el protocolo file:// y esto no lo acepta reCaptcha de Google.
+      En una aplicación móvil el captcha se abre en un navegador embedido y funciona de forma distinta almacenando el captcha en el localStorage.</p>
+      <p>Debido a lo comentado en el párrafo anterior, deberá estar instalado el plugin inAppBrowser si queremos que funcione el componente en
+      dispositivos móviles</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración del componente <strong>mv-recaptcha</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-card
+        class="info-card">
+        <mv-card-header>
+          <mv-card-title>
+            <strong>Configuración</strong>
+          </mv-card-title>
+        </mv-card-header>
+
+        <mv-card-content>
+          <p>Primero, si no está ya incluído, hay que importar el componente en el archivo mova.module.ts.</p>
+          <p>También hay que configurar en los archivos de entorno las variables necesarias para el correcto funcionamiento del componente, como se muestra en el
+          código de environment.ts, environment.val.ts y environment.prod.ts.</p>
+          <p>Las claves del captcha están en la ficha de solicitud de la app que se pide a Arquitectura
+            En el apartado "Claves para uso del Captcha entornos"
+            Si no se ha solicitado estas claves volver a pedir por mantis la ficha de solicitud de app
+            </p>
+        </mv-card-content>
+      </mv-card>
+
+      <mv-tab-group>
+        <mv-tab label="environment.ts">
+          <pre><code [highlight]="codeEnvironmentTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.val.ts">
+          <pre><code [highlight]="codeEnvironmentValTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="environment.prod.ts">
+          <pre><code [highlight]="codeEnvironmentProdTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-recaptcha</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="CaptchaService.TS">
+          <pre><code [highlight]="codeUseServiceExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-input
+        label="Valor pasado al servicio"
+        [(ngModel)]="exampleValidate.state">
+      </mv-input>
+
+      <mv-recaptcha
+        #captchaExample>
+      </mv-recaptcha>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (clickEvent)="captchaValidationExample()">
+        Validar captcha
+      </mv-button>
+      <div class="recaptchaResultado">
+        <p>Resultado: <strong>{{ exampleValidate.response }}</strong></p>
+        <p>Resultado captcha: <strong>{{ exampleValidate.responseCaptcha }}</strong></p>
+        <p>Valor de entrada: <strong>{{ exampleValidate.state }}</strong></p>
+        <p>Respuesta backend:</p>
+        <pre><strong>{{ exampleValidate.responseBackend | json}}</strong></pre>
+      </div>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getLastSuccessCaptcha -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #getLastSuccessCaptcha><strong>getLastSuccessCaptcha</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-recaptcha</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La función getLastSuccessCaptcha sirve para obtener el último valor procesado del captcha, para enviarlo al backend por ejemplo.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeGetLastSuccessCaptchaExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeGetLastSuccessCaptchaExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-recaptcha
+        #captchaGetSuccessExample>
+      </mv-recaptcha>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (clickEvent)="getLastSuccessCaptchaExample()">
+        getLastSuccessCaptcha
+      </mv-button>
+
+      <div class="recaptchaResultado">
+        <p>Resultado: <strong>{{ exampleSuccessValueValidate.response }}</strong></p>
+        <p>Resultado captcha: <strong>{{ exampleSuccessValueValidate.responseCaptcha }}</strong></p>
+        <p>Valor de entrada: <strong>{{ exampleSuccessValueValidate.state }}</strong></p>
+        <p>Respuesta backend:</p>
+        <pre><strong>{{ exampleSuccessValueValidate.responseBackend | json}}</strong></pre>
+      </div>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- onSuccess -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #onSuccess><strong>onSuccess</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-recaptcha</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La función onSuccess se ejecuta al validar el captcha</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="successCallbackExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="successCallbackExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-recaptcha
+      #captchaOnSuccessExample
+
+      (onSuccess)="successCaptcha($event)">
+
+      </mv-recaptcha>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (clickEvent)="captchaSuccessValidationExample()">
+        Validar captcha
+      </mv-button>
+      <div class="recaptchaResultado">
+        <p>Resultado: <strong>{{ exampleOnSuccessValidate.response }}</strong></p>
+        <p>Resultado captcha: <strong>{{ exampleOnSuccessValidate.responseCaptcha }}</strong></p>
+        <p>Valor de entrada: <strong>{{ exampleOnSuccessValidate.state }}</strong></p>
+        <p>Respuesta backend:</p>
+        <pre><strong>{{ exampleOnSuccessValidate.responseBackend | json}}</strong></pre>
+      </div>
+
+    </mv-card-content>
+  </mv-card>
+
+
+  <!-- onExpired -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #onExpired><strong>onExpired</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-recaptcha</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La función onExpired se ejecuta  cuando el captcha expira</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="expiredCallbackExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="expiredCallbackExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-recaptcha
+      #captchaOnExpiredExample
+      (onExpired)="expiredCaptcha($event)">
+
+      </mv-recaptcha>
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (clickEvent)="captchaExpiredValidationExample()">
+        Validar captcha
+      </mv-button>
+      <div class="recaptchaResultado">
+        <p>Resultado: <strong>{{ exampleOnExpiredValidate.response }}</strong></p>
+        <p>Resultado captcha: <strong>{{ exampleOnExpiredValidate.responseCaptcha }}</strong></p>
+        <p>Valor de entrada: <strong>{{ exampleOnExpiredValidate.state }}</strong></p>
+        <p>Respuesta backend:</p>
+        <pre><strong>{{ exampleOnExpiredValidate.responseBackend | json}}</strong></pre>
+
+      </div>
+
+    </mv-card-content>
+  </mv-card>
+
+    <!-- onError -->
+    <mv-card class="card-code">
+
+      <mv-card-header>
+        <div mv-card-avatar><mv-icon>code</mv-icon></div>
+        <mv-card-title #onError><strong>onError</strong></mv-card-title>
+        <mv-card-subtitle>Uso básico del componente <strong>mv-recaptcha</strong>.</mv-card-subtitle>
+      </mv-card-header>
+
+      <mv-card-content>
+
+        <p>La función onError se lanza cuando el captcha da un error o no es válido.</p>
+
+        <mv-tab-group>
+          <mv-tab label="HTML">
+            <pre><code [highlight]="errorCallbackExampleHTML"></code></pre>
+          </mv-tab>
+          <mv-tab label="TS">
+            <pre><code [highlight]="errorCallbackExampleTS"></code></pre>
+          </mv-tab>
+        </mv-tab-group>
+
+        <mv-recaptcha
+        #captchaOnErrorExample
+        (onError)="errorCaptcha($event)">
+
+        </mv-recaptcha>
+        <mv-button
+          appearance="raised"
+          color="primary"
+          (clickEvent)="captchaErrorValidationExample()">
+          Validar captcha
+        </mv-button>
+        <div class="recaptchaResultado">
+          <p>Resultado: <strong>{{ exampleOnErrorValidate.response }}</strong></p>
+          <p>Resultado captcha: <strong>{{ exampleOnErrorValidate.responseCaptcha }}</strong></p>
+          <p>Valor de entrada: <strong>{{ exampleOnErrorValidate.state }}</strong></p>
+          <p>Respuesta backend:</p>
+          <pre><strong>{{ exampleOnErrorValidate.responseBackend | json}}</strong></pre>
+
+        </div>
+
+      </mv-card-content>
+    </mv-card>
+
+
+  <!-- reset -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #reset><strong>reset</strong></mv-card-title>
+      <mv-card-subtitle>Reseteo del componente <strong>mv-recaptcha</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La función reset permite resetear el componente tras su uso, ya que si no nos indicará que el captcha ya ha sido usado.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeResetExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeResetExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-recaptcha
+        #captchaReset>
+      </mv-recaptcha>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (clickEvent)="resetExample()">
+        reset
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- backendExample -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #backendExample><strong>Ejemplo backend</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplo recepción de captcha en el backend.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>A continuación, se muestra un ejemplo de implementación de backend en Java para recibir y validar el valor del captcha.</p>
+
+      <mv-tab-group>
+        <mv-tab label="Java">
+          <pre><code [highlight]="codeBackendExampleJava"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

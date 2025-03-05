@@ -1,0 +1,25 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 filters-mobile">
+      <div class="filters-container">
+        <span class="span">Filtro / Búsqueda</span>
+        <span class="info">Esribe el nombre de un municipio y pulsa en <b>Filtrar</b> para realizar el filtro o en <b>Buscar</b> para realizar una búsqueda.</span>
+        <mv-input label="Nombre de municipio" [(ngModel)]="filterText" adapt="true"
+          placeholder="Madrid...">
+        </mv-input>
+        <mv-button appearance="raised" color="corporative" adapt=true (clickEvent)="applyFilter()">
+          Filtrar
+        </mv-button>
+        <mv-button appearance="raised" color="corporative" adapt=true (clickEvent)="applySearch()">
+          Buscar
+        </mv-button>
+        <mv-button appearance="raised" color="primary" adapt=true (clickEvent)="remove()">
+          Eliminar todo
+        </mv-button>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-9 map-mobile">
+      <div id="container-apigis-filters"></div>
+    </div>
+  </div>
+</div>

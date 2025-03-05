@@ -1,0 +1,11 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+
+::ng-deep .mat-checkbox-layout {
+  white-space: normal !important;
+}

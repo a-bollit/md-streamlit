@@ -1,0 +1,29 @@
+<mv-card>
+  <mv-header
+    [headerTitle]="'Confirmar Alerta'"
+    [headerSubtitle]="mensaje"
+    [fixed]="true"
+    [showBackButton]="false"
+    [showMenuButton]="false"
+    [type]="'white-corporative'">
+  </mv-header>
+  <div class="content">
+    <p>{{ mensaje }}</p>
+    <div class="button-container">
+      <mv-button
+        [color]="'primary'"
+        [appearance]="'raised'"
+        (click)="confirmAction()">
+        <mv-icon class="icon" aria-hidden="false" aria-label="Confirmar">check</mv-icon>
+        Sí
+      </mv-button>
+      <mv-button
+        [color]="'warn'"
+        [appearance]="'raised'"
+        (click)="cancelAction()">
+        <mv-icon class="icon" aria-hidden="false" aria-label="Cancelar">close</mv-icon>
+        No
+      </mv-button>
+    </div>
+  </div>
+</mv-card>

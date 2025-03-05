@@ -1,0 +1,311 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>El Visor</strong></mv-card-title>
+
+    <p>El API GIS diferencia entre el concepto de mapa (apigis.Map), que tiene el control sobre las capas, controles,
+      superposiciones, etc y la forma en la que lo visualizamos, que se realiza a través del visor (apigis.Viewer). </p>
+    <p>Un visor puede contener uno o más mapas, que a su vez contienen las capas. Para poder visualizar un mapa,
+      siempre se deberá instanciar dentro de una vista. A continuación,
+      se explica de forma detallada la forma de trabajar con el visor mediante el uso del APIGIS. </p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='constructor.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Contructor de un visor (apigis.Viewer)
+        </a></li>
+      <li><a class="nostyle" (click)='getters.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Getters
+        </a></li>
+      <li><a class="nostyle" (click)='setters.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Setters
+        </a></li>
+      <li><a class="nostyle" (click)='metodos.scrollIntoView({behavior: "smooth",block: "start"})'>
+          <mv-icon>link</mv-icon> Métodos
+        </a></li>
+    </ol>
+  </mv-card>
+
+  <!-- Viewer -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #constructor><strong>Contructor de un visor (apigis.Viewer)</strong></mv-card-title>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>El visor es el responsable de fijar ciertas propiedades como el centro, el nivel del zoom, la proyección de los
+        mapas.. etc.</p>
+      <p>Se puede instanciar un nuevo visor mediante la clase <strong>apigis.Viewer</strong>. </p>
+      <p><em><strong>new ApiViewer(args)</strong></em></p>
+      <ul>
+        <li><strong>args</strong> &#60;<i>object</i> &#62; Objeto con todos los argumentos del contructor. Puede
+          contener las siguientes propiedades:</li>
+        <ul>
+          <li><strong>container</strong> &#60;<i>string</i> &#62; Nombre del contenedor del DOM que almacenará los mapas
+            del viewer.</li>
+          <li><strong>maps</strong> &#60;<i>apigis.Map[]</i> &#62; Conjunto de mapas que contendrá el visor.</li>
+          <li><strong>options</strong> &#60;<i>object</i> &#62; Propiedades asociadas al viewer. Puede contener las
+            siguientes propiedades:</li>
+          <ul>
+            <li><strong>projections</strong> &#60;<i>object</i> &#62; En ocasiones la proyección a utilizar no está
+              registrada en el API, por lo que es necesario definirla. Para ello simplemente debe especificarse
+              * en un objeto el EPSG y la definición de la proyección.</li>
+            <li><strong>maxColumns = 3</strong> &#60;<i>number</i>&#62; Número máximo de mapas por cada una de las
+              filas del Viewer.</li>
+            <li><strong>synchronize = 0 </strong> &#60;<i>number</i>&#62; Inicializa los mapas en un modo de
+              sincronización. Admite tres valores (0: no sincronizados, 1: sincronización de mapas, 2: sincronización
+              continua).</li>
+            <li><strong>grid</strong> &#60;<i>object</i>&#62; Inicializa la disposición de los mapas del Viewer en modo
+              grid. Puede contener las siguientes propiedades:</li>
+            <ul>
+              <li><strong>active = true</strong> &#60;<i>boolean</i> &#62; Activación del modo grid.</li>
+              <li><strong>borders</strong> &#60;<i>object</i> &#62; Configura bordes entre los mapas en una vista en
+                grid. Por defecto, no se aplican bordes. Puede contener las siguientes propiedades:</li>
+              <ul>
+                <li><strong>color</strong> &#60;<i>string</i> &#62; Color del borde.</li>
+                <li><strong>borders</strong> &#60;<i>0 | 1 | 2</i> &#62; Inicializa los mapas en un modo de
+                  sincronización. Admite tres valores (0: no sincronizados, 1: sincronización de mapas, 2:
+                  sincronización continua).</li>
+              </ul>
+            </ul>
+          </ul>
+        </ul>
+      </ul>
+
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeViewerExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeViewerExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="CSS">
+          <pre><code [highlight]="codeViewerExampleCSS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+      <p><strong>Ejemplo de visor con un mapa con una capa base:</strong></p>
+      <div id="doc-apigis-viewer-container">
+      </div>
+      <br>
+      <p>Se puede consultar información más detallada y ejemplos sobre el uso del Viewer en el documento de Arquitectura sobre el API GIS.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- getters -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #getters><strong>Getters</strong></mv-card-title>
+      <mv-card-subtitle>Métodos que nos permiten acceder (Getters) a las propiedades de un visor.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Las clases de ES6 incorporan una nueva sintaxis para obtener y configurar valores en las propiedades de los
+        objetos (GET y SET). Get y set permiten ejecutar código en la lectura y escritura de una propiedad.
+        Los métodos SET se han implementado de manera tradicional (como métodos), mientras que todos los métodos GET se
+        invocarán como una propiedad del objeto.
+      </p>
+      <p>Se muestran a continuación los Getters disponibles en un objeto de tipo Viewer:</p>
+
+      <p><em><strong>props</strong></em></p>
+      <p>Recupera las propiedades del viewer.</p>
+      <br>
+      <p><em><strong>parent_container</strong></em></p>
+      <p>Recupera el nombre del contenedor del padre donde está incrustado el Visor.</p>
+      <br>
+      <p><em><strong>container</strong></em></p>
+      <p>Recupera el identificador del contenedor del visor.</p>
+      <br>
+      <p><em><strong>maxColumns</strong></em></p>
+      <p>Recupera el número máximo de columnas en el Visor para el modo grid.</p>
+      <br>
+      <p><em><strong>maps</strong></em></p>
+      <p>Recupera la lista de mapas asociados al Visor.</p>
+      <br>
+      <p><em><strong>grid</strong></em></p>
+      <p>Recupera el estado del visor. Indica si el formato actual es en grid o no..</p>
+      <br>
+      <p><em><strong>eventQueue</strong></em></p>
+      <p>Recupera la cola de eventos del Visor.</p>
+      <br>
+      <p><em><strong>synchronize</strong></em></p>
+      <p>Recupera el estado del Visor en cuanto a sincronización. Hay tres tipos de sincronización (0: no sincronizados,
+        1: sincronización de mapas, 2: sincronización continua).</p>
+      <br>
+      <p><em><strong>projections</strong></em></p>
+      <p>Recupera las proyecciones configuradas en el Visor. </p>
+      <br>
+      <p><em><strong>symbolsConf</strong></em></p>
+      <p>Recupera los simbolos establecidos a los objetos por configuracion.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- setters -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #setters><strong>Setters</strong></mv-card-title>
+      <mv-card-subtitle>Métodos que nos permiten establecer (Setters) las propiedades de un visor.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>Las clases de ES6 incorporan una nueva sintaxis para obtener y configurar valores en las propiedades de los
+        objetos (GET y SET). Get y set permiten ejecutar código en la lectura y escritura de una propiedad.
+        Los métodos SET se han implementado de manera tradicional (como métodos).
+      </p>
+      <p>Se muestran a continuación los Setters disponibles en un objeto de tipo Viewer:</p>
+
+      <p><em><strong>setSymbolsConf(value)</strong></em></p>
+      <p>Establece los símbolos cuando se cargan desde configuración. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>object</i> &#62; Símbolos cuando se cargan desde configuración.</li>
+      </ul>
+      <br>
+      <p><em><strong>setGrid(args)</strong></em></p>
+      <p>Establece la disposición que deberán tener los mapas en el Visor. Sus argumentos son: </p>
+      <li><strong>args</strong> &#60;<i>object</i> &#62; Objeto con todos los argumentos del método. Puede
+        contener las siguientes propiedades:</li>
+      <ul>
+        <li><strong>active = true</strong> &#60;<i>boolean</i> &#62;Estado de la disposición de mapas en el grid (false:
+          solo
+          visible el mapa activo, true: grid de todos los mapas del Visor).</li>
+        <li><strong>borders</strong> &#60;<i>object</i> &#62; Configura bordes entre los mapas en una vista en
+          grid. Por defecto, no se aplican bordes. Puede contener las siguientes propiedades:</li>
+        <ul>
+          <li><strong>color</strong> &#60;<i>string</i> &#62; Color del borde.</li>
+          <li><strong>borders</strong> &#60;<i>0 | 1 | 2</i> &#62; Inicializa los mapas en un modo de
+            sincronización. Admite tres valores (0: no sincronizados, 1: sincronización de mapas, 2:
+            sincronización continua).</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em><strong>setSynchronize(value)</strong></em></p>
+      <p>Establece el estado de la sincronización del Visor. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>0 | 1 | 2</i> &#62; Tipo de sincronización (0: no sincronizados, 1:
+          sincronización
+          de mapas, 2: sincronización continua)</li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Métodos -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar>
+        <mv-icon>code</mv-icon>
+      </div>
+      <mv-card-title #metodos><strong>Métodos</strong></mv-card-title>
+      <mv-card-subtitle>Métodos de un objeto apigis.Viewer.
+      </mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>
+      </p>
+      <p>Se muestran a continuación los métodos disponibles para trabajar con un objeto de tipo Viewer:</p>
+
+      <p><em><strong>addMap(map)</strong></em></p>
+      <p>Añade un mapa al Visor. Sus argumentos son: </p>
+      <ul>
+        <li><strong>map</strong> &#60;<i>apigis.Map</i> &#62; Objeto de tipo Mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>addMaps(maps)</strong></em></p>
+      <p>Añade una lista de mapas al Visor. Sus argumentos son: </p>
+      <ul>
+        <li><strong>maps</strong> &#60;<i>apigis.Map[]</i> &#62; Lista de objetos de tipo Mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>getMap(index)</strong></em></p>
+      <p>Recupera el mapa de una determinada posición en la lista de mapas del Visor. Sus argumentos son: </p>
+      <ul>
+        <li><strong>index</strong> &#60;<i>number</i> &#62; Posición a recuperar de la lista.</li>
+      </ul>
+      <br>
+      <p><em><strong>getMapById(value)</strong></em></p>
+      <p>Recupera el primer mapa del viever con el identificador especificado. Sus argumentos son: </p>
+      <ul>
+        <li><strong>value</strong> &#60;<i>string</i> &#62; Id del mapa.</li>
+      </ul>
+      <br>
+      <p><em><strong>removeMap(map)</strong></em></p>
+      <p>Elimina un mapa de la lista de mapas del Visor. Sus argumentos son: </p>
+      <ul>
+        <li><strong>map</strong> &#60;<i>apigis.Map</i> &#62; Objeto de tipo Mapa.</li>
+      </ul>
+
+      <br>
+      <p><em><strong>addOverviewMap(map)</strong></em></p>
+      <p>Añade un mapa de tipo Overview al Visor. Sus argumentos son: </p>
+      <ul>
+        <li><strong>map</strong> &#60;<i>apigis.Map</i> &#62; Objeto de tipo Mapa.</li>
+      </ul>
+
+      <br>
+      <p><em><strong>getActiveMap()</strong></em></p>
+      <p>Recupera el mapa activo del Visor.</p>
+
+      <br>
+      <p><em><strong>listenActiveMapChange(callback)</strong></em></p>
+      <p>Listener para escuchar cuando cambia el visor de mapa activo. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+
+      <br>
+      <p><em><strong>listenChangeGrid(callback)</strong></em></p>
+      <p>Listener para escuchar cuando cambia el estado de grid. Sus argumentos son: </p>
+      <ul>
+        <li><strong>callback</strong> &#60;<i>Function</i> &#62; Función de callback.</li>
+      </ul>
+
+      <br>
+      <p><em><strong>exportState()</strong></em></p>
+      <p>Devuelve el estado del mapa (extent y capas visibles). </p>
+
+      <br>
+      <p><em><strong>loadState(state)</strong></em></p>
+      <p>Carga el estado del visor. Sus argumentos son: </p>
+      <ul>
+        <li><strong>state</strong> &#60;<i>object</i> &#62; Estado guardado.</li>
+      </ul>
+
+      <br>
+      <p><em><strong>toJson()</strong></em></p>
+      <p>Devuelve la configuracion del viewer.</p>
+
+      <br>
+      <p><em><strong>moveMap(mapId, indexTo)</strong></em></p>
+      <p>Mueve una mapa de posición dentro del viewer. Sus argumentos son: </p>
+      <ul>
+        <li><strong>mapId</strong> &#60;<i>string</i> &#62; Identificador del mapa.</li>
+        <li><strong>indexTo</strong> &#60;<i>number</i> &#62; Ínice donde queremos ubicar el mapa.</li>
+      </ul>
+
+      <br>
+      <p><em><strong>getMapIndex(mapId)</strong></em></p>
+      <p> Obtiene la posición que ocupa un mapa en la lista de mapas del viewer. Sus argumentos son: </p>
+      <ul>
+        <li><strong>mapId</strong> &#60;<i>string</i> &#62; Identificador del mapa.</li>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

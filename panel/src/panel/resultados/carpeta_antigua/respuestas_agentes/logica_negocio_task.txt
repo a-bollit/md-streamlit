@@ -1,0 +1,313 @@
+Result from logica_negocio_task: ## Implementing Logic and Business Rules from Oracle Forms (EXPECA01) in Java Spring Boot
+
+### Project Structure
+
+We'll use the following structure for our Spring Boot project:
+
+```
+src/main/java/
+└── com
+    └── example
+        ├── controller
+        ├── service
+        ├── model
+        ├── repository
+        └── mapper
+src/main/resources/
+    ├── application.properties
+    └── static
+        └── javascripts
+```
+
+### 1. Service Classes
+
+#### 1.1 Initialization Service
+**Class:** `FormInitializationService`
+*Purpose:* Initializes form settings, applies user profile settings, sets global variables, and handles visibility based on user roles.
+
+```java
+@Service
+public class FormInitializationService {
+
+    @Autowired
+    private GlobalVariableService globalVariableService;
+
+    @Autowired
+    private UserService userService;
+
+    public void initializeForm(Settings settings, User user) {
+        if (globalVariableService.getVariable("cddeptno_ereg") == null) {
+            throw new UserInfoNotLoadedException("User information is not loaded in the registry");
+        }
+
+        globalVariableService.setInitialValues(user, settings);
+
+        boolean showTabs = globalVariableService.getVariable("gead_vercorreos");
+        handleTabVisibility(showTabs);
+    }
+
+    private void handleTabVisibility(boolean showTabs) {
+        if (showTabs) {
+            // Logic to show tabs
+        } else {
+            // Logic to hide tabs
+        }
+    }
+}
+```
+
+#### 1.2 Navigation Service
+**Class:** `NavigationService`
+*Purpose:* Facilitates navigation between fields on forms.
+
+```java
+@Service
+public class NavigationService {
+
+    public void navigateToNextItem() {
+        // Logic to navigate to the next item
+    }
+
+    public void navigateToPreviousItem() {
+        // Logic to navigate to the previous item
+    }
+}
+```
+
+#### 1.3 Error Handling Service
+**Class:** `ErrorHandlingService`
+*Purpose:* Handles errors and redirects to custom error handling logic.
+
+```java
+@Service
+public class ErrorHandlingService {
+
+    public void handleError(CustomError error) {
+        if (error.getCode() == 40010) {
+            // Specific error handling logic
+        }
+        
+        // General error handling logic
+        controlError();
+    }
+
+    private void controlError() {
+        // Custom error handling procedure
+    }
+}
+```
+
+#### 1.4 Tab Page Change Service
+**Class:** `TabPageChangeService`
+*Purpose:* Changes focus between different blocks based on the selected tab.
+
+```java
+@Service
+public class TabPageChangeService {
+
+    public void onTabPageChange(String tabId) {
+        switch (tabId) {
+            case "PG_CORR":
+                navigateToBlock("GEA_ACURE");
+                break;
+            case "PG_NOTE":
+                navigateToBlock("NOTIFICACION_TELEMATICA");
+                break;
+            default:
+                // Default logic or error handling
+        }
+    }
+
+    private void navigateToBlock(String blockName) {
+        // Logic to navigate to the specified block
+    }
+}
+```
+
+#### 1.5 Notification Service
+**Class:** `NotificationService`
+*Purpose:* Validates notification inputs, handles data queries and updates, and manages actions related to document processing.
+
+```java
+@Service
+public class NotificationService {
+
+    @Autowired
+    private NotificationRepository notificationRepository;
+
+    @Autowired
+    private UserService userService;
+
+    public void acceptNotification(Notification notification) {
+        validateNotification(notification);
+        populateNotificationCanvas(notification);
+        handleNotificationQueries(notification);
+    }
+
+    private void validateNotification(Notification notification) {
+        if (notification.getMandatoryField() == null) {
+            throw new MandatoryFieldException("Mandatory field is not completed");
+        }
+        
+        // Additional validation logic
+    }
+
+    private void populateNotificationCanvas(Notification notification) {
+        // Logic to populate canvas with notification data
+    }
+
+    private void handleNotificationQueries(Notification notification) {
+        // Construct WHERE clause for query
+        String whereClause = buildWhereClause(notification);
+
+        // Execute query and handle results
+        List<NotificationResult> results = notificationRepository.findByWhereClause(whereClause);
+        updateNotificationStatus(results);
+    }
+
+    private String buildWhereClause(Notification notification) {
+        // Logic to build dynamic WHERE clause
+        return "WHERE condition";
+    }
+
+    private void updateNotificationStatus(List<NotificationResult> results) {
+        // Logic to update notification status based on query results
+    }
+}
+```
+
+#### 1.6 Date Validation Service
+**Class:** `DateValidationService`
+*Purpose:* Validates date fields, ensuring they are within logical and acceptable ranges.
+
+```java
+@Service
+public class DateValidationService {
+
+    public void validateDates(LocalDate fromDate, LocalDate toDate) {
+        LocalDate currentDate = LocalDate.now();
+        
+        if (fromDate.isAfter(currentDate) || toDate.isAfter(currentDate)) {
+            throw new InvalidDateException("Dates cannot be greater than the current date");
+        }
+        
+        if (fromDate.isAfter(toDate)) {
+            throw new InvalidDateException("From date cannot be after the To date");
+        }
+    }
+}
+```
+
+#### 1.7 Document Processing Service
+**Class:** `DocumentProcessingService`
+*Purpose:* Handles actions related to marking, unmarking, registering, and sending documents.
+
+```java
+@Service
+public class DocumentProcessingService {
+
+    public void registerDocument(Document document) {
+        validateDocument(document);
+        document.setStatus("Registered");
+        // Further registration logic
+    }
+
+    public void acceptDocument(Document document) {
+        validateDocument(document);
+        document.setStatus("Accepted");
+        // Further acceptance logic
+    }
+
+    public void markDocument(Document document) {
+        document.setMarked(true);
+        // Further marking logic
+    }
+
+    public void unmarkDocument(Document document) {
+        document.setMarked(false);
+        // Further unmarking logic
+    }
+
+    private void validateDocument(Document document) {
+        if (document == null) {
+            throw new DocumentValidationException("Document is null");
+        }
+
+        // Additional validation logic
+    }
+}
+```
+
+#### 1.8 Global Variable Service
+**Class:** `GlobalVariableService`
+*Purpose:* Manages global variables for user and session details.
+
+```java
+@Service
+public class GlobalVariableService {
+
+    private Map<String, Object> globalVariables = new HashMap<>();
+
+    public Object getVariable(String key) {
+        return globalVariables.get(key);
+    }
+
+    public void setVariable(String key, Object value) {
+        globalVariables.put(key, value);
+    }
+
+    public void setInitialValues(User user, Settings settings) {
+        // Logic to set initial values for global variables based on user and settings
+    }
+}
+```
+
+### Patterns and Best Practices
+
+- **Service Layer:** We use service classes to encapsulate business logic. This keeps our controllers clean and focuses on handling HTTP requests.
+- **Repository Layer:** JPA repositories will be used to handle data access, ensuring separation of concerns.
+- **Validation:** Spring Boot validation annotations and custom exceptions are used to handle input validation.
+- **Error Handling:** Centralized error handling using `@ControllerAdvice` for custom error responses.
+- **Global Variables:** Manage state using the `GlobalVariableService`, ensuring thread safety and consistency.
+- **Navigation:** The navigation logic is encapsulated in the `NavigationService`.
+
+### Example Controller to Integrate Services
+
+```java
+@RestController
+@RequestMapping("/api")
+public class NotificationController {
+
+    @Autowired
+    private FormInitializationService formInitializationService;
+
+    @Autowired
+    private NotificationService notificationService;
+
+    @Autowired
+    private DateValidationService dateValidationService;
+
+    @PostMapping("/initialize")
+    public ResponseEntity<String> initializeForm(@RequestBody Settings settings, @RequestBody User user) {
+        formInitializationService.initializeForm(settings, user);
+        return ResponseEntity.ok("Form Initialized");
+    }
+
+    @PostMapping("/validate-dates")
+    public ResponseEntity<String> validateDates(@RequestParam("fromDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
+                                                @RequestParam("toDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate) {
+        dateValidationService.validateDates(fromDate, toDate);
+        return ResponseEntity.ok("Dates Validated");
+    }
+
+    @PostMapping("/accept-notification")
+    public ResponseEntity<String> acceptNotification(@RequestBody Notification notification) {
+        notificationService.acceptNotification(notification);
+        return ResponseEntity.ok("Notification Accepted");
+    }
+}
+```
+
+### Conclusion
+
+By structuring our application using service classes, repositories, and controllers, we achieve separation of concerns and ensure maintainable, testable, and scalable code. We address each of the functionalities required by implementing the corresponding services and ensuring robust validation and error handling. Each service handles its specific business logic, ensuring clarity and modularity in our codebase.

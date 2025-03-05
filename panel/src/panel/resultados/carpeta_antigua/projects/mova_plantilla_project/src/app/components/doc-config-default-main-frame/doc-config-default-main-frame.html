@@ -1,0 +1,123 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación config-default-main-frame.json</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a></li>
+      <li><a class="nostyle" (click)='configuracion.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del archivo <strong>config-default-main-frame.json</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este archivo permite definir el aspecto visual general de la app.</p>
+      <p>Para configurar los aspectos generales de la app ver la documentación de
+        <strong><a target="_blank" href="#/doc-config-default">config-default.json</a></strong></p>
+      <p>Para configurar aspectos según el entorno (desarrollo/validación/producción) ver la documentación de
+        <strong><a target="_blank" href="#/doc-environment">environment.ts, environment.val.ts y environment.prod.ts</a></strong></p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #configuracion><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración del archivo <strong>config-default-main-frame.json</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-tab-group>
+        <mv-tab label="config-default-main-frame.json">
+          <pre><code [highlight]="codeConfigDefaultMainFrameJSON"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <ul class="margin-li">
+        <li>generalConfig</li>
+        <ul>
+          <li><strong>style</strong> - Variable para definir el tema principal de la app: 1 rojo corporativo o 2 azul socio sanitario. Este cambio se aplicará
+            al color del header y a algunos elementos visuales de los componentes MOVA.</li>
+          <li><strong>showLoadingMode</strong> - Variable para definir el icono de loading: "mova1" para icono corporativo similar a mova1 o "mova2" para spinner.</li>
+        </ul>
+        <li>headerConfig</li>
+        <ul>
+          <li><strong>fixed</strong> - Variable para establecer el header fijo al hacer scroll.</li>
+          <li><strong>showBackButton</strong> - Variable para definir si queremos mostrar el botón de atrás en el header.</li>
+          <li><strong>showHeader</strong> - Variable para definir si queremos mostrar u ocultar el header.</li>
+          <li><strong>showHeaderButtonLogin</strong> - Variable para definir si queremos mostrar el botón de login en el header.</li>
+          <li><strong>showLateralMenu</strong> - Variable para definir si queremos que exista el menú lateral.</li>
+          <li><strong>showMenuButton</strong> - Variable para definir si queremos mostrar el botón de abrir/cerrar el menú en el header.</li>
+          <li><strong>type</strong> - Variable para definir el tema del header: 'white-corporative' (color base blanco y el complementario será
+            rojo o azul según lo que hayamos configurado en la variable style) o '' (color base será rojo o azul y el color complementario será el blanco).</li>
+          <li><strong>headerButtonLoginFontSet</strong> - Variable para definir la familia de iconos del botón de login del header (<strong><a target="_blank" href="#/doc-button-login">doc-button-login</a></strong>).</li>
+          <li><strong>headerButtonLogoutFontSet</strong> - Variable para definir la familia de iconos del botón de login del header cuando estamos logados (<strong><a target="_blank" href="#/doc-button-login">doc-button-login</a></strong>).</li>
+          <li><strong>headerButtonLoginIcon</strong> - Variable para definir el icono del botón de login del header (<strong><a target="_blank" href="#/doc-button-login">doc-button-login</a></strong>).</li>
+          <li><strong>headerButtonLogoutIcon</strong> - Variable para definir el icono del botón de login del header cuando estamos logados (<strong><a target="_blank" href="#/doc-button-login">doc-button-login</a></strong>).</li>
+        </ul>
+        <li>lateralMenuConfig</li>
+        <ul>
+          <li><strong>appShortName</strong> - Variable para definir un nombre corto que aparecerá en el menú lateral.</li>
+          <li><strong>appLongName</strong> - Variable para definir un nombre largo que aparecerá en el menú lateral, debajo de appShortName.</li>
+          <li><strong>appDesc</strong> - Variable para definir un texto que aparecerá en el menú lateral, debajo de appLongName.</li>
+          <li><strong>position</strong> - Variable para definir la posición del menú lateral: 'start' (a la izquierda de la pantalla) o 'end' (a la derecha de la pantalla).</li>
+          <li><strong>mode</strong> - Variable para definir el comportamiento del menú lateral al abrirse en pantallas grandes: 'over' (por encima del contenedor principal), 'push' (empuja al contenedor principal) o 'side' (permanece fijo junto al contenedor principal).</li>
+          <li><strong>modeSmall</strong> - Variable para definir el comportamiento del menú lateral al abrirse en pantallas pequeñas: 'over' (por encima del contenedor principal), 'push' (empuja al contenedor principal) o 'side' (permanece fijo junto al contenedor principal).</li>
+          <li><strong>initOpen</strong> - Variable para definir el comportamiento del menú lateral al iniciar la app: true (el menú estará abierto en pantallas grandes), false (el menú permanecerá cerrado de primeras).</li>
+          <li><strong>alwaysOpen</strong> - Variable para definir si queremos que el menú lateral permanezca abierto por defecto.</li>
+          <li><strong>logoApp</strong> - Variable para definir la ruta de la imagen que se usará como logo de la app en el menú lateral.</li>
+          <li><strong>closeOnSelectItem</strong> - Variable para definir si queremos que el menú lateral se cierre al hacer click fuera del mismo.</li>
+          <li><strong>showLateralMenuButtonLogin</strong> - Variable para definir si queremos mostrar el botón de login en el menú lateral.</li>
+          <li><strong>showLateralMenuButtonLoginIfLogged</strong> - Variable para definir si queremos mostrar el botón de login en el menú lateral cuando estamos logados.</li>
+          <li><strong>lateralMenuButtonLoginAppearance</strong> - Variable para definir la apariencia del botón de login del menú lateral (<strong><a target="_blank" href="#/doc-button-login">doc-button-login</a></strong>).</li>
+          <li><strong>lateralMenuButtonLoginColor</strong> - Variable para definir el color del botón de login del menú lateral (<strong><a target="_blank" href="#/doc-button-login">doc-button-login</a></strong>).</li>
+          <li><strong>lateralMenuButtonLoginColorLogout</strong> - Variable para definir el color cuando estamos logados del botón de login del menú lateral (<strong><a target="_blank" href="#/doc-button-login">doc-button-login</a></strong>).</li>
+        </ul>
+        <li>navBarConfig</li>
+        <ul>
+          <li><strong>showNavBar</strong> - Variable para definir si queremos visualizar el componente <strong><a target="_blank" href="#/doc-footer-nav-tab">doc-footer-nav-tab</a></strong>.</li>
+          <li><strong>navBarColor</strong> - Variable para definir el color del componente.</li>
+          <li><strong>navBarColorBar</strong> - Variable para definir el color de la barra de navegación.</li>
+          <li><strong>navBarLinks</strong> - Variable para definir el array de botones. Cada elemento del array estará compuesto de:</li>
+          <ul>
+            <li><strong>title</strong> - Variable para definir el título del botón.</li>
+            <li><strong>stateUrl</strong> - Variable para definir la url del estado al que se navega al pulsar.</li>
+            <li><strong>fontSet</strong> - Variable para definir la fuente del icono.</li>
+            <li><strong>icon</strong> - Variable para definir el icono del botón.</li>
+          </ul>
+          <li><strong>navBarMenu</strong> - Variable para definir el array de botones. Cada elemento del array estará compuesto de:</li>
+          <ul>
+            <li><strong>title</strong> - Variable para definir el título del botón.</li>
+            <li><strong>stateUrl</strong> - Variable para definir la url del estado al que se navega al pulsar.</li>
+          </ul>
+        </ul>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

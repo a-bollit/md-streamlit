@@ -1,0 +1,67 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-landing-view</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información general del componente <strong>mv-landing-view</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente se trata de la vista de presentación de la app. Se trata de un componente de aplicación, por tanto es opcional. Se puede mantener el que viene por
+        defecto en la plantilla, se puede modificar o directamente se puede eliminar.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuracion -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración del componente <strong>mv-landing-view</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente, al ser opcional de aplicación no tiene prácticamente ninguna configuración que el usuario tenga que tener en cuenta.</p>
+
+      <p>El único aspecto a considerar es que la vista hacia la que se navega después de landing-view es la que esté definida en la variable mainViewRoute del archivo
+        <strong><a target="_blank" href="#/doc-config-default">config-default.json</a></strong></p>
+      <p>Si en nuestra aplicación se decide eliminar esta vista (landing-view), habrá que poner en la variable landingViewRoute del archivo
+        <strong><a target="_blank" href="#/doc-config-default">config-default.json</a></strong> la misma vista que haya definida en mainViewRoute.</p>
+
+      <mv-tab-group>
+        <mv-tab label="config-default-main-frame.json">
+          <pre><code [highlight]="codeConfigJSON"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

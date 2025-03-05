@@ -1,0 +1,350 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación cabecera (header)</strong></mv-card-title>
+
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='actionComponents.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> actionComponents
+      </a></li>
+      <li><a class="nostyle" (click)='headerTitle.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> headerTitle
+      </a></li>
+      <li><a class="nostyle" (click)='headerSubtitle.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> headerSubtitle
+      </a></li>
+      <li><a class="nostyle" (click)='fixed.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> fixed
+      </a></li>
+      <li><a class="nostyle" (click)='showBackButton.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showBackButton
+      </a></li>
+      <li><a class="nostyle" (click)='showMenuButton.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showMenuButton
+      </a></li>
+      <li><a class="nostyle" (click)='type.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> type
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-header</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El componente mv-header se basa en el componente mat-toolbar de Angular Material, al que se le añade funcionalidad y estilos adicionales.</p>
+      <p>Sirve para mostrar y configurar la cabecara de la app.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración del componente <strong>mv-header</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>El componente mv-header de una aplicación MOVA es configurable mediante el archivo <strong>config-default-main-container.json:</strong>,
+        concretamente dentro del objeto <strong>headerConfig</strong></p>
+
+      <mv-tab-group>
+        <mv-tab label="JSON">
+          <pre><code [highlight]="codeUseExampleJSON"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Aparte de la configuración inicial del archivo <strong>config-default-main-container.json</strong>,
+        se pueden definir otros valores para la cabecera en cada componente que sobrescribirá
+        la configuración inicial, como se ve a continuación</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- actionComponents -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #actionComponents><strong>actionComponents</strong></mv-card-title>
+      <mv-card-subtitle>Componentes de acción.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad actionComponents permite definir hasta tres componentes de acción en la parte derecha de la cabecera,
+        que tendrán la funcionalidad que defina el usuario.</p>
+
+      <p>Componente de acción 1:</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeActionComponentsExampleAction1HTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeActionComponentsExampleAction1TS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Componente de acción 2:</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeActionComponentsExampleAction2HTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeActionComponentsExampleAction2TS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Componente de acción 3:</p>
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeActionComponentsExampleAction3HTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeActionComponentsExampleAction3TS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Inclusión de las acciones en la cabecera:</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeActionComponentsExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeActionComponentsExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        (clickEvent)="changeActionComponents()">
+        Cambiar actionComponents
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- headerTitle -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #headerTitle><strong>headerTitle</strong></mv-card-title>
+      <mv-card-subtitle>Título de la cabecera.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad headerTitle permite definir el título principal de la cabecera.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHeaderTitleExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHeaderTitleExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        (clickEvent)="changeHeaderTitle()">
+        Cambiar headerTitle
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- headerSubtitle -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #headerSubtitle><strong>headerSubtitle</strong></mv-card-title>
+      <mv-card-subtitle>Subtítulo de la cabecera.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad headerSubtitle permite definir el subtítulo de la cabecera.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHeaderSubtitleExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHeaderSubtitleExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        (clickEvent)="changeHeaderSubtitle()">
+        Cambiar headerSubtitle
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- fixed -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #fixed><strong>fixed</strong></mv-card-title>
+      <mv-card-subtitle>Cabecera fija.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad fixed permite definir la cabecera fija: </p>
+      <ul>
+        <li>true: la cabecera permanecerá fija y visible independientemente del scroll de la página</li>
+        <li>false: la cabecera desaparecerá en cuanto se haga scroll hacia abajo</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeFixedExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeFixedExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        (clickEvent)="changeHeaderFixed()">
+        Cambiar fixed
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showBackButton -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showBackButton><strong>showBackButton</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar botón de atrás.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad showBackButton permite mostrar u ocultar el botón de navegación hacia atrás: </p>
+      <ul>
+        <li>true: se mostrará el botón</li>
+        <li>false: se ocultará el botón</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowBackButtonExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeShowBackButtonExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        (clickEvent)="changeHeaderShowBackButton()">
+        Cambiar showBackButton
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showMenuButton -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showMenuButton><strong>showMenuButton</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar botón del menú.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad showMenuButton permite mostrar u ocultar el botón de abrir/cerrar el menú: </p>
+      <ul>
+        <li>true: se mostrará el botón</li>
+        <li>false: se ocultará el botón</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowMenuButtonExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeShowMenuButtonExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        (clickEvent)="changeHeaderShowMenuButton()">
+        Cambiar showMenuButton
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- type -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #type><strong>type</strong></mv-card-title>
+      <mv-card-subtitle>Tema de la cabecera.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad type permite definir el tema visual de la cabecera:</p>
+      <ul>
+        <li>'white-corporative': la cabecera será blanca y el resto de elementos serán de color corporativo</li>
+      </ul>
+      <p>El caso por defecto será con la cabecera de color corporativo y el resto de elementos serán de color blanco</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTypeExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTypeExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-button
+        color="primary"
+        (clickEvent)="changeHeaderType()">
+        Cambiar type
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

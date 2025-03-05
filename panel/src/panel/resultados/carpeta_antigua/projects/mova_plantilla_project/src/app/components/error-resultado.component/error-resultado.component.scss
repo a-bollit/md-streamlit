@@ -1,0 +1,23 @@
+@import '~@mova/components/_variables.scss';
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8d7da;
+}
+
+.danger-card {
+  @include card-format('danger');
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mv-button {
+  @include button-color(#ff0000);
+  display: block;
+  margin: auto;
+}

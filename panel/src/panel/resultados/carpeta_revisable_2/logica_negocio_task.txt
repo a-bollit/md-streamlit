@@ -1,0 +1,208 @@
+Result from logica_negocio_task: ### Guía para implementar la lógica de negocio de Oracle Forms en Java Spring Boot
+
+Para replicar correctamente la lógica de negocio de Oracle Forms en Java Spring Boot, vamos a desglosar cada trigger y procedimiento en componentes específicos de Spring Boot. Esta guía cubrirá la estructura de las clases de servicio, métodos a implementar, validaciones necesarias, ejemplos de código y sugerencias de patrones de diseño para garantizar una arquitectura limpia y escalable.
+
+#### 1. Estructura de Clases de Servicio
+
+Vamos a organizar nuestro backend en capas siguiendo el patrón arquitectónico de tres capas: Controlador, Servicio y Repositorio:
+
+1. **Controller Layer**: Se encargará de manejar las solicitudes HTTP y delegar el procesamiento a la capa de servicio.
+2. **Service Layer**: Contendrá la lógica de negocio y se comunicará con la capa de repositorio.
+3. **Repository Layer**: Se encargará de las operaciones CRUD con la base de datos.
+
+Además, usaremos DTOs (Data Transfer Objects) para el intercambio de datos entre las capas y aplicaremos validaciones a través de anotaciones en estos DTOs.
+
+#### 2. Definición de Clases y Métodos
+
+##### DTOs
+
+```java
+public class FechaDTO {
+    @NotNull
+    @PastOrPresent
+    private LocalDate fechaDesde;
+
+    @NotNull
+    @FutureOrPresent
+    private LocalDate fechaHasta;
+
+    // Getters and Setters
+}
+
+public class ClienteDTO {
+    @NotEmpty
+    private String cdUnidad;
+
+    // Otros campos relevantes
+
+    // Getters and Setters
+}
+
+public class NotificacionDTO {
+    private String estadoExpediente;
+    private boolean existenExpAnFi;
+
+    // Getters and Setters
+}
+
+public class DocumentoDTO {
+    private boolean registrado;
+    private boolean seleccionado;
+
+    // Getters and Setters
+}
+```
+
+##### Controladores
+
+```java
+@RestController
+@RequestMapping("/api/fechas")
+public class FechaController {
+
+    @Autowired
+    private FechaService fechaService;
+
+    @PostMapping("/validar")
+    public ResponseEntity<?> validarFechas(@RequestBody FechaDTO fechaDTO) {
+        fechaService.validarFechas(fechaDTO);
+        return ResponseEntity.ok().build();
+    }
+}
+
+@RestController
+@RequestMapping("/api/clientes")
+public class ClienteController {
+
+    @Autowired
+    private ClienteService clienteService;
+
+    @PostMapping("/validarExpediente")
+    public ResponseEntity<?> validarExpediente(@RequestBody ClienteDTO clienteDTO) {
+        clienteService.validarExpediente(clienteDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/aceptar")
+    public ResponseEntity<?> aceptar(@RequestBody ClienteDTO clienteDTO) {
+        clienteService.aceptar(clienteDTO);
+        return ResponseEntity.ok().build();
+    }
+}
+
+@RestController
+@RequestMapping("/api/documentos")
+public class DocumentoController {
+
+    @Autowired
+    private DocumentoService documentoService;
+
+    @PostMapping("/registrar")
+    public ResponseEntity<?> registrarDocumentos(@RequestBody List<DocumentoDTO> documentos) {
+        documentoService.registrarDocumentos(documentos);
+        return ResponseEntity.ok().build();
+    }
+}
+```
+
+##### Servicios
+
+```java
+@Service
+public class FechaService {
+
+    public void validarFechas(FechaDTO fechaDTO) {
+        if (fechaDTO.getFechaDesde().isAfter(LocalDate.now())) {
+            throw new BadRequestException("La fechaDesde no puede ser mayor que la fecha actual");
+        }
+        if (fechaDTO.getFechaHasta().isAfter(LocalDate.now())) {
+            throw new BadRequestException("La fechaHasta no puede ser mayor que la fecha actual");
+        }
+        if (fechaDTO.getFechaHasta().isBefore(fechaDTO.getFechaDesde())) {
+            throw new BadRequestException("La fechaHasta debe ser mayor o igual que la fechaDesde");
+        }
+    }
+}
+
+@Service
+public class ClienteService {
+
+    @Autowired
+    private ClienteRepository clienteRepository;
+
+    public void validarExpediente(ClienteDTO clienteDTO) {
+        String estado = clienteRepository.obtenerEstadoExpediente(clienteDTO.getCdUnidad());
+        if ("FI".equals(estado) || "AN".equals(estado)) {
+            throw new BadRequestException("El expediente está finalizado o anulado");
+        }
+    }
+
+    public void aceptar(ClienteDTO clienteDTO) {
+        validarExpediente(clienteDTO);
+        validarFechas(clienteDTO);
+
+        // Más lógica de negocio para el botón Aceptar
+    }
+}
+
+@Service
+public class DocumentoService {
+
+    public void registrarDocumentos(List<DocumentoDTO> documentos) {
+        for (DocumentoDTO doc : documentos) {
+            if (!doc.isSeleccionado()) continue;
+
+            if (doc.isRegistrado()) {
+                throw new BadRequestException("El documento ya está registrado");
+            }
+
+            // Lógica para registrar el documento
+        }
+    }
+}
+```
+
+##### Repositorios
+
+```java
+@Repository
+public interface ClienteRepository {
+    @Query("SELECT estado FROM expediente WHERE cdUnidad = :cdUnidad")
+    String obtenerEstadoExpediente(@Param("cdUnidad") String cdUnidad);
+}
+```
+
+#### 3. Validaciones
+
+Utilizaremos anotaciones de validación de Java Bean para asegurar integridad de datos:
+
+- `@NotNull`: Asegura que el campo no sea null.
+- `@NotEmpty`: Asegura que el campo no sea vacío.
+- `@PastOrPresent`: Asegura que la fecha no sea en el futuro.
+- `@FutureOrPresent`: Asegura que la fecha no sea en el pasado.
+
+#### 4. Ejemplos de Código
+
+Los ejemplos de código proporcionados arriba muestran varias validaciones esenciales y la lógica de negocio portada desde Oracle Forms, aplicando correctamente los principios de Spring Boot.
+
+#### 5. Patrones de Diseño
+
+Se han usado varios patrones de diseño que ayudan a mantener una arquitectura limpia y escalable:
+
+- **DAO (Data Access Object)**: Usado para la interacción con la base de datos.
+- **DTO (Data Transfer Object)**: Para transferir datos entre las capas.
+- **Service Layer**: Encapsula la lógica de negocio.
+- **Controller Layer**: Maneja las solicitudes HTTP.
+
+#### 6. Recomendaciones de Buenas Prácticas
+
+- **Inyección de Dependencias**: Usa `@Autowired` para inyectar dependencias.
+- **Manejo de Excepciones**: Implementa un maneja de excepciones global para manejar los diferentes tipos de errores.
+- **DRY (Don't Repeat Yourself)**: Evita la duplicación de código mediante la creación de métodos y utilidades reutilizables.
+- **SOLID Principles**: Siguiendo los principios de responsabilidad única, abierto/cerrado, sustitución de Liskov, segregación de interfaz e inversión de dependencias.
+
+#### 7. Estrategias de Migración
+
+Durante la migración de Oracle Forms a Spring Boot, es crucial validar cada paso mediante pruebas unitarias y de integración para asegurar que la funcionalidad se mantiene intacta y que cualquier optimización se realiza correctamente.
+
+Esta guía proporciona una estructura completa para migrar la lógica de Oracle Forms a un backend de Spring Boot, asegurando una arquitectura mantenible, escalable y eficiente.

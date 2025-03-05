@@ -1,0 +1,29 @@
+<mv-card class="notificaciones-card">
+  <mv-header>
+    <mv-title>Notificaciones de Correos</mv-title>
+  </mv-header>
+  <mv-content>
+    <table mv-table>
+      <thead>
+        <tr>
+          <th>Documento</th>
+          <th>Descripción</th>
+          <th>Expedientes</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let notificacion of notificaciones">
+          <td>{{ notificacion.documento }}</td>
+          <td>{{ notificacion.descripcion }}</td>
+          <td>{{ notificacion.expedientes }}</td>
+          <td>{{ notificacion.fecha | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="acciones">
+      <mv-button (click)="marcarTodos()" class="btn-primary">Marcar Todos</mv-button>
+      <mv-button (click)="desmarcarTodos()" class="btn-secondary">Desmarcar Todos</mv-button>
+    </div>
+  </mv-content>
+</mv-card>

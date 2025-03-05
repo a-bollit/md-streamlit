@@ -1,0 +1,126 @@
+Result from requirements_generation_backend: ### Requisitos Técnicos y Funcionales del Backend en Java Spring Boot
+
+#### 1. Análisis de la Descripción Funcional
+Basado en el código de Oracle Forms proporcionado, hemos extraído la funcionalidad y los requisitos necesarios para replicar la aplicación en un backend Java Spring Boot.
+
+#### 2. Listado de Entidades y Endpoints
+
+##### **Entidades**
+
+1. **Clientes**
+    - **Atributos**:
+      - uuid (String, no nulo, único): Identificación única del cliente.
+      - nombre (String, no nulo): Nombre del cliente.
+      - edad (Integer, no nulo): Edad del cliente.
+      - fecha_nacimiento (Date, no nulo): Fecha de nacimiento del cliente.
+      - fecha_hora_alta (Timestamp, no nulo): Fecha y hora de alta del cliente.
+      - tipo_cliente (String, no nulo): Tipo de cliente ('N' para normal, 'A' para avanzado).
+      - baja (Boolean, no nulo): Si el cliente está dado de baja o no.
+
+    - **Relaciones**: No se especifican relaciones en el código proporcionado.
+    - **Claves primarias**: uuid
+
+2. **Expedientes**
+    - **Atributos**:
+      - uuid (String, no nulo, único): Identificación única del expediente.
+      - titulo (String, no nulo): Título del expediente.
+      - num_paginas (Integer, no nulo): Número de páginas del expediente.
+      - fecha_creacion (Date, no nulo): Fecha de creación del expediente.
+      - ultima_revision (Date, no nulo): Fecha de última revisión del expediente.
+
+    - **Relaciones**: No se especifican relaciones en el código proporcionado.
+    - **Claves primarias**: uuid
+
+##### **Endpoints**
+
+1. **Clientes**
+    - **GET /clientes**
+      - Descripción: Recupera una colección de clientes.
+      - Query Parameters: init, limit, num_page
+      - Respuesta: Lista paginada de clientes.
+    - **POST /clientes**
+      - Descripción: Crea un nuevo cliente.
+      - Request Body: 
+        ```json
+        {
+          "nombre": "Juan",
+          "edad": 40,
+          "fecha_nacimiento": "1980-05-20",
+          "fecha_hora_alta": "2020-03-15T23:55:33+01:00",
+          "tipo_cliente": "N",
+          "baja": false
+        }
+        ```
+      - Respuesta: Cliente creado con éxito.
+    - **PUT /clientes/{uuid}**
+      - Descripción: Modifica un cliente existente usando su UUID.
+      - Request Body: Información del cliente a actualizar en formato JSON.
+      - Respuesta: Cliente actualizado con éxito.
+
+    - **DELETE /clientes/{uuid}**
+      - Descripción: Elimina un cliente usando su UUID.
+      - Respuesta: Cliente eliminado con éxito.
+    - **POST /clientes/delete**
+      - Descripción: Elimina múltiples clientes usando una lista de UUIDs.
+      - Request Body: 
+        ```json
+        {
+          "data": [
+            { "uuid": "uuid1" },
+            { "uuid": "uuid2" }
+          ]
+        }
+        ```
+      - Respuesta: Número de clientes eliminados.
+
+2. **Expedientes**
+    - **GET /expedientes**
+      - Descripción: Recupera una colección de expedientes.
+      - Query Parameters: init, limit, num_page
+      - Respuesta: Lista paginada de expedientes.
+    - **POST /expedientes**
+      - Descripción: Crea un nuevo expediente.
+      - Request Body:
+        ```json
+        {
+          "uuid": "uuid_del_expediente",
+          "titulo": "Expediente 1",
+          "num_paginas": 10,
+          "fecha_creacion": "1990-07-04",
+          "ultima_revision": "2021-03-21"
+        }
+        ```
+      - Respuesta: Expediente creado con éxito.
+    - **GET /expedientes/{uuid_expediente}/ficheros**
+      - Descripción: Recupera los ficheros asociados a un expediente usando su UUID.
+      - Respuesta: Lista de ficheros asociados al expediente.
+    - **POST /expedientes/{uuid_expediente}/ficheros**
+      - Descripción: Subir un fichero a un expediente usando su UUID.
+      - Request Body: Archivo en formato multipart/form-data.
+      - Respuesta: Fichero subido con éxito.
+    - **GET /expedientes/{uuid_expediente}/ficheros/{id_fichero}**
+      - Descripción: Recupera un fichero específico asociado a un expediente usando su UUID y el ID del fichero.
+      - Respuesta: Fichero en formato binario.
+
+#### 3. Documentación de Requisitos Técnicos
+
+- **Requisitos de validación y lógica de negocio**:
+  - Validación de campos obligatorios (`uuid`, `nombre`, `fecha_nacimiento`, `tipo_cliente`, `baja`) para `Clientes`.
+  - Validación de campos obligatorios (`uuid`, `titulo`, `num_paginas`, `fecha_creacion`, `ultima_revision`) para `Expedientes`.
+  - No permitir duplicados en el campo `uuid` para ambas entidades.
+  - En métodos POST y PUT, disponer de validaciones personalizadas para fechas y tipos de cliente.
+  - Utilizar paginación en los métodos GET para listar `clientes` y `expedientes`.
+
+- **Requisitos de seguridad y manejo de errores**:
+  - Implementar mecanismos de autenticación y autorización basados en tokens de OAuth2 o JWT.
+  - Manejo de excepciones globales y comunicación de errores mediante códigos de estado HTTP estándar (400, 401, 403, 404, 429, 500).
+
+- **Requisitos de capacidad, rendimiento y escalabilidad**:
+  - Soporte para consultas paginadas y capacidad para manejar grandes conjuntos de datos.
+  - Optimizar operaciones de base de datos usando índices adecuados y prácticas recomendadas de manejo de transacciones.
+
+- **Requisitos de mantenimiento y documentación**:
+  - Asegurar que todo endpoint y lógica de negocio está documentado utilizando herramientas como Swagger/OpenAPI.
+  - Desarrollar pruebas unitarias y de integración para asegurar la calidad del código backend.
+
+Esta documentación y especificación detallada asegura un desarrollo de backend en Java Spring Boot claro y preciso, facilitando la replicación por otros desarrolladores y garantizando la extensibilidad futura.

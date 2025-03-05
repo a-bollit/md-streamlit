@@ -1,0 +1,31 @@
+<mv-card class="card-code">
+  <mv-header
+    [headerTitle]="'Notificaciones'"
+    [headerSubtitle]="'Administrar notificaciones de correos y telemáticas'"
+    [fixed]="false"
+    [showBackButton]="false"
+    [showMenuButton]="false"
+    [type]="'default'"
+  >
+  </mv-header>
+  <mv-content>
+    <mat-tab-group (selectedIndexChange)="changeTab($event)">
+      <mat-tab label="Correos">
+        <div *ngIf="get_correo_notifications().length === 0">
+          No hay notificaciones de correos.
+        </div>
+        <div *ngFor="let corr of get_correo_notifications()">
+          {{ corr.message }}
+        </div>
+      </mat-tab>
+      <mat-tab label="Telemáticas">
+        <div *ngIf="get_telematica_notifications().length === 0">
+          No hay notificaciones telemáticas.
+        </div>
+        <div *ngFor="let note of get_telematica_notifications()">
+          {{ note.message }}
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mv-content>
+</mv-card>

@@ -1,0 +1,111 @@
+Result from datos_negocio_task: ## Análisis del Formulario Oracle Forms EXPECA01
+
+### Introducción
+Se presenta a continuación un informe detallado de la estructura de datos y la lógica de negocio implementada en el formulario Oracle Forms, EXPECA01. Este formulario se descompone en varios bloques de datos, cada uno con sus propios campos, atributos, dependencias, y Listas de Valores (LOVs). También se incluyen grupos de registros utilizados en el formulario.
+
+### Estructura de Bloques
+
+#### 1. Bloque B00
+**Propósito**: Gestión interna y control del formulario.
+
+**Campos**:
+- `EXISTEN_EXP_AN_FI`:
+  - Atributos: Char, máximo de 1 carácter.
+  - Propiedades adicionales incluyen: Dimension (Width = 68, Height = 14).
+- `FALLO`:
+  - Atributos: Char, máximo de 1 carácter.
+  - Propiedades adicionales: No se muestra en la interfaz, no se permite inserción, y tiene atributos para manejo de precisión visual (`BackColor`, `FontName`, etc.).
+
+**Validaciones y Dependencias**: No tiene validaciones directas definidas en el XML.
+
+#### 2. Bloque BL_GENERAL
+**Propósito**: Componente principal de interactuación con el usuario.
+
+**Campos**:
+- `CDORGA_EREG`, `IDORGA_EREG`:
+  - Atributos: Char, `CDORGA_EREG` hasta 16 caracteres, `IDORGA_EREG` hasta 12 caracteres.
+  - Dependencias: Asocian con atributos de la organización consultada.
+- `LOV_CDUNIDAD`, `LOV_UNIDAD`:
+  - Uso: Botón con lógica visual para desplegar List of Values.
+  - Dependencias: Activando interfaz para selección de unidades administrativas.
+- `CDUNIDAD`:
+  - Atributos: Char, máximo de 5 caracteres.
+  - Dependencias: visual con otras propiedades (`DSUNIDAD`, `FCDESDE`).
+- `DSUNIDAD`:
+  - Atributos: Char, hasta 150 caracteres, no es editable.
+- `FCDESDE` y `FCHASTA`:
+  - Atributos: Date, `FormatMask` = `dd-mm-rrrr`.
+  - Validaciones: Trigger `KEY-NEXT-ITEM` para validación de flujo entre fechas consecutivas.
+- `CAL_FCDESDE`, `CAL_FCHASTA`:
+  - Uso: Botones para mostrar calendario y seleccionar fechas.
+- `ACEPTAR`, `CANCELAR`:
+  - Uso: Botones para confirmar y cancelar operaciones.
+  - Implementaciones lógicas incluyen mensajes y ejecuciones en bases de datos.
+- `CDDEPTNO`, `CDTEXP`, `CDNEXP`, `CDDIGITO`, `CDDEPTNO`, `CDAEXP`, `INCLUIR_ENVIADOS`:
+  - Propiedades de distintos atributos char, número.
+  - Validaciones: Dependencias variadas con trigger avances de items `WHEN-VALIDATE-ITEM`.
+
+**Validaciones y Dependencias**: Validaciones directas, `WHEN-VALIDATE-ITEM`, `KEY-NEXT-ITEM` especificadas para flujos entre items y verificación de condiciones.
+
+#### 3. Bloque GEA_ACURE
+**Propósito**: Manejo interno de registros de la base de datos para la ventana de `GEA_ACURE`.
+
+**Campos**:
+- `CODARCHIVO_PDF`, `CDDOCUM`, `CB_MARCA`, `DOCUMENTO`, `DSDOCUM`, `EXPEDIENTE`, `INTERESADO`:
+  - Atributos variados incluyendo Char y Number.
+  - Validaciones para columna de base de datos 'CDDEPTNO' y operaciones con triggers personalizados en el bloque.
+- Triggers adicionales incluyen `POST-QUERY` para gestionar los estados del expediente y entradas de registros.
+
+**Validaciones y Dependencias**: Validaciones profundas con SQL y procedimientos almacenados para verificar integridad de datos y estados antes de permitir cambios en la interfaz.
+
+#### 4. Bloque BL_DEVOL
+**Propósito**: Manejar devoluciones y coordinar interacciones de registros asociados.
+
+**Campos**:
+- `CDDEPTNO`, `DSCONS`, `LOV_CONSEJ`, `CDUNIDAD`, `DSUNIDAD`:
+  - Atributos de entrada variados, principalmente Char.
+- `LOV_UNIDAD` y `LOV_MUNI`:
+  - Uso: Actúan como botones para desplegar List of Values que permiten seleccionar unidades y municipios.
+  - Dependencias: Triggers para gestionar visualizaciones (`WHEN-BUTTON-PRESSED`).
+
+**Validaciones y Dependencias**: Uso de validaciones típicas de entradas de registros clave (`WHEN-VALIDATE-ITEM`) y conexiones con List of Values.
+
+#### 5. Bloque NOTIFICACION_TELEMATICA
+**Propósito**: Manejar notificaciones telemáticas, centrado en la correcta visualización y envío de datos telemáticos.
+
+**Campos**:
+- `CDDOCUM`, `DSDOCUM`, `EXPEDIENTE`, `INTERESADO`, `FCCREA`, `ANEXOS_NOTE`, `IT_FIRMADO`, `IT_REGISTRADO`, `IMDOCUMENTO`:
+  - Atributos de char, number, date-time. Dependencias de visualización mediante triggers validation y configuration.
+- Propiedades específicas de la interfaz: `Result: Lista expandable`.
+
+**Validaciones y Dependencias**: Lógicas avanzadas en POST-QUERY implementadas para verificar asociado con directorios de notificación y fichas de expedientes validas.
+
+### Listas de Valores (LOVs)
+**Uso**: Asocian con campos clave permitiendo búsqueda y selección visual enriquecida.
+
+1. **LOV_CDUNIDAD / LOV_UNIDAD**:
+   - `QUERY`: select unidad, dsunidad_s... 
+   - Uso: Para seleccionar detalle de unidades administrativas.
+2. **LOV_CONSEJ**:
+   - `QUERY`: select cddeptno, dsexten...
+   - Uso: Para seleccionar Consejería u organismo.
+3. **LOV_MUNI**:
+   - `QUERY`: select cdmuni, dsmuni...
+   - Uso: Selección de municipios según provincia.
+
+### Grupos de Registros
+**RG_UNIDAD, RG_UNIDAD_DEVOL, RG_CONSEJ, RG_MUNI**:
+- Query asociadas específicas dependiendo del campo a completar.
+- Permiten búsquedas refinadas para unidades, departamentos, municipios.
+
+### Validaciones de Negocio y CRUD
+Integraciones avanzadas de negocio y operación CRUD realizada mediante triggers en bloques, así como procedimientos almacenados (`PSQL Procedures`) y funciones encargadas de validar:
+
+1. **Validaciones Fechas** `Valida_Fechas`:
+   - Comprueba entradas de fecha para validaciones de intervalos, fechados.
+
+2. **CRUD Operaciones**:
+   `GEAD_PROC_*`, `GEAD_FUNC_*`: Procedimientos del módulo de conexión y operaciones en expedientes (insertar, actualizar, eliminar, servicios de GET). 
+
+### Conclusiones
+El formulario EXPECA01 en Oracle Forms se estructura mediante varios bloques de datos y lógica empresarial avanzada, habilitando los flujos de datos complejos necesarios para la administración de documentos y notificaciones empresariales, asegurando así que todas las operaciones y validaciones de datos se realizan íntegramente mediante procedimientos claramente establecidos. Debiendo seguir el esquema anterior se podría replicar, manteniendo consistencia y validación crítica de registros y notificaciones electrónicas necesarias en el entorno descrito.

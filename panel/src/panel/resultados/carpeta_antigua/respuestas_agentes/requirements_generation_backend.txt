@@ -1,0 +1,188 @@
+Result from requirements_generation_backend: # Requisitos Técnicos y Funcionales del Backend en Java Spring Boot
+
+## Entidades y Modelos de Datos
+
+### 1. Entidad: `EREG_LISTNOTI`
+- **Tabla Asociada**: `EREG_LISTNOTI`
+- **Atributos**:
+  - `NMLISTNOTI`: Número, obligatorio, clave primaria.
+  - `NMEJERCICIO`: Número, obligatorio, clave primaria.
+  - `FCCREA`: Fecha, obligatorio.
+  - `CDAPLICACION`: Cadena, obligatorio.
+  - `IDUNIDAD`: Número.
+  - `FCDESDE`: Fecha.
+  - `FCHASTA`: Fecha.
+  - `CDESTADO`: Cadena, obligatorio.
+  - `FCESTADO`: Fecha.
+  - `CDUSRMOD`: Cadena, obligatorio.
+  - `FCFECMOD`: Fecha, obligatorio.
+  - `DSCONS_DEVOL`: Cadena.
+  - `DSUNIDAD_DEVOL`: Cadena.
+  - `DSDIR1_DEVOL`: Cadena.
+  - `DSDIR2_DEVOL`: Cadena.
+  - `CDPOSTAL_DEVOL`: Cadena.
+  - `CDMUNI_DEVOL`: Cadena.
+  - `CDTIPONOTI`: Cadena.
+- **Relaciones**:
+  - Claves primarias: (`NMLISTNOTI`, `NMEJERCICIO`).
+
+### 2. Entidad: `EREG_NOTIFICACION`
+- **Tabla Asociada**: `EREG_NOTIFICACION`
+- **Atributos**:
+  - `IDNOTIFICACION`: Número, obligatorio, clave primaria.
+  - `NMLISTNOTI`: Número, obligatorio.
+  - `NMEJERCICIO`: Número, obligatorio.
+  - `CDREFDOCUM`: Cadena, obligatorio.
+  - `DSOBJETO`: Cadena, obligatorio.
+  - `CDDOCIDENT`: Cadena.
+  - `DSNOMBRE`: Cadena.
+  - `DSAPELLIDO1`: Cadena.
+  - `DSAPELLIDO2`: Cadena.
+  - `DSRAZONSOC`: Cadena.
+  - `CDPAIS`: Cadena.
+  - `CDPROV`: Cadena.
+  - `CDMUNI`: Cadena.
+  - `DSDIRECCION`: Cadena.
+  - `DSDIRECCION_EXTEN`: Cadena.
+  - `CDPOSTAL`: Cadena.
+  - `DSTELEFONO`: Cadena.
+  - `DSTELEFMOVIL`: Cadena.
+  - `DSFAX`: Cadena.
+  - `DSEMAIL`: Cadena.
+  - `DSDIRECCION1`: Cadena.
+  - `DSDIRECCION2`: Cadena.
+  - `DSLIN_INFO1`: Cadena.
+  - `DSLIN_INFO2`: Cadena.
+  - `DSLIN_INFO3`: Cadena.
+  - `DSLIN_INFO4`: Cadena.
+  - `DSLIN_INFO5`: Cadena.
+  - `DSDEVOLVERA`: Cadena.
+  - `FCREIMPRESION`: Fecha.
+  - `CDESTADO1`: Cadena.
+  - `FCESTADO1`: Fecha.
+  - `CDESTADO2`: Cadena.
+  - `FCESTADO2`: Fecha.
+  - `NMBOCM`: Cadena.
+  - `FCPUBBOCM`: Fecha.
+  - `CDUSRMOD`: Cadena, obligatorio.
+  - `FCFECMOD`: Fecha, obligatorio.
+  - `CDDOCIDENT_REP`: Cadena.
+  - `DSNOMBRE_REP`: Cadena.
+  - `DSAPELLIDO1_REP`: Cadena.
+  - `DSAPELLIDO2_REP`: Cadena.
+  - `DSRAZONSOC_REP`: Cadena.
+  - `DSEXPEDIENTE`: Cadena.
+- **Relaciones**:
+  - Clave primaria: (`IDNOTIFICACION`).
+
+## API REST
+
+### Entidad: `EREG_LISTNOTI`
+- **POST** `/ereg-listnoti`
+  - **Descripción**: Crea una nueva lista de notificaciones.
+  - **Body**:
+```json
+{
+  "nmlistnoti": 123456,
+  "nmejercicio": 2023,
+  "fccrea": "2023-10-01",
+  "cdaplicacion": "APP1",
+  "idunidad": 1,
+  "fcdesde": "2023-10-01",
+  "fchasta": "2023-10-31",
+  "cdestado": "EN",
+  "fcestado": "2023-10-01",
+  "cdusrmod": "user1",
+  "fcfecmod": "2023-10-01",
+  "dscons_devol": "Dept1",
+  "dsunidad_devol": "Unit1",
+  "dsdir1_devol": "Address line 1",
+  "dsdir2_devol": "Address line 2",
+  "cdpostal_devol": "28001",
+  "cdmuni_devol": "079",
+  "cdtiponoti": "NOTE"
+}
+```
+- **GET** `/ereg-listnoti`
+  - **Descripción**: Obtiene todas las listas de notificaciones.
+- **GET** `/ereg-listnoti/{id}`
+  - **Descripción**: Obtiene una lista de notificaciones por su identificador.
+  - **Parámetros**: `id` (Número).
+- **PUT** `/ereg-listnoti/{id}`
+  - **Descripción**: Actualiza una lista de notificaciones.
+  - **Body**:
+```json
+{
+  "nmlistnoti": 123456,
+  "nmejercicio": 2023,
+  "fccrea": "2023-10-01",
+  "cdaplicacion": "APP1",
+  // Resto de atributos...
+}
+```
+- **DELETE** `/ereg-listnoti/{id}`
+  - **Descripción**: Elimina una lista de notificaciones por su identificador.
+  - **Parámetros**: `id` (Número).
+
+### Entidad: `EREG_NOTIFICACION`
+- **POST** `/ereg-notificacion`
+  - **Descripción**: Crea una nueva notificación.
+  - **Body**:
+```json
+{
+  "idnotificacion": 1,
+  "nmlistnoti": 123456,
+  "nmejercicio": 2023,
+  "cdrefdocum": "DOC123",
+  "dsobjeto": "Subject",
+  "cddocident": "ID123",
+  "dsnombres": "John",
+  "dsapellido1": "Doe",
+  "dsapellido2": "Smith",
+  // Resto de atributos...
+}
+```
+- **GET** `/ereg-notificacion`
+  - **Descripción**: Obtiene todas las notificaciones.
+- **GET** `/ereg-notificacion/{id}`
+  - **Descripción**: Obtiene una notificación por su identificador.
+  - **Parámetros**: `id` (Número).
+- **PUT** `/ereg-notificacion/{id}`
+  - **Descripción**: Actualiza una notificación.
+  - **Body**:
+```json
+{
+  "idnotificacion": 1,
+  "nmlistnoti": 123456,
+  "nmejercicio": 2023,
+  "cdrefdocum": "DOC123",
+  // Resto de atributos...
+}
+```
+- **DELETE** `/ereg-notificacion/{id}`
+  - **Descripción**: Elimina una notificación por su identificador.
+  - **Parámetros**: `id` (Número).
+
+## Servicios y Lógica de Negocio
+
+### Servicio: Validación de Notificación
+- **Funcionalidad**: Valida que una notificación cumple con todas las reglas de negocio antes de enviarse.
+- **Parámetros de Entrada**: Objeto de notificación con todos los atributos relevantes.
+- **Parámetros de Salida**: Resultado de la validación con mensajes de éxito o error.
+- **Validaciones**:
+  - Verificación de que el documento está guardado en B.D.
+  - Verificación de que el interesado tiene DEU aceptada.
+  - Verificación de que el documento está firmado.
+  - Verificación de que el documento está registrado de salida.
+  - Verificación de que hay anexos seleccionados si corresponde.
+
+### Servicio: Generación de Listas de Notificaciones
+- **Funcionalidad**: Maneja la lógica para crear nuevas listas de notificaciones incluyendo cálculos y generación de referencias y estados.
+- **Parámetros de Entrada**: Detalles de la notificación a incluir en la lista.
+- **Parámetros de Salida**: Resultado de la operación con el identificador de la nueva lista de notificación.
+- **Reglas de Negocio**:
+  - Construcción de WHERE dinámico basado en filtros de fecha y unidades.
+  - Manejo de cardinalidades y relaciones entre entidades.
+  - Persistencia de datos cumpliendo con las restricciones de integridad referencial.
+
+Este análisis y definición detallada provee los requisitos necesarios para implementar un backend robusto en Java Spring Boot, cubriendo todos los aspectos desde la definición de entidades y modelos de datos hasta las operaciones CRUD y lógica de negocio específica.

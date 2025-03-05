@@ -1,0 +1,204 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  //max-width: $container-max-width-medium;
+  max-width: $container-max-width-big;
+}
+.title {
+  z-index: 5;
+  color: $secondary-009;
+  strong {
+    font-size: 1.2em;
+  }
+  .mat-icon{
+    vertical-align: bottom;
+  }
+}
+.pass{
+  color: #b0f9bf;
+}
+.fail{
+  color: #f9b0b0;
+}
+.normal{
+  color: #f2f9b0;
+}
+.row{
+  margin: 0 0 1rem 0;
+}
+.student-info {
+  padding: 10px;
+  img {
+    max-width: 250px;
+    max-height: 250px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .blockTitle{
+    font-size: 1.25rem;
+    margin: 1rem 0 1rem 0;
+    color: $secondary-009;
+    font-weight: bold;
+    .mat-icon{
+      vertical-align: bottom;
+    }
+  }
+  .main-info{
+    margin: 2rem 0 0 0;
+    .field-title, .field-title-mobile {
+      color: #6c6c6c;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      padding: 3px 0 0 0;
+      span {
+        vertical-align: -webkit-baseline-middle;
+        font-size: 30px;
+        margin: 0 0 0 5px;
+      }
+      .mat-icon{
+        font-size: 40px;
+        line-height: 20px;
+        width: 40px;
+        vertical-align: -webkit-baseline-middle;
+      }
+    }
+    .field-title-mobile{
+      display: none;
+    }
+    p{
+      color: #a9a9a9;
+    }
+  }
+  .second-info{
+    display: flex;
+    justify-content: center;
+    .mat-icon{
+      font-size: 50px;
+      width: 50px;
+      margin: 0 10px 0 0;
+    }
+    .text-container{
+      text-align: center;
+      .first-text{
+        color: #9f9d9d;
+        font-size: 12px;
+      }
+      .second-text{
+        color: #6c6c6c;
+        font-weight: bold;
+      }
+    }
+  }
+  .divider{
+    margin: 1rem 0 1rem 0;
+  }
+  .field-title {
+    color: #6c6c6c;
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      vertical-align: middle;
+      font-size: large;
+      margin: 0 0 0 5px;
+    }
+    .mat-icon{
+      vertical-align: bottom;
+    }
+  }
+  ::ng-deep {
+    .field_data {
+      .mat-input-element, .mat-select {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.btnContainer{
+  margin-top: 1rem !important;
+}
+
+#matTabAsignaturas{
+  background: #fff;
+  margin: auto;
+  padding-bottom: 0 !important;
+  .mat-card{
+    margin-bottom: 0 !important;
+  }
+  ul{
+    list-style-type: none;
+  }
+  .field_asignatura{
+    .title{
+      color: #6c6c6c;
+      font-size: 15px;
+    }
+    margin: 0 0 0 20px;
+  }
+  .pass, .normal, .fail{
+    .mat-icon{
+      vertical-align: middle;
+    }
+  }
+  .field_nota{
+    .title{
+      color: #6c6c6c;
+    }
+    .data{
+      color: #6c6c6c;
+      font-weight: bold;
+    }
+  }
+  .clickable_icon{
+    cursor: pointer;
+  }
+}
+.danger-card, .success-card{
+  margin: 1rem 0 1rem 0;
+}
+.asignaturas {
+  margin: 17px;
+  padding: 10px;
+}
+
+// xs
+@media only screen and (max-width: $media-col-xs-max) {
+  .second-info{
+    display: block !important;
+    text-align: center;
+    margin: 0 0 1rem 0;
+  }
+  .student-info {
+    .image{
+      text-align: center;
+    }
+    .main-info{
+      .field-title {
+        display: none;
+      }
+      .field-title-mobile{
+        display: block;
+      }
+    }
+  }
+}
+
+// sm
+@media only screen and (min-width : $media-col-sm-min) and (max-width : $media-col-sm-max) {
+  .second-info{
+    margin: 0 0 1rem 0;
+  }
+}
+
+// md
+@media only screen and (min-width : $media-col-md-min) and (max-width : $media-col-md-max) {
+
+}
+
+// lg
+@media only screen and (min-width : $media-col-lg-min) {
+
+}

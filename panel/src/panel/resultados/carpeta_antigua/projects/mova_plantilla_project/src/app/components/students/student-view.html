@@ -1,0 +1,210 @@
+<section class="view-default-style">
+
+  <mv-card class="card-code">
+
+    <!-- filtros -->
+    <div class="filter">
+      <div class="image_bck">
+        <p><strong>Listado de alumnos</strong></p>
+      </div>
+
+      <div class="filtro-inicial">
+        <div class="container-input">
+          <mv-input
+            adapt=true
+            placeholder="Identificación del alumno"
+            pattern="/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/"
+            [(ngModel)]="filter.uuid"
+            appearance="legacy">
+          </mv-input>
+        </div>
+        <div class="container-button">
+          <mv-button
+            appearance="raised"
+            color="primary"
+            (clickEvent)="getStudentsByUUID()">
+            <mv-icon>search</mv-icon>
+          </mv-button>
+        </div>
+      </div>
+
+      <div class="container-chip">
+        <mat-chip-list>
+          <div *ngFor="let item of filter | keyvalue">
+            <mat-chip
+              *ngIf="item.value != ''"
+              [selectable]="selectable"
+              removable="true"
+              (removed)="removeFilter(item)">
+              {{showKey(item.key)}} - {{item.value}}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+          </div>
+        </mat-chip-list>
+      </div>
+
+      <mv-expansion-panel
+        class="filtro-secundario"
+        #filtrosPanel>
+
+        <mv-expansion-panel-header>
+          <mv-panel-title>
+            <mv-icon style="font-size: 21px;">filter_list</mv-icon>
+            <strong>Otros filtros</strong>
+          </mv-panel-title>
+        </mv-expansion-panel-header>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <mv-input
+              adapt=true
+              placeholder="Nombre"
+              [(ngModel)]="filter.nombre"
+              (changeEvent)="filterChange($event)"
+              appearance="legacy">
+            </mv-input>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <mv-input
+              adapt=true
+              placeholder="Nif"
+              [(ngModel)]="filter.nif"
+              (changeEvent)="filterChange($event)"
+              appearance="legacy">
+            </mv-input>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <mv-input
+              adapt=true
+              placeholder="Primer apellido"
+              [(ngModel)]="filter.primerApellido"
+              (changeEvent)="filterChange($event)"
+              appearance="legacy">
+            </mv-input>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <mv-input
+              adapt=true
+              placeholder="Segundo apellido"
+              [(ngModel)]="filter.segundoApellido"
+              (changeEvent)="filterChange($event)"
+              appearance="legacy">
+            </mv-input>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <mv-input
+              adapt=true
+              placeholder="Edad"
+              [(ngModel)]="filter.edad"
+              (changeEvent)="filterChange($event)"
+              appearance="legacy">
+            </mv-input>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <mv-input
+              adapt=true
+              placeholder="Fecha de nacimiento"
+              [(ngModel)]="filter.fechaNacimiento"
+              (changeEvent)="filterChange($event)"
+              appearance="legacy">
+            </mv-input>
+          </div>
+        </div>
+
+        <div class="row">
+          <mv-button
+            appearance="raised"
+            color="primary"
+            (clickEvent)="OnResetFilter()">
+            Borrar filtros
+          </mv-button>
+        </div>
+
+      </mv-expansion-panel>
+
+    </div>
+
+  </mv-card>
+
+  <div class="card-code">
+    <mv-card-content class="alumnos-content">
+
+      <!-- listado clientes -->
+      <div class="row">
+        <div class="alumno col-xs-12 col-sm-6 col-md-6 col-lg-4"
+          *ngFor="let student of students">
+
+          <mat-card class="alumno-card"
+            (click)="collapseCard(student)">
+            <mat-card-header>
+              <img mat-card-avatar class="header-image" [src]="student.image">
+              <mat-card-title> {{student.apellido_1}} {{student.apellido_2}}, {{student.nombre_alumno}} </mat-card-title>
+            </mat-card-header>
+
+            <div class="body-image">
+              <img
+                [src]="student.image"
+                [@openClose]="student.collapse? 'open' : 'closed'">
+            </div>
+
+            <mat-card-content
+              [@openClose]="student.collapse? 'open' : 'closed'">
+
+              <div class="alumno-titulo-dato">
+                <mv-icon>event</mv-icon>
+                <strong>Fecha de nacimiento:</strong>
+              </div>
+              <div class="alumno-dato"> {{student.fecha_nacimiento | date:"dd-MM-yyyy"}} (Edad {{student.edad}})</div>
+              <div class="alumno-titulo-dato">
+                <mv-icon>assignment_ind</mv-icon>
+                <strong>NIF:</strong>
+              </div>
+              <div class="alumno-dato"> {{student.nif}}</div>
+              <div class="alumno-titulo-dato">
+                <mv-icon>school</mv-icon>
+                <strong> Asignaturas aprobadas:</strong>
+              </div>
+              <div class="alumno-dato"> {{student.numero_asignaturas_aprobadas}}</div>
+            </mat-card-content>
+
+            <mat-card-actions>
+              <mv-button
+                appearance="stroked"
+                (clickEvent)="OnDetail(student, $event)">
+                <mv-icon>assignment</mv-icon>
+              </mv-button>
+              <mv-button
+                appearance="stroked"
+                (clickEvent)="OnEdit(student, $event)">
+                <mv-icon>edit</mv-icon>
+              </mv-button>
+            </mat-card-actions>
+          </mat-card>
+
+        </div>
+      </div>
+
+      <mv-button
+        *ngIf="students.length < studentsTotal"
+        class="loadMoreBtn"
+        appearance="raised"
+        color="primary"
+        (clickEvent)="OnLoadMore()">
+        Cargar más
+      </mv-button>
+
+      <!-- no hay resultados -->
+      <mv-card
+        class="warning-card"
+        *ngIf="students.length === 0">
+        <p>No se encontraron resultados.</p>
+      </mv-card>
+    </mv-card-content>
+  </div>
+
+</section>

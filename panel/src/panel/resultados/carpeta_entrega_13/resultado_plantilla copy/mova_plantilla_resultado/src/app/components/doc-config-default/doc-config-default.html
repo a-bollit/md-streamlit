@@ -1,0 +1,105 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación config-default.json</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='configuracion.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del archivo <strong>config-default.json</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este archivo permite definir la configuración general de la app.</p>
+      <p>Para configurar el aspecto visual general de la app (estilo rojo/azul, menú lateral, header...) ver la documentación de
+        <strong><a target="_blank" href="#/doc-config-default-main-frame">config-default-main-frame.json</a></strong></p>
+      <p>Para configurar aspectos según el entorno (desarrollo/validación/producción) ver la documentación de
+        <strong><a target="_blank" href="#/doc-environment">environment.ts, environment.val.ts y environment.prod.ts</a></strong></p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #configuracion><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración del archivo <strong>config-default.json</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-tab-group>
+        <mv-tab label="config-default.json">
+          <pre><code [highlight]="codeConfigDefaultJSON"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <ul class="margin-li">
+        <li>mova</li>
+        <ul>
+          <li><strong>appName</strong> - Nombre corto de la app. Aparece en el header (si no se sobrescribe con otro texto), en login-view, init-view...</li>
+          <li><strong>appDescription</strong> - Descripción de la app. Aparece en el header (si no se sobrescribe con otro texto), en login-view, init-view...</li>
+          <li><strong>appId</strong> - Identificador de la app. </li>
+          <li><strong>appVersion</strong> - Versión de la app. </li>
+          <li><strong>appVersionFramework</strong> - Versión de MOVA usada. No se debe tocar ya que se establece automáticamente mediante código interno. </li>
+          <li><strong>appVersionCordovaPluginLib</strong> - Versión de la librería de plugins usada. No se debe tocar ya que se establece automáticamente mediante código interno. </li>
+          <li><strong>compilationDate</strong> - Fecha de la última compilación de la app. No se debe tocar ya que se establece automáticamente mediante código interno.</li>
+          <li> <strong>dialogErrorHttp:</strong>
+            <ul>
+              <li><strong>showDetail</strong> - Variable para mostrar el detalle del error en caso de fallo de llamadas http por defecto o no.</li>
+              <li><strong>loginButton</strong> - Variable para mostrar el botón de login del error en caso de fallo de llamadas http por defecto o no.</li>
+            </ul>
+          </li>
+          <li><strong>isDebug</strong> - Variable para determinar si la app está en modo debug o release. No se debe tocar.</li>
+          <li><strong>loadingHttpAlways</strong> - Variable para mostrar el loading por defecto o no.</li>
+          <li><strong>landingViewRoute</strong> - Variable para definir la ruta de la vista de presentación de la app.</li>
+          <li><strong>loginViewRoute</strong> - Variable para definir la ruta de la vista de login de la app. En principio no se debería tocar.</li>
+          <li><strong>mainViewRoute</strong> - Variable para definir la ruta de la vista principal de la app.</li>
+          <li><strong>moduloFuncional</strong> - Variable para definir el módulo funcional de la app.</li>
+          <li><strong>moduloTecnicoIos</strong> - Variable para definir el módulo técnico para iOS.</li>
+          <li><strong>moduloTecnicoAndroid</strong> - Variable para definir el módulo técnico para Android.</li>
+          <li><strong>moduloTecnicoWebApp</strong> - Variable para definir el módulo técnico para WebApp.</li>
+          <li><strong>moduloTecnicoWindows</strong> - Variable para definir el módulo técnico para Windows.</li>
+          <li><strong>piwikId</strong> - Variable para definir el identificador de piwik (Matomo).</li>
+          <li><strong>textAccessConditions</strong> - Variable para definir el texto del diálogo de las condiciones de acceso de la app.</li>
+          <li><strong>titleAccessConditions</strong> - Variable para definir el título del diálogo de las condiciones de acceso de la app.</li>
+          <li><strong>maxWidthAccessConditions</strong> - Variable para definir el ancho máximo del diálogo de de las condiciones de acceso de la app.</li>
+          <li><strong>urlContact</strong> - Variable para definir la url de contacto de la Comunidad de Madrid.</li>
+          <li><strong>urlLegal</strong> - Variable para definir la url de los aspectos legales de la Comunidad de Madrid.</li>
+          <li><strong>urlPortals</strong> - Variable para definir la url de los portales de la Comunidad de Madrid.</li>
+          <li><strong>urlVisorVgcm</strong> - Variable para definir la url del visor de mapas de VGCM.</li>
+        </ul>
+        <li>app</li>
+        <ul>
+          <li>// Sección para definir las variables del negocio de la app que no varían según el entorno.</li>
+        </ul>
+      </ul>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

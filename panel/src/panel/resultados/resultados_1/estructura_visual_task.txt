@@ -1,0 +1,217 @@
+Result from estructura_visual_task: En la solicitud de análisis de un formulario Oracle Forms basado en el código proporcionado, a continuación, se presenta una descripción narrativa detallada de todos los componentes visuales, incluyendo lienzos, ventanas, atributos visuales, alertas y menús. La descripción incluye la relación de cada componente con los bloques de datos y cómo afectan la visualización y navegación del usuario en el formulario.
+
+# Análisis del formulario Oracle Forms: EXPECA01
+
+### Propiedades Generales del Módulo
+El formulario "EXPECA01" está configurado con varias propiedades generales a nivel de módulo, tales como la versión del módulo y limitaciones en la navegación con el ratón. El formulario hereda el menú por defecto "DEFAULT&SMARTBAR".
+
+### Alertas
+El formulario define tres alertas:
+1. **CONFIRMAR**: 
+    - Esta alerta tiene la función de confirmar las bajas de registros, con los botones etiquetados como "SI" y "NO". La etiqueta visual "FONDO" se aplica a esta alerta que tiene como título "Confirmar dar de baja registro".
+    - Estilo de alerta: Atención.
+2. **NOTA**:
+    - Una alerta genérica sin botones específicos, con la etiqueta visual "FONDO" y sin título.
+    - Estilo de alerta: Nota.
+3. **MENSAJE**:
+    - Alerta de aviso con etiqueta visual "FONDO" y sin botón secundario, titulada "Aviso".
+    - Estilo de alerta: Aviso.
+
+### Lienzos (Canvas)
+El formulario incluye varios lienzos dentro de las ventanas que organizan los componentes visuales en varias secciones del formulario.
+
+1. **CV_GENERAL**:
+   - Lienzo principal utilizado en la ventana "W_GENERAL".
+   - Dimensiones: 415 x 133.
+   - Puntillas (bevel): Normal.
+   - Atributos visuales: "FONDO".
+   
+   Este lienzo contiene varios gráficos de texto y marcos (frames) para organizar la pantalla de entrada de datos principales. Los gráficos incluyen etiquetas como "Unidad remitente", "Fecha desde" y "Expediente". Cada gráfico está colocado con cuidado en posiciones específicas determinadas por atributos como XPosition e YPosition.
+
+2. **CV_PESTAÑAS**:
+   - Lienzo de tipo separador (tab canvas) que organiza dos pestañas dentro de la ventana "W_PESTAÑAS".
+   - Dimensiones: 592 x 314.
+   - Atributos visuales: "FONDO".
+   - Contiene las pestañas "PG_CORR" y "PG_NOTE".
+
+3. **CV_DEVOL**:
+   - Lienzo utilizado en la ventana "W_DEVOL".
+   - Dimensiones: 417 x 191.
+   - Puntillas (bevel): Normal.
+   - Atributos visuales: "FONDO".
+   
+   Similar al lienzo CV_GENERAL, CV_DEVOL tiene varios gráficos que muestran etiquetas relacionadas a la dirección de devolución.
+
+4. **CV_INF**:
+   - Lienzo usado en la ventana "W_INF".
+   - Dimensiones: 313 x 38.
+   - Atributos visuales "FONDO".
+   
+5. **CV_ERROR_RESULTADO**:
+   - Lienzo utilizado en la ventana "W_ERROR_RESULTADO".
+   - Dimensiones: 341 x 144.
+   - Atributos visuales: "FONDO".
+   
+6. **CV_SITUACION_ERROR**:
+   - Lienzo utilizado en la ventana "W_SITUACION_ERROR".
+   - Dimensiones: 358 x 152.
+   - Atributos visuales: "FONDO".
+   
+7. **CV_AYUDA**:
+   - Lienzo usado en la ventana "W_AYUDA".
+   - Dimensiones: 383 x 136.
+   - Atributos visuales: "FONDO".
+
+### Ventanas (Windows)
+El formulario contiene varias ventanas que presentan distintas secciones de los datos y componentes de interfaz.
+
+1. **W_GENERAL**:
+   - Ventana principal utilizada para la entrada de datos generales del formulario.
+   - Dimensiones: 415 x 133.
+   - Posición inicial: X = 20, Y = 8.
+   - Título: "Emisión de Notificaciones".
+   - Lienzo primario: CV_GENERAL.
+
+2. **W_PESTAÑAS**:
+   - Ventana que contiene lienzos de tipo pestaña.
+   - Dimensiones: 593 x 314.
+   - Título: "Emisión de Notificaciones".
+   - Lienzo primario: CV_PESTAÑAS.
+
+3. **W_DEVOL**:
+   - Ventana utilizada para devoluciones.
+   - Dimensiones: 417 x 191.
+   - Posición inicial: X = 100, Y = 90.
+   - Título: "Devolver Acuses de Recibo a:".
+   - Lienzo primario: CV_DEVOL.
+
+4. **W_INF**:
+   - Ventana informativa.
+   - Dimensiones: 312 x 37.
+   - Posición inicial: X = 100, Y = 130.
+   - Título: "Información".
+   - Lienzo primario: CV_INF.
+   
+5. **W_ERROR_RESULTADO**:
+   - Ventana para mostrar resultados de error.
+   - Dimensiones: 341 x 144.
+   - Posición inicial: X = 100, Y = 100.
+   - Título: "Emisión de Notificaciones".
+   - Lienzo primario: CV_ERROR_RESULTADO.
+
+6. **W_SITUACION_ERROR**:
+   - Ventana de errores de situación.
+   - Dimensiones: 358 x 152.
+   - Posición inicial: X = 150, Y = 100.
+   - Título: "Emisión de Notificaciones".
+   - Lienzo primario: CV_SITUACION_ERROR.
+   
+7. **W_AYUDA**:
+   - Ventana de ayuda.
+   - Dimensiones: 383 x 137.
+   - Posición inicial: X = 50, Y = 45.
+   - Título: "Ayuda".
+   - Lienzo primario: CV_AYUDA.
+   
+### Bloques de Datos (Data Blocks)
+El formulario tiene varios bloques de datos utilizados para gestionar y mostrar datos.
+
+1. **B00**: 
+   - Bloque independiente (no basado en tabla de base de datos). 
+   - Registros mostrados: 1.
+   
+2. **BL_GENERAL**: 
+   - Bloque de datos para la entrada de información general del formulario. 
+   - Contiene campos como CDORGA_EREG, IDORGA_EREG, LOV_CDUNIDAD, CDUNIDAD, DSUNIDAD, FCDESDE, CAL_FCDESDE, FCHASTA, CAL_FCHASTA, CDDEPTNO, CDTEXP, CDNEXP, CDDIGITO, CDAEXP, INCLUIR_ENVIADOS, ACEPTAR, y CANCELAR objetos gráficos visuales. 
+   
+3. **GEA_ACURE**: 
+   - Bloque de datos basado en la tabla GEA_ACURE. 
+   - Registros mostrados: 14. 
+   
+4. **BL_DEVOL**: 
+   - Bloque de datos para devoluciones.
+  
+5. **NOTIFICACION_TELEMATICA**: 
+   - Bloque de datos basado en las tablas GIMPREDOCU y GDOCUMENTO. 
+   - Usado para la gestión y emisión de notificaciones telemáticas.
+   - Registros mostrados: 14.
+   
+### Atributos Visuales
+A continuación, se enumeran los atributos visuales definidos en el formulario:
+
+1. **REG_ACT_AMARILLO**:
+   - Color de fondo: r100g100b50.
+   
+2. **NEGRO**:
+   - Fuente: Arial.
+   - Tamaño de fuente: 900.
+   - Color de texto: Negro.
+   
+3. **ROJO**:
+   - Fuente: Arial.
+   - Tamaño de fuente: 900.
+   - Color de texto: Rojo.
+   
+4. **CAMPO_FONDO**:
+   - Hereda del módulo "EXPE_OBJ_DISEÑO".
+
+5. **FONDO**:
+   - Hereda del módulo "EXPE_OBJ_DISEÑO".
+
+6. **BOTON**:
+   - Hereda del módulo "EXPE_OBJ_DISEÑO".
+
+7. **AYUDA**:
+   - Color de fondo: gris claro (gray12).
+   - Tamaño de fuente: 800.
+   - Estilo de fuente: sombra.
+   - Color de texto: azul (r0g0b75).
+
+8. **FONDO_CAMPO_VISUAL**:
+   - Herencia de "EXPE_OBJ_DISEÑO".
+
+### Objetos de Grupo y Propiedades de Clase
+También se especifican varios grupos de objetos y clases de propiedad:
+
+1. **GRP_FORM_BASE**:
+   - Hereda del módulo "ICM_OBJ".
+   
+2. **BLOCK_CONTROL**: Un grupo de objetos utilizado para el control de bloques de datos.
+3. **REST_ELIMI**: Un grupo de objetos que establece el comportamiento de restricciones para eliminación de datos.
+4. **BARRA_BLOQUE**: Un grupo de objetos para la barra de herramientas de bloque.
+5. **BLOQUE_BUSCAR**: Un grupo de objetos para la barra de búsqueda.
+
+### Registro de Grupos
+El formulario define varios grupos de registro (record groups) utilizados para las listas de valores (LOV):
+
+1. **RG_UNIDAD**:
+   - Consulta que obtiene valores de unidad.
+
+2. **RG_UNIDAD_DEVOL**:
+   - Consulta que obtiene valores de unidad para devoluciones.
+
+3. **RG_CONSEJ**:
+   - Consulta que obtiene valores de consejería.
+
+4. **RG_MUNI**:
+   - Consulta que obtiene valores de municipios.
+
+### Procedimientos y Funciones
+Se definen varios procedimientos y funciones para gestionar la lógica interactiva del formulario, incluyendo validaciones, inicialización de datos, y tratamiento de errores. Algunos ejemplos notables incluyen:
+- **COMPROBAR_SELECCION**
+- **PONER_ROJO**
+- **ULTIMA_NOTIFICACION**
+- **VALIDA_FECHAS**
+- **CONSTRUIR_WHERE_NOTE**
+- **CONSTRUIR_WHERE_CORR**
+- **PROC_INICIALIZAR_DATOS_DEVOL**
+- **VALIDA_MUNICIPIO**
+- **GLOBALES_SESION**
+- **CALCULAR_NUMERO_ANEXOS**
+- **F_ESTADO_EXPEDIENTE**
+- **VALIDA_EXPEDIENTE**
+
+### Menús y Navegación
+El formulario se complementa con la estructura de menús y navegación que facilitan la interacción del usuario, aprovechando las estructuras estándar y personalizadas para realizar operaciones dentro del formulario.
+
+Con esta descripción detallada, un desarrollador puede replicar con precisión la interfaz visual del formulario Oracle Forms EXPECA01, asegurando que todos los atributos visuales, relaciones de componentes, y configuraciones específicas se mantienen coherentes con el diseño original.

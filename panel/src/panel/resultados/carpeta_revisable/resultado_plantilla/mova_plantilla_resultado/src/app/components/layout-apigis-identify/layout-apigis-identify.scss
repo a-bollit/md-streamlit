@@ -1,0 +1,27 @@
+@import "~src/styles";
+
+.main-container {
+  height: calc(100% - 64px);
+  background-color: whitesmoke;
+  .row {
+    height: 100%;
+    .identify-container {
+      display: flex;
+      flex-direction: column;
+      margin: 2%;
+    }
+    #container-apigis-identify {
+      height: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: $media-col-sm-max) {
+  .identify-mobile {
+    height: 40vh;
+    overflow: auto;
+  }
+  .map-mobile {
+    height: 60vh;
+  }
+}

@@ -1,0 +1,51 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-max-width-medium;
+}
+.code-img::ng-deep{
+  a{
+    min-height: 5rem;
+    color: #fff;
+    background: url('~src/assets/examples/app-maquetacion-code.png');
+  }
+}
+.gradient{
+  width: 100%;
+  border-radius: 4px;
+  position: absolute;
+  opacity: 0.75;
+  min-height: 5rem;
+  top: 0;
+  left: 0;
+  background: none;
+  background-image: linear-gradient(to right, rgba(86, 115, 131, 0.8), rgba(86, 115, 131, 0.2));
+  &.blue{
+    background-image: linear-gradient(to right, rgba(21, 92, 178, 0.6), rgba(21, 92, 178, 0.1));
+  }
+  &.green{
+    background-image: linear-gradient(to right, rgba(1, 131, 115, 0.6), rgba(1, 131, 115, 0.1));
+  }
+}
+mv-button{
+  .title-container{
+    position: relative;
+    mv-icon{
+      vertical-align: middle;
+      position: absolute;
+      display: block;
+      font-size: 2.25rem;
+    }
+    .title{
+      vertical-align: middle;
+      display: block;
+      max-width: 100%;
+      margin: 0 0 0 3.2rem;
+      text-align: left;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+  }
+}

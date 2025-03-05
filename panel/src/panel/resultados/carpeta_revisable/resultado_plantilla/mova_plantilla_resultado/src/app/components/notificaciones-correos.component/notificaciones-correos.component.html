@@ -1,0 +1,39 @@
+<mv-card class="card-notificaciones">
+  <mv-header>
+    <mv-title>Notificaciones de Correos</mv-title>
+  </mv-header>
+  <mv-content>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    <table class="table-responsive">
+      <thead>
+        <tr>
+          <th>Documento</th>
+          <th>Descripción</th>
+          <th>Expediente</th>
+          <th>Interesado</th>
+          <th>PDF</th>
+          <th>Firma</th>
+          <th>Registro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let notificacion of notificaciones">
+          <td>{{ notificacion.documento }}</td>
+          <td>{{ notificacion.descripcion }}</td>
+          <td>{{ notificacion.expediente }}</td>
+          <td>{{ notificacion.interesado }}</td>
+          <td><a [href]="notificacion.pdfUrl" target="_blank">Ver PDF</a></td>
+          <td>{{ notificacion.firma ? 'Sí' : 'No' }}</td>
+          <td>{{ notificacion.registro }}</td>
+          <td><input type="checkbox" [(ngModel)]="notificacion.marcado"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <mv-button (click)="markAll()">Marcar Todos</mv-button>
+      <mv-button (click)="unmarkAll()">Desmarcar Todos</mv-button>
+      <mv-button (click)="registerMarked()">Registrar</mv-button>
+      <mv-button (click)="sendMarked()">Enviar</mv-button>
+    </div>
+  </mv-content>
+</mv-card>

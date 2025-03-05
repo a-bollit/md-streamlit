@@ -1,0 +1,177 @@
+<section class="view-default-style">
+  <mv-footer-tab
+    backgroundColor="corporative"
+    showMenu="true"
+    fixed=true
+    [tabItems]="arrayTabItems">
+
+    <div content1>
+      <mv-card>
+        <mv-card-title>Descripción</mv-card-title>
+        <p>Esto es un ejemplo del componente de mova mvFooterMenu que usamos para hacer un menú en el pie.
+          Al hacer click en cada pestaña o tab se navega a otro contenido definido por el desarrollador.</p>
+        <p>Este comportamiento de navegación entre páginas se podría usar para sustituir el menú principal,
+          o para los accesos directos a las opciones más usadas siempre disponibles en la pantalla, por ejemplo.</p>
+      </mv-card>
+    </div>
+
+    <div content2>
+      <mv-card>
+        <mv-card-title>Listado</mv-card-title>
+        <div class="tab-body">
+          <div class="entrante content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+          <div class="entrante content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+          <div class="saliente content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+          <div class="entrante content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+          <div class="saliente content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+          <div class="saliente content">
+            <div class="fecha">
+              27/02/2020 14:02
+            </div>
+            <div class="title">
+              Llamada entrante
+            </div>
+            <div>
+              +34 767 654 439
+            </div>
+          </div>
+        </div>
+      </mv-card>
+    </div>
+
+    <div content3>
+      <mv-card>
+        <mv-card-title>Búsqueda</mv-card-title>
+        <p>Filtra tu búsqueda por cualquier campo:</p>
+        <mv-input adapt=true></mv-input>
+        <mv-button color="primary" adapt=true>Buscar</mv-button>
+      </mv-card>
+    </div>
+
+    <div content4>
+      <mv-card class="success-card">
+        <mv-card-title>Información</mv-card-title>
+        <p>Tu versión está actualizada (3.0.0). Estás protegido frente a las últimas vulnerabilidades.</p>
+      </mv-card>
+
+      <mv-card class="warning-card">
+        <mv-card-title>Aviso</mv-card-title>
+        <p>Se encuentra disponible una versión más moderna (3.0.0). Deberías actualizarla lo antes posible para estar protegido.</p>
+      </mv-card>
+
+      <mv-card class="danger-card">
+        <mv-card-title>Peligro</mv-card-title>
+        <p>Tu versión está obsoleta (1.5.6). Tu equipo está expuesto a múltiples riesgos. ¡Actualízala!</p>
+      </mv-card>
+    </div>
+
+    <div content5>
+      <mv-card class="config-card">
+        <mv-card-title>Configuración del dispositivo</mv-card-title>
+
+        <div class="row">
+
+          <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 text-center">
+    				<mv-icon class="config-example-icon">computer</mv-icon>
+    				<span class="config-example-title1 truncate">Sistema</span>
+    				<span class="config-example-title2 truncate">Pantalla, notificaciones</span>
+    			</div>
+
+    			<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 text-center">
+    				<mv-icon class="config-example-icon">mouse</mv-icon>
+    				<span class="config-example-title1 truncate">Dispositivos</span>
+    				<span class="config-example-title2 truncate">Bluetooth, impresoras</span>
+    			</div>
+
+    			<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 text-center">
+    				<mv-icon class="config-example-icon">wifi</mv-icon>
+    				<span class="config-example-title1 truncate">Red e Internet</span>
+    				<span class="config-example-title2 truncate">Wi-Fi, VPN</span>
+    			</div>
+
+    			<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 text-center">
+    				<mv-icon class="config-example-icon">brush</mv-icon>
+    				<span class="config-example-title1 truncate">Personalización</span>
+    				<span class="config-example-title2 truncate">Fondo, temas</span>
+    			</div>
+
+    			<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 text-center">
+    				<mv-icon class="config-example-icon">person</mv-icon>
+    				<span class="config-example-title1 truncate">Cuentas</span>
+    				<span class="config-example-title2 truncate">Sincronizar, otros usuarios</span>
+    			</div>
+
+    			<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 text-center">
+    				<mv-icon class="config-example-icon">g_translate</mv-icon>
+    				<span class="config-example-title1 truncate">Hora e idioma</span>
+    				<span class="config-example-title2 truncate">Región, fecha</span>
+    			</div>
+
+    			<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 text-center">
+    				<mv-icon class="config-example-icon">lock</mv-icon>
+    				<span class="config-example-title1 truncate">Privacidad</span>
+    				<span class="config-example-title2 truncate">Ubicación, cámara</span>
+    			</div>
+        </div>
+
+      </mv-card>
+    </div>
+
+    <div menu>
+      <button mat-menu-item (click)="actionClick()">Más opciones</button>
+      <button mat-menu-item (click)="actionClick()">Contactar</button>
+      <button mat-menu-item (click)="actionClick()">Salir</button>
+    </div>
+
+  </mv-footer-tab>
+</section>

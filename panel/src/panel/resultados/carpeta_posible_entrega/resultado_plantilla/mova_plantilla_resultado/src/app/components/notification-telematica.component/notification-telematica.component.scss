@@ -1,0 +1,31 @@
+@import '~@mova/components/_variables.scss';
+
+:host {
+  display: block;
+  padding: 16px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: left;
+}
+
+.mat-column-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.mv-button {
+  .material-icons {
+    vertical-align: middle;
+  }
+}

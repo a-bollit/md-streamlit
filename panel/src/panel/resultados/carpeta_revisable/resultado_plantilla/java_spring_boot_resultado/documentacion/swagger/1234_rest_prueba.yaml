@@ -1,0 +1,329 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: ApiGestionExpedientes
+  description: Gestión de expedientes y documentos asociados
+  contact:
+    name: Soporte API
+    email: soporte@apigestion.com
+
+servers:
+  - url: https://api.gestionexpedientes.com/v1
+    description: Servidor de producción
+
+tags:
+  - name: GEA_ACURE
+    description: Operaciones relacionadas con GEA_ACURE
+  - name: GIMPREDOCU
+    description: Operaciones relacionadas con GIMPREDOCU
+  - name: GDOCUMENTO
+    description: Operaciones relacionadas con GDOCUMENTO
+  - name: EREG_NOTIFICACION
+    description: Gestión de notificaciones
+  - name: EREG_LISTNOTI
+    description: Gestión de listas de notificación
+  - name: GEA_ANEXOS
+    description: Operaciones sobre anexos
+  - name: GINTERESAD
+    description: Gestión de interesados
+  - name: GEXPEDIENT
+    description: Consulta y gestión de expedientes
+
+paths:
+  /gea_acure:
+    get:
+      tags:
+        - GEA_ACURE
+      summary: Obtener todos los registros de GEA_ACURE
+      responses:
+        '200':
+          description: Lista de registros de GEA_ACURE
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GeaAcure'
+
+  /gea_acure/{cddocum}:
+    get:
+      tags:
+        - GEA_ACURE
+      summary: Obtener un registro de GEA_ACURE por su identificador
+      parameters:
+        - name: cddocum
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Registro de GEA_ACURE
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeaAcure'
+
+  /gimpredocu:
+    get:
+      tags:
+        - GIMPREDOCU
+      summary: Obtener todos los registros de GIMPREDOCU
+      responses:
+        '200':
+          description: Lista de registros de GIMPREDOCU
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Gimpredocu'
+
+  /gimpredocu/{cddocum}:
+    get:
+      tags:
+        - GIMPREDOCU
+      summary: Obtener un registro de GIMPREDOCU por su identificador
+      parameters:
+        - name: cddocum
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Registro de GIMPREDOCU
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gimpredocu'
+
+  /ereg_notificacion:
+    get:
+      tags:
+        - EREG_NOTIFICACION
+      summary: Obtener todas las notificaciones
+      responses:
+        '200':
+          description: Lista de notificaciones
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EregNotificacion'
+
+    post:
+      tags:
+        - EREG_NOTIFICACION
+      summary: Crear una notificación
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nmlistnoti:
+                  type: number
+                  example: 1
+                nmejercicio:
+                  type: number
+                  example: 2023
+                cdrefdocum:
+                  type: string
+                  example: "DOC123"
+      responses:
+        '201':
+          description: Notificación creada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EregNotificacion'
+
+  /ereg_notificacion/{cdrefdocum}:
+    get:
+      tags:
+        - EREG_NOTIFICACION
+      summary: Obtener una notificación por su identificador
+      parameters:
+        - name: cdrefdocum
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Notificación obtenida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EregNotificacion'
+
+    delete:
+      tags:
+        - EREG_NOTIFICACION
+      summary: Eliminar una notificación
+      parameters:
+        - name: cdrefdocum
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Notificación eliminada
+
+  /ereg_listnoti:
+    get:
+      tags:
+        - EREG_LISTNOTI
+      summary: Obtener todas las listas de notificación
+      responses:
+        '200':
+          description: Listas de notificación
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EregListnoti'
+
+    post:
+      tags:
+        - EREG_LISTNOTI
+      summary: Crear una lista de notificación
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nmlistnoti:
+                  type: number
+                  example: 1
+                nmejercicio:
+                  type: number
+                  example: 2023
+                fccrea:
+                  type: string
+                  format: date
+                  example: "2023-04-01"
+      responses:
+        '201':
+          description: Lista de notificación creada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EregListnoti'
+
+  /gexpedient:
+    get:
+      tags:
+        - GEXPEDIENT
+      summary: Obtener todos los expedientes
+      responses:
+        '200':
+          description: Lista de expedientes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Gexpedient'
+
+  /ginteresad:
+    post:
+      tags:
+        - GINTERESAD
+      summary: Crear un interesado
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cdinteresado:
+                  type: string
+                dsnombre:
+                  type: string
+                dsapellido1:
+                  type: string
+                dsrazonsoc:
+                  type: string
+      responses:
+        '201':
+          description: Interesado creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ginteresad'
+
+components:
+  schemas:
+    GeaAcure:
+      type: object
+      properties:
+        cddocum:
+          type: string
+          description: Identificador único
+        description:
+          type: string
+          description: Descripción del documento
+
+    Gimpredocu:
+      type: object
+      properties:
+        cddocum:
+          type: string
+          description: Identificador único
+        description:
+          type: string
+          description: Detalle de la impresión de documento
+
+    EregNotificacion:
+      type: object
+      properties:
+        nmlistnoti:
+          type: number
+        nmejercicio:
+          type: number
+        cdrefdocum:
+          type: string
+
+    EregListnoti:
+      type: object
+      properties:
+        nmlistnoti:
+          type: number
+        nmejercicio:
+          type: number
+        fccrea:
+          type: string
+          format: date
+
+    Gexpedient:
+      type: object
+      properties:
+        cddeptno:
+          type: string
+        cdtexp:
+          type: string
+        cdnexp:
+          type: string
+        cddigito:
+          type: string
+        cdaexp:
+          type: string
+
+    Ginteresad:
+      type: object
+      properties:
+        cdinteresado:
+          type: string
+        dsnombre:
+          type: string
+        dsapellido1:
+          type: string
+        dsrazonsoc:
+          type: string
+

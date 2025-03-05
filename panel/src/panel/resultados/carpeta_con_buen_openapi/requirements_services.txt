@@ -1,0 +1,205 @@
+## Servicios de Angular 8
+
+1. **Service ExpedienteService**
+   - **Funcionalidad específica:** Este servicio se encarga de la gestión de expedientes. Proporciona métodos CRUD para crear, leer, actualizar y eliminar expedientes, además de funciones específicas de validación y búsqueda.
+   - **Métodos HTTP:** 
+     - `GET /api/expedientes` - Obtener lista de expedientes.
+     - `POST /api/expedientes` - Crear un nuevo expediente.
+     - `PUT /api/expedientes/{id}` - Actualizar un expediente existente.
+     - `DELETE /api/expedientes/{id}` - Eliminar un expediente.
+   - **Parámetros requeridos y estructura de los datos:**
+     - `GET /api/expedientes`: Parámetros de filtro opcionales como fechas (`fcdesde`, `fchasta`), tipo de expediente (`cdtexp`), etc.
+     - `POST /api/expedientes`: Datos del expediente en formato JSON.
+       ```json
+       {
+         "cddeptno": "string",
+         "cdtexp": "string",
+         "cdnexp": "number",
+         "cddigito": "number",
+         "cdaexp": "number"
+       }
+       ```
+     - `PUT /api/expedientes/{id}`: Datos actualizados del expediente en formato JSON, incluyendo el ID para identificar el expediente a actualizar.
+     - `DELETE /api/expedientes/{id}`: Ningún dato adicional, solo el ID del expediente a eliminar.
+   - **Integración con endpoints del backend:**
+     - `GET /api/expedientes` - Devuelve una lista de expedientes en formato JSON.
+     - `POST /api/expedientes` - Recibe y guarda un nuevo expediente en la base de datos backend.
+     - `PUT /api/expedientes/{id}` - Actualiza los detalles del expediente especificado.
+     - `DELETE /api/expedientes/{id}` - Elimina el expediente especificado de la base de datos.
+   - **Descripción detallada y guía para desarrolladores:** El `ExpedienteService` proporciona métodos para la gestión completa del ciclo de vida de los expedientes. Incluye validaciones internas para fechas (`fcdesde` no puede ser mayor que `fchasta`) y estado del expediente (no puede estar anulado o finalizado). Participa en los bloques `BL_GENERAL` para la carga y validación de expedientes, y en `GEA_ACURE`, `NOTIFICACION_TELEMATICA` para el procesamiento de expedientes específicos.
+   - **Manejo de errores:** Cada método HTTP maneja respuestas y errores del backend mostrando mensajes adecuados al usuario. Las respuestas exitosas se manejan con promesas `.then()` y los errores con `.catch()`.
+   - **Dependencias:** Depende del servicio `AuthService` para autenticación y autorización.
+
+2. **Service NotificacionService**
+   - **Funcionalidad específica:** Gestiona las notificaciones tanto telemáticas como de correos. Ofrece funciones de envío, registro, y validación de notificaciones.
+   - **Métodos HTTP:** 
+     - `GET /api/notificaciones` - Obtener las notificaciones.
+     - `POST /api/notificaciones` - Crear una nueva notificación.
+     - `PUT /api/notificaciones/{id}` - Actualizar una notificación existente.
+     - `DELETE /api/notificaciones/{id}` - Eliminar una notificación.
+   - **Parámetros requeridos y estructura de los datos:**
+     - `GET /api/notificaciones`: Parámetros opcionales para filtrar las notificaciones por fechas, tipo, y estado.
+     - `POST /api/notificaciones`: Datos de la notificación en formato JSON.
+       ```json
+       {
+         "tipo": "string",
+         "mensaje": "string",
+         "fechaEnvio": "datetime",
+         "estado": "string",
+         "documentos": [
+           {
+             "id": "number",
+             "nombre": "string"
+           }
+         ]
+       }
+       ```
+     - `PUT /api/notificaciones/{id}`: Datos actualizados de la notificación, incluyendo el ID para identificar la notificación a actualizar.
+     - `DELETE /api/notificaciones/{id}`: Ningún dato adicional, solo el ID de la notificación a eliminar.
+   - **Integración con endpoints del backend:**
+     - `GET /api/notificaciones` - Devuelve una lista de notificaciones.
+     - `POST /api/notificaciones` - Guarda una nueva notificación en la base de datos.
+     - `PUT /api/notificaciones/{id}` - Actualiza los detalles de la notificación especificada.
+     - `DELETE /api/notificaciones/{id}` - Elimina la notificación especificada de la base de datos.
+   - **Descripción detallada y guía para desarrolladores:** Este servicio se integra fuertemente con los componentes `GEA_ACURE` y `NOTIFICACION_TELEMATICA` del frontend para permitir la validación y envío de notificaciones telemáticas y de correos. Implementado con lógica para manejar marcas, anexos y firmados de documentos.
+   - **Manejo de errores:** Responde a los errores mediante servicios de notificación al usuario, con manejo de excepciones en cada método HTTP.
+   - **Dependencias:** Requiere `ExpedienteService` para verificar estados de expedientes antes de enviar notificaciones. Depende de `AuthService` para garantizar que las operaciones de notificación se realicen por usuarios autorizados.
+
+## Integración con Backend
+
+### Endpoints para ExpedienteService
+- **`GET /api/expedientes`**:
+  - **Descripción:** Obtener la lista de expedientes, permite filtrar por diferentes parámetros de búsqueda.
+  - **Respuesta esperada:** 
+    ```json
+    [
+      {
+        "id": "number",
+        "cddeptno": "string",
+        "cdtexp": "string",
+        "cdnexp": "number",
+        "cddigito": "number",
+        "cdaexp": "number",
+        "fcdesde": "datetime",
+        "fchasta": "datetime",
+        "estado": "string"
+      }
+    ]
+    ```
+  - **Errores:** Maneja errores de conexión y fallos en SQL.
+
+- **`POST /api/expedientes`**:
+  - **Descripción:** Crear un nuevo expediente.
+  - **Datos enviados:** 
+    ```json
+    {
+      "cddeptno": "string",
+      "cdtexp": "string",
+      "cdnexp": "number",
+      "cddigito": "number",
+      "cdaexp": "number",
+      "fcdesde": "datetime",
+      "fchasta": "datetime",
+      "estado": "string"
+    }
+    ```
+  - **Respuesta esperada:** Detalles del expediente recién creado.
+  - **Errores:** Validar que los datos necesarios estén presentes y correctamente formateados.
+
+- **`PUT /api/expedientes/{id}`**:
+  - **Descripción:** Actualiza los detalles de un expediente específico.
+  - **Datos enviados:** Datos del expediente en formato JSON.
+    ```json
+    {
+      "cddeptno": "string",
+      "cdtexp": "string",
+      "cdnexp": "number",
+      "cddigito": "number",
+      "cdaexp": "number",
+      "fcdesde": "datetime",
+      "fchasta": "datetime",
+      "estado": "string"
+    }
+    ```
+  - **Respuesta esperada:** Expediente actualizado.
+  - **Errores:** Valida la existencia del expediente a actualizar.
+
+- **`DELETE /api/expedientes/{id}`**:
+  - **Descripción:** Elimina un expediente.
+  - **Parámetros:** ID del expediente a eliminar.
+  - **Respuesta esperada:** Confirmación de eliminación.
+  - **Errores:** Verifica la existencia del expediente antes de la eliminación.
+
+### Endpoints para NotificacionService
+- **`GET /api/notificaciones`**:
+  - **Descripción:** Obtener la lista de notificaciones.
+  - **Respuesta esperada:** 
+    ```json
+    [
+      {
+        "id": "number",
+        "tipo": "string",
+        "mensaje": "string",
+        "fechaEnvio": "datetime",
+        "estado": "string",
+        "documentos": [
+          {
+            "id": "number",
+            "nombre": "string"
+          }
+        ]
+      }
+    ]
+    ```
+  - **Errores:** Manejos estándar de errores de conexión y fallas.
+
+- **`POST /api/notificaciones`**:
+  - **Descripción:** Crear una nueva notificación.
+  - **Datos enviados:** Detalles de la notificación.
+    ```json
+    {
+      "tipo": "string",
+      "mensaje": "string",
+      "fechaEnvio": "datetime",
+      "estado": "string",
+      "documentos": [
+        {
+          "id": "number",
+          "nombre": "string"
+        }
+      ]
+    }
+    ```
+  - **Respuesta esperada:** Notificación creada con éxito.
+  - **Errores:** Validar datos requeridos y formato JSON.
+
+- **`PUT /api/notificaciones/{id}`**:
+  - **Descripción:** Actualiza los detalles de una notificación específica.
+  - **Datos enviados:** Datos de notificación en formato JSON.
+    ```json
+    {
+      "tipo": "string",
+      "mensaje": "string",
+      "fechaEnvio": "datetime",
+      "estado": "string",
+      "documentos": [
+        {
+          "id": "number",
+          "nombre": "string"
+        }
+      ]
+    }
+    ```
+  - **Respuesta esperada:** Notificación actualizada.
+  - **Errores:** Valida la existencia del ID de notificación.
+
+- **`DELETE /api/notificaciones/{id}`**:
+  - **Descripción:** Elimina una notificación.
+  - **Parámetros:** ID de la notificación a eliminar.
+  - **Respuesta esperada:** Confirmación de eliminación.
+  - **Errores:** Verifica la existencia de la notificación a eliminar.
+
+### Autenticación y Autorización
+Para todos los servicios, se utiliza el `AuthService` para asegurar que solo los usuarios autenticados y autorizados puedan acceder y realizar operaciones. Estas operaciones están protegidas mediante tokens JWT y cada solicitud incluye un token de autorización en el encabezado.
+
+Con esta guía exhaustiva, los desarrolladores podrán implementar todos los servicios necesarios para replicar la funcionalidad de los bloques `GEA_ACURE` y `NOTIFICACION_TELEMATICA` en Angular 8, asegurando una integración perfecta con el backend y proporcionando una experiencia de usuario robusta y segura.

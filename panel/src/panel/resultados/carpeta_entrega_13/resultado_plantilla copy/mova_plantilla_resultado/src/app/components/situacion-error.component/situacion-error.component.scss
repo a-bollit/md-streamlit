@@ -1,0 +1,12 @@
+@import '~@mova/components/_variables.scss';
+
+.card-code {
+  @include card-format('default');
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.mv-button {
+  @include button-color('primary');
+}

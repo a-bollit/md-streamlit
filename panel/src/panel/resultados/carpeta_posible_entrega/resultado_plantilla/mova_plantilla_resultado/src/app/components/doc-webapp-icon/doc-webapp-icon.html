@@ -1,0 +1,77 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Añadir webapp como icono del móvil</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Configuración
+      </a>
+    </div>
+
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Las aplicaciones PWA (Progressive Web App) permiten que, al entrar con el navegador del móvil a una web, podamos añadir dicha web a la pantalla
+        de inicio de nuestro dispositivo con su icono correspondiente, como si fuera una app a modo de atajo para entrar directamente al sitio web.</p>
+      <p>En los dispositivos iOS tendremos que añadir manualmente la web a la pantalla de inicio, mientras que en los dispositivos Android nos aparecerá un mensaje
+        para añadirlo directamente pulsando en el mensaje.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Configuración -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración para establecer app como icono</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Para configurar esta funcionalidad debemos definir los siguientes elementos:</p>
+      <ul>
+        <li>Modificar el archivo llamado manifest.webmanifest con los valores propios de nuestra aplicación</li>
+        <li>Crear las imágenes e iconos necesarios referenciados en el manifest</li>
+        <li>Modificar el index.html de nuestro proyecto</li>
+        <li>Habilitar el service worker en app.module.ts</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="manifest.webmanifest">
+          <pre><code [highlight]="codeManifestJSON"></code></pre>
+        </mv-tab>
+        <mv-tab label="index.html">
+          <pre><code [highlight]="codeIndexHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="app.module.ts">
+          <pre><code [highlight]="codeAppModuleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

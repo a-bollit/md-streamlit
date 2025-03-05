@@ -1,0 +1,172 @@
+---
+
+## Servicios de Angular 8:
+
+### 1. **Service DocumentoService**
+
+#### Funcionalidad:
+Este servicio maneja todas las operaciones CRUD relacionadas con los documentos en el sistema.
+
+#### Métodos HTTP:
+- **GET**: Recuperar información de documentos.
+- **POST**: Crear un nuevo documento.
+- **PUT**: Actualizar información de un documento existente.
+- **DELETE**: Eliminar un documento.
+
+#### Parámetros y Datos:
+- **GET**:
+  - **Endpoint**: `/api/documentos/{id}`
+  - **Parámetros**: `id` (string) - Identificador único del documento.
+- **POST**:
+  - **Endpoint**: `/api/documentos`
+  - **Datos Enviados**: `{ "titulo": string, "descripcion": string, "contenido": string }`
+- **PUT**:
+  - **Endpoint**: `/api/documentos/{id}`
+  - **Parámetros**: `id` (string) - Identificador del documento a actualizar.
+  - **Datos Enviados**: `{ "titulo": string, "descripcion": string, "contenido": string }`
+- **DELETE**:
+  - **Endpoint**: `/api/documentos/{id}`
+  - **Parámetros**: `id` (string) - Identificador del documento a eliminar.
+
+#### Guía para Desarrolladores:
+Este servicio conecta con el backend para realizar todas las operaciones CRUD relacionadas con documentos. Los métodos se aseguran de manejar respuestas y errores correctamente, proveyendo mensajes específicos ante cada caso.
+
+#### Manejo de Errores y Respuestas:
+- **GET**:
+  - **Success**: La respuesta incluirá el documento solicitado.
+  - **Error**: Un mensaje de error proporcionará información sobre por qué falló la solicitud (e.g., documento no encontrado).
+- **POST**:
+  - **Success**: La respuesta incluirá el documento creado.
+  - **Error**: Un mensaje de error detallará problemas como validación de datos fallida.
+- **PUT**:
+  - **Success**: La respuesta confirmará la actualización del documento.
+  - **Error**: Un mensaje indicará problemas, como identificador incorrecto.
+- **DELETE**:
+  - **Success**: Confirmación de la eliminación del documento.
+  - **Error**: Mensaje de error con detalles de la razón de fallo (e.g., documento no encontrado).
+
+#### Dependencias:
+Este servicio depende de un `HttpClient` Angular para realizar solicitudes HTTP y de una clase `EnvService` para gestionar las URLs base del backend.
+
+---
+
+### 2. **Service NotificacionService**
+
+#### Funcionalidad:
+Gestiona las notificaciones telemáticas y de correos, incluyendo su creación, actualización y recuperación de datos.
+
+#### Métodos HTTP:
+- **GET**: Obtener notificaciones filtradas por criterios específicos.
+- **POST**: Crear nuevas notificaciones.
+- **PUT**: Actualizar notificaciones.
+- **DELETE**: Eliminar notificaciones.
+
+#### Parámetros y Datos:
+- **GET**:
+  - **Endpoint**: `/api/notificaciones`
+  - **Parámetros**: `{ "tipo": string, "estado": string, "fechaDesde": Date, "fechaHasta": Date }`
+- **POST**:
+  - **Endpoint**: `/api/notificaciones`
+  - **Datos Enviados**: `{ "tipo": string, "contenido": string, "estado": string, "fechaEmision": Date }`
+- **PUT**:
+  - **Endpoint**: `/api/notificaciones/{id}`
+  - **Parámetros**: `id` (string) - Identificador de la notificación a actualizar.
+  - **Datos Enviados**: `{ "tipo": string, "contenido": string, "estado": string, "fechaEmision": Date }`
+- **DELETE**:
+  - **Endpoint**: `/api/notificaciones/{id}`
+  - **Parámetros**: `id` (string) - Identificador de la notificación a eliminar.
+
+#### Guía para Desarrolladores:
+Este servicio se integra con endpoints de backend para gestionar todas las operaciones CRUD relativas a las notificaciones, tanto telemáticas como de correos. Se asegura de manejar las respuestas y errores adecuadamente.
+
+#### Manejo de Errores y Respuestas:
+- **GET**:
+  - **Success**: Proveerá una lista de notificaciones basadas en los criterios.
+  - **Error**: Mensaje específico si falla el filtro o la consulta.
+- **POST**:
+  - **Success**: Detalles de la notificación creada.
+  - **Error**: Mensaje con problemas de validación o de integración.
+- **PUT**:
+  - **Success**: Confirma la actualización de la notificación.
+  - **Error**: Indica fallos en la actualización o problemas con el ID.
+- **DELETE**:
+  - **Success**: Confirmación de eliminación.
+  - **Error**: Razones por las cuales no se pudo eliminar la notificación.
+
+#### Dependencias:
+Depende de `HttpClient` Angular y una clase `EnvService` para gestionar las URLs base y configuraciones.
+
+---
+
+### 3. **Service UsuarioService**
+
+#### Funcionalidad:
+Gestiona operaciones relacionadas con usuarios, incluyendo autenticación, autorización y CRUD de perfiles.
+
+#### Métodos HTTP:
+- **GET**: Recuperar información de usuarios y perfiles.
+- **POST**: Crear nuevos usuarios.
+- **PUT**: Actualizar información de usuarios.
+- **DELETE**: Eliminar usuarios.
+
+#### Parámetros y Datos:
+- **GET**:
+  - **Endpoint**: `/api/usuarios`
+  - **Parámetros**: `{ "nombre": string, "email": string, "estado": string }`
+- **POST**:
+  - **Endpoint**: `/api/usuarios`
+  - **Datos Enviados**: `{ "nombre": string, "email": string, "password": string }`
+- **PUT**:
+  - **Endpoint**: `/api/usuarios/{id}`
+  - **Parámetros**: `id` (string) - Identificador del usuario a actualizar.
+  - **Datos Enviados**: `{ "nombre": string, "email": string, "estado": string }`
+- **DELETE**:
+  - **Endpoint**: `/api/usuarios/{id}`
+  - **Parámetros**: `id` (string) - Identificador del usuario a eliminar.
+
+#### Guía para Desarrolladores:
+Este servicio interactúa con el backend para gestionar todas las operaciones relacionadas con usuarios. Garantiza la correcta manipulación de respuestas y errores.
+
+#### Manejo de Errores y Respuestas:
+- **GET**:
+  - **Success**: Lista de usuarios según los criterios.
+  - **Error**: Mensaje específico si falla el filtrado o la consulta.
+- **POST**:
+  - **Success**: Detalles del usuario creado.
+  - **Error**: Problemas de validación o integridad de datos.
+- **PUT**:
+  - **Success**: Confirmación de actualización.
+  - **Error**: Mensaje con razones del fallo de actualización.
+- **DELETE**:
+  - **Success**: Confirmación de eliminación.
+  - **Error**: Problemas específicos con la eliminación.
+
+#### Dependencias:
+Depende de `HttpClient`, `EnvService` para URL base y posiblemente `AuthService` para gestionar autenticación.
+
+---
+
+## Integración con Backend:
+
+### Endpoints y Datos:
+- **/api/documentos/**
+  - **Métodos**: GET, POST, PUT, DELETE.
+  - **Datos**: JSON, con campos específicos dependiendo de la operación.
+- **/api/notificaciones/**
+  - **Métodos**: GET, POST, PUT, DELETE.
+  - **Datos**: JSON, con información de notificaciones basados en filtros y operaciones específicas.
+- **/api/usuarios/**
+  - **Métodos**: GET, POST, PUT, DELETE.
+  - **Datos**: JSON, gestionando información de usuarios y autenticaciones.
+
+### Manejo de Respuestas del Backend:
+- **Casos de Éxito**: Las respuestas incluirán los datos JSON solicitados o confirmaciones de las operaciones.
+- **Casos de Error**: Mensajes detallados específicos para cada operación, detallando los puntos de fallo (uso de HTTP status codes y mensajes personalizados).
+  
+### Requisitos de Autenticación:
+- Es probable que todos los servicios deban incluir un `Authorization` header con un token JWT para autenticar al usuario en cada solicitud.
+- Se recomienda usar un `AuthInterceptor` para añadir el token a cada petición saliente de manera automática.
+
+---
+
+Esta lista completa y detallada proporciona todos los requisitos técnicos y funcionales necesarios para implementar los servicios en `/services` de la aplicación Angular 8. Con estos detalles, los desarrolladores tendrán una guía exhaustiva para asegurar la funcionalidad completa y la correcta integración del frontend con el backend.

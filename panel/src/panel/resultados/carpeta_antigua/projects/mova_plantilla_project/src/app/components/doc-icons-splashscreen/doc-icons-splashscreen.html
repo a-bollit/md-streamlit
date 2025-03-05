@@ -1,0 +1,257 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación novedades de la versión</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li>
+        <a
+          class="nostyle"
+          (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'
+        >
+          <mv-icon>link</mv-icon> Información
+        </a>
+      </li>
+      <li>
+        <a
+          class="nostyle"
+          (click)='config.scrollIntoView({behavior: "smooth",block: "start"})'
+        >
+          <mv-icon>link</mv-icon> Configuración
+        </a>
+      </li>
+      
+      <li>
+        <a
+          class="nostyle"
+          (click)='imagen.scrollIntoView({behavior: "smooth",block: "start"})'
+        >
+          <mv-icon>link</mv-icon> Imagen
+        </a>
+      </li>
+      <li>
+        <a
+          class="nostyle"
+          (click)='ejemplo.scrollIntoView({behavior: "smooth",block: "start"})'
+        >
+          <mv-icon>link</mv-icon> Ejemplo de uso
+        </a>
+      </li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Info -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información de generación.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>
+        Para la generación automática de iconos y splashscreens hay
+        herramientas por internet que ayudan en este paso, nosotros vamos a
+        documentar el uso de abiro
+      </p> 
+      <a 
+        rel="noopener noreferrer"
+        href="https://pgicons.abiro.com/"
+        target="_blank"
+      >
+        <strong>https://pgicons.abiro.com/</strong>
+      </a>
+      <p>una herramienta especifica para la generación de imagenes para cordova</p>
+
+      <img 
+        class="config_image"
+        src="assets/docs/splashscreen/abiro_interface.jpg"
+        alt="Abiro interface"
+      >
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Config -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #config><strong>Configuración</strong></mv-card-title>
+      <mv-card-subtitle>Configuración de la herramienta.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+      <p>
+        El interface de la herramienta es simple, viene con una pequeña
+        configuración y unos botones para subir nuestras imágenes y generar
+        los iconos y splashscreen
+      </p>
+      
+      <p>
+        tiene dos botones para seleccionar las imagenes de la app, una para el
+        icono y otra opcional para el fondo del splashscreen. En caso de no 
+        seleccionar una imagen para el fondo, nos deja elegir el color en:
+        #rrggbbaa/#rgb, rgba()/hsb()/hsl() y el nombre del color
+      </p>
+      
+      <img 
+        class="config_image"
+        src="assets/docs/splashscreen/abiro_upload.jpg"
+        alt="Abiro subida de imagen"
+      >
+
+      <p>
+        También tiene opciones para seleccionar el tipo de dispositivo
+        (Android, iOS(Legacy y storyboard), windows) que vienen por defecto
+        en portrait, pero también se puede especificar que vengan en landscape.
+      </p>
+
+      <img 
+        class="config_image"
+        src="assets/docs/splashscreen/abiro_dispositivos.jpg"
+        alt="Abiro dispositivos"
+      >
+
+      <p>
+        Tiene también unas configuraciones para ajustar la imagen en el icono y
+        el splashscreen
+      </p>
+
+      <img 
+        class="config_image"
+        src="assets/docs/splashscreen/abiro_imageconfig.jpg"
+        alt="Abiro configuración de imagen"
+      >
+      
+      
+    </mv-card-content>
+  </mv-card>
+
+
+  <!-- Imagen -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #imagen><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información de la imagen.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>
+        Subir un icono de la aplicación preferiblemente cuadrado y un fondo
+        de pantalla para la splash screen opcional en un formato de imagen de
+        alta resolución, pero preferiblemente PNG, cada uno de ellos de menos
+        de 16 megapíxeles. Ambas imágenes pueden tener transparencia/alfa.
+      </p>
+      <p>Recomendaciones:</p>
+      <ul>
+        <li>
+          Lea sobre iconos y splash screens de cordova
+          <ul>
+            <li>
+              <a 
+                rel="noopener noreferrer"
+                href="https://cordova.apache.org/docs/en/latest/config_ref/images.html"
+                target="_blank"
+              >
+                <strong>Iconos custom - Apache Cordova</strong>
+              </a>
+            </li>
+            <li>
+              <a 
+                rel="noopener noreferrer"
+                href="https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-splashscreen/index.html"
+                target="_blank"
+              >
+                <strong>Splashscreen - Apache Cordova</strong>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>Las imágenes deben tener al menos 1 megapixel para que tenga la calidad suficiente, pero no mas de 16 megapixeles </li>
+        <li>Evitar fotografias o imagenes con gradientes si es posible</li>
+        <li>En caso de timeout en la herramienta, prueba a convertir las imagenes por plataforma</li>
+      </ul>
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #ejemplo><strong>Ejemplo</strong></mv-card-title>
+      <mv-card-subtitle>Ejemplo de uso</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>
+        Para la generación de ejemplo voy a usar un icono de la aplicación de mova
+      </p> 
+      
+      <img 
+        class="config_icon"
+        src="assets/docs/splashscreen/icono_ejemplo.png"
+        alt="Abiro subida de imagen"
+      >
+
+      <p>
+        Configuro la herramienta seleccionando mi imagen de ejemplo, un color 
+        para el background de fondo, dejo el resto de la configuración por defecto.
+      </p> 
+
+      <img 
+        class="config_image"
+        src="assets/docs/splashscreen/abiro_ejemplo_config.jpg"
+        alt="Abiro ejemplo configuración"
+      >
+
+      <p>
+        Una vez configurado, le doy a Generate Images para que genere todas las
+        imagenes del proyecto, esto puede llevarle un momento.
+      </p> 
+
+      <p>
+        Nos aparecera un botón nuevo para iniciar la descarga del zip con todas
+        las imágenes.
+      </p> 
+      <img 
+        class="config_image"
+        src="assets/docs/splashscreen/abiro_ejemplo_download.jpg"
+        alt="Abiro ejemplo descarga"
+      >
+      
+      <p>
+        Ejemplo de iconos generados:
+      </p> 
+      <img 
+        class="config_image"
+        src="assets/docs/splashscreen/abiro_ejemplo_iconos.jpg"
+        alt="Abiro ejemplo iconos"
+      >
+      
+      <p>
+        Ejemplo de splashscreens generadas:
+      </p> 
+      <img 
+        class="config_image"
+        src="assets/docs/splashscreen/abiro_ejemplo_splash.jpg"
+        alt="Abiro ejemplo splash"
+      >
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

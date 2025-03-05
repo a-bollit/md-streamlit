@@ -1,0 +1,46 @@
+<mv-card>
+  <mv-header headerTitle="Notificaciones Telemáticas" [showBackButton]="true" [showMenuButton]="true"></mv-header>
+
+  <mv-content>
+    <div class="filter-container">
+      <input matInput (keyup)="filterNotifications($event.target.value)" placeholder="Buscar Notificaciones">
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+        <td mat-cell *matCellDef="let notification"> {{notification.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expediente">
+        <th mat-header-cell *matHeaderCellDef> Expediente </th>
+        <td mat-cell *matCellDef="let notification"> {{notification.expediente}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let notification"> {{notification.status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let notification">
+          <mv-button (click)="openDetails(notification)" color="primary" appearance="icon" ariaLabel="Ver Detalles">
+            <mv-icon class="material-icons">info</mv-icon>
+          </mv-button>
+          <mv-button (click)="performAction('edit', notification)" color="accent" appearance="icon" ariaLabel="Editar">
+            <mv-icon class="material-icons">edit</mv-icon>
+          </mv-button>
+          <mv-button (click)="performAction('delete', notification)" color="warn" appearance="icon" ariaLabel="Eliminar">
+            <mv-icon class="material-icons">delete</mv-icon>
+          </mv-button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mv-content>
+
+  <mv-footer></mv-footer>
+</mv-card>

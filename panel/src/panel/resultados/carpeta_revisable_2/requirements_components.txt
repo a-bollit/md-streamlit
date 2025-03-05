@@ -1,0 +1,119 @@
+#### Componente NombreComponente:
+
+1. **Componente UnidadRemitenteComponent**
+   - **Funcionalidad**: Permitir la selección y visualización de la unidad remitente del usuario.
+   - **Datos de entrada**: `Input` - `unidad: string`
+   - **Datos de salida**: `Output` - `unidadChange: EventEmitter<string>`
+   - **Dependencias**: Servicio de Unidades, componente `LovUnidadComponent`
+   
+   - **Descripción muy detallada**: 
+     El componente `UnidadRemitenteComponent` debe implementar una lista desplegable (dropdown) que muestre las unidades disponibles para el usuario. Al seleccionar una unidad, se emitirá un evento de cambio que actualizará la unidad seleccionada en otros componentes. Este componente debe estar diseñado para comunicarse con un servicio que proporcione la lista de unidades, así como con el componente `LovUnidadComponent` para la funcionalidad de búsqueda detallada.
+     - **Guía para desarrolladores**: 
+       Al implementar este componente, asegúrate de inyectar el servicio de unidades en el constructor. La plantilla HTML debe incluir un `<select>` que vincule su modelo a la lista de unidades recibida del servicio. Captura el evento `change` del `<select>` para emitir el nuevo valor de unidad seleccionada a través del `EventEmitter`.
+
+2. **Componente FechaComponent**
+   - **Funcionalidad**: Permitir la selección de fechas específicas para las notificaciones.
+   - **Datos de entrada**: `Input` - `fecha: Date`
+   - **Datos de salida**: `Output` - `fechaChange: EventEmitter<Date>`
+   - **Dependencias**: Componente `CalendarioComponent`, Servicio de Validación de Fechas
+
+   - **Descripción muy detallada**:
+     El componente `FechaComponent` debe proporcionar un calendario para seleccionar una fecha. La fecha seleccionada debe ser válida y no debe ser una fecha futura. Además, permitirá la adición de eventos personalizados como mínimo o máximo rango de fechas válidas. 
+     - **Guía para desarrolladores**:
+       Usa el componente `ng-bootstrap` para el calendario si no existe uno personalizado. Configura los eventos `(ngModelChange)` para emitir los cambios a través del `EventEmitter`. Implementa métodos en el servicio de validación de fechas para verificar que las fechas cumplas las restricciones establecidas.
+
+3. **Component DevolucionEnvioComponent**
+   - **Funcionalidad**: Gestionar la devolución de acuses de recibo.
+   - **Datos de entrada**: `Input` - `devolucion: Devolucion`
+   - **Datos de salida**: `Output` - `devolucionChange: EventEmitter<Devolucion>`
+   - **Dependencias**: Servicio de Devoluciones, componente `LovUnidadComponent`, `LovMunicipioComponent`
+   
+   - **Descripción muy detallada**:
+     El componente `DevolucionEnvioComponent` maneja toda la lógica de interfaz para seleccionar unidades, introducción de direcciones y otros detalles necesarios para devolver un acuse de recibo. 
+     - **Guía para desarrolladores**:
+       Implementa el formulario correspondiente en el HTML usando `ReactiveFormsModule` para la gestión de formularios reactivos. Asegura el uso de componentes `LovUnidadComponent` y `LovMunicipioComponent` para selecciones de listas desplegables. Añade validadores personalizados para asegurar que los campos requeridos estén correctamente rellenados.
+
+4. **Component NotificacionesTelematicasComponent**
+   - **Funcionalidad**: Administrar el envío de notificaciones telemáticas.
+   - **Datos de entrada**: `Input` - `notificaciones: NotificacionTelematica[]`
+   - **Datos de salida**: `Output` - `enviarNotificaciones: EventEmitter<NotificacionTelematica[]>`
+   - **Dependencias**: Servicio de Notificaciones, `FichaNotificacionComponent`, `FormularioNotificacionComponent`
+
+   - **Descripción muy detallada**:
+     Este componente controla la interfaz para enviar notificaciones telemáticas, mostrando detalles de cada notificación y permitiendo al usuario seleccionar cuáles enviar.
+     - **Guía para desarrolladores**:
+       La plantilla debe usar `*ngFor` para renderear una lista de notificaciones, incorporando el `FichaNotificacionComponent` para la presentación de cada notificación. Añade métodos y botones para seleccionar múltiples notificaciones y enviarlas, utilizando el `EventEmitter` para comunicar el evento al componente padre. 
+
+5. **Component NotificacionesCorreosComponent**
+   - **Funcionalidad**: Administrar el envío de notificaciones por correo.
+   - **Datos de entrada**: `Input` - `notificaciones: NotificacionCorreo[]`
+   - **Datos de salida**: `Output` - `enviarNotificaciones: EventEmitter<NotificacionCorreo[]>`
+   - **Dependencias**: Servicio de Notificaciones, `FichaNotificacionComponent`, `FormularioNotificacionComponent`
+   
+   - **Descripción muy detallada**:
+     Este componente controla la interfaz de usuario para el envío de notificaciones por correo, similar a `NotificacionesTelematicasComponent` pero adaptado para este otro medio.
+     - **Guía para desarrolladores**:
+       Implementa `*ngFor` para iterar y mostrar las notificaciones, con utilización del componente `FichaNotificacionComponent`. Añade lógica para seleccionar notificaciones e invocar al servicio correspondiente, emitiendo un evento cuando el usuario decide enviar las notificaciones marcadas.
+
+### Vistas y Formularios
+
+#### Vista de Unidad Remitente
+- **Propósito**: Permitir la selección de la unidad remitente por parte del usuario.
+- **Campos**: Dropdown (select) con las unidades disponibles.
+- **Acciones**: Selección de la unidad, actualización del valor seleccionado, acceso a `LovUnidadComponent` para búsqueda detallada.
+- **Descripción muy detallada**: 
+  La interfaz debe presentar un dropdown con todas las unidades disponibles cargadas desde el servicio. Además, debe tener un botón que despliegue el componente `LovUnidadComponent` para búsquedas más detalladas. Validar que se haya seleccionado alguna unidad antes de proceder con operaciones que requieran este dato. Añadir un favicon o icono descriptivo junto al campo dropdown.
+
+#### Vista de Fechas
+- **Propósito**: Permitir la selección de fechas de emisión y recepción de notificaciones.
+- **Campos**: Calendario, campo de texto con formateo de fecha, validaciones.
+- **Acciones**: Selección de fecha, asegurar que la fecha no sea futura y 
+  que `FCHASTA` no sea menor a `FCDESDE`.
+- **Descripción muy detallada**:
+  Implementar un campo de texto con un componente calendario asociado, validaciones que limiten la selección de fechas no válidas y actualizar solo si cumple las validaciones. 
+  Incluye un botón de calendario al lado del campo de texto que, al ser presionado, despliegue el calendario interactivo.
+    
+#### Vista de Envío de Devoluciones
+- **Propósito**: Procesar la generación de lista de notificaciones de devolución.
+- **Campos**: Dropdowns para seleccionar unidad y municipio, campo de texto para dirección, botón de envío.
+- **Acciones**: Selección de unidad y municipio, validación de datos, procesar la devolución.
+- **Descripción muy detallada**: 
+  Crear un formulario con campos reactivos, asegurando que los datos como unidad y municipio se seleccionen adecuadamente. Agregar validaciones para dirección, código postal y otros datos necesarios. Un botón de "Aceptar" para enviar y "Cancelar" para descartar. Implementar el uso de mensajes de validación dinámicos.
+
+#### Vista de Notificaciones Telemáticas
+- **Propósito**: Mostrar las notificaciones telemáticas disponibles y permitir su envío.
+- **Campos**: Lista de notificaciones con descripción, interesados, fecha de creación, botones de selección y envío.
+- **Acciones**: Selección de notificaciones, envío de notificaciones seleccionadas, filtro de búsqueda.
+- **Descripción muy detallada**: 
+  La vista presenta las notificaciones como una tabla con filas y columnas para cada dato relevante, incluida una casilla de verificación por fila. Debe permitirse la selección múltiple. Al final de la tabla, botones para `Marcar Todos`, `Desmarcar Todos` y `Enviar` las selecciones. Validaciones para asegurar que no se envíen notificaciones sin los anexos requeridos.
+
+### Navegación y Enrutamiento
+
+#### Rutas:
+- **Path**: `/emision-notificaciones`
+  - **Descripción**: Pantalla principal para la emisión de notificaciones.
+  - **Componente asociado**: `UnidadRemitenteComponent`
+  
+- **Path**: `/seleccionar-fecha`
+  - **Descripción**: Pantalla de selección de fecha.
+  - **Componente asociado**: `FechaComponent`
+  
+- **Path**: `/devoluciones`
+  - **Descripción**: Pantalla para generación de devolución de acuses.
+  - **Componente asociado**: `DevolucionEnvioComponent`
+  
+- **Path**: `/notificaciones-telematicas`
+  - **Descripción**: Pantalla para el envío de notificaciones telemáticas.
+  - **Componente asociado**: `NotificacionesTelematicasComponent`
+  
+- **Path**: `/notificaciones-correos`
+  - **Descripción**: Pantalla para el envío de notificaciones por correo.
+  - **Componente asociado**: `NotificacionesCorreosComponent`
+
+#### Jerarquía de Navegación y Protecciones
+- **Prácticas adoptadas**: 
+  - **Guardias** se deben implementar para garantizar que ciertas rutas solo se acceden con las dependencias adecuadas.
+  - **Path Hijos**: Componentes de detalles podrían ser rutas hijas de las principales.
+  - **Rutas protegidas**: Se recomienda proteger las rutas pertinentes con guardias y autenticación cuando sea necesario, para mantener la integridad y la seguridad del flujo de trabajo. 
+
+Implementar estos componentes, vistas y rutas asegurará que la funcionalidad del sistema "EXPECA01" sea replicada eficazmente en Angular 8, proporcionando una interfaz moderna y robusta para los usuarios.

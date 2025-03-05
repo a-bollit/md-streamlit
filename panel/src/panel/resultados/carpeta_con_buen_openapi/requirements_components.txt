@@ -1,0 +1,184 @@
+## Componentes de Angular 8:
+
+### 1. **Component GeneralComponent**
+- **Funcionalidad específica:** Manejo de las operaciones generales del formulario, incluyendo la selección de unidad, fechas y validaciones iniciales.
+- **Datos de entrada (Input):** 
+  - `cdunidad`: string
+  - `fcdesde`: Date
+  - `fchasta`: Date
+- **Datos de salida (Output):**
+  - `cdunidadChange`: EventEmitter<string>
+  - `fcdesdeChange`: EventEmitter<Date>
+  - `fchastaChange`: EventEmitter<Date>
+- **Dependencias con otros componentes o servicios:** 
+  - Servicios: `DataService` para obtener datos desde el backend, `ValidationService` para validaciones específicas.
+- **Descripción detallada:** Este componente presenta un formulario con campos para seleccionar la unidad administrativa (mediante un dropdown o un LOV), y fechas desde/hasta (usando datepickers). Incluirá la lógica para mostrar mensajes de error si las fechas no son válidas o si falta información obligatoria.
+  - **Guía para desarrolladores:** Implementar los form controls en un controlador `FormGroup`. Configurar validaciones síncronas para los campos de fecha. Para el LOV, utilizar un diálogo modal que permita al usuario seleccionar una unidad y devolver el resultado al formulario principal.
+
+### 2. **Component ConfirmarComponent**
+- **Funcionalidad específica:** Mostrar un diálogo de confirmación cuando el usuario intente dar de baja un registro.
+- **Datos de entrada (Input):**
+  - `mensaje`: string
+- **Datos de salida (Output):**
+  - `confirmar`: EventEmitter<boolean>
+- **Dependencias con otros componentes o servicios:** 
+  - Servicios: Ninguno específico.
+- **Descripción detallada:** Desplegará un modal con un mensaje de confirmación y botones "Sí" y "No", enviando un evento según la elección del usuario.
+  - **Guía para desarrolladores:** Usar Angular Material para el diálogo modal (`MatDialog`). Configurar bindings para recibir el mensaje y emitir la confirmación.
+
+### 3. **Component NotaComponent**
+- **Funcionalidad específica:** Mostrar notas informativas al usuario.
+- **Datos de entrada (Input):**
+  - `nota`: string
+- **Datos de salida (Output):** Ninguno.
+- **Dependencias con otros componentes o servicios:** 
+  - Servicios: Ninguno específico.
+- **Descripción detallada:** Renderizar un modal con el texto de la nota informativa.
+  - **Guía para desarrolladores:** Usar Angular Material para el diálogo modal (`MatDialog`). Configurar el componente para mostrar el texto recibido a través del binding del `Input`.
+
+### 4. **Component MensajeComponent**
+- **Funcionalidad específica:** Mostrar mensajes de aviso al usuario.
+- **Datos de entrada (Input):**
+  - `mensaje`: string
+- **Datos de salida (Output):** Ninguno.
+- **Dependencias con otros componentes o servicios:** 
+  - Servicios: Ninguno específico.
+- **Descripción detallada:** Presentar un modal con el mensaje de aviso.
+  - **Guía para desarrolladores:** Usar Angular Material para el diálogo modal (`MatDialog`). Configurar el componente para mostrar el mensaje recibido a través del binding del `Input`.
+
+### 5. **Component DocumentosComponent**
+- **Funcionalidad específica:** Manejar la vista y selección de documentos para notificaciones.
+- **Datos de entrada (Input):**
+  - `documentos`: Documento[]
+- **Datos de salida (Output):**
+  - `seleccionDocumentos`: EventEmitter<Documento[]>
+- **Dependencias con otros componentes o servicios:** 
+  - Servicios: `DocumentService` para operaciones CRUD, `NotificationService` para mostrar alertas.
+- **Descripción detallada:** Presentar una tabla con la lista de documentos disponibles, permitiendo marcar o desmarcar para su procesamiento. Incluirá paginación, filtros y opciones de ordenamiento.
+  - **Guía para desarrolladores:** Implementar una tabla usando Angular Material y `MatTableDataSource`. Configurar columnas para la selección de documentos y botones para acciones como "Marcar todos" y "Desmarcar todos". Integrar servicios de datos y notificaciones con observables para la reactividad.
+
+### 6. **Component CalendarPickerComponent**
+- **Funcionalidad específica:** Mostrar un calendario para seleccionar fechas.
+- **Datos de entrada (Input):**
+  - `selectedDate`: Date
+- **Datos de salida (Output):**
+  - `dateChange`: EventEmitter<Date>
+- **Dependencias con otros componentes o servicios:** 
+  - Servicios: Ninguno específico.
+- **Descripción detallada:** Permitir al usuario seleccionar una fecha desde un calendario modal.
+  - **Guía para desarrolladores:** Usar Angular Material para el date picker (`MatDatepicker`). Configurar el componente para emitir la fecha seleccionada a través del output `dateChange`.
+
+### 7. **Component DevolucionesComponent**
+- **Funcionalidad específica:** Manejar la funcionalidad de devolución de documentos.
+- **Datos de entrada (Input):**
+  - `devoluciones`: Devolucion[]
+- **Datos de salida (Output):**
+  - `procesarDevoluciones`: EventEmitter<Devolucion[]>
+- **Dependencias con otros componentes o servicios:** 
+  - Servicios: `DevolucionService` para operaciones CRUD.
+- **Descripción detallada:** Gestionar la devolución de documentos, permitiendo seleccionar destinatarios y confirmar la devolución.
+  - **Guía para desarrolladores:** Implementar una tabla para mostrar las devoluciones con integración para selección y envío de devoluciones utilizando `MatTable` y `MatDialog` para confirmación.
+
+### 8. **Component DevolucionDialogComponent**
+- **Funcionalidad específica:** Mostrar un diálogo de confirmación para devolver documentos.
+- **Datos de entrada (Input):**
+  - `devolucion`: Devolucion
+- **Datos de salida (Output):**
+  - `confirmarDevolucion`: EventEmitter<Devolucion>
+- **Dependencias con otros componentes o servicios:** 
+  - Servicios: Ninguno específico.
+- **Descripción detallada:** Confirmar la devolución de documentos y gestionar la entrada de información adicional necesaria.
+  - **Guía para desarrolladores:** Usar Angular Material `MatDialog` para el componente de diálogo. Configurar bindings para recibir y emitir la confirmación de devolución.
+
+## Vistas y Formularios (asociadas a los componentes):
+
+### Vista General
+- **Propósito:** Administrar las opciones generales del formulario.
+- **Campos:**
+  - Unidad: Dropdown con selección de unidad.
+  - Fechas desde y hasta: Datepickers.
+  - Botones (Aceptar, Cancelar): Acciones para validar y cancelar.
+- **Acciones permitidas:** Validación de campos, visualización de errores, navegación a la vista documentos.
+- **Descripción detallada:** Incluir validador que asegure que las fechas sean válidas y la unidad esté seleccionada. Mostrar errores en modales cuando la validación falle.
+
+### Vista Confirmar
+- **Propósito:** Solicitar confirmación al usuario para acciones críticas.
+- **Campos:** Mensaje de confirmación.
+- **Acciones permitidas:** Confirmar o cancelar la acción.
+- **Descripción detallada:** Configurar el modal para recibir el mensaje de confirmación y responder a la acción del usuario mediante eventos.
+
+### Vista Nota
+- **Propósito:** Mostrar notas informativas.
+- **Campos:** Mensaje de nota.
+- **Acciones permitidas:** Cerrar la nota.
+- **Descripción detallada:** Crear un modal que reciba y muestre el mensaje configurado mediante bindings de Input.
+
+### Vista Mensaje
+- **Propósito:** Mostrar mensajes de aviso al usuario.
+- **Campos:** Mensaje de aviso.
+- **Acciones permitidas:** Cerrar el mensaje.
+- **Descripción detallada:** Implementar un modal que contenga el mensaje de aviso a ser mostrado al usuario basado en bindings de Input.
+
+### Vista Documentos
+- **Propósito:** Mostrar, seleccionar y procesar documentos para notificaciones.
+- **Campos:**
+  - Tabla de documentos: Con columnas para nombre, descripción, estado de selección.
+  - Opciones de paginación, filtros y ordenamiento.
+  - Botones de acción (Marcar todos, Desmarcar todos, Aceptar, Rechazar).
+- **Acciones permitidas:** Seleccionar y deseleccionar documentos, confirmar selección de documentos.
+- **Descripción detallada:** Integrar un `MatTable` con un `MatPaginator` y `MatSort` para gestionar la lista de documentos de manera eficiente y reactiva.
+
+### Vista Calendario
+- **Propósito:** Seleccionar fechas importantes en el formulario.
+- **Campos:** Selección de fechas.
+- **Acciones permitidas:** Seleccionar una fecha y confirmar.
+- **Descripción detallada:** Enlazar el componente del calendario con los controladores del formulario para emitir cambios de fecha y mostrar el calendario modal.
+
+### Vista Devoluciones
+- **Propósito:** Gestionar la devolución de documentos.
+- **Campos:**
+  - Tabla de devoluciones: Con columnas para destinatario, estado.
+  - Botones de acción (Confirmar devolución, Cancelar).
+- **Acciones permitidas:** Confirmar o cancelar devoluciones seleccionadas.
+- **Descripción detallada:** Utilizar una tabla para listar y seleccionar devoluciones. Configurar un servicio para manejar la lógica de devolución y confirmación.
+
+### Vista DevolucionDialog
+- **Propósito:** Confirmar la devolución de documentos con información adicional.
+- **Campos:**
+  - Destinatario: Campo de entrada o selección.
+  - Información adicional: Campos configurables según las reglas del negocio.
+- **Acciones permitidas:** Confirmar o cancelar devolución.
+- **Descripción detallada:** Configurar un modal con los campos necesarios para confirmar la devolución y gestionar la entrada de datos con validaciones según sea requerido.
+
+## Navegación y Enrutamiento (vinculado a los componentes):
+
+### Rutas necesarias
+- `path: 'general'`: Componente asociado: `GeneralComponent`
+  - Navegación principal desde el inicio, gestionará las operaciones generales.
+- `path: 'confirmar'`: Componente asociado: `ConfirmarComponent`
+  - Ruta protegida para confirmaciones. Solo accesible mediante acciones específicas como baja de registro.
+- `path: 'nota'`: Componente asociado: `NotaComponent`
+  - Ruta accesible para mostrar notas informativas globales.
+- `path: 'mensaje'`: Componente asociado: `MensajeComponent`
+  - Ruta utilizada para mostrar mensajes de aviso específicos.
+- `path: 'documentos'`: Componente asociado: `DocumentosComponent`
+  - Ruta para la gestión de documentos. Accesible después de la validación inicial en vista general.
+- `path: 'calendario'`: Componente asociado: `CalendarPickerComponent`
+  - Ruta para seleccionar fechas.
+- `path: 'devoluciones'`: Componente asociado: `DevolucionesComponent`
+  - Ruta para gestionar la devolución de documentos.
+- `path: 'devolucion-dialog'`: Componente asociado: `DevolucionDialogComponent`
+  - Ruta para mostrar el diálogo de confirmación de devoluciones.
+
+### Integración en la jerarquía de navegación
+- `GeneralComponent` será la ruta base para iniciar la aplicación.
+- Las acciones en `GeneralComponent` pueden redirigir a `DocumentosComponent` para gestionar documentos.
+- Las rutas `ConfirmarComponent`, `NotaComponent`, y `MensajeComponent` pueden ser utilizadas como modales desde cualquier otro componente, según la acción requerida.
+- `DevolucionesComponent` y `DevolucionDialogComponent` estarán anidadas bajo `DocumentosComponent` para manejar específicamente la devolución de documentos.
+
+### Descripción detallada
+- **GeneralComponent** será el punto de entrada y redireccionará a otras rutas según las acciones del usuario.
+- **Los componentes reutilizables como los diálogos (Nota, Mensaje, Confirmar) estarán disponibles globalmente y se podrán invocar con `MatDialog` en cualquier momento desde cualquier componente.**
+- **El uso de servicios centralizados como `DataService`, `ValidationService` y `DocumentService` permitirá desacoplar la lógica de negocio de los componentes, facilitando la reutilización y el mantenimiento del código.**
+
+Este esquema proporciona una guía completa y exhaustiva para el desarrollo de los componentes frontend en Angular 8, asegurando que se sigan las convenciones del proyecto y se mantenga la coherencia en todas las interacciones de usuario.

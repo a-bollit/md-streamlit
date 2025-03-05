@@ -1,0 +1,631 @@
+<section class="view-default-style">
+
+  <!-- Componente -->
+  <mv-card class="card-code">
+    <mv-card-title><strong>Documentación mv-tree-filter</strong></mv-card-title>
+
+    <!-- Índice de la documentación -->
+    <div>
+      <a class="nostyle" (click)='info.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Información
+      </a>
+    </div>
+    <div>
+      <a class="nostyle" (click)='useExample.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> Ejemplo de uso
+      </a>
+    </div>
+    <p>Propiedades:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='filterAppearance.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> filterAppearance
+      </a></li>
+      <li><a class="nostyle" (click)='filterFloatLabel.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> filterFloatLabel
+      </a></li>
+      <li><a class="nostyle" (click)='filterHint.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> filterHint
+      </a></li>
+      <li><a class="nostyle" (click)='filterTitle.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> filterTitle
+      </a></li>
+      <li><a class="nostyle" (click)='filterPlaceholder.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> filterPlaceholder
+      </a></li>
+      <li><a class="nostyle" (click)='hideItems.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> hideItems
+      </a></li>
+      <li><a class="nostyle" (click)='showItems.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showItems
+      </a></li>
+      <li><a class="nostyle" (click)='multiOpen.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> multiOpen
+      </a></li>
+      <li><a class="nostyle" (click)='treeFilterItems.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> treeFilterItems (datos locales)
+      </a></li>
+      <li><a class="nostyle" (click)='treeFilterItemsJsonLocal.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> treeFilterItems (datos importados de JSON local)
+      </a></li>
+      <li><a class="nostyle" (click)='treeFilterItemsJsonExterno.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> treeFilterItems (datos importados de JSON externo)
+      </a></li>
+    </ol>
+
+    <!-- Índice de la documentación -->
+    <p>Eventos:</p>
+    <ol class="ol-code">
+      <li><a class="nostyle" (click)='hideItems.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> hideItems
+      </a></li>
+      <li><a class="nostyle" (click)='showItems.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> showItems
+      </a></li>
+      <li><a class="nostyle" (click)='refresh.scrollIntoView({behavior: "smooth",block: "start"})'>
+        <mv-icon>link</mv-icon> refresh
+      </a></li>
+    </ol>
+
+  </mv-card>
+
+  <!-- Información -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #info><strong>Información</strong></mv-card-title>
+      <mv-card-subtitle>Información del componente <strong>mv-tree-filter</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Este componente sirve para mostrar un listado, en forma de categorías y subcategorías con un buscador que permite filtrar entre todos los elementos.</p>
+      <p>Al pulsar en un elemento padre, se expandirán los elementos hijo. Al pulsar en un elemento hijo, se abrirá la url que esté configurada para ese elemento.</p>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- Ejemplo de uso -->
+  <mv-card class="card-code">
+
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #useExample><strong>Ejemplo de uso</strong></mv-card-title>
+      <mv-card-subtitle>Uso básico del componente <strong>mv-tree-filter</strong>.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>A continuación se muestra un ejemplo básico de uso del componente.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeUseExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="Array TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-tree-filter
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- filterAppearance -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #filterAppearance><strong>filterAppearance</strong></mv-card-title>
+      <mv-card-subtitle>Apariencia del filtro.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad filterAppearance permite definir el aspecto del filtro de búsqueda.</p>
+      <p>El valor por defecto es <strong>'outline'</strong>.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeFilterAppearanceExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="Array TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con apariencia 'legacy':</strong></p>
+
+      <mv-tree-filter
+        filterAppearance="legacy"
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+      <p><strong>Con apariencia 'standard':</strong></p>
+
+      <mv-tree-filter
+        filterAppearance="standard"
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+      <p><strong>Con apariencia 'fill':</strong></p>
+
+      <mv-tree-filter
+        filterAppearance="fill"
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+      <p><strong>Con apariencia 'outline':</strong></p>
+
+      <mv-tree-filter
+        filterAppearance="outline"
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- filterFloatLabel -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #filterFloatLabel><strong>filterFloatLabel</strong></mv-card-title>
+      <mv-card-subtitle>Comportamiento de la label.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad floatLabel permite definir el comportamiento de la label del input de búsqueda.</p>
+      <p>Si usamos la propiedad floatLabel también tendrá que haber definida una label, mediante la propiedad <strong>label</strong>.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeFilterFloatLabelExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="Array TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con floatLabel 'always':</strong></p>
+
+      <mv-tree-filter
+        label="Propiedad floatLabel"
+        filterFloatLabel="always"
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+      <p><strong>Con floatLabel 'never':</strong></p>
+      <p>* El valor 'never' solo aplica cuando la propiedad <strong>appearance='legacy'</strong></p>
+
+      <mv-tree-filter
+        label="Propiedad floatLabel"
+        filterAppearance="legacy"
+        filterFloatLabel="never"
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+      <p><strong>Con floatLabel 'auto':</strong></p>
+
+      <mv-tree-filter
+        label="Propiedad floatLabel"
+        filterFloatLabel="auto"
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- filterHint -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #filterHint><strong>filterHint</strong></mv-card-title>
+      <mv-card-subtitle>Título del filtro.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad Hint permite definir un hint complementario a filterTitle. </p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeFilterHintExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="Array TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con Hint 'Hint personalizado':</strong></p>
+
+      <mv-tree-filter
+        [treeFilterItems]='exampleCountries'
+        filterTitle='Buscador médico'
+        filterHint="Hint personalizado">
+      </mv-tree-filter>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- filterTitle -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #filterTitle><strong>filterTitle</strong></mv-card-title>
+      <mv-card-subtitle>Título del filtro.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad filterTitle permite definir un título en el input del filtro de búsqueda.</p>
+      <p>El valor por defecto es <strong>Buscador</strong>.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeFilterTitleExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="Array TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-tree-filter
+        [treeFilterItems]='exampleCountries'
+        filterTitle='Buscador médico'>
+      </mv-tree-filter>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- filterPlaceholder -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #filterPlaceholder><strong>filterPlaceholder</strong></mv-card-title>
+      <mv-card-subtitle>Placeholder del filtro.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad filterPlaceholder permite definir el placeholder en el input del filtro de búsqueda.</p>
+      <p>El valor por defecto es <strong>Escriba para buscar...</strong>.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeFilterPlaceholderExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="Array TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-tree-filter
+        [treeFilterItems]='exampleCountries'
+        filterPlaceholder='Filtra la búsqueda'>
+      </mv-tree-filter>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- multiOpen -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #multiOpen><strong>multiOpen</strong></mv-card-title>
+      <mv-card-subtitle>Título del filtro.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad multiOpen define un botón que abre o cierra todos los niveles del tree-filter.</p>
+      <p>El valor por defecto es <strong>true</strong>.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeMultiOpenExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="Array TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p>Ejemplo mostrando el botón (multiOpen=true):</p>
+      <mv-tree-filter
+        [treeFilterItems]='exampleCountries'
+        multiOpen=true>
+      </mv-tree-filter>
+
+      <p>Ejemplo ocultando el botón (multiOpen=false):</p>
+      <mv-tree-filter
+        [treeFilterItems]='exampleCountries'
+        multiOpen=false>
+      </mv-tree-filter>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showFilter -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showFilter><strong>showFilter</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar o no el filtro de búsqueda.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad showFilter permite ocultar el filtro de búsqueda.</p>
+      <p>El valor por defecto es <strong>true</strong>.</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowFilterExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="Array TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <p><strong>Con showFilter a true:</strong></p>
+
+      <mv-tree-filter
+        showFilter=true
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+      <p><strong>Con showFilter a false:</strong></p>
+
+      <mv-tree-filter
+        showFilter=false
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+      <p><strong>Sin showFilter (comportamiento por defecto):</strong></p>
+
+      <mv-tree-filter
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- treeFilterItems -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #treeFilterItems><strong>treeFilterItems</strong></mv-card-title>
+      <mv-card-subtitle>Datos que se mostrarán en el componente.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>La propiedad treeFilterItems define los datos que muestra el componente con sus respectivos niveles y características.</p>
+      <p>Los datos deben estar definidos como un JSON con los siguientes atributos:</p>
+
+      <ul>
+        <li><strong>title</strong>: título del elemento</li>
+        <li><strong>subtitle</strong>: subtítulo del elemento</li>
+        <li><strong>link</strong>: comportamiento al pulsar el elemento
+          <ul>
+            <li><strong>type</strong>: puede tomar los valores url o state dependiendo si queremos navegar a una url externa
+              o a un estado de la app</li>
+            <li><strong>uri</strong>: url o estado de la app donde queremos navegar</li>
+          </ul>
+        </li>
+        <li><strong>children</strong>: elementos del nivel hijo</li>
+        <li><strong>css</strong>: Clase css para sobrescribir el estilo de los elementos</li>
+      </ul>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTreeFilterItemsExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTreeFilterItemsExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="Array TS">
+          <pre><code [highlight]="codeUseExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-tree-filter
+        #mvTreeFilterCssItems
+        [(treeFilterItems)]='exampleCountries'>
+      </mv-tree-filter>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (click)="addColorExample()">
+        Cambiar colores
+      </mv-button>
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (click)="resetColorExample()">
+        Quitar colores
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- treeFilterItemsJsonLocal -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #treeFilterItemsJsonLocal><strong>treeFilterItemsJsonLocal</strong></mv-card-title>
+      <mv-card-subtitle>treeFilterItems (datos importados de JSON local).</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Ejemplo de la propiedad <a (click)='treeFilterItems.scrollIntoView({behavior: "smooth",block: "start"})'>treeFilterItems</a>
+        pero con datos obtenidos de un archivo JSON local</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTreeFilterItemsJsonLocalExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTreeFilterItemsJsonLocalExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="JSON">
+          <pre><code [highlight]="codeTreeFilterItemsExampleJSON"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-tree-filter
+        [treeFilterItems]='exampleJsonLocal'>
+      </mv-tree-filter>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- treeFilterItemsJsonExterno -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #treeFilterItemsJsonExterno><strong>treeFilterItemsJsonExterno</strong></mv-card-title>
+      <mv-card-subtitle>treeFilterItems (datos importados de JSON externo).</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <p>Ejemplo de la propiedad <a (click)='treeFilterItems.scrollIntoView({behavior: "smooth",block: "start"})'>treeFilterItems</a>
+        pero con datos obtenidos de un archivo JSON externo</p>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeTreeFilterItemsJsonExternoExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeTreeFilterItemsJsonExternoExampleTS"></code></pre>
+        </mv-tab>
+        <mv-tab label="JSON">
+          <pre><code [highlight]="codeTreeFilterItemsExampleJSON"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-tree-filter
+        [treeFilterItems]='exampleJsonExterno'>
+      </mv-tree-filter>
+
+    </mv-card-content>
+  </mv-card>
+
+
+  <!-- hideItems -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #hideItems><strong>hideItems</strong></mv-card-title>
+      <mv-card-subtitle>Ocultar elementos.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeHideItemsExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeHideItemsExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-tree-filter
+        #mvTreeFilterHideItems
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (click)="hideItemsExample()">
+        hideItems
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- showItems -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #showItems><strong>showItems</strong></mv-card-title>
+      <mv-card-subtitle>Mostrar elementos que estaban ocultos.</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeShowItemsExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeShowItemsExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-tree-filter
+        #mvTreeFilterShowItems
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (click)="showItemsExample()">
+        showItems
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+  <!-- refresh -->
+  <mv-card class="card-code">
+    <mv-card-header>
+      <div mv-card-avatar><mv-icon>code</mv-icon></div>
+      <mv-card-title #refresh><strong>refresh</strong></mv-card-title>
+      <mv-card-subtitle>Actualiza el array de configuración del componente</mv-card-subtitle>
+    </mv-card-header>
+
+    <mv-card-content>
+
+      <mv-tab-group>
+        <mv-tab label="HTML">
+          <pre><code [highlight]="codeRefreshExampleHTML"></code></pre>
+        </mv-tab>
+        <mv-tab label="TS">
+          <pre><code [highlight]="codeRefreshExampleTS"></code></pre>
+        </mv-tab>
+      </mv-tab-group>
+
+      <mv-tree-filter
+        #mvTreeFilterRefresh
+        [treeFilterItems]='exampleCountries'>
+      </mv-tree-filter>
+
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (click)="refreshExample()">
+        Añadir css y refrescar
+      </mv-button>
+      <mv-button
+        appearance="raised"
+        color="primary"
+        (click)="refreshResetExample()">
+        Quitar css y refrescar
+      </mv-button>
+
+    </mv-card-content>
+  </mv-card>
+
+</section>
+
+<mv-button-scroll-to-top>
+</mv-button-scroll-to-top>

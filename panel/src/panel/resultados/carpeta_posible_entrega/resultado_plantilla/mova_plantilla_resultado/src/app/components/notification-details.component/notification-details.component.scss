@@ -1,0 +1,38 @@
+@import '~@mova/components/_variables.scss';
+
+.notification-details-card {
+  max-width: 600px;
+  margin: 16px auto;
+  padding: 24px;
+  
+  .form-group {
+    margin-bottom: 16px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+  }
+
+  .actions {
+    text-align: right;
+
+    .close-button {
+      @include button-color(#F44336); // Rojo
+    }
+
+    .close-icon {
+      @include icon-size(24px);
+      @include icon-color(#F44336); // Rojo
+      cursor: pointer;
+    }
+  }
+}

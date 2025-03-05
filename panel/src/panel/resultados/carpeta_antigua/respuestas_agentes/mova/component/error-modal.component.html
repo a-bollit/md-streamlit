@@ -1,0 +1,10 @@
+<mv-card class="error-modal">
+  <mv-header>
+    <mv-title>Error</mv-title>
+  </mv-header>
+  <mv-content>
+    <p>{{ errorMessage }}</p>
+    <pre>{{ errorDetails }}</pre>
+    <mv-button (click)="closeModal()" class="btn-close">Close</mv-button>
+  </mv-content>
+</mv-card>

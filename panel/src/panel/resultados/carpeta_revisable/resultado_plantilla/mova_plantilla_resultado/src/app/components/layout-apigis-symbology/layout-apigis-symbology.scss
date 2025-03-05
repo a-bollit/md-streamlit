@@ -1,0 +1,31 @@
+@import "~src/styles";
+
+.main-container {
+  height: calc(100% - 64px);
+  background-color: whitesmoke;
+  .row {
+    height: 100%;
+    .symbology-container {
+      display: flex;
+      flex-direction: column;
+      margin: 2%;
+      .span {
+        font-size: 10pt;
+        margin: 10px;
+        font-weight: bold;
+      }
+    }
+    #container-apigis-symbology {
+      height: 100%;
+    }
+  }
+}
+@media only screen and (max-width: $media-col-sm-max) {
+  .symbology-mobile {
+    height: 30vh;
+    overflow: auto;
+  }
+  .map-mobile {
+    height: 70vh;
+  }
+}

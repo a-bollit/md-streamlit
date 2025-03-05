@@ -1,0 +1,141 @@
+Result from estructura_visual_task: El formulario Oracle Forms "EXPECA01" contiene una variedad de componentes visuales, incluyendo ventanas, lienzos, bloques de datos, alertas y menús. A continuación, se proporciona una descripción detallada de estos componentes y sus propiedades visuales:
+
+### Ventanas
+
+#### Ventana Principal (`W_GENERAL`)
+
+- **Tamaño**: 415x133 píxeles.
+- **Posición**: (X:20, Y:8).
+- **Título**: "Emisión de Notificaciones".
+- **Visibilidad**: Visible.
+- **Comportamiento**: Permite maximizar, minimizar y mover la ventana. No se puede redimensionar.
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+#### Ventana de Pestañas (`W_PESTAÑAS`)
+
+- **Tamaño**: 593x314 píxeles.
+- **Posición**: (X:0, Y:0).
+- **Título**: "Emisión de Notificaciones".
+- **Visibilidad**: Visible.
+- **Comportamiento**: No se puede redimensionar. Puede ocultarse y moverse.
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+#### Ventana para Devoluciones (`W_DEVOL`)
+
+- **Tamaño**: 417x191 píxeles.
+- **Posición**: (X:100, Y:90).
+- **Título**: "Devolver Acuses de Recibo a:".
+- **Visibilidad**: Ocultable, se puede mover.
+- **Comportamiento**: No se permite redimensionar.
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+#### Ventana de Información (`W_INF`)
+
+- **Tamaño**: 312x37 píxeles.
+- **Posición**: (X:100, Y:130).
+- **Título**: "Información".
+- **Visibilidad**: Modal y visible.
+- **Comportamiento**: No se puede redimensionar ni mover.
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+#### Ventana de Errores (`W_ERROR_RESULTADO`)
+
+- **Tamaño**: 341x144 píxeles.
+- **Posición**: (X:100, Y:100).
+- **Título**: "Emisión de Notificaciones".
+- **Visibilidad**: Ocultable, se puede mover.
+- **Comportamiento**: No se puede redimensionar.
+- **Atributos Visuales**: `VisualAttributeName="DEFAULT"`.
+
+#### Ventana de Situación de Errores (`W_SITUACION_ERROR`)
+
+- **Tamaño**: 358x152 píxeles.
+- **Posición**: (X:150, Y:100).
+- **Título**: "Emisión de Notificaciones".
+- **Visibilidad**: Ocultable, se puede mover.
+- **Comportamiento**: No se puede redimensionar.
+- **Atributos Visuales**: `VisualAttributeName="DEFAULT"`.
+
+#### Ventana de Ayuda (`W_AYUDA`)
+
+- **Tamaño**: 383x137 píxeles.
+- **Posición**: (X:50, Y:45).
+- **Título**: "Ayuda".
+- **Visibilidad**: Modal y visible.
+- **Comportamiento**: No se permite redimensionar, se puede mover.
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+### Lienzos
+
+#### Lienzo Principal (`CV_GENERAL`)
+
+- **Tamaño**: 415x133 píxeles.
+- **Ventana**: `W_GENERAL`.
+- **Elementos**:
+  - **Texto**: Unidad remitente, Fecha desde, Fecha hasta, Expediente.
+  - **Marco**: Ancla los elementos mencionados.
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+#### Lienzo de Pestañas (`CV_PESTAÑAS`)
+
+- **Tamaño**: 592x314 píxeles.
+- **Ventana**: `W_PESTAÑAS`.
+- **Tipo**: Tabulador con dos pestañas: "Notificaciones de Correos" y "Notificaciones Telemáticas".
+  - **Pestaña "Notificaciones de Correos" (`PG_CORR`)**:
+    - **Elementos**: Marco, Textos (Documento, Descripción, Expediente, etc.), Rectángulo.
+  - **Pestaña "Notificaciones Telemáticas" (`PG_NOTE`)**:
+    - **Elementos**: Marco, Textos (Documento, Descripción, Expediente, etc.), Recordatorio sobre el tamaño de anexos.
+
+#### Lienzo para Devoluciones (`CV_DEVOL`)
+
+- **Tamaño**: 417x191 píxeles.
+- **Ventana**: `W_DEVOL`.
+- **Elementos**: Texto (Unidad Administrativa, Consejeria u Organismo, Dirección, Código Postal, Municipio), Línea, Marco.
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+#### Lienzo de Información (`CV_INF`)
+
+- **Tamaño**: 313x38 píxeles.
+- **Ventana**: `W_INF`.
+- **Elementos**: Texto de advertencia.
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+#### Lienzo de Errores (`CV_ERROR_RESULTADO`)
+
+- **Tamaño**: 341x144 píxeles.
+- **Ventana**: `W_ERROR_RESULTADO`.
+- **Elementos**: Marco.
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+#### Lienzo de Situación de Errores (`CV_SITUACION_ERROR`)
+
+- **Tamaño**: 358x152 píxeles.
+- **Ventana**: `W_SITUACION_ERROR`.
+- **Elementos**: Marco, Imágenes, Textos descriptivos.
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+#### Lienzo de Ayuda (`CV_AYUDA`)
+
+- **Tamaño**: 383x136 píxeles.
+- **Ventana**: `W_AYUDA`.
+- **Elementos**: Marco, Textos (criterios de búsqueda).
+- **Atributos Visuales**: `VisualAttributeName="FONDO"`.
+
+### Bloques de Datos
+
+- **B00**: Contiene elementos ocultos de texto para validaciones internas.
+- **BL_GENERAL**: Relacionado con el lienzo `CV_GENERAL`. Contiene ítems como `CDUNIDAD`, `DSUNIDAD`, `FCDESDE`, `FCHASTA`, `CDDEPTNO`, `CDTEXP`, `CDNEXP`, `CDDIGITO`, `CDAEXP`, `INCLUIR_ENVIADOS`.
+  - **Botones**: `LOV_CDUNIDAD`, `CAL_FCDESDE`, `CAL_FCHASTA`, `ACEPTAR`, `CANCELAR`.
+  - **Atributos Visuales**: `VisualAttributeName="CAMPO_FONDO"`.
+
+### Alertas
+
+- **CONFIRMAR**: Título "Confirmar dar de baja registro" con botones "SI" y "NO".
+- **NOTA**: Sin título, un botón.
+- **MENSAJE**: Título "Aviso" con un botón.
+
+### Menús
+
+- **DEFAULT&SMARTBAR**: Menú estándar de Oracle con funcionalidades típicas de manejo de formularios.
+
+Each component is meticulously arranged to ensure a cohesive user experience, leveraging Oracle Forms' robust feature set to manage notifications and related activities seamlessly. This detailed breakdown allows developers to recreate the exact visual layout and behavior as designed.

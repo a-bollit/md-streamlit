@@ -1,0 +1,16 @@
+<mv-card class="unidad-remitente-card">
+  <mv-header>
+    <mv-title>Seleccionar Unidad Remitente</mv-title>
+  </mv-header>
+  <mv-content>
+    <div class="form-group">
+      <label for="unidades">Unidad Remitente</label>
+      <select id="unidades" [(ngModel)]="unidad" (change)="onUnidadChange($event.target.value)" class="form-control">
+        <option *ngFor="let unidad of unidades" [value]="unidad">{{ unidad }}</option>
+      </select>
+      <button mv-button class="btn-detallada" (click)="abrirBusquedaDetallada()">
+        <mv-icon class="material-icons">search</mv-icon> Buscar Unidad Detallada
+      </button>
+    </div>
+  </mv-content>
+</mv-card>
