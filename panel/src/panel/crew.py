@@ -116,17 +116,6 @@ class PruebaStreamlitCrew():
 	embeddings_model = os.getenv('AZURE_DEPLOYMENT_EMB_MODEL')
 	deployment_model = os.getenv('AZURE_DEPLOYMENT_LLM_MODEL')
 	embeddings_endpoint=os.getenv('AZURE_OPENAI_ENDPOINT_EMBEDDING')
-
-	OPENAI_API_KEY="86705e203c994131907a6a7106c7f70b"
-	OPENAI_API_TYPE="azure"
-	AZURE_OPENAI_ENDPOINT="https://labopenaiplai.openai.azure.com/"
-	AZURE_DEPLOYMENT_LLM_MODEL="gpt-35-turbo"
-	AZURE_DEPLOYMENT_EMB_MODEL="text-embedding-ada-002" 
-	AZURE_OPENAI_ENDPOINT_EMBEDDING="https://labopenaiplai.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15" 
-	OPENAI_API_VERSION="2024-05-01-preview"
-	#os.environ["OPENAI_API_KEY"] = os.environ['openai_api_key']
-	#os.environ["AZURE_ENDPOINT"] = os.environ['AZURE_OPENAI_ENDPOINT']
-	#os.environ["OPENAI_MODEL_NAME"] = f"azure/{os.environ['AZURE_DEPLOYMENT_LLM_MODEL']}"
 	
 	llm = LLM(
     model=f"azure/{deployment_model}",  # Usa el nombre correcto del modelo desplegado
